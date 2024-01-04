@@ -1,0 +1,13 @@
+tasks:
+  - name: Dev
+    init: |
+      nvm install
+      yarn
+    command: |
+      nvm install
+      yarn dev
+
+ports:
+  - port: 5173
+    visibility: public
+    onOpen: ignore

@@ -1,0 +1,29 @@
+{
+  "label": "English",
+  "display": "English",
+  "lang": "en",
+
+  "title": "Cooking With ao",
+  "description": "The decentralized computer with infinite threads.",
+
+  "edit": "Edit",
+  "language": "Language",
+  "docs": "Docs",
+
+  "getting-started": "Getting Started",
+  "getting-started-aos": "aos",
+  "getting-started-ao-dev-cli": "ao Developer CLI",
+
+  "concepts": "Concepts",
+  "concepts-environment": "ao Environment",
+  "concepts-ao-lib": "ao Lib",
+  "concepts-architecture": "ao Architecture",
+  "concepts-specs": "ao Specifications",
+
+  "guides": "Guides",
+  "guides-how-do-i": "How Do I?",
+
+  "references": "References",
+  "references-lua": "Lua",
+  "references-wasm": "Web Assembly"
+}
