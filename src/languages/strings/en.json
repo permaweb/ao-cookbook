@@ -21,7 +21,14 @@
   "concepts-specs": "ao Specifications",
 
   "guides": "Guides",
-  "guides-how-do-i": "How Do I?",
+  "guides-ao-sdk": "ao SDK",
+  "guides-building-messages": "Building Messages",
+  "guides-connecting": "Connecting to specific nodes",
+  "guides-debugging": "Debugging",
+  "guides-tracing": "Tracing a Message",
+  "guides-installing-sdk": "Installing the SDK",
+  "guides-reading-results": "Reading Results",
+  "guides-sending-messages": "Sending Messages",
 
   "references": "References",
   "references-lua": "Lua",

@@ -63,8 +63,46 @@ export const localeConfig = (langCode) => ({
         link: get_i18n_link(langCode, "/guides/"),
         items: [
           {
-            text: get_i18n_str(langCode, "guides-how-do-i"),
-            link: get_i18n_link(langCode, "/guides/how-do-i"),
+            text: get_i18n_str(langCode, "guides-ao-sdk"),
+            link: get_i18n_link(langCode, "/guides/ao-sdk/ao-sdk"),
+            items: [
+              {
+                text: get_i18n_str(langCode, "guides-installing-sdk"),
+                link: get_i18n_link(langCode, "/guides/ao-sdk/installing-sdk"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-connecting"),
+                link: get_i18n_link(langCode, "/guides/ao-sdk/connecting"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-building-messages"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/ao-sdk/building-messages"
+                ),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-sending-messages"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/ao-sdk/sending-messages"
+                ),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-reading-results"),
+                link: get_i18n_link(langCode, "/guides/ao-sdk/reading-results"),
+              },
+            ],
+          },
+          {
+            text: get_i18n_str(langCode, "guides-debugging"),
+            link: get_i18n_link(langCode, "/guides/debugging/debugging"),
+            items: [
+              {
+                text: get_i18n_str(langCode, "guides-tracing"),
+                link: get_i18n_link(langCode, "/guides/debugging/tracing"),
+              },
+            ],
           },
         ],
       },
