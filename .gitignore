@@ -28,3 +28,4 @@ yarn-error.log*
 
 src/.vitepress/cache
 src/.vitepress/dist
+wallet.json
