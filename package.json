@@ -2,28 +2,31 @@
   "name": "docs",
   "version": "0.0.1",
   "description": "ao Cookbook",
-  "type": "module",
-  "authors": {
-    "name": "Tyler Hall",
-    "email": "tyler@hyper.io"
-  },
   "repository": "https://github.com/permaweb/ao-cookbook",
-  "scripts": {
-    "prepare": "husky install",
-    "staged": "lint-staged --allow-empty --concurrent false",
-    "dev": "vitepress dev src",
-    "build": "vitepress build src",
-    "preview": "vitepress preview src"
-  },
   "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "arns": "ACTION=UPDATE_ARNS node deploy.js",
+    "build": "vitepress build src",
+    "dev": "vitepress dev src",
+    "prepare": "husky install",
+    "preview": "vitepress preview src",
+    "staged": "lint-staged --allow-empty --concurrent false"
+  },
   "devDependencies": {
     "@commitlint/cli": "^18.4.4",
     "@commitlint/config-conventional": "^18.4.4",
+    "arweave": "^1.14.4",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "markdown-toc-gen": "^1.0.1",
     "prettier": "^3.1.1",
     "vitepress": "1.0.0-rc.36",
-    "vue": "^3.4.6"
+    "vue": "^3.4.6",
+    "warp-contracts": "^1.4.32"
+  },
+  "authors": {
+    "name": "Tyler Hall",
+    "email": "tyler@hyper.io"
   }
 }

@@ -161,8 +161,9 @@ jobs:
             | jq -r '.created[0].dataTxId'
           )
 
-          echo "folder_id=${FOLDER_ID}" >> $GITHUB_OUTPUT
-          echo "tx_id=${MANIFEST_TRANSACTION_ID}" >> $GITHUB_OUTPUT
+          echo "Updating ArNS for cookbook_ao..."
+
+          MANIFEST_ID="${MANIFEST_TRANSACTION_ID}" npm run arns
         env:
           WALLET: ${{ steps.wallet_file.outputs.filePath }}
           ARTIFACTS_HASH: ${{ steps.build_artifacts.outputs.artifacts_hash }}
