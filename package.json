@@ -17,13 +17,13 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
-    "@commitlint/config-conventional": "^18.4.3",
+    "@commitlint/cli": "^18.4.4",
+    "@commitlint/config-conventional": "^18.4.4",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "markdown-toc-gen": "^1.0.1",
-    "prettier": "^2.8.8",
-    "vitepress": "1.0.0-rc.34",
-    "vue": "^3.4.3"
+    "prettier": "^3.1.1",
+    "vitepress": "1.0.0-rc.36",
+    "vue": "^3.4.6"
   }
 }
