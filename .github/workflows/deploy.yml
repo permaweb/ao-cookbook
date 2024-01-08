@@ -90,7 +90,7 @@ jobs:
           ARTIFACTS_HASH=$(sha256sum src/.vitepress/dist/hashmap.json | awk '{ print $1 }')
 
           echo "artifacts_output_dir=src/.vitepress/dist" >> $GITHUB_OUTPUT
-          echo "artifacts_hash=${ARTIFACTS_HASH}"
+          echo "artifacts_hash=${ARTIFACTS_HASH}" >> $GITHUB_OUTPUT
 
       - name: Install ArDrive CLI
         run: |
