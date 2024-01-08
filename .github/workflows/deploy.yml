@@ -73,7 +73,6 @@ jobs:
           echo "SHA:        ${{ github.sha }}"
           VER=`node --version`; echo "Node ver:   $VER"
           VER=`npm --version`; echo "npm ver:    $VER"
-          VER=`deno --version`; echo "deno ver:    $VER"
 
       - name: 🔬 Decode Wallet JSON File
         uses: timheuer/base64-to-file@v1
