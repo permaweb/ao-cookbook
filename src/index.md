@@ -13,7 +13,7 @@ hero:
 
 features:
   - title: Get Started
-    details: Dive into building with ao.
+    details: Dive into building with ao
     link: /getting-started/index
 
   - title: Concepts
