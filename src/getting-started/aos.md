@@ -135,7 +135,7 @@ You should see `pong`
 
 :tada:
 
-For more information about `handlers` check out the handlers [docs](process/handlers.md)
+For more information about `handlers` check out the handlers [docs](../concepts/handlers)
 
 ## Summary
 
