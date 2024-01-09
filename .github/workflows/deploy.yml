@@ -21,7 +21,7 @@ defaults:
 
 jobs:
   # Run the build as part of PRs to confirm the site properly builds
-  build:
+  check_build:
     if: ${{ startsWith(github.ref, 'refs/pull/') }}
     runs-on: ubuntu-latest
     steps:
