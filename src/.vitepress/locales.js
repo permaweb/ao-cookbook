@@ -56,6 +56,14 @@ export const localeConfig = (langCode) => ({
             text: get_i18n_str(langCode, "concepts-specs"),
             link: get_i18n_link(langCode, "/concepts/specs"),
           },
+          {
+            text: get_i18n_str(langCode, "concepts-messages"),
+            link: get_i18n_link(langCode, "/concepts/messages"),
+          },
+          {
+            text: get_i18n_str(langCode, "concepts-processes"),
+            link: get_i18n_link(langCode, "/concepts/processes"),
+          },
         ],
       },
       {
@@ -63,34 +71,40 @@ export const localeConfig = (langCode) => ({
         link: get_i18n_link(langCode, "/guides/"),
         items: [
           {
-            text: get_i18n_str(langCode, "guides-ao-sdk"),
-            link: get_i18n_link(langCode, "/guides/ao-sdk/ao-sdk"),
+            text: get_i18n_str(langCode, "guides-ao-connect"),
+            link: get_i18n_link(langCode, "/guides/ao-connect/ao-connect"),
             items: [
               {
-                text: get_i18n_str(langCode, "guides-installing-sdk"),
-                link: get_i18n_link(langCode, "/guides/ao-sdk/installing-sdk"),
+                text: get_i18n_str(langCode, "guides-installing-connect"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/ao-connect/installing-connect"
+                ),
               },
               {
                 text: get_i18n_str(langCode, "guides-connecting"),
-                link: get_i18n_link(langCode, "/guides/ao-sdk/connecting"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-building-messages"),
-                link: get_i18n_link(
-                  langCode,
-                  "/guides/ao-sdk/building-messages"
-                ),
+                link: get_i18n_link(langCode, "/guides/ao-connect/connecting"),
               },
               {
                 text: get_i18n_str(langCode, "guides-sending-messages"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/ao-sdk/sending-messages"
+                  "/guides/ao-connect/sending-messages"
                 ),
               },
               {
                 text: get_i18n_str(langCode, "guides-reading-results"),
-                link: get_i18n_link(langCode, "/guides/ao-sdk/reading-results"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/ao-connect/reading-results"
+                ),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-spawning-processes"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/ao-connect/spawning-processes"
+                ),
               },
             ],
           },
