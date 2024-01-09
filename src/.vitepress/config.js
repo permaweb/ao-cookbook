@@ -50,7 +50,7 @@ const config = defineConfig({
       locales[`/${code}/`] = localeConfig(code);
       return locales;
     },
-    { root: localeConfig("en") },
+    { root: localeConfig("en") }
   ),
 
   transformPageData: (pageData) => {
