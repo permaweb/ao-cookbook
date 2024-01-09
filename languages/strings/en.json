@@ -2,18 +2,13 @@
   "label": "English",
   "display": "English",
   "lang": "en",
-
   "title": "Cooking With ao",
   "description": "The decentralized computer with infinite threads.",
-
   "edit": "Edit",
   "language": "Language",
   "docs": "Docs",
-
   "getting-started": "Getting Started",
   "getting-started-aos": "aos",
-  "getting-started-ao-dev-cli": "ao Developer CLI",
-
   "concepts": "Concepts",
   "concepts-environment": "ao Environment",
   "concepts-ao-lib": "ao Lib",

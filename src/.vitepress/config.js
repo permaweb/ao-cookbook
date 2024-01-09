@@ -1,6 +1,6 @@
 import { defineConfig } from "vitepress";
 
-import { languages } from "../languages/def.js";
+import { languages } from "../../languages/def.js";
 import { localeConfig } from "./locales.js";
 
 // https://vitepress.dev/reference/site-config

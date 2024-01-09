@@ -1,4 +1,4 @@
-import { get_i18n_str } from "../languages/def.js";
+import { get_i18n_str } from "../../languages/def.js";
 
 const get_i18n_link = (code, link) =>
   `${code === "en" ? "" : "/" + code}${link}`;
