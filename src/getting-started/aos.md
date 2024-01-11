@@ -32,7 +32,7 @@
 ## Getting Started
 
 ```sh
-npm i -g https://sh_ao.g8way.io && aos
+npm i -g https://get_ao.g8way.io && aos
 ```
 
 > NOTE: after the first time you run `aos` it installs it to your local machine, so the next time you want to run `aos`, just type `aos` + [enter]
@@ -104,23 +104,21 @@ inbox[#inbox].Data
 
 > Should be `pong`
 
-Or you can check your messages ( by a `list()`)
+Or you can check your messages `inbox`
 
 ```lua
-list()
+inbox
 ```
 
+### Prompt
+
+Want to customize your `prompt`, all you have to do is to overwrite the `prompt` function
+
+```lua
+function prompt() return "🐶> " end
 ```
-1:
- Target: ohc9mIsNs3CFmMu7luiazRDLCFpiFJCfGVomJNMNHdU
- ...
- Tags:
-  From-Process: ohc9mIsNs3CFmMu7luiazRDLCFpiFJCfGVomJNMNHdU
-  Type: Message
-  body: pong
-  Variant: ao.TN.1
-  Data-Protocol: ao
-```
+
+Nice, you should see your new prompt.
 
 ### handlers
 
@@ -155,6 +153,32 @@ inbox[#inbox].Data
 You should see `pong`
 
 :tada:
+
+Handlers are a way to apply functionality to your Process to handle incoming messages, there are three arguments to the add function.
+
+- name - string
+- pattern - function (msg) return break = -1, skip = 0, continue = 1 end
+- handle - function (msg) ... end
+
+Example
+
+```lua
+handlers.add(
+  "example",
+  function (msg)
+    if msg.Tags.Action == "Info" then
+      -- break
+      return -1
+    end
+    -- skip
+    return 0
+  end,
+  function (msg)
+    -- send info about the Process
+    ao.send({Target = msg.From, Tags = { Name = name }})
+  end
+)
+```
 
 For more information about `handlers` check out the handlers [docs](../concepts/handlers)
 
@@ -257,7 +281,7 @@ give this this onboarding script:
 Hey lets chat on ao!
 
 ```sh
-npm i -g https://sh_ao.g8way.io && aos
+npm i -g https://get_ao.g8way.io && aos
 ```
 
 Register by typing this send command in your aos shell
