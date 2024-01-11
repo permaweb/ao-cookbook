@@ -30,28 +30,12 @@ export const localeConfig = (langCode) => ({
             text: get_i18n_str(langCode, "getting-started-aos"),
             link: get_i18n_link(langCode, "/getting-started/aos"),
           },
-          {
-            text: get_i18n_str(langCode, "getting-started-ao-dev-cli"),
-            link: get_i18n_link(langCode, "/getting-started/ao-cli"),
-          },
         ],
       },
       {
         text: get_i18n_str(langCode, "concepts"),
         link: get_i18n_link(langCode, "/concepts/"),
         items: [
-          {
-            text: get_i18n_str(langCode, "concepts-environment"),
-            link: get_i18n_link(langCode, "/concepts/environment"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-ao-lib"),
-            link: get_i18n_link(langCode, "/concepts/ao-lib"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-architecture"),
-            link: get_i18n_link(langCode, "/concepts/architecture"),
-          },
           {
             text: get_i18n_str(langCode, "concepts-specs"),
             link: get_i18n_link(langCode, "/concepts/specs"),
@@ -70,6 +54,28 @@ export const localeConfig = (langCode) => ({
         text: get_i18n_str(langCode, "guides"),
         link: get_i18n_link(langCode, "/guides/"),
         items: [
+          {
+            text: get_i18n_str(langCode, "guides-aos"),
+            link: get_i18n_link(langCode, "/guides/aos/index"),
+            items: [
+              {
+                text: get_i18n_str(langCode, "guides-aos-intro"),
+                link: get_i18n_link(langCode, "/guides/aos/intro"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-installing"),
+                link: get_i18n_link(langCode, "/guides/aos/installing"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-cli"),
+                link: get_i18n_link(langCode, "/guides/aos/cli"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-load"),
+                link: get_i18n_link(langCode, "/guides/aos/load"),
+              },
+            ],
+          },
           {
             text: get_i18n_str(langCode, "guides-ao-connect"),
             link: get_i18n_link(langCode, "/guides/ao-connect/ao-connect"),
