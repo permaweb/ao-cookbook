@@ -138,6 +138,14 @@ export const localeConfig = (langCode) => ({
             text: get_i18n_str(langCode, "references-wasm"),
             link: get_i18n_link(langCode, "/references/wasm"),
           },
+          {
+            text: get_i18n_str(langCode, "references-ao"),
+            link: get_i18n_link(langCode, "/references/ao"),
+          },
+          {
+            text: get_i18n_str(langCode, "references-handlers"),
+            link: get_i18n_link(langCode, "/references/handlers"),
+          },
         ],
       },
     ],
