@@ -87,19 +87,19 @@ Woohoo! 🚀
 We can also pass messages to other `aos` Processes!
 
 ```lua
-send({ Target = "ohc9mIsNs3CFmMu7luiazRDLCFpiFJCfGVomJNMNHdU", Tags = { body = "ping" } })
+Send({ Target = "Nhm2K5O87Gf6wZCK9u8gWUOqpc6IGgj7QSksGryt8-g", Data = "ping" })
 ```
 
 Check the number of items in your `inbox`:
 
 ```
-#inbox
+#Inbox
 ```
 
 Check the body Tag of the last message in your inbox:
 
 ```
-inbox[#inbox].Data
+Inbox[#Inbox].Data
 ```
 
 > Should be `pong`
@@ -107,15 +107,15 @@ inbox[#inbox].Data
 Or you can check your messages `inbox`
 
 ```lua
-inbox
+Inbox
 ```
 
 ### Prompt
 
-Want to customize your `prompt`, all you have to do is to overwrite the `prompt` function
+Want to customize your `Prompt`, all you have to do is to overwrite the `Prompt` function
 
 ```lua
-function prompt() return "🐶> " end
+function Prompt() return "🐶> " end
 ```
 
 Nice, you should see your new prompt.
@@ -127,10 +127,10 @@ With `aos` you can add handlers to handle incoming messages, in this example, we
 In the `aos`, type `.editor`
 
 ```lua
-handlers.add(
+Handlers.add(
   "pingpong",
-  handlers.utils.hasMatchingData("ping"),
-  handlers.utils.reply("pong")
+  Handlers.utils.hasMatchingData("ping"),
+  Handlers.utils.reply("pong")
 )
 ```
 
@@ -141,13 +141,13 @@ Then type `.done`
 Once added you can ping yourself!
 
 ```lua
-send({Target = ao.id, Data = "ping" })
+Send({Target = ao.id, Data = "ping" })
 ```
 
 And check your inbox, you should have gotten a `pong` message.
 
 ```lua
-inbox[#inbox].Data
+Inbox[#Inbox].Data
 ```
 
 You should see `pong`
@@ -163,7 +163,7 @@ Handlers are a way to apply functionality to your Process to handle incoming mes
 Example
 
 ```lua
-handlers.add(
+Handlers.add(
   "example",
   function (msg)
     if msg.Tags.Action == "Info" then
@@ -197,7 +197,7 @@ Open up your favorite code editor and create a file called `chatroom.lua`.
 In that file lets first start by initializaing our participant list, lets call the list weavers.
 
 ```lua
-weavers = weavers or {}
+Weavers = Weavers or {}
 ```
 
 Save the file, and go to your aos shell and type:
@@ -209,7 +209,7 @@ Save the file, and go to your aos shell and type:
 This command loads our source file into our aos process, to confirm we have added our weavers array, we can just type `weavers` in the aos shell and press enter
 
 ```sh
-weavers
+Weavers
 ```
 
 It should return an empty array `[]`
@@ -219,14 +219,14 @@ It should return an empty array `[]`
 We want to allow processes to register themselves to our chatroom, so we need to create a handler that allows them to register. In our `chatroom.lua` file lets add:
 
 ```lua
-handlers.add(
+Handlers.add(
   "register",
-  handlers.utils.hasMatchingTag("Action", "Register"),
+  Handlers.utils.hasMatchingTag("Action", "Register"),
   function (msg)
     -- insert process into weavers
     table.insert(weavers, msg.From)
     -- reply letting process know they are registered
-    handlers.utils.reply("registered")(msg)
+    Handlers.utils.reply("registered")(msg)
   end
 )
 ```
@@ -236,13 +236,13 @@ Save your file, and then on aos type `.load chatroom.lua` - this will send the c
 Now we can test those changes:
 
 ```lua
-send({ Target = ao.id, Tags = { Action = "Register" }})
+Send({ Target = ao.id, Tags = { Action = "Register" }})
 ```
 
 Lets verify we are added to the `weavers` list, in `aos` type:
 
 ```lua
-weavers
+Weavers
 ```
 
 ### Broadcast
@@ -250,14 +250,14 @@ weavers
 Lets do the same pattern with the `Broadcast` handler, type the following code in your `chatroom.lua` file
 
 ```lua
-handlers.add(
+Handlers.add(
   "broadcast",
-  handlers.utils.hasMatchingTag("Action", "Broadcast"),
+  Handlers.utils.hasMatchingTag("Action", "Broadcast"),
   function (msg)
-    for index, recipient in ipairs(weavers) do
+    for index, recipient in ipairs(Weavers) do
       ao.send({Target = recipient, Data = msg.Data})
     end
-    handlers.utils.reply("Broadcasted.")(msg)
+    Handlers.utils.reply("Broadcasted.")(msg)
   end
 )
 ```
@@ -265,13 +265,13 @@ handlers.add(
 Save and type `.load chatroom.lua` in your aos console, and lets test:
 
 ```lua
-send({Target = ao.id, Tags = { Action = "Broadcast" }, Data = "Hello World" })
+Send({Target = ao.id, Tags = { Action = "Broadcast" }, Data = "Hello World" })
 ```
 
 Check you inbox. You should have the message:
 
 ```lua
-inbox[#inbox].Data
+Inbox[#Inbox].Data
 ```
 
 Now, go and get some aos friends to register and start chatting...
@@ -287,15 +287,15 @@ npm i -g https://get_ao.g8way.io && aos
 Register by typing this send command in your aos shell
 
 ```lua
-send({Target = "{Your Process Id}", Tags = { Action = "Register" }})
+Send({Target = "{Your Process Id}", Tags = { Action = "Register" }})
 ```
 
-Check for received messages by typing `#inbox` and `inbox[#inbox].Data` to get the most recent.
+Check for received messages by typing `#Inbox` and `Inbox[#Inbox].Data` to get the most recent.
 
 Send messages:
 
 ```lua
-send({Target = "{Your Process Id}", Tags = { Action = "Broadcast", Data = "{your message}"}})
+Send({Target = "{Your Process Id}", Tags = { Action = "Broadcast", Data = "{your message}"}})
 ```
 
 ### Congrats! You just published a chatroom Process on the ao computer!
