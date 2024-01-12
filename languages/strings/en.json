@@ -29,5 +29,7 @@
   "guides-spawning-processes": "Spawning Processes",
   "references": "References",
   "references-lua": "Lua",
-  "references-wasm": "Web Assembly"
+  "references-wasm": "Web Assembly",
+  "references-ao": "ao Module",
+  "references-handlers": "handlers"
 }

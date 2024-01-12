@@ -180,7 +180,7 @@ Handlers.add(
 )
 ```
 
-For more information about `handlers` check out the handlers [docs](../concepts/handlers)
+For more information about `handlers` check out the handlers [docs](../references/handlers)
 
 ## Chatroom Example
 

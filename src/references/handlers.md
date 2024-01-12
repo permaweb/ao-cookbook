@@ -1,4 +1,4 @@
-# aOS Library: Handlers (Version 0.0.3)
+# Handlers (Version 0.0.3)
 
 ## Overview
 
@@ -6,16 +6,16 @@ The Handlers library provides a flexible way to manage and execute a series of h
 
 ## Module Structure
 
-- `handlers._version`: String representing the version of the Handlers library.
-- `handlers.list`: Table storing the list of registered handlers.
+- `Handlers._version`: String representing the version of the Handlers library.
+- `Handlers.list`: Table storing the list of registered handlers.
 
 ## Functions
 
-### `handlers.add(name, pattern, handler)`
+### `Handlers.add(name, pattern, handler)`
 
 adds a new handler or updates an existing handler by name
 
-### `handlers.append(name, pattern, handle)`
+### `Handlers.append(name, pattern, handle)`
 
 Appends a new handler to the end of the handlers list.
 
@@ -25,7 +25,7 @@ Appends a new handler to the end of the handlers list.
 - `handle` (function): The handler function to execute.
 - `name` (string): A unique name for the handler.
 
-### `handlers.prepend(name, pattern, handle)`
+### `Handlers.prepend(name, pattern, handle)`
 
 Prepends a new handler to the beginning of the handlers list.
 
@@ -33,7 +33,7 @@ Prepends a new handler to the beginning of the handlers list.
 
 - Same as `handlers.append`.
 
-### `handlers.before(handleName)`
+### `Handlers.before(handleName)`
 
 Returns an object that allows adding a new handler before a specified handler.
 
@@ -45,7 +45,7 @@ Returns an object that allows adding a new handler before a specified handler.
 
 - An object with an `add` method to insert the new handler.
 
-### `handlers.after(handleName)`
+### `Handlers.after(handleName)`
 
 Returns an object that allows adding a new handler after a specified handler.
 
@@ -57,7 +57,7 @@ Returns an object that allows adding a new handler after a specified handler.
 
 - An object with an `add` method to insert the new handler.
 
-### `handlers.remove(name)`
+### `Handlers.remove(name)`
 
 Removes a handler from the handlers list by name.
 
@@ -65,7 +65,7 @@ Removes a handler from the handlers list by name.
 
 - `name` (string): The name of the handler to be removed.
 
-### `handlers.evaluate(msg, env)`
+### `Handlers.evaluate(msg, env)`
 
 Evaluates each handler against a given message and environment. Handlers are called in the order they appear in the handlers list.
 
@@ -81,8 +81,6 @@ Evaluates each handler against a given message and environment. Handlers are cal
 ## Usage Example
 
 ```lua
-local handlers = require "handlers_module_path"
-
 -- Define pattern and handle functions
 local function myPattern(msg)
     -- Determine if the handler should be executed
@@ -92,8 +90,8 @@ local function myHandle(msg, env, response)
     -- Handler logic
 end
 
--- Append a new handler
-handlers.append("myHandler", myPattern, myHandle)
+-- Add a new handler
+Handlers.add("myHandler", myPattern, myHandle)
 
 -- Evaluate a message
 local response = handlers.evaluate({ key = "value" }, { envKey = "envValue" })
@@ -104,3 +102,46 @@ local response = handlers.evaluate({ key = "value" }, { envKey = "envValue" })
 - Handlers are executed in the order they appear in `handlers.list`.
 - The pattern function should return `0` to skip the handler, `-1` to break after the handler is executed, or `1` to continue with the next handler.
 - The `evaluate` function can concatenate responses from multiple handlers.
+
+## Handlers.utils
+
+The Handlers.utils module provides two functions that are common matching patterns and one function that is a common handle function.
+
+- hasMatchingData(data)
+- hasMatchingTag(name, value)
+- reply(txt)
+
+### Handlers.utils.hasMatchingData(data : string)
+
+This helper returns a function that requires a message argument, so you can drop this into the pattern argument of any handler. The function compares the data on the incoming message with the string provided as an argument.
+
+```lua
+Handlers.add("ping",
+    Handlers.utils.hasMatchingData("ping"),
+    ...
+)
+```
+
+If a message comes into the process with data set to ping, this handler will match on it and invoke the handle function.
+
+### Handlers.hasMatchingTag(name : string, value : string)
+
+This helper returns a function that requires a message argument, so you can drop this into any pattern argument on the Handlers module. The function compares the Tag Name and Value, if they are equal then it invokes the handle function.
+
+```lua
+Handlers.add("ping",
+    Handlers.utils.hasMatchingData("ping"),
+    ...
+)
+```
+
+### Handlers.reply(text : string)
+
+This helper is a simple handle function, it basically places the text value in to the Data property of the outbound message.
+
+```lua
+Handlers.add("ping",
+    Handlers.utils.hasMatchingData("ping"),
+    Handlers.utils.reply("pong")
+)
+```
