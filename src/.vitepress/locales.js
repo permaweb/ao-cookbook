@@ -114,39 +114,39 @@ export const localeConfig = (langCode) => ({
             ],
           },
           {
-            text: get_i18n_str(langCode, "guides-ao-connect"),
-            link: get_i18n_link(langCode, "/guides/ao-connect/ao-connect"),
+            text: get_i18n_str(langCode, "guides-aoconnect"),
+            link: get_i18n_link(langCode, "/guides/aoconnect/aoconnect"),
             items: [
               {
                 text: get_i18n_str(langCode, "guides-installing-connect"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/ao-connect/installing-connect",
+                  "/guides/aoconnect/installing-connect",
                 ),
               },
               {
                 text: get_i18n_str(langCode, "guides-connecting"),
-                link: get_i18n_link(langCode, "/guides/ao-connect/connecting"),
+                link: get_i18n_link(langCode, "/guides/aoconnect/connecting"),
               },
               {
                 text: get_i18n_str(langCode, "guides-sending-messages"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/ao-connect/sending-messages",
+                  "/guides/aoconnect/sending-messages",
                 ),
               },
               {
                 text: get_i18n_str(langCode, "guides-reading-results"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/ao-connect/reading-results",
+                  "/guides/aoconnect/reading-results",
                 ),
               },
               {
                 text: get_i18n_str(langCode, "guides-spawning-processes"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/ao-connect/spawning-processes",
+                  "/guides/aoconnect/spawning-processes",
                 ),
               },
             ],
@@ -182,6 +182,10 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "references-handlers"),
             link: get_i18n_link(langCode, "/references/handlers"),
+          },
+          {
+            text: get_i18n_str(langCode, "references-token"),
+            link: get_i18n_link(langCode, "/references/token"),
           },
         ],
       },

@@ -1,6 +1,6 @@
 # DAO Guide
 
-This guide brings you through the process of building a DAO using aos. If you have not already, you will need to first build a [Token](./token.md) in aos. We will load the DAO code into aos alongside the token code from the [Token](./token.md) guide. In the context of ao a DAO may be used to govern MU, CU, and SU nodes.
+This guide brings you through the process of building a DAO using aos. If you have not already, you will need to first build a [token](./token.md) in aos. We will load the DAO code into aos alongside the token code from the [token](./token.md) guide. In the context of ao a DAO may be used to govern MU, CU, and SU nodes.
 
 In our DAO we will implement a process knwon as "slashing". In the case of ao, if a unit is misbehaving, other units may vote to slash them. Slashing means they will lose their stake, we will get more into stake later.
 

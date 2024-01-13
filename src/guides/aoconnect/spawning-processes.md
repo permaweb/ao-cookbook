@@ -17,7 +17,7 @@ TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog
 ```js
 import { readFileSync } from "node:fs";
 
-import { createDataItemSigner, spawn } from "@permaweb/ao-sdk";
+import { createDataItemSigner, spawn } from "@permaweb/aoconnect";
 
 const wallet = JSON.parse(
   readFileSync("/path/to/arweave/wallet.json").toString(),

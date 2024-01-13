@@ -7,14 +7,14 @@ You may want to do this if you want to know which MU is being called when you se
 ## Importing without a call to connect
 
 ```js
-// Here ao-connect will implicitly use the default nodes/units
-import { spawn, message, result } from "@permaweb/ao-connect";
+// Here aoconnect will implicitly use the default nodes/units
+import { spawn, message, result } from "@permaweb/aoconnect";
 ```
 
 ## Connecting to a specific MU, CU, and gateway
 
 ```js
-import { connect } from "@permaweb/ao-connect";
+import { connect } from "@permaweb/aoconnect";
 
 const { spawn, message, result } = connect({
   MU_URL: "https://ao-mu-1.onrender.com",
@@ -30,7 +30,7 @@ const { spawn, message, result } = connect({
 <strong>All three of these parameters to connect are optional and it is valid to specify only 1 or 2 of them, or none. You could pass in just the MU_URL, for example.</strong>
 
 ```js
-import { connect } from "@permaweb/ao-connect";
+import { connect } from "@permaweb/aoconnect";
 
 const { spawn, message, result } = connect({
   MU_URL: "https://ao-mu-1.onrender.com",

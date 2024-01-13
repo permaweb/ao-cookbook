@@ -29,11 +29,11 @@
   "guides-aos-installing": "Installing",
   "guides-aos-cli": "CLI",
   "guides-aos-load": ".load",
-  "guides-ao-connect": "aoconnect",
+  "guides-aoconnect": "aoconnect",
   "guides-connecting": "Connecting to nodes",
   "guides-debugging": "Debugging",
   "guides-tracing": "Tracing",
-  "guides-installing-connect": "Installing ao connect",
+  "guides-installing-connect": "Installing aoconnect",
   "guides-reading-results": "Reading Results",
   "guides-sending-messages": "Sending Messages",
   "guides-spawning-processes": "Spawning Processes",
@@ -41,5 +41,6 @@
   "references-lua": "Lua",
   "references-wasm": "Web Assembly",
   "references-ao": "ao Module",
-  "references-handlers": "handlers"
+  "references-handlers": "handlers",
+  "references-token": "Token"
 }
