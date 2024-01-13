@@ -65,6 +65,6 @@ You have just spawned an aos Process, and you are able to interact with that Pro
 
 ## Next Steps
 
-- [Tutorials](../guides/tutorals)
-- [Concepts](../concepts)
-- [References](../references)
+- [Tutorials](../guides/tutorials/index)
+- [Concepts](../concepts/index)
+- [References](../references/index)
