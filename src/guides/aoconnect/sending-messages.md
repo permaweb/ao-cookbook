@@ -11,7 +11,7 @@ Refer to your process module's source code or documentation to see how the messa
 ```js
 import { readFileSync } from "node:fs";
 
-import { message, createDataItemSigner } from "@permaweb/ao-connect";
+import { message, createDataItemSigner } from "@permaweb/aoconnect";
 
 const wallet = JSON.parse(
   readFileSync("/path/to/arweave/wallet.json").toString(),
@@ -44,7 +44,7 @@ await message({
 ## Sending a Message in a browser
 
 ```js
-import { message, createDataItemSigner } from "@permaweb/ao-connect";
+import { message, createDataItemSigner } from "@permaweb/aoconnect";
 
 // The only 2 mandatory parameters here are process and signer
 await message({
