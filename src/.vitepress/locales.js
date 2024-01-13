@@ -25,12 +25,7 @@ export const localeConfig = (langCode) => ({
       {
         text: get_i18n_str(langCode, "getting-started"),
         link: get_i18n_link(langCode, "/getting-started/"),
-        items: [
-          {
-            text: get_i18n_str(langCode, "getting-started-aos"),
-            link: get_i18n_link(langCode, "/getting-started/aos"),
-          },
-        ],
+        items: [],
       },
       {
         text: get_i18n_str(langCode, "concepts"),
@@ -54,6 +49,48 @@ export const localeConfig = (langCode) => ({
         text: get_i18n_str(langCode, "guides"),
         link: get_i18n_link(langCode, "/guides/"),
         items: [
+          {
+            text: get_i18n_str(langCode, "guides-tutorials"),
+            link: get_i18n_link(langCode, "/guides/tutorials/index"),
+            items: [
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-meet-lua"),
+                link: get_i18n_link(langCode, "/guides/tutorials/lua"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-prompt"),
+                link: get_i18n_link(langCode, "/guides/tutorials/prompt"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-tour"),
+                link: get_i18n_link(langCode, "/guides/tutorials/tour"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-messaging"),
+                link: get_i18n_link(langCode, "/guides/tutorials/messaging"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-pingpong"),
+                link: get_i18n_link(langCode, "/guides/tutorials/pingpong"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-chatroom"),
+                link: get_i18n_link(langCode, "/guides/tutorials/chatroom"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-token"),
+                link: get_i18n_link(langCode, "/guides/tutorials/token"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-dao"),
+                link: get_i18n_link(langCode, "/guides/tutorials/dao"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-bot"),
+                link: get_i18n_link(langCode, "/guides/tutorials/bot"),
+              },
+            ],
+          },
           {
             text: get_i18n_str(langCode, "guides-aos"),
             link: get_i18n_link(langCode, "/guides/aos/index"),
