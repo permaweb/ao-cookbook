@@ -4,4 +4,4 @@ ao is a hyper parallel computer that enables distributed compute, aos is an oper
 
 If you have done so yet, take 15 minutes and go through our `Getting Started` Tutorial?
 
-[Try It](/getting-started/aos)
+[Try It](/getting-started/index)
