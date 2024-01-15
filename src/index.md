@@ -3,28 +3,24 @@
 layout: home
 
 hero:
-  name: "ao"
-  text: "The decentralized computer with infinite threads"
-  tagline: "A messaging based approach to interoperability"
+  name: "ao."
+  text: "The hyper parallel computer."
+  tagline: "Decentralized compute at any scale. Only possible on Arweave."
   actions:
     - theme: brand
-      text: Docs
+      text: Start Cooking!
       link: /getting-started/index
 
 features:
-  - title: Get Started
-    details: Dive into building with ao
-    link: /getting-started/index
+  - title: Tutorials.
+    details: Follow step-by-step tutorials to start building on ao.
+    link: /guides/tutorials/index
 
-  - title: Concepts
-    details: Learn about how ao network works
+  - title: Concepts.
+    details: Learn how the ao network works under the hood.
     link: /concepts/index
 
-  - title: Guides
-    details: Follow Step-by-step guides to start shipping on the ao network
-    link: /guides/index
-
-  - title: References
-    details: Learn the ao terminology
+  - title: References.
+    details: Explore the background of ao.
     link: /references/index
 ---
