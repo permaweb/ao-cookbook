@@ -58,16 +58,16 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(langCode, "/guides/tutorials/lua"),
               },
               {
-                text: get_i18n_str(langCode, "guides-tutorials-prompt"),
-                link: get_i18n_link(langCode, "/guides/tutorials/prompt"),
+                text: get_i18n_str(langCode, "guides-tutorials-messaging"),
+                link: get_i18n_link(langCode, "/guides/tutorials/messaging"),
               },
               {
                 text: get_i18n_str(langCode, "guides-tutorials-tour"),
                 link: get_i18n_link(langCode, "/guides/tutorials/tour"),
               },
               {
-                text: get_i18n_str(langCode, "guides-tutorials-messaging"),
-                link: get_i18n_link(langCode, "/guides/tutorials/messaging"),
+                text: get_i18n_str(langCode, "guides-tutorials-prompt"),
+                link: get_i18n_link(langCode, "/guides/tutorials/prompt"),
               },
               {
                 text: get_i18n_str(langCode, "guides-tutorials-pingpong"),
