@@ -4,7 +4,7 @@ ao is a decentralized computer that can run any number of processes in parallel.
 
 It is communal: Everyone can use and share this computer -- including you.
 
-Once processes are launched on ao, they can permissionlessly interact with any other process on the network through a shared messaging layer ([Arweave](arweave.org)).
+Once processes are launched on ao, they can permissionlessly interact with any other process on the network through a shared messaging layer ([Arweave](https://arweave.org)).
 
 One way to think of ao is that it is like a decentralized version of the web, but for compute. Everyone can upload their sites (processes), which link together and interact with one another (through messages, rather than hyperlinks).
 
