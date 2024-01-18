@@ -187,6 +187,14 @@ export const localeConfig = (langCode) => ({
             text: get_i18n_str(langCode, "references-token"),
             link: get_i18n_link(langCode, "/references/token"),
           },
+          {
+            text: get_i18n_str(langCode, "references-data"),
+            link: get_i18n_link(langCode, "/references/data"),
+          },
+          {
+            text: get_i18n_str(langCode, "references-cron"),
+            link: get_i18n_link(langCode, "/references/cron"),
+          },
         ],
       },
     ],

@@ -42,5 +42,7 @@
   "references-wasm": "Web Assembly",
   "references-ao": "ao Module",
   "references-handlers": "handlers",
-  "references-token": "Token"
+  "references-token": "Token",
+  "references-data": "Loading Data",
+  "references-cron": "CRON Messages"
 }
