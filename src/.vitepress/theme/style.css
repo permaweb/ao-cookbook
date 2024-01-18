@@ -43,16 +43,16 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
- :root {
+:root {
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
 
-  --vp-c-brand-1: var(--vp-c-indigo-1);
-  --vp-c-brand-2: var(--vp-c-indigo-2);
-  --vp-c-brand-3: var(--vp-c-indigo-3);
-  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+  --vp-c-brand-1: var(--nav-background-color);
+  --vp-c-brand-2: var(--accent-color);
+  --vp-c-brand-3: var(--background-color);
+  --vp-c-brand-soft: var(--table-accent-color);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
@@ -68,6 +68,12 @@
   --vp-c-danger-2: var(--vp-c-red-2);
   --vp-c-danger-3: var(--vp-c-red-3);
   --vp-c-danger-soft: var(--vp-c-red-soft);
+  --nav-background-color: #a1a1a1;
+  --background-color: #f2f2f2;
+  --faded-accent-color: #0a0705;
+  --table-accent-color: #feeee5;
+  --accent-color: #e77b40;
+  --slate-gray: slateGray;
 }
 
 /**
@@ -76,14 +82,14 @@
 
 :root {
   --vp-button-brand-border: transparent;
-  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-text: #3c3c43;
   --vp-button-brand-bg: var(--vp-c-brand-3);
-  --vp-button-brand-hover-border: transparent;
-  --vp-button-brand-hover-text: var(--vp-c-white);
-  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
-  --vp-button-brand-active-border: transparent;
-  --vp-button-brand-active-text: var(--vp-c-white);
-  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+  --vp-button-brand-active-border: var(--vp-c-brand-2);
+  --vp-button-brand-hover-text: var(--vp-c-brand-2);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-border: var(--vp-c-brand-2);
+  --vp-button-brand-active-text: var(--vp-c-text-1);
+  --vp-button-brand-active-bg: var(--vp-c-brand-3);
 }
 
 /**
@@ -92,11 +98,7 @@
 
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #bd34fe 30%,
-    #41d1ff
-  );
+  --vp-home-hero-name-background: var(--vp-c-text-1);
 
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
@@ -136,5 +138,3 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
-  
-  
