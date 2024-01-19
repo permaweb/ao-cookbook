@@ -42,3 +42,23 @@ If you want to setup your process to react on a schedule we need to tell ao, we 
 ```sh
 aos chatroom --cron 2-minutes
 ```
+
+## Tag flags
+
+With the tag flags, you can start a process with some custom tags (for e.g. using them as static environment variables):
+
+```sh
+aos chatroom --tag-name Chat-Theme --tag-value Dark --tag-name Chat-Name --tag-value Mychat
+```
+
+The command above will add the extra tags to the transaction that spawns your process:
+
+```ts
+// process data item tags
+[
+  ...
+  { name: "Chat-Theme", value: "Dark" },
+  { name: "Chat-Name", value: "Mychat" }
+  ...
+]
+```
