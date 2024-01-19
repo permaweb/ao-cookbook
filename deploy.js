@@ -49,4 +49,4 @@ const actions = {
 const ACTION = env("ACTION");
 if (!actions[ACTION]) throw new Error(`'${ACTION}' is not a valid action`);
 
-actions[ACTION]().catch(console.error);
+actions[ACTION]();
