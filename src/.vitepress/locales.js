@@ -43,6 +43,14 @@ export const localeConfig = (langCode) => ({
             text: get_i18n_str(langCode, "concepts-processes"),
             link: get_i18n_link(langCode, "/concepts/processes"),
           },
+          {
+            text: get_i18n_str(langCode, "concepts-units"),
+            link: get_i18n_link(langCode, "/concepts/units"),
+          },
+          {
+            text: get_i18n_str(langCode, "concepts-how-it-works"),
+            link: get_i18n_link(langCode, "/concepts/how-it-works"),
+          },
         ],
       },
       {

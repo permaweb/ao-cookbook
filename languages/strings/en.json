@@ -13,6 +13,8 @@
   "concepts-specs": "Specifications",
   "concepts-messages": "Messages",
   "concepts-processes": "Processes",
+  "concepts-units": "Units",
+  "concepts-how-it-works": "How messaging works",
   "guides": "Guides",
   "guides-tutorials": "Tutorials",
   "guides-tutorials-meet-lua": "A whistle stop tour of Lua",
