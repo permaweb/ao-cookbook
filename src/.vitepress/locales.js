@@ -116,6 +116,32 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(langCode, "/guides/aos/cli"),
               },
               {
+                text: get_i18n_str(langCode, "guides-aos-modules"),
+                link: get_i18n_link(langCode, "/guides/aos/modules/index"),
+                items: [
+                  {
+                    text: get_i18n_str(langCode, "guides-aos-modules-json"),
+                    link: get_i18n_link(langCode, "/guides/aos/modules/json"),
+                  },
+                  {
+                    text: get_i18n_str(langCode, "guides-aos-modules-ao"),
+                    link: get_i18n_link(langCode, "/guides/aos/modules/ao"),
+                  },
+                  {
+                    text: get_i18n_str(langCode, "guides-aos-modules-base64"),
+                    link: get_i18n_link(langCode, "/guides/aos/modules/base64"),
+                  },
+                  {
+                    text: get_i18n_str(langCode, "guides-aos-modules-pretty"),
+                    link: get_i18n_link(langCode, "/guides/aos/modules/pretty"),
+                  },
+                  {
+                    text: get_i18n_str(langCode, "guides-aos-modules-utils"),
+                    link: get_i18n_link(langCode, "/guides/aos/modules/utils"),
+                  },
+                ],
+              },
+              {
                 text: get_i18n_str(langCode, "guides-aos-load"),
                 link: get_i18n_link(langCode, "/guides/aos/load"),
               },
