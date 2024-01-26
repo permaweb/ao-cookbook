@@ -201,3 +201,22 @@ local user = { name = "John", age = 50 }
 -- returns 50
 utils.prop("age")(user)
 ```
+
+### `compose()`
+
+This function allows you to chain multiple array mutations together and execute them in reverse order on the provided array.
+
+- **Parameters:**
+  - `...`: `{function[]}` The array mutations
+  - `v`: `{table}` The object to execute the provided functions on
+- **Returns:** The result from the provided mutations
+
+#### Examples
+
+```lua
+-- returns 12
+utils.compose(
+  utils.reduce(function (acc, val) return acc + val end, 0),
+  utils.map(function (val) return val * 2 end)
+)({ 1, 2, 3 })
+```
