@@ -73,7 +73,7 @@ print(sum) -- prints 12
 This function creates a new array filled with the results of calling the provided map function on each element in the provided array.
 
 - **Parameters:**
-  - `fn`: `{function}` The map function. It receives the current array element
+  - `fn`: `{function}` The map function. It receives the current array element and key
   - `data`: `{table}` The array to map
 - **Returns:** A new array composed of the results of the map function
 
@@ -82,7 +82,7 @@ This function creates a new array filled with the results of calling the provide
 ```lua
 -- returns { "Odd", "Even", "Odd" }
 utils.map(
-  function (val)
+  function (val, key)
     return (val % 2 == 0 and "Even") or "Odd"
   end,
   { 3, 4, 7 }
@@ -91,7 +91,7 @@ utils.map(
 
 ```lua
 -- returns { 4, 8, 12 }
-utils.map(function (val) return val * 2 end)({ 2, 4, 6 })
+utils.map(function (val, key) return val * 2 end)({ 2, 4, 6 })
 ```
 
 ### `filter()`
@@ -149,6 +149,72 @@ utils.find(
 ```lua
 -- returns the user "Maria"
 utils.find(function (val) return user.age == 33 end)(users)
+```
+
+### `reverse()`
+
+Transforms an array into reverse order.
+
+- **Parameters:**
+  - `data`: `{table}` The array to reverse
+- **Returns:** The original array in reverse order
+
+#### Example
+
+```lua
+-- is: { 3, 2, 1 }
+utils.reverse({ 1, 2, 3 })
+```
+
+### `includes()`
+
+Determinates whether a value is part of an array.
+
+- **Parameters:**
+  - `val`: `{any}` The element to check for
+  - `t`: `{table}` The array to check in
+- **Returns:** A boolean indicating whether or not the provided value is part of the array
+
+#### Examples
+
+```lua
+-- this is true
+utils.includes("John", { "Victor", "John", "Maria" })
+```
+
+```lua
+-- this is false
+utils.includes(4)({ 3, 5, 7 })
+```
+
+### `keys()`
+
+Returns the keys of a table.
+
+- **Parameters:**
+  - `table`: `{table}` The table to get the keys for
+- **Returns:** An array of keys
+
+#### Example
+
+```lua
+-- returns { "hello", "name" }
+utils.keys({ hello = "world", name = "John" })
+```
+
+### `values()`
+
+Returns the values of a table.
+
+- **Parameters:**
+  - `table`: `{table}` The table to get the values for
+- **Returns:** An array of values
+
+#### Example
+
+```lua
+-- returns { "world", "John" }
+utils.values({ hello = "world", name = "John" })
 ```
 
 ### `propEq()`
