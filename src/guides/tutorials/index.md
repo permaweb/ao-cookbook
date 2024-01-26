@@ -1,3 +1,12 @@
+---
+prev:
+  text: "Guides"
+  link: "/guides/"
+next:
+  text: "Quick Start"
+  link: "/guides/tutorials/quickstart"
+---
+
 # Tutorials: Get Building with ao.
 
 These are short guides or snacks that should help you get comfortable with aos.

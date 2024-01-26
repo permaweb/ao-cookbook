@@ -1,4 +1,4 @@
-![ao Logo](/public/ao-both.svg "ao Logo")
+![ao logo](/ao-h.svg)
 
 # Welcome to ao
 
@@ -20,7 +20,9 @@ One way to think of ao is that it is like a decentralized version of the web, bu
 
 The result is a sprawling metropolis of interacting and autonomous programs that anyone can access and play with.
 
+::: details
 **⊹ There is no other computer quite like ao.**
+:::
 
 ## ao + aos: The rocket and your rocket fuel.
 
