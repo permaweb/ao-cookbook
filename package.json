@@ -9,21 +9,21 @@
     "arns": "ACTION=UPDATE_ARNS node deploy.js",
     "build": "vitepress build src",
     "dev": "vitepress dev src",
-    "prepare": "husky install",
+    "prepare": "husky",
     "preview": "vitepress preview src",
     "staged": "lint-staged --allow-empty --concurrent false"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.4",
-    "@commitlint/config-conventional": "^18.4.4",
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0",
     "arweave": "^1.14.4",
-    "husky": "^8.0.3",
+    "husky": "^9.0.6",
     "lint-staged": "^15.2.0",
     "markdown-toc-gen": "^1.0.1",
-    "prettier": "^3.1.1",
-    "vitepress": "1.0.0-rc.36",
-    "vue": "^3.4.6",
-    "warp-contracts": "^1.4.32"
+    "prettier": "^3.2.4",
+    "vitepress": "1.0.0-rc.40",
+    "vue": "^3.4.15",
+    "warp-contracts": "^1.4.33"
   },
   "authors": {
     "name": "Tyler Hall",
