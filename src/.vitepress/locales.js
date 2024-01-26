@@ -18,14 +18,19 @@ export const localeConfig = (langCode) => ({
     nav: [
       {
         text: get_i18n_str(langCode, "docs"),
-        link: get_i18n_link(langCode, "/getting-started/index"),
+        link: get_i18n_link(langCode, "/welcome/index"),
       },
     ],
     sidebar: [
       {
-        text: get_i18n_str(langCode, "getting-started"),
-        link: get_i18n_link(langCode, "/getting-started/"),
-        items: [],
+        text: get_i18n_str(langCode, "welcome"),
+        link: get_i18n_link(langCode, "/welcome/"),
+        items: [
+          {
+            text: get_i18n_str(langCode, "getting-started"),
+            link: get_i18n_link(langCode, "/getting-started/"),
+          },
+        ],
       },
       {
         text: get_i18n_str(langCode, "concepts"),
@@ -61,6 +66,10 @@ export const localeConfig = (langCode) => ({
             text: get_i18n_str(langCode, "guides-tutorials"),
             link: get_i18n_link(langCode, "/guides/tutorials/index"),
             items: [
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-quickstart"),
+                link: get_i18n_link(langCode, "/guides/tutorials/quickstart"),
+              },
               {
                 text: get_i18n_str(langCode, "guides-tutorials-meet-lua"),
                 link: get_i18n_link(langCode, "/guides/tutorials/lua"),

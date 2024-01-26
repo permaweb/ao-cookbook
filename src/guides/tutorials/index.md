@@ -1,3 +1,12 @@
+---
+prev:
+  text: "Guides"
+  link: "/guides/"
+next:
+  text: "Quick Start"
+  link: "/guides/tutorials/quickstart"
+---
+
 # Tutorials: Get Building with ao.
 
 These are short guides or snacks that should help you get comfortable with aos.
@@ -6,12 +15,12 @@ These are short guides or snacks that should help you get comfortable with aos.
 
 ### Zero to One.
 
-- [0. Install aos and Get Started](/getting-started/)
-- [1. A whistle stop tour of Lua.](lua)
-- [2. Messaging](messaging)
-- [3. The aos interface](tour)
-- [4. Customizing Your Prompt](prompt)
-- [5. A PingPong Server](pingpong)
+- [0. **Quick Start:** _Install aos and Get Started_](quickstart)
+- [1. **Intro to Lua:** _All you need to get started writing in Lua_](lua)
+- [2. **Messaging:** _How to communicate in ao_](messaging)
+- [3. **The Construct:** _Introduction to the aos interface_](tour)
+- [4. **Your Prompt:** _How to easily customize your prompt_](prompt)
+- [5. **Your First Process:** _A PingPong Server_](pingpong)
 
 ### Building Simple Services.
 

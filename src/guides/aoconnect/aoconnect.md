@@ -1,3 +1,12 @@
+---
+prev:
+  text: "aos"
+  link: "/guides/aos"
+next:
+  text: "Installing aoconnect"
+  link: "/guides/aoconnect/installing-connect"
+---
+
 # ao connect
 
 ao connect is a Javascript/Typescript library to interact with the system from Node JS or the browser.

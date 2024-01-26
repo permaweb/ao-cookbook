@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Start Cooking!
-      link: /getting-started/index
+      link: /welcome/index
 
 features:
   - title: Tutorials.
