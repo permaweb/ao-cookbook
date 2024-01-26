@@ -135,3 +135,9 @@ Allows spawning a new process, from within another process.
 - **Returns:** The initializing message item
 
 #### Example
+
+```lua
+ao.spawn("n0BFH80b73mi9VAWUzyuG9gEC3LI2zU2BFxum0N8A9s", {
+  ["Custom-Tag"]: "Custom-Value"
+})
+```
