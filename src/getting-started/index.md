@@ -1,30 +1,6 @@
-# Get started in 5 minutes: What on Earth is ao?
+# Get started in 5 minutes
 
-ao is a decentralized computer that can run any number of processes in parallel.
-
-It is communal: Everyone can use and share this computer -- including you.
-
-Once processes are launched on ao, they can permissionlessly interact with any other process on the network through a shared messaging layer ([Arweave](https://arweave.org)).
-
-One way to think of ao is that it is like a decentralized version of the web, but for compute. Everyone can upload their sites (processes), which link together and interact with one another (through messages, rather than hyperlinks).
-
-The result is a sprawling metropolis of interacting and autonomous programs that anyone can access and play with.
-
-There is no other computer quite like ao.
-
-Instead of telling you about it, this guide is built to _show_ you the machine and the cities inside it. It also shows you how you can setup shop inside ao, adding to the metropolis. It will take just 3 minutes to get inside.
-
-If you would like to learn more about the technical specifications of the system, please check out its [spec](https://ao.g8way.io/#/specs) for detailed analysis.
-
-Let's jump into it! 🚀
-
-## ao + aos: The rocket and your rocket fuel.
-
-Normally when you are using ao, you will use it through its operating system: `aos`.
-
-aos is an abstraction layer that runs in your processes, making it easier to use the ao computer.
-
-You can think of ao like your new shiny macbook, and aos like macOS running on top of it.
+In less than 5 mins, we'll walk you through the process of taking your first peak into the rabbit hole. 🕳️🐇
 
 ## System requirements.
 
