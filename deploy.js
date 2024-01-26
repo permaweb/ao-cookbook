@@ -28,9 +28,7 @@ const actions = {
       port: 443,
       protocol: "https",
     });
-    const warp = WarpFactory.custom(arweave, defaultCacheOptions, "mainnet")
-      .useArweaveGateway()
-      .build();
+    const warp = WarpFactory.forMainnet(defaultCacheOptions, true, arweave);
 
     // Update the ao ANT Contract to point to the new install script
     const aoAntContract = warp.contract(ANT).connect(jwk);
