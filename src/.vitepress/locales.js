@@ -72,7 +72,140 @@ export const localeConfig = (langCode) => ({
                   langCode,
                   "/guides/tutorials/aztutorial/index"
                 ),
-                items: [],
+                items: [
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-quickstart"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/aztutorial/quickstart"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-meet-lua"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/aztutorial/lua"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-quickstart"
+                    ),
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-messaging"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/aztutorial/messaging"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-quickstart"
+                    ),
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-tour"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/aztutorial/tour"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-quickstart"
+                    ),
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-prompt"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/aztutorial/prompt"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-quickstart"
+                    ),
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-pingpong"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/aztutorial/pingpong"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-quickstart"
+                    ),
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-chatroom"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/aztutorial/chatroom"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-quickstart"
+                    ),
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-token"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/aztutorial/token"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-quickstart"
+                    ),
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-dao"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/aztutorial/dao"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-quickstart"
+                    ),
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-aztutorial-bot"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/aztutorial/bot"
+                    ),
+                  },
+                ],
               },
               {
                 text: get_i18n_str(langCode, "guides-tutorials-rabbithole"),
@@ -102,46 +235,6 @@ export const localeConfig = (langCode) => ({
                     ),
                   },
                 ],
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-quickstart"),
-                link: get_i18n_link(langCode, "/guides/tutorials/quickstart"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-meet-lua"),
-                link: get_i18n_link(langCode, "/guides/tutorials/lua"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-messaging"),
-                link: get_i18n_link(langCode, "/guides/tutorials/messaging"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-tour"),
-                link: get_i18n_link(langCode, "/guides/tutorials/tour"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-prompt"),
-                link: get_i18n_link(langCode, "/guides/tutorials/prompt"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-pingpong"),
-                link: get_i18n_link(langCode, "/guides/tutorials/pingpong"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-chatroom"),
-                link: get_i18n_link(langCode, "/guides/tutorials/chatroom"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-token"),
-                link: get_i18n_link(langCode, "/guides/tutorials/token"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-dao"),
-                link: get_i18n_link(langCode, "/guides/tutorials/dao"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-bot"),
-                link: get_i18n_link(langCode, "/guides/tutorials/bot"),
               },
             ],
           },
