@@ -67,6 +67,43 @@ export const localeConfig = (langCode) => ({
             link: get_i18n_link(langCode, "/guides/tutorials/index"),
             items: [
               {
+                text: get_i18n_str(langCode, "guides-tutorials-aztutorial"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/tutorials/aztutorial/index"
+                ),
+                items: [],
+              },
+              {
+                text: get_i18n_str(langCode, "guides-tutorials-rabbithole"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/tutorials/rabbithole/index"
+                ),
+                items: [
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-rabbithole-step1"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/rabbithole/step1"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-rabbithole-step2"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/rabbithole/step2"
+                    ),
+                  },
+                ],
+              },
+              {
                 text: get_i18n_str(langCode, "guides-tutorials-quickstart"),
                 link: get_i18n_link(langCode, "/guides/tutorials/quickstart"),
               },
@@ -164,7 +201,7 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "guides-installing-connect"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/aoconnect/installing-connect",
+                  "/guides/aoconnect/installing-connect"
                 ),
               },
               {
@@ -175,21 +212,21 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "guides-sending-messages"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/aoconnect/sending-messages",
+                  "/guides/aoconnect/sending-messages"
                 ),
               },
               {
                 text: get_i18n_str(langCode, "guides-reading-results"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/aoconnect/reading-results",
+                  "/guides/aoconnect/reading-results"
                 ),
               },
               {
                 text: get_i18n_str(langCode, "guides-spawning-processes"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/aoconnect/spawning-processes",
+                  "/guides/aoconnect/spawning-processes"
                 ),
               },
             ],
