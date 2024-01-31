@@ -24,10 +24,10 @@ These are short guides or snacks that should help you get comfortable with aos.
 
 ### Building Simple Services.
 
-- [6. Create a Chatroom](chatroom)
-- [7. Build a Token](token)
+- [6. Create a Chatroom](/guides/tutorials/aztutorial/chatroom)
+- [7. Build a Token](/guides/tutorials/aztutorial/token)
 
 ### Cooking Advanced Processes.
 
-- [8. Start a Custom DAO](dao)
-- [9. Spawn an Autonomous Agent](bot)
+- [8. Start a Custom DAO](/guides/tutorials/aztutorial/dao)
+- [9. Spawn an Autonomous Agent](/guides/tutorials/aztutorial/bot)

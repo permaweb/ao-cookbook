@@ -96,10 +96,6 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-tutorials-aztutorial-quickstart"
-                    ),
-                    text: get_i18n_str(
-                      langCode,
                       "guides-tutorials-aztutorial-messaging"
                     ),
                     link: get_i18n_link(
@@ -108,10 +104,6 @@ export const localeConfig = (langCode) => ({
                     ),
                   },
                   {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-aztutorial-quickstart"
-                    ),
                     text: get_i18n_str(
                       langCode,
                       "guides-tutorials-aztutorial-tour"
@@ -124,10 +116,6 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-tutorials-aztutorial-quickstart"
-                    ),
-                    text: get_i18n_str(
-                      langCode,
                       "guides-tutorials-aztutorial-prompt"
                     ),
                     link: get_i18n_link(
@@ -136,10 +124,6 @@ export const localeConfig = (langCode) => ({
                     ),
                   },
                   {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-aztutorial-quickstart"
-                    ),
                     text: get_i18n_str(
                       langCode,
                       "guides-tutorials-aztutorial-pingpong"
@@ -152,10 +136,6 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-tutorials-aztutorial-quickstart"
-                    ),
-                    text: get_i18n_str(
-                      langCode,
                       "guides-tutorials-aztutorial-chatroom"
                     ),
                     link: get_i18n_link(
@@ -164,10 +144,6 @@ export const localeConfig = (langCode) => ({
                     ),
                   },
                   {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-aztutorial-quickstart"
-                    ),
                     text: get_i18n_str(
                       langCode,
                       "guides-tutorials-aztutorial-token"
@@ -180,10 +156,6 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-tutorials-aztutorial-quickstart"
-                    ),
-                    text: get_i18n_str(
-                      langCode,
                       "guides-tutorials-aztutorial-dao"
                     ),
                     link: get_i18n_link(
@@ -192,10 +164,6 @@ export const localeConfig = (langCode) => ({
                     ),
                   },
                   {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-aztutorial-quickstart"
-                    ),
                     text: get_i18n_str(
                       langCode,
                       "guides-tutorials-aztutorial-bot"
