@@ -3,7 +3,7 @@ prev:
   text: "DAO Guide"
   link: "/guides/tutorials/dao"
 next:
-  text: "Quick Start"
+  text: "Play a Game"
   link: "/guides/tutorials/build-a-game/ao-effect"
 ---
 
@@ -17,7 +17,7 @@ Leveraging insights from our previous chapter, this section will guide you throu
 - [0. **# Let's Play A Game:** _Experience a game on aos_](ao-effect)
 
 ### Enhancing Game Interactions with Automation
-- [1. **# Understanding Announcements:** _Interpret in-game announcements_](ao-effect)
+- [1. **# Interpreting Announcements:** _Interpret in-game announcements_](ao-effect)
 - [2. **# Fetching Game State:** _Retrieve and process the latest game state_](ao-effect)
 - [3. **# Strategic Decisions:** _Utilize automation to determine your next move, as if foreseeing the unfoldment of the Matrix itself_](ao-effect)
 - [4. **# Automated Responses:** _Streamline attack responses through automation_](ao-effect)
