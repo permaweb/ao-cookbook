@@ -7,20 +7,11 @@ next:
   link: "/guides/tutorials/build-a-game/game-state"
 ---
 
----
-prev:
-  text: "Play a Game"
-  link: "/guides/tutorials/build-a-game/ao-effect"
-next:
-  text: "Interpreting Announcements"
-  link: "/guides/tutorials/build-a-game/game-state"
----
-
 # Interpreting Announcements
 
 Welcome back to your coding journey. Now, we're going to leverage your skills to enhance your game experience.
 
-You've probably noticed announcements popping up in your terminal during the game. Sometimes, these messages might have seemed cryptic, or you found yourself checking your inbox for more details.
+You've probably noticed announcements popping up in your terminal during the game. Arena has been designed to send announcements to players when certain actions take place within a game. But these messages might have seemed cryptic, or you found yourself checking your inbox for more details.
 
 What if there was a way to access these details directly from your terminal? Good news: there is!
 
