@@ -1,3 +1,12 @@
+---
+prev:
+  text: "DAO Guide"
+  link: "/guides/tutorials/dao"
+next:
+  text: "Quick Start"
+  link: "/guides/tutorials/build-a-game/ao-effect"
+---
+
 # Chapter 2: Automating with Bots and Building Games
 
 Leveraging insights from our previous chapter, this section will guide you through the realm of automation with bots in aos and the construction of games. You will learn to create autonomous agents, using them to navigate and interact with game environments effectively.
