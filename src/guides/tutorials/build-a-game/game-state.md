@@ -4,7 +4,7 @@ prev:
   link: "/guides/tutorials/build-a-game/announcements"
 next:
   text: "Interpreting Announcements"
-  link: "/guides/tutorials/build-a-game/moving"
+  link: "/guides/tutorials/build-a-game/decisions"
 ---
 
 # Fetching Game State
@@ -35,15 +35,7 @@ A few changes have been made to your handler:
 - The `name` has been updated to `"HandleAnnouncements"` because you're not just printing the details anymore.
 - An extra operation has been added to the handle function where you're sending a message to the game. When the game receives this message, it's designed to respond with a message that includes the game's state.
 
-## Loading and Testing
-
-As usual, to test this new feature, load the file in your aos player terminal as follows:
-
-```lua
-.load bot.lua
-```
-
-And when you get a print of an announcement, you can check the latest message in your `Inbox` as follows:
+When you get a print of an announcement, you can check the latest message in your `Inbox` as follows:
 
 ```lua
 Inbox[#Inbox]
@@ -54,4 +46,46 @@ The `Data` field of this message will contain the latest state of the game which
 - `TimeRemaining` : The time remaining for the game to start or end.
 - `Players` : A table containing every player's stats like position, health and energy.
 
-Now you have access to the latest state of the game each time some action takes places so you have better information to decide your next action. Let's try automating movements next 🚶
+But this can be taken a step further so that you can not just read but also use information from the latest state for other automations.
+
+Let's define a new variable that stores the latest state as follows:
+
+```lua
+LatestGameState = LatestGameState or nil
+```
+
+The syntax indicates that pre-exisitng values of the variable will be carried forward in our player process when you load successive iterations of the `bot.lua` file instead of overwriting the variable. If there is no pre-existing value then a `nil` value is assigned to the variable.
+
+Then implement another handler as follows:
+
+
+```lua
+-- Handler to update the game state upon receiving game state information.
+Handlers.add(
+  "UpdateGameState",
+  Handlers.utils.hasMatchingTag("Action", "GameState"),
+  function (msg)
+    local json = require("json")
+    LatestGameState = json.decode(msg.Data)
+    ao.send({Target = ao.id, Action = "UpdatedGameState"})
+  end
+)
+```
+
+The response from the game process from the previous handler has an action tag with the value `GameState` that helps us trigger this second handler. Once triggered, the handle function loads the `json` package that parses the data into json and stores it in the `LatestGameState` variable.
+
+## Loading and Testing
+
+As usual, to test this new feature, load the file in your aos player terminal as follows:
+
+```lua
+.load bot.lua
+```
+
+Then check the `LatestStateVariable` to see if it has updated correctly by simply passing its name as follows:
+
+```lua
+LatestGameState
+```
+
+With real-time access to the latest state of the game you're better equipped to decide your next action. Next let's try automating actions with the help of this data 🚶
