@@ -64,8 +64,6 @@ This places you in the `Waiting` Lobby. A small fee is needed to confirm your sp
 
 ### Confirm your spot
 
-<!-- Add text for receiving tokens -->
-
 In order to confirm your spot you need some tokens. You can acquire them by sending the following message to the game:
 
 ```lua
