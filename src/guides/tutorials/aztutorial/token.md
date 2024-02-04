@@ -13,7 +13,7 @@ mkdir token
 cd token
 ```
 
-Now create a file from your favorite editor inside the token directory called token.lua, now we are ready to run aos. From within the token directory run.
+Now create a file from your favorite editor inside the token directory called mytoken.lua, now we are ready to run aos. From within the token directory run.
 
 ```sh
 aos mytoken

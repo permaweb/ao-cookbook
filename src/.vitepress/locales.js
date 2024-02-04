@@ -293,12 +293,16 @@ export const localeConfig = (langCode) => ({
             ],
           },
           {
-            text: get_i18n_str(langCode, "guides-debugging"),
-            link: get_i18n_link(langCode, "/guides/debugging/debugging"),
+            text: get_i18n_str(langCode, "guides-wallets"),
+            link: get_i18n_link(langCode, "/guides/wallets/index"),
             items: [
               {
-                text: get_i18n_str(langCode, "guides-tracing"),
-                link: get_i18n_link(langCode, "/guides/debugging/tracing"),
+                text: get_i18n_str(langCode, "guides-wallets-aos-generated"),
+                link: get_i18n_link(langCode, "/guides/wallets/aos-generated"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-wallets-import-wallet"),
+                link: get_i18n_link(langCode, "/guides/wallets/import-wallet"),
               },
             ],
           },
