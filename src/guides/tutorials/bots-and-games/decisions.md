@@ -1,10 +1,10 @@
 ---
 prev:
   text: "Fetching Game State"
-  link: "/guides/tutorials/build-a-game/game-state"
+  link: "/guides/tutorials/bots-and-games/game-state"
 next:
   text: "Automated Responses"
-  link: "/guides/tutorials/build-a-game/attacking"
+  link: "/guides/tutorials/bots-and-games/attacking"
 ---
 
 # Strategic Decicions

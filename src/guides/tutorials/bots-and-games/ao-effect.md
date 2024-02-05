@@ -1,10 +1,10 @@
 ---
 prev:
   text: "Bots and Games"
-  link: "/guides/tutorials/build-a-game/index"
+  link: "/guides/tutorials/bots-and-games/index"
 next:
   text: "Interpreting Announcements"
-  link: "/guides/tutorials/build-a-game/announcements"
+  link: "/guides/tutorials/bots-and-games/announcements"
 ---
 
 # Let's Play A Game!

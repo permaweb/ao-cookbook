@@ -1,10 +1,10 @@
 ---
 prev:
   text: "Let's Play A Game!"
-  link: "/guides/tutorials/build-a-game/ao-effect"
+  link: "/guides/tutorials/bots-and-games/ao-effect"
 next:
   text: "Fetching Game State"
-  link: "/guides/tutorials/build-a-game/game-state"
+  link: "/guides/tutorials/bots-and-games/game-state"
 ---
 
 # Interpreting Announcements

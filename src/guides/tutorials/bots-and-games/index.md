@@ -4,7 +4,7 @@ prev:
   link: "/guides/tutorials/dao"
 next:
   text: "Let's Play A Game!"
-  link: "/guides/tutorials/build-a-game/ao-effect"
+  link: "/guides/tutorials/bots-and-games/ao-effect"
 ---
 
 # Chapter 2: Bots and Games

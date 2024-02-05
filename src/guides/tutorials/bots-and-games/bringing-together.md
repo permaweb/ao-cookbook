@@ -1,10 +1,10 @@
 ---
 prev:
   text: "Automated Responses"
-  link: "/guides/tutorials/build-a-game/attacking"
+  link: "/guides/tutorials/bots-and-games/attacking"
 next:
-  text: "Automated Responses"
-  link: "/guides/tutorials/build-a-game/arena-mechanics"
+  text: "Mechanics of the Arena"
+  link: "/guides/tutorials/bots-and-games/arena-mechanics"
 ---
 
 # Bringing it Together
