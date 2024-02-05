@@ -17,7 +17,7 @@ You've been powering through tutorials like a champ! Now, let's take a refreshin
 
 The rules are simple. Each player starts on a 40x40 grid with health at 100 and energy at 0. Your energy replenishes over time to a maximum of 100. Navigate the grid, find other players, and use your energy to attack when they're within range. The battle continues until only one player remains or the allotted time expires.
 
-<!-- Checkout page xyz to understand rules further -->
+Checkout the guides on the [Mechanics of the Arena](/src/guides/tutorials/bots-and-games/arena-mechanics.md) and [Expanding the Arena](/src/guides/tutorials/bots-and-games/build-game.md) for a deeper understanding of the game.
 
 > Heads Up: Don't sweat it if some command syntax seem unfamiliar. Focus on understanding the purpose of each command at a high level and, most importantly, enjoy the game!
 
