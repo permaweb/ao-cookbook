@@ -75,6 +75,10 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(langCode, "/guides/tutorials/lua"),
               },
               {
+                text: get_i18n_str(langCode, "guides-tutorials-editor-setup"),
+                link: get_i18n_link(langCode, "/guides/tutorials/editor-setup"),
+              },
+              {
                 text: get_i18n_str(langCode, "guides-tutorials-messaging"),
                 link: get_i18n_link(langCode, "/guides/tutorials/messaging"),
               },
