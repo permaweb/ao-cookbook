@@ -9,7 +9,7 @@ next:
 
 # Mechanics of the Arena
 
-This guide provides a comprehensive overview of the fundamental mechanics essential for designing and managing arena-style games in `aos`. In arena games, participants engage in rounds, strategically vying to eliminate each other until a sole triumphant player emerges.
+This guide provides a comprehensive overview of the fundamental mechanics essential for designing and managing arena-style games in `aos`. In arena games, participants engage in rounds, strategically vying to eliminate each other until a sole victor emerges.
 
 The framework presented here lays the groundwork for crafting a wide range of games, all sharing the same core functionalities. Explore the intricacies of game development and unleash your creativity within this versatile arena.
 

@@ -9,7 +9,7 @@ next:
 
 # Expanding the Arena
 
-Welcome to the final guide of Chapter 2, where you'll learn to build your own game on top of the arena framework introduced in the previous tutorial. In this guide, we'll take you through the process of creating the "ao-effect" game, which you experienced at the beginning of this chapter. As you progress through this example, you'll gain insights into structuring your game's logic and interacting with the arena's core code.
+Welcome to the final guide of Chapter 2, where you'll learn to build your own game on top of the arena framework introduced in the [previous tutorial](arena-mechanics). In this guide, we'll take you through the process of creating the ["ao-effect" game](ao-effect), which you experienced at the beginning of this chapter. As you progress through this example, you'll gain insights into structuring your game's logic and interacting with the arena's core code.
 
 Whether you're a seasoned developer or an aspiring game creator, this guide will empower you to unleash your creativity and bring your unique game ideas to life within the `aos` environment.
 
