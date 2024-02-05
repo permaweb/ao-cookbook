@@ -1,3 +1,12 @@
+---
+prev:
+  text: "Bringing it Together"
+  link: "/guides/tutorials/build-a-game/bringing-together"
+next:
+  text: "Expanding the Arena"
+  link: "/guides/tutorials/build-a-game/build-game"
+---
+
 # Mechanics of the Arena
 
 This guide provides a comprehensive overview of the fundamental mechanics essential for designing and managing arena-style games in `aos`. In arena games, participants engage in rounds, strategically vying to eliminate each other until a sole triumphant player emerges.

@@ -4,7 +4,7 @@ prev:
   link: "/guides/tutorials/build-a-game/attacking"
 next:
   text: "Automated Responses"
-  link: "/guides/tutorials/build-a-game/bringing-together"
+  link: "/guides/tutorials/build-a-game/arena-mechanics"
 ---
 
 # Bringing it Together
