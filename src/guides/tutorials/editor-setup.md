@@ -16,6 +16,8 @@ Install the [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=su
 
 4. In the Addon Manager, search for "ao", it should be the first result. Click "Enable" and enjoy autcomplete!
 
+If you don't want to do this process for each of your workspaces, you can copy the `Lua.workspace.library` object from the generated workspace `settings.json` file to your global `settings.json` file.
+
 ## Other editors
 
 1. Verify that your editor supports the [language server protocol](https://microsoft.github.io/language-server-protocol/implementors/tools/)
