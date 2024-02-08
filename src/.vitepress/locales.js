@@ -110,10 +110,6 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "guides-tutorials-bot"),
                 link: get_i18n_link(langCode, "/guides/tutorials/bot"),
               },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-rabbithole"),
-                link: get_i18n_link(langCode, "/guides/tutorials/rabbithole"),
-              },
             ],
           },
           {
@@ -172,7 +168,7 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "guides-installing-connect"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/aoconnect/installing-connect"
+                  "/guides/aoconnect/installing-connect",
                 ),
               },
               {
@@ -183,21 +179,21 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "guides-sending-messages"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/aoconnect/sending-messages"
+                  "/guides/aoconnect/sending-messages",
                 ),
               },
               {
                 text: get_i18n_str(langCode, "guides-reading-results"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/aoconnect/reading-results"
+                  "/guides/aoconnect/reading-results",
                 ),
               },
               {
                 text: get_i18n_str(langCode, "guides-spawning-processes"),
                 link: get_i18n_link(
                   langCode,
-                  "/guides/aoconnect/spawning-processes"
+                  "/guides/aoconnect/spawning-processes",
                 ),
               },
             ],

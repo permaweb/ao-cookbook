@@ -24,20 +24,8 @@ We will adopt an iterative development approach, utilizing the `.load` feature o
 ### Step 3: Load Your Script in aos
 
 - Save `chatroom.lua`.
-- In the aos CLI, load the `chatroom.lua` file into aos by typing the following command into aos.
-
-```lua
-aos> .load chatroom.lua
-```
-
+- In the aos CLI, type `.load chatroom.lua` to incorporate your script into the aos process.
 - Verify the initialization by typing `Weavers` in aos. It should return an empty array `[]`.
-
-```lua
--- Type this into aos
-aos> Weavers
--- This is the expected output
-{ }
-```
 
 ## Implementing Chatroom Functionalities
 
@@ -92,7 +80,7 @@ aos> Weavers
 
 2. **Reload and Test**:
 
-   - Save changes and reload in aos. _Follow Step 3 of "Setting Up Your Environment" to reload the script._
+   - Save changes and reload in aos.
    - Test broadcasting:
      ```lua
      Send({Target = ao.id, Tags = { Action = "Broadcast" }, Data = "Hello World" })
