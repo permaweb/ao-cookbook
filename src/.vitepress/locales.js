@@ -67,52 +67,144 @@ export const localeConfig = (langCode) => ({
             link: get_i18n_link(langCode, "/guides/tutorials/index"),
             items: [
               {
-                text: get_i18n_str(langCode, "guides-tutorials-quickstart"),
-                link: get_i18n_link(langCode, "/guides/tutorials/quickstart"),
+                text: get_i18n_str(
+                  langCode,
+                  "guides-tutorials-getting-started"
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/tutorials/getting-started/index"
+                ),
+                items: [
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-quickstart"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/quickstart"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-meet-lua"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/lua"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-editor-setup"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/editor-setup"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-messaging"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/messaging"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-tour"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/tour"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-prompt"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/prompt"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-pingpong"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/pingpong"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-chatroom"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/chatroom"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-token"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/token"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-dao"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/dao"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-bot"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/bot"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-getting-started-rabbithole"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/getting-started/rabbithole"
+                    ),
+                  },
+                ],
               },
               {
-                text: get_i18n_str(langCode, "guides-tutorials-meet-lua"),
-                link: get_i18n_link(langCode, "/guides/tutorials/lua"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-editor-setup"),
-                link: get_i18n_link(langCode, "/guides/tutorials/editor-setup"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-messaging"),
-                link: get_i18n_link(langCode, "/guides/tutorials/messaging"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-tour"),
-                link: get_i18n_link(langCode, "/guides/tutorials/tour"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-prompt"),
-                link: get_i18n_link(langCode, "/guides/tutorials/prompt"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-pingpong"),
-                link: get_i18n_link(langCode, "/guides/tutorials/pingpong"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-chatroom"),
-                link: get_i18n_link(langCode, "/guides/tutorials/chatroom"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-token"),
-                link: get_i18n_link(langCode, "/guides/tutorials/token"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-dao"),
-                link: get_i18n_link(langCode, "/guides/tutorials/dao"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-bot"),
-                link: get_i18n_link(langCode, "/guides/tutorials/bot"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-rabbithole"),
-                link: get_i18n_link(langCode, "/guides/tutorials/rabbithole"),
+                text: get_i18n_str(langCode, "guides-tutorials-building-bots"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/tutorials/building-bots/index"
+                ),
+                items: [],
               },
             ],
           },
