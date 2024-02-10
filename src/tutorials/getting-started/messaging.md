@@ -89,7 +89,7 @@ You've sent a message to Morpheus and received a response, but you can't read th
 
 The `Inbox` is where you receive messages from other processes.
 ::: info
-To see an in depth view of an inbox message, head over to the [Messages](../../../concepts/messages) Concepts page.
+To see an in depth view of an inbox message, head over to the [Messages](../../concepts/messages) Concepts page.
 :::
 
 Let's check your inbox to see how many messages you have received.

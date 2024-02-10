@@ -102,6 +102,6 @@ There is so much more to it, but these are the basics. Welcome to the ao compute
 
 In the tutorials that follow, we will explore ao and build everything from chatrooms to autonomous, decentralized bots. Let's go!
 
-- [Tutorials](../guides/tutorials/index)
+- [Tutorials](../tutorials/index)
 - [Concepts](../concepts/index)
 - [References](../references/index)

@@ -10,7 +10,7 @@ The local client of aos is super simple to install. Just make sure you have:
 - A code editor of your choice.
 
 :::info
-Though it's not required, we do recommend installing the [ao addon](../../../references/editor-setup.md) into your text editor of choice to optimize your experience with `aos`.
+Though it's not required, we do recommend installing the [ao addon](../../references/editor-setup) into your text editor of choice to optimize your experience with `aos`.
 :::
 
 ## Installing aos.

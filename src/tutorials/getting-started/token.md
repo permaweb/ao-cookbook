@@ -1,8 +1,8 @@
 # Token Guide
 
-This guide brings you through the process of building a token using aos. It is based on the ao standard token [spec](../../../references/token.md).
+This guide brings you through the process of building a token using aos. It is based on the ao standard token [spec](../../references/token).
 
-To begin you will need to have aos [installed](../../aos/installing.md). Now you are ready to build.
+To begin you will need to have aos [installed](../../guides/aos/installing.md). Now you are ready to build.
 
 ## Setting up the development environment
 
@@ -23,7 +23,7 @@ The second part of this command (mytoken) creates a named aos on your local mach
 
 ## Writing the Token code
 
-Lets write the Lua code that will be the token. This code will run in aos so we have access to the aos libraries and globals, see [intro](../../aos/intro.md) for an outline of these.
+Lets write the Lua code that will be the token. This code will run in aos so we have access to the aos libraries and globals, see [intro](../../guides/aos/intro) for an outline of these.
 
 ### Initializing the Token state
 
