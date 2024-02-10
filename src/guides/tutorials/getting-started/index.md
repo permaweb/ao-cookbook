@@ -1,10 +1,10 @@
 ---
 prev:
-  text: "Guides"
-  link: "/guides/"
+  text: "Tutorials"
+  link: "../index"
 next:
   text: "Quick Start"
-  link: "/guides/tutorials/quickstart"
+  link: "/guides/tutorials/getting-started/quickstart"
 ---
 
 # Getting Started: An Interactive Tutorial
