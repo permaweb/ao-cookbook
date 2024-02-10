@@ -13,13 +13,22 @@ This tutorial will guide you through creating a simple "ping-pong" process in ao
 ## Step 3: Write the Pingpong Handler
 
 - In the editor, enter the following Lua code to add a handler for the pingpong pattern:
+
   ```lua
   Handlers.add(
     "pingpong",
     Handlers.utils.hasMatchingData("ping"),
     Handlers.utils.reply("pong")
+  ),
+
+
+  Handlers.add(
+    "rabbithole",
+    Handlers.utils.hasMatchingData("Morpheus?"),
+    Handlers.utils.reply("I am here. You are finally awake. Are you ready to see how far the rabbit hole goes?")
   )
   ```
+
 - This line of code does three things:
   1. It adds a new handler named "pingpong".
   2. It uses `Handlers.utils.hasMatchingData("ping")` to check if incoming messages contain the data "ping".

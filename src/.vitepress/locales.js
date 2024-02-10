@@ -87,11 +87,11 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-tutorials-getting-started-quickstart"
+                      "guides-tutorials-getting-started-preparations"
                     ),
                     link: get_i18n_link(
                       langCode,
-                      "/guides/tutorials/getting-started/quickstart"
+                      "/guides/tutorials/getting-started/preparations"
                     ),
                   },
                   {

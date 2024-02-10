@@ -1,6 +1,6 @@
-# Quick Start
+# Preparations
 
-In this step of the tutorial, we're going to make sure you have the aos pacakages installed and ready to go.
+In this step of the `Getting Started` tutorial, we'll install the aos client and start a new process. This will allow us to interact with the ao computer and complete the rest of the tutorial.
 
 ## System requirements.
 
@@ -62,13 +62,29 @@ After it connects, you should see the following:
 
 ao Operating System
 
-aos - 1.6.1
+aos - 1.8.9
 2024 - Type ".exit" to exit
 aos process:  1xM1_lDZ428sJHpTX7rtcR6SrDubyRVO06JEEWs_eWo
 
 aos>
 ```
 
-Welcome to your new home in the ao computer! The prompt you are now looking at is your own personal server in this decentralized machine. We will be using it to play with and explore **ao** in the rest of this tutorial.
+Let's walk through the initial printout after running `aos`:
 
-Next, we'll learn about messaging.
+![aos print](/aos-print.png)
+
+After running `aos` in your terminal, you should see:
+
+- An ASCII art image of `AOS`.
+- A Welcome Message
+- The version of `aos` you are running.
+- An instructional exit message.
+- Your process ID.
+
+::: info
+If your OS version is different than the latest version, a message asking if you'd like to update the version will appear. If so, simply exit the process by pressing "Ctrl+C" twice, run `npm i -g https://get_ao.g8way.io` to update, and then run `aos` again.
+:::
+
+Welcome to your new home in the ao computer! The prompt you are now looking at is your own personal server in this decentralized machine.
+
+Now, let's journey further down the rabbit hole by exploring the second core concept type of ao: [messaging.](messaging)
