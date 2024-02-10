@@ -23,9 +23,8 @@ Now, let's get started [down the rabbit hole.](preparations)
 
 ### Getting Started - An Interactive Tutorial.
 
-- [1. **Quick Start:** _Install aos and Get Started_](preparations)
-- [2. **Messaging:** _How to communicate in ao_](messaging)
-- [3. Messaging](messaging)
-- [4. Creating a Chatroom](chatroom)
-- [5. Build a Token](token)
-- [6. Starting a DAO](dao)
+- [1. Quick Start:](preparations)
+- [2. Messaging](messaging)
+- [3. Creating a Chatroom](chatroom)
+- [4. Build a Token](token)
+- [5. Starting a DAO](dao)
