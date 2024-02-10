@@ -97,16 +97,6 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-tutorials-getting-started-editor-setup"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/getting-started/editor-setup"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
                       "guides-tutorials-getting-started-messaging"
                     ),
                     link: get_i18n_link(
@@ -314,6 +304,10 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "references-cron"),
             link: get_i18n_link(langCode, "/references/cron"),
+          },
+          {
+            text: get_i18n_str(langCode, "references-editor-setup"),
+            link: get_i18n_link(langCode, "/references/editor-setup"),
           },
         ],
       },

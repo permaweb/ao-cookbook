@@ -21,7 +21,6 @@
   "guides-tutorials": "Tutorials",
   "guides-tutorials-getting-started": "Getting Started",
   "guides-tutorials-getting-started-quickstart": "Quick Start",
-  "guides-tutorials-getting-started-editor-setup": "Editor setup",
   "guides-tutorials-getting-started-messaging": "Messaging",
   "guides-tutorials-getting-started-chatroom": "Create a Chatroom",
   "guides-tutorials-getting-started-token": "Build a Token",
@@ -57,5 +56,6 @@
   "references-handlers": "handlers",
   "references-token": "Token",
   "references-data": "Loading Data",
-  "references-cron": "CRON Messages"
+  "references-cron": "CRON Messages",
+  "references-editor-setup": "ao Editor Setup"
 }
