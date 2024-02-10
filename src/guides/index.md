@@ -15,7 +15,5 @@ These guides are designed to help you navigate ao and aos, and to help you build
 
 - [Tutorials](tutorials/index)
 - [aos](aos/index)
-- [aoconnect](aoconnect/index)
-- [debugging](debugging/index)
-
-[[toc]]
+- [aoconnect](aoconnect/aoconnect)
+- [debugging](debugging/debugging)

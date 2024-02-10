@@ -75,7 +75,7 @@ The tasks will involve:
 
 - Creating a [Token](token).
 - Tokenizing the chatroom you built for Morpheus.
-- Create your own [Process](bot).
+- Create your own [Process](../building-bots/bot).
 - Register your process within the tokenized chatroom.
 
 Once you've completed these tasks, Trinity will give you instructions for the next phase of the tutorial.
