@@ -56,6 +56,14 @@ export const localeConfig = (langCode) => ({
             text: get_i18n_str(langCode, "concepts-how-it-works"),
             link: get_i18n_link(langCode, "/concepts/how-it-works"),
           },
+          {
+            text: get_i18n_str(langCode, "concepts-meet-lua"),
+            link: get_i18n_link(langCode, "/concepts/lua"),
+          },
+          {
+            text: get_i18n_str(langCode, "concepts-tour"),
+            link: get_i18n_link(langCode, "/concepts/tour"),
+          },
         ],
       },
       {
@@ -89,16 +97,6 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-tutorials-getting-started-meet-lua"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/getting-started/lua"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
                       "guides-tutorials-getting-started-editor-setup"
                     ),
                     link: get_i18n_link(
@@ -114,36 +112,6 @@ export const localeConfig = (langCode) => ({
                     link: get_i18n_link(
                       langCode,
                       "/guides/tutorials/getting-started/messaging"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-getting-started-tour"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/getting-started/tour"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-getting-started-prompt"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/getting-started/prompt"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-getting-started-pingpong"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/getting-started/pingpong"
                     ),
                   },
                   {
@@ -179,16 +147,6 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-tutorials-getting-started-bot"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/getting-started/bot"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
                       "guides-tutorials-getting-started-rabbithole"
                     ),
                     link: get_i18n_link(
@@ -204,7 +162,18 @@ export const localeConfig = (langCode) => ({
                   langCode,
                   "/guides/tutorials/building-bots/index"
                 ),
-                items: [],
+                items: [
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-tutorials-building-bots-bot"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/tutorials/building-bots/bot"
+                    ),
+                  },
+                ],
               },
             ],
           },
@@ -223,6 +192,14 @@ export const localeConfig = (langCode) => ({
               {
                 text: get_i18n_str(langCode, "guides-aos-cli"),
                 link: get_i18n_link(langCode, "/guides/aos/cli"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-prompt"),
+                link: get_i18n_link(langCode, "/guides/aos/prompt"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-pingpong"),
+                link: get_i18n_link(langCode, "/guides/aos/pingpong"),
               },
               {
                 text: get_i18n_str(langCode, "guides-aos-modules"),
