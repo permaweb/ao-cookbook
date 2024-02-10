@@ -17,8 +17,7 @@ These are short guides or snacks that should help you get comfortable with aos.
 
 - [1. **Quick Start:** _Install aos and Get Started_](quickstart)
 - [2. **Messaging:** _How to communicate in ao_](messaging)
-- [3. **Editor Setup:** _How to use the aos editor_](editor-setup)
-- [4. Messaging](messaging)
-- [5. Creating a Chatroom](chatroom)
-- [6. Build a Token](token)
-- [7. Starting a DAO](dao)
+- [3. Messaging](messaging)
+- [4. Creating a Chatroom](chatroom)
+- [5. Build a Token](token)
+- [6. Starting a DAO](dao)
