@@ -1,12 +1,16 @@
 # Core Concept Type #2: Messaging
 
-Messaging is a core concept in the aos environment, enabling communication between processes and facilitating the flow of information within the system.
+### Why is Messaging in `ao` Needed?
+
+In `ao`, every process runs in parallel, creating a highly scalable environment. However, this parallelism introduces a challenge in coordination. Traditional direct function calls aren't feasible because each process operates independently and asynchronously.
+
+Messaging addresses this by enabling asynchronous communication. Processes send and receive messages rather than directly invoking functions on each other. This method allows for flexible and efficient interaction, where processes can respond to messages, enhancing the system's scalability and responsiveness.
 
 We'll begin by exploring the basics of messaging in aos, how to see messages received in your inbox, and how to send messages to other processes.
 
 ### Step 1: Understand the Message Structure
 
-- **Message Basics**: A message in aos is typically a Lua table containing various fields. The most important field is `Data`, which holds the content of your message.
+- **Message Basics:** At its core, a message in aos consists of a Lua table, which includes several fields. The key field to focus on is Data. This Data field is where the actual content or payload of your message is stored. It's what you're sending to another process or receiving from them.
 - **Example**: `{ Data = "Hello from Process A!" }` is a simple message.
 
 ### Step 2: Open the aos CLI
@@ -62,7 +66,7 @@ aos>
 
 ### Step 4: Send a Message to Morpheus
 
-Now that you have `Morpheus`'s process ID stored as a variable, you can send a message to Morpheus using the `Send` function.
+After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a paralell process running in ao. He receives and sends messages using a series of Handlers. Let's send hi a message and see what happens.
 
 ```lua
 Send({ Target = Morpheus, Data = "Morpheus?" })
@@ -132,11 +136,11 @@ I am here. You are finally awake. Are you ready to see how far the rabbit hole g
 aos>
 ```
 
-You are now actively communicating with `Morpheus` and have received a response. You're ready to move on to the next step in the tutorial.
+You are now using your own process to communicate with Morpheus, another parallel process running in ao. You're now ready to move on to the next step in the tutorial.
 
 ### Step 6: Sending Messages with Tags
 
-## END OF COMMIT FEB 10TH 2024 (10:36 AM EST)
+## END OF COMMIT FEB 10TH 2024 (10:49 PM EST)
 
 <!-- #### Understanding Tags in aos Messages
 
