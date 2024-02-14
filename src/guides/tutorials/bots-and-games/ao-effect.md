@@ -11,6 +11,8 @@ next:
 
 You've been powering through tutorials like a champ! Now, let's take a refreshing break and dive into something exciting. How about a game that adds a dash of fun to your learning journey?
 
+![AO-Effect Game Banner](/ao-effect-game-banner.png)
+
 ## What's the game?
 
 `ao-effect` is a game where you can compete with friends or other players globally, in real-time, right from your terminal. We've set up a global game process for this adventure.
