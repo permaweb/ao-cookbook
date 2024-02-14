@@ -24,7 +24,7 @@ Leveraging insights from our previous chapter, this section will guide you throu
 - [5. **# Bringing it Together:** _Combine your skills to craft an autonomous agent_](bringing-together)
 
 ### Game Development Insights
-- [5. **# Mechanics of the Arena:** _Explore the underlying mechanics of a game's arena_](arena-mechanics)
-- [6. **# Expanding the Arena:** _Build unique game logic upon the arena_](build-game)
+- [6. **# Mechanics of the Arena:** _Explore the underlying mechanics of a game's arena_](arena-mechanics)
+- [7. **# Expanding the Arena:** _Build unique game logic upon the arena_](build-game)
 
 A journey of discovery and creation awaits. Let the adventure begin!
