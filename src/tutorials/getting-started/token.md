@@ -36,7 +36,167 @@ if not Logo then Logo = 'optional arweave TXID of logo image' end
 
 Let's break down what we've done here:
 
-# COMMIT 2/14/2024 7:29PM ENDS HERE **WORK IN PROGRESS**
+- `local json = require('json')`: This first line of this code imports a module for later use.
+
+- `if not Balances then Balances = { [ao.id] = 100000000000000 } end`: This second line is initializing a Balances table which is the way the Process tracks who posses the token. We initialize our token process `ao.id` to start with all the balance.
+
+- The Next 4 Lines, `if Name`, `if Ticker`, `if Denomination`, and `if not Logo` are all optional, except for `if Denomination`, and are used to define the token's name, ticker, denomination, and logo respectively.
+
+::: info
+The code `if Denomination ~= 10 then Denomination = 10 end` tells us the number of the token that should be treated as a single unit.
+:::
+
+### **Step 2: Info and Balances Handlers**
+
+Now lets add our first Handler to handle incoming Messages.
+
+```lua
+Handlers.add('info', Handlers.utils.hasMatchingTag('Action', 'Info'), function(msg)
+  ao.send(
+      { Target = msg.From, Tags = { Name = Name, Ticker = Ticker, Logo = Logo, Denomination = tostring(Denomination) } })
+end)
+```
+
+This code means that if someone Sends a message with the Tag, Action = "info", our token will Send back a message with all of the information defined above. Note the Target = msg.From, this tells ao we are replying to the process that sent us this message.
+
+Now we can add 2 Handlers which provide information about token Balances.
+
+```lua
+Handlers.add('balance', Handlers.utils.hasMatchingTag('Action', 'Balance'), function(msg)
+  local bal = '0'
+
+  -- If not Target is provided, then return the Senders balance
+  if (msg.Tags.Target and Balances[msg.Tags.Target]) then
+    bal = tostring(Balances[msg.Tags.Target])
+  elseif Balances[msg.From] then
+    bal = tostring(Balances[msg.From])
+  end
+
+  ao.send({
+    Target = msg.From,
+    Tags = { Target = msg.From, Balance = bal, Ticker = Ticker, Data = json.encode(tonumber(bal)) }
+  })
+end)
+
+Handlers.add('balances', Handlers.utils.hasMatchingTag('Action', 'Balances'),
+             function(msg) ao.send({ Target = msg.From, Data = json.encode(Balances) }) end)
+
+```
+
+The first Handler above `Handlers.add('balance'` handles a process or person requesting their own balance or the balance of a Target. Then replies with a message containing the info. The second Handler `Handlers.add('balances'` just replies with the entire Balances table.
+
+### **Step 3: Transfer Handlers**
+
+Before we begin testing we will add 2 more Handlers one which allows for the transfer of tokens between processes or users.
+
+```lua
+Handlers.add('transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), function(msg)
+  assert(type(msg.Tags.Recipient) == 'string', 'Recipient is required!')
+  assert(type(msg.Tags.Quantity) == 'string', 'Quantity is required!')
+
+  if not Balances[msg.From] then Balances[msg.From] = 0 end
+
+  if not Balances[msg.Tags.Recipient] then Balances[msg.Tags.Recipient] = 0 end
+
+  local qty = tonumber(msg.Tags.Quantity)
+  assert(type(qty) == 'number', 'qty must be number')
+
+  if Balances[msg.From] >= qty then
+    Balances[msg.From] = Balances[msg.From] - qty
+    Balances[msg.Tags.Recipient] = Balances[msg.Tags.Recipient] + qty
+
+    --[[
+      Only Send the notifications to the Sender and Recipient
+      if the Cast tag is not set on the Transfer message
+    ]] --
+    if not msg.Tags.Cast then
+      -- Send Debit-Notice to the Sender
+      ao.send({
+        Target = msg.From,
+        Tags = { Action = 'Debit-Notice', Recipient = msg.Tags.Recipient, Quantity = tostring(qty) }
+      })
+      -- Send Credit-Notice to the Recipient
+      ao.send({
+        Target = msg.Tags.Recipient,
+        Tags = { Action = 'Credit-Notice', Sender = msg.From, Quantity = tostring(qty) }
+      })
+    end
+  else
+    ao.send({
+      Target = msg.Tags.From,
+      Tags = { Action = 'Transfer-Error', ['Message-Id'] = msg.Id, Error = 'Insufficient Balance!' }
+    })
+  end
+end)
+```
+
+In summary, this code checks to make sure the Recipient and Quantity Tags have been provided, initializes the balances of the person sending the message and the Recipient if they dont exist and then attempts to transfer the specified quantity to the Recipient in the Balances table.
+
+```lua
+Balances[msg.From] = Balances[msg.From] - qty
+Balances[msg.Tags.Recipient] = Balances[msg.Tags.Recipient] + qty
+```
+
+If the transfer was successful a Debit-Notice is sent to the sender of the original message and a Credit-Notice is sent to the Recipient.
+
+```lua
+-- Send Debit-Notice to the Sender
+ao.send({
+    Target = msg.From,
+    Tags = { Action = 'Debit-Notice', Recipient = msg.Tags.Recipient, Quantity = tostring(qty) }
+})
+-- Send Credit-Notice to the Recipient
+ao.send({
+    Target = msg.Tags.Recipient,
+    Tags = { Action = 'Credit-Notice', Sender = msg.From, Quantity = tostring(qty) }
+})
+```
+
+If there was insufficient balance for the transfer it sends back a failure message
+
+```lua
+ao.send({
+    Target = msg.Tags.From,
+    Tags = { Action = 'Transfer-Error', ['Message-Id'] = msg.Id, Error = 'Insufficient Balance!' }
+})
+```
+
+The line `if not msg.Tags.Cast then` Means were not producing any messages to crank if the Cast tag was set. This is part of the ao protocol.
+
+### **Step 4: Mint Handler**
+
+Finally, we will add a Handler to allow the minting of new tokens.
+
+```lua
+Handlers.add('mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), function(msg, env)
+  assert(type(msg.Tags.Quantity) == 'string', 'Quantity is required!')
+
+  if msg.From == env.Process.Id then
+    -- Add tokens to the token pool, according to Quantity
+    local qty = tonumber(msg.Tags.Quantity)
+    Balances[env.Process.Id] = Balances[env.Process.Id] + qty
+  else
+    ao.send({
+      Target = msg.Tags.From,
+      Tags = {
+        Action = 'Mint-Error',
+        ['Message-Id'] = msg.Id,
+        Error = 'Only the Process Owner can mint new ' .. Ticker .. ' tokens!'
+      }
+    })
+  end
+end)
+```
+
+This code checks to make sure the Quantity Tag has been provided and then adds the specified quantity to the Balances table.
+
+## Loading & Testing
+
+---
+
+# COMMIT - FEB 15, 2024 [WORK IN PROGRESS]
+
+NOTES: This is a work in progress. Will be gamifyin' the verbiage and adding more screenshots/visuals Also, need to add the final steps for testing the token. After that, the process of transferring a token to `Trinity` will be the conclusion of this module.
 
 <!-- ## Inscribing the Token's Essence
 
@@ -57,7 +217,7 @@ if Name ~= 'My Coin' then Name = 'My Coin' end
 if Ticker ~= 'COIN' then Ticker = 'COIN' end
 if Denomination ~= 10 then Denomination = 10 end
 if not Logo then Logo = 'optional arweave TXID of logo image' end
-```
+````
 
 ### **Step 2: Crafting the Handlers**
 
