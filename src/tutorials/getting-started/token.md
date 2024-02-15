@@ -34,6 +34,8 @@ if Denomination ~= 10 then Denomination = 10 end
 if not Logo then Logo = 'optional arweave TXID of logo image' end
 ```
 
+![token.lua image 1](/token1.png)
+
 Let's break down what we've done here:
 
 - `local json = require('json')`: This first line of this code imports a module for later use.
@@ -48,6 +50,10 @@ The code `if Denomination ~= 10 then Denomination = 10 end` tells us the number 
 
 ### **Step 2: Info and Balances Handlers**
 
+<br>
+
+#### Incoming Message Handler
+
 Now lets add our first Handler to handle incoming Messages.
 
 ```lua
@@ -57,7 +63,19 @@ Handlers.add('info', Handlers.utils.hasMatchingTag('Action', 'Info'), function(m
 end)
 ```
 
+![Token.lua image 2](/token2.png)
+
+::: tip
+At this point, you've probably noticed that I'm all of my handlers inside the `token.lua` file.
+
+With many handlers and processes, it's perfectly fine to create your Handlers using `.editor`, but because we're creating a full process for initizialing a token, setting up info and balances handlers, transfer handlers, and a minting handler, it's best to keep everything in one file.
+
+This also allows us to maintain consistency since each handler will be updated every time we reload the `token.lua` file into `aos`.
+:::
+
 This code means that if someone Sends a message with the Tag, Action = "info", our token will Send back a message with all of the information defined above. Note the Target = msg.From, this tells ao we are replying to the process that sent us this message.
+
+#### Info & Token Balance Handlers
 
 Now we can add 2 Handlers which provide information about token Balances.
 
@@ -194,9 +212,9 @@ This code checks to make sure the Quantity Tag has been provided and then adds t
 
 ---
 
-# COMMIT - FEB 15, 2024 [WORK IN PROGRESS]
+# COMMIT - FEB 15, 2024 (17:08) [WORK IN PROGRESS]
 
-NOTES: This is a work in progress. Will be gamifyin' the verbiage and adding more screenshots/visuals Also, need to add the final steps for testing the token. After that, the process of transferring a token to `Trinity` will be the conclusion of this module.
+NOTES: This is a work in progress. Will be gamifyin' the verbiage. I've added a few screenshots, but I will be adding more infographic visuals. Also, need to add the final steps for testing the token. After that, the process of transferring a token to `Trinity` will be the conclusion of this module.
 
 <!-- ## Inscribing the Token's Essence
 
