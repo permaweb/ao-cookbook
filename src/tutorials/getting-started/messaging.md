@@ -1,4 +1,4 @@
-# Core Concept Type #2: Messaging
+# Messaging in `ao`
 
 ### Why is Messaging in `ao` Needed?
 
@@ -144,7 +144,7 @@ You are now using your own process to communicate with Morpheus, another paralle
 
 **Purpose of Tags**: Tags in aos messages are used to categorize, route, and process messages efficiently. They play a crucial role in message handling, especially when dealing with multiple processes or complex workflows.
 
-Some processes use `Handlers` that specifically interact with messages that have certain tags. For example, a process may have a handler that only interacts with messages that have the tag `Action` or `Register`, which we'll see an example of in the [chatroom](chatroom) tutorial.
+Some processes use `Handlers` that specifically interact with messages that have certain tags. For example, a process may have a handler that only interacts with messages that have a specific tag, which we'll see an example of in the [chatroom](chatroom) tutorial.
 
 ### How to Use Tags in Messages
 
@@ -173,7 +173,7 @@ In the case of Morpheus, we can use tags to categorize our messages, and because
 
 ### Let's Show Morpheus That We're Ready
 
-Send Morpheus a message with the tag `Action` and the value `rabbithole`.
+Send Morpheus a message with the tag `Tutorial` and the value `rabbithole`.
 
 **Example:**
 
@@ -181,18 +181,13 @@ Send Morpheus a message with the tag `Action` and the value `rabbithole`.
 Send({
   Target = Morpheus,
   Data = "I'm ready to see how far the rabbit hole goes.",
-  Tags = {
-    Action = "rabbithole"
+  Tutorial = "rabbithole"
   }
 })
 ```
 
 **Expected Return:**
 ![Morpheus Responds 2](/messaging2.png)
-
-You've now learned how to send messages with tags, which is a powerful tool for categorizing and routing messages in aos.
-
-Morpheus has officially invited you to the next stage of your journey. You're now ready to move on to the next step in the tutorial, [Creating a Chatroom](chatroom).
 
 ## Additional Tips for Using Tags
 
@@ -214,3 +209,9 @@ Choose clear and descriptive names for your tags. This makes it easier to unders
 - **Message Structure**: Explore other fields like `Epoch`, `From`, and `Nonce` for more complex messaging needs.
 - **Debugging**: Use the `Dump` function to print messages for debugging.
 - **Security Considerations**: Be cautious with the content and handling of messages, especially when dealing with sensitive data.
+
+## Conclusion
+
+You've now learned how to send messages with tags, which is a powerful tool for categorizing and routing messages in aos.
+
+Morpheus has officially invited you to the next stage of your journey. You're now ready to move on to the next step in the tutorial, [Creating a Chatroom](chatroom).
