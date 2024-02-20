@@ -95,6 +95,57 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(langCode, "/guides/aos/pingpong"),
               },
               {
+                text: get_i18n_str(langCode, "guides-aos-load"),
+                link: get_i18n_link(langCode, "/guides/aos/load"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-token"),
+                link: get_i18n_link(langCode, "/guides/aos/token"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-blueprints"),
+                link: get_i18n_link(langCode, "/guides/aos/blueprints/index"),
+                items: [
+                  {
+                    text: get_i18n_str(langCode, "guides-aos-blueprints-token"),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/token"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-aos-blueprints-voting"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/voting"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-aos-blueprints-chatroom"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/chatroom"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-aos-blueprints-staking"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/staking"
+                    ),
+                  },
+                ],
+              },
+              {
                 text: get_i18n_str(langCode, "guides-aos-modules"),
                 link: get_i18n_link(langCode, "/guides/aos/modules/index"),
                 items: [
@@ -119,10 +170,6 @@ export const localeConfig = (langCode) => ({
                     link: get_i18n_link(langCode, "/guides/aos/modules/utils"),
                   },
                 ],
-              },
-              {
-                text: get_i18n_str(langCode, "guides-aos-load"),
-                link: get_i18n_link(langCode, "/guides/aos/load"),
               },
             ],
           },
@@ -219,6 +266,16 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(
                   langCode,
                   "/tutorials/getting-started/token"
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-getting-started-tokengating"
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/tokengating"
                 ),
               },
               {
