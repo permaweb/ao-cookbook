@@ -19,7 +19,7 @@ This tutorial will guide you through creating a simple "ping-pong" process in ao
     "pingpong",
     Handlers.utils.hasMatchingData("ping"),
     Handlers.utils.reply("pong")
-  ),
+  )
   ```
 
 - This lua script does three things:

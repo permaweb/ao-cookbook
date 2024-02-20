@@ -151,19 +151,23 @@ Some processes use `Handlers` that specifically interact with messages that have
 In the case of Morpheus, we can use tags to categorize our messages, and because Morpheus is a autonomous process, he has handlers that can interact with messages that have certain tags.
 
 1. **Adding Tags to a Message**:
+
    - We already know that the `Data` of a message is the text-based message you want to send to another process. Earlier, we sent a message to Morpheus without any tags, in which he used a handler to respond to an exact matching data.
    - This time, we're going to ask Morpheus if Trinity is with him. To get the response we're looking for, we'll use a specific tag so that he knows how to respond.
    - **Example**:
+
      ```lua
      Send({
        Target = Morpheus,
        Data = "is Trinity with you?",
-       Tags = {
-        Action = "Trinity"
+       Contact = "Trinity"
       }
      })
+
+     -- `Contact` is the tag we're using to categorize the message. "Trinity" is the value of the tag.
      ```
-   - This message is tagged with an "Action" of "Trinity" , indicating its purpose.
+
+   - This message is tagged with an "Contact" of "Trinity" , indicating its purpose.
      Here's what the expected return should look:
      ![Morpheus Responds](/messaging1.png)
 

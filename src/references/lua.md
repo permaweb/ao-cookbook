@@ -24,7 +24,7 @@
 ### Hands-On Practice
 
 - **Experiment with Lua's Interactive Mode**: Run `aos` in your terminal and start experimenting with Lua commands.
-- **Write Simple Scripts**: Create `.lua` files and run them using the Lua interpreter. Use `.load file.lua` feature to upload lua code on your `aOS` process.
+- **Write Simple Scripts**: Create `.lua` files and run them using the Lua interpreter. Use `.load file.lua` feature to upload lua code on your `aos` process.
 
 ### Resources
 
