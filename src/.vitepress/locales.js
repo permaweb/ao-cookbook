@@ -282,16 +282,6 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "tutorials-getting-started-dao"),
                 link: get_i18n_link(langCode, "/tutorials/getting-started/dao"),
               },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-getting-started-rabbithole"
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/getting-started/rabbithole"
-                ),
-              },
             ],
           },
           {
