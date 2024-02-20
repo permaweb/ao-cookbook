@@ -30,10 +30,8 @@ You may find it helpful to have the [Recommended Extensions](../../references/ed
 - In `chatroom.lua`, you'll begin by initializing a list to track participants:
 
   ```lua
-  Weavers = Weavers or {}
+  Members = Members or {}
   ```
-
-  _We often call members of the Arweave Community "Weavers", but feel free to call your Member List whatever you like._
 
   ![Chatroom Lua File - Naming the Member List](/chatroom2.png)
 
@@ -54,9 +52,9 @@ With `chatroom.lua` saved, you'll now load the chatroom into `aos`.
 
   As the screenshot above shows, you may receive `undefined` as a response. This is expected, but we still want to make sure the file loaded correctly.
 
-- Type `Weavers`, or whatever you named your user list, in `aos`. It should return an empty array `{ }`.
+- Type `Members`, or whatever you named your user list, in `aos`. It should return an empty array `{ }`.
 
-  ![Checking the Weavers List](/chatroom4.png)
+  ![Checking the Members List](/chatroom4.png)
 
   If you see an empty array, then your script has been successfully loaded into `aos`.
 
@@ -68,18 +66,18 @@ The register handler will allow processes to join the chatroom.
 
 **Adding a Register Handler**
 
-1. **Modify `chatroom.lua`** to include a handler for `Weavers` to register to the chatroom with the following code:
+1. **Modify `chatroom.lua`** to include a handler for `Members` to register to the chatroom with the following code:
 
    ````lua
 
-   - Modify `chatroom.lua` to include a handler for `Weavers` to register to the chatroom with the following code:
+   - Modify `chatroom.lua` to include a handler for `Members` to register to the chatroom with the following code:
 
      ```lua
      Handlers.add(
        "register",
        Handlers.utils.hasMatchingTag("Action", "Register"),
        function (msg)
-         table.insert(Weavers, msg.From)
+         table.insert(Members, msg.From)
          Handlers.utils.reply("registered")(msg)
        end
      )
@@ -113,15 +111,15 @@ The register handler will allow processes to join the chatroom.
 
    ![Registering to the Chatroom](/chatroom7.png)
 
-   - Finally, let's check to see if we were successfully added to the `Weavers` list:
+   - Finally, let's check to see if we were successfully added to the `Members` list:
 
    ```lua
-    Weavers
+    Members
    ```
 
-   If successful, you'll now see your process ID in the `Weavers` list.
+   If successful, you'll now see your process ID in the `Members` list.
 
-   ![Checking the Weavers List](/chatroom8.png)
+   ![Checking the Members List](/chatroom8.png)
 
 ## Inviting Morpheus to the Chatroom
 
@@ -135,7 +133,7 @@ Now that you've successfully registered yourself to the chatroom, let's invite M
       Handlers.utils.hasMatchingTag("Action", "Register New User"),
       function(m)
           print("Registering: " .. m.From)
-          table.insert(Weavers, { Address = m.From })
+          table.insert(Members, { Address = m.From })
           ao.send({
               Target = m.From,
               Action = "Registered"
@@ -149,11 +147,11 @@ Now that you've successfully registered yourself to the chatroom, let's invite M
   Send({ Target = Morpheus, Invite = "JoinMe" })
   ```
   Morpheus as an autonomous process has a handler that will respond to the tag `Invite = "JoinMe"`, in which will then have him use your `Register New User` tag to register to the chatroom.
-- To confirm that Morpheus has joined the chatroom, check the `Weavers` list:
+- To confirm that Morpheus has joined the chatroom, check the `Members` list:
   ```lua
-  Weavers
+  Members
   ```
-  If successful, you should see Morpheus' process ID in the `Weavers` list.
+  If successful, you should see Morpheus' process ID in the `Members` list.
 
 ## Broadcasting Messages
 
@@ -166,7 +164,7 @@ Now that you have a chatroom with members, let's create a handler that will allo
       "broadcast",
       Handlers.utils.hasMatchingTag("Action", "Broadcast"),
       function (msg)
-        for _, recipient in ipairs(Weavers) do
+        for _, recipient in ipairs(Members) do
           ao.send({Target = recipient, Data = msg.Data})
         end
         Handlers.utils.reply("Broadcasted.")(msg)
@@ -182,7 +180,7 @@ Now that you have a chatroom with members, let's create a handler that will allo
     Send({Target = ao.id, Action = "Broadcast", Data = "Broadcasting My 1st Message" })
   ```
 
-  - If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `Broadcasting My 1st Message` because you are also a recipient of this message since you're a member of the `Weavers` chatroom.
+  - If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `Broadcasting My 1st Message` because you are also a recipient of this message since you're a member of the `Members` chatroom.
 
 ## Engaging Others in the Chatroom
 
