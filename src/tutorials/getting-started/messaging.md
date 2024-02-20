@@ -17,13 +17,13 @@ We'll begin by exploring the basics of messaging in `aos`, how to see messages r
 
 - Launch the aos command-line interface (CLI) by typing `aos` in your terminal and pressing Enter.
 
-```bash
+```sh
 aos
 ```
 
 ## Step 3: How to Send a Message
 
-```lua
+```sh
   Send({ Target = "process ID", Data = "Hello World!" })
 ```
 
@@ -35,13 +35,13 @@ aos
 
 We'll use the process ID provided below and create store it as a variable called `Morpheus`.
 
-```bash
+```sh
 BWMGpzZilu7fKcPQEK80XmUZSZTvwZ8vRGnolkoGulw
 ```
 
 Copy the process ID above and store it as a variable by running the below command in the aos CLI:
 
-```lua
+```sh
 Morpheus = "BWMGpzZilu7fKcPQEK80XmUZSZTvwZ8vRGnolkoGulw"
 ```
 
@@ -55,15 +55,15 @@ When creating the `Morpheus` variable, the only response you should see is `unde
 
 ### Check the `Morpheus` Variable
 
-```lua
--- Check the Morpheus variable by typing `Morpheus`
+```sh
+# Check the Morpheus variable by typing `Morpheus`
 aos> Morpheus
--- Expected Results:
+# Expected Results:
 BWMGpzZilu7fKcPQEK80XmUZSZTvwZ8vRGnolkoGulw
 aos>
 
--- If `undefined` is returned,
--- then the variable was not created successfully.
+# If `undefined` is returned,
+# then the variable was not created successfully.
 ```
 
 ## Step 5: Send a Message to Morpheus
@@ -79,13 +79,13 @@ Send({ Target = Morpheus, Data = "morpheus?" })
 
 **Expected Results:**
 
-```lua
--- Your Message Command
+```sh
+# Your Message Command
 aos> Send({ Target = Morpheus, Data = "Morpheus?"})
--- Message is added to the outbox
+# Message is added to the outbox
 message added to outbox
--- A New Message is received from `Morpheus`'s process ID
-New Message From F3G...GMg: Data = I am here. You are f
+# A New Message is received from `Morpheus`'s process ID
+New Message From BWM...ulw: Data = yes, it's me. I see
 aos>
 ```
 
@@ -102,18 +102,18 @@ Let's check your inbox to see how many messages you have received.
 
 Inside your aos CLI, type the following command:
 
-```lua
-#Inbox
+```sh
+aos> #Inbox
 ```
 
 If you're actively following through the tutorial, the inbox will not have many messages. However, if you've been experimenting with the aos environment, you may more than 1 message in your inbox.
 
 **Example Return:**
 
-```lua
--- Your Inbox Command
+```sh
+# Your Inbox Command
 aos> #Inbox
--- The Return
+# The command will return the number of messages in your inbox.
 4
 aos>
 ```
@@ -122,18 +122,20 @@ In the example above, the return is `4`, stating that there are four messages in
 
 As we're actively looking for `Morpheus`'s response, we'll assume his message was the last one received. To read the last message in your inbox, type the following command:
 
-```lua
-Inbox[4].Data
+```sh
+aos> Inbox[4].Data
 ```
 
 This command allows you to isolate the Data from the message and only read the contents of the data.
 
 The Expected Return:
 
-```lua
--- Your Inbox[x].Data Command
+```sh
+# Your Inbox[x].Data Command
 aos> Inbox[4].Data
--- The Return
+# The command will return the `Data` of the message.
+# Data is what usually represents the text-based message
+# received from one process to another.
 I am here. You are finally awake. Are you ready to see how far the rabbit hole goes?
 aos>
 ```

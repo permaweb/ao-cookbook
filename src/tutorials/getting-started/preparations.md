@@ -1,10 +1,14 @@
 # Preparations
 
-In this step of the `Getting Started` tutorial, we'll install the aos client and start a new process. This will allow us to interact with the ao computer and complete the rest of the tutorial.
+**The awakening begins**
+
+You've always known there's more to this world, just outside of your reach. You've been searching for it, not even knowing what it was you were looking for. It... is `ao`.
+
+We begin our journey by installing the `aos` client and starting a new process. This will allow us to interact with the ao computer and complete the rest of the tutorial.
 
 ## System requirements.
 
-The local client of aos is super simple to install. Just make sure you have:
+The local client of aos is very simple to install. Just make sure you have:
 
 - [NodeJS](https://nodejs.org) version 20+. (If you haven't yet installed it, check out [this page](https://nodejs.org/en/download/package-manager) to find instructions for your OS).
 - A code editor of your choice.
@@ -87,4 +91,4 @@ If your OS version is different than the latest version, a message asking if you
 
 Welcome to your new home in the ao computer! The prompt you are now looking at is your own personal server in this decentralized machine.
 
-Now, let's journey further down the rabbit hole by exploring the second core concept type of ao: [messaging.](messaging)
+Now, let's journey further down the rabbit hole by exploring one of the two core concept type of ao: [messaging.](messaging)
