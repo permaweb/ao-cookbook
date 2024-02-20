@@ -1,6 +1,6 @@
 # Building a Chatroom in aos
 
-::: tip
+::: info
 If you've found yourself wanting to learn how to create a chatroom within `ao`, then that means we understand at least the basic methodology of sending and receiving messages. If not, it's suggested that you review the [Messaging](messaging) tutorial before proceeding.
 :::
 
@@ -17,7 +17,7 @@ Let's begin by setting up the foundation for our chatroom.
 
 - Open your preferred code editor.
 
-::: tip
+::: info
 You may find it helpful to have the [Recommended Extensions](../../references/editor-setup.md) installed in your code editor to enhance your Lua scripting experience.
 :::
 

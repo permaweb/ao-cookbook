@@ -12,7 +12,7 @@ Using the token blueprint will create a token with all the handlers and state al
 
 You can learn more about available blueprints here: [Blueprints](../aos/blueprints/index.md)
 
-::: tip
+::: info
 Using the token blueprint will definitely get quickly, but you'll still want to understand how to [load and test](token.html#loading-and-testing) the token, so you can customize it to your needs.
 :::
 
@@ -73,7 +73,7 @@ end)
 
 ![Token.lua image 2](/token2.png)
 
-::: tip
+::: info
 At this point, you've probably noticed that I'm all of my handlers inside the `token.lua` file.
 
 With many handlers and processes, it's perfectly fine to create your Handlers using `.editor`, but because we're creating a full process for initizialing a token, setting up info and balances handlers, transfer handlers, and a minting handler, it's best to keep everything in one file.
@@ -248,7 +248,7 @@ aos> Inbox[#Inbox].Data
 
 This should print the Info defined in the contract.
 
-::: tip
+::: info
 Make sure you numerically are checking the last message. To do so, run `#Inbox` first to see the total number of messages are in the inbox. Then, run the last message number to see the data.
 
 **Example:**
@@ -260,7 +260,7 @@ If `#Inbox` returns `5`, then run `Inbox[5].Data` to see the data.
 
 Now, try to transfer a balance of tokens to another wallet or process id.
 
-::: tip
+::: info
 If you need another process id, you can run `aos [name]` in another terminal window to get a new process id. Make sure it's not the same `aos [name]` as the one you're currently using.
 
 **Example:**
