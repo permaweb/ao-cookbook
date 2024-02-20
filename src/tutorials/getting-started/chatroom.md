@@ -146,9 +146,9 @@ Now that you've successfully registered yourself to the chatroom, let's invite M
   This handler will allow Morpheus to register to the chatroom after we send him an invitation.
 - Let's send Morpheus an invitation to join the chatroom:
   ```lua
-  Send({ Target = Morpheus, Tags = { Action = "Join Me" }})
+  Send({ Target = Morpheus, Invite = "JoinMe" })
   ```
-  Morpheus as an autonomous process has a handler that will respond to the tag `Action = "Join Me"`, in which will then have him use your `Register New User` tag to register to the chatroom.
+  Morpheus as an autonomous process has a handler that will respond to the tag `Invite = "JoinMe"`, in which will then have him use your `Register New User` tag to register to the chatroom.
 - To confirm that Morpheus has joined the chatroom, check the `Weavers` list:
   ```lua
   Weavers

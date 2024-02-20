@@ -47,6 +47,8 @@ Morpheus = "BWMGpzZilu7fKcPQEK80XmUZSZTvwZ8vRGnolkoGulw"
 
 This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specifid process ID.
 
+After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a paralell process running in ao. He receives and sends messages using a series of Handlers. Let's send him a message and see what happens.
+
 ::: info
 When creating the `Morpheus` variable, the only response you should see is `undefined`. This is expected. To check if the variable was created successfully, type `Morpheus` and press Enter. You should see the process ID you stored.
 :::
