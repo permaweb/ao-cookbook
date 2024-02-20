@@ -10,7 +10,7 @@ When creating tokens, we'll continue to use the [Lua Language](../../references/
 
 Using the token blueprint will create a token with all the handlers and state already defined. This is the easiest way to create a token. You'll be able to customize those handlers and state to your after loading the blueprint.
 
-You can learn more about available blueprints here: [Blueprints](blueprints)
+You can learn more about available blueprints here: [Blueprints](../aos/blueprints/index.md)
 
 ::: tip
 Using the token blueprint will definitely get quickly, but you'll still want to understand how to [load and test](token.html#loading-and-testing) the token, so you can customize it to your needs.
