@@ -237,7 +237,7 @@ aos> .load token.lua
 Now we can send Messages to our aos process id, from the same aos prompt to see if is working. If we use ao.id as the Target we are sending a message to ourselves.
 
 ```sh
-aos> Send({ Target = ao.id, Tags = { Action = "Info" }})
+aos> Send({ Target = ao.id, Action = "Info" })
 ```
 
 This should print the Info defined in the contract. Check the latest inbox message for the response.

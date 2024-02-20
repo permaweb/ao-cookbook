@@ -52,7 +52,7 @@ You should see a new list of handlers that have been loaded into your `aos` proc
 Now that the token blueprint is loaded, we can test the token by sending a message to ourselves using the `Action = "info"` tag.
 
 ```sh
-aos> Send({ Target = ao.id, Tags = { Action = "info" }})
+aos> Send({ Target = ao.id, Action = "Info" })
 ```
 
 This will print a message to the console, but to read the message, we'll need to call the `.Data` from the latest message.
