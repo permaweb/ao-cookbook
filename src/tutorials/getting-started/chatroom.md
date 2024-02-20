@@ -106,7 +106,7 @@ The register handler will allow processes to join the chatroom.
    - Let's test the registration process by registering ourselves to the chatroom:
 
    ```lua
-    Send({ Target = ao.id, Tags = { Action = "Register" }})
+    Send({ Target = ao.id, Action = "Register" })
    ```
 
    If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `registered`.
@@ -179,7 +179,7 @@ Now that you have a chatroom with members, let's create a handler that will allo
 - Let's test the broadcast handler by sending a message to the chatroom:
 
   ```lua
-    Send({Target = ao.id, Tags = { Action = "Broadcast" }, Data = "Broadcasting My 1st Message" })
+    Send({Target = ao.id, Action = "Broadcast", Data = "Broadcasting My 1st Message" })
   ```
 
   - If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `Broadcasting My 1st Message` because you are also a recipient of this message since you're a member of the `Weavers` chatroom.
@@ -197,9 +197,9 @@ Now that you have a chatroom with members, let's create a handler that will allo
 
 ```
 Hey, let's chat on aos! Join my chatroom by sending this command in your aos environment:
-Send({ Target = [Your Process ID], Tags = { Action = "Register" }})
+Send({ Target = [Your Process ID], Action = "Register" })
 Then, you can broadcast messages using:
-Send({Target = [Your Process ID], Tags = { Action = "Broadcast" }, Data = "Your Message" })
+Send({Target = [Your Process ID], Action = "Broadcast", Data = "Your Message" })
 ```
 
 ## Next Steps

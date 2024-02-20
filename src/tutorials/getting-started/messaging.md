@@ -6,7 +6,7 @@ In `ao`, every process runs in parallel, creating a highly scalable environment.
 
 Messaging addresses this by enabling asynchronous communication. Processes send and receive messages rather than directly invoking functions on each other. This method allows for flexible and efficient interaction, where processes can respond to messages, enhancing the system's scalability and responsiveness.
 
-We'll begin by exploring the basics of messaging in aos, how to see messages received in your inbox, and how to send messages to other processes.
+We'll begin by exploring the basics of messaging in `aos`, how to see messages received in your inbox, and how to send messages to other processes.
 
 ## Step 1: Understand the Message Structure
 
