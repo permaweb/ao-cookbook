@@ -116,21 +116,21 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-aos-blueprints-voting"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/aos/blueprints/voting"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
                       "guides-aos-blueprints-chatroom"
                     ),
                     link: get_i18n_link(
                       langCode,
                       "/guides/aos/blueprints/chatroom"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-aos-blueprints-voting"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/voting"
                     ),
                   },
                   {

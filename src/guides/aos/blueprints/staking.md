@@ -2,6 +2,22 @@
 
 The Staking Blueprint is a predesigned template that helps you quickly build a staking system in `ao`. It is a great way to get started and can be customized to fit your needs.
 
+## Prerequisites
+
+The Staking Blueprint requires the [Token Blueprint](./token.md) to be loaded, first.
+
+## Unpacking the Staking Blueprint
+
+- **Stakers**: The `Stakers` array is used to store the staked tokens of the participants.
+
+- **Unstaking**: The `Unstaking` array is used to store the unstaking requests of the participants.
+
+- **Stake Action Handler**: The `stake` handler allows processes to stake tokens. When a process sends a message with the tag `Action = "Stake"`, the handler will add the staked tokens to the `Stakers` array and send a message back to the process confirming the staking.
+
+- **Unstake Action Handler**: The `unstake` handler allows processes to unstake tokens. When a process sends a message with the tag `Action = "Unstake"`, the handler will add the unstaking request to the `Unstaking` array and send a message back to the process confirming the unstaking.
+
+- **Finalization Handler**: The `finalize` handler allows processes to finalize the staking process. When a process sends a message with the tag `Action = "Finalize"`, the handler will process the unstaking requests and finalize the staking process.
+
 ### How To Use:
 
 1. Open your preferred text editor.

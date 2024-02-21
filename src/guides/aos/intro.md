@@ -32,18 +32,19 @@ The process of checking how many messages are in the inbox is a very common patt
 Use either `.editor` or `.load file` to load this function on your process.
 
 ```lua
-function customPrompt()
+function Prompt()
   return "Inbox: " .. #Inbox .. " > "
 end
 ```
 
-Once the function is defined, then you can set the prompt by calling the function.
+**The Expected Results:**
 
 ```sh
-aos>Prompt = customPrompt
-# The expected results should be something like this:
-Inbox: 4 >
+undefined
+Inbox: 2 >
 ```
+
+Your prompt now has changed to include the number of messages in your inbox.
 
 ## Globals
 

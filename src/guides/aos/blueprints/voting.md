@@ -2,6 +2,20 @@
 
 The Voting Blueprint is a predesigned template that helps you quickly build a voting system in `ao`. It is a great way to get started and can be customized to fit your needs.
 
+## Prerequisites
+
+The Staking Blueprint requires the [Token Blueprint](./token.md) to be loaded, first.
+
+## Unpacking the Voting Blueprint
+
+- **Balances**: The `Balances` array is used to store the token balances of the participants.
+
+- **Votes**: The `Votes` array is used to store the votes of the participants.
+
+- **Vote Action Handler**: The `vote` handler allows processes to vote. When a process sends a message with the tag `Action = "Vote"`, the handler will add the vote to the `Votes` array and send a message back to the process confirming the vote.
+
+- **Finalization Handler**: The `finalize` handler allows processes to finalize the voting process. When a process sends a message with the tag `Action = "Finalize"`, the handler will process the votes and finalize the voting process.
+
 ### How To Use:
 
 1. Open your preferred text editor.

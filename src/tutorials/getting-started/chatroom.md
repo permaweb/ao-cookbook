@@ -11,9 +11,7 @@ In this tutorial, we'll be building a chatroom within `ao` using the Lua scripti
 
 Let's begin by setting up the foundation for our chatroom.
 
-## Preparations
-
-### **Step 1: The Foundation**
+## Step 1: The Foundation
 
 - Open your preferred code editor.
 
@@ -25,7 +23,7 @@ You may find it helpful to have the [Recommended Extensions](../../references/ed
 
 ![Chatroom Lua File](/chatroom1.png)
 
-**Step 2: Creating The Member List**
+## Step 2: Creating The Member List
 
 - In `chatroom.lua`, you'll begin by initializing a list to track participants:
 
@@ -37,7 +35,7 @@ You may find it helpful to have the [Recommended Extensions](../../references/ed
 
   - Save the `chatroom.lua` file
 
-**Step 3: Load the Chatroom into aos**
+## Step 3: Load the Chatroom into aos
 
 With `chatroom.lua` saved, you'll now load the chatroom into `aos`.
 
@@ -52,19 +50,25 @@ With `chatroom.lua` saved, you'll now load the chatroom into `aos`.
 
   As the screenshot above shows, you may receive `undefined` as a response. This is expected, but we still want to make sure the file loaded correctly.
 
+  ::: info
+  In the Lua Eval environment of aos, when you execute a piece of code that doesn't explicitly return a value, `undefined` is a standard response, indicating that no result was returned. This can be observed when loading resources or executing operations. For instance, executing `X = 1` will yield `undefined` because the statement does not include a return statement.
+
+  However, if you execute `X = 1; return X`, the environment will return the value `1`. This behavior is essential to understand when working within this framework, as it helps clarify the distinction between executing commands that modify state versus those intended to produce a direct output.
+  :::
+
 - Type `Members`, or whatever you named your user list, in `aos`. It should return an empty array `{ }`.
 
   ![Checking the Members List](/chatroom4.png)
 
   If you see an empty array, then your script has been successfully loaded into `aos`.
 
-### Creating Chatroom Functionalities
+## Step 5: Creating Chatroom Functionalities
 
-#### The Registration Handler
+### The Registration Handler
 
 The register handler will allow processes to join the chatroom.
 
-**Adding a Register Handler**
+#### Adding a Register Handler
 
 1. **Modify `chatroom.lua`** to include a handler for `Members` to register to the chatroom with the following code:
 
@@ -85,7 +89,7 @@ The register handler will allow processes to join the chatroom.
 
    ![Register Handler](/chatroom5.png)
 
-   - This handler registers a process and confirms registration.
+   This handler will allow processes to register to the chatroom by responding to the tag `Action = "Register"`. A printed message will confirm stating `registered` will appear when the registration is successful.
 
 2. **Reload and Test:**:
    Let's reload and test the script by registering ourselves to the chatroom.
@@ -129,8 +133,8 @@ Now that you've successfully registered yourself to the chatroom, let's invite M
 - Add the following handler to the `chatroom.lua` file:
   ```lua
   Handlers.add(
-      "Register New User",
-      Handlers.utils.hasMatchingTag("Action", "Register New User"),
+      "Register",
+      Handlers.utils.hasMatchingTag("Action", "Register"),
       function(m)
           print("Registering: " .. m.From)
           table.insert(Members, { Address = m.From })
@@ -144,9 +148,9 @@ Now that you've successfully registered yourself to the chatroom, let's invite M
   This handler will allow Morpheus to register to the chatroom after we send him an invitation.
 - Let's send Morpheus an invitation to join the chatroom:
   ```lua
-  Send({ Target = Morpheus, Invite = "JoinMe" })
+  Send({ Target = Morpheus, Action = "Join" })
   ```
-  Morpheus as an autonomous process has a handler that will respond to the tag `Invite = "JoinMe"`, in which will then have him use your `Register New User` tag to register to the chatroom.
+  Morpheus as an autonomous process has a handler that will respond to the tag `Action = "Join"`, in which will then have him use your `Register New User` tag to register to the chatroom.
 - To confirm that Morpheus has joined the chatroom, check the `Members` list:
   ```lua
   Members

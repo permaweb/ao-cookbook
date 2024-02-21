@@ -1,6 +1,6 @@
 # Messaging in `ao`
 
-### Why is Messaging in `ao` Needed?
+### Learn how Messages gives `ao` Parallel Compute Capability
 
 In `ao`, every process runs in parallel, creating a highly scalable environment. Traditional direct function calls aren't feasible because each process operates independently and asynchronously.
 
@@ -10,7 +10,10 @@ We'll begin by exploring the basics of messaging in `aos`, how to see messages r
 
 ## Step 1: Understand the Message Structure
 
-- **Message Basics:** At its core, a message in aos consists of a Lua table, which includes several fields. The key field to focus on is Data. This Data field is where the actual content or payload of your message is stored. It's what you're sending to another process or receiving from them.
+- **Message Basics:** Messages in `ao` are built using Lua tables, which are versatile data structures that can hold multiple values. Within these tables, the "Data" field is crucial as it contains the message's content or payload. This structure allows for efficient sending and receiving of information between processes, showcasing how `ao` primitives leverage Arweave's underlying capabilities to facilitate complex, composable operations.
+
+  For detailed specifications, please refer to the original documentation on the [G8way specs page](https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw).
+
 - **Example**: `{ Data = "Hello from Process A!" }` is a simple message.
 
 ## Step 2: Open the aos CLI
@@ -123,7 +126,7 @@ In the example above, the return is `4`, stating that there are four messages in
 As we're actively looking for `Morpheus`'s response, we'll assume his message was the last one received. To read the last message in your inbox, type the following command:
 
 ```sh
-aos> Inbox[4].Data
+aos> Inbox[#Inbox].Data
 ```
 
 This command allows you to isolate the Data from the message and only read the contents of the data.
@@ -132,7 +135,7 @@ The Expected Return:
 
 ```sh
 # Your Inbox[x].Data Command
-aos> Inbox[4].Data
+aos> Inbox[#Inbox].Data
 # The command will return the `Data` of the message.
 # Data is what usually represents the text-based message
 # received from one process to another.
@@ -152,38 +155,21 @@ Some processes use `Handlers` that specifically interact with messages that have
 
 In the case of Morpheus, we can use tags to categorize our messages, and because Morpheus is a autonomous process, he has handlers that can interact with messages that have certain tags.
 
-1. **Adding Tags to a Message**:
+**Adding Tags to a Message**:
 
-   - We already know that the `Data` of a message is the text-based message you want to send to another process. Earlier, we sent a message to Morpheus without any tags, in which he used a handler to respond to an exact matching data.
-   - This time, we're going to ask Morpheus if Trinity is with him. To get the response we're looking for, we'll use a specific tag so that he knows how to respond.
-   - **Example**:
-
-     ```lua
-     Send({
-       Target = Morpheus,
-       Data = "is Trinity with you?",
-       Contact = "Trinity"
-      }
-     })
-
-     -- `Contact` is the tag we're using to categorize the message. "Trinity" is the value of the tag.
-     ```
-
-   - This message is tagged with an "Contact" of "Trinity" , indicating its purpose.
-     Here's what the expected return should look:
-     ![Morpheus Responds](/messaging1.png)
+- We already know that the `Data` of a message is the text-based message you want to send to another process. Earlier, we sent a message to Morpheus without any tags, in which he used a handler to respond to an exact matching data.
 
 ### Let's Show Morpheus That We're Ready
 
-Send Morpheus a message with the tag `Tutorial` and the value `rabbithole`.
+Send Morpheus a message with the tag `Action` and the value `rabbithole`.
 
 **Example:**
 
-```lua
+```sh
 Send({
   Target = Morpheus,
-  Data = "I'm ready to see how far the rabbit hole goes.",
-  Tutorial = "rabbithole"
+  Data = "Code: rabbithole",
+  Action = "Unlock"
   }
 })
 ```
@@ -197,8 +183,6 @@ Send({
 - **Tag Naming**:
 
 Choose clear and descriptive names for your tags. This makes it easier to understand the purpose and context of messages at a glance.
-
-- **Tag Limitations**: Be mindful of the number of tags you use. While tags are powerful for categorization, overuse or overly complex tagging systems can lead to confusion and inefficiency in message handling.
 
 - **Security with Tags**: Remember that tags are not encrypted or hidden, so avoid using sensitive information as tags.
 

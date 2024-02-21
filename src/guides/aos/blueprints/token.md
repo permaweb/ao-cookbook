@@ -2,6 +2,20 @@
 
 The Token Blueprint is a predesigned template that helps you quickly build a token in `ao`. It is a great way to get started and can be customized to fit your needs.
 
+## Unpacking the Token Blueprint
+
+- **Balances**: The `Balances` array is used to store the token balances of the participants.
+
+- **Info Handler**: The `info` handler allows processes to retrieve the token parameters, like Name, Ticker, Logo, and Denomination.
+
+- **Balance Handler**: The `balance` handler allows processes to retrieve the token balance of a participant.
+
+- **Balances Handler**: The `balances` handler allows processes to retrieve the token balances of all participants.
+
+- **Transfer Handler**: The `transfer` handler allows processes to send tokens to another participant.
+
+- **Mint Handler**: The `mint` handler allows processes to mint new tokens.
+
 ### How To Use:
 
 1. Open your preferred text editor.

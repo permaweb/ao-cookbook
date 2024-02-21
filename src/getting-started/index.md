@@ -23,7 +23,7 @@ After installation, we can simply run the command itself to start a new aos proc
 aos
 ```
 
-You authenticate yourself to your aos process using a keyfile. If you have an Arweave wallet you can specify it by adding a `--wallet [location]` flag. If you don't, a new keyfile will be generated and stored locally for you at `~/.aos-key.json`.
+You authenticate yourself to your aos process using a keyfile. If you have an Arweave wallet you can specify it by adding a `--wallet [location]` flag. If you don't, a new keyfile will be generated and stored locally for you at `~/.aos.json`.
 
 ## Welcome to the rabbit hole.
 

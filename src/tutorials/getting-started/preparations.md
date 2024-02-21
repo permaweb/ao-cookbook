@@ -1,10 +1,13 @@
 # Preparations
 
-**The awakening begins**
+::: info
+**The Awakening Begins:**
 
 You've always known there's more to this world, just outside of your reach. You've been searching for it, not even knowing what it was you were looking for. It... is `ao`.
 
 We begin our journey by installing the `aos` client and starting a new process. This will allow us to interact with the ao computer and complete the rest of the tutorial.
+
+:::
 
 ## System requirements.
 
@@ -32,7 +35,7 @@ aos
 ```
 
 <!-- :::info
-⚠ You authenticate yourself to your aos process using a keyfile. If you have an Arweave wallet you can specify it by adding a `--wallet [location]` flag. If you don't, a new keyfile will be generated and stored locally for you at `~/.aos-key.json`.
+⚠ You authenticate yourself to your aos process using a keyfile. If you have an Arweave wallet you can specify it by adding a `--wallet [location]` flag. If you don't, a new keyfile will be generated and stored locally for you at `~/.aos.json`.
 ::: -->
 
 ## Welcome to the rabbit hole.
