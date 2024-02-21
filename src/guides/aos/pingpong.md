@@ -2,7 +2,7 @@
 
 This tutorial will guide you through creating a simple "ping-pong" process in aos. In this process, whenever it receives a message with the data "ping", it will automatically reply with "pong". This is a basic example of message handling and interaction between processes in aos.
 
-## Step 1: Open the aos CLI
+## Step 1: Open the `aos` CLI
 
 - Start by opening your command-line interface and typing `aos` to enter the aos environment.
 
@@ -13,6 +13,7 @@ This tutorial will guide you through creating a simple "ping-pong" process in ao
 ## Step 3: Write the Pingpong Handler
 
 - In the editor, enter the following Lua code to add a handler for the pingpong pattern:
+
   ```lua
   Handlers.add(
     "pingpong",
@@ -20,7 +21,8 @@ This tutorial will guide you through creating a simple "ping-pong" process in ao
     Handlers.utils.reply("pong")
   )
   ```
-- This line of code does three things:
+
+- This lua script does three things:
   1. It adds a new handler named "pingpong".
   2. It uses `Handlers.utils.hasMatchingData("ping")` to check if incoming messages contain the data "ping".
   3. If the message contains "ping", `Handlers.utils.reply("pong")` automatically sends back a message with the data "pong".
@@ -55,10 +57,13 @@ Inbox[#Inbox].Data
 
 into aos sessions.
 
-## Additional Tips:
+::: info
 
-- **Debugging**: Use the `Dump` function to print the contents of your Inbox and Outbox for debugging purposes.
+**ADDITIONAL TIP:**
+
 - **Handler Efficiency**: The simplicity of the handler function is key. Ensure that it's efficient and only triggers under the correct conditions.
+
+:::
 
 ## Conclusion
 
