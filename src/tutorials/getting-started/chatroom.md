@@ -1,5 +1,9 @@
 # Building a Chatroom in aos
 
+:::warning
+This tutorial is actively under development and the content is subject to change.
+:::
+
 ::: info
 If you've found yourself wanting to learn how to create a chatroom within `ao`, then that means we understand at least the basic methodology of sending and receiving messages. If not, it's suggested that you review the [Messaging](messaging) tutorial before proceeding.
 :::

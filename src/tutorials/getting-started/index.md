@@ -11,6 +11,10 @@ next:
 
 In this tutorial series, you'll walk through an interactive steps that will help you deepen your knowledge and understanding of the aos environment.
 
+:::warning
+This tutorial is actively under development and the content is subject to change.
+:::
+
 ::: info
 
 ### The Exercise
