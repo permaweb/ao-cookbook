@@ -154,7 +154,7 @@ Now that you've successfully registered yourself to the chatroom, let's invite M
   ```lua
   Send({ Target = Morpheus, Action = "Join" })
   ```
-  Morpheus as an autonomous process has a handler that will respond to the tag `Action = "Join"`, in which will then have him use your `Register New User` tag to register to the chatroom.
+  Morpheus as an autonomous process has a handler that will respond to the tag `Action = "Join"`, in which will then have him use your `Register` tag to register to the chatroom.
 - To confirm that Morpheus has joined the chatroom, check the `Members` list:
   ```lua
   Members
