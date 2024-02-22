@@ -42,6 +42,7 @@ Inbox[#Inbox]
 ```
 
 The `Data` field of this message contains the latest state of the game which includes:
+
 - `GameMode` : Whether the game is in `Waiting` or `Playing` state.
 - `TimeRemaining` : The time remaining for the game to start or end.
 - `Players` : A table containing every player's stats like position, health and energy.
@@ -80,28 +81,29 @@ You can refer to the latest code for `bot.lua` in the dropdown below:
 <details>
   <summary><strong>Updated bot.lua file</strong></summary>
 
-  ```lua
-  LatestGameState = LatestGameState or nil
+```lua
+LatestGameState = LatestGameState or nil
 
-  Handlers.add(
-  "HandleAnnouncements",
-  Handlers.utils.hasMatchingTag("Action", "Announcements"),
-  function (msg)
-    ao.send({Target = Game, Action = "GetGameState"})
-    print(msg.Event .. ": " .. msg.Data)
-  end
-  )
+Handlers.add(
+"HandleAnnouncements",
+Handlers.utils.hasMatchingTag("Action", "Announcements"),
+function (msg)
+  ao.send({Target = Game, Action = "GetGameState"})
+  print(msg.Event .. ": " .. msg.Data)
+end
+)
 
-  Handlers.add(
-  "UpdateGameState",
-  Handlers.utils.hasMatchingTag("Action", "GameState"),
-  function (msg)
-    local json = require("json")
-    LatestGameState = json.decode(msg.Data)
-    ao.send({Target = ao.id, Action = "UpdatedGameState"})
-  end
-  )
-  ```
+Handlers.add(
+"UpdateGameState",
+Handlers.utils.hasMatchingTag("Action", "GameState"),
+function (msg)
+  local json = require("json")
+  LatestGameState = json.decode(msg.Data)
+  ao.send({Target = ao.id, Action = "UpdatedGameState"})
+end
+)
+```
+
 </details>
 
 ## Loading and Testing

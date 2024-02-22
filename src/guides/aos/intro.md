@@ -5,34 +5,46 @@ interactive shell. You can use aos as your personal operating system, your devel
 
 Lets go over some basic commands.
 
+## Variables
+
 If you want to display the contents of any variable through the console, simply type the variable name.
 
 ```lua
 Name
 ```
 
-Inbox is a collection of messages that your Process has received.
+## Inbox
+
+the `Inbox` is a collection of messages that your Process has received.
 
 ```lua
 Inbox[1]
 ```
 
-If you want to get a count of messages, just add the `#` infront of inbox
+If you want to get a count of messages, just add the `#` infront of `Inbox`.
 
 ```lua
 #Inbox
 ```
 
-You can personalize you `aos` Process, for example, if you want a custom prompt, just
-overwrite the `prompt` function.
+The process of checking how many messages are in the inbox is a very common pattern. To make this easier, you can create a function that returns the number of messages within the inbox and displays it in the prompt.
 
 Use either `.editor` or `.load file` to load this function on your process.
 
 ```lua
 function Prompt()
-  return "inbox: " .. #inbox .. "> "
+  return "Inbox: " .. #Inbox .. " > "
 end
 ```
+
+**The Expected Results:**
+
+```sh
+undefined
+Inbox: 2 >
+```
+
+Your prompt now has changed to include the number of messages in your inbox.
 
 ## Globals
 

@@ -40,6 +40,6 @@ In the tutorials that follow, we will explore ao and build everything from chatr
 
 Let's jump into it! 🚀
 
-- [Tutorials](../guides/tutorials/index)
+- [Tutorials](../tutorials/index)
 - [Concepts](../concepts/index)
 - [References](../references/index)

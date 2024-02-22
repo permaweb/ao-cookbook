@@ -14,9 +14,11 @@ Leveraging insights from our previous chapter, this section will guide you throu
 ## Sections
 
 ### Getting Started with a Game
+
 - [0. **# Let's Play A Game:** _Experience a game on aos_](ao-effect)
 
 ### Enhancing Game Interactions with Automation
+
 - [1. **# Interpreting Announcements:** _Interpret in-game announcements_](announcements)
 - [2. **# Fetching Game State:** _Retrieve and process the latest game state_](game-state)
 - [3. **# Strategic Decisions:** _Utilize automation to determine your next move_](decisions)
@@ -24,6 +26,7 @@ Leveraging insights from our previous chapter, this section will guide you throu
 - [5. **# Bringing it Together:** _Combine your skills to craft an autonomous agent_](bringing-together)
 
 ### Game Development Insights
+
 - [6. **# Mechanics of the Arena:** _Explore the underlying mechanics of a game's arena_](arena-mechanics)
 - [7. **# Expanding the Arena:** _Build unique game logic upon the arena_](build-game)
 

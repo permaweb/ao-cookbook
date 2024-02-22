@@ -9,8 +9,26 @@ next:
 
 # aos
 
-ao is a hyper parallel computer that enables distributed compute, aos is an operating system on top of that computer. With aos you can interact with processes and you can code processes in a very simple an intuitive way. All you need is a termnial and an editor. The language chosen for aos is lua, it is a robust and deterministic dynamic language that is a lot of fun to work with.
+While `ao` is a hyper parallel computer that enables distributed compute, `aos` is an operating system on top of that computer.
 
-If you have done so yet, take 15 minutes and go through our `Getting Started` Tutorial?
+With `aos` you can interact with processes and you can code processes in a very simple an intuitive way. All you need is a terminal and an editor.
 
-[Try It](/getting-started/index)
+The language chosen for `aos` is [lua](../../concepts/lua.md), which is a robust and deterministic dynamic language that is a lot of fun to work with.
+
+If you have done so yet, take 15 minutes and go through our [tutorials](../../tutorials/index).
+
+## Diving Deeper into `aos`
+
+- [Introduction to aos](intro)
+- [Installing](installing)
+- [`aos` CLI](cli)
+- [Prompt Customization](prompt)
+- [A Ping-Pong Server](pingpong)
+
+### [**Modules**](modules/index)
+
+- [JSON](modules/json)
+- [`ao`](modules/ao)
+- [Base64](modules/base64)
+- [Pretty](modules/pretty)
+- [Utils](modules/utils)

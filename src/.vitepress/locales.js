@@ -56,151 +56,20 @@ export const localeConfig = (langCode) => ({
             text: get_i18n_str(langCode, "concepts-how-it-works"),
             link: get_i18n_link(langCode, "/concepts/how-it-works"),
           },
+          {
+            text: get_i18n_str(langCode, "concepts-meet-lua"),
+            link: get_i18n_link(langCode, "/concepts/lua"),
+          },
+          {
+            text: get_i18n_str(langCode, "concepts-tour"),
+            link: get_i18n_link(langCode, "/concepts/tour"),
+          },
         ],
       },
       {
         text: get_i18n_str(langCode, "guides"),
         link: get_i18n_link(langCode, "/guides/"),
         items: [
-          {
-            text: get_i18n_str(langCode, "guides-tutorials"),
-            link: get_i18n_link(langCode, "/guides/tutorials/index"),
-            items: [
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-quickstart"),
-                link: get_i18n_link(langCode, "/guides/tutorials/quickstart"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-meet-lua"),
-                link: get_i18n_link(langCode, "/guides/tutorials/lua"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-editor-setup"),
-                link: get_i18n_link(langCode, "/guides/tutorials/editor-setup"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-messaging"),
-                link: get_i18n_link(langCode, "/guides/tutorials/messaging"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-tour"),
-                link: get_i18n_link(langCode, "/guides/tutorials/tour"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-prompt"),
-                link: get_i18n_link(langCode, "/guides/tutorials/prompt"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-pingpong"),
-                link: get_i18n_link(langCode, "/guides/tutorials/pingpong"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-chatroom"),
-                link: get_i18n_link(langCode, "/guides/tutorials/chatroom"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-token"),
-                link: get_i18n_link(langCode, "/guides/tutorials/token"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-dao"),
-                link: get_i18n_link(langCode, "/guides/tutorials/dao"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-bot"),
-                link: get_i18n_link(langCode, "/guides/tutorials/bot"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-tutorials-bots-and-games"),
-                link: get_i18n_link(
-                  langCode,
-                  "/guides/tutorials/bots-and-games/index"
-                ),
-                items: [
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-bots-and-games-ao-effect"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/bots-and-games/ao-effect"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-bots-and-games-announcements"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/bots-and-games/announcements"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-bots-and-games-game-state"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/bots-and-games/game-state"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-bots-and-games-decisions"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/bots-and-games/decisions"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-bots-and-games-attacking"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/bots-and-games/attacking"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-bots-and-games-bringing-together"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/bots-and-games/bringing-together"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-bots-and-games-arena-mechanics"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/bots-and-games/arena-mechanics"
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-tutorials-bots-and-games-build-game"
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/tutorials/bots-and-games/build-game"
-                    ),
-                  },
-                ],
-              },
-            ],
-          },
           {
             text: get_i18n_str(langCode, "guides-aos"),
             link: get_i18n_link(langCode, "/guides/aos/index"),
@@ -216,6 +85,65 @@ export const localeConfig = (langCode) => ({
               {
                 text: get_i18n_str(langCode, "guides-aos-cli"),
                 link: get_i18n_link(langCode, "/guides/aos/cli"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-prompt"),
+                link: get_i18n_link(langCode, "/guides/aos/prompt"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-pingpong"),
+                link: get_i18n_link(langCode, "/guides/aos/pingpong"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-load"),
+                link: get_i18n_link(langCode, "/guides/aos/load"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-token"),
+                link: get_i18n_link(langCode, "/guides/aos/token"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-blueprints"),
+                link: get_i18n_link(langCode, "/guides/aos/blueprints/index"),
+                items: [
+                  {
+                    text: get_i18n_str(langCode, "guides-aos-blueprints-token"),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/token"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-aos-blueprints-chatroom"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/chatroom"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-aos-blueprints-voting"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/voting"
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-aos-blueprints-staking"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/staking"
+                    ),
+                  },
+                ],
               },
               {
                 text: get_i18n_str(langCode, "guides-aos-modules"),
@@ -242,10 +170,6 @@ export const localeConfig = (langCode) => ({
                     link: get_i18n_link(langCode, "/guides/aos/modules/utils"),
                   },
                 ],
-              },
-              {
-                text: get_i18n_str(langCode, "guides-aos-load"),
-                link: get_i18n_link(langCode, "/guides/aos/load"),
               },
             ],
           },
@@ -300,6 +224,79 @@ export const localeConfig = (langCode) => ({
         ],
       },
       {
+        text: get_i18n_str(langCode, "tutorials"),
+        link: get_i18n_link(langCode, "/tutorials/index"),
+        items: [
+          {
+            text: get_i18n_str(langCode, "tutorials-getting-started"),
+            link: get_i18n_link(langCode, "/tutorials/getting-started/index"),
+            items: [
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-getting-started-preparations"
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/preparations"
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-getting-started-messaging"
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/messaging"
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-getting-started-chatroom"
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/chatroom"
+                ),
+              },
+              {
+                text: get_i18n_str(langCode, "tutorials-getting-started-token"),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/token"
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-getting-started-tokengating"
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/tokengating"
+                ),
+              },
+              {
+                text: get_i18n_str(langCode, "tutorials-getting-started-dao"),
+                link: get_i18n_link(langCode, "/tutorials/getting-started/dao"),
+              },
+            ],
+          },
+          {
+            text: get_i18n_str(langCode, "tutorials-building-bots"),
+            link: get_i18n_link(langCode, "/tutorials/building-bots/index"),
+            items: [
+              {
+                text: get_i18n_str(langCode, "tutorials-building-bots-bot"),
+                link: get_i18n_link(langCode, "/tutorials/building-bots/bot"),
+              },
+            ],
+          },
+        ],
+      },
+      {
         text: get_i18n_str(langCode, "references"),
         link: get_i18n_link(langCode, "/references/"),
         items: [
@@ -330,6 +327,10 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "references-cron"),
             link: get_i18n_link(langCode, "/references/cron"),
+          },
+          {
+            text: get_i18n_str(langCode, "references-editor-setup"),
+            link: get_i18n_link(langCode, "/references/editor-setup"),
           },
         ],
       },

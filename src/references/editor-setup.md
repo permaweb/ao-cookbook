@@ -1,6 +1,6 @@
 # Editor setup
 
-Remembering all the built in ao functions and utilites can sometimes be hard. To enhance your developer experience, it is recommended to install the [Lua Language Server](https://luals.github.io) extension into your favorite text editor and add the [ao addon](https://github.com/martonlederer/ao-definitions). It supports all built in aos [modules](../aos/modules/index) and [globals](../aos/intro#globals).
+Remembering all the built in ao functions and utilites can sometimes be hard. To enhance your developer experience, it is recommended to install the [Lua Language Server](https://luals.github.io) extension into your favorite text editor and add the [ao addon](https://github.com/martonlederer/ao-definitions). It supports all built in aos [modules](../guides/aos/index.md) and [globals](../guides/aos/intro#globals).
 
 ## VS Code
 
