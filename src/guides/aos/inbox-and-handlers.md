@@ -1,4 +1,4 @@
-# Inboxes and Handlers
+# Understanding the Inbox
 
 In aos, processes are executed in response to messages via handlers. Unhandled messages are routed to the process's Inbox.
 

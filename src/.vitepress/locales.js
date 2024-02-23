@@ -214,6 +214,10 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(langCode, "/guides/aos/editor"),
               },
               {
+                text: get_i18n_str(langCode, "guides-aos-inbox-and-handlers"),
+                link: get_i18n_link(langCode, "/guides/aos/inbox-and-handlers"),
+              },
+              {
                 text: get_i18n_str(langCode, "guides-aos-load"),
                 link: get_i18n_link(langCode, "/guides/aos/load"),
               },

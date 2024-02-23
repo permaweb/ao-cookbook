@@ -29,7 +29,7 @@ If you have done so yet, take 15 minutes and go through our [tutorials](../../tu
 
 - [Editor Setup](editor)
 - [Troubleshooting with aoScan](troubleshooting)
-- [Inbox and Handlers](inbox-and-handlers)
+- [Understanding the Inbox](inbox-and-handlers)
 - [Working with Lua Tables and JSON](tables-and-json)
 - [Understanding Ownership](ownership)
 
