@@ -25,6 +25,14 @@ If you have done so yet, take 15 minutes and go through our [tutorials](../../tu
 - [Prompt Customization](prompt)
 - [A Ping-Pong Server](pingpong)
 
+## Developer Guides
+
+- [Editor Setup](editor)
+- [Troubleshooting with aoScan](troubleshooting)
+- [Inbox and Handlers](inbox-and-handlers)
+- [Working with Lua Tables and JSON](tables-and-json)
+- [Understanding Ownership](ownership)
+
 ### [**Modules**](modules/index)
 
 - [JSON](modules/json)
