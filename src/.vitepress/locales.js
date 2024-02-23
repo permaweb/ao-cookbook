@@ -24,11 +24,11 @@ export const localeConfig = (langCode) => ({
     sidebar: [
       {
         text: get_i18n_str(langCode, "welcome"),
-        link: get_i18n_link(langCode, "/welcome/"),
+        link: get_i18n_link(langCode, "/welcome/index"),
         items: [
           {
             text: get_i18n_str(langCode, "getting-started"),
-            link: get_i18n_link(langCode, "/getting-started/"),
+            link: get_i18n_link(langCode, "/getting-started/index"),
           },
         ],
       },
@@ -183,7 +183,7 @@ export const localeConfig = (langCode) => ({
       },
       {
         text: get_i18n_str(langCode, "guides"),
-        link: get_i18n_link(langCode, "/guides/"),
+        link: get_i18n_link(langCode, "/guides/index"),
         items: [
           {
             text: get_i18n_str(langCode, "guides-aos"),
@@ -344,7 +344,7 @@ export const localeConfig = (langCode) => ({
       },
       {
         text: get_i18n_str(langCode, "concepts"),
-        link: get_i18n_link(langCode, "/concepts/"),
+        link: get_i18n_link(langCode, "/concepts/index"),
         items: [
           {
             text: get_i18n_str(langCode, "concepts-specs"),
@@ -378,7 +378,7 @@ export const localeConfig = (langCode) => ({
       },
       {
         text: get_i18n_str(langCode, "references"),
-        link: get_i18n_link(langCode, "/references/"),
+        link: get_i18n_link(langCode, "/references/index"),
         items: [
           {
             text: get_i18n_str(langCode, "references-lua"),
