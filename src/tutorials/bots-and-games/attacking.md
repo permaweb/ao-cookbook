@@ -1,10 +1,10 @@
 ---
 prev:
   text: "Strategic Decicions"
-  link: "/guides/tutorials/bots-and-games/decisions"
+  link: "/tutorials/bots-and-games/decisions"
 next:
   text: "Bringing it Together"
-  link: "/guides/tutorials/bots-and-games/bringing-together"
+  link: "/tutorials/bots-and-games/bringing-together"
 ---
 
 # Automated Responses

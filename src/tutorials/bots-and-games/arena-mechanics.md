@@ -1,10 +1,10 @@
 ---
 prev:
   text: "Bringing it Together"
-  link: "/guides/tutorials/bots-and-games/bringing-together"
+  link: "/tutorials/bots-and-games/bringing-together"
 next:
   text: "Expanding the Arena"
-  link: "/guides/tutorials/bots-and-games/build-game"
+  link: "/tutorials/bots-and-games/build-game"
 ---
 
 # Mechanics of the Arena

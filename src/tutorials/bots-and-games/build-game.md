@@ -1,10 +1,10 @@
 ---
 prev:
   text: "Mechanics of the Arena"
-  link: "/guides/tutorials/bots-and-games/arena-mechanics"
+  link: "/tutorials/bots-and-games/arena-mechanics"
 next:
-  text: "aos"
-  link: "/guides/aos/index"
+  text: "Tutorials"
+  link: "/tutorials/index"
 ---
 
 # Expanding the Arena

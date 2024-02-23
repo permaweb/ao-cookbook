@@ -4,7 +4,7 @@ prev:
   link: "../index"
 next:
   text: "Getting Started"
-  link: "/guides/tutorials/getting-started/index"
+  link: "/tutorials/getting-started/index"
 ---
 
 # Tutorials
@@ -15,4 +15,4 @@ Here, we've created a series of tutorials to help you get started with aos and b
 
 - [Getting Started - An Interactive Guide](getting-started/index)
 
-- [Build Autonomous Agents](building-bots/index)
+- [Bots and Games](bots-and-games/index)

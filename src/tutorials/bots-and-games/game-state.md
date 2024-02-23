@@ -1,10 +1,10 @@
 ---
 prev:
   text: "Interpreting Announcements"
-  link: "/guides/tutorials/bots-and-games/announcements"
+  link: "/tutorials/bots-and-games/announcements"
 next:
   text: "Strategic Decicions"
-  link: "/guides/tutorials/bots-and-games/decisions"
+  link: "/tutorials/bots-and-games/decisions"
 ---
 
 # Fetching Game State

@@ -1,10 +1,10 @@
 ---
 prev:
   text: "DAO Guide"
-  link: "/guides/tutorials/dao"
+  link: "/tutorials/dao"
 next:
   text: "Let's Play A Game!"
-  link: "/guides/tutorials/bots-and-games/ao-effect"
+  link: "/tutorials/bots-and-games/ao-effect"
 ---
 
 # Chapter 2: Bots and Games
