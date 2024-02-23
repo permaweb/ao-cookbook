@@ -154,7 +154,7 @@ export const localeConfig = (langCode) => ({
                 ),
                 link: get_i18n_link(
                   langCode,
-                  "/tutorials/bots-and-games/bringing-togther",
+                  "/tutorials/bots-and-games/bringing-together",
                 ),
               },
               {
