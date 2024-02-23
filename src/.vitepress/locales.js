@@ -12,6 +12,10 @@ export const localeConfig = (langCode) => ({
   title: get_i18n_str(langCode, "title"),
   description: get_i18n_str(langCode, "description"),
   themeConfig: {
+    logo: {
+      light: { src: "/ao_pictograph_lightmode.svg", height: 26, width: 26 },
+      dark: { src: "/ao_pictograph_darkmode.svg", height: 26, width: 26 },
+    },
     socialLinks: [
       { icon: "github", link: "https://github.com/permaweb/ao-cookbook" },
     ],
