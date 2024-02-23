@@ -7,7 +7,7 @@ next:
   link: "/tutorials/bots-and-games/ao-effect"
 ---
 
-# Chapter 2: Bots and Games
+# Bots and Games
 
 Leveraging insights from our previous chapter, this section will guide you through the realm of automation with bots in aos and the construction of games. You will learn to create autonomous agents, using them to navigate and interact with game environments effectively.
 
