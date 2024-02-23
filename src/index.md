@@ -21,6 +21,6 @@ features:
     link: /concepts/index
 
   - title: Guides.
-    details: Bite size walkthrougs on specific features.
+    details: Bite size walkthroughs on specific features.
     link: /guides/index
 ---
