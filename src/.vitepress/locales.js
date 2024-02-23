@@ -33,36 +33,151 @@ export const localeConfig = (langCode) => ({
         ],
       },
       {
-        text: get_i18n_str(langCode, "concepts"),
-        link: get_i18n_link(langCode, "/concepts/"),
+        text: get_i18n_str(langCode, "tutorials"),
+        link: get_i18n_link(langCode, "/tutorials/index"),
         items: [
           {
-            text: get_i18n_str(langCode, "concepts-specs"),
-            link: get_i18n_link(langCode, "/concepts/specs"),
+            text: get_i18n_str(langCode, "tutorials-getting-started"),
+            link: get_i18n_link(langCode, "/tutorials/getting-started/index"),
+            items: [
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-getting-started-preparations",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/preparations",
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-getting-started-messaging",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/messaging",
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-getting-started-chatroom",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/chatroom",
+                ),
+              },
+              {
+                text: get_i18n_str(langCode, "tutorials-getting-started-token"),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/token",
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-getting-started-tokengating",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/getting-started/tokengating",
+                ),
+              },
+              {
+                text: get_i18n_str(langCode, "tutorials-getting-started-dao"),
+                link: get_i18n_link(langCode, "/tutorials/getting-started/dao"),
+              },
+            ],
           },
           {
-            text: get_i18n_str(langCode, "concepts-messages"),
-            link: get_i18n_link(langCode, "/concepts/messages"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-processes"),
-            link: get_i18n_link(langCode, "/concepts/processes"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-units"),
-            link: get_i18n_link(langCode, "/concepts/units"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-how-it-works"),
-            link: get_i18n_link(langCode, "/concepts/how-it-works"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-meet-lua"),
-            link: get_i18n_link(langCode, "/concepts/lua"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-tour"),
-            link: get_i18n_link(langCode, "/concepts/tour"),
+            text: get_i18n_str(langCode, "tutorials-bots-and-games"),
+            link: get_i18n_link(langCode, "/tutorials/bots-and-games/index"),
+            items: [
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-bots-and-games-ao-effect",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/bots-and-games/ao-effect",
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-bots-and-games-announcements",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/bots-and-games/announcements",
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-bots-and-games-game-state",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/bots-and-games/game-state",
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-bots-and-games-decisions",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/bots-and-games/decisions",
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-bots-and-games-attacking",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/bots-and-games/attacking",
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-bots-and-games-bringing-together",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/bots-and-games/bringing-togther",
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-bots-and-games-arena-mechanics",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/bots-and-games/arena-mechanics",
+                ),
+              },
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "tutorials-bots-and-games-build-game",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/tutorials/bots-and-games/build-game",
+                ),
+              },
+            ],
           },
         ],
       },
@@ -224,151 +339,36 @@ export const localeConfig = (langCode) => ({
         ],
       },
       {
-        text: get_i18n_str(langCode, "tutorials"),
-        link: get_i18n_link(langCode, "/tutorials/index"),
+        text: get_i18n_str(langCode, "concepts"),
+        link: get_i18n_link(langCode, "/concepts/"),
         items: [
           {
-            text: get_i18n_str(langCode, "tutorials-getting-started"),
-            link: get_i18n_link(langCode, "/tutorials/getting-started/index"),
-            items: [
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-getting-started-preparations",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/getting-started/preparations",
-                ),
-              },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-getting-started-messaging",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/getting-started/messaging",
-                ),
-              },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-getting-started-chatroom",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/getting-started/chatroom",
-                ),
-              },
-              {
-                text: get_i18n_str(langCode, "tutorials-getting-started-token"),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/getting-started/token",
-                ),
-              },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-getting-started-tokengating",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/getting-started/tokengating",
-                ),
-              },
-              {
-                text: get_i18n_str(langCode, "tutorials-getting-started-dao"),
-                link: get_i18n_link(langCode, "/tutorials/getting-started/dao"),
-              },
-            ],
+            text: get_i18n_str(langCode, "concepts-specs"),
+            link: get_i18n_link(langCode, "/concepts/specs"),
           },
           {
-            text: get_i18n_str(langCode, "tutorials-bots-and-games"),
-            link: get_i18n_link(langCode, "/tutorials/bots-and-games/index"),
-            items: [
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-bots-and-games-ao-effect",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/bots-and-games/ao-effect",
-                ),
-              },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-bots-and-games-announcements",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/bots-and-games/announcements",
-                ),
-              },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-bots-and-games-game-state",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/bots-and-games/game-state",
-                ),
-              },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-bots-and-games-decisions",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/bots-and-games/decisions",
-                ),
-              },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-bots-and-games-attacking",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/bots-and-games/attacking",
-                ),
-              },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-bots-and-games-bringing-together",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/bots-and-games/bringing-togther",
-                ),
-              },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-bots-and-games-arena-mechanics",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/bots-and-games/arena-mechanics",
-                ),
-              },
-              {
-                text: get_i18n_str(
-                  langCode,
-                  "tutorials-bots-and-games-build-game",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/tutorials/bots-and-games/build-game",
-                ),
-              },
-            ],
+            text: get_i18n_str(langCode, "concepts-messages"),
+            link: get_i18n_link(langCode, "/concepts/messages"),
+          },
+          {
+            text: get_i18n_str(langCode, "concepts-processes"),
+            link: get_i18n_link(langCode, "/concepts/processes"),
+          },
+          {
+            text: get_i18n_str(langCode, "concepts-units"),
+            link: get_i18n_link(langCode, "/concepts/units"),
+          },
+          {
+            text: get_i18n_str(langCode, "concepts-how-it-works"),
+            link: get_i18n_link(langCode, "/concepts/how-it-works"),
+          },
+          {
+            text: get_i18n_str(langCode, "concepts-meet-lua"),
+            link: get_i18n_link(langCode, "/concepts/lua"),
+          },
+          {
+            text: get_i18n_str(langCode, "concepts-tour"),
+            link: get_i18n_link(langCode, "/concepts/tour"),
           },
         ],
       },
