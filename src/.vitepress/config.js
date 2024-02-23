@@ -14,15 +14,7 @@ const config = defineConfig({
         content: "black",
       },
     ],
-    [
-      "link",
-      {
-        rel: "icon",
-        type: "image/ico",
-        sizes: "16x16",
-        href: "/favicon.ico",
-      },
-    ],
+    ["link", { rel: "icon", href: "/favicon.ico" }],
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
     ["link", { rel: "preconnect", href: "https://fonts.gstatic.com" }],
     [
