@@ -1,6 +1,6 @@
 # Messages
 
-ao Messages is the data protocol of ao, messages are designed from ANS-104 DataItems, so they are native to Arweave. The structure of a message when interacting in a ao Process looks like the following:
+The Message serves as the fundamental data protocol unit within ao, crafted from [ANS-104 DataItems](https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw), thereby aligning with the native structure of Arweave. When engaged in a Process, a Message is structured as follows:
 
 ```lua
 {
@@ -27,13 +27,13 @@ ao Messages is the data protocol of ao, messages are designed from ANS-104 DataI
 }
 ```
 
+This architecture merges the Assignment Type with the Message Type, granting the Process a comprehensive understanding of the Message's context for effective processing.
+
 When sending a message, here is a visual diagram of how the messages travels through the ao computer.
 
 ![Message Workflow](message-workflow-diagram.png)
 
-The message is posted to the MU (Messenger Unit), which verifies it is signed and sends it to the SU (Scheduler Unit), which assigns an Epoch and Nonce, and bundles the Message and publishes it to Arweave. Then the `aoconnect` library, reads the result from the CU (Compute Unit), the CU requests all the Messages up to this Message Id and evaluates them in the Compute Unit to calcuate the Result. Once evaluated it sends the Result Response to aoconnect, which is embedded in clients like `aos`.
-
-In the CU (Compute Unit) is where the Processes reside, lets learn more about processes.
+The message workflow initiates with the MU (Messenger Unit), where the message's signature is authenticated. Following this, the SU (Scheduler Unit) allocates an Epoch and Nonce to the message, bundles the message with an Assignment Type, and dispatches it to Arweave. Subsequently, the `aoconnect` library retrieves the outcome from the CU (Compute Unit). The CU then calls for all preceding messages leading up to the current Message Id from the SU (Scheduler Unit), processes them to deduce the result. Upon completion, the computed result is conveyed back to `aoconnect`, which is integrated within client interfaces such as `aos`.
 
 ## Summary
 

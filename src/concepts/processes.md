@@ -34,10 +34,8 @@ The core module contains a helper library that gets injected into the handler fu
 
 The main functions to look at in this `ao` helper is
 
-- ao.send(Message)
-- ao.spawn(Module, Message)
-
-And the main property is `ao.env`
+- ao.send(Message) - sends a message to a process
+- ao.spawn(Module, Message) - creates a new process
 
 ## ao.send Example
 
@@ -60,7 +58,9 @@ ao.spawn(ao.env.Module.Id, {
 
 ## ao.env
 
-The `ao.env` property contains the Process and Module Information
+> NOTE: `ao.env` is important context data that you may need as a developer creating processes.
+
+The `ao.env` property contains the `Process` and `Module` Reference Objects
 
 ```
 env = {
