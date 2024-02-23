@@ -8,7 +8,7 @@ hero:
   tagline: "Decentralized compute at any scale. Only possible on Arweave."
   actions:
     - theme: brand
-      text: Start Cooking!
+      text: Lets Go!
       link: /welcome/index
 
 features:
