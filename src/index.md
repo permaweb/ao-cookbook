@@ -13,7 +13,7 @@ hero:
 
 features:
   - title: Tutorials.
-    details: Follow step-by-step tutorials to start building on ao.
+    details: Follow the step-by-step tutorials to start building on ao.
     link: /guides/tutorials/index
 
   - title: Concepts.
@@ -21,6 +21,6 @@ features:
     link: /concepts/index
 
   - title: Guides.
-    details: Bite size walkthrougs on specific features.
+    details: Bite size walkthroughs on specific features.
     link: /guides/index
 ---
