@@ -11,45 +11,7 @@ ao Messages is the data protocol of ao, messages are designed from ANS-104 DataI
     Id = "ayVo53qvZswpvxLlhMf8xmGjwxN0LGuHzzQpTLT0_do",
     Nonce = 1,
     Owner = "z1pq2WzmaYnfDwvEFgUZBj48anUsxxN64ZjbWOsIn08",
-    Signature = "nXtO4fNC7rQ_b0sMp22A6cY68NQXGTnsqGqGcvhAWULSYpAbWVwL4PX_u6lPEMJE_SdMu-9Ci4ohR25Y-d7T4k3v_t3VaLCvyib9XsLFiJ_Py_S2d58BmbDSgtLA05vOatsjzmkRMf-xltMQdjkcvbJseELjKWyzstib7X6U-y4wKhLa9AG5-3IcsjsNMw0U8Dql5yGFPYspb__bAvkTAfHNpYa2bMgkwCsv727LsZ-yZKPMi5kyhnCVNN1gM7OLr679vn6kGr2BzCgXGyFHLfRDzBLrZESymVocsFuStlGQROwi1M2POzSqQLP3FM-ExdxsdsbaUwCRqbS3LTJ_aBLZcXX3kOUPW-uVR28r8pQUl7Gx3e-cU9Vu2xsuGisR1EpKF57cFitIMDU0hM8HOtGhOGh0Y2rrQ1rCOtgEdaKsMHIBIZl6EaJTJXZG05LmoqvfPx67L9wy9kLEeyTsy2sMS9z4ihje4C1RDY8SerfNXtO5ctzkY2QR46EQPK04-mDXa8mt4b3YWvPtbVYspfQUpKXxsD-u66j0Go_oVACcAWVne0VyD7MliUU2LJ7Id-ghNs8f-jn9dSYc86KADdkGmpPXOw6Qh9ND1wHrqPaano15V1rTsbAH6GiQqO0XXZtc6WDjHJShnKSSs0-5xJ-SgnDFSy8CE_S9worynk0",
-    TagArray = {
-        [1] = {
-            name = "Data-Protocol",
-            value = "ao"
-        },
-        [2] = {
-            name = "Variant",
-            value = "ao.TN.1"
-        },
-        [3] = {
-            name = "Type",
-            value = "Message"
-        },
-        [4] = {
-            name = "From-Process",
-            value = "5WzR7rJCuqCKEq02WUPhTjwnzllLjGu6SA7qhYpcKRs"
-        },
-        [5] = {
-            name = "From-Module",
-            value = "lXfdCypsU3BpYTWvupgTioLoZAEOZL2_Ihcqepz6RiQ"
-        },
-        [6] = {
-            name = "Data-Protocol",
-            value = "ao"
-        },
-        [7] = {
-            name = "Type",
-            value = "Message"
-        },
-        [8] = {
-            name = "Variant",
-            value = "ao.TN.1"
-        },
-        [9] = {
-            name = "From-Process",
-            value = "5WzR7rJCuqCKEq02WUPhTjwnzllLjGu6SA7qhYpcKRs"
-        }
-    },
+    Signature = "...",
     Tags = {
         Type = "Message",
         Variant = "ao.TN.1",
@@ -65,4 +27,14 @@ ao Messages is the data protocol of ao, messages are designed from ANS-104 DataI
 }
 ```
 
-See the spec for most of these, but one property, you will not find on the spec. It is the `From` property, this will either be the `Process` that sent the message or a `Signer`, if it is a `Signer` then the value will be the same as the `Owner` property.
+When sending a message, here is a visual diagram of how the messages travels through the ao computer.
+
+![Message Workflow](message-workflow-diagram.png)
+
+The message is posted to the MU (Messenger Unit), which verifies it is signed and sends it to the SU (Scheduler Unit), which assigns an Epoch and Nonce, and bundles the Message and publishes it to Arweave. Then the `aoconnect` library, reads the result from the CU (Compute Unit), the CU requests all the Messages up to this Message Id and evaluates them in the Compute Unit to calcuate the Result. Once evaluated it sends the Result Response to aoconnect, which is embedded in clients like `aos`.
+
+In the CU (Compute Unit) is where the Processes reside, lets learn more about processes.
+
+## Summary
+
+Messages serve as the primary data protocol type for the ao network, leveraging ANS-104 Data-Items native to Arweave. Messages contain several fields including data content, origin, target, and cryptographic elements like signatures and nonces. They follow a journey starting at the Messenger Unit (MU), which ensures they are signed, through the Scheduler Unit (SU) that timestamps and sequences them, before being bundled and published to Arweave. The `aoconnect` library then reads the result from the Compute Unit (CU), which processes messages to calculate results and sends responses back through `aoconnect`, utilized by clients such as `aos`. The CU is the execution environment for these processes.

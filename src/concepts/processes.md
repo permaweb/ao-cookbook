@@ -1,63 +1,31 @@
 # Processes
 
-Processes are long running compute that contains its own memory and its own logic, you can interact with processes by sending messages. A Process can send a message to another process, which gives the network interoperability without having to share a global state. Each Process manages its own state and can not see the outside world. The process must recieve messages in its inbox, react to those messages using handlers and send messages by dropping them in its outbox.
+Processes possess the capability to engage in communication via message passing, both receiving and dispatching messages within the network. Additionally, they hold the potential to instantiate further processes, enhancing the network's computational fabric. This dynamic method of data dissemination and interaction within the network is referred to as a 'holographic state,' underpinning the shared and persistent state of the network.
 
-The core module contains a helper library that gets injected into the handler function, this library is called ao.
+![Process-Diagram](process-diagram.png)
+
+When building a Process with `aos` you have the ability to add `handlers`, these handlers can be added by calling the `Handlers.add` function, passing a "name", a "match" function, and a "handle" function.
+
+![Handler Diagram](handler-diagram.png)
+
+The core module contains a helper library that gets injected into the handler function, this library is called `ao`.
 
 ```lua
 {
-    Output = "",
-    _module = "lXfdCypsU3BpYTWvupgTioLoZAEOZL2_Ihcqepz6RiQ",
-    _version = "0.0.3",
-    authorities = {},
-    clearOutbox = "function: 0x547720",
     env = {
         Process = {
             Id = "5WzR7rJCuqCKEq02WUPhTjwnzllLjGu6SA7qhYpcKRs",
             Owner = "_r9LpP4FtClpsGX3TOohubyaeb0IQTZZMcxQ24tTsGo",
-            Tags = {
-                [1] = {
-                    name = "Name",
-                    value = "Personal AOS"
-                },
-                [2] = {
-                    name = "Data-Protocol",
-                    value = "ao"
-                },
-                [3] = {
-                    name = "Variant",
-                    value = "ao.TN.1"
-                },
-                [4] = {
-                    name = "Type",
-                    value = "Process"
-                },
-                [5] = {
-                    name = "Module",
-                    value = "lXfdCypsU3BpYTWvupgTioLoZAEOZL2_Ihcqepz6RiQ"
-                },
-                [6] = {
-                    name = "Scheduler",
-                    value = "TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog"
-                },
-                [7] = {
-                    name = "SDK",
-                    value = "ao"
-                },
-                [8] = {
-                    name = "Content-Type",
-                    value = "text/plain"
-                }
-            }
+            Tags = {...}
+        },
+        Module = {
+            Id = "UAUszdznoUPQvXRbrFuIIH6J0N_LnJ1h4Trej28UgrE",
+            Owner = "_r9LpP4FtClpsGX3TOohubyaeb0IQTZZMcxQ24tTsGo",
+            Tags = {..}
         }
     },
     id = "5WzR7rJCuqCKEq02WUPhTjwnzllLjGu6SA7qhYpcKRs",
-    init = "function: 0x5469a0",
     isTrusted = "function: 0x5468d0",
-    outbox = {
-        Messages = {},
-        Spawns = {}
-    },
     result = "function: 0x547120",
     send = "function: 0x547618",
     spawn = "function: 0x5468b0"
@@ -69,4 +37,48 @@ The main functions to look at in this `ao` helper is
 - ao.send(Message)
 - ao.spawn(Module, Message)
 
-Both of these functions drop the messages in the outbox, when invoked and the outbox is made available for the `mu` to take those messages, sign them and crank them to their target processes.
+And the main property is `ao.env`
+
+## ao.send Example
+
+```lua
+ao.send({
+    Target = Chatroom,
+    Action = "Broadcast",
+    Data = "Hello from my Process!"
+})
+```
+
+## ao.spawn Example
+
+```lua
+ao.spawn(ao.env.Module.Id, {
+    ['Memory-Limit'] = "500-mb",
+    ['Compute-Limit"] = "900000000000000000"
+})
+```
+
+## ao.env
+
+The `ao.env` property contains the Process and Module Information
+
+```
+env = {
+    Process = {
+        Id = "5WzR7rJCuqCKEq02WUPhTjwnzllLjGu6SA7qhYpcKRs",
+        Owner = "_r9LpP4FtClpsGX3TOohubyaeb0IQTZZMcxQ24tTsGo",
+        Tags = {...}
+    },
+    Module = {
+        Id = "UAUszdznoUPQvXRbrFuIIH6J0N_LnJ1h4Trej28UgrE",
+        Owner = "_r9LpP4FtClpsGX3TOohubyaeb0IQTZZMcxQ24tTsGo",
+        Tags = {..}
+    }
+}
+```
+
+Both the `Process` and the `Module` contain the attributes of the `ao` Data-Protocol.
+
+## Summary
+
+Processes in the network communicate through message passing and can create new processes, contributing to a 'holographic state' of shared and persistent data. Developers can build a Process using `aos` by adding handlers through the `Handlers.add` function with specific name, match, and handle functions. The `ao` helper library within the core module aids in this process, providing functions like `ao.send` to dispatch messages and `ao.spawn` to create new modules, as well as the important `ao.env` property which contains essential Process and Module information. The `ao` Data-Protocol outlines the structure and attributes of these elements.
