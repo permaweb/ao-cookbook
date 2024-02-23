@@ -29,8 +29,7 @@ Now, let's get started [down the rabbit hole.](preparations)
 
 ### Getting Started - An Interactive Tutorial.
 
-- [1. Quick Start:](preparations)
+- [1. Quick Start](preparations)
 - [2. Messaging](messaging)
 - [3. Creating a Chatroom](chatroom)
 - [4. Build a Token](token)
-- [5. Starting a DAO](dao)

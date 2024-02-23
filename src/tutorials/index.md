@@ -1,7 +1,7 @@
 ---
 prev:
-  text: "Guides"
-  link: "../index"
+  text: "Welcome"
+  link: "/welcome/index"
 next:
   text: "Getting Started"
   link: "/tutorials/getting-started/index"
