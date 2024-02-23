@@ -36,7 +36,7 @@ aos
 
 ## Step 4: Store `Morpheus`'s Process ID
 
-We'll use the process ID provided below and create store it as a variable called `Morpheus`.
+We'll use the process ID provided below and store it as a variable called Morpheus.
 
 ```sh
 BWMGpzZilu7fKcPQEK80XmUZSZTvwZ8vRGnolkoGulw
@@ -50,7 +50,7 @@ Morpheus = "BWMGpzZilu7fKcPQEK80XmUZSZTvwZ8vRGnolkoGulw"
 
 This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specifid process ID.
 
-After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a paralell process running in ao. He receives and sends messages using a series of Handlers. Let's send him a message and see what happens.
+After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a parellel process running in ao. He receives and sends messages using a series of Handlers. Let's send him a message and see what happens.
 
 ::: info
 When creating the `Morpheus` variable, the only response you should see is `undefined`. This is expected. To check if the variable was created successfully, type `Morpheus` and press Enter. You should see the process ID you stored.
@@ -62,7 +62,7 @@ When creating the `Morpheus` variable, the only response you should see is `unde
 # Check the Morpheus variable by typing `Morpheus`
 aos> Morpheus
 # Expected Results:
-BWMGpzZilu7fKcPQEK80XmUZSZTvwZ8vRGnolkoGulw
+oJWGYU3QwhtnY08TC3yBlSTEhqv_LfCDhvyZYRQUsSk
 aos>
 
 # If `undefined` is returned,
@@ -71,7 +71,7 @@ aos>
 
 ## Step 5: Send a Message to Morpheus
 
-After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a paralell process running in ao. He receives and sends messages using a series of Handlers. Let's send hi a message and see what happens.
+After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a parallel process running in ao. He receives and sends messages using a series of Handlers. Let's send hi a message and see what happens.
 
 ```lua
 Send({ Target = Morpheus, Data = "morpheus?" })
