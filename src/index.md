@@ -14,7 +14,7 @@ hero:
 features:
   - title: Tutorials.
     details: Follow the step-by-step tutorials to start building on ao.
-    link: /guides/tutorials/index
+    link: /tutorials/index
 
   - title: Concepts.
     details: Learn how the ao network works under the hood.
