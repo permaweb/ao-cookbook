@@ -187,7 +187,7 @@ ao.send({
 })
 ```
 
-The line `if not msg.Tags.Cast then` Means were not producing any messages to crank if the Cast tag was set. This is part of the ao protocol.
+The line `if not msg.Tags.Cast then` Means were not producing any messages to push if the Cast tag was set. This is part of the ao protocol.
 
 ### **Step 4: Mint Handler**
 

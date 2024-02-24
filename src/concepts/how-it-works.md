@@ -24,4 +24,4 @@ Here is a description of the process as outlined in the flowchart:
 
 5. A GET request is made to the `su` service to retrieve information. This request is looking for messages from a process ID, within a range of time from a start (from*) to an end (to*).
 
-6. The final step is to crank any outbox Messages. It involves reviewing the messages and spawns in the Result Object. Based on the outcome of this check, the steps 2, 3, and 4 may be repeated for each relevant message or spawn.
+6. The final step is to push any outbox Messages. It involves reviewing the messages and spawns in the Result Object. Based on the outcome of this check, the steps 2, 3, and 4 may be repeated for each relevant message or spawn.
