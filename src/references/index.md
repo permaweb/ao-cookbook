@@ -1,7 +1,7 @@
 ---
 prev:
-  text: "Tutorials"
-  link: "/tutorials/index"
+  text: "Concepts"
+  link: "/concepts/index"
 next:
   text: "Getting Started"
   link: "/references/lua"

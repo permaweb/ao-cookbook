@@ -1,3 +1,12 @@
+---
+prev:
+  text: "Guides"
+  link: "/guides/index"
+next:
+  text: "References"
+  link: "/references/index"
+---
+
 # Concepts
 
 ao has a lot of concepts built into the design, but the core concepts are very simple principles:

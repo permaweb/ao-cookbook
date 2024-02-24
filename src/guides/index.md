@@ -1,10 +1,10 @@
 ---
 prev:
-  text: "Welcome"
-  link: "../welcome/index"
-next:
   text: "Tutorials"
-  link: "/guides/tutorials/index"
+  link: "../tutorials/index"
+next:
+  text: "Concepts"
+  link: "/concepts/index"
 ---
 
 # Guides
