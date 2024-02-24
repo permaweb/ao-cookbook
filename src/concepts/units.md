@@ -59,7 +59,7 @@ In ao we have the `Messager Unit` or `MU`, and the `Scheduler Unit` or `SU`, and
 
 ![MU](MU-diagram.png)
 
-- Messager Unit - This unit is the front door to ao, it receives all the messages from the outside and as well as directs traffic flow for Processes. This traffic flow we call `cranking`. Each process can return an Outbox when it evaluates a Message, and this Outbox can be filled with Messages or requests to Spawn new processes, and the Messenger Unit is responsible for extracting these Messages from the Outbox and signing them and sending them to the Scheduler Units for processing.
+- Messager Unit - This unit is the front door to ao, it receives all the messages from the outside and as well as directs traffic flow for Processes. This traffic flow we call `pushing`. Each process can return an Outbox when it evaluates a Message, and this Outbox can be filled with Messages or requests to Spawn new processes, and the Messenger Unit is responsible for extracting these Messages from the Outbox and signing them and sending them to the Scheduler Units for processing.
 
 ![SU Diagram](SU-diagram.png)
 
@@ -67,7 +67,7 @@ In ao we have the `Messager Unit` or `MU`, and the `Scheduler Unit` or `SU`, and
 
 ![CU Diagram](CU-diagram.png)
 
-- Compute Unit - The Compute unit is responsible for compute, this unit loads the binary module and manages the memory of that module, so that the execution of the process is alway running on the most up to date memory. The compute unit provides the results of the evaluation back to the the messenger unit, which can then crank any messages in the outbox of the given process.
+- Compute Unit - The Compute unit is responsible for compute, this unit loads the binary module and manages the memory of that module, so that the execution of the process is alway running on the most up to date memory. The compute unit provides the results of the evaluation back to the the messenger unit, which can then push any messages in the outbox of the given process.
 
 ## Summary
 
