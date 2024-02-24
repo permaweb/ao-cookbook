@@ -30,8 +30,7 @@ If you have done so yet, take 15 minutes and go through our [tutorials](../../tu
 - [Editor Setup](editor)
 - [Troubleshooting with aoScan](troubleshooting)
 - [Understanding the Inbox](inbox-and-handlers)
-- [Working with Lua Tables and JSON](tables-and-json)
-- [Understanding Ownership](ownership)
+- [Frequently Asked Questions](faq)
 
 ### [**Modules**](modules/index)
 

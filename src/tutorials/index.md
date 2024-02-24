@@ -3,8 +3,8 @@ prev:
   text: "Welcome"
   link: "/welcome/index"
 next:
-  text: "Getting Started"
-  link: "/tutorials/getting-started/index"
+  text: "Guides"
+  link: "/guides/index"
 ---
 
 # Tutorials
