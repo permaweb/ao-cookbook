@@ -58,7 +58,7 @@ const actions = {
      */
     manifest.paths["assets/chunks/theme.b4WnDNzP.js"] = { id: THEME_TX_ID };
 
-    writeFileSync(LOCAL_MANIFEST, JSON.stringify(manifest));
+    writeFileSync(LOCAL_MANIFEST, JSON.stringify(manifest, null, 2));
   },
 };
 

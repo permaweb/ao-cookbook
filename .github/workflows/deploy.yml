@@ -161,7 +161,7 @@ jobs:
             -f "${FOLDER_ID}" \
             -w "${WALLET}" \
             --dry-run \
-            jq '{manifest}.manifest' > ${LOCAL_MANIFEST}
+            | jq '{manifest}.manifest' > ${LOCAL_MANIFEST}
 
           npm run shim-manifest
 
