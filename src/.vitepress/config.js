@@ -24,21 +24,6 @@ const config = defineConfig({
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap",
       },
     ],
-    /**
-     * See https://github.com/permaweb/ao-cookbook/issues/83
-     *
-     * For now, we've manually uploaded this file separately, then include
-     * it in the header using this config
-     *
-     * assets/chunks/theme.b4WnDNzP.js -> hN2dnfuji-Z56CxJ-T0Y1sZ-jTuSJUkU2q26DDGBJl0
-     */
-    [
-      "link",
-      {
-        rel: "modulepreload",
-        href: "https://arweave.net/hN2dnfuji-Z56CxJ-T0Y1sZ-jTuSJUkU2q26DDGBJl0.js",
-      },
-    ],
   ],
 
   markdown: {
