@@ -147,12 +147,36 @@ jobs:
 
           echo "Generating Manifest..."
 
+          # ARDRIVE_MANIFEST_RESULTS=$(\
+          #   ardrive create-manifest \
+          #     --turbo \
+          #     -f "${FOLDER_ID}" \
+          #     -w "${WALLET}"
+          # )
+
+          echo "##### CUSTOM MANIFEST SHIM #####"
+
+          ardrive create-manifest \
+            --turbo \
+            -f "${FOLDER_ID}" \
+            -w "${WALLET}" \
+            --dry-run \
+            jq '{manifest}.manifest' > ${LOCAL_MANIFEST}
+
+          npm run shim-manifest
+
+          echo "Uploading shimmed manifest..."
+
           ARDRIVE_MANIFEST_RESULTS=$(\
-            ardrive create-manifest \
+            ardrive upload-file \
               --turbo \
-              -f "${FOLDER_ID}" \
+              --parent-folder-id "${FOLDER_ID}" \
+              --local-path ${LOCAL_MANIFEST} \
+              --content-type "application/x.arweave-manifest+json" \
               -w "${WALLET}"
           )
+
+          echo "##### END CUSTOM MANIFEST SHIM #####"
 
           echo "${ARDRIVE_MANIFEST_RESULTS}"
 
@@ -169,3 +193,5 @@ jobs:
           ARTIFACTS_HASH: ${{ steps.build_artifacts.outputs.artifacts_hash }}
           ARTIFACTS_OUTPUT_DIR: ${{ steps.build_artifacts.outputs.artifacts_output_dir }}
           ARDRIVE_FOLDER_ID: ${{ secrets.CLI_ARDRIVE_FOLDER_ID }}
+          LOCAL_MANIFEST: DriveManifest.json
+          THEME_TX_ID: hN2dnfuji-Z56CxJ-T0Y1sZ-jTuSJUkU2q26DDGBJl0
