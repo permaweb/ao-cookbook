@@ -206,8 +206,8 @@ AverageMaxStrengthHitsToKill = 3 -- Average number of hits to eliminate a player
 -- @return Table representing player's initial state
 function playerInitState()
     return {
-        x = math.random(Width/8),
-        y = math.random(Height/8),
+        x = math.random(0, Width/8),
+        y = math.random(0, Height/8),
         health = 100,
         energy = 0
     }

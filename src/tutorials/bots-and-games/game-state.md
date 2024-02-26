@@ -22,7 +22,7 @@ Go back to your `bot.lua` file and update your existing handler as follows:
 ```lua
 Handlers.add(
   "HandleAnnouncements",
-  Handlers.utils.hasMatchingTag("Action", "Announcements"),
+  Handlers.utils.hasMatchingTag("Action", "Announcement"),
   function (msg)
     ao.send({Target = Game, Action = "GetGameState"})
     print(msg.Event .. ": " .. msg.Data)
@@ -68,6 +68,7 @@ Handlers.add(
     local json = require("json")
     LatestGameState = json.decode(msg.Data)
     ao.send({Target = ao.id, Action = "UpdatedGameState"})
+    print("Game state updated. Print \'LatestGameState\' for detailed view.")
   end
 )
 ```
@@ -86,7 +87,7 @@ LatestGameState = LatestGameState or nil
 
 Handlers.add(
 "HandleAnnouncements",
-Handlers.utils.hasMatchingTag("Action", "Announcements"),
+Handlers.utils.hasMatchingTag("Action", "Announcement"),
 function (msg)
   ao.send({Target = Game, Action = "GetGameState"})
   print(msg.Event .. ": " .. msg.Data)
@@ -100,6 +101,7 @@ function (msg)
   local json = require("json")
   LatestGameState = json.decode(msg.Data)
   ao.send({Target = ao.id, Action = "UpdatedGameState"})
+  print("Game state updated. Print \'LatestGameState\' for detailed view.")
 end
 )
 ```

@@ -99,9 +99,10 @@ GameTime = GameTime or 20 * 60 * 1000 -- 20 minutes
 Now = Now or undefined -- Current time, updated on every message.
 
 -- Token information for player stakes.
+UNIT = 1000
 PaymentToken = PaymentToken or "ADDR"  -- Token address
-PaymentQty = PaymentQty or 1           -- Quantity of tokens for registration
-BonusQty = BonusQty or 1               -- Bonus token quantity for winners
+PaymentQty = PaymentQty or tostring(math.floor(UNIT))    -- Quantity of tokens for registration
+BonusQty = BonusQty or tostring(math.floor(UNIT))        -- Bonus token quantity for winners
 
 -- Players waiting to join the next game and their payment status.
 Waiting = Waiting or {}
@@ -117,19 +118,6 @@ MinimumPlayers = MinimumPlayers or 2
 -- Default player state initialization.
 PlayerInitState = PlayerInitState or {}
 
--- Log storage for debugging.
-Logs = Logs or {}
-
--- Functions for game and player management.
-
--- Adds logs for debugging purposes. Calls are currently commented out but can be activated for detailed debugging.
--- @param msg: The log category or identifier.
--- @param text: The log message.
-function addLog(msg, text) -- Function definition commented for performance, can be used for debugging
-  Logs[msg] = Logs[msg] or {}
-  table.insert(Logs[msg], text)
-end
-
 -- Sends a state change announcement to all registered listeners.
 -- @param event: The event type or name.
 -- @param description: Description of the event.
@@ -142,6 +130,7 @@ function announce(event, description)
             Data = description
         })
     end
+    return print(Colors.gray .. "Announcement: " .. Colors.red .. event .. " " .. Colors.blue .. description .. Colors.reset)
 end
 
 -- Sends a reward to a player.
@@ -149,6 +138,9 @@ end
 -- @param qty: The quantity of the reward.
 -- @param reason: The reason for the reward.
 function sendReward(recipient, qty, reason)
+    if type(qty) ~= number then
+      qty = tonumber(qty)
+    end
     ao.send({
         Target = PaymentToken,
         Action = "Transfer",
@@ -156,6 +148,12 @@ function sendReward(recipient, qty, reason)
         Recipient = recipient,
         Reason = reason
     })
+    return print(Colors.gray .. "Sent Reward: " ..
+      Colors.blue .. tostring(qty) ..
+      Colors.gray .. ' tokens to ' ..
+      Colors.green .. recipient .. " " ..
+      Colors.blue .. reason .. Colors.reset
+    )
 end
 
 -- Starts the waiting period for players to become ready to play.
@@ -163,8 +161,7 @@ function startWaitingPeriod()
     GameMode = "Waiting"
     StateChangeTime = Now + WaitTime
     announce("Started-Waiting-Period", "The game is about to begin! Send your token to take part.")
-    -- Logs cleared at the start of the waiting period.
-    -- Logs = {}
+    print('Starting Waiting Period')
 end
 
 -- Starts the game if there are enough players.
@@ -175,8 +172,6 @@ function startGamePeriod()
             paidPlayers = paidPlayers + 1
         end
     end
-
-    -- addLog("StartGamePeriod", "Paid players: " .. paidPlayers) -- Useful for debugging player count
 
     if paidPlayers < MinimumPlayers then
         announce("Not-Enough-Players", "Not enough players registered! Restarting...")
@@ -193,8 +188,6 @@ function startGamePeriod()
     LastTick = undefined
     GameMode = "Playing"
     StateChangeTime = Now + GameTime
-    announce("Started-Game", "The game has started. Good luck!")
-
     for player, hasPaid in pairs(Waiting) do
         if hasPaid then
             Players[player] = playerInitState()
@@ -207,14 +200,14 @@ function startGamePeriod()
             removeListener(player) -- Removing player from listener if they didn't pay
         end
     end
+    announce("Started-Game", "The game has started. Good luck!")
+    print("Game Started....")
 end
 
 -- Handles the elimination of a player from the game.
 -- @param eliminated: The player to be eliminated.
 -- @param eliminator: The player causing the elimination.
 function eliminatePlayer(eliminated, eliminator)
-    -- addLog("EliminatePlayer", "Eliminating player: " .. eliminated .. " by: " .. eliminator) -- Useful for tracking eliminations
-
     sendReward(eliminator, PaymentQty, "Eliminated-Player")
     Waiting[eliminated] = false
     Players[eliminated] = nil
@@ -231,26 +224,30 @@ function eliminatePlayer(eliminated, eliminator)
     for player, _ in pairs(Players) do
         playerCount = playerCount + 1
     end
+    print("Eliminating player: " .. eliminated .. " by: " .. eliminator) -- Useful for tracking eliminations
 
     if playerCount < MinimumPlayers then
         endGame()
     end
+
 end
 
 -- Ends the current game and starts a new one.
 function endGame()
+    print("Game Over")
+
     Winners = 0
-    Winnings = BonusQty / Winners -- Calculating winnings per player
+    Winnings = tonumber(BonusQty) / Winners -- Calculating winnings per player
 
     for player, _ in pairs(Players) do
         Winners = Winners + 1
     end
 
-    Winnings = BonusQty / Winners
+    Winnings = tonumber(BonusQty) / Winners
 
     for player, _ in pairs(Players) do
         -- addLog("EndGame", "Sending reward of:".. Winnings + PaymentQty .. "to player: " .. player) -- Useful for tracking rewards
-        sendReward(player, Winnings + PaymentQty, "Win")
+        sendReward(player, Winnings + tonumber(PaymentQty), "Win")
         Waiting[player] = false
     end
 
@@ -266,12 +263,10 @@ function removeListener(listener)
     for i, v in ipairs(Listeners) do
         if v == listener then
             idx = i
-            -- addLog("removeListener", "Found listener: " .. listener .. " at index: " .. idx) -- Useful for tracking listener removal
             break
         end
     end
     if idx > 0 then
-        -- addLog("removeListener", "Removing listener: " .. listener .. " at index: " .. idx) -- Useful for tracking listener removal
         table.remove(Listeners, idx)
     end
 end
@@ -282,7 +277,7 @@ end
 Handlers.add(
     "Game-State-Timers",
     function(Msg)
-        return true
+        return "continue"
     end,
     function(Msg)
         Now = Msg.Timestamp
@@ -293,7 +288,9 @@ Handlers.add(
                 startGamePeriod()
             end
         elseif GameMode == "Playing" then
-            onTick()
+            if onTick and type(onTick) == "function" then
+              onTick()
+            end
             if Now > StateChangeTime then
                 endGame()
             end
@@ -308,7 +305,7 @@ Handlers.add(
         return
             Msg.Action == "Credit-Notice" and
             Msg.From == PaymentToken and
-            tonumber(Msg.Quantity) >= PaymentQty
+            tonumber(Msg.Quantity) >= tonumber(PaymentQty) and "continue"
     end,
     function(Msg)
         Waiting[Msg.Sender] = true
@@ -334,7 +331,7 @@ Handlers.add(
             Target = Msg.From,
             Action = "Registered"
         })
-        announce("New Player Registered", Msg.Sender .. " has joined in waiting.")
+        announce("New Player Registered", Msg.From .. " has joined in waiting.")
     end
 )
 
@@ -356,7 +353,7 @@ Handlers.add(
     "AddBet",
     Handlers.utils.hasMatchingTag("Reason", "AddBet"),
     function(Msg)
-        BonusQty = BonusQty + tonumber(Msg.Tags.Quantity)
+        BonusQty = tonumber(BonusQty) + tonumber(Msg.Tags.Quantity)
         announce("Bet-Added", Msg.From .. "has placed a bet. " .. "BonusQty amount increased by " .. Msg.Tags.Quantity .. "!")
     end
 )
@@ -387,9 +384,9 @@ Handlers.add(
     function (Msg)
         local TimeRemaining = StateChangeTime - Now
         if GameMode == "Waiting" then
-            announce("Tick: ", "The game will start in " .. (TimeRemaining/1000) .. " seconds.")
+            announce("Tick", "The game will start in " .. (TimeRemaining/1000) .. " seconds.")
         elseif GameMode == "Playing" then
-            announce("Tick: ", "The game will end in " .. (TimeRemaining/1000) .. " seconds.")
+            announce("Tick", "The game will end in " .. (TimeRemaining/1000) .. " seconds.")
         end
     end
 )
@@ -399,12 +396,12 @@ Handlers.add(
     "RequestTokens",
     Handlers.utils.hasMatchingTag("Action", "RequestTokens"),
     function (Msg)
+        print("Transfering Tokens: " .. tostring(math.floor(10000 * UNIT)))
         ao.send({
-            Target = PaymentToken,
+            Target = ao.id,
             Action = "Transfer",
-            Quantity = tostring("10000"),
+            Quantity = tostring(math.floor(10000 * UNIT)),
             Recipient = Msg.From,
-            Reason = "Token Request"
         })
     end
 )

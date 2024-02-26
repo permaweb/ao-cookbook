@@ -45,7 +45,7 @@ aos
    Let's keep our game server ID handy for quick access:
 
 ```lua
-Game = "game_process_id"
+Game = "3HSmhQ-lHaCQlOKtq5GDgbVQXQ6mWIp40uUASAG13Xk"
 ```
 
 And voilà! You're all set to join the game.
@@ -75,7 +75,7 @@ Send({ Target = Game, Action = "RequestToken"})
 Once you receive the tokens, confirm your spot by paying the game's entry fee like this:
 
 ```lua
-Send({ Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1"})
+Send({ Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1000000"})
 ```
 
 Wait for a few seconds, and you'll see live updates in your terminal about player payments and statuses.
