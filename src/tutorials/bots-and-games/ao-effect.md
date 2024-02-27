@@ -69,13 +69,13 @@ This places you in the `Waiting` Lobby. A small fee is needed to confirm your sp
 In order to confirm your spot you need some tokens. You can acquire them by sending the following message to the game:
 
 ```lua
-Send({ Target = Game, Action = "RequestToken"})
+Send({ Target = Game, Action = "RequestTokens"})
 ```
 
 Once you receive the tokens, confirm your spot by paying the game's entry fee like this:
 
 ```lua
-Send({ Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1000000"})
+Send({ Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1000"})
 ```
 
 Wait for a few seconds, and you'll see live updates in your terminal about player payments and statuses.
