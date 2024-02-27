@@ -149,6 +149,7 @@ jobs:
 
           CHUNKS_FOLDER=$(\
             ardrive list-folder \
+              --all \
               --parent-folder-id "${FOLDER_ID}" \
               | jq -r '.[] | select(.path | endswith("assets/chunks")) | .entityId'
           )
