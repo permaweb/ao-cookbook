@@ -31,8 +31,12 @@ export const localeConfig = (langCode) => ({
         link: get_i18n_link(langCode, "/welcome/index"),
         items: [
           {
-            text: get_i18n_str(langCode, "getting-started"),
-            link: get_i18n_link(langCode, "/getting-started/index"),
+            text: get_i18n_str(langCode, "welcome-getting-started"),
+            link: get_i18n_link(langCode, "/welcome/getting-started"),
+          },
+          {
+            text: get_i18n_str(langCode, "welcome-testnet-info"),
+            link: get_i18n_link(langCode, "/welcome/testnet-info"),
           },
         ],
       },

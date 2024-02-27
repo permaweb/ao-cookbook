@@ -1,12 +1,3 @@
----
-prev:
-  text: "Welcome"
-  link: "/welcome/index"
-next:
-  text: "Tutorials"
-  link: "/tutorials/index"
----
-
 # Get started in 5 minutes
 
 In less than 5 mins, we'll walk you through the process of taking your first peak into the rabbit hole. 🕳️🐇
@@ -110,7 +101,3 @@ There is so much more to it, but these are the basics. Welcome to the ao compute
 ## Next Steps
 
 In the tutorials that follow, we will explore ao and build everything from chatrooms to autonomous, decentralized bots. Let's go!
-
-- [Tutorials](../tutorials/index)
-- [Concepts](../concepts/index)
-- [References](../references/index)
