@@ -49,7 +49,7 @@ You should see a new list of handlers that have been loaded into your `aos` proc
 
 ### Testing the Token
 
-Now that the token blueprint is loaded, we can test the token by sending a message to ourselves using the `Action = "info"` tag.
+Now that the token blueprint is loaded, we can test the token by sending a message to ourselves using the `Action = "Info"` tag.
 
 ```sh
 aos> Send({ Target = ao.id, Action = "Info" })
@@ -67,16 +67,16 @@ This will print the token information to the console. It should show your proces
 
 ### Sending Tokens to Trinity
 
-Now that we've tested the token and it's working as expected, we can send some tokens to `Trinity`. We'll send 1000 tokens to `Trinity` using the `Action = "transfer"` tag.
+Now that we've tested the token and it's working as expected, we can send some tokens to `Trinity`. We'll send 1000 tokens to `Trinity` using the `Action = "Transfer"` tag.
 
 ```sh
-aos> Send({ Target = "Trinity", Tags = { Action = "transfer", Quantity = 1000 }})
+aos> Send({ Target = "Trinity", Action = "Transfer", Quantity = 1000 })
 ```
 
 When `Trinity` receives the tokens, she'll respond to the transfer with a message to confirm that she's received the tokens.
 
 Her response will look something like this:
 
-`Trinity:` "Hmmm... This one shows promise. I think we are ready for the next step. let's use this token to tokengate our chatroom."
+`Trinity:` "Token received. Interesting. I wasn't sure you'd make it this far. I'm impressed, but we are not done yet. I want you to use this token to tokengate the chatroom. Do that, and then I will believe you could be the one."
 
 You've completed the process of creating a token and sending it to `Trinity`. You're now ready to move on to the next step in the tutorial. [Tokengating the Chatroom](tokengating).
