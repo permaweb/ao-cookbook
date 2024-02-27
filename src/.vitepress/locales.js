@@ -344,15 +344,19 @@ export const localeConfig = (langCode) => ({
                   "/guides/aoconnect/spawning-processes",
                 ),
               },
-            ],
-          },
-          {
-            text: get_i18n_str(langCode, "guides-debugging"),
-            link: get_i18n_link(langCode, "/guides/debugging/debugging"),
-            items: [
               {
-                text: get_i18n_str(langCode, "guides-tracing"),
-                link: get_i18n_link(langCode, "/guides/debugging/tracing"),
+                text: get_i18n_str(langCode, "guides-calling-dryrun"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/aoconnect/calling-dryrun",
+                ),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-monitoring-cron"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/aoconnect/monitoring-cron",
+                ),
               },
             ],
           },

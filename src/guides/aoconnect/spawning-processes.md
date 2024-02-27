@@ -9,7 +9,7 @@ You must also have the wallet address of a Scheduler Unit (SU). This specified S
 ## Wallet address of an available Scheduler
 
 ```sh
-TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog
+fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY
 ```
 
 ## Spawning a Process in NodeJS
