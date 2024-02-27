@@ -145,6 +145,24 @@ jobs:
             sleep 2
           done
 
+          echo "##### UPLOAD THEME FILE SHIM #####"
+
+          CHUNKS_FOLDER=$(\
+            ardrive list-folder \
+              --parent-folder-id "${FOLDER_ID}" \
+              | jq -r '.[] | select(.path | endswith("assets/chunks")) | .entityId'
+          )
+
+          echo "${CHUNKS_FOLDER}"
+
+          ardrive upload-file \
+            --turbo \
+            --parent-folder-id "${CHUNKS_FOLDER}" \
+            --local-path "${ARTIFACTS_OUTPUT_DIR}"/assets/chunks/theme.js \
+            -w "${WALLET}"
+
+          echo "##### END THEME FILE SHIM #####"
+
           echo "Generating Manifest..."
 
           ARDRIVE_MANIFEST_RESULTS=$(\
