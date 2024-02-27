@@ -22,7 +22,7 @@ Replace the original `broadcast` handler with the following code:
 
 ```lua
 Handlers.add(
-    "Broadcast",
+    "broadcast",
     Handlers.utils.hasMatchingTag("Action", "Broadcast"),
     function(m)
         if Balances[m.From] < 1 then
@@ -35,7 +35,7 @@ Handlers.add(
             ao.send({
                 Target = Members[i].Address,
                 Nickname = Members[i].Nickname,
-                Action = "Broadcast",
+                Action = "Broadcasted",
                 Broadcaster = m.From,
                 Data = m.Data
             })
