@@ -1,9 +1,5 @@
 # Building a Chatroom in aos
 
-:::warning
-This tutorial is actively under development and the content is subject to change.
-:::
-
 ::: info
 If you've found yourself wanting to learn how to create a chatroom within `ao`, then that means we understand at least the basic methodology of sending and receiving messages. If not, it's suggested that you review the [Messaging](messaging) tutorial before proceeding.
 :::
@@ -76,20 +72,20 @@ The register handler will allow processes to join the chatroom.
 
 1. **Modify `chatroom.lua`** to include a handler for `Members` to register to the chatroom with the following code:
 
-   ````lua
+   ```lua
 
-   - Modify `chatroom.lua` to include a handler for `Members` to register to the chatroom with the following code:
+   -- Modify `chatroom.lua` to include a handler for `Members`
+   -- to register to the chatroom with the following code:
 
-     ```lua
      Handlers.add(
-       "register",
+       "Register",
        Handlers.utils.hasMatchingTag("Action", "Register"),
        function (msg)
          table.insert(Members, msg.From)
          Handlers.utils.reply("registered")(msg)
        end
      )
-   ````
+   ```
 
    ![Register Handler](/chatroom5.png)
 
@@ -107,12 +103,12 @@ The register handler will allow processes to join the chatroom.
 
    ![Checking the Handlers List](/chatroom6.png)
 
-   This will return a list of all the handlers in the chatroom. Since this is most likely your first time developing in `aos`, you should only see one handler with the name `register`.
+   This will return a list of all the handlers in the chatroom. Since this is most likely your first time developing in `aos`, you should only see one handler with the name `Register`.
 
    - Let's test the registration process by registering ourselves to the chatroom:
 
    ```lua
-    Send({ Target = ao.id, Action = "register" })
+    Send({ Target = ao.id, Action = "Register" })
    ```
 
    If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `registered`.
@@ -133,7 +129,7 @@ The register handler will allow processes to join the chatroom.
 
 Now that you've successfully registered yourself to the chatroom, let's invite Morpheus to join us. To do this, we'll send an invite to him that will allow him to register to the chatroom.
 
-Morpheus is an autonomous agent with a handler that will respond to the tag `Action = "Join"`, in which will then have him use your `register` tag to register to the chatroom.
+Morpheus is an autonomous agent with a handler that will respond to the tag `Action = "Join"`, in which will then have him use your `Register` tag to register to the chatroom.
 
 - Let's send Morpheus an invitation to join the chatroom:
   ```lua
