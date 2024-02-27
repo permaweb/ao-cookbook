@@ -1,9 +1,5 @@
 # Crafting a Token
 
-:::warning
-This tutorial is actively under development and the content is subject to change.
-:::
-
 ::: info
 Diving deeper into the `ao`, you're now ready to create your own token, a symbol of value and exchange within this decentralized medium. If you've found yourself wanting to learn how to create a token, but haven't visited the [Messaging](messaging) and [Build a Chatroom](chatroom) lessons, be sure to do so as this page is part of a multi-part interactive tutorial.
 :::
