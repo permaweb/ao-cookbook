@@ -28,11 +28,27 @@ This module can now be used from NodeJS as well as a browser, it can be included
 #### ESM (Node & Browser) aka type: `module`
 
 ```js
-import { spawn, message, result } from "@permaweb/aoconnect";
+import {
+  result,
+  results,
+  message,
+  spawn,
+  monitor,
+  unmonitor,
+  dryrun,
+} from "@permaweb/aoconnect";
 ```
 
 #### CJS (Node) type: `commonjs`
 
 ```js
-const { spawn, message, result } = require("@permaweb/aoconnect");
+const {
+  result,
+  results,
+  message,
+  spawn,
+  monitor,
+  unmonitor,
+  dryrun,
+} = require("@permaweb/aoconnect");
 ```

@@ -8,7 +8,15 @@ You may want to do this if you want to know which MU is being called when you se
 
 ```js
 // Here aoconnect will implicitly use the default nodes/units
-import { spawn, message, result } from "@permaweb/aoconnect";
+import {
+  result,
+  results,
+  message,
+  spawn,
+  monitor,
+  unmonitor,
+  dryrun,
+} from "@permaweb/aoconnect";
 ```
 
 ## Connecting to a specific MU, CU, and gateway
@@ -16,11 +24,13 @@ import { spawn, message, result } from "@permaweb/aoconnect";
 ```js
 import { connect } from "@permaweb/aoconnect";
 
-const { spawn, message, result } = connect({
-  MU_URL: "https://ao-mu-1.onrender.com",
-  CU_URL: "https://ao-cu-1.onrender.com",
-  GATEWAY_URL: "https://g8way.io",
-});
+const { result, results, message, spawn, monitor, unmonitor, dryrun } = connect(
+  {
+    MU_URL: "https://mu.ao-testnet.xyz",
+    CU_URL: "https://cu.ao-testnet.xyz",
+    GATEWAY_URL: "https://arweave.net",
+  },
+);
 
 // now spawn, message, and result can be used the same way as if they were imported directly
 ```
@@ -32,7 +42,9 @@ const { spawn, message, result } = connect({
 ```js
 import { connect } from "@permaweb/aoconnect";
 
-const { spawn, message, result } = connect({
-  MU_URL: "https://ao-mu-1.onrender.com",
-});
+const { result, results, message, spawn, monitor, unmonitor, dryrun } = connect(
+  {
+    MU_URL: "https://ao-mu-1.onrender.com",
+  },
+);
 ```
