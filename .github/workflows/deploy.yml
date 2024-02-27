@@ -145,57 +145,57 @@ jobs:
             sleep 2
           done
 
-          echo "##### UPLOAD THEME FILE SHIM #####"
+          # echo "##### UPLOAD THEME FILE SHIM #####"
 
-          CHUNKS_FOLDER=$(\
-            ardrive list-folder \
-              --all \
-              --parent-folder-id "${FOLDER_ID}" \
-              | jq -r '.[] | select(.path | endswith("assets/chunks")) | .entityId'
-          )
+          # CHUNKS_FOLDER=$(\
+          #   ardrive list-folder \
+          #     --all \
+          #     --parent-folder-id "${FOLDER_ID}" \
+          #     | jq -r '.[] | select(.path | endswith("assets/chunks")) | .entityId'
+          # )
 
-          echo "${CHUNKS_FOLDER}"
+          # echo "${CHUNKS_FOLDER}"
 
-          ardrive upload-file \
-            --turbo \
-            --parent-folder-id "${CHUNKS_FOLDER}" \
-            --local-path "${ARTIFACTS_OUTPUT_DIR}"/assets/chunks/theme.js \
-            -w "${WALLET}"
+          # ardrive upload-file \
+          #   --turbo \
+          #   --parent-folder-id "${CHUNKS_FOLDER}" \
+          #   --local-path "${ARTIFACTS_OUTPUT_DIR}"/assets/chunks/theme.js \
+          #   -w "${WALLET}"
 
-          echo "##### END THEME FILE SHIM #####"
+          # echo "##### END THEME FILE SHIM #####"
 
           echo "Generating Manifest..."
 
-          ARDRIVE_MANIFEST_RESULTS=$(\
-            ardrive create-manifest \
-              --turbo \
-              -f "${FOLDER_ID}" \
-              -w "${WALLET}"
-          )
-
-          # echo "##### CUSTOM MANIFEST SHIM #####"
-
-          # ardrive create-manifest \
-          #   --turbo \
-          #   -f "${FOLDER_ID}" \
-          #   -w "${WALLET}" \
-          #   --dry-run \
-          #   | jq '{manifest}.manifest' > ${LOCAL_MANIFEST}
-
-          # npm run shim-manifest
-
-          # echo "Uploading shimmed manifest..."
-
           # ARDRIVE_MANIFEST_RESULTS=$(\
-          #   ardrive upload-file \
+          #   ardrive create-manifest \
           #     --turbo \
-          #     --parent-folder-id "${FOLDER_ID}" \
-          #     --local-path ${LOCAL_MANIFEST} \
-          #     --content-type "application/x.arweave-manifest+json" \
+          #     -f "${FOLDER_ID}" \
           #     -w "${WALLET}"
           # )
 
-          # echo "##### END CUSTOM MANIFEST SHIM #####"
+          echo "##### CUSTOM MANIFEST SHIM #####"
+
+          ardrive create-manifest \
+            --turbo \
+            -f "${FOLDER_ID}" \
+            -w "${WALLET}" \
+            --dry-run \
+            | jq '{manifest}.manifest' > ${LOCAL_MANIFEST}
+
+          npm run shim-manifest
+
+          echo "Uploading shimmed manifest..."
+
+          ARDRIVE_MANIFEST_RESULTS=$(\
+            ardrive upload-file \
+              --turbo \
+              --parent-folder-id "${FOLDER_ID}" \
+              --local-path ${LOCAL_MANIFEST} \
+              --content-type "application/x.arweave-manifest+json" \
+              -w "${WALLET}"
+          )
+
+          echo "##### END CUSTOM MANIFEST SHIM #####"
 
           echo "${ARDRIVE_MANIFEST_RESULTS}"
 
@@ -213,4 +213,5 @@ jobs:
           ARTIFACTS_OUTPUT_DIR: ${{ steps.build_artifacts.outputs.artifacts_output_dir }}
           ARDRIVE_FOLDER_ID: ${{ secrets.CLI_ARDRIVE_FOLDER_ID }}
           LOCAL_MANIFEST: DriveManifest.json
-          THEME_TX_ID: hN2dnfuji-Z56CxJ-T0Y1sZ-jTuSJUkU2q26DDGBJl0
+          THEME_TX_ID: x5iNUndl8l2SgSAjv0Pt8HvvdBvuswLU0huES3_AF-c
+          FRAMEWORK_TX_ID: rER7ZqcQSoTR9vjcHuq0bIqLMO1PfcQ06KQTF5HmRkM

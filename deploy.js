@@ -45,6 +45,7 @@ const actions = {
   async SHIM_MANIFEST() {
     const LOCAL_MANIFEST = env("LOCAL_MANIFEST");
     const THEME_TX_ID = env("THEME_TX_ID");
+    const FRAMEWORK_TX_ID = env("FRAMEWORK_TX_ID");
 
     const manifest = JSON.parse(readFileSync(LOCAL_MANIFEST));
 
@@ -54,9 +55,13 @@ const actions = {
      * For now, we've manually uploaded this file separately, then shim
      * it into the manifest using this
      *
-     * assets/chunks/theme.b4WnDNzP.js -> THEME_TX_ID
+     * assets/chunks/theme.js -> THEME_TX_ID
+     * assets/chunks/framework.js -> FRAMEWORK_TX_ID
      */
-    manifest.paths["assets/chunks/theme.b4WnDNzP.js"] = { id: THEME_TX_ID };
+    manifest.paths["assets/chunks/theme.js"] = { id: THEME_TX_ID };
+    manifest.paths["assets/chunks/framework.js"] = { id: FRAMEWORK_TX_ID };
+
+    console.log(manifest);
 
     writeFileSync(LOCAL_MANIFEST, JSON.stringify(manifest, null, 2));
   },
