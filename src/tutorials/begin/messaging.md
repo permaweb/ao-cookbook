@@ -166,12 +166,7 @@ Send Morpheus a message with the tag `Action` and the value `rabbithole`.
 **Example:**
 
 ```sh
-Send({
-  Target = Morpheus,
-  Data = "Code: rabbithole",
-  Action = "Unlock"
-  }
-})
+Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
 ```
 
 **Expected Return:**
