@@ -1,6 +1,6 @@
 # Troubleshooting using aoScan
 
-Working with a decentralized computer and network, you need to be able to troubleshoot more than your own code. You need to be able to track messages. This is where [https://aoscan.xyz](https://aoscan.xyz) becomes an essential tool in your toolbox.
+Working with a decentralized computer and network, you need to be able to troubleshoot more than your own code. You need to be able to track messages. This is where [https://aoscan.io](https://aoscan.io) becomes an essential tool in your toolbox.
 
 ![aoscan](/aoscan.png)
 

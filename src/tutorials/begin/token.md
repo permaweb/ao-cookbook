@@ -70,7 +70,7 @@ This will print the token information to the console. It should show your proces
 Now that we've tested the token and it's working as expected, we can send some tokens to `Trinity`. We'll send 1000 tokens to `Trinity` using the `Action = "Transfer"` tag.
 
 ```sh
-aos> Send({ Target = Trinity, Action = "Transfer", Quantity = 1000 })
+aos> Send({ Target = ao.id, Action = "Transfer", Recipient = Trinity, Quantity = "1000"})
 ```
 
 When `Trinity` receives the tokens, she'll respond to the transfer with a message to confirm that she's received the tokens.
