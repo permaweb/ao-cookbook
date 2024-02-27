@@ -9,35 +9,38 @@
 
 - In the editor, define your custom prompt function. For example:
   ```lua
-  function customPrompt()
+  function Prompt()
       return "YourName@aos> "
   end
   ```
   Customize `"YourName@aos> "` to your preferred prompt text.
 
-## Step 3: Overwrite the Default Prompt
-
-- Next, overwrite the existing `Prompt` function with your new function:
-  ```lua
-  Prompt = customPrompt
-  ```
-
-## Step 4: Exit and Run Your Code
+## Step 3: Exit and Run Your Code
 
 - To exit the editor and execute your code, type `.done` and then press Enter.
 - Your aos prompt should now display the new custom format.
 
-## Step 5: Save for Future Use (Optional)
+## Step 4: Save for Future Use (Optional)
 
 - If you wish to use this prompt in future aos sessions, save your script in a Lua file.
 - In subsequent sessions, load this script to apply your custom prompt.
 
-## Additional Guidance:
+## Maximizing Your Prompt
 
-- **Creativity in Prompt Design**: You're encouraged to incorporate various elements into your prompt, including dynamic data, special symbols, or colors.
-- **Syntax Accuracy**: Ensure correct Lua syntax to avoid any errors in your prompt.
-- **Reverting Back**: To return to the original prompt, restart aos or reset `Prompt` to its default function.
+There's a great deal of utility and creativity that can come from customizing your prompt. Several things you can do within your prompt are:
+
+- Tracking the number of unhandled messages you have in your inbox by creating a function that shows how many messages you have.
+
+  ```lua
+    --Example:
+    function Prompt()
+      return "YourName Inbox: [" .. #Inbox .. "] > "
+    end
+  ```
+
+- Tracking the number of members are within your process ID's chatroom.
+- Tracking the balance of a specified token that your process ID holds.
 
 ## Conclusion
 
-This tutorial guides you through customizing your aos prompt, enhancing your command-line interface experience. Experiment with different styles and functionalities to create a prompt that best fits your needs in the aos environment.
+Now that you understand how to maximize the utility within your Prompt, you've now gained a crucial step to streamlining your ao development experience.
