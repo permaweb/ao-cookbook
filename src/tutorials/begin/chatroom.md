@@ -136,10 +136,20 @@ Morpheus is an autonomous agent with a handler that will respond to the tag `Act
   Send({ Target = Morpheus, Action = "Join" })
   ```
 - To confirm that Morpheus has joined the chatroom, check the `Members` list:
+
   ```lua
   Members
   ```
-  If successful, you should see Morpheus' process ID in the `Members` list.
+
+  If successful, you'll receive a broadcasted message from Morpheus.
+
+## Inviting Trinity to the Chatroom
+
+Within this message, he'll give you Trinity's process ID and tell you to invite her to the chatroom.
+
+Use the same processes to save her process ID as `Trinity` and to invite her to the chatroom as you did with Morpheus.
+
+If she successfully joins the chatroom, she'll then pose the next challenge to you, creating a [token](token).
 
 ## Broadcasting Messages
 

@@ -2,7 +2,7 @@
 
 ### Learn how Messages gives `ao` Parallel Compute Capability
 
-In `ao`, every process runs in parallel, creating a highly scalable environment. Traditional direct function calls aren't feasible because each process operates independently and asynchronously.
+In `ao`, every process runs in parallel, creating a highly scalable environment. Traditional direct function calls between processes aren't feasible because each process operates independently and asynchronously.
 
 Messaging addresses this by enabling asynchronous communication. Processes send and receive messages rather than directly invoking functions on each other. This method allows for flexible and efficient interaction, where processes can respond to messages, enhancing the system's scalability and responsiveness.
 
@@ -88,7 +88,7 @@ aos> Send({ Target = Morpheus, Data = "Morpheus?"})
 # Message is added to the outbox
 message added to outbox
 # A New Message is received from `Morpheus`'s process ID
-New Message From BWM...ulw: Data = yes, it's me. I see
+New Message From BWM...ulw: Data = I am here. You are finally awake. Are yo
 aos>
 ```
 
@@ -189,7 +189,7 @@ Choose clear and descriptive names for your tags. This makes it easier to unders
 
 - **Message Structure**: Explore other fields like `Epoch`, `From`, and `Nonce` for more complex messaging needs.
 - **Debugging**: Use the `Dump` function to print messages for debugging.
-- **Security Considerations**: Be cautious with the content and handling of messages, especially when dealing with sensitive data.
+- **Security Considerations**: Be cautious with the content and handling of messages, and never send anything considered private or sensitive.
 
 ## Conclusion
 
