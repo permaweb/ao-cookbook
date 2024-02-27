@@ -51,17 +51,13 @@ For those who prefer to watch the action unfold, the "Listen" mode offers an opp
 
 To maintain the flow and fairness of arena games, an automated system oversees game state transitions. These transitions encompass waiting, playing, and ending phases. Time durations for each state, such as `WaitTime` and `GameTime`, ensure that rounds adhere to defined timeframes, preventing games from lasting indefinitely.
 
-## Arena Game Blueprint
-
-For those interested in using this arena framework, here is the blueprint for the arena game in Lua:
+You can refer to the code for the arena in the dropdown below:
 
 <details>
   <summary><strong>Arena Game Blueprint</strong></summary>
 
 ```lua
 -- ARENA GAME BLUEPRINT.
-
--- REQUIREMENTS: cron must be added and activated for game operation.
 
 -- This blueprint provides the framework to operate an 'arena' style game
 -- inside an ao process. Games are played in rounds, where players aim to
@@ -408,6 +404,14 @@ Handlers.add(
 ```
 
 </details>
+
+## Arena Game Blueprint
+
+For those interested in using this arena framework, we've made this code easily accesible through a blueprint. Simply run the following code in your terminal:
+
+```lua
+.load-blueprint arena
+```
 
 ## Summary
 
