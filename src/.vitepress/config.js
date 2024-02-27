@@ -50,6 +50,19 @@ const config = defineConfig({
       i18n: languages[pageData.frontmatter.locale || "en"],
     };
   },
+
+  /**
+   * Needed for shim for
+   */
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          chunkFileNames: "assets/chunks/[name].js",
+        },
+      },
+    },
+  },
 });
 
 export default config;

@@ -147,36 +147,36 @@ jobs:
 
           echo "Generating Manifest..."
 
-          # ARDRIVE_MANIFEST_RESULTS=$(\
-          #   ardrive create-manifest \
-          #     --turbo \
-          #     -f "${FOLDER_ID}" \
-          #     -w "${WALLET}"
-          # )
-
-          echo "##### CUSTOM MANIFEST SHIM #####"
-
-          ardrive create-manifest \
-            --turbo \
-            -f "${FOLDER_ID}" \
-            -w "${WALLET}" \
-            --dry-run \
-            | jq '{manifest}.manifest' > ${LOCAL_MANIFEST}
-
-          npm run shim-manifest
-
-          echo "Uploading shimmed manifest..."
-
           ARDRIVE_MANIFEST_RESULTS=$(\
-            ardrive upload-file \
+            ardrive create-manifest \
               --turbo \
-              --parent-folder-id "${FOLDER_ID}" \
-              --local-path ${LOCAL_MANIFEST} \
-              --content-type "application/x.arweave-manifest+json" \
+              -f "${FOLDER_ID}" \
               -w "${WALLET}"
           )
 
-          echo "##### END CUSTOM MANIFEST SHIM #####"
+          # echo "##### CUSTOM MANIFEST SHIM #####"
+
+          # ardrive create-manifest \
+          #   --turbo \
+          #   -f "${FOLDER_ID}" \
+          #   -w "${WALLET}" \
+          #   --dry-run \
+          #   | jq '{manifest}.manifest' > ${LOCAL_MANIFEST}
+
+          # npm run shim-manifest
+
+          # echo "Uploading shimmed manifest..."
+
+          # ARDRIVE_MANIFEST_RESULTS=$(\
+          #   ardrive upload-file \
+          #     --turbo \
+          #     --parent-folder-id "${FOLDER_ID}" \
+          #     --local-path ${LOCAL_MANIFEST} \
+          #     --content-type "application/x.arweave-manifest+json" \
+          #     -w "${WALLET}"
+          # )
+
+          # echo "##### END CUSTOM MANIFEST SHIM #####"
 
           echo "${ARDRIVE_MANIFEST_RESULTS}"
 
