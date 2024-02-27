@@ -55,7 +55,7 @@ Let's define a new variable that stores the latest state as follows:
 LatestGameState = LatestGameState or nil
 ```
 
-The syntax preserves exisitng values of the variable when you load successive iterations of the `bot.lua` file instead of overwriting it. If there is no pre-existing value then a `nil` value is assigned to the variable.
+The syntax preserves exisitng values of the variable when you load successive iterations of the `bot.lua` file in your terminal, instead of overwriting it. If there is no pre-existing value then a `nil` value is assigned to the variable.
 
 Then implement another handler as follows:
 
@@ -73,7 +73,7 @@ Handlers.add(
 )
 ```
 
-The response from the game process from the previous handler has an action tag with the value `GameState` that helps us trigger this second handler. Once triggered, the handle function loads the `json` package that parses the data into json and stores it in the `LatestGameState` variable.
+The response from the game process from the previous handler has an action tag with the value `GameState` that helps us trigger this second handler. Once triggered, the handle function loads the in-built `json` package that parses the data into json and stores it in the `LatestGameState` variable.
 
 This handler additionally sends a message to your process indicating when the state has been updated. The significance of this feature will be explained in the following section.
 
