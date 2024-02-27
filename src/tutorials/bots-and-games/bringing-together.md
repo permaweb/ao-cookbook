@@ -32,7 +32,7 @@ end)
 
 ```lua
 Handlers.add("AutoPay", Handlers.utils.hasMatchingTag("Action", "AutoPay"), function ()
-  ao.send({Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1"})
+  ao.send({Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1000"})
 end)
 ```
 
@@ -135,7 +135,7 @@ Handlers.add(
   Handlers.utils.hasMatchingTag("Action", "AutoPay"),
   function (msg)
     print("Auto-paying confirmation fees.")
-    ao.send({ Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1"})
+    ao.send({ Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1000"})
   end
 )
 

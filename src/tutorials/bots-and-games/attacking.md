@@ -76,7 +76,7 @@ end
 
 Handlers.add(
 "HandleAnnouncements",
-Handlers.utils.hasMatchingTag("Action", "Announcements"),
+Handlers.utils.hasMatchingTag("Action", "Announcement"),
 function (msg)
   ao.send({Target = Game, Action = "GetGameState"})
   print(msg.Event .. ": " .. msg.Data)
