@@ -1,8 +1,8 @@
-# Troubleshooting using aoScan
+# Troubleshooting using ao.link
 
-Working with a decentralized computer and network, you need to be able to troubleshoot more than your own code. You need to be able to track messages. This is where [https://aoscan.io](https://aoscan.io) becomes an essential tool in your toolbox.
+Working with a decentralized computer and network, you need to be able to troubleshoot more than your own code. You need to be able to track messages. This is where [https://ao.link](https://ao.link) becomes an essential tool in your toolbox.
 
-![aoscan](/aoscan.png)
+![ao.link](/aoscan.png)
 
 ## Analytics
 
@@ -21,7 +21,7 @@ Below, the analytics is the latest events that have appeared on the ao computer.
 
 ## Details
 
-![ao Scan message view](/aoscan-message-view.png)
+![ao link message view](/aoscan-message-view.png)
 
 ## Summary
 
