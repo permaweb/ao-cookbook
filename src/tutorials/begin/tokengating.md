@@ -100,7 +100,15 @@ As you can see, the message was not broadcasted because the new process doesn't 
 
 ## Tell Trinity "It is done"
 
-From the original aos process, send a broadcast message to the chatroom saying, "It is done."
+From the original aos process, send a broadcast message to the chatroom saying, "It is done".
+
+```lua
+Send({ Target = ao.id , Action = "Broadcast", Data = "It is done" })
+```
+
+::: Warning
+It's important to be aware of exact match data and case sensitivity. If you're not receiving a response from either Morpheus or Trinity, be sure to check the the content of your Data and Tags.
+:::
 
 Trinity will then respond to the chatroom being tokengated.
 
