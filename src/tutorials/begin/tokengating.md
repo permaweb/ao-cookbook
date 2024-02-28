@@ -106,7 +106,7 @@ From the original aos process, send a broadcast message to the chatroom saying, 
 Send({ Target = ao.id , Action = "Broadcast", Data = "It is done" })
 ```
 
-::: Warning
+::: warning
 It's important to be aware of exact match data and case sensitivity. If you're not receiving a response from either Morpheus or Trinity, be sure to check the the content of your Data and Tags.
 :::
 
