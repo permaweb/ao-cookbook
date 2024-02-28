@@ -229,7 +229,7 @@ Make sure you've started your aos process by running `aos` in your terminal.
 If you've followd along with the guide, you'll have a `token.lua` file in the same directory as your aos process. From the aos prompt, load in the file.
 
 ```sh
-aos> .load token.lua
+.load token.lua
 ```
 
 #### 3 - Testing the Token
@@ -237,13 +237,13 @@ aos> .load token.lua
 Now we can send Messages to our aos process id, from the same aos prompt to see if is working. If we use ao.id as the Target we are sending a message to ourselves.
 
 ```sh
-aos> Send({ Target = ao.id, Action = "Info" })
+Send({ Target = ao.id, Action = "Info" })
 ```
 
 This should print the Info defined in the contract. Check the latest inbox message for the response.
 
 ```sh
-aos> Inbox[#Inbox].Data
+Inbox[#Inbox].Tags
 ```
 
 This should print the Info defined in the contract.
@@ -269,7 +269,7 @@ If you're using `aos` in one terminal window, you can run `aos test` in another 
 :::
 
 ```sh
-aos> Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'another wallet or processid', Quantity = '10000' }})
+Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'another wallet or processid', Quantity = '10000' }})
 ```
 
 After sending, you'll receive a printed message in the terminal similar to `Debit-Notice` on the sender's side and `Credit-Notice` on the recipient's side.
@@ -279,8 +279,10 @@ After sending, you'll receive a printed message in the terminal similar to `Debi
 Now that you've transferred some tokens, let's check the balances.
 
 ```sh
-aos> Send({ Target = ao.id, Tags = { Action = "Balances" }})
-aos> Inbox[#Inbox].Data
+Send({ Target = ao.id, Tags = { Action = "Balances" }})
+```
+```sh
+Inbox[#Inbox].Data
 ```
 
 You will see two process IDs or wallet addresses, each displaying a balance. The first should be your sending process ID, the second should be the recipient's process ID.
@@ -296,8 +298,8 @@ Send({ Target = ao.id, Tags = { Action = "Mint", Quantity = '1000' }})
 And check the balances again.
 
 ```sh
-aos> Send({ Target = ao.id, Tags = { Action = "Balances" }})
-aos> Inbox[#Inbox].Data
+Send({ Target = ao.id, Tags = { Action = "Balances" }})
+Inbox[#Inbox].Data
 ```
 
 You'll then see the balance of the process ID that minted the tokens has increased.
