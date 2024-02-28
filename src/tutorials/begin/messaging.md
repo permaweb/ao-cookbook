@@ -74,7 +74,7 @@ aos>
 After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a parallel process running in ao. He receives and sends messages using a series of Handlers. Let's send hi a message and see what happens.
 
 ```lua
-Send({ Target = Morpheus, Data = "morpheus?" })
+Send({ Target = Morpheus, Data = "Morpheus?" })
 ```
 
 - Your `Target` is `Morpheus` which is the variable we defined earlier using `Morpheus`'s process ID.'
