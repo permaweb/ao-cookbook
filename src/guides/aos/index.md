@@ -28,7 +28,7 @@ If you have done so yet, take 15 minutes and go through our [tutorials](../../tu
 ## Developer Guides
 
 - [Editor Setup](editor)
-- [Troubleshooting with aoScan](troubleshooting)
+- [Troubleshooting with ao.link](troubleshooting)
 - [Understanding the Inbox](inbox-and-handlers)
 - [Frequently Asked Questions](faq)
 
