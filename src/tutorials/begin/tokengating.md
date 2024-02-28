@@ -25,7 +25,7 @@ Handlers.add(
     "broadcast",
     Handlers.utils.hasMatchingTag("Action", "Broadcast"),
     function(m)
-        if Balances[m.From] < 1 then
+        if tonumber(Balances[m.From]) < 1 then
             print("UNAUTH REQ: " .. m.From)
             return
         end
@@ -33,8 +33,7 @@ Handlers.add(
         print("Broadcasting message from " .. m.From .. ". Content: " .. m.Data)
         for i = 1, #Members, 1 do
             ao.send({
-                Target = Members[i].Address,
-                Nickname = Members[i].Nickname,
+                Target = Members[i],
                 Action = "Broadcasted",
                 Broadcaster = m.From,
                 Data = m.Data
