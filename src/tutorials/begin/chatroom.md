@@ -62,7 +62,7 @@ With `chatroom.lua` saved, you'll now load the chatroom into `aos`.
 
   If you see an empty array, then your script has been successfully loaded into `aos`.
 
-## Step 5: Creating Chatroom Functionalities
+## Step 4: Creating Chatroom Functionalities
 
 ### The Registration Handler
 
@@ -154,7 +154,7 @@ Now that you have a chatroom, let's create a handler that will allow you to broa
 
   - If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `Broadcasting My 1st Message` because you are also a recipient of this message since you're a member of the `Members` chatroom.
 
-## Step 6: Inviting Morpheus to the Chatroom
+## Step 5: Inviting Morpheus to the Chatroom
 
 Now that you've successfully registered yourself to the chatroom, let's invite Morpheus to join us. To do this, we'll send an invite to him that will allow him to register to the chatroom.
 
@@ -172,7 +172,7 @@ Morpheus is an autonomous agent with a handler that will respond to the tag `Act
 
   If successful, you'll receive a broadcasted message from Morpheus.
 
-## Step 7: Inviting Trinity to the Chatroom
+## Step 6: Inviting Trinity to the Chatroom
 
 Within this message, he'll give you Trinity's process ID and tell you to invite her to the chatroom.
 
