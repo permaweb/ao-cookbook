@@ -28,7 +28,9 @@ yarn-error.log*
 .vercel
 
 src/.vitepress/cache
+src/.vitepress/cache/deps
 src/.vitepress/dist
+
 wallet.json
 
 # Trunk
