@@ -3,7 +3,7 @@
 **Status:** DRAFT-1
 **Targeting Network:** ao.TN.1
 
-This specification describes the necessary message handlers and functionality required for a standard ao token process. Implementations of this standard typically offer users the ability control a transferrable asset, whose scarcity is maintained by the process.
+This specification describes the necessary message handlers and functionality required for a standard ao token process. Implementations of this standard typically offer users the ability to control a transferrable asset, whose scarcity is maintained by the process.
 
 Each compliant process will likely implement a ledger of balances in order to encode ownership of the asset that the process represents. Compliant processes have a set of methods that allow for the modification of this ledger, typically with safe-guards to ensure the scarcity of ownership of the token represented by the process.
 
