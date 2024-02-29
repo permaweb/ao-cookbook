@@ -11,7 +11,7 @@ next:
 
 While `ao` is a hyper parallel computer that enables distributed compute, `aos` is an operating system on top of that computer.
 
-With `aos` you can interact with processes and you can code processes in a very simple an intuitive way. All you need is a terminal and an editor.
+With `aos` you can interact with processes and you can code processes in a very simple and intuitive way. All you need is a terminal and an editor.
 
 The language chosen for `aos` is [lua](../../concepts/lua.md), which is a robust and deterministic dynamic language that is a lot of fun to work with.
 
