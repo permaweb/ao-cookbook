@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 
 import { WarpFactory, defaultCacheOptions } from "warp-contracts";
 import Arweave from "arweave";
@@ -41,29 +41,6 @@ const actions = {
     console.log("Updated ao ANT record", antUpdate.interactionTx);
 
     return MANIFEST_ID;
-  },
-  async SHIM_MANIFEST() {
-    const LOCAL_MANIFEST = env("LOCAL_MANIFEST");
-    const THEME_TX_ID = env("THEME_TX_ID");
-    const FRAMEWORK_TX_ID = env("FRAMEWORK_TX_ID");
-
-    const manifest = JSON.parse(readFileSync(LOCAL_MANIFEST));
-
-    /**
-     * See https://github.com/permaweb/ao-cookbook/issues/83
-     *
-     * For now, we've manually uploaded this file separately, then shim
-     * it into the manifest using this
-     *
-     * assets/chunks/theme.js -> THEME_TX_ID
-     * assets/chunks/framework.js -> FRAMEWORK_TX_ID
-     */
-    manifest.paths["assets/chunks/theme.js"] = { id: THEME_TX_ID };
-    manifest.paths["assets/chunks/framework.js"] = { id: FRAMEWORK_TX_ID };
-
-    console.log(manifest);
-
-    writeFileSync(LOCAL_MANIFEST, JSON.stringify(manifest, null, 2));
   },
 };
 
