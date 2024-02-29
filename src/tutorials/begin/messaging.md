@@ -188,7 +188,7 @@ Choose clear and descriptive names for your tags. This makes it easier to unders
 ## Additional Tips for Messaging:
 
 - **Message Structure**: Explore other fields like `Epoch`, `From`, and `Nonce` for more complex messaging needs.
-- **Debugging**: Use the `Dump` function to print messages for debugging.
+- **Debugging**: Use the [`Dump`](/concepts/tour.html#_6-data-representation-with-dump) function to print messages for debugging.
 - **Security Considerations**: Be cautious with the content and handling of messages, and never send anything considered private or sensitive.
 
 ## Conclusion

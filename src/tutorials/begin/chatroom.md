@@ -94,7 +94,7 @@ The register handler will allow processes to join the chatroom.
 2. **Reload and Test:**:
    Let's reload and test the script by registering ourselves to the chatroom.
 
-   - Save and reload the script in aos using `.load chatroom.lua.
+   - Save and reload the script in aos using `.load chatroom.lua`.
    - Check to see if the register handler loaded with the following script:
 
    ```lua
