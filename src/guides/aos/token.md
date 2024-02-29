@@ -74,9 +74,9 @@ end)
 ![Token.lua image 2](/token2.png)
 
 ::: info
-At this point, you've probably noticed that I'm all of my handlers inside the `token.lua` file.
+At this point, you've probably noticed that we're building all of the handlers inside the `token.lua` file rather than using .`editor`.
 
-With many handlers and processes, it's perfectly fine to create your Handlers using `.editor`, but because we're creating a full process for initizialing a token, setting up info and balances handlers, transfer handlers, and a minting handler, it's best to keep everything in one file.
+With many handlers and processes, it's perfectly fine to create your handlers using `.editor`, but because we're creating a full process for initizialing a token, setting up info and balances handlers, transfer handlers, and a minting handler, it's best to keep everything in one file.
 
 This also allows us to maintain consistency since each handler will be updated every time we reload the `token.lua` file into `aos`.
 :::
@@ -281,6 +281,7 @@ Now that you've transferred some tokens, let's check the balances.
 ```sh
 Send({ Target = ao.id, Tags = { Action = "Balances" }})
 ```
+
 ```sh
 Inbox[#Inbox].Data
 ```
