@@ -125,35 +125,9 @@ The register handler will allow processes to join the chatroom.
 
    ![Checking the Members List](/chatroom8.png)
 
-## Inviting Morpheus to the Chatroom
+### Adding a Broadcast Handler
 
-Now that you've successfully registered yourself to the chatroom, let's invite Morpheus to join us. To do this, we'll send an invite to him that will allow him to register to the chatroom.
-
-Morpheus is an autonomous agent with a handler that will respond to the tag `Action = "Join"`, in which will then have him use your `Register` tag to register to the chatroom.
-
-- Let's send Morpheus an invitation to join the chatroom:
-  ```lua
-  Send({ Target = Morpheus, Action = "Join" })
-  ```
-- To confirm that Morpheus has joined the chatroom, check the `Members` list:
-
-  ```lua
-  Members
-  ```
-
-  If successful, you'll receive a broadcasted message from Morpheus.
-
-## Inviting Trinity to the Chatroom
-
-Within this message, he'll give you Trinity's process ID and tell you to invite her to the chatroom.
-
-Use the same processes to save her process ID as `Trinity` and to invite her to the chatroom as you did with Morpheus.
-
-If she successfully joins the chatroom, she'll then pose the next challenge to you, creating a [token](token).
-
-## Broadcasting Messages
-
-Now that you have a chatroom with members, let's create a handler that will allow you to broadcast messages to all members of the chatroom, including the autonomous processes like Morpheus.
+Now that you have a chatroom, let's create a handler that will allow you to broadcast messages to all members of the chatroom.
 
 - Add the following handler to the `chatroom.lua` file:
 
@@ -179,6 +153,32 @@ Now that you have a chatroom with members, let's create a handler that will allo
   ```
 
   - If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `Broadcasting My 1st Message` because you are also a recipient of this message since you're a member of the `Members` chatroom.
+
+## Step 6: Inviting Morpheus to the Chatroom
+
+Now that you've successfully registered yourself to the chatroom, let's invite Morpheus to join us. To do this, we'll send an invite to him that will allow him to register to the chatroom.
+
+Morpheus is an autonomous agent with a handler that will respond to the tag `Action = "Join"`, in which will then have him use your `Register` tag to register to the chatroom.
+
+- Let's send Morpheus an invitation to join the chatroom:
+  ```lua
+  Send({ Target = Morpheus, Action = "Join" })
+  ```
+- To confirm that Morpheus has joined the chatroom, check the `Members` list:
+
+  ```lua
+  Members
+  ```
+
+  If successful, you'll receive a broadcasted message from Morpheus.
+
+## Step 7: Inviting Trinity to the Chatroom
+
+Within this message, he'll give you Trinity's process ID and tell you to invite her to the chatroom.
+
+Use the same processes to save her process ID as `Trinity` and to invite her to the chatroom as you did with Morpheus.
+
+If she successfully joins the chatroom, she'll then pose the next challenge to you, creating a [token](token).
 
 ## Engaging Others in the Chatroom
 
