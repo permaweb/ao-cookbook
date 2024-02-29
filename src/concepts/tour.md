@@ -35,9 +35,7 @@ Welcome to a quick tour of aos! This tutorial will walk you through the key glob
 
 #### 7. Leveraging Utils Module
 
-- **Contents**: `Utils
-
-`contains a collection of functional utilities like`map`, `reduce`, and `filter`.
+- **Contents**: Utils contains a collection of functional utilities like`map`, `reduce`, and `filter`.
 
 - **Usage**: Great for data manipulation and functional programming patterns in Lua. For example, `Utils.map(myTable, function(x) return x * 2 end)` to double the values in a table.
 
