@@ -9,6 +9,10 @@ We begin our journey by installing the `aos` client and starting a new process. 
 
 :::
 
+## Video Tutorial
+
+<iframe width="680" height="350" src="https://www.youtube.com/embed/nhMZup9uVBQ?si=Ex0W_G-PZA1I9rH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## System requirements.
 
 The local client of aos is very simple to install. Just make sure you have:
