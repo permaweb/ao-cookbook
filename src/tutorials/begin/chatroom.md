@@ -11,6 +11,10 @@ In this tutorial, we'll be building a chatroom within `ao` using the Lua scripti
 
 Let's begin by setting up the foundation for our chatroom.
 
+## Video Tutorial
+
+<iframe width="680" height="350" src="https://www.youtube.com/embed/oPCx-cfubF0?si=D5yWxmyFMV-4mh2P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Step 1: The Foundation
 
 - Open your preferred code editor.
