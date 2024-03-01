@@ -7,7 +7,7 @@ next:
   link: "/tutorials/getting-started/preparations"
 ---
 
-# Getting Started: An Interactive Tutorial
+# Begin: An Interactive Tutorial
 
 In this tutorial series, you'll walk through an interactive steps that will help you deepen your knowledge and understanding of the aos environment.
 
