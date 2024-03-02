@@ -7,7 +7,6 @@
   "type": "module",
   "scripts": {
     "arns": "ACTION=UPDATE_ARNS node deploy.js",
-    "shim-manifest": "ACTION=SHIM_MANIFEST node deploy.js",
     "build": "vitepress build src",
     "dev": "vitepress dev src",
     "prepare": "husky",
