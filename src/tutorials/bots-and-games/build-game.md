@@ -321,7 +321,7 @@ Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAtta
 Once you've written your game code, it's time to load it into the `aos` game process and test your game:
 
 ```lua
-.load ao-effect
+.load ao-effect.lua
 ```
 
 > Note: Make sure to load the arena blueprint in the same process as well.
