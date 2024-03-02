@@ -4,7 +4,7 @@ prev:
   link: "../index"
 next:
   text: "Preparations"
-  link: "/tutorials/getting-started/preparations"
+  link: "/tutorials/begin/preparations"
 ---
 
 # Begin: An Interactive Tutorial
