@@ -72,7 +72,7 @@ With `chatroom.lua` saved, you'll now load the chatroom into `aos`.
 
 The register handler will allow processes to join the chatroom.
 
-1. **Adding a Register Handler:**  Modify `chatroom.lua` to include a handler for `Members` to register to the chatroom with the following code:
+1. **Adding a Register Handler:** Modify `chatroom.lua` to include a handler for `Members` to register to the chatroom with the following code:
 
    ```lua
 
@@ -93,8 +93,7 @@ The register handler will allow processes to join the chatroom.
 
    This handler will allow processes to register to the chatroom by responding to the tag `Action = "Register"`. A printed message will confirm stating `registered` will appear when the registration is successful.
 
-2. **Reload and Test:**
-   Let's reload and test the script by registering ourselves to the chatroom.
+2. **Reload and Test:** Let's reload and test the script by registering ourselves to the chatroom.
 
    - Save and reload the script in aos using `.load chatroom.lua`.
    - Check to see if the register handler loaded with the following script:
@@ -190,7 +189,6 @@ If she successfully joins the chatroom, she'll then pose the next challenge to y
   Encourage other aos users to join your chatroom. They can register and participate in the broadcast.
 
 - Provide Onboarding Instructions:
-
   Share a simple script with them for easy onboarding:
 
 ```
