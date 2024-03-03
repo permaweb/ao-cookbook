@@ -1,6 +1,6 @@
 # Get started in 5 minutes
 
-In less than 5 mins, we'll walk you through the process of taking your first peak into the rabbit hole. 🕳️🐇
+In less than 5 mins, we'll walk you through the process of taking your first peek into the rabbit hole. 🕳️🐇
 
 ## System requirements.
 
