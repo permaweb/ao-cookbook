@@ -30,7 +30,7 @@ The ao network hosts a number of chat servers that allow you to converse with ot
 .load-blueprint chat
 ```
 
-To show the available the available rooms you can run:
+To show the available rooms you can run:
 
 ```
 List()
