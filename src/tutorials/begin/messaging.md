@@ -54,8 +54,6 @@ Morpheus = "7EIX8Q7GuKQM3E0T-hRj8O_1lsMaZy-oCbka3LU2O7c"
 
 This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specifid process ID.
 
-After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a parallel process running in ao. He receives and sends messages using a series of Handlers. Let's send him a message and see what happens.
-
 ::: info
 When creating the `Morpheus` variable, the only response you should see is `undefined`. This is expected. To check if the variable was created successfully, type `Morpheus` and press Enter. You should see the process ID you stored.
 :::
@@ -75,13 +73,13 @@ aos>
 
 ## Step 5: Send a Message to Morpheus
 
-After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a parallel process running in ao. He receives and sends messages using a series of Handlers. Let's send hi a message and see what happens.
+After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a parallel process running in ao. He receives and sends messages using a series of Handlers. Let's send him a message and see what happens.
 
 ```lua
 Send({ Target = Morpheus, Data = "Morpheus?" })
 ```
 
-- Your `Target` is `Morpheus` which is the variable we defined earlier using `Morpheus`'s process ID.'
+- Your `Target` is `Morpheus` which is the variable we defined earlier using `Morpheus`'s process ID.
 - The `Data` is the message you want to send to Morpheus. In this case, it's "Morpheus?".
 
 **Expected Results:**
@@ -179,13 +177,10 @@ Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
 ## Additional Tips for Using Tags
 
 - **Consistent Tagging**: Develop a consistent tagging system for your application to make message handling more predictable.
-- **Tag Naming**:
-
-Choose clear and descriptive names for your tags. This makes it easier to understand the purpose and context of messages at a glance.
-
+- **Tag Naming**: Choose clear and descriptive names for your tags. This makes it easier to understand the purpose and context of messages at a glance.
 - **Security with Tags**: Remember that tags are not encrypted or hidden, so avoid using sensitive information as tags.
 
-#### Advanced Usage of Tags
+## Advanced Usage of Tags
 
 - **Workflow Management**: Tags can be instrumental in managing workflows, especially in systems where messages pass through multiple stages or processes.
 

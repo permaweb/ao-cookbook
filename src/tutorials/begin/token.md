@@ -18,11 +18,11 @@ There are two paths to take when building a token:
 
 1. **The Blueprint**: This is a predesigned template that helps you quickly build a token in `ao`. It is a great way to get started and can be customized to fit your needs.
 
-Check here to learn more about the [Token Blueprint](../../guides/aos/blueprints/token.md).
+    Check here to learn more about the [Token Blueprint](../../guides/aos/blueprints/token.md).
 
 2. **The Manual Method**: This is a step-by-step guide to building a token in `ao` from scratch. This path is for those who want to understand the inner workings of a token and how to build one from the ground up.
 
-Check here to review the full [Build a Token](../../guides/aos/token.md) guide.
+    Check here to review the full [Build a Token](../../guides/aos/token.md) guide.
 
 ## The Blueprint Method
 
