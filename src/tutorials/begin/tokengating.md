@@ -6,23 +6,23 @@ Now that we've created a token and sent it to `Trinity`, we can use the token to
 
 ### How to Tokengate the Chatroom
 
-Let's create a handler that will allow us to tokengate the chatroom. This handler will respond to the tag `Action = "Broadcast"` meaning it will replace the original `broadcast` handler we built for our chatroom.
+Let's create a handler that will allow us to tokengate the chatroom. This handler will respond to the tag `Action = "Broadcast"` meaning it will replace the original `Broadcast` handler we built for our chatroom.
 
 ## Step 1: Start the same `aos` process.
 
 Be sure you're using the same `aos` process that you've used throughout the tutorial.
 
-## Step 2: Open the chatroom.lua file.
+## Step 2: Open the `chatroom.lua` file.
 
 This is the same file we used to create the chatroom during the [chatroom](chatroom) tutorial.
 
-## Step 3: Edit your `broadcast` handler.
+## Step 3: Edit your `Broadcast` handler.
 
-Replace the original `broadcast` handler with the following code:
+Replace the original `Broadcast` handler with the following code:
 
 ```lua
 Handlers.add(
-    "broadcast",
+    "Broadcast",
     Handlers.utils.hasMatchingTag("Action", "Broadcast"),
     function(m)
         if tonumber(Balances[m.From]) < 1 then
@@ -118,7 +118,7 @@ Trinity will send a message saying, "I guess Morpheus was right. You are the one
 
 ## Conclusion
 
-You've done it! You've successfully tokengated the chatroom. This has now unlocked access to the Construct, where only those that have fully completed this tutorial can enter.
+You've done it! You've successfully tokengated the chatroom. This has now unlocked access to the `Construct`, where only those that have fully completed this tutorial can enter.
 
 ### Congratulations!
 
