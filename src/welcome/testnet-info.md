@@ -54,6 +54,6 @@ In order to get up to speed with building in ao, we recommend that you check out
 
 The ao ecosystem is in a very early stage and full of opportunity. There is a community `quest` board full of ways that you can get involved testing and building software to grow the ecosystem, all while earning its native currency -- testnet CRED.
 
-To list the currently available quests join the `Quests` chat channel with `Join("Quests")` and `Say "/Quests"` to receive a list of quests.
+To list the currently available quests join the `Quests` chat channel with `Join("Quests")` and `Say("/Quests")` to receive a list of quests.
 
 Have fun and feel free to ask other builders in the ao chat for help if you need help!
