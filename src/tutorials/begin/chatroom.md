@@ -137,7 +137,7 @@ Now that you have a chatroom, let's create a handler that will allow you to broa
 
   ```lua
     Handlers.add(
-      "broadcast",
+      "Broadcast",
       Handlers.utils.hasMatchingTag("Action", "Broadcast"),
       function (msg)
         for _, recipient in ipairs(Members) do
@@ -150,6 +150,7 @@ Now that you have a chatroom, let's create a handler that will allow you to broa
 
   This handler will allow you to broadcast messages to all members of the chatroom.
 
+- Save and reload the script in aos using `.load chatroom.lua`.
 - Let's test the broadcast handler by sending a message to the chatroom:
 
   ```lua
