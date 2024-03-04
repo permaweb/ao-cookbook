@@ -72,8 +72,6 @@ Broadcasting message from Neo. Content: Hello.
 
 ## Testing from another Process ID.
 
-````
-
 ### From a new aos process
 
 Now, let's test it from a new aos process that doesn't have a token.
