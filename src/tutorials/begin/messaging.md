@@ -49,7 +49,7 @@ We'll use the process ID provided below and store it as a variable called Morphe
 Copy the process ID above and store it as a variable by running the below command in the aos CLI:
 
 ```sh
-Morpheus = "7EIX8Q7GuKQM3E0T-hRj8O_1lsMaZy-oCbka3LU2O7c"
+Morpheus = "sOQYMwbbTr5MlPwp-KUmbXgCCvfoVjgTOBuUDQJZAIU"
 ```
 
 This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specifid process ID.
