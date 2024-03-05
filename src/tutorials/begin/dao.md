@@ -168,7 +168,7 @@ aos voter
 Now from the dao aos shell send that voter some tokens
 
 ```lua
-aos> Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'process id of the voter aos', Quantity = '100000' }})
+Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'process id of the voter aos', Quantity = '100000' }})
 ```
 
 From another terminal run another aos Process called cu
@@ -180,31 +180,30 @@ aos cu
 Now from the dao aos shell send that cu some tokens
 
 ```lua
-aos> Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'process id of the cu aos', Quantity = '100000' }})
+Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'process id of the cu aos', Quantity = '100000' }})
 ```
 
 Check the Balances from the dao aos shell, we should see a balance for the voter and cu Process. In the below examples `bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s` is the dao aos, `QcGIOXJ1p2SOGzGAccOcV-nSudVRiaPYbU7SjeLx1OE` is the voter aos, and `X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s` is the cu aos.
 
 ```lua
-aos> Balances
+Balances
 {
   'QcGIOXJ1p2SOGzGAccOcV-nSudVRiaPYbU7SjeLx1OE': 100000,
   bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s: 99999999900000,
   X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s: 100000
 }
-aos>
 ```
 
 From the voter aos Process, Stake some tokens
 
 ```lua
-aos> Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action = "Stake", Quantity = '1000', UnstakeDelay = "10" }})
+Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action = "Stake", Quantity = '1000', UnstakeDelay = "10" }})
 ```
 
 From the cu aos Process, Stake some tokens
 
 ```lua
-aos> Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action = "Stake", Quantity = '1000', UnstakeDelay = "10" }})
+Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action = "Stake", Quantity = '1000', UnstakeDelay = "10" }})
 ```
 
 This means we want to Stake 1000 tokens for 10 blocks. So after 10 blocks we have the ability to Unstake.
@@ -212,28 +211,28 @@ This means we want to Stake 1000 tokens for 10 blocks. So after 10 blocks we hav
 Check the value of the Stakers table from the dao aos shell
 
 ```lua
-aos> Stakers
+Stakers
 {
   'QcGIOXJ1p2SOGzGAccOcV-nSudVRiaPYbU7SjeLx1OE': { amount: 1000, unstake_at: 1342634 },
   X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s: { amount: 1000, unstake_at: 1342634 }
 }
-aos>
+
 ```
 
 Now lets vote to slash the cu from the voter aos process, our vote takes effect in 1 block
 
 ```lua
-aos> Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action = "Vote", Target = "X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s(the cu aos)", Side = "nay", Deadline = "1"  }})
+Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action = "Vote", Target = "X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s(the cu aos)", Side = "nay", Deadline = "1"  }})
 ```
 
 From the dao aos check the Votes
 
 ```lua
-aos> Votes
+ Votes
 {
   X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s: { nay: 1000, yay: 0, deadline: 1342627 }
 }
-aos>
+
 ```
 
 Now wait for Arweave to reach the deadline block height and then send a Stake Message from the dao aos just to trigger the finalizationHandler. You can check the block height at [https://arweave.net/](https://arweave.net/)
@@ -245,15 +244,15 @@ Send({ Target = ao.id, Tags = { Action = "Stake", Quantity = '1000', UnstakeDela
 Now check Votes and Stakers, Votes should be empty and the cu aos Process should have lost their Stake.
 
 ```lua
-aos> Votes
+ Votes
 []
-aos> Stakers
+ Stakers
 {
   'QcGIOXJ1p2SOGzGAccOcV-nSudVRiaPYbU7SjeLx1OE'(voter aos process): { amount: 1000, unstake_at: 1342647 },
   bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s(dao aos process): { amount: 1000, unstake_at: 1342658 },
   X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s(cu aos process): { amount: 0, unstake_at: 1342647 }
 }
-aos>
+
 ```
 
 Finally lets Unstake our tokens from the voter aos process
@@ -265,13 +264,13 @@ Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action =
 And check the Stakers table from the dao aos
 
 ```lua
-aos> Stakers
+ Stakers
 {
   'QcGIOXJ1p2SOGzGAccOcV-nSudVRiaPYbU7SjeLx1OE': { amount: 0, unstake_at: 1342647 },
   bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s: { amount: 1000, unstake_at: 1342658 },
   X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s: { amount: 0, unstake_at: 1342647 }
 }
-aos>
+
 ```
 
 That concludes the DAO Guide we hope it was helpful!

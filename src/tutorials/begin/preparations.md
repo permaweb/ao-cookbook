@@ -77,7 +77,7 @@ aos - 1.8.9
 2024 - Type ".exit" to exit
 aos process:  1xM1_lDZ428sJHpTX7rtcR6SrDubyRVO06JEEWs_eWo
 
-aos>
+
 ```
 
 Let's walk through the initial printout after running `aos`:
