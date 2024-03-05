@@ -52,7 +52,7 @@ Save the file.
 To replace the original `broadcast` handler with the new one, you'll need to reload the `chatroom.lua` file.
 
 ```sh
-aos> .load chatroom.lua
+ .load chatroom.lua
 ```
 
 ## Step 5: Test the Tokengate
@@ -64,7 +64,7 @@ Now that the chatroom is tokengated, let's test it by sending a message to the c
 First, we'll test it from the original aos process.
 
 ```sh
-aos> Send({ Target = ao.id , Action = "Broadcast", Data = "Hello" })
+ Send({ Target = ao.id , Action = "Broadcast", Data = "Hello" })
 # Expected Results:
 message added to outbox
 Broadcasting message from Neo. Content: Hello.
@@ -79,16 +79,16 @@ Now, let's test it from a new aos process that doesn't have a token.
 We'll first need to register to the chatroom.
 
 ```sh
-aos> Send({ Target = [Your Process ID], Action = "Register" })
+ Send({ Target = [Your Process ID], Action = "Register" })
 # Expected Results:
 message added to outbox
 New Message From [Your Process ID]: Data = registered
-````
+```
 
 Now, let's try to send a message to the chatroom.
 
 ```sh
-aos> Send({ Target = [Your Process ID] , Action = "Broadcast", Data = "Hello?" })
+ Send({ Target = [Your Process ID] , Action = "Broadcast", Data = "Hello?" })
 # Expected Results:
 message added to outbox
 UNAUTH REQ: [New Process ID]

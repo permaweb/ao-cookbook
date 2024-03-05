@@ -30,6 +30,9 @@ yarn-error.log*
 src/.vitepress/cache
 src/.vitepress/cache/deps
 src/.vitepress/dist
+.vitepress
+.vitepress/cache
+.vitepress/cache/deps
 
 wallet.json
 

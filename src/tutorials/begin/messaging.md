@@ -62,10 +62,10 @@ When creating the `Morpheus` variable, the only response you should see is `unde
 
 ```sh
 # Check the Morpheus variable by typing `Morpheus`
-aos> Morpheus
+ Morpheus
 # Expected Results:
 7EIX8Q7GuKQM3E0T-hRj8O_1lsMaZy-oCbka3LU2O7c
-aos>
+
 
 # If `undefined` is returned,
 # then the variable was not created successfully.
@@ -86,12 +86,12 @@ Send({ Target = Morpheus, Data = "Morpheus?" })
 
 ```sh
 # Your Message Command
-aos> Send({ Target = Morpheus, Data = "Morpheus?"})
+ Send({ Target = Morpheus, Data = "Morpheus?"})
 # Message is added to the outbox
 message added to outbox
 # A New Message is received from `Morpheus`'s process ID
 New Message From BWM...ulw: Data = I am here. You are finally awake. Are yo
-aos>
+
 ```
 
 You've sent a message to Morpheus and received a response, but you can't read the full message. Let's learn about the `Inbox` and how to read messages.
@@ -108,7 +108,7 @@ Let's check your inbox to see how many messages you have received.
 Inside your aos CLI, type the following command:
 
 ```sh
-aos> #Inbox
+ #Inbox
 ```
 
 If you're actively following through the tutorial, the inbox will not have many messages. However, if you've been experimenting with the aos environment, you may more than 1 message in your inbox.
@@ -117,10 +117,10 @@ If you're actively following through the tutorial, the inbox will not have many 
 
 ```sh
 # Your Inbox Command
-aos> #Inbox
+ #Inbox
 # The command will return the number of messages in your inbox.
 4
-aos>
+
 ```
 
 In the example above, the return is `4`, stating that there are four messages in the inbox.
@@ -128,7 +128,7 @@ In the example above, the return is `4`, stating that there are four messages in
 As we're actively looking for `Morpheus`'s response, we'll assume his message was the last one received. To read the last message in your inbox, type the following command:
 
 ```sh
-aos> Inbox[#Inbox].Data
+ Inbox[#Inbox].Data
 ```
 
 This command allows you to isolate the Data from the message and only read the contents of the data.
@@ -137,12 +137,12 @@ The Expected Return:
 
 ```sh
 # Your Inbox[x].Data Command
-aos> Inbox[#Inbox].Data
+ Inbox[#Inbox].Data
 # The command will return the `Data` of the message.
 # Data is what usually represents the text-based message
 # received from one process to another.
 I am here. You are finally awake. Are you ready to see how far the rabbit hole goes?
-aos>
+
 ```
 
 You are now using your own process to communicate with Morpheus, another parallel process running in ao. You're now ready to move on to the next step in the tutorial.
