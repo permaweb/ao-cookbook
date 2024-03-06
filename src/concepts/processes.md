@@ -1,6 +1,6 @@
 # Processes
 
-Processes possess the capability to engage in communication via message passing, both receiving and dispatching messages within the network. Additionally, they hold the potential to instantiate further processes, enhancing the network's computational fabric. This dynamic method of data dissemination and interaction within the network is referred to as a 'holographic state,' underpinning the shared and persistent state of the network.
+Processes possess the capability to engage in communication via message passing, both receiving and dispatching messages within the network. Additionally, they hold the potential to instantiate further processes, enhancing the network's computational fabric. This dynamic method of data dissemination and interaction within the network is referred to as a 'holographic state', underpinning the shared and persistent state of the network.
 
 ![Process-Diagram](process-diagram.png)
 
@@ -62,7 +62,7 @@ ao.spawn(ao.env.Module.Id, {
 
 The `ao.env` property contains the `Process` and `Module` Reference Objects
 
-```
+```lua
 env = {
     Process = {
         Id = "5WzR7rJCuqCKEq02WUPhTjwnzllLjGu6SA7qhYpcKRs",
