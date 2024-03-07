@@ -1,3 +1,9 @@
+---
+next:
+  text: "Getting Started"
+  link: "./getting-started"
+---
+
 # Welcome to ao
 
 ![ao logo](/ao-logo-grey.svg)
