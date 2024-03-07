@@ -19,6 +19,11 @@ export const localeConfig = (langCode) => ({
       prev: get_i18n_str(langCode, "prev-page"),
       next: get_i18n_str(langCode, "next-page"),
     },
+    editLink: {
+      pattern: "https://github.com/vuejs/pinia/edit/v2/packages/docs/:path",
+      text: "对本页提出修改建议",
+      text: get_i18n_str(langCode, "edit-link-text"),
+    },
     logo: {
       light: { src: "/ao_pictograph_lightmode.svg", height: 26, width: 26 },
       dark: { src: "/ao_pictograph_darkmode.svg", height: 26, width: 26 },
