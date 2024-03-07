@@ -1,12 +1,3 @@
----
-prev:
-  text: "Let's Play A Game!"
-  link: "/tutorials/bots-and-games/ao-effect"
-next:
-  text: "Fetching Game State"
-  link: "/tutorials/bots-and-games/game-state"
----
-
 # Interpreting Announcements
 
 Welcome back to your coding journey. It's time to use the skills you've acquired from previous tutorials to enhance your gaming experience.
