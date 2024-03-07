@@ -1,102 +1,99 @@
 ---
 prev:
   text: "Bots and Games"
-  link: "/tutorials/bots-and-games/index"
-next:
-  text: "Interpreting Announcements"
-  link: "/tutorials/bots-and-games/announcements"
+  link: "./index"
 ---
 
-# Let's Play A Game!
+# 我们来玩个游戏吧!
 
-You've been powering through tutorials like a champ! Now, let's take a refreshing break and dive into something exciting. How about a game that adds a dash of fun to your learning journey?
+您已经像冠军一样通过教程获得了动力！ 现在，让我们休息一下，开始一些令人兴奋的事情。 一款能为您的学习之旅增添一丝乐趣的游戏怎么样
 
-![AO-Effect Game Banner](/ao-effect-game-banner.png)
+![AO-效应游戏横幅](/ao-effect-game-banner.png)
 
-## What's the game?
+## 是个什么样的游戏？
 
-`ao-effect` is a game where you can compete with friends or other players globally, in real-time, right from your terminal. We've set up a global game process for this adventure.
+`ao-effect` 是一款游戏，您可以直接从您的终端与全球好友或其他玩家进行实时竞争。我们为这次冒险建立了一个全球游戏流程。
 
-The rules are simple. Each player starts on a 40x40 grid with health at 100 and energy at 0. Your energy replenishes over time to a maximum of 100. Navigate the grid, find other players, and use your energy to attack when they're within range. The battle continues until only one player remains or the allotted time expires.
+规则很简单。 每个玩家一开始都在 40x40 的网格上，生命值为 100，能量为 0。随着时间的推移，你的能量会补充到最大 100。在网格中导航，找到其他玩家，并在他们处于攻击范围内时使用你的能量进行攻击。战斗将持续进行，直到只剩下一名玩家或规定的时间到期。
 
-Checkout the guides on the [Mechanics of the Arena](arena-mechanics.md) and [Expanding the Arena](build-game.md) for a deeper understanding of the game.
+查看[竞技场机制](arena-mechanics.md) 和[扩展竞技场](build-game.md) 指南，以更深入地了解游戏。
 
-> Heads Up: Don't sweat it if some command syntax seem unfamiliar. Focus on understanding the purpose of each command at a high level and, most importantly, enjoy the game!
+> 注意：如果某些命令语法看起来不熟悉，请不要担心。专注于在高层次上理解每个命令的目的，最重要的是，享受游戏！
 
-## Preparing for an Adventure in ao-effect
+## 准备 `ao-效应` 的冒险
 
-To join this global escapade, you'll need to set things up. Don't worry, it's as easy as 1-2-3!
+要加入这场全球冒险活动，您需要做好一些准备。 别担心，就像数数 1-2-3 一样简单！
 
-1. **Install aos**
-   Fire up your terminal and run:
+1.**安装 aos**
+启动你的终端并运行：
 
 ```bash
 npm i -g https://get_ao.g8way.io
 ```
 
-2. **Launch aos**
-   Next, create your instance of aos:
+2.**启动 aos**
+接下来，创建 aos 实例：
 
 ```bash
 aos
 ```
 
-3. **Set Up the Game ID**
-   Let's keep our game server ID handy for quick access:
+3.**设置游戏ID**
+让我们保留我们的游戏服务器 ID 以便快速访问：
 
 ```lua
 Game = "3HSmhQ-lHaCQlOKtq5GDgbVQXQ6mWIp40uUASAG13Xk"
 ```
 
-And voilà! You're all set to join the game.
+瞧！ 您已准备好加入游戏。
 
-## How to Register for a Game
+## 如何注册游戏
 
-Ready to jump in? Just a few simple steps to get you going:
+准备好加入了吗？ 只需几个简单的步骤即可让您开始：
 
-### Register with the Game Server
+### 注册游戏服务器
 
-All communication between processes in `ao` occurs through messages. To register, send this message to the game server:
+`ao` 中进程之间的所有通信都是通过消息进行的。要注册，请将此消息发送到游戏服务器：
 
 ```lua
 Send({ Target = Game, Action = "Register" })
 ```
 
-This places you in the `Waiting` Lobby. A small fee is needed to confirm your spot.
+这会将您置于 `Waiting` 大厅。需要支付少量费用来确认您的位置。
 
-### Confirm your spot
+### 确认你的位置
 
-In order to confirm your spot you need some tokens. You can acquire them by sending the following message to the game:
+为了确认您的位置，您需要一些代币。您可以通过向游戏发送以下消息来获取它们：
 
 ```lua
 Send({ Target = Game, Action = "RequestTokens"})
 ```
 
-Once you receive the tokens, confirm your spot by paying the game's entry fee like this:
+收到代币后，请通过支付游戏入场费来确认您的位置，如下所示：
 
 ```lua
 Send({ Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1000"})
 ```
 
-Wait for a few seconds, and you'll see live updates in your terminal about player payments and statuses.
+等待几秒钟，您将在终端中看到有关玩家付款和状态的实时更新。
 
-## Let the Games Begin!
+## 让游戏开始
 
-### Game Mechanics
+### 游戏机制
 
-Game Start: The game begins after a 2-minute `WaitTime` if at least 2 players have paid. Non-paying players are removed. If not enough players pay, those who did are refunded.
+游戏开始：如果至少有 2 名玩家付款，则游戏在 2 分钟 `WaitTime` 后开始。不付费的玩家将被踢除。如果没有足够的玩家付费，那么付费的玩家将获得退款。
 
-Players spawn at a random grid point once the game begins.
+游戏开始后，玩家会在随机网格点生成。
 
-### It's Your Move!
+### 该你移动了
 
-Making a Move: The first thing you can do is move around, no energy required! You can shift one square in any direction – up, down, left, right, or diagonally. Along with the direction you must also pass in your player id to help the game identify your move. Here's how:
+移动：你能做的第一件事就是移动，不需要能量！您可以向任何方向移动一个方块——上、下、左、右或对角线。除了方向之外，您还必须传递您的玩家 ID，以帮助游戏识别您的移动。就是这样：
 
 ```lua
 Send({ Target = Game, Action = "PlayerMove", Player = ao.id, Direction = "DownRight"})
 ```
 
-The available moves across the grid are as follows:
+网格上可用的移动如下：
 
 ```lua
 Up = {x = 0, y = -1},
@@ -109,22 +106,22 @@ DownRight = {x = 1, y = 1},
 DownLeft = {x = -1, y = 1}
 ```
 
-> Keep in Mind: Directions are case sensitive!
+> 请记住：方向区分大小写！
 
-If you move off the grid, you'll pop up on the opposite side.
+如果你离开网格，你就会出现在对面。
 
-### Time to Strike!
+### 出击时间到了
 
-Launching an Attack: As the game progresses, you'll accumulate energy. Use it to attack other players within a 3x3 grid range. Your attack won't hurt you, but it will affect others in range.
+发起攻击：随着游戏的进行，你会积累能量。 用它攻击 3x3 网格范围内的其他玩家。 你的攻击不会伤害你，但会影响范围内的其他人。
 
 ```lua
 Send({ Target = Game, Action = "PlayerAttack", Player = ao.id, AttackEnergy = "energy_integer"})
 ```
 
-Health starts at 100 and decreases with hits from other players. Reach 0, and it's game over for you.
+生命值从 100 开始，并随着其他玩家的攻击而减少。 达到 0 时，游戏就结束了。
 
-## Wrapping Up
+## 总结一下
 
-The game ends when there's one player left or time is up. Winners receive rewards, then it's back to the lobby for another round.
+当只剩下一名玩家或时间到时，游戏结束。获胜者将获得奖励，然后返回大厅进行另一轮比赛。
 
-Enjoyed the game? What if there was a way to make your experience even better or boost your odds of winning. Checkout the next guide to find out 🤔
+喜欢这个游戏吗？如果有一种方法可以让您的体验变得更好或提高您获胜的几率，该怎么办？ 查看下一篇指南来了解一下🤔

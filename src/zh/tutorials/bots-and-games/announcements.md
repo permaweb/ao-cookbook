@@ -1,42 +1,33 @@
----
-prev:
-  text: "Let's Play A Game!"
-  link: "/tutorials/bots-and-games/ao-effect"
-next:
-  text: "Fetching Game State"
-  link: "/tutorials/bots-and-games/game-state"
----
+# 解析公告
 
-# Interpreting Announcements
+欢迎回到您的编码之旅。 是时候使用您从之前的教程中获得的技能来增强您的游戏体验了
 
-Welcome back to your coding journey. It's time to use the skills you've acquired from previous tutorials to enhance your gaming experience.
+在游戏过程中，您可能会注意到终端中出现的公告。这些公告是游戏向玩家传达重要事件的方式。然而，这些消息有时看起来很神秘，或者您可能会发现自己得反复检查收件箱才能获取更多详细信息。
 
-During the game, you've likely noticed announcements appearing in your terminal. These announcements are the game's way of communicating important events to players. However, these messages can sometimes seem cryptic or you might find yourself checking your inbox frequently for further details.
+直接从您的终端访问这些信息不是很方便吗？ 嗯，有一种方法可以做到这一点！
 
-Wouldn't it be convenient to access this information directly from your terminal? Well, there's a way to do that!
+通过使用 [handlers](../../references/handlers.md)，您可以创建一个自主代理来为您读取这些信息，标志着从简单的机器人到能够直接解析游戏事件并对其采取行动的实体的进化。
 
-By using [handlers](/references/handlers.md), you can create an autonomous agent to retrieve this information for you, marking the progression from simple bots to entities capable of interpreting and acting on game events directly.
+## 设置开发环境
 
-## Setting up the Development Environment
+首先在您的首选目录中创建一个名为 `bot.lua` 的新文件。
 
-Start by creating a new file named `bot.lua` in your preferred directory.
+> 理想情况下，该文件应放置在播放器进程运行的同一目录中，以简化代码的加载。 否则，您需要使用相对路径来访问该文件。
 
-> Ideally, this file should be placed in the same directory where your player process runs to ease the loading of the code. Else, you'll need to use relative paths to access the file.
+## 编写代码
 
-## Writing the Code
+让我们深入研究下其中的逻辑。
 
-Let's dive into the logic.
+aos 中的每个处理程序都需要三个关键信息：
 
-Each handler in aos requires three key pieces of information:
+- `name`：处理程序的唯一名称
+- `pattern`: 处理程序识别的模式，触发其执行
+- `handle`：模式匹配时执行的操作
 
-- `name`: A unique name for the handler
-- `pattern`: A pattern for the handler to identify, triggering its operation
-- `handle`: The operations to perform when the desired pattern is found.
-
-Here's how you can write a handler for printing announcement details:
+以下是编写用于打印公告详细信息的处理程序的方法：
 
 ```lua
--- Handler to print game announcements directly in the terminal.
+-- 直接在终端中打印游戏公告的处理程序。
 Handlers.add(
   "PrintAnnouncements",
   Handlers.utils.hasMatchingTag("Action", "Announcement"),
@@ -46,22 +37,22 @@ Handlers.add(
 )
 ```
 
-In this case, the name of the handler is `"PrintAnnouncements"`. It uses a special in-built utility (`hasMatchingTags`) to check if the incoming message has been tagged as an announcement. If true, the handler prints the Event and Data, which represent the title and description of the announcement.
+在本例中，处理程序的名称是 `"PrintAnnouncements"`。 它使用特殊的内置实用程序（`hasMatchingTags`）来检查传入消息是否已被标记为公告。 如果为 true，则处理程序将打印事件和数据，则直接显示公告的标题和描述。
 
-> Note: Once a message is "handled", it will be discarded from your `Inbox`.
+> 注意：一旦消息被 `handled`，它将从您的 `Inbox` 中丢弃。
 
-## Loading and Testing
+## 加载和测试
 
-Now, let's bring this to life in the game.
+现在，让我们在游戏中实现这一点。
 
-Navigate to your aos player terminal and enter a game session.
+导航到您的 aos 玩家终端并进入游戏会话。
 
-Activate the handler by loading your `bot.lua` file with:
+用下面的命令来加载 `bot.lua` 文件以激活处理程序：
 
 ```lua
 .load bot.lua
 ```
 
-You'll now see game announcements appear directly in your terminal, offering real-time insights without the need to sift through your inbox.
+现在，您将看到游戏公告直接出现在您的终端中，提供实时展示，且无需手动查看收件箱。
 
-Congratulations! You have just taken the first step in building a bot on `aos`. But let's keep working on adding more features to it 🌐
+恭喜！ 您刚刚迈出了在 `aos` 上构建机器人的第一步。 但让我们继续努力为其添加更多功能 🌐

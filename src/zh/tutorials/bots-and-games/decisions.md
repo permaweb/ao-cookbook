@@ -1,27 +1,18 @@
----
-prev:
-  text: "Fetching Game State"
-  link: "/tutorials/bots-and-games/game-state"
-next:
-  text: "Automated Responses"
-  link: "/tutorials/bots-and-games/attacking"
----
+# 战略决策
 
-# Strategic Decicions
+有了[最新游戏状态](game-state)的辅助，您的机器人就可以进化为 `自主代理`。 这一转变标志着功能的升级，不仅支持对游戏状态的反馈，还可以根据上下文、能量和邻近度来制定决策的策略行为。
 
-With the [latest game state](game-state) at your disposal, your bot can evolve into an "autonomous agent". This transition marks an upgrade in functionality, enabling not just reactions to game states but strategic actions that consider context, energy, and proximity to make decisions.
+## 编写代码
 
-## Writing the Code
-
-Return to your `bot.lua` file and add the following functions:
+返回到 `bot.lua` 文件并添加以下函数：
 
 ```lua
--- Determines proximity between two points.
+-- 确定两点之间的接近度。
 function inRange(x1, y1, x2, y2, range)
     return math.abs(x1 - x2) <= range and math.abs(y1 - y2) <= range
 end
 
--- Strategically decides on the next move based on proximity and energy.
+-- 根据距离和能量来战略性地决定下一步行动。
 function decideNextAction()
   local player = LatestGameState.Players[ao.id]
   local targetInRange = false
@@ -45,9 +36,9 @@ function decideNextAction()
 end
 ```
 
-The `decideNextAction` function is now a testament to our agent's ability to think and act based on a comprehensive understanding of its environment. It analyzes the latest game state to either attack if you have sufficient energy and an opponent is `inRange` or move otherwise.
+`decideNextAction` 函数现在证明了我们的代理（机器人）基于对其环境的全面了解进行思考和行动的能力。 它会分析最新的游戏状态，如果您有足够的能量并且对手处于 `inRange`（攻击范围内），则进行攻击，否则进行移动。
 
-Now all you need is a handler to make sure this function runs on its own.
+现在再加个处理程序 `handler` 即可确保该函数自行运行。
 
 ```lua
 Handlers.add(
@@ -63,12 +54,12 @@ Handlers.add(
 )
 ```
 
-This handler triggers upon receiving a message that the latest game state has been fetched and updated. An action is taken only when the game is in `Playing` mode.
+最新游戏状态更新时，该处理程序被触发。 且仅当游戏处于 `Playing` 模式时才会执行操作。
 
-You can refer to the latest code for `bot.lua` in the dropdown below:
+您可以在下面的下拉展开块中参考 `bot.lua` 的最新代码：
 
 <details>
-  <summary><strong>Updated bot.lua file</strong></summary>
+  <summary><strong>更新后的 bot.lua 文件</strong></summary>
 
 ```lua
 LatestGameState = LatestGameState or nil
@@ -100,45 +91,45 @@ function decideNextAction()
 end
 
 Handlers.add(
-"HandleAnnouncements",
-Handlers.utils.hasMatchingTag("Action", "Announcement"),
-function (msg)
-  ao.send({Target = Game, Action = "GetGameState"})
-  print(msg.Event .. ": " .. msg.Data)
-end
-)
-
-Handlers.add(
-"UpdateGameState",
-Handlers.utils.hasMatchingTag("Action", "GameState"),
-function (msg)
-  local json = require("json")
-  LatestGameState = json.decode(msg.Data)
-  ao.send({Target = ao.id, Action = "UpdatedGameState"})
-end
-)
-
-Handlers.add(
-"decideNextAction",
-Handlers.utils.hasMatchingTag("Action", "UpdatedGameState"),
-function ()
-  if LatestGameState.GameMode ~= "Playing" then
-    return
+  "HandleAnnouncements",
+  Handlers.utils.hasMatchingTag("Action", "Announcement"),
+  function (msg)
+    ao.send({Target = Game, Action = "GetGameState"})
+    print(msg.Event .. ": " .. msg.Data)
   end
-  print("Deciding next action.")
-  decideNextAction()
-end
+)
+
+Handlers.add(
+  "UpdateGameState",
+  Handlers.utils.hasMatchingTag("Action", "GameState"),
+  function (msg)
+    local json = require("json")
+    LatestGameState = json.decode(msg.Data)
+    ao.send({Target = ao.id, Action = "UpdatedGameState"})
+  end
+)
+
+Handlers.add(
+  "decideNextAction",
+  Handlers.utils.hasMatchingTag("Action", "UpdatedGameState"),
+  function ()
+    if LatestGameState.GameMode ~= "Playing" then
+      return
+    end
+    print("Deciding next action.")
+    decideNextAction()
+  end
 )
 ```
 
 </details>
 
-## Loading and Testing
+## 加载和测试
 
-Once again, to test out the latest upgrades, load the file in your aos player terminal as follows:
+再次，要测试最新的升级，请在 aos 玩家终端中加载文件，如下所示：
 
 ```lua
 .load bot.lua
 ```
 
-Observe your process output to see the decisions your autonomous agent makes in real-time, leveraging the current game state for strategic advantage. But what if another player attacks you and runs away while you are deciding the next move? In the next section you'll learn to automatically counter as soon as you have been attacked 🤺
+观察您的进程输出，以了解您的自主代理实时做出的决策，利用当前的游戏状态获得战略优势。 但是，如果在您决定下一步行动时另一个玩家攻击您并逃跑怎么办？ 在下一节中，您将学习在受到攻击后立即自动反击🤺

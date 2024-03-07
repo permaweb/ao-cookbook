@@ -1,122 +1,106 @@
----
-prev:
-  text: "Bringing it Together"
-  link: "/tutorials/bots-and-games/bringing-together"
-next:
-  text: "Expanding the Arena"
-  link: "/tutorials/bots-and-games/build-game"
----
+# 竞技场机制
 
-# Mechanics of the Arena
+本指南全面概述了在 `aos` 中设计和管理竞技场风格游戏所必需的基本机制。在竞技场游戏中，参与者进行回合比赛，有策略地相互竞争以消灭对方，直到出现唯一的胜利者。
 
-This guide provides a comprehensive overview of the fundamental mechanics essential for designing and managing arena-style games in `aos`. In arena games, participants engage in rounds, strategically vying to eliminate each other until a sole victor emerges.
+这里介绍的框架为制作各种游戏奠定了基础，所有游戏都共享相同的核心功能。 探索游戏开发的复杂性，并在这个多功能的舞台上释放您的创造力。
 
-The framework presented here lays the groundwork for crafting a wide range of games, all sharing the same core functionalities. Explore the intricacies of game development and unleash your creativity within this versatile arena.
+## 核心功能
 
-## Core Functionalities
+现在，让我们深入了解竞技场风格游戏的核心功能：
 
-Now, let's dive into the core functionalities that power arena-style games:
+1. **游戏进展模式：**
 
-1. **Game Progression Modes:**
+   竞技场游戏被打造为循环运行的回合，具有以下进展模式：`"Not-Started"` → `"Waiting"` → `"Playing"` → `[Someone wins or timeout]` → `"Waiting"`...
 
-Arena games are structured into rounds that operate in a loop with the following progression modes: `"Not-Started"` → `"Waiting"` → `"Playing"` → `[Someone wins or timeout]` → `"Waiting"`...
+   > 注意：如果等待状态后没有足够的玩家开始游戏，则循环超时。
 
-> Note: The loop timesout if there are not enough players to start a game after the waiting state.
+   回合为玩家提供了明确的参与时间范围，从而增强了游戏的刺激性。
 
-Rounds offer a defined timeframe for players to engage, intensifying the excitement of gameplay.
+2. **代币质押：**
 
-2. **Token Stakes:**
+   玩家必须存入指定数量的代币（由 `PaymentQty` 定义）才能参与游戏。 这些代币为游戏添加了有形的赌注元素。
 
-Players must deposit a specified quantity of tokens (defined by `PaymentQty`) to participate in the game. These tokens add a tangible stake element to the game.
+3. **奖金奖励：**
 
-3. **Bonus Rewards:**
+   除了胜利的兴奋之外，玩家还被额外奖励的前景所吸引。 构建者可以灵活地提供由 `BonusQty` 定义的奖励代币，每轮分配。 玩家所下的任何赌注也会添加到这些奖金中。 这些奖金作为额外的激励，增强了游戏的竞争精神。
 
-Beyond the thrill of victory, players are enticed by the prospect of extra rewards. The builder has the flexibility to offer bonus tokens, defined by `BonusQty`, to be distributed per round. Any bets placed by players are also added to these bonuses. These bonuses serve as an additional incentive, enhancing the competitive spirit of the gameplay.
+4. **玩家管理：**
 
-4. **Player Management:**
+   - 等待加入下一场比赛的玩家会在 `Waiting` 表中进行跟踪。
+   - 正在比赛的玩家及其游戏状态存储在 `Players` 表中。
+   - 被淘汰的玩家会立即从 `Players` 表中删除，并放入 `Waiting` 表中进行下一场比赛。
 
-- Players waiting to join the next game are tracked in the `Waiting` table.
-- Active players and their game states are stored in the `Players` table.
-- Eliminated players are promptly removed from the `Players` table and placed in the `Waiting` table for the next game.
+5. **每轮获胜者奖励：**
 
-5. **Round Winner Reward:**
+   当一个玩家淘汰另一个玩家时，他们不仅可以获得吹牛的权利，还可以获得被淘汰玩家的质押代币作为奖励。 此外，每轮的获胜者都会分享一部分奖金代币以及他们的原始质押的代币，进一步激励玩家争取胜利。
 
-When a player eliminates another, they earn not only bragging rights but also the eliminated player's deposit tokens as a reward. Additionally, winners of each round share a portion of the bonus tokens, as well as their original stake, further motivating players to strive for victory.
+6. **监听器模式：**
 
-6. **Listener Mode:**
+   对于那些喜欢观看行动展开的人来说，`Listen` 模式提供了一个无需实际参与即可了解情况的机会。 进程可以注册为侦听器，授予它们访问游戏中所有公告的权限。 虽然他们不作为玩家参与，但听众可以继续观察游戏的进度，除非他们明确要求删除。
 
-For those who prefer to watch the action unfold, the "Listen" mode offers an opportunity to stay informed without active participation. Processes can register as listeners, granting them access to all announcements from the game. While they do not engage as players, listeners can continue to observe the game's progress unless they explicitly request removal.
+7. **游戏状态管理：**
 
-7. **Game State Management:**
+   为了维持竞技场游戏的流畅性和公平性，自动化系统会监督游戏状态的转换。 这些转换包括等待、游戏中和结束阶段。 每个状态的持续时间（例如 `WaitTime` 和 `GameTime`）可确保回合遵守定义的时间范围，从而防止游戏无限期地持续。
 
-To maintain the flow and fairness of arena games, an automated system oversees game state transitions. These transitions encompass waiting, playing, and ending phases. Time durations for each state, such as `WaitTime` and `GameTime`, ensure that rounds adhere to defined timeframes, preventing games from lasting indefinitely.
-
-You can refer to the code for the arena in the dropdown below:
+您可以在下面的下拉展开块中参考竞技场的代码：
 
 <details>
-  <summary><strong>Arena Game Blueprint</strong></summary>
+  <summary><strong>竞技场游戏蓝图</strong></summary>
 
 ```lua
--- ARENA GAME BLUEPRINT.
 
--- This blueprint provides the framework to operate an 'arena' style game
--- inside an ao process. Games are played in rounds, where players aim to
--- eliminate one another until only one remains, or until the game time
--- has elapsed. The game process will play rounds indefinitely as players join
--- and leave.
+-- 竞技场游戏蓝图。
 
--- When a player eliminates another, they receive the eliminated player's deposit token
--- as a reward. Additionally, the builder can provide a bonus of these tokens
--- to be distributed per round as an additional incentive. If the intended
--- player type in the game is a bot, providing an additional 'bonus'
--- creates an opportunity for coders to 'mine' the process's
--- tokens by competing to produce the best agent.
+-- 该蓝图提供了在 ao 进程内运行 `竞技场` 风格游戏的框架。
+-- 游戏以回合形式进行，玩家的目标是互相消灭，直到只剩下一个，或者直到比赛时间结束。
+-- 游戏进程会随着玩家的加入和离开而无限循环。
 
--- The builder can also provide other handlers that allow players to perform
--- actions in the game, calling 'eliminatePlayer()' at the appropriate moment
--- in their game logic to control the framework.
+-- 当一个玩家淘汰另一个玩家时，他们会收到被淘汰玩家的质押代币作为奖励。
+-- 此外，建造者可以提供这些代币的奖励作为每轮额外的激励分配。
+-- 如果游戏中的目标玩家类型是机器人，提供额外的`奖励`创造让程序员争相生产最佳代理来`挖`到进程的代币的机会
 
--- Processes can also register in a 'Listen' mode, where they will receive
--- all announcements from the game, but are not considered for entry into the
--- rounds themselves. They are also not unregistered unless they explicitly ask
--- to be.
+-- 建造者还可以在他们的游戏逻辑中控制框架, 提供类似这样的处理程序：允许玩家执行游戏中的动作，在适当的时刻调用 `eliminatePlayer()`。
 
--- GLOBAL VARIABLES.
+-- 进程还可以在 `监听` 模式下注册，在该模式下它们将接收游戏中的所有公告，但他们自己不加入本轮对战。
+-- 除非他们明确要求，否则他们也不会取消注册。
 
--- Game progression modes in a loop:
+-- 全局变量。
+
+-- 一轮循环包含的游戏进度模式：
+
 -- [Not-Started] -> Waiting -> Playing -> [Someone wins or timeout] -> Waiting...
--- The loop is broken if there are not enough players to start a game after the waiting state.
+-- 在等待状态之后如果还没有足够玩家则此循环结束。
 GameMode = GameMode or "Not-Started"
 StateChangeTime = StateChangeTime or undefined
 
--- State durations (in milliseconds)
-WaitTime = WaitTime or 2 * 60 * 1000 -- 2 minutes
-GameTime = GameTime or 20 * 60 * 1000 -- 20 minutes
-Now = Now or undefined -- Current time, updated on every message.
+-- 状态持续时间 （毫秒）
+WaitTime = WaitTime or 2 * 60 * 1000 -- 2 分钟
+GameTime = GameTime or 20 * 60 * 1000 -- 20 分钟
+Now = Now or undefined -- 当前时间，每条消息更新一次。
 
--- Token information for player stakes.
+-- 玩家质押的代币信息。
 UNIT = 1000
-PaymentToken = PaymentToken or "ADDR"  -- Token address
-PaymentQty = PaymentQty or tostring(math.floor(UNIT))    -- Quantity of tokens for registration
-BonusQty = BonusQty or tostring(math.floor(UNIT))        -- Bonus token quantity for winners
+PaymentToken = PaymentToken or "ADDR"  -- 代币地址
+PaymentQty = PaymentQty or tostring(math.floor(UNIT))    -- 注册需要的代币数量
+BonusQty = BonusQty or tostring(math.floor(UNIT))        -- 赢家的代币奖金数量
 
--- Players waiting to join the next game and their payment status.
+-- 等待进入下一轮游戏的玩家及其支付状态。
 Waiting = Waiting or {}
--- Active players and their game states.
+-- 已激活玩家及其状态。
 Players = Players or {}
--- Number of winners in the current game.
+-- 当前游戏的赢家数量。
 Winners = 0
--- Processes subscribed to game announcements.
+-- 订阅了游戏公告的进程。
 Listeners = Listeners or {}
--- Minimum number of players required to start a game.
+-- 开始一个游戏的最小玩家数。
 MinimumPlayers = MinimumPlayers or 2
 
--- Default player state initialization.
+-- 玩家默认状态初始化。
 PlayerInitState = PlayerInitState or {}
 
--- Sends a state change announcement to all registered listeners.
--- @param event: The event type or name.
--- @param description: Description of the event.
+-- 向所有注册的侦听器发送状态更改公告。
+-- @param event: 事件类型或名称。
+-- @param description: 事件描述。
 function announce(event, description)
     for ix, address in pairs(Listeners) do
         ao.send({
@@ -129,10 +113,10 @@ function announce(event, description)
     return print(Colors.gray .. "Announcement: " .. Colors.red .. event .. " " .. Colors.blue .. description .. Colors.reset)
 end
 
--- Sends a reward to a player.
--- @param recipient: The player receiving the reward.
--- @param qty: The quantity of the reward.
--- @param reason: The reason for the reward.
+-- 给玩家发送奖励。
+-- @param recipient: 获得奖励的玩家。
+-- @param qty: 奖励数量。
+-- @param reason: 奖励原因。
 function sendReward(recipient, qty, reason)
     if type(qty) ~= number then
       qty = tonumber(qty)
@@ -152,7 +136,7 @@ function sendReward(recipient, qty, reason)
     )
 end
 
--- Starts the waiting period for players to become ready to play.
+-- 开始玩家准备玩游戏的倒计时。
 function startWaitingPeriod()
     GameMode = "Waiting"
     StateChangeTime = Now + WaitTime
@@ -160,7 +144,7 @@ function startWaitingPeriod()
     print('Starting Waiting Period')
 end
 
--- Starts the game if there are enough players.
+-- 如果有足够的玩家，则开始游戏。
 function startGamePeriod()
     local paidPlayers = 0
     for player, hasPaid in pairs(Waiting) do
@@ -193,16 +177,16 @@ function startGamePeriod()
                 Action = "Ejected",
                 Reason = "Did-Not-Pay"
             })
-            removeListener(player) -- Removing player from listener if they didn't pay
+            removeListener(player) -- 如果玩家未付款，则将其从监听器中删除
         end
     end
     announce("Started-Game", "The game has started. Good luck!")
     print("Game Started....")
 end
 
--- Handles the elimination of a player from the game.
--- @param eliminated: The player to be eliminated.
--- @param eliminator: The player causing the elimination.
+-- 从游戏中淘汰玩家的处理程序。
+-- @param eliminated: 要被淘汰的玩家。
+-- @param eliminator: 发起淘汰的玩家。
 function eliminatePlayer(eliminated, eliminator)
     sendReward(eliminator, PaymentQty, "Eliminated-Player")
     Waiting[eliminated] = false
@@ -220,7 +204,7 @@ function eliminatePlayer(eliminated, eliminator)
     for player, _ in pairs(Players) do
         playerCount = playerCount + 1
     end
-    print("Eliminating player: " .. eliminated .. " by: " .. eliminator) -- Useful for tracking eliminations
+    print("Eliminating player: " .. eliminated .. " by: " .. eliminator) -- 对于跟踪淘汰很有用
 
     if playerCount < MinimumPlayers then
         endGame()
@@ -228,12 +212,12 @@ function eliminatePlayer(eliminated, eliminator)
 
 end
 
--- Ends the current game and starts a new one.
+-- 结束当前游戏并开始一个新的。
 function endGame()
     print("Game Over")
 
     Winners = 0
-    Winnings = tonumber(BonusQty) / Winners -- Calculating winnings per player
+    Winnings = tonumber(BonusQty) / Winners -- 计算每位玩家的奖金
 
     for player, _ in pairs(Players) do
         Winners = Winners + 1
@@ -252,8 +236,8 @@ function endGame()
     startWaitingPeriod()
 end
 
--- Removes a listener from the listeners' list.
--- @param listener: The listener to be removed.
+-- 从监听器列表移除一个监听器。
+-- @param listener: 待移除的监听器。
 function removeListener(listener)
     local idx = 0
     for i, v in ipairs(Listeners) do
@@ -267,9 +251,9 @@ function removeListener(listener)
     end
 end
 
--- HANDLERS: Game state management
+-- 处理程序: 游戏状态管理
 
--- Handler for cron messages, manages game state transitions.
+-- 定时消息处理程序，管理游戏状态切换。
 Handlers.add(
     "Game-State-Timers",
     function(Msg)
@@ -294,7 +278,7 @@ Handlers.add(
     end
 )
 
--- Handler for player deposits to participate in the next game.
+-- 玩家质押以参与下一轮游戏的处理程序。
 Handlers.add(
     "Transfer",
     function(Msg)
@@ -313,7 +297,7 @@ Handlers.add(
     end
 )
 
--- Registers new players for the next game and subscribes them for event info.
+-- 为下轮游戏注册新玩家并为其订阅事件信息。
 Handlers.add(
     "Register",
     Handlers.utils.hasMatchingTag("Action", "Register"),
@@ -331,7 +315,7 @@ Handlers.add(
     end
 )
 
--- Unregisters players and stops sending them event info.
+-- 注销玩家并停止向他们发送事件信息。
 Handlers.add(
     "Unregister",
     Handlers.utils.hasMatchingTag("Action", "Unregister"),
@@ -344,7 +328,7 @@ Handlers.add(
     end
 )
 
--- Adds bet amount to BonusQty
+-- 将投注金额添加到 BonusQty
 Handlers.add(
     "AddBet",
     Handlers.utils.hasMatchingTag("Reason", "AddBet"),
@@ -354,7 +338,7 @@ Handlers.add(
     end
 )
 
--- Retrieves the current game state.
+-- 检索当前游戏状态。
 Handlers.add(
     "GetGameState",
     Handlers.utils.hasMatchingTag("Action", "GetGameState"),
@@ -373,7 +357,7 @@ Handlers.add(
     end
 )
 
--- Alerts users regarding the time remaining in each game state.
+-- 提醒用户每个游戏状态的剩余时间。
 Handlers.add(
     "AnnounceTick",
     Handlers.utils.hasMatchingTag("Action", "Tick"),
@@ -387,7 +371,7 @@ Handlers.add(
     end
 )
 
--- Sends tokens to players with no balance upon request
+-- 根据请求向没有余额的玩家发送代币
 Handlers.add(
     "RequestTokens",
     Handlers.utils.hasMatchingTag("Action", "RequestTokens"),
@@ -405,16 +389,16 @@ Handlers.add(
 
 </details>
 
-## Arena Game Blueprint
+## 竞技场游戏蓝图
 
-For those interested in using this arena framework, we've made this code easily accesible through a blueprint. Simply run the following code in your terminal:
+对于那些有兴趣使用此 arena 框架的人，我们已通过蓝图轻松访问此代码。 只需在终端中运行以下代码：
 
 ```lua
 .load-blueprint arena
 ```
 
-## Summary
+## 总结
 
-Understanding the mechanics of the arena can not only help you improve your autonomous agent created in the previous section but also empowers you to harness core functionalities for crafting your unique games.
+了解竞技场的机制不仅可以帮助您改进上一节中创建的自主代理，还可以让您利用核心功能来打造独特的游戏。
 
-In the upcoming section, "Building a Game," we will dive deep into the art of utilizing these mechanics to construct captivating and one-of-a-kind games within this framework. Get ready to embark on a journey into the dynamic realm of game development! 🎮
+在接下来的 `Building a Game` 部分中，我们将深入探讨利用这些机制在此框架内构建迷人且独一无二的游戏的艺术。 准备好踏上游戏开发动态领域的旅程吧！ 🎮

@@ -1,23 +1,14 @@
----
-prev:
-  text: "Interpreting Announcements"
-  link: "/tutorials/bots-and-games/announcements"
-next:
-  text: "Strategic Decicions"
-  link: "/tutorials/bots-and-games/decisions"
----
+# 获取游戏状态
 
-# Fetching Game State
+现在您可以直接在终端中看到游戏公告，您可以更好地掌握游戏动态。 然而，这些展示仅限于游戏中发生的特定动作。
 
-Now that you're seeing game announcements directly in your terminal, you have a better grasp of the game's dynamics. However, these insights are limited to specific actions occurring within the game.
+按需访问全面的游戏数据（例如所有玩家的位置、生命值和武力值）不是更有用吗？ 这些信息可以显着改善您的战略规划，帮助您更有效地评估威胁、机遇和时机。
 
-Wouldn't it be more useful to have on-demand access to comprehensive game data, like the positions, health, and energy of all players? This information could significantly improve your strategic planning, helping you assess threats, opportunities, and timing more effectively.
+如果您考虑往[上一篇指南](announcements)中创建的机器人添加另一个处理程序，那就对了！
 
-If you thought of adding another handler to the bot created in the [previous guide](announcements), you're absolutely right!
+## 编写代码
 
-## Writing the Code
-
-Go back to your `bot.lua` file and update your existing handler as follows:
+返回到 `bot.lua` 文件并更新现有处理程序，如下所示：
 
 ```lua
 Handlers.add(
@@ -30,37 +21,37 @@ Handlers.add(
 )
 ```
 
-Adjustments to your handler include:
+对处理程序的调整包括：
 
-- Renaming to `"HandleAnnouncements"` to reflect its broader role.
-- Addition of an extra operation to request the game for the updated state. The game is designed to respond to the `GetGameState` action tag.
+- 重命名为 `"HandleAnnouncements"` 以反映其更广泛的作用。
+- 添加额外操作来请求游戏更新状态。 该游戏旨在响应 `GetGameState` 动作标签。
 
-When you get a print of the announcement, you can check the latest message in your `Inbox` as follows:
+当您收到公告打印件后，您可以在 `Inbox` 中查看最新消息，如下所示：
 
 ```lua
 Inbox[#Inbox]
 ```
 
-The `Data` field of this message contains the latest state of the game which includes:
+该消息的 `Data` 字段包含游戏的最新状态，其中包括：
 
-- `GameMode` : Whether the game is in `Waiting` or `Playing` state.
-- `TimeRemaining` : The time remaining for the game to start or end.
-- `Players` : A table containing every player's stats like position, health and energy.
+- `GameMode` ：游戏是否处于 `Waiting` 或 `Playing` 状态。
+- `TimeRemaining`：游戏开始或结束的剩余时间。
+- `Players`：包含每个球员的统计数据（如位置、生命值和武力值）的表格。
 
-But this can be taken a step further so that you can not just read but also use information from the latest state for other automations.
+但这可以更进一步，这样您不仅可以阅读，还可以将最新状态的信息用于其他自动化。
 
-Let's define a new variable that stores the latest state as follows:
+让我们定义一个存储最新状态的新变量，如下所示：
 
 ```lua
 LatestGameState = LatestGameState or nil
 ```
 
-The syntax preserves exisitng values of the variable when you load successive iterations of the `bot.lua` file in your terminal, instead of overwriting it. If there is no pre-existing value then a `nil` value is assigned to the variable.
+当您在终端中反复加载 `bot.lua` 文件时，该语法会保留变量的现有值，而不是覆盖它。 如果没有预先存在的值，则将 `nil` 值分配给该变量。
 
-Then implement another handler as follows:
+然后实现另一个处理程序，如下所示：
 
 ```lua
--- Handler to update the game state upon receiving game state information.
+-- 接收游戏状态信息后更新游戏状态的处理程序。
 Handlers.add(
   "UpdateGameState",
   Handlers.utils.hasMatchingTag("Action", "GameState"),
@@ -73,53 +64,53 @@ Handlers.add(
 )
 ```
 
-The response from the game process from the previous handler has an action tag with the value `GameState` that helps us trigger this second handler. Once triggered, the handle function loads the in-built `json` package that parses the data into json and stores it in the `LatestGameState` variable.
+来自前一个处理程序的游戏进程的响应有一个值为 `GameState` 的动作标签，可以帮助我们触发第二个处理程序。 触发后，handle 函数会加载内置的 `json` 包，该包将数据解析为 json 并将其存储在 `LatestGameState` 变量中。
 
-This handler additionally sends a message to your process indicating when the state has been updated. The significance of this feature will be explained in the following section.
+该处理程序还会向您的进程发送一条消息，指示状态何时更新。 该功能的意义将在下一节中解释。
 
-You can refer to the latest code for `bot.lua` in the dropdown below:
+您可以在下面的下拉展开块中参考 `bot.lua` 的最新代码：
 
 <details>
-  <summary><strong>Updated bot.lua file</strong></summary>
+  <summary><strong>更新后的 bot.lua 文件</strong></summary>
 
 ```lua
 LatestGameState = LatestGameState or nil
 
 Handlers.add(
-"HandleAnnouncements",
-Handlers.utils.hasMatchingTag("Action", "Announcement"),
-function (msg)
-  ao.send({Target = Game, Action = "GetGameState"})
-  print(msg.Event .. ": " .. msg.Data)
-end
+  "HandleAnnouncements",
+  Handlers.utils.hasMatchingTag("Action", "Announcement"),
+  function (msg)
+    ao.send({Target = Game, Action = "GetGameState"})
+    print(msg.Event .. ": " .. msg.Data)
+  end
 )
 
 Handlers.add(
-"UpdateGameState",
-Handlers.utils.hasMatchingTag("Action", "GameState"),
-function (msg)
-  local json = require("json")
-  LatestGameState = json.decode(msg.Data)
-  ao.send({Target = ao.id, Action = "UpdatedGameState"})
-  print("Game state updated. Print \'LatestGameState\' for detailed view.")
-end
+  "UpdateGameState",
+  Handlers.utils.hasMatchingTag("Action", "GameState"),
+  function (msg)
+    local json = require("json")
+    LatestGameState = json.decode(msg.Data)
+    ao.send({Target = ao.id, Action = "UpdatedGameState"})
+    print("Game state updated. Print \'LatestGameState\' for detailed view.")
+  end
 )
 ```
 
 </details>
 
-## Loading and Testing
+## 加载和测试
 
-As usual, to test this new feature, load the file in your aos player terminal as follows:
+像往常一样，要测试这个新功能，请在 aos 玩家终端中加载文件，如下所示：
 
 ```lua
 .load bot.lua
 ```
 
-Then check the `LatestStateVariable` to see if it has updated correctly by simply passing its name as follows:
+然后检查 `LatestStateVariable`，通过简单地传递其名称来查看它是否已正确更新，如下所示：
 
 ```lua
 LatestGameState
 ```
 
-With real-time access to the latest state of the game you bot is equipped to make informed decisions decide your next action. Next let's try automating actions with the help of this data 🚶
+通过实时访问游戏的最新状态，您的机器人可以做出明智的决定来决定您的下一步行动。 接下来，让我们尝试借助这些数据来自动化操作🚶

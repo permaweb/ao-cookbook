@@ -1,33 +1,30 @@
 ---
-prev:
-  text: "Mechanics of the Arena"
-  link: "/tutorials/bots-and-games/arena-mechanics"
 next:
-  text: "Tutorials"
-  link: "/tutorials/index"
+  text: "指南"
+  link: "/zh/guides/index"
 ---
 
-# Expanding the Arena
+# 扩建竞技场
 
-Welcome to the final guide of Chapter 2, where you'll learn to build your own game on top of the arena framework introduced in the [previous tutorial](arena-mechanics). In this guide, we'll take you through the process of creating the ["ao-effect" game](ao-effect), which you experienced at the beginning of this chapter. As you progress through this example, you'll gain insights into structuring your game's logic and interacting with the arena's core code.
+欢迎来到第 2 章的最终指南，您将学习在[上一篇教程](arena-mechanics)）中介绍的竞技场框架之上构建自己的游戏。 在本指南中，我们将带您完成创建[ao-效应](ao-effect)游戏的过程，即您在本章开始时玩的。 随着您逐步完成此示例，您将深入了解构建游戏逻辑以及与竞技场的核心代码进行交互。
 
-Whether you're a seasoned developer or an aspiring game creator, this guide will empower you to unleash your creativity and bring your unique game ideas to life within the `aos` environment.
+无论您是经验丰富的开发人员还是有抱负的游戏创作者，本指南都将帮助您释放创造力，并在 `aos` 环境中将您独特的游戏创意变为现实。
 
-## Setting up the Development Environment
+## 设置开发环境
 
-Start by creating a new file named `ao-effect.lua` in your preferred directory.
+首先在您的首选目录中创建一个名为 `ao-effect.lua` 的新文件。
 
-> Ideally, this file should be placed in the same directory where your game process runs to ease the loading of the code. Else, you'll need to use relative paths to access the file.
+> 理想情况下，该文件应放置在游戏进程运行的同一目录中，以方便代码的加载。 否则，您需要使用相对路径来访问该文件。
 
-## Writing the Code
+## 编写代码
 
-Now, let's dive into the logic.
+现在，让我们深入研究其中的逻辑。
 
-You'll notice that your game logic will involve calling functions and variables defined in the arena's logic. This showcases the power of composability, where your game builds on top of the existing arena logic, allowing seamless integration of variables and functions between the two. Because both logic become part of a unified logic for the game process.
+您会注意到您的游戏逻辑将涉及调用竞技场逻辑中定义的函数和变量。 这展示了可组合性的力量，您的游戏构建在现有竞技场逻辑之上，允许两者之间的变量和函数无缝集成。 因为这两种逻辑都成为游戏进程完整逻辑的一部分。
 
-### Intializing Game Mechanics
+### 初始化游戏机制
 
-First, define essential variables and functions that set the stage for your game's mechanics:
+首先，定义为游戏机制奠定基础的基本变量和函数：
 
 ```lua
 -- AO EFFECT: Game Mechanics for AO Arena Game
@@ -73,11 +70,11 @@ function onTick()
 end
 ```
 
-This code initializes your game's mechanics, including grid dimensions, player energy, and attack settings. The `playerInitState` function sets up the initial state for players when the game begins.
+此代码初始化游戏的机制，包括网格尺寸、玩家能量和攻击设置。 `playerInitState` 函数在游戏开始时为玩家设置初始状态。
 
-### Player Movement
+### 玩家移动
 
-Next, add the code for player movement:
+接下来，添加玩家移动的代码：
 
 ```lua
 -- Handles player movement
@@ -110,11 +107,11 @@ function move(msg)
 end
 ```
 
-The `move` function calculates new player coordinates based on the chosen direction while ensuring that players remain within the grid boundaries. Player movement adds dynamic interaction to your game and is announced to all players and listeners.
+`move` 函数根据所选方向计算玩家新的坐标，同时确保玩家保持在网格边界内。 玩家的移动为您的游戏添加了动态交互，并向所有玩家和听众同步。
 
-### Player Attacks
+### 玩家攻击
 
-Then you must implement the logic for player attacks:
+然后你必须实现玩家攻击的逻辑：
 
 ```lua
 -- Handles player attacks
@@ -164,11 +161,11 @@ function inRange(x1, y1, x2, y2, range)
 end
 ```
 
-The `attack` function calculates damage based on attack energy, checks player energy, and updates player health accordingly. Player attacks add the competitive element in your game, allowing players to engage with each other. The attacks are also announced to the players and listeners for real-time updates of the game.
+`attack` 函数根据攻击能量计算伤害，检查玩家能量，并相应更新玩家生命值。 玩家攻击会在游戏中添加竞争元素，让玩家能够相互互动。 这些攻击也会向玩家和听众同步，以获取游戏的实时更新。
 
-### Handling the Logic
+### 处理逻辑
 
-Lastly, you must setup handlers:
+最后，您必须设置处理程序：
 
 ```lua
 -- HANDLERS: Game state management for AO-Effect
@@ -180,12 +177,9 @@ Handlers.add("PlayerMove", Handlers.utils.hasMatchingTag("Action", "PlayerMove")
 Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAttack"), attack)
 ```
 
-As seen in earlier guides, the handlers help trigger functions when their respective patterns are met.
+正如前面的指南中所见，处理程序在满足各自的模式时帮助触发功能。
 
-You can refer to the final code for `ao-effect.lua` in the dropdown below:
-
-<details>
-  <summary><strong>Final ao-effect.lua file</strong></summary>
+您可以参考下面的 `ao-effect.lua` 最终代码：
 
 ```lua
 -- AO EFFECT: Game Mechanics for AO Arena Game
@@ -314,22 +308,20 @@ Handlers.add("PlayerMove", Handlers.utils.hasMatchingTag("Action", "PlayerMove")
 Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAttack"), attack)
 ```
 
-</details>
+## 加载和测试
 
-## Loading and Testing
-
-Once you've written your game code, it's time to load it into the `aos` game process and test your game:
+编写完游戏代码后，就可以将其加载到 `aos` 游戏进程中并测试您的游戏了：
 
 ```lua
-.load ao-effect.lua
+.load ao-effect
 ```
 
-> Note: Make sure to load the arena blueprint in the same process as well.
+> 注意：确保在同一进程中加载竞技场蓝图。
 
-Invite friends or create test player processes to experience your game and make any necessary adjustments for optimal performance.
+邀请朋友或创建测试玩家流程来体验您的游戏并进行必要的调整以获得最佳性能。
 
-## What's Next
+## 下一步是什么
 
-Congratulations! You've successfully expanded the arena by building your own game on top of its core functionalities. Armed with the knowledge and tools acquired in this guide, you're now equipped to build games on `aos` independently.
+恭喜！通过在其核心功能之上构建自己的游戏，您已经成功扩建了竞技场。 有了本指南中获得的知识和工具，您现在就可以在 `aos` 上独立构建游戏了。
 
-The possibilities are endless. Continue adding more features to existing games or create entirely new ones. The sky's the limit! 🚀
+可能性是无止境。 继续向现有游戏添加更多功能或创建全新游戏。 天空是极限！ 🚀

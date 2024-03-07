@@ -1,33 +1,33 @@
 ---
 prev:
-  text: "DAO Guide"
-  link: "/tutorials/dao"
+  text: "代币门控"
+  link: "../begin/tokengating"
 next:
-  text: "Let's Play A Game!"
-  link: "/tutorials/bots-and-games/ao-effect"
+  text: "我们玩个游戏"
+  link: "./ao-effect"
 ---
 
-# Bots and Games
+# 机器人和游戏
 
-Leveraging insights from our previous chapter, this section will guide you through the realm of automation with bots in aos and the construction of games. You will learn to create autonomous agents, using them to navigate and interact with game environments effectively.
+利用我们上一章所学，本节将引导您了解 aos 中机器人的自动化以及游戏的打造相关领域知识。您将学习创建自主代理，使用它们有效地在游戏场景内游览并与之交互。
 
-## Sections
+## 章节
 
-### Getting Started with a Game
+### 游戏入门
 
-- [0. **# Let's Play A Game:** _Experience a game on aos_](ao-effect)
+- [0. **我们来玩游戏吧：**_在aos上体验游戏_](ao-effect)
 
-### Enhancing Game Interactions with Automation
+### 通过自动化增强游戏交互
 
-- [1. **# Interpreting Announcements:** _Interpret in-game announcements_](announcements)
-- [2. **# Fetching Game State:** _Retrieve and process the latest game state_](game-state)
-- [3. **# Strategic Decisions:** _Utilize automation to determine your next move_](decisions)
-- [4. **# Automated Responses:** _Streamline attack responses through automation_](attacking)
-- [5. **# Bringing it Together:** _Combine your skills to craft an autonomous agent_](bringing-together)
+- [1. **公告解读：** _游戏内公告解读_](announcements)
+- [2. **获取游戏状态：** _检索并处理最新的游戏状态_](game-state)
+- [3. **战略决策：** _利用自动化来确定您的下一步行动_](decisions)
+- [4. **自动响应：** _通过自动化简化攻击响应_](attacking)
+- [5. **\*整合：** _结合你的技能来打造一个自主代理_](bringing-together)
 
-### Game Development Insights
+### 游戏开发讲解
 
-- [6. **# Mechanics of the Arena:** _Explore the underlying mechanics of a game's arena_](arena-mechanics)
-- [7. **# Expanding the Arena:** _Build unique game logic upon the arena_](build-game)
+- [6. **竞技场机制：** _探索游戏竞技场的底层机制_](arena-mechanics)
+- [7. **扩展竞技场：** _在竞技场上构建独特的游戏逻辑_](build-game)
 
-A journey of discovery and creation awaits. Let the adventure begin!
+探索和创造的旅程正在等待着您。 让冒险开始吧！
