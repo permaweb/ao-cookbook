@@ -4,7 +4,7 @@
 Now that we've created a token and sent it to `Trinity`, we can use the token to tokengate our chatroom. This will allow only those who have the token to enter the chatroom.
 :::
 
-### How to Tokengate the Chatroom
+## How to Tokengate the Chatroom
 
 Let's create a handler that will allow us to tokengate the chatroom. This handler will respond to the tag `Action = "Broadcast"` meaning it will replace the original `Broadcast` handler we built for our chatroom.
 
@@ -52,7 +52,7 @@ Save the file.
 To replace the original `broadcast` handler with the new one, you'll need to reload the `chatroom.lua` file.
 
 ```sh
- .load chatroom.lua
+.load chatroom.lua
 ```
 
 ## Step 5: Test the Tokengate
@@ -64,7 +64,7 @@ Now that the chatroom is tokengated, let's test it by sending a message to the c
 First, we'll test it from the original aos process.
 
 ```sh
- Send({ Target = ao.id , Action = "Broadcast", Data = "Hello" })
+Send({ Target = ao.id , Action = "Broadcast", Data = "Hello" })
 # Expected Results:
 message added to outbox
 Broadcasting message from Neo. Content: Hello.
@@ -76,10 +76,15 @@ Broadcasting message from Neo. Content: Hello.
 
 Now, let's test it from a new aos process that doesn't have a token.
 
+```sh
+aos chatroom-no-token # the `chatroom-no-token` is the new process name
+```
+
 We'll first need to register to the chatroom.
 
 ```sh
- Send({ Target = [Your Process ID], Action = "Register" })
+.load chatroom.lua
+Send({ Target = [Your Process ID], Action = "Register" })
 # Expected Results:
 message added to outbox
 New Message From [Your Process ID]: Data = registered
@@ -88,7 +93,7 @@ New Message From [Your Process ID]: Data = registered
 Now, let's try to send a message to the chatroom.
 
 ```sh
- Send({ Target = [Your Process ID] , Action = "Broadcast", Data = "Hello?" })
+Send({ Target = [Your Process ID] , Action = "Broadcast", Data = "Hello?" })
 # Expected Results:
 message added to outbox
 UNAUTH REQ: [New Process ID]
