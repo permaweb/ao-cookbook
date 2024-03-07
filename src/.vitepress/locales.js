@@ -20,8 +20,7 @@ export const localeConfig = (langCode) => ({
       next: get_i18n_str(langCode, "next-page"),
     },
     editLink: {
-      pattern: "https://github.com/vuejs/pinia/edit/v2/packages/docs/:path",
-      text: "对本页提出修改建议",
+      pattern: "https://github.com/permaweb/ao-cookbook/edit/main/src/:path",
       text: get_i18n_str(langCode, "edit-link-text"),
     },
     logo: {
