@@ -8,19 +8,19 @@ hero:
   tagline: "Decentralized compute at any scale. Only possible on Arweave."
   actions:
     - theme: brand
-      text: Lets Go!
+      text: Let's Go!
       link: /welcome/index
 
 features:
-  - title: Tutorials.
+  - title: Tutorials
     details: Follow the step-by-step tutorials to start building on ao.
     link: /tutorials/index
 
-  - title: Guides.
+  - title: Guides
     details: Bite size walkthroughs on specific features.
     link: /guides/index
 
-  - title: Concepts.
+  - title: Concepts
     details: Learn how the ao network works under the hood.
     link: /concepts/index
 ---
