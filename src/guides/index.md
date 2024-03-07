@@ -1,10 +1,10 @@
 ---
 prev:
-  text: "Tutorials"
-  link: "../tutorials/index"
+  text: "Expanding the Arena"
+  link: "/tutorials/bots-and-games/build-game"
 next:
-  text: "Concepts"
-  link: "/concepts/index"
+  text: "aos"
+  link: "./aos/index"
 ---
 
 # Guides
