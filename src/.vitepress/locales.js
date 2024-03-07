@@ -12,6 +12,13 @@ export const localeConfig = (langCode) => ({
   title: get_i18n_str(langCode, "title"),
   description: get_i18n_str(langCode, "description"),
   themeConfig: {
+    outline: {
+      label: get_i18n_str(langCode, "on-this-page"),
+    },
+    docFooter: {
+      prev: get_i18n_str(langCode, "prev-page"),
+      next: get_i18n_str(langCode, "next-page"),
+    },
     logo: {
       light: { src: "/ao_pictograph_lightmode.svg", height: 26, width: 26 },
       dark: { src: "/ao_pictograph_darkmode.svg", height: 26, width: 26 },
