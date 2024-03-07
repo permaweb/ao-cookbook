@@ -1,7 +1,7 @@
 ---
 prev:
-  text: "DAO Guide"
-  link: "/tutorials/dao"
+  text: "Tokengating the Chatroom"
+  link: "../begin/tokengating"
 next:
   text: "Let's Play A Game!"
   link: "/tutorials/bots-and-games/ao-effect"
