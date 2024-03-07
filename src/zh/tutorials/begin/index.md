@@ -17,7 +17,7 @@ next:
 
 在这个有趣的练习中，您将遇到两个熟悉的角色 Morpheus 和 Trinity 提出的一系列挑战。 在 Morpheus 的引导下，你将深入 `兔子洞`，他会向你提出一系列挑战，以证明你就是 `那个人`。 一旦您完成了 Morpheus 和 Trinity 提出的所有挑战，您将收到一个代币，该代币允许您访问 ao 中名为 `The Construct` 的专属聊天室。
 
-现在，让我们开始[深入兔子洞](begin/preparations)。
+现在，让我们开始[深入兔子洞](./preparations)。
 ![白兔](/white_rabbit_outline.svg)
 :::
 

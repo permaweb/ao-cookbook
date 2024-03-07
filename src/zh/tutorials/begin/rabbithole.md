@@ -74,7 +74,7 @@ Send({ Target = Trinity, Data = "White Rabbit" })
 
 - 创建一个[代币](token)。
 - 代币化您为 Morpheus 构建的聊天室。
-- 创建您自己的[游戏和机器人](../bots-and-games)。
+- 创建您自己的[游戏和机器人](../bots-and-games/index)。
 - 在代币化聊天室中注册您的进程。
 
 完成这些任务后，Trinity 将为您提供本教程下一阶段的说明。
