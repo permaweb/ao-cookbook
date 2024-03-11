@@ -1,23 +1,24 @@
-# Editor setup
+# 编辑器初始化
 
-Remembering all the built in ao functions and utilites can sometimes be hard. To enhance your developer experience, it is recommended to install the [Lua Language Server](https://luals.github.io) extension into your favorite text editor and add the [ao addon](https://github.com/martonlederer/ao-definitions). It supports all built in aos [modules](../aos/modules/index) and [globals](../aos/intro#globals).
+记住所有的内建函数和工具集方法是非常困难的。为了改善您的开发体验，我们推荐将 [Lua Language Server](https://luals.github.io) 扩展添加到您的编辑器，并添加 [ao addon](https://github.com/martonlederer/ao-definitions) 插件。它支持所有的 aos [内置模块](../aos/modules/index)和[全局模块](../aos/intro#globals)。
 
 ## VS Code
 
-Install the [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) extension:
+安装 [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) 扩展:
 
-1. Search for "Lua" by sumneko in the extension marketplace
-2. Download and install the extension
-3. Open the VS Code command palette with `Shift + Command + P` (Mac) / `Ctrl + Shift + P` (Windows/Linux) and run the following command:
-
+1. 在扩展市场中搜索 sumneko 的“Lua”插件
+2. 下载并且安装插件
+3. 使用 `Shift + Command + P` (Mac) / `Ctrl + Shift + P` (Windows/Linux) 打开 VS Code 命令面板，然后运行以下命令：
 ```
 > Lua: Open Addon Manager
 ```
 
-4. In the Addon Manager, search for "ao", it should be the first result. Click "Enable" and enjoy autcomplete!
+4. 在插件管理器中搜索“ao”，选中第一个结果，单击“启用”完成自动安装。
 
-## Other editors
+## 其他编辑器
 
-1. Verify that your editor supports the [language server protocol](https://microsoft.github.io/language-server-protocol/implementors/tools/)
+
+1. 验证您的编辑器是否支持[语言服务器协议](https://microsoft.github.io/language-server-protocol/implementors/tools/)
 2. Install Lua Language Server by following the instructions at [luals.github.io](https://luals.github.io/#install)
-3. Install the "ao" addon to the language server
+2. 安装[luals.github.io](https://luals.github.io/#install)中的 Lua 语言服务
+3. 安装 "ao" 语言扩展服务
