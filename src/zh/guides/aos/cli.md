@@ -1,57 +1,57 @@
 # CLI
 
-There are some command-line arguments you pass to our aos to do the following:
+这里有一些命令来与 aos 进行交互：
 
-- [name] - create a new process or loads an existing process for your wallet
-- --load [file] - load a file, you can add one or many of this command
-- --cron [interval] - only used when creating a process
-- --wallet [walletfile] - use a specific wallet
+- [name] - 使用您的钱包地址创建或者加载一个进程
+- --load [file] - 加载一个文件，可以多次调用
+- --cron [interval] - 只在创建进程的时候使用
+- --wallet [walletfile] - 使用一个指定的钱包
 
-## Managing multiple processes with aos
+## 使用 aos 管理多进程
 
 ```sh
 aos
 ```
 
-Starts or connects to a process with the name `default`
+使用默认`default`名称创建或者连接到进程
 
 ```sh
 aos chatroom
 ```
 
-Starts or connects to a process with the name of `chatroom`
+使用 `chatroom` 创建或者连接进程
 
 ```sh
 aos treasureRoom
 ```
 
-Starts or connects to a process with the name of `treasureRoom`
+使用 `treasureRoom` 创建或者连接进程
 
-## Load flag
+## load 标志
 
 ```sh
 aos treasureRoom --load greeting.lua --load treasure.lua --load puzzle.lua
 ```
 
-With the load flag I can load many source files to my process
+可以使用 `load` 标志来加载一个或者多个代码文件到我的进程
 
-## CRON Flag
+## CRON 标志
 
-If you want to setup your process to react on a schedule we need to tell ao, we do that when we spawn the process.
+如果你想让进程创建定时响应函数，需要在创建进程是调用 `cron` 标志
 
 ```sh
 aos chatroom --cron 2-minutes
 ```
 
-## Tag flags
+## Tag 标志
 
-With the tag flags, you can start a process with some custom tags (for e.g. using them as static environment variables):
+使用 tag 标志，您可以为进程创建用户标识。（例如将它们用作静态环境变量）:
 
 ```sh
 aos chatroom --tag-name Chat-Theme --tag-value Dark --tag-name Chat-Name --tag-value Mychat
 ```
 
-The command above will add the extra tags to the transaction that spawns your process:
+上面的命令会在你创建进程的时候添加用户定义标识
 
 ```ts
 // process data item tags
