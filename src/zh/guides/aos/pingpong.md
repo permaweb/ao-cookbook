@@ -1,18 +1,18 @@
-# Creating a Pingpong Process in aos
+# 创建一个 Pingpong 进程
 
-This tutorial will guide you through creating a simple "ping-pong" process in aos. In this process, whenever it receives a message with the data "ping", it will automatically reply with "pong". This is a basic example of message handling and interaction between processes in aos.
+这个教程将指导您在 aos 中创建一个简单的“pingpong”过程。 在此过程中，每当进程收到带有数据“ping”的消息时，它都会自动回复“pong”。 这是 aos 中消息处理和进程间交互的基本示例。
 
-## Step 1: Open the `aos` CLI
+## 步骤 1: 打开 `aos` CLI
 
-- Start by opening your command-line interface and typing `aos` to enter the aos environment.
+- 首先打开命令行界面并输入 `aos` 进入 aos 环境。
 
-## Step 2: Access the Editor
+## 步骤 2: 打开内置编辑器
 
-- Type `.editor` in the aos CLI to open the inline text editor. This is where you'll write your ping-pong handler code.
+- 在 aos CLI 中输入“.editor”打开内置文本编辑器。 您将在此处编写 pingpong 处理程序代码。
 
-## Step 3: Write the Pingpong Handler
+## 步骤 3: 添加 Pingpong Handler
 
-- In the editor, enter the following Lua code to add a handler for the pingpong pattern:
+- 在编辑器中，输入以下 Lua 代码来添加 pingpong 模式的处理程序：
 
   ```lua
   Handlers.add(
@@ -22,49 +22,50 @@ This tutorial will guide you through creating a simple "ping-pong" process in ao
   )
   ```
 
-- This lua script does three things:
-  1. It adds a new handler named "pingpong".
-  2. It uses `Handlers.utils.hasMatchingData("ping")` to check if incoming messages contain the data "ping".
-  3. If the message contains "ping", `Handlers.utils.reply("pong")` automatically sends back a message with the data "pong".
+- 这个 lua 脚本做了三个操作:
+  1. 添加一个新的名为"pingpong"的 handler。
+  2. 它使用 `Handlers.utils.hasMatchingData("ping")` 来检查收到的消息中是否有 "ping" 字段.
+  3. 如果消息中包含 "ping", `Handlers.utils.reply("pong")` 会自动返回 "pong" 的消息.
 
-## Step 4: Exit the Editor
+## 步骤 4: 退出编辑器
 
-- After writing your code, type `.done` and press Enter to exit the editor and run the script.
+- 在编写完代码后，输入 `.done` 并输入 Enter 来退出编辑器并运行脚本。
 
-## Step 5: Test the Pingpong Process
+## 步骤 5: 测试 Pingpong 进程
 
-- To test the process, send a message with the data "ping" to the process. You can do this by typing the following command in the aos CLI:
+- 为了测试进程，需要向进程发送带有 `ping` 的消息。您可以在 CLI 中使用下面的命令：
   ```lua
   Send({ Target = ao.id, Data = "ping" })
   ```
-- The process should respond with a message containing "pong" in the `Inbox`.
+- 进程将在收件箱 `Inbox` 中收到带有 "pone" 的恢复消息。
 
-## Step 6: Monitor the Inbox
+## 步骤 6: 查看收件箱 Inbox
 
-- Check your Inbox to see the "ping" message and your Outbox to confirm the "pong" reply.
+- 查看您的收件箱中是否有 "ping" 的消息，并确认是否发出了 “pong” 的回复消息。
 
 ```lua
 Inbox[#Inbox].Data
 ```
 
-## Step 7: Experiment and Observe
+## 步骤 7: 测试和观察
 
-- Experiment by sending different messages and observe how only the "ping" messages trigger the "pong" response.
+- - 发送不同的消息进行测试，并观察“ping”消息如何触发“pong”响应。
 
-## Step 8: Save Your Process (Optional)
+## 步骤 8: 保存进程 (可选)
 
-- If you want to use this process in the future, save the handler code in a Lua file for easy loading
+- 如果您想在将来使用此过程，请将处理程序代码保存在Lua文件中以便于加载
 
-into aos sessions.
+进入 aos 会话。
 
-::: info
+::: 信息
 
-**ADDITIONAL TIP:**
+**额外提示:**
 
-- **Handler Efficiency**: The simplicity of the handler function is key. Ensure that it's efficient and only triggers under the correct conditions.
+- **处理程序效率**: 简单的处理函数是关键. 确保它的执行效率并且只在正确的时候触发。
 
 :::
 
-## Conclusion
+## 结论
 
-Congratulations! You have now created a basic ping-pong process in aos. This tutorial provides a foundation for understanding message handling and process interaction within the aos environment. As you become more comfortable with these concepts, you can expand to more complex processes and interactions, exploring the full potential of aos.
+
+恭喜！ 您已经在 aos 中创建了一个基本的"pingpong"进程。 本教程给理解 aos 环境中的消息处理和进程交互奠定了基础。 随着您对这些概念越来越熟悉，您可以扩展到更复杂的流程和交互，探索 aos 的全部潜力。
