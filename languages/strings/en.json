@@ -68,6 +68,7 @@
   "tutorials-bots-and-games-build-game": "Expanding the Arena",
   "tutorials-0rbit": "0rbit",
   "tutorials-0rbit-get-request": "Get ANY Data",
+  "tutorials-0rbit-post-request": "Post Data",
   "references": "References",
   "references-lua": "Lua",
   "references-wasm": "Web Assembly",
