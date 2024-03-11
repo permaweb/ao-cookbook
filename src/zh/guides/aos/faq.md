@@ -1,20 +1,21 @@
 # FAQ
 
-## Ownership
+## 所有权 Ownership
 
 <details>
-  <summary><strong>Understaning Process Ownership</strong></summary>
+  <summary><strong>进程的所有权</strong></summary>
 
-Start a new process with the aos console, the ownership of the process is set to your wallet address. **aos** uses the **Owner** global variable to define the ownership of the process. If you wish to transfer ownership or lock the process so that no one can own, you simply modify the **Owner** variable to another wallet address or set it to **nil**.
+使用 aos 控制台创建一个新的进程，您的钱包地址就是进程的所有者。**aos** 使用 **Owner** 全局变量来标记进程的所有者。如果您想转移进程的所有权，或者将它变成无人可以控制的进程，您可以重定义 **Owner** 变量将它给其他钱包地址，或者设置为 **nil**。
 
 </details>
 
 ## JSON
 
 <details>
-  <summary><strong>encoding data as json</strong></summary>
+  <summary><strong>将数据编码为 json 格式</strong></summary>
 
-When sending data to another process or an external service, you may want to use JSON as a way to encode the data for recipients. Using the json module in lua, you can **encode** and **decode** pure lua tables that contain values.
+
+当你向其他进程或者外部服务发送数据，你可能希望使用 JSON 作为数据编码格式。使用 lua 的 json 模块，可以对 lua Table 中的值进行 **encode** 和 **decode** 操作。
 
 ```lua
 Send({Target = Router, Data = require('json').encode({hello = "world"})})
@@ -22,11 +23,12 @@ Send({Target = Router, Data = require('json').encode({hello = "world"})})
 
 </details>
 
-## Send vs ao.send
+## Send 和 ao.send 对比
 
 <details>
-  <summary><strong>When to use Send vs ao.send</strong></summary>
+  <summary><strong>什么时候使用 Send 或 ao.send</strong></summary>
 
-Both functions send a message to a process, the difference is ao.send returns the message, in case you want to log it or troubleshoot. The **Send** function is intended to be used in the console for easier access. It is preferred to use **ao.send** in the **handlers**. But they are both interchangable in **aos**.
+
+这两个方法都会将消息发送到一个进程，区别是 `ao.send` 可以返回消息，以便于记录日志或者进行故障排查。`Send` 哈数通常在控制台中使用，更方便访问。在 `handlers` 中更推荐使用 `ao.send`，但他们在 `aos`中是可以相互替换的。
 
 </details>
