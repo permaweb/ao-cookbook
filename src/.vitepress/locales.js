@@ -160,6 +160,16 @@ export const localeConfig = (langCode) => ({
               },
             ],
           },
+          {
+            text: get_i18n_str(langCode, "tutorials-0rbit"),
+            link: get_i18n_link(langCode, "/tutorials/0rbit/index"),
+            items: [
+              {
+                text: get_i18n_str(langCode, "tutorials-0rbit-get-request"),
+                link: get_i18n_link(langCode, "/tutorials/0rbit/get-request"),
+              }
+            ]
+          }
         ],
       },
       {
