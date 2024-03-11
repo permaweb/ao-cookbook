@@ -1,35 +1,37 @@
-# Introduction
+# 概述
 
-aos is a different approach to building Processes or Contracts, the ao computer is a decentralized computer network that allows compute to run anywhere and aos in a unique
-interactive shell. You can use aos as your personal operating system, your development environment for building ao Processes, and your bot Army.
 
-Lets go over some basic commands.
+aos 使用非常规的方式构建进程与合约，ao 计算机是一个去中心的计算机网络，可以在任何地方进行计算，aos 是一个统一的交互终端。 您可以使用 aos 作为您的个人操作系统、构建 ao 进程的开发环境、以及创建您的机器人军团。
 
-## Variables
+让我们来回顾一些基本指令。
 
-If you want to display the contents of any variable through the console, simply type the variable name.
+## 变量
+
+
+如果您想通过控制台显示变量的内容，可以直接输入变量的名称
 
 ```lua
 Name
 ```
 
-## Inbox
+## 收件箱 Inbox
 
-the `Inbox` is a collection of messages that your Process has received.
+收件箱 `Inbox` 是您进程收到的消息集合。
 
 ```lua
 Inbox[1]
 ```
 
-If you want to get a count of messages, just add the `#` infront of `Inbox`.
+如果您想查看消息个数，在 `Inbox` 前面加入 `#` 符号
 
 ```lua
 #Inbox
 ```
 
-The process of checking how many messages are in the inbox is a very common pattern. To make this easier, you can create a function that returns the number of messages within the inbox and displays it in the prompt.
 
-Use either `.editor` or `.load file` to load this function on your process.
+查看收件箱的消息个数是个非常常见的功能，为了更简单，您可以创建一个函数，返回收件箱的消息个数并显示出来。
+
+使用 `.editor` 或者 `.load file` 来将这个函数加载到您的进程。
 
 ```lua
 function Prompt()
@@ -37,39 +39,39 @@ function Prompt()
 end
 ```
 
-**The Expected Results:**
+**预期的结果:**
 
 ```sh
 undefined
 Inbox: 2 >
 ```
 
-Your prompt now has changed to include the number of messages in your inbox.
+您的 Prompt 函数已经可以显示收件箱中的消息数量。
 
-## Globals
+## 全局定义
 
-In aos process there are some Globals that can make development a little more intuitive.
+aos 中定义了一些全局变量、函数可以让开发变得更加直观。
 
-| Name                   | Description                                                                                                                                                                       | Type         |
+| 名称                   | 描述                                                                                                                                                                       | 类型         |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| Inbox                  | This is a lua Table that stores all the messages that are received and not handlers by any handlers.                                                                              | Table(Array) |
-| Send(Message)          | This is a global function that is available in the interactive environment that allows you to send messages to Processes                                                          | function     |
-| Spawn(Module, Message) | This is a global function that is available in the aos interactive environment that allows you to spawn processes                                                                 |
-| Name                   | a string that is set on init that describes the name of your process                                                                                                              | string       |
-| Owner                  | a string that is set on the init of the process that documents the owner of the process, warning if you change this value, it can brick you ability to interact with your process | string       |
-| Handlers               | a lua Table that contains helper functions that allows you to create handlers that execute functionality based on the pattern matching function on inbound messages               | table        |
-| Dump                   | a function that takes any lua Table and generates a print friendly output of the data                                                                                             | function     |
-| Utils                  | a functional utility library with functions like map, reduce, filter                                                                                                              | module       |
-| ao                     | this is a core function library for sending messages and spawing processes                                                                                                        | module       |
+| Inbox                  | 这是一个 lua 表，存储所有接收到的消息                                                                              | Table(Array) |
+| Send(Message)          | 这是交互环境中使用的全局函数，可以想其他进程发送消息                                                          | function     |
+| Spawn(Module, Message) | 这是 aos 中的全局函数，可以创建一个进程                                                                 |
+| Name                   | 初始化您的进程名称                                                                                                              | string       |
+| Owner                  | 这个字符串标识了进程的所有者，如果修改这个字段，可能会影响您与进程交互的能力 | string       |
+| Handlers               | 一个 lua 表，可以让您创建消息的处理函数               | table        |
+| Dump                   | 接受 lua 中的表(Table)类型，并打印用美观的内容                                                                                             | function     |
+| Utils                  | 一个功能实用库，具有map、reduce、filter等功能                                                                                                             | module       |
+| ao                     | 这是用于发送消息和生成进程的核心函数库库                                                                                                       | module       |
 
-## Modules
+## 库
 
-In aos there are some built in common lua modules that are already available for you to work with, these modules can be referenced with a "require" function.
+在aos中，有一些内置的 lua 库可以使用，这些库可以通过“require”函数引用。
 
-| Name    | Description                                                                |
+| 名称    | 描述                                                                |
 | ------- | -------------------------------------------------------------------------- |
-| json    | a json module that allows you to encode and decode json documents          |
-| ao      | contains ao specific functions like send and spawn                         |
-| .base64 | a base64 module that allows you to encode and decode base64 text           |
-| .pretty | a pretty print module using the function tprint to output formatted syntax |
-| .utils  | an utility function library                                                |
+| json    | json 数据的编解码          |
+| ao      | ao 核心函数库，包括 send 、 spawn                         |
+| .base64 | base64 数据的编解码           |
+| .pretty | 格式化输出数据，使用 tprint 函数格式化数据 |
+| .utils  | 一个实用工具库                                                |
