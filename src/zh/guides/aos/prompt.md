@@ -1,35 +1,35 @@
-# Customizing the Prompt in aos
+# aos 中的自定义提示符(Prompt)
 
-## Step 1: Open aos and Start the Editor
+## 步骤 1: 启动 aos 并打开编辑器
 
-- Launch the aos command-line interface.
-- Enter `.editor` to open the inline text editor.
+- 登录 aos 命令行
+- 输入 `.editor` 打开内置编辑器
 
-## Step 2: Write the Custom Prompt Function
+## 步骤 2: 编写自定义提示符函数
 
-- In the editor, define your custom prompt function. For example:
+- 在编辑器中，定义您的用户提示符函数，例如：
   ```lua
   function Prompt()
       return "YourName@aos> "
   end
   ```
-  Customize `"YourName@aos> "` to your preferred prompt text.
+  将 `"YourName@aos> "` 定义为您喜欢的文本。
 
-## Step 3: Exit and Run Your Code
+## 步骤 3: 退出并运行您的代码
 
-- To exit the editor and execute your code, type `.done` and then press Enter.
-- Your aos prompt should now display the new custom format.
+- 输入 `.done` 并输入 Enter 来退出编辑器并执行代码
+- 您的 aos 将显示新的自定义提示符
 
-## Step 4: Save for Future Use (Optional)
+## 步骤 4: 保存以供将来使用 (可选)
 
-- If you wish to use this prompt in future aos sessions, save your script in a Lua file.
-- In subsequent sessions, load this script to apply your custom prompt.
+- 如果您希望在将来的 aos 会话中使用这个提示符，请将脚本保存在 Lua 文件中。
+- 在后续会话中，加载此脚本以应用自定义提示。
 
-## Maximizing Your Prompt
+## 更多提示符功能
 
-There's a great deal of utility and creativity that can come from customizing your prompt. Several things you can do within your prompt are:
+自定义提示可以带来很多实用性和创造力。 您可以在提示符中执行以下操作：
 
-- Tracking the number of unhandled messages you have in your inbox by creating a function that shows how many messages you have.
+- 创建一个函数来跟踪收件箱中的未读消息数量：
 
   ```lua
     --Example:
@@ -38,9 +38,9 @@ There's a great deal of utility and creativity that can come from customizing yo
     end
   ```
 
-- Tracking the number of members are within your process ID's chatroom.
-- Tracking the balance of a specified token that your process ID holds.
+- 跟踪您聊天室进程中的成员数量。
+- 跟踪您进程地址持有的指定代币的数量。
 
-## Conclusion
+## 结论
 
-Now that you understand how to maximize the utility within your Prompt, you've now gained a crucial step to streamlining your ao development experience.
+现在您已经了解了如何使用自定义提示符，现在您已经迈出了优化 ao 开发体验的关键一步。
