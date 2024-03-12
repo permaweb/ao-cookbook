@@ -165,7 +165,7 @@ end
 
 ### 处理逻辑
 
-最后，您必须设置处理程序：
+最后，您必须设置handler：
 
 ```lua
 -- HANDLERS: Game state management for AO-Effect
@@ -177,7 +177,7 @@ Handlers.add("PlayerMove", Handlers.utils.hasMatchingTag("Action", "PlayerMove")
 Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAttack"), attack)
 ```
 
-正如前面的指南中所见，处理程序在满足各自的模式时帮助触发功能。
+正如前面的指南中所见，handler在满足各自的模式时帮助触发功能。
 
 您可以参考下面的 `ao-effect.lua` 最终代码：
 

@@ -88,7 +88,7 @@ function decideNextAction()
   InAction = false -- InAction 逻辑添加
 end
 
--- 打印游戏公告并触发游戏状态更新的处理程序。
+-- 打印游戏公告并触发游戏状态更新的handler。
 Handlers.add(
   "PrintAnnouncements",
   Handlers.utils.hasMatchingTag("Action", "Announcement"),
@@ -105,7 +105,7 @@ Handlers.add(
   end
 )
 
--- 触发游戏状态更新的处理程序。
+-- 触发游戏状态更新的handler。
 Handlers.add(
   "GetGameStateOnTick",
   Handlers.utils.hasMatchingTag("Action", "Tick"),
@@ -120,7 +120,7 @@ Handlers.add(
   end
 )
 
--- 等待期开始时自动付款确认的处理程序。
+-- 等待期开始时自动付款确认的handler。
 Handlers.add(
   "AutoPay",
   Handlers.utils.hasMatchingTag("Action", "AutoPay"),
@@ -130,7 +130,7 @@ Handlers.add(
   end
 )
 
--- 接收游戏状态信息后更新游戏状态的处理程序。
+-- 接收游戏状态信息后更新游戏状态的handler。
 Handlers.add(
   "UpdateGameState",
   Handlers.utils.hasMatchingTag("Action", "GameState"),
@@ -142,7 +142,7 @@ Handlers.add(
   end
 )
 
--- 决策下一个最佳操作的处理程序。
+-- 决策下一个最佳操作的handler。
 Handlers.add(
   "decideNextAction",
   Handlers.utils.hasMatchingTag("Action", "UpdatedGameState"),
@@ -157,7 +157,7 @@ Handlers.add(
   end
 )
 
--- 被其他玩家击中时自动攻击的处理程序。
+-- 被其他玩家击中时自动攻击的handler。
 Handlers.add(
   "ReturnAttack",
   Handlers.utils.hasMatchingTag("Action", "Hit"),

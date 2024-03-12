@@ -18,16 +18,16 @@
 
 让我们深入研究下其中的逻辑。
 
-aos 中的每个处理程序都需要三个关键信息：
+aos 中的每个handler都需要三个关键信息：
 
-- `name`：处理程序的唯一名称
-- `pattern`: 处理程序识别的模式，触发其执行
+- `name`：handler的唯一名称
+- `pattern`: handler识别的模式，触发其执行
 - `handle`：模式匹配时执行的操作
 
-以下是编写用于打印公告详细信息的处理程序的方法：
+以下是编写用于打印公告详细信息的handler的方法：
 
 ```lua
--- 直接在终端中打印游戏公告的处理程序。
+-- 直接在终端中打印游戏公告的handler。
 Handlers.add(
   "PrintAnnouncements",
   Handlers.utils.hasMatchingTag("Action", "Announcement"),
@@ -37,9 +37,9 @@ Handlers.add(
 )
 ```
 
-在本例中，处理程序的名称是 `"PrintAnnouncements"`。 它使用特殊的内置实用程序（`hasMatchingTags`）来检查传入消息是否已被标记为公告。 如果为 true，则处理程序将打印事件和数据，则直接显示公告的标题和描述。
+在本例中，handler的名称是 `"PrintAnnouncements"`。 它使用特殊的内置实用程序（`hasMatchingTags`）来检查传入消息是否已被标记为公告。 如果为 true，则handler将打印事件和数据，则直接显示公告的标题和描述。
 
-> 注意：一旦消息被 `handled`，它将从您的 `Inbox` 中丢弃。
+> 注意：一旦消息被 `handled`，它将从您的 `收件箱` 中丢弃。
 
 ## 加载和测试
 
@@ -47,7 +47,7 @@ Handlers.add(
 
 导航到您的 aos 玩家终端并进入游戏会话。
 
-用下面的命令来加载 `bot.lua` 文件以激活处理程序：
+用下面的命令来加载 `bot.lua` 文件以激活handler：
 
 ```lua
 .load bot.lua

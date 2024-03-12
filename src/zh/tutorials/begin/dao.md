@@ -31,10 +31,10 @@ Votes = Votes or {}
 
 ### 质押
 
-质押是放置您的代币以使您能够投票的过程。 如果有人希望获得投票能力，他们必须拥有并抵押一些代币。让我们添加一个用于质押的处理程序。 ao 中的成员或节点如果想要获得投票削减或保留节点的能力，他们就会想要进行质押，我们将在稍后进一步讨论。
+质押是放置您的代币以使您能够投票的过程。 如果有人希望获得投票能力，他们必须拥有并抵押一些代币。让我们添加一个用于质押的handler。 ao 中的成员或节点如果想要获得投票削减或保留节点的能力，他们就会想要进行质押，我们将在稍后进一步讨论。
 
 ```lua
--- 质押动作处理程序
+-- 质押动作handler
 Handlers.stake = function(msg)
     local quantity = tonumber(msg.Tags.Quantity)
     local delay = tonumber(msg.Tags.UnstakeDelay)
@@ -51,10 +51,10 @@ end
 
 ### 取消质押
 
-取消质押是撤回质押代币的过程。 如果有人取消了所有代币的质押，他们将放弃投票的能力。在这里，我们提供了一个取消质押的处理程序。
+取消质押是撤回质押代币的过程。 如果有人取消了所有代币的质押，他们将放弃投票的能力。在这里，我们提供了一个取消质押的handler。
 
 ```lua
--- 取消质押动作处理程序
+-- 取消质押动作handler
 Handlers.unstake = function(msg)
     local quantity = tonumber(msg.Tags.Quantity)
     local stakerInfo = Stakers[msg.From]
@@ -74,7 +74,7 @@ end
 投票是管理 DAO 的过程。发送投票消息后，成员会收到与他们质押金额成比例的投票。截止日期变量表示何时进行投票。
 
 ```lua
--- 投票动作处理程序
+-- 投票动作handler
 Handlers.vote = function(msg)
     local quantity = Stakers[msg.From].amount
     local target = msg.Tags.Target
@@ -95,7 +95,7 @@ end
 我们希望在每条消息上运行一些逻辑。 我们将其定义为 `finalizationHandler`。被削减意味着你将失去在 DAO 中的质押。
 
 ```lua
--- Finalization 处理程序
+-- Finalization handler
 local finalizationHandler = function(msg)
   local currentHeight = tonumber(msg['Block-Height'])
   -- 处理取消质押
@@ -120,12 +120,12 @@ local finalizationHandler = function(msg)
 end
 ```
 
-### 将处理程序附加到传入消息标签
+### 将handler附加到传入消息标签
 
 这里我们添加了一个名为 `continue` 的辅助函数，它将允许我们在每条消息上执行到 `finalizationHandler`。
 
 ```lua
--- 包装函数以继续处理程序流程
+-- 包装函数以继续handler流程
 function continue(fn)
     return function (msg)
       local result = fn(msg)
@@ -137,17 +137,17 @@ function continue(fn)
 end
 ```
 
-最后，我们将注册所有处理程序并将它们包装在 `continue` 中，以便每个 Stake、Unstake 和 Vote 消息都会被 `finalizationHandler` 处理到。
+最后，我们将注册所有handler并将它们包装在 `continue` 中，以便每个 Stake、Unstake 和 Vote 消息都会被 `finalizationHandler` 处理到。
 
 ```lua
--- 注册处理程序
+-- 注册handler
 Handlers.add("stake",
   continue(Handlers.utils.hasMatchingTag("Action", "Stake")), Handlers.stake)
 Handlers.add("unstake",
   continue(Handlers.utils.hasMatchingTag("Action", "Unstake")), Handlers.unstake)
 Handlers.add("vote",
   continue(Handlers.utils.hasMatchingTag("Action", "Vote")), Handlers.vote)
--- 最终处理程序要被每一条消息调用
+-- 最终handler要被每一条消息调用
 Handlers.add("finalize", function (msg) return -1 end, finalizationHandler)
 ```
 

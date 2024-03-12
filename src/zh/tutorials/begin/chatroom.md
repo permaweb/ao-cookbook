@@ -68,14 +68,14 @@
 
 ## 步骤 4：创建聊天室功能
 
-### 注册处理程序
+### 注册handler
 
-注册处理程序将允许进程加入聊天室。
+注册handler将允许进程加入聊天室。
 
-1. **添加注册处理程序:** 使用以下代码修改 `chatroom.lua` 以包含 `Members` 的处理程序以注册到聊天室：
+1. **添加注册handler:** 使用以下代码修改 `chatroom.lua` 以包含 `Members` 的handler以注册到聊天室：
 
    ```lua
-   -- 修改 `chatroom.lua` 以包含 `Members` 的处理程序
+   -- 修改 `chatroom.lua` 以包含 `Members` 的handler
    -- 使用以下代码注册聊天室：
 
    Handlers.add(
@@ -88,22 +88,22 @@
    )
    ```
 
-   ![注册处理程序](/chatroom5.png)
+   ![注册handler](/chatroom5.png)
 
-   该处理程序将允许进程通过响应标签 `Action = "Register"` 来注册到聊天室。注册成功后，将显示一条打印消息确认 `registered`。
+   该handler将允许进程通过响应标签 `Action = "Register"` 来注册到聊天室。注册成功后，将显示一条打印消息确认 `registered`。
 
 2. **重新加载并测试：** 让我们通过注册到聊天室来重新加载并测试脚本。
 
    - 使用 `.load chatroom.lua` 在 aos 中保存并重新加载脚本。
-   - 检查注册处理程序是否加载了以下脚本：
+   - 检查注册handler是否加载了以下脚本：
 
    ```lua
    Handlers.list
    ```
 
-   ![检查处理程序列表](/chatroom6.png)
+   ![检查handler列表](/chatroom6.png)
 
-   这将返回聊天室中所有处理程序的列表。 由于这很可能是您第一次在 `aos` 中进行开发，因此您应该只会看到一个名为 `Register` 的处理程序。
+   这将返回聊天室中所有handler的列表。 由于这很可能是您第一次在 `aos` 中进行开发，因此您应该只会看到一个名为 `Register` 的handler。
 
    - 让我们通过注册自己到聊天室来测试注册过程：
 
@@ -125,11 +125,11 @@
 
    ![查看成员列表](/chatroom8.png)
 
-### 添加广播处理程序
+### 添加广播handler
 
-现在您已经有了一个聊天室，让我们创建一个处理程序，允许您向聊天室的所有成员广播消息。
+现在您已经有了一个聊天室，让我们创建一个handler，允许您向聊天室的所有成员广播消息。
 
-- 将以下处理程序添加到 `chatroom.lua` 文件中：
+- 将以下handler添加到 `chatroom.lua` 文件中：
 
   ```lua
   Handlers.add(
@@ -144,9 +144,9 @@
   )
   ```
 
-  该处理程序将允许您向聊天室的所有成员广播消息。
+  该handler将允许您向聊天室的所有成员广播消息。
 
-- 让我们通过向聊天室发送消息来测试广播处理程序：
+- 让我们通过向聊天室发送消息来测试广播handler：
 
   ```lua
   Send({Target = ao.id, Action = "Broadcast", Data = "Broadcasting My 1st Message" })
@@ -158,7 +158,7 @@
 
 现在您已成功注册自己到聊天室，让我们邀请 Morpheus 加入我们。 为此，我们将向他发送邀请，允许他注册到聊天室。
 
-Morpheus 是一个自主代理，其处理程序将响应标签 `Action = "Join"`，然后让他使用您的 `Register` 标签注册到聊天室。
+Morpheus 是一个自主代理，其handler将响应标签 `Action = "Join"`，然后让他使用您的 `Register` 标签注册到聊天室。
 
 - 让我们向 Morpheus 发送加入聊天室的邀请：
 
@@ -201,6 +201,6 @@ Send({Target = [Your Process ID], Action = "Broadcast", Data = "Your Message" })
 
 ## 下一步
 
-恭喜！ 您已在 `ao` 中成功建立了一个聊天室，并邀请了 Morpheus 加入您。您还创建了一个广播处理程序来向聊天室的所有成员发送消息。
+恭喜！ 您已在 `ao` 中成功建立了一个聊天室，并邀请了 Morpheus 加入您。您还创建了一个广播handler来向聊天室的所有成员发送消息。
 
 接下来，您将继续与 Morpheus 互动，但这次您将在对话中添加 Trinity。她将带领您应对接下来的挑战。 祝你好运！
