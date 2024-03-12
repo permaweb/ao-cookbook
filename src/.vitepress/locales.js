@@ -17,6 +17,7 @@ export const localeConfig = (langCode) => ({
       dark: { src: "/ao_pictograph_darkmode.svg", height: 26, width: 26 },
     },
     socialLinks: [
+      { icon: "discord", link: "https://discord.gg/vYctEs7aTd" },
       { icon: "github", link: "https://github.com/permaweb/ao-cookbook" },
     ],
     nav: [
@@ -37,6 +38,12 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "welcome-testnet-info"),
             link: get_i18n_link(langCode, "/welcome/testnet-info/index"),
+            items: [
+              {
+                text: get_i18n_str(langCode, "welcome-testnet-info-cred-and-quests"),
+                link: get_i18n_link(langCode, "/welcome/testnet-info/cred-and-quests"),
+              },
+            ],
           },
         ],
       },
