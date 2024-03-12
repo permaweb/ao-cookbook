@@ -1,33 +1,32 @@
-# Building a Token in `ao`
+# 在 ao 中构建 Token
 
-When creating tokens, we'll continue to use the [Lua Language](../../references/lua.md) within `ao` to mint a token, guided by the principles outlined in the [Token Specification](../../references/token.md).
+创建代币时，我们将继续遵循[Token 规范](../../references/token.md)中概述的原则，并使用ao中的[Lua 语言](../../references/lua.md)铸造。
 
-### Two Ways to Create Tokens:
+### 创建Token的两种方式:
 
-**1 - Use the token blueprint:**
+**1 - 使用代币蓝图:**
 
-`.load-blueprint token`
+`.load-blueprint 代币`
+使用代币蓝图将创建一个代币，其中所有Handler和状态都已经定义。这是创建代币最简单的方法。加载蓝图后，您可以自定义这些Handler和状态。
 
-Using the token blueprint will create a token with all the handlers and state already defined. This is the easiest way to create a token. You'll be able to customize those handlers and state to your after loading the blueprint.
+您可以在此处了解更多有关蓝图的信息：[蓝图](../aos/blueprints/index.md)
 
-You can learn more about available blueprints here: [Blueprints](../aos/blueprints/index.md)
+::: 信息
+Using the 代币 blueprint will definitely get quickly, but you'll still want to understand how to [load and test](代币.html#loading-and-testing) the 代币, so you can customize it to your needs.
 
-::: info
-Using the token blueprint will definitely get quickly, but you'll still want to understand how to [load and test](token.html#loading-and-testing) the token, so you can customize it to your needs.
+使用代币蓝图虽然可以快速创建，但您仍然需要了解如何进行[加载和测试](token.html#loading-and-testing)代币,以便根据需要进行自定义。
 :::
 
-**2 - Build from Scratch:**
+**2 - 零起点构建:**
 
-The following guide will guide you through the process of creating a token from scratch. This is a more advanced way to create a token, but it will give you a better understanding of how tokens work.
-
+以下指南将指导您完成从零开始创建代币的过程。这是创建代币的一种更高级的方法，可以让您更好地理解令牌的工作原理。
 ## Preparations
-
-### **Step 1: Initializing the Token**
-
-- Open our preferred text editor, preferrably from within the same folder you used fduring the previous tutorial.
-- Create a new file named `token.lua`.
+## 准备工作
+### **步骤 1：初始化 Token**
+- 打开您的文本编辑器，最好是在与之前教程中使用的文件夹相同的位置中打开。
+- 创建一个名为 token.lua 的新文件。
 - Within `token.lua`, you'll begin by initializing the token's state, defining its balance, name, ticker, and more:
-
+- 在 token.lua 文件中，首先，初始化代币的状态，定义其余额、名称、代码等：
 ```lua
 local json = require('json')
 
@@ -45,25 +44,25 @@ if not Logo then Logo = 'optional arweave TXID of logo image' end
 ![token.lua image 1](/token1.png)
 
 Let's break down what we've done here:
+让我们梳理一下我们所做的工作：
 
-- `local json = require('json')`: This first line of this code imports a module for later use.
+- `local json = require('json')`: 这行代码首先导入了一个模块供以后使用。
 
-- `if not Balances then Balances = { [ao.id] = 100000000000000 } end`: This second line is initializing a Balances table which is the way the Process tracks who posses the token. We initialize our token process `ao.id` to start with all the balance.
+- `if not Balances then Balances = { [ao.id] = 100000000000000 } end`: 第行代码正在初始化一个叫做 Balances 表格，此表格用于记录谁拥有Token和持有的数量。设置ao.id 账户为初始的代币持有者，并拥有所有代币的初始余额。。
 
-- The Next 4 Lines, `if Name`, `if Ticker`, `if Denomination`, and `if not Logo` are all optional, except for `if Denomination`, and are used to define the token's name, ticker, denomination, and logo respectively.
+- 接下来的 4 行，除了 `if Denomination`外，`if Name`、`if Ticker`、`if Denomination` 和 `if not Logo` 都是可选项，它们分别用于定义代币的名称、代码、最小单位和LOGO。
 
-::: info
-The code `if Denomination ~= 10 then Denomination = 10 end` tells us the number of the token that should be treated as a single unit.
+::: 信息
+
+`if Denomination ~= 10 then Denomination = 10 end` 表示我们应该将多少个代币视为一个单位。
 :::
 
-### **Step 2: Info and Balances Handlers**
-
+### **步骤 2：信息和余额Handlers**
 <br>
 
-#### Incoming Message Handler
+#### 传入消息Handlers
 
-Now lets add our first Handler to handle incoming Messages.
-
+现在让我们添加第一个 Handler 来处理传入的消息。
 ```lua
 Handlers.add('info', Handlers.utils.hasMatchingTag('Action', 'Info'), function(msg)
   ao.send(
@@ -73,19 +72,19 @@ end)
 
 ![Token.lua image 2](/token2.png)
 
-::: info
-At this point, you've probably noticed that we're building all of the handlers inside the `token.lua` file rather than using .`editor`.
+::: 信息
 
-With many handlers and processes, it's perfectly fine to create your handlers using `.editor`, but because we're creating a full process for initizialing a token, setting up info and balances handlers, transfer handlers, and a minting handler, it's best to keep everything in one file.
+此时，您可能已经注意到，我们正在 `token.lua` 文件中构建所有Handler，而不是使用 .`editor`。
 
-This also allows us to maintain consistency since each handler will be updated every time we reload the `token.lua` file into `aos`.
+对于许多handlers和进程来说，使用 .editor创建handler没有任何问题，但由于我们正在创建一个完整的进程来初始化代币、设置信息、处理余额、转移，和铸造Handler，因此最好将所有内容都保存在一个文件中。
+
+这么做是为了让我们保持一致性，因为每次我们将 `token.lua` 文件重新加载到 `aos` 中时，每个handler 都会更新。
 :::
+这段代码的意思是，如果有人发送一条带有标签 Action = "info" 的消息，那么我们的代币将返回一条消息，其中包含所有之前定义的信息。注意的是， Target = msg.From，这是在告诉 ao 我们要回复向我们发送此消息的进程。
 
-This code means that if someone Sends a message with the Tag, Action = "info", our token will Send back a message with all of the information defined above. Note the Target = msg.From, this tells ao we are replying to the process that sent us this message.
+#### 信息和代币余额Handlers
 
-#### Info & Token Balance Handlers
-
-Now we can add 2 Handlers which provide information about token Balances.
+现在我们可以添加两个用于提供代币余额信息的Handler。
 
 ```lua
 Handlers.add('balance', Handlers.utils.hasMatchingTag('Action', 'Balance'), function(msg)
@@ -109,12 +108,10 @@ Handlers.add('balances', Handlers.utils.hasMatchingTag('Action', 'Balances'),
 
 ```
 
-The first Handler above `Handlers.add('balance'` handles a process or person requesting their own balance or the balance of a Target. Then replies with a message containing the info. The second Handler `Handlers.add('balances'` just replies with the entire Balances table.
+以上代码的第一个Handler `Handlers.add('balance)'` 处理来自进程或用户查询自身余额或目标余额的请求，然后它会回复一条包含余额信息的消息。第二个Handler `Handlers.add('balances)'` 只回复整个 Balances 表。
 
-### **Step 3: Transfer Handlers**
-
-Before we begin testing we will add 2 more Handlers one which allows for the transfer of tokens between processes or users.
-
+### **步骤 3：转移 Handlers**
+在开始测试之前，我们将添加另外 2 个Handler，其中一个允许在进程或用户之间转移代币。
 ```lua
 Handlers.add('transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), function(msg)
   assert(type(msg.Tags.Recipient) == 'string', 'Recipient is required!')
@@ -156,15 +153,13 @@ Handlers.add('transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), fu
 end)
 ```
 
-In summary, this code checks to make sure the Recipient and Quantity Tags have been provided, initializes the balances of the person sending the message and the Recipient if they dont exist and then attempts to transfer the specified quantity to the Recipient in the Balances table.
-
+总之，这段代码会检查收件人标签 (Recipient Tag) 和数量标签 (Quantity Tag) 是否已提供。如果发送人和接收者的余额不存在，则初始化他们的余额。然后尝试将指定数量转移到接收者的余额账户。
 ```lua
 Balances[msg.From] = Balances[msg.From] - qty
 Balances[msg.Tags.Recipient] = Balances[msg.Tags.Recipient] + qty
 ```
 
-If the transfer was successful a Debit-Notice is sent to the sender of the original message and a Credit-Notice is sent to the Recipient.
-
+如果转账成功，则向原始消息的发送者发送借记通知 (Debit-Notice)，并向接收者发送贷记通知 (Credit-Notice)。
 ```lua
 -- Send Debit-Notice to the Sender
 ao.send({
@@ -178,7 +173,7 @@ ao.send({
 })
 ```
 
-If there was insufficient balance for the transfer it sends back a failure message
+如果账户余额不足 (insufficient balance) 以完成转账，则会发送交易失败的消息。
 
 ```lua
 ao.send({
@@ -188,10 +183,11 @@ ao.send({
 ```
 
 The line `if not msg.Tags.Cast then` Means were not producing any messages to push if the Cast tag was set. This is part of the ao protocol.
+`if not msg.Tags.Cast then` 这行代码表示在 AO 协议中，如果设置了 Cast 标签，就不会推送任何消息。
 
-### **Step 4: Mint Handler**
+### **第 4 步：铸造 Handler**
 
-Finally, we will add a Handler to allow the minting of new tokens.
+最后，我们将添加一个Handler，用于铸造新的Token。
 
 ```lua
 Handlers.add('mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), function(msg, env)
@@ -214,70 +210,62 @@ Handlers.add('mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), function(m
 end)
 ```
 
-This code checks to make sure the Quantity Tag has been provided and then adds the specified quantity to the Balances table.
+这段代码会检查数量标签(Quantity Tag)是否已提供，然后将指定的数量添加到 Balances 表。
+## 加载和测试
 
-## Loading and Testing
+当您创建了 `token.lua` 文件，或者你使用了 `.load-blueprint token` 命令，那么您就可以开始测试了。
 
-Once you've created your `token.lua` file, or you've used `.load-blueprint token`, you're now ready to begin testing.
+#### 1 - 启动 aos 进程
 
-#### 1 - Start the aos process
+确保您已通过在终端中运行 aos 来启动 aos 进程。
 
-Make sure you've started your aos process by running `aos` in your terminal.
-
-#### 2 - Loading the token.lua file
-
-If you've followd along with the guide, you'll have a `token.lua` file in the same directory as your aos process. From the aos prompt, load in the file.
-
+#### 2 - 加载 token.lua 文件
+如果按照操作指南进行操作，则在 aos 进程所在的目录中会有一个 `token.lua` 文件。从 aos 提示符处加载此文件。
 ```sh
 .load token.lua
 ```
 
-#### 3 - Testing the Token
-
-Now we can send Messages to our aos process id, from the same aos prompt to see if is working. If we use ao.id as the Target we are sending a message to ourselves.
+#### 3 - 测试令牌 (Token)
+现在我们可以从同一个 aos 提示符向我们的 aos 进程 ID 发送消息，以查看是否正常工作。如果我们将 ao.id 用作目标，那么我们就是在向自己发送消息。
 
 ```sh
 Send({ Target = ao.id, Action = "Info" })
 ```
 
 This should print the Info defined in the contract. Check the latest inbox message for the response.
-
+这里应该会打印合约中定义的信息。检查最新收件箱消息以获取回复。
 ```sh
 Inbox[#Inbox].Tags
 ```
 
-This should print the Info defined in the contract.
-
-::: info
-Make sure you numerically are checking the last message. To do so, run `#Inbox` first to see the total number of messages are in the inbox. Then, run the last message number to see the data.
-
+这里应该会打印合约中定义的信息。
+::: 信息
+为了确保您能准确查看最新消息，请先运行`#Inbox`查看收件箱中的消息总数。然后，运行最后一个消息编号以查看数据。
 **Example:**
 
-If `#Inbox` returns `5`, then run `Inbox[5].Data` to see the data.
+如果 `#Inbox`返回 `5`，则运行 `Inbox[5].Data` 查看数据。
 :::
 
-#### 4 - Transfer
+#### 4 - 转账 
 
-Now, try to transfer a balance of tokens to another wallet or process id.
+现在，尝试将代币余额转账到另一个钱包或进程 ID。
 
-::: info
-If you need another process id, you can run `aos [name]` in another terminal window to get a new process id. Make sure it's not the same `aos [name]` as the one you're currently using.
+::: 信息
+如果你需要另一个进程 ID，可以在另一个终端窗口运行`aos [name]` 获取新的进程 ID。确保它与你当前使用的`aos [name]` 不同。
 
-**Example:**
+**示例:**
 
-If you're using `aos` in one terminal window, you can run `aos test` in another terminal window to get a new process id.
+如果您在一个终端窗口中使用 aos，可以在另一个终端窗口中运行`aos test`获取新的进程 ID。
 :::
 
 ```sh
 Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'another wallet or processid', Quantity = '10000' }})
 ```
 
-After sending, you'll receive a printed message in the terminal similar to `Debit-Notice` on the sender's side and `Credit-Notice` on the recipient's side.
-
-#### 5 - Check the Balances
-
+发送之后，终端会打印一条消息，发送方会看到类似于`借记通知 (Debit-Notice)` 的内容，而接收方则会看到`贷记通知 (Credit-Notice)` 的内容。
+#### 5 - 检查余额
 Now that you've transferred some tokens, let's check the balances.
-
+现在您已经转了一些代币，让我们检查一下余额。
 ```sh
 Send({ Target = ao.id, Tags = { Action = "Balances" }})
 ```
@@ -286,25 +274,20 @@ Send({ Target = ao.id, Tags = { Action = "Balances" }})
 Inbox[#Inbox].Data
 ```
 
-You will see two process IDs or wallet addresses, each displaying a balance. The first should be your sending process ID, the second should be the recipient's process ID.
-
-#### 6 - Minting Tokens
-
-Finally, attempt to mint some tokens.
-
+您会看到两个进程 ID 或钱包地址，每个地址都显示余额。第一个应该是您的发送进程 ID，第二个应该是接收者的进程 ID。
+#### 6 - 铸造代币
+最后，尝试铸造一些代币。
 ```sh
 Send({ Target = ao.id, Tags = { Action = "Mint", Quantity = '1000' }})
 ```
 
-And check the balances again.
-
+然后再次检查余额。
 ```sh
 Send({ Target = ao.id, Tags = { Action = "Balances" }})
 Inbox[#Inbox].Data
 ```
 
-You'll then see the balance of the process ID that minted the tokens has increased.
+然后您会看到铸造代币的进程 ID 的余额增加了。
+## 结论
 
-## Conclusion
-
-That concludes the "Build a Token" guide. Learning out to build custom tokens will unlock a great deal of potential for your projects; whether that be creating a new currency, a token for a game, a governance token, or anything else you can imagine.
+“构建代币”指南到此结束。学习构建自定义代币可以为您的项目释放巨大的潜力；无论您是想创建新货币、游戏代币、治理代币，还是任何其他您能想到的东西。

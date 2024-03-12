@@ -1,10 +1,10 @@
-# Utils
+# Utils 工具库
 
-A utility library for generic table manipulation and validation. It supports both curry-styled and traditional programming.
+该工具库提供了通用的表格操作和验证功能。它同时支持链式调用 (curry-style) 和传统编程方式。
 
-> **Note**: It is important to verify that the inputs provided to the following functions match the expected types.
+> **注意**: 务必确保提供给以下函数的输入与期望的类型相匹配。
 
-### Example usage
+### 使用示例
 
 ```lua
 local utils = require(".utils")
@@ -18,18 +18,18 @@ local totalSupply = utils.reduce(
 print(totalSupply) -- prints 15
 ```
 
-## Module functions
+## 模块函数
 
 ### `concat()`
 
-This function concatenates array `b` to array `a`.
+此函数将数组 `b` 连接到数组 `a`。
 
 - **Parameters:**
-  - `a`: `{table}` The base array
-  - `b`: `{table}` The array to concat to the base array
-- **Returns:** An unified array of `a` and `b`
+  - `a`: `{table}` 基础数组
+  - `b`: `{table}` 要连接到基础数组的数组
+- **Returns:** 由 `a` 和 `b` 合并而成的统一数组
 
-#### Examples
+#### 示例
 
 ```lua
 -- returns { 1, 2, 3, 4, 5, 6 }
@@ -41,15 +41,15 @@ concat({ "hello", "world" }, { "and", "you" })
 
 ### `reduce()`
 
-This function executes the provided reducer function for all array elements, finally providing one (unified) result.
+此函数对数组中的所有元素执行 reducer 函数，最终返回一个 (统一的) 结果。
 
 - **Parameters:**
-  - `fn`: `{function}` The reducer function. It receives the previous result, the current element's value and key in this order
-  - `initial`: `{any}` An optional initial value
-  - `t`: `{table}` The array to reduce
-- **Returns:** A single result from running the reducer across all table elements
+  - `fn`: `{function}`  reducer 函数,它按顺序接收之前的结果、当前元素的值和键。
+  - `initial`: `{any}` (可选) 初始值
+  - `t`: `{table}` 要处理的数组
+- **Returns:** 通过对所有表格元素运行 reducer 函数所得的单个结果
 
-#### Examples
+#### 示例
 
 ```lua
 local sum = utils.reduce(
@@ -70,14 +70,14 @@ print(sum) -- prints 12
 
 ### `map()`
 
-This function creates a new array filled with the results of calling the provided map function on each element in the provided array.
+此函数创建一个新数组，其中包含了对提供的数组中的每个元素调用指定映射函数的结果。
 
 - **Parameters:**
-  - `fn`: `{function}` The map function. It receives the current array element and key
-  - `data`: `{table}` The array to map
-- **Returns:** A new array composed of the results of the map function
+  - `fn`: `{function}` map 函数,接收当前数组元素和键。
+  - `data`: `{table}` 要映射的数组
+- **Returns:** 由映射函数处理后的结果组成的的新数组
 
-#### Examples
+#### 示例
 
 ```lua
 -- returns { "Odd", "Even", "Odd" }
@@ -96,14 +96,14 @@ utils.map(function (val, key) return val * 2 end)({ 2, 4, 6 })
 
 ### `filter()`
 
-This function creates a new array from a portion of the original, only keeping the elements that passed a provided filter function's test.
+此函数根据提供的过滤函数来处理原数组，并创建一个只包含通过过滤条件的元素的新数组。
 
 - **Parameters:**
-  - `fn`: `{function}` The filter function. It receives the current array element and should return a boolean, deciding whether the element should be kept (`true`) or filtered out (`false`)
-  - `data`: `{table}` The array to filter
-- **Returns:** The new filtered array
+  - `fn`: `{function}` 过滤函数。它接收当前数组中的元素作为参数，并应该返回一个布尔值,以决定该元素应被保留 (`true`) 还是过滤掉(`false`)。
+  - `data`: `{table}` 要过滤的数组
+- **Returns:** 经过过滤的新数组
 
-#### Examples
+#### 示例
 
 ```lua
 -- keeps even numbers
@@ -123,13 +123,12 @@ utils.filter(
 
 ### `find()`
 
-This function returns the first element that matches in a provided function.
+该函数查找匹配指定条件的第一个元素并返回。
 
 - **Parameters:**
-  - `fn`: `{function}` The find function that receives the current element and returns `true` if it matches, `false` if it doesn't
-  - `t`: `{table}` The array to find an element in
-- **Returns:** The found element or `nil` if no element matched
-
+  - `fn`: `{function}` 查找函数。它接收当前数组元素作为参数，如果该元素满足条件则返回`true`，否则返回 `false`。
+  - `t`: `{table}`  要查找元素的数组
+- **Returns:** 找到的符合条件的第一个元素，如果没有找到则返回 `nil` (表示空值)。
 #### Examples
 
 ```lua
@@ -153,13 +152,13 @@ utils.find(function (val) return user.age == 33 end)(users)
 
 ### `reverse()`
 
-Transforms an array into reverse order.
+将数组转换为反序。
 
 - **Parameters:**
-  - `data`: `{table}` The array to reverse
-- **Returns:** The original array in reverse order
+  - `data`: `{table}` 需要反序的数组
+- **Returns:** 反序的数组
 
-#### Example
+#### 示例
 
 ```lua
 -- is: { 3, 2, 1 }
@@ -168,14 +167,14 @@ utils.reverse({ 1, 2, 3 })
 
 ### `includes()`
 
-Determinates whether a value is part of an array.
+判断值是否在数组中。
 
 - **Parameters:**
-  - `val`: `{any}` The element to check for
-  - `t`: `{table}` The array to check in
-- **Returns:** A boolean indicating whether or not the provided value is part of the array
+  - `val`: `{any}` 需要检查的元素
+  - `t`: `{table}` 需要检查的数组
+- **Returns:** 一个布尔值，判断提供的 val 值是否属于该数组。true 表示存在，false 表示不存在。
 
-#### Examples
+#### 示例
 
 ```lua
 -- this is true
@@ -189,13 +188,13 @@ utils.includes(4)({ 3, 5, 7 })
 
 ### `keys()`
 
-Returns the keys of a table.
+返回表格的键值。
 
 - **Parameters:**
-  - `table`: `{table}` The table to get the keys for
-- **Returns:** An array of keys
+  - `table`: `{table}` 要获取键值的表格
+- **Returns:**  键数组
 
-#### Example
+#### 示例
 
 ```lua
 -- returns { "hello", "name" }
@@ -204,13 +203,13 @@ utils.keys({ hello = "world", name = "John" })
 
 ### `values()`
 
-Returns the values of a table.
+返回表格的值。
 
 - **Parameters:**
-  - `table`: `{table}` The table to get the values for
-- **Returns:** An array of values
+  - `table`: `{table}` 需要获取值的表格
+- **Returns:** 值数组
 
-#### Example
+#### 示例
 
 ```lua
 -- returns { "world", "John" }
@@ -219,15 +218,15 @@ utils.values({ hello = "world", name = "John" })
 
 ### `propEq()`
 
-Checks if a specified property of a table equals with the provided value.
+该函数检查表格中指定属性的值是否等于提供的数值。
 
 - **Parameters:**
-  - `propName`: `{string}` The name of the property to compare
-  - `value`: `{any}` The value to compare to
-  - `object`: `{table}` The object to select the property from
-- **Returns:** A boolean indicating whether the property value equals with the provided value or not
+  - `propName`: `{string}` 要比较的属性名称
+  - `value`: `{any}` 要比较的值
+  - `object`: `{table}` 要从中选择属性的对象（表格）
+- **Returns:** 一个布尔值，判断属性值是否等于提供的数值，如果属性值存在且等于提供的数值，则返回 True，否则返回 False。
 
-#### Examples
+#### 示例
 
 ```lua
 local user = { name = "John", age = 50 }
@@ -245,14 +244,14 @@ utils.propEq("age", 45, user)
 
 ### `prop()`
 
-Returns the property value that belongs to the property name provided from an object.
+该函数的作用是从对象（表格）中获取指定属性的值。
 
 - **Parameters:**
-  - `propName`: `{string}` The name of the property to get
-  - `object`: `{table}` The object to select the property value from
-- **Returns:** The property value or `nil` if it was not found
+  - `propName`: `{string}` 要获取的属性名称
+  - `object`: `{table}` 要从中选择属性值的对象
+- **Returns:** 属性值，如果未找到，则返回 `nil`。
 
-#### Examples
+#### 示例
 
 ```lua
 local user = { name = "Maria", age = 33 }
@@ -270,14 +269,14 @@ utils.prop("age")(user)
 
 ### `compose()`
 
-This function allows you to chain multiple array mutations together and execute them in reverse order on the provided array.
+此函数支持您将多个数组操作链接在一起，然后以逆序的方式对提供的数组执行这些操作。
 
 - **Parameters:**
-  - `...`: `{function[]}` The array mutations
-  - `v`: `{table}` The object to execute the provided functions on
-- **Returns:** The result from the provided mutations
+  - `...`: `{function[]}` 一组数组操作函数
+  - `v`: `{table}` 要执行这些函数的数组
+- **Returns:** 来自所提供操作的最终结果
 
-#### Examples
+#### 示例
 
 ```lua
 -- returns 12

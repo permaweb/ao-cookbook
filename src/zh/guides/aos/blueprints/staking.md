@@ -1,35 +1,35 @@
-# Staking Blueprint
+# 质押蓝图
 
-The Staking Blueprint is a predesigned template that helps you quickly build a staking system in `ao`. It is a great way to get started and can be customized to fit your needs.
+质押蓝图是预先设计好的模板，可帮助您在 ao 中快速构建。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
+## 前提条件
 
-## Prerequisites
+质押蓝图要求先加载 [代币蓝图](./token.md)。
+## 解析投票蓝图
 
-The Staking Blueprint requires the [Token Blueprint](./token.md) to be loaded, first.
+- **质押**: `Stakers`数组用于存储参与者的质押代币。
 
-## Unpacking the Staking Blueprint
+- **解除质押**:`Unstaking` 数组用于存储参与者的解除质押请求。
 
-- **Stakers**: The `Stakers` array is used to store the staked tokens of the participants.
+- **质押操作 Handler**: `stake`handler支持进程质押代币。当进程发送带有标签`Action = "Stake"`的消息时，处理程序会将质押代币添加到`Stakers` 数组中，并向进程发送一条消息确认质押。
 
-- **Unstaking**: The `Unstaking` array is used to store the unstaking requests of the participants.
+- **解除质押操作 Handler**: `unstake` handler支持进程解除质押代币。当进程发送带有标签`Action = "Unstake"`的消息时，处理程序会将解除质押请求添加到 `Unstaking` 数组中，并向进程发送一条消息确认解除质押。
 
-- **Stake Action Handler**: The `stake` handler allows processes to stake tokens. When a process sends a message with the tag `Action = "Stake"`, the handler will add the staked tokens to the `Stakers` array and send a message back to the process confirming the staking.
+- **最终确定 Handler**: `finalize` handler支持进程完成质押过程。当进程发送带有标签 `Action = "Finalize"`的消息时，处理程序会处理解除质押请求并完成质押过程。
+### 如何使用:
 
-- **Unstake Action Handler**: The `unstake` handler allows processes to unstake tokens. When a process sends a message with the tag `Action = "Unstake"`, the handler will add the unstaking request to the `Unstaking` array and send a message back to the process confirming the unstaking.
+1. 打开文本编辑器。
 
-- **Finalization Handler**: The `finalize` handler allows processes to finalize the staking process. When a process sends a message with the tag `Action = "Finalize"`, the handler will process the unstaking requests and finalize the staking process.
+2. 打开终端。
 
-### How To Use:
+3. 启动`aos`流程。
 
-1. Open your preferred text editor.
-2. Open the Terminal.
-3. Start your `aos` process.
-4. Type in `.load-blueprint staking`
+4. 输入  `.load-blueprint staking`
 
-### Verify the Blueprint is Loaded:
+### 验证蓝图已加载:
 
-Type in `Handlers.list` to see the newly loaded handlers.
+输入`Handlers.list`查看新加载的Handler。
 
-## What's in the Staking Blueprint:
+## 质押蓝图中的内容:
 
 ```lua
 Stakers = Stakers or {}

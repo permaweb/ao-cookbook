@@ -1,33 +1,33 @@
-# Voting Blueprint
+# 投票蓝图
 
-The Voting Blueprint is a predesigned template that helps you quickly build a voting system in `ao`. It is a great way to get started and can be customized to fit your needs.
+投票蓝图是预先设计好的模板，可帮助您在 ao 中快速构建。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
 
-## Prerequisites
+## 前提条件
 
-The Staking Blueprint requires the [Token Blueprint](./token.md) to be loaded, first.
+投票蓝图要求先加载 [Token 蓝图](./token.md)
 
-## Unpacking the Voting Blueprint
+## 解析投票蓝图
 
-- **Balances**: The `Balances` array is used to store the token balances of the participants.
+- **余额**: The `Balances` 数组用于存储参与者的代币余额。
 
-- **Votes**: The `Votes` array is used to store the votes of the participants.
+- **票数 **: `Votes` 数组用于存储参与者的投票信息。
 
-- **Vote Action Handler**: The `vote` handler allows processes to vote. When a process sends a message with the tag `Action = "Vote"`, the handler will add the vote to the `Votes` array and send a message back to the process confirming the vote.
+- **投票操作 Handler**: `vote` handler支持进程进行投票。当进程发送带有标记 Action = "Vote" 的消息时，handler会将投票信息添加到`Votes`数组中，并向流程发送消息，确认投票。
 
-- **Finalization Handler**: The `finalize` handler allows processes to finalize the voting process. When a process sends a message with the tag `Action = "Finalize"`, the handler will process the votes and finalize the voting process.
+- **最终确定 Handler**: `finalize` handler支持进程完成投票过程。当进程发送带有标签 `Action = "Finalize"`的消息时，Handler会处理投票信息并完成投票过程。
 
-### How To Use:
+### 如何使用:
 
-1. Open your preferred text editor.
-2. Open the Terminal.
-3. Start your `aos` process.
-4. Type in `.load-blueprint voting`
+1. 打开您的文本编辑器。
+2. 打开终端。
+3. 启动您的`aos`进程.
+4. 输入`.load-blueprint voting`
 
-### Verify the Blueprint is Loaded:
+### 验证蓝图是否已加载：
 
-Type in `Handlers.list` to see the newly loaded handlers.
+输入 `Handlers.list` 查看新加载的handlers。
 
-## What's in the Voting Blueprint:
+## 投票蓝图包含的内容：
 
 ```lua
 Balances = Balances or {}
