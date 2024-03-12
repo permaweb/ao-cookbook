@@ -62,7 +62,7 @@ yarn dev
 
 ### Translation
 
-Learn more about translating the cookbook [here](./docs/languages/README.md)
+Learn more about translating the cookbook [here](./languages/README.md)
 
 ### Audit
 
