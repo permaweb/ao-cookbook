@@ -226,13 +226,6 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(langCode, "/guides/aos/blueprints/index"),
                 items: [
                   {
-                    text: get_i18n_str(langCode, "guides-aos-blueprints-token"),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/aos/blueprints/token",
-                    ),
-                  },
-                  {
                     text: get_i18n_str(
                       langCode,
                       "guides-aos-blueprints-chatroom",
@@ -245,21 +238,31 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-aos-blueprints-voting",
-                    ),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/aos/blueprints/voting",
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(
-                      langCode,
                       "guides-aos-blueprints-staking",
                     ),
                     link: get_i18n_link(
                       langCode,
                       "/guides/aos/blueprints/staking",
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-aos-blueprints-token"
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/token",
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-aos-blueprints-voting",
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/voting",
                     ),
                   },
                 ],
