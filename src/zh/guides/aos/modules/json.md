@@ -1,9 +1,8 @@
 # JSON
 
-The JSON module allows you to encode and decode objects using JavaScript Object Notation.
+JSON 模块支持您使用 JavaScript 对象表示法对对象进行编码和解码。
 
-### Example usage
-
+### 示例用法
 ```lua
 local json = require("json")
 
@@ -13,17 +12,16 @@ json.encode({
 })
 ```
 
-## Module functions
-
+## 模块函数
 ### `encode()`
 
-This function returns a string representation of a Lua object in JSON.
+返回一个将 Lua 对象转换为JSON字符串的函数。
 
-- **Parameters:**
-  - `val`: `{any}` The object to format as JSON
-- **Returns:** JSON string representation of the provided object
+- **参数:**
+  - `val`: `{any}` 将对象按照 JSON 格式进行编码
+- **返回值:** 已提供对象的 JSON 字符串
 
-#### Example
+#### 示例
 
 ```lua
 --[[
@@ -42,12 +40,13 @@ print(json.encode(false))
 ### `decode()`
 
 The function takes a JSON string and turns it into a Lua object.
+此函数用于解析 JSON 字符串并转换为 Lua 对象。
 
-- **Parameters:**
-  - `val`: `{any}` The JSON string to decode
-- **Returns:** Lua object corresponding to the JSON string (throws an error for invalid JSON strings)
+- **参数:**
+  - `val`: `{any}` 待解码的 JSON 字符串
+- **返回值:** 与 JSON 字符串对应的 Lua 对象（对于无效的 JSON 字符串会抛出错误）
 
-#### Example
+#### 示例
 
 ```lua
 --[[

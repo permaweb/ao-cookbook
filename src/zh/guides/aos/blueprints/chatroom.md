@@ -1,27 +1,28 @@
-# Chatroom Blueprint
+# 聊天室蓝图
 
-The Chatroom Blueprint is a predesigned template that helps you quickly build a chatroom in `ao`. It is a great way to get started and can be customized to fit your needs.
+聊天室蓝图是预先设计好的模板，可帮助您在 ao 中快速构建。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
 
-## Unpacking the Chatroom Blueprint
+## 解析聊天室蓝图
 
-- **Members**: The `Members` array is used to store the users who have registered to the chatroom.
+- **成员**: `Members`数组用于存储已注册聊天室的用户。
 
-- **Register Handler**: The `register` handler allows processes to join the chatroom. When a process sends a message with the tag `Action = "Register"`, the handler will add the process to the `Members` array and send a message back to the process confirming the registration.
+- **注册 Handler**: `register` handler 支持进程加入聊天室。当进程发送带有标签 `Action = "Register"` 的消息时，handler会将进程添加到 `Members` 数组中，并向进程发送一条消息确认注册。
+注册处理程序：
 
-- **Broadcast Handler**: The `broadcast` handler allows processes to send messages to all the members of the chatroom. When a process sends a message with the tag `Action = "Broadcast"`, the handler will send the message to all the members of the chatroom.
+- **广播 Handler**: `broadcast` handler支持进程向聊天室的所有成员发送消息。当进程发送带有标签 Action = "Broadcast" 的消息时，handler会将该消息发送给聊天室的所有成员。
 
-### How To Use:
+### 如何使用：
 
-1. Open your preferred text editor.
-2. Open the Terminal.
-3. Start your `aos` process.
-4. Type in `.load-blueprint chatroom`
+1. 打开文本编辑器。
+2. 打开终端。
+3. 启动您的 `aos` 进程。
+4. 输入 `.load-blueprint chatroom`
 
-### Verify the Blueprint is Loaded:
+### 验证蓝图是否已加载：
 
-Type in `Handlers.list` to see the newly loaded handlers.
+输入 `Handlers.list` 查看新加载的Handlers。
 
-## What's in the Chatroom Blueprint:
+## 聊天室蓝图中包含的内容：
 
 ```lua
 Members = Members or {}

@@ -1,20 +1,18 @@
-# Pretty
+# Pretty 模块
 
-This module allows printing formatted, human-friendly and readable syntax.
+该模块支持以格式化、易于理解和阅读的语法打印输出。
 
-## Module functions
-
+## 模块函数
 ### `tprint()`
 
-Returns a formatted string of the structure of the provided table.
+将所提供表格的结构格式转为string字符串并返回。
 
 - **Parameters:**
-  - `tbl`: `{table}` The table to format
-  - `indent`: `{number}` Optional indentation of each level of the table
-- **Returns:** Table structure formatted as a string
-
-#### Examples
-
+  - `tbl`: `{table}` 表格的格式
+  - `indent`: `{number}` 可选参数，表格每一层的缩进量
+- **Returns:** 转为字符串格式的表格结构
+ 
+#### 示例
 ```lua
 local pretty = require(".pretty")
 

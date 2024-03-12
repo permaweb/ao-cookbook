@@ -8,12 +8,15 @@ next:
 ---
 
 # Blueprints
+# 蓝图
 
-Blueprints are predesigned templates that help you quickly build in `ao`. They are a great way to get started and can be customized to fit your needs.
+蓝图是预先设计好的模板，可帮助您在 ao 中快速构建。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
+## 可用蓝图
 
-## Available Blueprints
+- [代币蓝图](token)
 
-- [Token](token)
-- [Chatroom](chatroom)
-- [Voting](voting)
-- [Staking](staking)
+- [聊天室蓝图](chatroom)
+
+- [投票蓝图](voting)
+
+- [质押蓝图](staking)

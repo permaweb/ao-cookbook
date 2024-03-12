@@ -1,11 +1,10 @@
 # ao
 
-Built in global library for sending messages, spawning processes, etc.
+内置全局库，用于发送消息、生成进程等。
 
-### Example usage
+### 示例用法
 
-The global `ao` object is accessible anywhere in your process:
-
+全局对象`ao`在您的进程中的任何地方都可以访问：
 ```lua
 -- sends a message to another process ("Transfer" action)
 ao.send({
@@ -16,18 +15,17 @@ ao.send({
 })
 ```
 
-## Module variables
+## 模块变量
 
-- `ao.id`: `{string}` Holds the Arweave ID of your process
-- `ao.authorities`: `{table}` An array of optionally trusted callers
-- `ao._module`: `{string}` The WASM base module of the process that is executed on each call
-- `ao._ref`: `{number}` The counter of the messages sent out in one call instance
-- `ao._version`: `{string}` The ao global library version
-- `ao.env`: `{table}` The process environment from the initializing message
-
+- `ao.id`: `{string}` 保存您进程中的 Arweave ID
+- `ao.authorities`: `{table}` 可选信任的调用者数组 
+- `ao._module`: `{string}` 每次调用都会执行进程的 WASM 基础模块。
+- `ao._ref`: `{number}`  一个调用实例中发送的消息计数器。
+- `ao._version`: `{string}` ao 全局库版本。
+- `ao.env`: `{table}` 初始化消息中的进程环境。
 ### `ao.env`
 
-The `ao.env` global variable holds informationg about the initializing message of the process. It follows the schema below:
+全局变量`ao.env`保存了有关进程初始化消息的信息。它遵循以下结构:
 
 ```json
 {
@@ -81,14 +79,13 @@ The `ao.env` global variable holds informationg about the initializing message o
 }
 ```
 
-## Module functions
+## 模块函数
 
 ### `log()`
 
-Appends the provided value/message to the `Results.Output` table which can later be read using the [`aoconnect`](/guides/aoconnect/aoconnect.html) library. Useful for debugging as well as returning an output value to a caller.
-
+此功能将提供的值或消息附加到 `Results.Output` 表格中。该表格稍后可以使用 [`aoconnect`](/guides/aoconnect/aoconnect.html) 库进行读取。这对于调试和向调用者返回输出值都很有用。
 - **Parameters:**
-  - `txt`: `{any}` The value/message to be appended to the output table
+  - `txt`: `{any}` 用于输出的数值/内容
 - **Returns:** `{void}`
 
 #### Examples
@@ -106,14 +103,13 @@ ao.log({
 
 ### `send()`
 
-Sends a message to another process by inserting the provided message item into the process' outbox along with the _ao specs compliant_ message tags.
-
+根据 AO 规范，将指定的消息内容连同消息标签一起放入目标进程的输出队列，从而向另一个进程发送消息。
 - **Parameters:**
-  - `msg`: `{table}` The message to be sent
-- **Returns:** The sent message item with the applied tags and `DataItem` fields.
+  - `msg`: `{table}` 待发送的消息
+- **Returns:** 已发送的消息，包含已应用的标签和`DataItem`字段。
 
 > **Note:** Each field of the `msg` table will be appended as a `DataItem` tag, except the following: `"Target"`, `"Data"`, `"Anchor"`, `"Tags"`. These fields are interpreted as root level `DataItem` fields.
-
+`msg` 表的每个字段都会作为 `DataItem` 标签附加，但以下字段除外：`"Target"`, `"Data"`, `"Anchor"`, `"Tags"`，因为这些字段将直接作为根级别的`DataItem`字段使用。
 #### Example
 
 ```lua
@@ -127,12 +123,12 @@ ao.send({
 
 ### `spawn()`
 
-Allows spawning a new process, from within another process.
+支持进程间创建新进程。
 
 - **Parameters:**
-  - `module`: `{string}` Arweave transaction ID of the module used by the new process
-  - `msg`: `{table}` The message that initializes the process, with the format described [above](#send)
-- **Returns:** The initializing message item
+  - `module`: `{string}` 新进程使用的模块的 Arweave 交易 ID
+  - `msg`: `{table}` 初始化进程的消息，格式[如上所述] (#send)
+- **Returns:** 初始化消息项
 
 #### Example
 
