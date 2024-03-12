@@ -5,6 +5,7 @@ Blueprints are predesigned templates that help you quickly build in `ao`. They a
 ## Available Blueprints
 
 - [Chatroom](chatroom)
+- [CRED Utils](cred-utils)
 - [Staking](staking)
 - [Token](token)
 - [Voting](voting)

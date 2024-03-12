@@ -231,6 +231,16 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
+                      "guides-aos-blueprints-cred-utils",
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/cred-utils",
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
                       "guides-aos-blueprints-staking",
                     ),
                     link: get_i18n_link(
