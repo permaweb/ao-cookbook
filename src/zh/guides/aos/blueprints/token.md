@@ -1,33 +1,33 @@
-# Token Blueprint
+# 代币蓝图
 
-The Token Blueprint is a predesigned template that helps you quickly build a token in `ao`. It is a great way to get started and can be customized to fit your needs.
+代币蓝图是预先设计好的模板，可帮助您在 ao 中快速构建。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
 
-## Unpacking the Token Blueprint
+## 解析代币蓝图
 
-- **Balances**: The `Balances` array is used to store the token balances of the participants.
+- **余额**: `Balances` 数组用于存储参与者的代币余额。
 
-- **Info Handler**: The `info` handler allows processes to retrieve the token parameters, like Name, Ticker, Logo, and Denomination.
+- **信息 Handler**: `info` handler 支持流程进程检索代币参数，例如名称、代码、徽标和面值。
 
-- **Balance Handler**: The `balance` handler allows processes to retrieve the token balance of a participant.
+- **余额 Handler**: `balance` Handler支持进程检索参与者的代币余额。
+: 
+- **总余额 Handler**: `balances` Handler支持进程检索所有参与者的代币余额。
+:
+- **转移 Handler**: `transfer` Handler支持进程向其他参与者发送代币。
+: 
+- **铸币 Handler**: `mint` Handler支持进程铸造新的代币。
+: 
+### 如何使用：
 
-- **Balances Handler**: The `balances` handler allows processes to retrieve the token balances of all participants.
+1. 打开您的文本编辑器。
+2. 打开终端。
+3. 启动您的`aos`进程.
+4. 输入`.load-blueprint token`
 
-- **Transfer Handler**: The `transfer` handler allows processes to send tokens to another participant.
+### 验证蓝图是否已加载：
 
-- **Mint Handler**: The `mint` handler allows processes to mint new tokens.
+输入 `Handlers.list` 查看新加载的handlers。
 
-### How To Use:
-
-1. Open your preferred text editor.
-2. Open the Terminal.
-3. Start your `aos` process.
-4. Type in `.load-blueprint token`
-
-### Verify the Blueprint is Loaded:
-
-Type in `Handlers.list` to see the newly loaded handlers.
-
-## What's in the Token Blueprint:
+## 代币蓝图包含的内容：
 
 ```lua
 local bint = require('.bint')(256)
