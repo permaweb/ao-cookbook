@@ -1,33 +1,33 @@
-# ao Module
+# ao 模块
 
-version: 0.0.3
+版本: 0.0.3
 
-`ao` process communication is handled by messages, each process receives messages in the form of ANS-104 DataItems, and needs to be able to do the following common operations.
+`ao` 进程通信通过消息进行处理，每个进程用 ANS-104 DataItems 的格式接收消息，并且需要能够执行以下常见操作。
 
-- isTrusted(msg) - check to see if this message trusted?
-- send(msg) - send message to another process
-- spawn(module, msg) - spawn a process
+- isTrusted(msg) - 检查消息是否可信
+- send(msg) - 将消息发给另一个进程
+- spawn(module, msg) - 创建一个进程
 
-The goal of this library is to provide this core functionality in the box of the `ao` developer toolkit. As a developer you have the option to leverage this library or not, but it integrated by default.
+这个 library 为 `ao` 开发者工具包提供了这些核心功能。开发者可以按需使用这个 library，但它是默认集成在开发者工具包里的。
 
-## Properties
+## 属性
 
-| Name        | Description                            | Type   |
+| 名称         | 描述                                   | 类型   |
 | ----------- | -------------------------------------- | ------ |
-| id          | Process Identifier (TXID)              | string |
-| \_module    | Module Identifier (TXID)               | string |
-| authorities | Set of Trusted TXs                     | string |
-| \_version   | The version of the library             | string |
-| env         | Evaluation Environment                 | string |
-| outbox      | Holds Messages and Spawns for response | object |
+| id          | 进程标识符 (TXID)              | string |
+| \_module    | 模块标识符 (TXID)               | string |
+| authorities | 可信任的交易集合                     | string |
+| \_version   | library 的版本             | string |
+| env         | 交易评估环境                 | string |
+| outbox      | 传出消息和生成新进程请求的发件箱 | object |
 
-## Methods
+## 方法
 
 ### send(msg: Message\<table>) : Message\<table>
 
-The send function takes a Message object or partial message object, it adds additional `ao` specific tags to the object and returns a full Message object, as well as insert into the ao.outbox.Messages table.
+ send 方法接收一个完整的 Message 对象，或者包含部分属性的 Message 对象作为参数。它会在这个对象上另外添加特定的 `ao` 标签，并返回一个完整的消息对象，同时将它插入到 ao.outbox.Messages 的表中。
 
-**parameters**
+**传入参数**
 
 - msg
 
@@ -53,7 +53,7 @@ Schema
 }
 ```
 
-Example 1
+例子 1
 
 ```lua
 local message = ao.send({
@@ -68,7 +68,7 @@ local message = ao.send({
 })
 ```
 
-Example 2
+例子 2
 
 ```lua
 local message = ao.send({
@@ -80,7 +80,7 @@ local message = ao.send({
 })
 ```
 
-**returns**
+**返回值**
 
 Schema
 
@@ -111,14 +111,14 @@ Schema
 
 ### spawn(module : string, spawn : Spawn\<table>) : Spawn\<table>
 
-The `spawn` function takes a module TXID as the first argument and a full or parital Spawn table. The result will return a full Spawn table. The spawn function will also generate a `Ref_` tag with a unique reference identifier.
+`spawn` 方法接收一个 TXID 模块作为第一个参数，以及一个完整的 Spawn 表，或者包含部分属性的 Spawn 表作为第二个参数。结果将返回一个完整的 Spawn 表。spawn 方法还会生成一个带有唯一引用标识符的 `Ref_` 标签。
 
-**parameters**
+**传入参数**
 
-| Name   | Description                                                                             | Type   |
+| 名称   | 描述                                                                             | 类型   |
 | ------ | --------------------------------------------------------------------------------------- | ------ |
-| module | The TXID that identifies the module binary to use to instaniate the process with        | string |
-| spawn  | The `spawn` full or parital table object that contains the `Data` and `Tags` properties | table  |
+| module | TXID 是一个模块二进制文件的标识符，用于实例化进程        | string |
+| spawn  | 包含完整或部分 `Data` 和 `Tags` 属性的 `spawn` 表     | table  |
 
 Schema
 
@@ -145,7 +145,7 @@ spawn
 }
 ```
 
-**returns**
+**返回值**
 
 Schema
 
@@ -170,13 +170,13 @@ Schema
 
 ### isTrusted(msg : Message\<table>) : boolean
 
-When spawning a process, 0 or more Authority Tags can be supplied, the ao library adds each of these values to a table array on the `ao` properties called `authorities`. This set provides the `Proof of Authority` feature for ao.TN.1. When a message arrives in the `handle` function, the developer can call `ao.isTrusted` to verify if the message is from a trusted source.
+在生成进程时，可以提供 0 个或多个 Authority 标签，ao library 会将这些值添加到 `ao` 属性中名为 `authorities` 的 table 数组中。这个数组为 ao.TN.1 提供了“权威证明”（Proof of Authority）功能。当消息到达 `handle` 方法时，开发者可以调用 `ao.isTrusted` 来验证消息是否来自可信来源。
 
-**parameters**
+**传入参数**
 
-| Name | Description                                 | Type  |
+| 名称 | 描述                                 | 类型  |
 | ---- | ------------------------------------------- | ----- |
-| msg  | Message to check if trusted by this process | table |
+| msg  | 用于检测这个进程是否可信的 Message               | table |
 
 Schema
 

@@ -1,8 +1,8 @@
-# Accessing Data from Arweave with ao
+# 使用 ao 访问 Arweave 上的数据
 
-There may be times in your ao development workflow that you want to access data from arweave. With ao your process can send a message instructing the network to provide that data to your Process in a Message.
+在你的 ao 开发工作流程中，可能有时候你想要访问 arweave 上的数据。你的进程可以使用 ao 发送一条消息，然后 ao 网络会通过一个 Message 对象将数据提供给你的 Process 对象。
 
-In order, to request data from arweave, you simply include a `Tag` called `Load`, in this tag you supply the TXID of the data you would like to retrieve.
+为了从 arweave 请求数据，你只需包含一个名为 `Load` 的 `Tag`，在该标签中，你可以提供数据的 TXID 来检索。
 
 ```lua
 
@@ -16,7 +16,7 @@ Send({
 
 ```
 
-This message will get processed and when it arrives in the Process, it will have a DataItem references by the `Data` property on the incoming message. Also the `Data` of the DataItem will be passed as base64.
+这条消息通过处理到达进程时，在传入消息的 `Data` 属性中，有一个 DataItem 的引用。同时，DataItem 的 `Data` 将以 base64 的类型传递。
 
 ```lua
 {
@@ -35,7 +35,7 @@ This message will get processed and when it arrives in the Process, it will have
 
 ```
 
-In lua, you can decode your data from base64 to its original format using the ".base64" module.
+在 lua 中，你可以使用 “.base64” 模块将你的数据从 base64 解码回原始格式。
 
 ```lua
 local base64 = require(".base64")
@@ -44,6 +44,6 @@ local base64 = require(".base64")
 local data = base64.decode(Msg.Data.Data)
 ```
 
-## Why data from Arweave?
+## 为什么从 Arweave 上面取数据
 
-Your Process may need to access data to make a decision about something, or you may want to add features to your Process via the `data` load feature.
+你的进程可能需要访问数据来做决策，或者你可能想要通过 `data` 加载功能，为你的进程添加特性。
