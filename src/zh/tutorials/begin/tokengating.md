@@ -6,7 +6,7 @@
 
 ## 如何对聊天室进行代币门控
 
-让我们创建一个处理程序，允许我们对聊天室进行代币门控。该处理程序将响应标签 `Action = "Broadcast"`，这意味着它将替换我们为聊天室构建的原始 `Broadcast` 处理程序。
+让我们创建一个handler，允许我们对聊天室进行代币门控。该handler将响应标签 `Action = "Broadcast"`，这意味着它将替换我们为聊天室构建的原始 `Broadcast` handler。
 
 ## 步骤 1：启动相同的 `aos` 进程
 
@@ -16,9 +16,9 @@
 
 这与我们在 [聊天室](chatroom) 教程中用于创建聊天室的文件相同。
 
-## 步骤 3：编辑您的 `Broadcast` 处理程序
+## 步骤 3：编辑您的 `Broadcast` handler
 
-将原来的 `Broadcast` 处理程序替换为以下代码：
+将原来的 `Broadcast` handler替换为以下代码：
 
 ```lua
 Handlers.add(
@@ -43,13 +43,13 @@ Handlers.add(
 )
 ```
 
-该处理程序现在将在将消息广播到聊天室之前检查发送者代币的余额。 如果发送者没有代币，则消息将不会被广播。
+该handler现在将在将消息广播到聊天室之前检查发送者代币的余额。 如果发送者没有代币，则消息将不会被广播。
 
 保存文件。
 
 ## 步骤 4：重新加载 `chatroom.lua` 文件
 
-要将原始的 `Broadcast` 处理程序替换为新的处理程序，您需要重新加载 `chatroom.lua` 文件。
+要将原始的 `Broadcast` handler替换为新的handler，您需要重新加载 `chatroom.lua` 文件。
 
 ```sh
 .load chatroom.lua

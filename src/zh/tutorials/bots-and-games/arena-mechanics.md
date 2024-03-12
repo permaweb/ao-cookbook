@@ -59,7 +59,7 @@
 -- 此外，建造者可以提供这些代币的奖励作为每轮额外的激励分配。
 -- 如果游戏中的目标玩家类型是机器人，提供额外的`奖励`创造让程序员争相生产最佳代理来`挖`到进程的代币的机会
 
--- 建造者还可以在他们的游戏逻辑中控制框架, 提供类似这样的处理程序：允许玩家执行游戏中的动作，在适当的时刻调用 `eliminatePlayer()`。
+-- 建造者还可以在他们的游戏逻辑中控制框架, 提供类似这样的handler：允许玩家执行游戏中的动作，在适当的时刻调用 `eliminatePlayer()`。
 
 -- 进程还可以在 `监听` 模式下注册，在该模式下它们将接收游戏中的所有公告，但他们自己不加入本轮对战。
 -- 除非他们明确要求，否则他们也不会取消注册。
@@ -184,7 +184,7 @@ function startGamePeriod()
     print("Game Started....")
 end
 
--- 从游戏中淘汰玩家的处理程序。
+-- 从游戏中淘汰玩家的handler。
 -- @param eliminated: 要被淘汰的玩家。
 -- @param eliminator: 发起淘汰的玩家。
 function eliminatePlayer(eliminated, eliminator)
@@ -251,9 +251,9 @@ function removeListener(listener)
     end
 end
 
--- 处理程序: 游戏状态管理
+-- handler: 游戏状态管理
 
--- 定时消息处理程序，管理游戏状态切换。
+-- 定时消息handler，管理游戏状态切换。
 Handlers.add(
     "Game-State-Timers",
     function(Msg)
@@ -278,7 +278,7 @@ Handlers.add(
     end
 )
 
--- 玩家质押以参与下一轮游戏的处理程序。
+-- 玩家质押以参与下一轮游戏的handler。
 Handlers.add(
     "Transfer",
     function(Msg)
