@@ -1,31 +1,34 @@
-# Troubleshooting using ao.link
+# 使用 ao.link 进行 Debug
 
 Working with a decentralized computer and network, you need to be able to troubleshoot more than your own code. You need to be able to track messages and processes. This is where [https://ao.link](https://ao.link) becomes an essential tool in your toolbox.
 
+使用去中心计算机和网络，您必须可以排查自己代码之外的问题。您需要跟踪进程和消息，这就是 [https://ao.link](https://ao.link) 工具箱的必要之处。
+
 ![ao.link homepage displaying ao network stats](aolink.png)
 
-## Analytics
+## 分析
 
-AOLink has a set of 4 analytic measures:
+AOLink 4种分析指标:
 
-- Total Messages
-- Total Users
-- Total Processes
-- Total Modules
+- 消息总数 Total Messages
+- 用户总数 Total Users
+- 进程总数 Total Processes
+- 模块总数 Total Modules
 
-These analytics give you a quick view into the ao network's total processing health.
+这些指标可以让您快速了解 ao 网络的总体运行状况。
 
-## Events
+## 事件 Events
 
-Below, the analytics are the latest events that have appeared on the ao computer. You have a list of messages being scheduled and that have been executed. These events are any of the ao Data Protocol Types. And you can click on the Process ID or the Message ID to get details about each.
+下面是 ao 计算机里的最新事件。 它们是一个已执行的消息列表。 这些事件可以是任何 ao 数据协议类型。 您可以单击进程 ID 或消息 ID 来获取详细信息。
 
 ![ao.link list of events](aolink-list-example.png)
 
-### Message Details
+### 消息细节
 
 ![ao.link message details displaying the message processed](aolink-message-details.png)
 
 The message details give you key details about:
+消息细节包括以下关键信息：
 
 - From
 - To
@@ -37,22 +40,24 @@ The message details give you key details about:
 - Data
 
 If you want to further troubleshoot and debug, you have the option to look at the result of the CU (Compute Unit) by clicking on "Compute".
+如果您想进一步排除故障和调试，您可以通过单击 “Compute” 来查看 CU（计算单元）的结果。
 
 ![ao.link compute result example for debugging](aolink-compute-example.png)
 
-### Process Details
+### 进程细节
 
 ![ao.link displaying a process in details](aolink-process-details.png)
 
-The process details provide you with information about the process it's useful to see in the tags with what module this got instantiated from.
-If you notice on the left you see the interaction with the process displayed on a graph.
-In this case, this is DevChat, and you can see all the processes that have interacted by Registering and Broadcasting Messages.
+进程细节提供进程的详细信息，在标签（Tag）中查看该进程的实例化所使用的各个模块，这非常有用
+左侧的图表显示的是进程的交互图。
+在本例中，这是 DevChat，您可以看到通过注册和广播消息进行交互的所有进程。
+这个例子是 DevChat 进程的实例，您可以看到通过注册和消息广播与之交互的所有进程
 
-## Further Questions?
+## 更多问题?
 
-Feel free to reach out on the community Discord of DataOS.
+请随时访问 DataOS 的 Discord 社区。
 https://discord.gg/4kF9HKZ4Wu
 
-## Summary
+## 总结
 
-AOLink is an excellent tool for tracking events in the ao computer. Give it a try. Also, there is another scanner tool available on the permaweb: https://ao_marton.g8way.io/ - check it out!
+AOLink 是一款很好的工具，用于追踪 ao 计算机中的事件，请试一试。此外 permaweb 上还有另一个扫描工具：https://ao_marton.g8way.io/ - 试一试吧！

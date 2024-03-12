@@ -9,28 +9,29 @@ next:
 
 # aos
 
-While `ao` is a hyper parallel computer that enables distributed compute, `aos` is an operating system on top of that computer.
 
-With `aos` you can interact with processes and you can code processes in a very simple and intuitive way. All you need is a terminal and an editor.
+`ao` 是一台支持分布式计算的并行计算机，`aos` 是该计算机上的操作系统。
 
-The language chosen for `aos` is [lua](../../concepts/lua.md), which is a robust and deterministic dynamic language that is a lot of fun to work with.
+使用 `aos` 您可以与进程(processes)交互，并且非常简单直观地编写进程代码。 您所需要的只是一个终端和一个编辑器。
 
-If you have done so yet, take 15 minutes and go through our [tutorials](../../tutorials/index).
+`aos` 选择 [lua](../../concepts/lua.md) 作为开发语言，这是一种健壮的动态语言，使用起来非常有趣。
 
-## Diving Deeper into `aos`
+如果您已经这样做了，请花 15 分钟浏览我们的[教程](../../tutorials/index)。
 
-- [Introduction to aos](intro)
-- [Installing](installing)
-- [`aos` CLI](cli)
-- [Prompt Customization](prompt)
-- [A Ping-Pong Server](pingpong)
+## 深入讨论 `aos`
+
+- [aos概览](./intro)
+- [安装](./installing)
+- [`aos` CLI工具](./cli)
+- [自定义提示符(prompt)](./prompt)
+- [构建一个 Ping-Pong 服务](./pingpong)
 
 ## Developer Guides
 
-- [Editor Setup](editor)
-- [Troubleshooting with ao.link](troubleshooting)
-- [Understanding the Inbox](inbox-and-handlers)
-- [Frequently Asked Questions](faq)
+- [编辑器初始化](editor)
+- [使用 ao.link 进行 Debug](troubleshooting)
+- [理解收件箱（Inbox）](inbox-and-handlers)
+- [常见问题](faq)
 
 ### [**Modules**](modules/index)
 

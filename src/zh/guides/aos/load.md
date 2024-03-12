@@ -1,10 +1,11 @@
-# .load
+# .load 命令
 
-This feature allows you to load lua code from a source file on your local machine, this simple feature gives you a nice DX experience for working with aos processes.
 
-When creating handlers you may have a lot of code and you want to take advantage of a rich development environment like vscode. You can even install the lua extension to get some syntax checking.
+这个功能可以让您加载本地环境中的 lua 代码，给 aos 的开发者带来更好的开发体验。
 
-So how do you publish your local lua source code to your ao process? This is where the `.load` command comes into play.
+在创建处理程序时您可能有大量代码，希望使用 vscode 等集成开发环境来管理它们。 您还可以安装 lua 扩展插件来做一些语法检查。
+
+那么如何将本地的 lua 代码发布到你的 ao 进程中呢？ 这就是“.load”命令发挥作用的地方。
 
 hello.lua
 
@@ -16,10 +17,10 @@ Handlers.add(
 )
 ```
 
-aos shell
+aos 脚本输入
 
 ```sh
 .load hello.lua
 ```
 
-Easy Peasy! 🐶
+十分简单! 🐶

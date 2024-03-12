@@ -1,11 +1,11 @@
-# Installing aos
+# 安装 aos
 
-Installing aos only requires `NodeJS` - https://nodejs.org
+安装 aos 只需要 `NodeJS` - https://nodejs.org
 
-> NOTE: If you are on windows you may get better results with WSL Console.
+> 注意: 如果您使用的是 Windows 系统，最后使用 WSL 命令行.
 
 ```sh
 npm i -g https://get_ao.g8way.io
 ```
 
-Once installed you can run by typing `aos`
+安装完之后您可以输入 `aos` 来运行系统
