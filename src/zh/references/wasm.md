@@ -1,5 +1,5 @@
-# Meet Web Assembly
+# 认识 Web Assembly
 
-WebAssembly (often abbreviated as Wasm) is a modern binary instruction format providing a portable compilation target for high-level languages like C, C++, and Rust. It enables deployment on the web for client and server applications, offering a high level of performance and efficiency. WebAssembly is designed to maintain the security and sandboxing features of web browsers, making it a suitable choice for web-based applications. It's a key technology for web developers, allowing them to write code in multiple languages and compile it into bytecode that runs in the browser at near-native speed.
+WebAssembly（通常简称为 Wasm）是一种现代的二进制指令格式，为高级语言（如C、C++和Rust）提供了一个可迁移的编译目标。它可以支持在网络上部署客户端和服务器应用，并提供高水平的性能和效率。WebAssembly 是为了保持网络浏览器的安全性和沙盒功能而设计的，成为网络应用程序的选择之一。它是网络开发人员的关键技术，使他们能够用多种语言编写代码，并将代码编译为在浏览器中以接近原生速度运行的字节码。
 
-The significance of WebAssembly lies in its ability to bridge the gap between web and native applications. It allows complex applications and games, previously limited to desktop environments, to run in the browser with comparable performance. This opens up new possibilities for web development, including the creation of high-performance web apps, games, and even the porting of existing desktop applications to the web. WebAssembly operates alongside JavaScript, complementing it by enabling performance-critical components to be written in languages better suited for such tasks, thereby enhancing the capabilities and performance of web applications.
+WebAssembly 的重要性在于它能够弥合网络应用程序和本地应用程序之间的差距。它使得之前局限于桌面环境的复杂应用程序和游戏，能够在浏览器中以相当的性能运行。这为网络开发带来了新的可能性，包括创建高性能的网络应用程序、游戏，甚至将现有的桌面应用程序移植到网络上。WebAssembly 与 JavaScript 并行运行，通过使用更适合此类任务的语言编写性能关键组件，弥补了 JavaScript 的缺陷，从而增强了网络应用程序的功能和性能。

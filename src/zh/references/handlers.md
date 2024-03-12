@@ -1,111 +1,111 @@
-# Handlers (Version 0.0.3)
+# Handlers (版本 0.0.3)
 
-## Overview
+## 概览
 
-The Handlers library provides a flexible way to manage and execute a series of handlers based on patterns. Each handler consists of a pattern function, a handle function, and a name. This library is suitable for scenarios where different actions need to be taken based on varying input criteria.
+Handlers library 提供了一种灵活的方式来管理和执行一系列基于模式的 handler。每个 handler 由一个匹配函数、一个处理函数和一个名称组成。这个 library 适用于需要根据不同的输入条件采取不同行动的场景。
 
-## Module Structure
+## 模块结构
 
-- `Handlers._version`: String representing the version of the Handlers library.
-- `Handlers.list`: Table storing the list of registered handlers.
+- `Handlers._version`: 代表 Handlers library 版本的字符串。
+- `Handlers.list`: 存储注册的 handler 列表的表。
 
-## Functions
+## 方法
 
 ### `Handlers.add(name, pattern, handler)`
 
-adds a new handler or updates an existing handler by name
+添加一个新的 handler 或者根据名称更新已有的 handler。
 
 ### `Handlers.append(name, pattern, handle)`
 
-Appends a new handler to the end of the handlers list.
+在 handler 列表的末尾插入一个新的 handler。
 
-#### Parameters
+#### 传入参数
 
-- `pattern` (function): Function that determines if the handler should be executed.
-- `handle` (function): The handler function to execute.
-- `name` (string): A unique name for the handler.
+- `pattern` (function 类型): 判断 handler 是否被执行的方法。
+- `handle` (function 类型): handler 方法的执行函数。
+- `name` (string 类型): handler 的唯一命名。
 
 ### `Handlers.prepend(name, pattern, handle)`
 
-Prepends a new handler to the beginning of the handlers list.
+把一个新的 handler 加到 handler 列表的开头.
 
-#### Parameters
+#### 传入参数
 
-- Same as `handlers.append`.
+- 和 `handlers.append` 的一样。
 
 ### `Handlers.before(handleName)`
 
-Returns an object that allows adding a new handler before a specified handler.
+返回一个对象，可以在特定的 handler 前加入一个新的 handler。
 
-#### Parameters
+#### 传入参数
 
-- `handleName` (string): The name of the handler before which the new handler will be added.
+- `handleName` (string 类型): 在新的 handler 加入前，需要给 handler 的命名。
 
-#### Returns
+#### 返回值
 
-- An object with an `add` method to insert the new handler.
+- 一个拥有 `add` 方法的对象，可以插入新的 handler。
 
 ### `Handlers.after(handleName)`
 
-Returns an object that allows adding a new handler after a specified handler.
+返回一个对象，可以在特定的 handler 后加入一个新的 handler。
 
-#### Parameters
+#### 传入参数
 
-- `handleName` (string): The name of the handler after which the new handler will be added.
+- `handleName` (string 类型): 在新的 handler 加入后，需要给 handler 的命名。
 
-#### Returns
+#### 返回值
 
-- An object with an `add` method to insert the new handler.
+- 一个拥有 `add` 方法的对象，可以插入新的 handler。
 
 ### `Handlers.remove(name)`
 
-Removes a handler from the handlers list by name.
+根据名称从 handler 列表里移除一个 handler。
 
-#### Parameters
+#### 传入参数
 
-- `name` (string): The name of the handler to be removed.
+- `name` (string 类型): 要被移除的 handler 的名称。
 
 ### `Handlers.evaluate(msg, env)`
 
-Evaluates each handler against a given message and environment. Handlers are called in the order they appear in the handlers list.
+根据给定的消息和环境对每个 handler 进行评估。handler 按照它们在 handler 列表中出现的顺序依次调用。
 
-#### Parameters
+#### 传入参数
 
-- `msg` (table): The message to be processed by the handlers.
-- `env` (table): The environment in which the handlers are executed.
+- `msg` (table 类型): handler 要处理的消息。
+- `env` (table 类型): handler 执行的环境。
 
-#### Returns
+#### 返回值
 
-- `response` (varies): The response from the handler(s). Returns a default message if no handler matches.
+- `response` (类型取决于 handler 是否匹配): handler 的响应。如果没有匹配的 handler，返回一个默认消息。
 
-## Usage Example
+## 使用案例
 
 ```lua
--- Define pattern and handle functions
+-- 定义模式和处理函数
 local function myPattern(msg)
-    -- Determine if the handler should be executed
+    -- 判断 handler 是否被执行
 end
 
 local function myHandle(msg, env, response)
-    -- Handler logic
+    -- Handler 逻辑
 end
 
--- Add a new handler
+-- 加一个新的 handler
 Handlers.add("myHandler", myPattern, myHandle)
 
--- Evaluate a message
+-- 评估一条消息
 local response = handlers.evaluate({ key = "value" }, { envKey = "envValue" })
 ```
 
-## Notes
+## 说明
 
-- Handlers are executed in the order they appear in `handlers.list`.
-- The pattern function should return `0` to skip the handler, `-1` to break after the handler is executed, or `1` to continue with the next handler.
-- The `evaluate` function can concatenate responses from multiple handlers.
+- 根据 Handler 在 `handlers.list` 中的顺序执行
+- 匹配函数返回 `0` 代表跳过 handler，返回 `-1` 代表在 handler 执行后中断，或者返回 `1` 代表继续执行下一个 handler。
+- `evaluate` 方法可以从多个 handler 上连接响应。
 
 ## Handlers.utils
 
-The Handlers.utils module provides two functions that are common matching patterns and one function that is a common handle function.
+Handlers.utils 模块提供了两个常见的匹配模式函数和一个常见的处理函数。
 
 - hasMatchingData(data)
 - hasMatchingTag(name, value)
@@ -113,7 +113,7 @@ The Handlers.utils module provides two functions that are common matching patter
 
 ### Handlers.utils.hasMatchingData(data : string)
 
-This helper returns a function that requires a message argument, so you can drop this into the pattern argument of any handler. The function compares the data on the incoming message with the string provided as an argument.
+这个辅助函数返回一个需要消息参数的函数，因此你可以将它放入任何 handler 的匹配参数中。该函数会将传入消息的数据与作为参数提供的字符串进行比较。
 
 ```lua
 Handlers.add("ping",
@@ -122,11 +122,11 @@ Handlers.add("ping",
 )
 ```
 
-If a message comes into the process with data set to ping, this handler will match on it and invoke the handle function.
+如果这个进入进程的消息有设置成 ”ping" 的数据，那么这个 handler 会匹配上它，并调用处理函数。
 
 ### Handlers.hasMatchingTag(name : string, value : string)
 
-This helper returns a function that requires a message argument, so you can drop this into any pattern argument on the Handlers module. The function compares the Tag Name and Value, if they are equal then it invokes the handle function.
+这个辅助函数返回一个需要消息参数的函数，因此你可以将它放入 Handlers 模块的任何匹配参数中。该函数会比较 Tag 的名称和数值，如果它们相等，则调用处理函数。
 
 ```lua
 Handlers.add("ping",
@@ -137,7 +137,7 @@ Handlers.add("ping",
 
 ### Handlers.reply(text : string)
 
-This helper is a simple handle function, it basically places the text value in to the Data property of the outbound message.
+这个辅助函数是一个简单的处理函数，就是将 text 的值放入发送消息的 Data 属性中。
 
 ```lua
 Handlers.add("ping",

@@ -7,8 +7,8 @@ next:
   link: "./lua"
 ---
 
-# References
+# 参考
 
-## Index
+## 目录
 
 - [Lua](lua)

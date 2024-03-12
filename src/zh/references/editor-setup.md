@@ -1,25 +1,25 @@
-# Editor setup
+# 编辑器设置
 
-Remembering all the built in ao functions and utilites can sometimes be hard. To enhance your developer experience, it is recommended to install the [Lua Language Server](https://luals.github.io) extension into your favorite text editor and add the [ao addon](https://github.com/martonlederer/ao-definitions). It supports all built in aos [modules](../guides/aos/index.md) and [globals](../guides/aos/intro#globals).
+有时记住所有内置的 ao 函数和实用工具可能很困难。为了提升你的开发体验，建议你在你最喜欢的文本编辑器中安装 [Lua Language Server](https://luals.github.io) 扩展，并添加 [ao插件](https://github.com/martonlederer/ao-definitions)。它支持所有内置的 aos [模块](../guides/aos/index.md) 和 [全局变量](../guides/aos/intro#globals)。
 
 ## VS Code
 
-Install the [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) extension:
+安装 [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) 扩展：
 
-1. Search for "Lua" by sumneko in the extension marketplace
-2. Download and install the extension
-3. Open the VS Code command palette with `Shift + Command + P` (Mac) / `Ctrl + Shift + P` (Windows/Linux) and run the following command:
+1. 在扩展市场中搜索 sumneko 的 "Lua"。
+2. 下载并安装该扩展。
+3. 打开 VS Code 命令面板，使用 `Shift + Command + P`（Mac）/ `Ctrl + Shift + P`（Windows/Linux），然后运行以下命令：
 
 ```
 > Lua: Open Addon Manager
 ```
 
-4. In the Addon Manager, search for "ao", it should be the first result. Click "Enable" and enjoy autcomplete!
+4. 在插件管理器中搜索 “ao”，它应该是第一个结果。点击 “启用”，然后就可以享受自动完成的功能了！
 
-If you don't want to do this process for each of your workspaces, you can copy the `Lua.workspace.library` object from the generated workspace `settings.json` file to your global `settings.json` file.
+如果你不想为每个工作区重复这个过程，你可以从生成的工作区 `settings.json` 文件中复制 `Lua.workspace.library` 对象到你的全局 `settings.json` 文件中。
 
-## Other editors
+## 其他编辑器
 
-1. Verify that your editor supports the [language server protocol](https://microsoft.github.io/language-server-protocol/implementors/tools/)
-2. Install Lua Language Server by following the instructions at [luals.github.io](https://luals.github.io/#install)
-3. Install the "ao" addon to the language server
+1. 确认你的编辑器支持[语言服务器协议](https://microsoft.github.io/language-server-protocol/implementors/tools/)。
+2. 按照 [luals.github.io](https://luals.github.io/#install) 上的指示安装 Lua 语言服务器。
+3. 为语言服务器安装“ao”插件。
