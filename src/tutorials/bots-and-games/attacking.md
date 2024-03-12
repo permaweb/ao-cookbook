@@ -1,12 +1,3 @@
----
-prev:
-  text: "Strategic Decicions"
-  link: "/tutorials/bots-and-games/decisions"
-next:
-  text: "Bringing it Together"
-  link: "/tutorials/bots-and-games/bringing-together"
----
-
 # Automated Responses
 
 Following our [last guide](decisions), our creation has progressed from a simple bot to a sophisticated autonomous agent. Now, let's further enhance its capabilities by adding a counterattack feature, allowing it to instantly retaliate against an opponent's attack, potentially catching them off-guard before they can retreat to safety.
@@ -49,7 +40,7 @@ You can refer to the latest code for `bot.lua` in the dropdown below:
 LatestGameState = LatestGameState or nil
 
 function inRange(x1, y1, x2, y2, range)
-    return math.abs(x1 - x2) <= range and math.abs(y1 - y2) <= range
+  return math.abs(x1 - x2) <= range and math.abs(y1 - y2) <= range
 end
 
 function decideNextAction()
@@ -57,10 +48,10 @@ function decideNextAction()
   local targetInRange = false
 
   for target, state in pairs(LatestGameState.Players) do
-      if target ~= ao.id and inRange(player.x, player.y, state.x, state.y, 1) then
-          targetInRange = true
-          break
-      end
+    if target ~= ao.id and inRange(player.x, player.y, state.x, state.y, 1) then
+        targetInRange = true
+        break
+    end
   end
 
   if player.energy > 5 and targetInRange then
@@ -75,54 +66,54 @@ function decideNextAction()
 end
 
 Handlers.add(
-"HandleAnnouncements",
-Handlers.utils.hasMatchingTag("Action", "Announcement"),
-function (msg)
-  ao.send({Target = Game, Action = "GetGameState"})
-  print(msg.Event .. ": " .. msg.Data)
-end
-)
-
-Handlers.add(
-"UpdateGameState",
-Handlers.utils.hasMatchingTag("Action", "GameState"),
-function (msg)
-  local json = require("json")
-  LatestGameState = json.decode(msg.Data)
-  ao.send({Target = ao.id, Action = "UpdatedGameState"})
-end
-)
-
-Handlers.add(
-"decideNextAction",
-Handlers.utils.hasMatchingTag("Action", "UpdatedGameState"),
-function ()
-  if LatestGameState.GameMode ~= "Playing" then
-    return
+  "HandleAnnouncements",
+  Handlers.utils.hasMatchingTag("Action", "Announcement"),
+  function (msg)
+    ao.send({Target = Game, Action = "GetGameState"})
+    print(msg.Event .. ": " .. msg.Data)
   end
-  print("Deciding next action.")
-  decideNextAction()
-end
 )
 
 Handlers.add(
-"ReturnAttack",
-Handlers.utils.hasMatchingTag("Action", "Hit"),
-function (msg)
-    local playerEnergy = LatestGameState.Players[ao.id].energy
-    if playerEnergy == undefined then
-      print("Unable to read energy.")
-      ao.send({Target = Game, Action = "Attack-Failed", Reason = "Unable to read energy."})
-    elseif playerEnergy == 0 then
-      print("Player has insufficient energy.")
-      ao.send({Target = Game, Action = "Attack-Failed", Reason = "Player has no energy."})
-    else
-      print("Returning attack.")
-      ao.send({Target = Game, Action = "PlayerAttack", Player = ao.id, AttackEnergy = tostring(playerEnergy)})
+  "UpdateGameState",
+  Handlers.utils.hasMatchingTag("Action", "GameState"),
+  function (msg)
+    local json = require("json")
+    LatestGameState = json.decode(msg.Data)
+    ao.send({Target = ao.id, Action = "UpdatedGameState"})
+  end
+)
+
+Handlers.add(
+  "decideNextAction",
+  Handlers.utils.hasMatchingTag("Action", "UpdatedGameState"),
+  function ()
+    if LatestGameState.GameMode ~= "Playing" then
+      return
     end
-    InAction = false
-    ao.send({Target = ao.id, Action = "Tick"})
-end
+    print("Deciding next action.")
+    decideNextAction()
+  end
+)
+
+Handlers.add(
+  "ReturnAttack",
+  Handlers.utils.hasMatchingTag("Action", "Hit"),
+  function (msg)
+      local playerEnergy = LatestGameState.Players[ao.id].energy
+      if playerEnergy == undefined then
+        print("Unable to read energy.")
+        ao.send({Target = Game, Action = "Attack-Failed", Reason = "Unable to read energy."})
+      elseif playerEnergy == 0 then
+        print("Player has insufficient energy.")
+        ao.send({Target = Game, Action = "Attack-Failed", Reason = "Player has no energy."})
+      else
+        print("Returning attack.")
+        ao.send({Target = Game, Action = "PlayerAttack", Player = ao.id, AttackEnergy = tostring(playerEnergy)})
+      end
+      InAction = false
+      ao.send({Target = ao.id, Action = "Tick"})
+  end
 )
 ```
 

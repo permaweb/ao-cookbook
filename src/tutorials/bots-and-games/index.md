@@ -1,10 +1,10 @@
 ---
 prev:
-  text: "DAO Guide"
-  link: "/tutorials/dao"
+  text: "Tokengating"
+  link: "../begin/tokengating"
 next:
   text: "Let's Play A Game!"
-  link: "/tutorials/bots-and-games/ao-effect"
+  link: "./ao-effect"
 ---
 
 # Bots and Games

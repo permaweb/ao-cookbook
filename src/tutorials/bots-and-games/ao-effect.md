@@ -1,10 +1,7 @@
 ---
 prev:
   text: "Bots and Games"
-  link: "/tutorials/bots-and-games/index"
-next:
-  text: "Interpreting Announcements"
-  link: "/tutorials/bots-and-games/announcements"
+  link: "./index"
 ---
 
 # Let's Play A Game!
@@ -27,22 +24,22 @@ Checkout the guides on the [Mechanics of the Arena](arena-mechanics.md) and [Exp
 
 To join this global escapade, you'll need to set things up. Don't worry, it's as easy as 1-2-3!
 
-1. **Install aos**
-   Fire up your terminal and run:
+1.**Install aos**
+Fire up your terminal and run:
 
 ```bash
 npm i -g https://get_ao.g8way.io
 ```
 
-2. **Launch aos**
-   Next, create your instance of aos:
+2.**Launch aos**
+Next, create your instance of aos:
 
 ```bash
 aos
 ```
 
-3. **Set Up the Game ID**
-   Let's keep our game server ID handy for quick access:
+3.**Set Up the Game ID**
+Let's keep our game server ID handy for quick access:
 
 ```lua
 Game = "3HSmhQ-lHaCQlOKtq5GDgbVQXQ6mWIp40uUASAG13Xk"

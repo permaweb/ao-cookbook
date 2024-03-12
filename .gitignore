@@ -22,7 +22,6 @@ yarn-error.log*
 # local env files
 .env*.local
 
-
 # typescript
 *.tsbuildinfo
 .vercel
@@ -30,9 +29,6 @@ yarn-error.log*
 src/.vitepress/cache
 src/.vitepress/cache/deps
 src/.vitepress/dist
-.vitepress
-.vitepress/cache
-.vitepress/cache/deps
 
 wallet.json
 
