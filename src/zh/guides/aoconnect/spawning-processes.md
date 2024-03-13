@@ -1,18 +1,18 @@
-# Spawning a Process
+# 启动一个进程
 
-A deep dive into the concept of Processes can be found in the [ao Processes](../../concepts/processes.md) concept. This guide focuses on using ao connect to spawn a Process.
+可以在[ao Processes](../../concepts/processes.md) 概念中找到关于进程的深入介绍。本指南聚焦于使用 ao connect 启动一个进程。
 
-In order to spawn a Process you must have the TXID of an ao Module that has been uploaded to Arweave. The Module is the source code for the Process. The Process itself is an instantiation of that source.
+为了启动一个进程，你必须拥有已经上传到 Arweave 的一个 ao 模块的 TXID。模块是进程的源代码。进程本身是那个源码的实例化。
 
-You must also have the wallet address of a Scheduler Unit (SU). This specified SU will act as the scheduler for this Process. This means that all nodes in the system can tell that they need to read and write to this SU for this Process. You can use the address below.
+你还必须拥有一个调度单元（Scheduler Unit, SU）的钱包地址。指定的 SU 将作为此进程的调度器。这意味着系统中的所有节点都可以知道它们需要为此进程读写到这个 SU。你可以使用下面的地址。
 
-## Wallet address of an available Scheduler
+## 调度器的钱包地址
 
 ```sh
 fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY
 ```
 
-## Spawning a Process in NodeJS
+## 在 NodeJS 中启动一个进程
 
 ```js
 import { readFileSync } from "node:fs";
@@ -41,7 +41,7 @@ const processId = await spawn({
 });
 ```
 
-## Spawning a Process in a browser
+## 在浏览器中启动一个进程
 
 ```js
 import { createDataItemSigner, spawn } from "@permaweb/ao-sdk";

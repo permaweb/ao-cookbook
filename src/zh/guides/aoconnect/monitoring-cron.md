@@ -1,6 +1,6 @@
-# Monitoring Cron
+# 监控 Cron
 
-When using cron messages, ao users need a way to start injesting the messages, using this monitor method, ao users can initiate the subscription service for cron messages. Setting cron tags means that your process will start producing cron results in its outbox, but you need to monitor these results if you want messages from those results to be pushed through the network.
+当使用 cron 消息时，ao 用户需要一种方式开始接收这些消息，通过使用这个监控方法，ao 用户可以启动 cron 消息的订阅服务。设置 cron 标签意味着你的进程将开始在其发件箱中生成 cron 结果，但如果你希望这些结果中的消息通过网络被推送，则需要监控这些结果。
 
 ```js
 import { readFileSync } from "node:fs";
@@ -16,7 +16,7 @@ const result = await monitor({
 });
 ```
 
-You can stop monitoring by calling unmonitor
+你可以通过调用 unmonitor 来停止监控
 
 ```js
 import { readFileSync } from "node:fs";

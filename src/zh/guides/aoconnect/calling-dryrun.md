@@ -1,6 +1,6 @@
-# Calling DryRun
+# 调用 DryRun
 
-DryRun is the process of sending a message object to a specific process and getting the Result object back, but the memory is not saved, it is perfect to create a read message to return the current value of memory. For example, a balance of a token, or a result of a transfer, etc. You can use DryRun to obtain an output without sending an actual message.
+DryRun 是将消息对象发送到特定进程并获取返回的结果对象的过程，但内存不会被保存，这非常适合创建一个读取消息以返回内存的当前值。例如，一个代币的余额，或者一个转账的结果等。您可以使用 DryRun 来获取输出，而无需发送实际消息
 
 ```js
 import { createDataItemSigner, dryrun } from "@permaweb/aoconnect";
