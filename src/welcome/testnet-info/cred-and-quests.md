@@ -71,11 +71,11 @@ aos> Say("/Quests:2", "Quests")
 
 ### Quest 1: "Begin"
 
-The detailed steps for Quest 1 are available in the [Begin](/tutorials/begin/) tutorial in this cookbook.
+The detailed steps for Quest 1 are available in the [Begin](/tutorials/begin/index) tutorial in this cookbook.
 
 ### Quest 2: "Bots-and-Games"
 
-The detailed steps for Quest 2 are available in the [Bots and Games](/tutorials/bots-and-games/) tutorial in this cookbook.
+The detailed steps for Quest 2 are available in the [Bots and Games](/tutorials/bots-and-games/index) tutorial in this cookbook.
 
 ## How do I complete a quest?
 
