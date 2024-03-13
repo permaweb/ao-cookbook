@@ -1,10 +1,10 @@
-# Connecting to specific ao nodes
+# 连接到特定的 ao 节点
 
-When including ao connect in your code you have the ability to connect to a specific MU and CU, as well as being able to specifiy an Arweave gateway. This can be done by importing the "connect" function and extracting the functions from a call to the "connect" function.
+在你的代码中包含 **aoconnect** 时，你有能力连接到特定的 MU（消息单元）和 CU（计算单元），以及能够指定一个 Arweave 网关。这可以通过导入 `connect` 函数并从对 `connect` 函数的调用中提取函数来完成。
 
-You may want to do this if you want to know which MU is being called when you send your message so that later you can debug from the specified MU. You also may want to read a result from a specific CU. You may in fact just prefer a particular MU and CU for a different reason. You can specify the gateway in order to use something other than the default, which is arweave.net.
+如果你希望了解在发送你的消息时调用了哪个 MU，以便稍后可以从指定的 MU 进行调试，你可能会想要这么做。你也可能想要从特定的 CU 读取结果。事实上，你可能出于某种其他原因偏好某个特定的 MU 和 CU。你可以指定其他的网关，默认的网关是即 ：arweave.net
 
-## Importing without a call to connect
+## aoconnect 的导入
 
 ```js
 // Here aoconnect will implicitly use the default nodes/units
@@ -19,7 +19,7 @@ import {
 } from "@permaweb/aoconnect";
 ```
 
-## Connecting to a specific MU, CU, and gateway
+## 连接到特定的 MU, CU, 和网关
 
 ```js
 import { connect } from "@permaweb/aoconnect";
@@ -37,7 +37,7 @@ const { result, results, message, spawn, monitor, unmonitor, dryrun } = connect(
 
 <br>
 
-<strong>All three of these parameters to connect are optional and it is valid to specify only 1 or 2 of them, or none. You could pass in just the MU_URL, for example.</strong>
+<strong>连接的这三个参数都是可选的，仅指定 1 个或 2 个，或者不指定都是有效的。例如，你可以仅传入 MU_URL。</strong>
 
 ```js
 import { connect } from "@permaweb/aoconnect";

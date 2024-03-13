@@ -9,6 +9,5 @@ next:
 
 # aoconnect
 
-ao connect is a Javascript/Typescript library to interact with the system from Node JS or the browser.
-
-Guides in this section provide snippets on how to utilize ao connect. All snippets are written in Javascript but should translate easily to Typescript.
+**aoconnect** 是一个用于同 NodeJS系统或浏览器交互的 Javascript/Typescript 库。
+本节中的指南提供了如何利用 **aoconnect** 的代码片段。所有的代码片段均用 Javascript 编写，但应该很容易转换为 Typescript。

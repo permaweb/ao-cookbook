@@ -1,21 +1,21 @@
-# Installing ao connect
+# 安装 ao connect
 
-## Prerequisites
+## 先决条件
 
 ---
 
-In order to install ao connect into your app you must have NodeJS/NPM 18 or higher.
+为了在你的应用程序中安装 **ao connect**，你必须安装 NodeJS/NPM 18 或更高版本。
 <br>
 
-## Installing
+## 安装方法
 
-### npm
+### 使用 npm 安装
 
 ```sh
 npm install --save @permaweb/aoconnect
 ```
 
-### yarn
+### 使用 yarn 安装
 
 ```sh
 yarn add @permaweb/aoconnect -D
@@ -23,9 +23,9 @@ yarn add @permaweb/aoconnect -D
 
 <br>
 
-This module can now be used from NodeJS as well as a browser, it can be included as shown below.
+安装完成后，你可以在 NodeJS 或 浏览器中使用 **aoconnect**。根据你的项目类型（模块系统），可以按照下面的方式引入 **aoconnect**
 
-#### ESM (Node & Browser) aka type: `module`
+#### ESM（Node & 浏览器）即 type: module
 
 ```js
 import {
@@ -39,7 +39,8 @@ import {
 } from "@permaweb/aoconnect";
 ```
 
-#### CJS (Node) type: `commonjs`
+#### CJS（Node）即 type: `commonjs`
+
 
 ```js
 const {

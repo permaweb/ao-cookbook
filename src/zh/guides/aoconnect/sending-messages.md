@@ -1,12 +1,12 @@
 # Sending a Message to a Process
 
-A deep dive into the concept of Messages can be found in the [ao Messages](../../concepts/messages.md) concept. This guide focuses on using ao connect to send a message to a process.
+可以在 [ao Messages](../../concepts/messages.md) 概念中找到关于消息的深入探讨。本指南着重于使用 ao connect 向进程发送消息。
 
-Sending a message is the central way in which your app can interact with ao. A message is input to a process. There are 5 parts of a message that you can specify which are "target", "data", "tags", "anchor", and finally the messages "signature".
+发送消息是您的应用与 ao 交互的核心方式。消息是输入到一个进程的。消息有五个部分你可以指定，分别是“目标（target）”，“数据（data）”，“标签（tags）”，“锚点（anchor）”，以及最后的消息“签名（signature）”。
 
-Refer to your process module's source code or documentation to see how the message is used in its computation. The ao connect library will translate the parameters you pass it in the code below, construct a message, and send it.
+请参考你的进程模块的源代码或文档，以了解消息如何在其计算中使用。ao connect 库将解析你在下面的代码中传递的参数，构造一个消息，并发送它。
 
-## Sending a Message in NodeJS
+## 在 NodeJS 中发送消息
 
 ```js
 import { readFileSync } from "node:fs";
@@ -41,7 +41,7 @@ await message({
   .catch(console.error);
 ```
 
-## Sending a Message in a browser
+## 在浏览器中发送消息
 
 ```js
 import { message, createDataItemSigner } from "@permaweb/aoconnect";
