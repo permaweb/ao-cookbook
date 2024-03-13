@@ -52,7 +52,7 @@ Copy the process ID above and store it as a variable by running the below comman
 Morpheus = "xLykCd1QtP3SB67Hr9DCCCkwHdatHS7bHVAr_yXXRrA"
 ```
 
-This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specifid process ID.
+This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specific process ID.
 
 ::: info
 When creating the `Morpheus` variable, the only response you should see is `undefined`. This is expected. To check if the variable was created successfully, type `Morpheus` and press Enter. You should see the process ID you stored.

@@ -52,7 +52,7 @@ Save the file.
 To replace the original `broadcast` handler with the new one, you'll need to reload the `chatroom.lua` file.
 
 ```sh
- .load chatroom.lua
+.load chatroom.lua
 ```
 
 ## Step 5: Test the Tokengate
