@@ -835,14 +835,3 @@ Resets the queue.
 - **Parameters:** None
 
 ---
-
-## Conventions and Requirements
-
-1. The module should be imported using `local crypto = require('.crypto')`.
-2. The module should be used in a Lua environment.
-
----
-
-## License
-
-MIT
