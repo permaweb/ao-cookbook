@@ -53,7 +53,7 @@
 
 ## What is a Unit?
 
-The ao Computer is composed of three Unit types, each type contians a set of responsibilities for the computer. And each Unit is horizontally scalable.
+The ao Computer is composed of three Unit types, each type contains a set of responsibilities for the computer. And each Unit is horizontally scalable.
 
 In ao we have the `Messager Unit` or `MU`, and the `Scheduler Unit` or `SU`, and the `Compute Unit` or the `CU`. These units are the building blocks of the ao Computer Grid. There can be 1 or more of these units on the network and they work together to power the ao Operating System or `aos`.
 
