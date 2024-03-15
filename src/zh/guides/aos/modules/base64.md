@@ -29,7 +29,7 @@ assert(decoded == str)
   - `str`: `{string}` 需要编码的字符串
   - `encoder`: `{table}` 自定义编码表（可选）
   - `usecache`: `{boolean}` 可选的针对大字符串使用的缓存 (默认关闭)
-- **Returns:** 经过 Base64 编码后的字符串
+- **Returns:** Base64 编码后的字符串
 
 #### 示例
 ```lua
@@ -89,8 +89,8 @@ print(base64.encode("Hello world", encoder))
 
 ### `makedecoder()`
 
-Allows creating a new decoder table to be able to decode [custom-encoded](#makeencoder) base64 strings.
-此函数支持创建一个自定义解码表，以便解码[自定义编码](#makeencoder) 的 base64 字符串。
+
+创建一个自定义解码表，以便解码[自定义编码](#makeencoder) 的 base64 字符串。
 
 - **Parameters:**
   - `s62`: `{string}` 可选的自定义字符，用于替换标准的字符 62（默认为 "+"）

@@ -15,11 +15,11 @@ json.encode({
 ## 模块函数
 ### `encode()`
 
-返回一个将 Lua 对象转换为JSON字符串的函数。
+将 Lua 对象转换为 JSON 字符串。
 
 - **参数:**
-  - `val`: `{any}` 将对象按照 JSON 格式进行编码
-- **返回值:** 已提供对象的 JSON 字符串
+  - `val`: `{any}` 需要格式化的对象
+- **返回值:** 对象的 JSON 格式字符串
 
 #### 示例
 
@@ -39,12 +39,11 @@ print(json.encode(false))
 
 ### `decode()`
 
-The function takes a JSON string and turns it into a Lua object.
 此函数用于解析 JSON 字符串并转换为 Lua 对象。
 
 - **参数:**
   - `val`: `{any}` 待解码的 JSON 字符串
-- **返回值:** 与 JSON 字符串对应的 Lua 对象（对于无效的 JSON 字符串会抛出错误）
+- **返回值:**  JSON 字符串对应的 Lua 对象（对于无效的 JSON 字符串会抛出错误）
 
 #### 示例
 
