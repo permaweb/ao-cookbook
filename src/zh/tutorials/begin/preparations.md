@@ -78,7 +78,7 @@ aos>
 
 让我们看一下运行 `aos` 后的初始打印输出：
 
-![aos print](/aos-print.png)
+![aos print](./aos-print.png)
 
 在终端中运行 `aos` 后，您应该看到：
 

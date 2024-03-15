@@ -1,15 +1,14 @@
-# 聊天室蓝图
+# 聊天室蓝图 Chatroom Blueprint
 
-聊天室蓝图是预先设计好的模板，可帮助您在 ao 中快速构建。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
+聊天室蓝图是预先设计好的模板，可帮助您在 ao 中快速构建聊天室。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
 
 ## 解析聊天室蓝图
 
-- **成员**: `Members`数组用于存储已注册聊天室的用户。
+- **Members**: `Members`数组用于存储已注册聊天室的用户。
 
-- **注册 Handler**: `register` handler 支持进程加入聊天室。当进程发送带有标签 `Action = "Register"` 的消息时，handler会将进程添加到 `Members` 数组中，并向进程发送一条消息确认注册。
-注册处理程序：
+- **Register Handler**: `register` handler 用于进程加入聊天室。当进程发送带有标签 `Action = "Register"` 的消息时，handler会将进程添加到 `Members` 数组中，并向进程发送一条消息确认注册。
 
-- **广播 Handler**: `broadcast` handler支持进程向聊天室的所有成员发送消息。当进程发送带有标签 Action = "Broadcast" 的消息时，handler会将该消息发送给聊天室的所有成员。
+- **Broadcast Handler**: `broadcast` handler支持进程向聊天室的所有成员发送消息。当进程发送带有标签 Action = "Broadcast" 的消息时，handler会将该消息发送给聊天室的所有成员。
 
 ### 如何使用：
 
@@ -20,7 +19,7 @@
 
 ### 验证蓝图是否已加载：
 
-输入 `Handlers.list` 查看新加载的Handlers。
+输入 `Handlers.list` 查看新加载的 Handlers。
 
 ## 聊天室蓝图中包含的内容：
 

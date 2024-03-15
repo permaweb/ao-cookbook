@@ -4,7 +4,7 @@
 
 按需访问全面的游戏数据（例如所有玩家的位置、生命值和武力值）不是更有用吗？ 这些信息可以显着改善您的战略规划，帮助您更有效地评估威胁、机遇和时机。
 
-如果您考虑往[上一篇指南](announcements)中创建的机器人添加另一个handler，那就对了！
+如果您考虑往[上一篇指南](announcements)中创建的机器人添加另一个 handler，那就对了！
 
 ## 编写代码
 
@@ -21,7 +21,7 @@ Handlers.add(
 )
 ```
 
-对handler的调整包括：
+对 handler 的调整包括：
 
 - 重命名为 `"HandleAnnouncements"` 以反映其更广泛的作用。
 - 添加额外操作来请求游戏更新状态。 该游戏旨在响应 `GetGameState` 动作标签。
@@ -40,7 +40,7 @@ Inbox[#Inbox]
 
 但这可以更进一步，这样您不仅可以阅读，还可以将最新状态的信息用于其他自动化。
 
-让我们定义一个存储最新状态的新变量，如下所示：
+让我们定义一个存储最新状态的变量，如下所示：
 
 ```lua
 LatestGameState = LatestGameState or nil
@@ -48,7 +48,7 @@ LatestGameState = LatestGameState or nil
 
 当您在终端中反复加载 `bot.lua` 文件时，该语法会保留变量的现有值，而不是覆盖它。 如果没有预先存在的值，则将 `nil` 值分配给该变量。
 
-然后实现另一个handler，如下所示：
+然后实现另一个 handler，如下所示：
 
 ```lua
 -- 接收游戏状态信息后更新游戏状态的handler。
@@ -64,7 +64,7 @@ Handlers.add(
 )
 ```
 
-来自前一个handler的游戏进程的响应有一个值为 `GameState` 的动作标签，可以帮助我们触发第二个handler。 触发后，handle 函数会加载内置的 `json` 包，该包将数据解析为 json 并将其存储在 `LatestGameState` 变量中。
+来自前一个 handler 的游戏进程的响应有一个值为 `GameState` 的动作标签，可以帮助我们触发第二个handler。 触发后，handle 函数会加载内置的 `json` 包，该包将数据解析为 json 并将其存储在 `LatestGameState` 变量中。
 
 该handler还会向您的进程发送一条消息，指示状态何时更新。 该功能的意义将在下一节中解释。
 

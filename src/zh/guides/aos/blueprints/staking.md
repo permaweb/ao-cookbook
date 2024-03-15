@@ -1,20 +1,21 @@
-# 质押蓝图
+# 质押蓝图 Staking Blueprint
 
-质押蓝图是预先设计好的模板，可帮助您在 ao 中快速构建。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
+质押蓝图是预先设计好的模板，可帮助您在 ao 中快速构建质押系统。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
 ## 前提条件
 
-质押蓝图要求先加载 [代币蓝图](./token.md)。
-## 解析投票蓝图
+质押蓝图要求先加载 [token 蓝图](./token.md)。
 
-- **质押**: `Stakers`数组用于存储参与者的质押代币。
+## 解析 staking 蓝图
 
-- **解除质押**:`Unstaking` 数组用于存储参与者的解除质押请求。
+- **Stakers**: `Stakers` 数组用于存储质押者。
 
-- **质押操作 Handler**: `stake`handler支持进程质押代币。当进程发送带有标签`Action = "Stake"`的消息时，处理程序会将质押代币添加到`Stakers` 数组中，并向进程发送一条消息确认质押。
+- **Unstaking**:`Unstaking` 数组用于存储参与者的解除质押请求。
 
-- **解除质押操作 Handler**: `unstake` handler支持进程解除质押代币。当进程发送带有标签`Action = "Unstake"`的消息时，处理程序会将解除质押请求添加到 `Unstaking` 数组中，并向进程发送一条消息确认解除质押。
+- **Stake Action Handler**: `stake`handler 用于进程质押代币。当进程发送带有标签`Action = "Stake"`的消息时，处理程序会将质押代币添加到`Stakers` 数组中，并向进程发送一条消息确认质押。
 
-- **最终确定 Handler**: `finalize` handler支持进程完成质押过程。当进程发送带有标签 `Action = "Finalize"`的消息时，处理程序会处理解除质押请求并完成质押过程。
+- **Unstake Action Handler**: `unstake` handler 用于进程解除质押代币。当进程发送带有标签`Action = "Unstake"`的消息时，处理程序会将解除质押请求添加到 `Unstaking` 数组中，并向进程发送一条消息确认解除质押。
+
+- **Finalization Handler**: `finalize` handler支持进程完成质押过程。当进程发送带有标签 `Action = "Finalize"`的消息时，处理程序会处理解除质押请求并完成质押过程。
 ### 如何使用:
 
 1. 打开文本编辑器。

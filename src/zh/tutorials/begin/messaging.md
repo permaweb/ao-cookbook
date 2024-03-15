@@ -73,7 +73,7 @@ aos>
 
 ## 步骤 5：向 Morpheus 发送消息
 
-获取 Morpheus 的进程 ID 并将其存储在变量中后，您就可以与它进行通信了。 为此，您可以使用 `Send` 函数。 Morpheus 本身就是 ao 中运行的一个并行进程。 他使用一系列handler接收和发送消息。 让我们向他发送消息，看看会发生什么。
+获取 Morpheus 的进程 ID 并将其存储在变量中后，您就可以与它进行通信了。 为此，您可以使用 `Send` 函数。 Morpheus 本身就是 ao 中运行的一个并行进程。 他使用一系列 handler 接收和发送消息。 让我们向他发送消息，看看会发生什么。
 
 ```lua
 Send({ Target = Morpheus, Data = "Morpheus?" })
@@ -151,7 +151,7 @@ aos>
 
 **标签的用途**：aos 消息中的标签用于有效地分类、路由和处理消息。它们在消息处理中发挥着至关重要的作用，尤其是在处理多个进程或复杂的工作流程时。
 
-某些进程使用专门与具有特定标签的消息进行交互的 `Handlers`。 例如，一个进程可能有一个handler，仅与具有特定标签的消息交互，我们将在[聊天室](chatroom)教程中看到一个示例。
+某些进程使用专门与具有特定标签的消息进行交互的 `Handlers`。 例如，一个进程可能有一个 handler，仅与具有特定标签的消息交互，我们将在[聊天室](chatroom)教程中看到一个示例。
 
 ### 如何在消息中使用标签
 
@@ -172,7 +172,7 @@ Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
 ```
 
 **预期返回:**
-![Morpheus 的回应 2](/messaging2.png)
+![Morpheus 的回应 2](./messaging2.png)
 
 ### 使用标签的其他提示
 

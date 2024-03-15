@@ -1,6 +1,5 @@
 # 理解收件箱 Inbox
 
-In aos, processes are executed in response to messages via handlers. Unhandled messages are routed to the process's Inbox.
 
 在 aos 中，进程通过 handlers 获取消息并且执行。未处理的消息将进入进程的收件箱(Inbox)
 
@@ -20,7 +19,6 @@ function main(Message, ao)
 end
 ```
 
-And the `main` function returns a lua Table providing `Output, Messages, and Spawns` or an `Error`. With aos you can add functionality to your process by using a Handler. The Handler takes three parameters:
 
 `main` 函数返回一个 lua Table，包含 `Output, Message, Spawns` 或者 `Error`。在 aos 中您可以给进程添加 `Handler` 方法来处理逻辑，`Handler` 中有三个参数：
 
@@ -44,7 +42,6 @@ Handlers.add("name",
 
 ## 关于收件箱
 
-An inbox is a storage area for messages that have not yet been processed. Think of it as a holding zone for incoming, or "inbound," items awaiting handling. Once a message is processed, it's no longer considered "inbound" and thus leaves the inbox.
 
 收件箱会存储尚未处理的消息，它们在这里等待被处理。一旦消息被处理，它就会被从收件箱中移除。
 
@@ -52,4 +49,4 @@ An inbox is a storage area for messages that have not yet been processed. Think 
 
 ## 总结
 
-一开始似乎所有邮件都会进入您的收件箱，如果它们在处理后就被删除，这可能会令人疑惑。 语音邮件的类比应该可以解释这种设计：就像您接听的电话不会转到语音邮件一样，您处理的消息也不会出现在收件箱中。 这说明了收件箱和 Handler 的功能。
+一开始似乎所有邮件都会进入您的收件箱，如果它们在处理后就被删除，这可能会令人疑惑。 语音邮件的类比应该可以解释这种设计：就像您接听的电话不会转到语音邮件一样，您处理过的消息也不会出现在收件箱中。 这说明了收件箱和 Handler 的功能。

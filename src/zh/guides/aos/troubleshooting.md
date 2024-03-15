@@ -1,6 +1,5 @@
 # 使用 ao.link 进行 Debug
 
-Working with a decentralized computer and network, you need to be able to troubleshoot more than your own code. You need to be able to track messages and processes. This is where [https://ao.link](https://ao.link) becomes an essential tool in your toolbox.
 
 使用去中心计算机和网络，您必须可以排查自己代码之外的问题。您需要跟踪进程和消息，这就是 [https://ao.link](https://ao.link) 工具箱的必要之处。
 
@@ -39,7 +38,7 @@ The message details give you key details about:
 - Result Type
 - Data
 
-If you want to further troubleshoot and debug, you have the option to look at the result of the CU (Compute Unit) by clicking on "Compute".
+
 如果您想进一步排除故障和调试，您可以通过单击 “Compute” 来查看 CU（计算单元）的结果。
 
 ![ao.link compute result example for debugging](aolink-compute-example.png)

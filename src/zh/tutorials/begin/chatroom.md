@@ -25,7 +25,7 @@
 
 - 创建一个名为 `chatroom.lua` 的新文件。
 
-![聊天室Lua文件](/chatroom1.png)
+![聊天室Lua文件](./chatroom1.png)
 
 ## 步骤 2：创建成员列表
 
@@ -35,7 +35,7 @@
   Members = Members or {}
   ```
 
-![Chatroom Lua 文件 - 命名成员列表](/chatroom2.png)
+![Chatroom Lua 文件 - 命名成员列表](./chatroom2.png)
 
 - 保存 `chatroom.lua` 文件
 
@@ -44,13 +44,13 @@
 保存 `chatroom.lua` 后，您现在将聊天室加载到 `aos` 中。
 
 - 如果您尚未启动 `aos`，请在终端中保存 chatroom.lua 的目录中启动
-- 在 `aos` CLI 中，键入以下脚本以将您的脚本合并到 `aos` 进程中：
+- 在 `aos` CLI 中，键入以下脚本以将您的脚本加载到 `aos` 进程中：
 
   ```lua
   .load chatroom.lua
   ```
 
-  ![将聊天室加载到aos](/chatroom3.png)
+  ![将聊天室加载到aos](./chatroom3.png)
 
   如上面的屏幕截图所示，您可能会收到 `undefined` 响应。 这是预期的，但我们仍然希望确保文件正确加载。
 
@@ -62,17 +62,17 @@
 
 - 在 `aos` 中输入 `Members` 或您为用户列表命名的任何内容。 它应该返回一个空数组 `{}`。
 
-  ![查看成员列表](/chatroom4.png)
+  ![查看成员列表](./chatroom4.png)
 
   如果您看到一个空数组，则您的脚本已成功加载到 `os` 中。
 
 ## 步骤 4：创建聊天室功能
 
-### 注册handler
+### 注册 handler
 
-注册handler将允许进程加入聊天室。
+注册 handler 将允许进程加入聊天室。
 
-1. **添加注册handler:** 使用以下代码修改 `chatroom.lua` 以包含 `Members` 的handler以注册到聊天室：
+1. **添加注册 handler:** 使用以下代码修改 `chatroom.lua` 以包含 `Members` 的handler以注册到聊天室：
 
    ```lua
    -- 修改 `chatroom.lua` 以包含 `Members` 的handler
@@ -88,11 +88,11 @@
    )
    ```
 
-   ![注册handler](/chatroom5.png)
+   ![注册handler](./chatroom5.png)
 
    该handler将允许进程通过响应标签 `Action = "Register"` 来注册到聊天室。注册成功后，将显示一条打印消息确认 `registered`。
 
-2. **重新加载并测试：** 让我们通过注册到聊天室来重新加载并测试脚本。
+2. **重新加载并测试：** 让我们将自己注册到聊天室，并重新加载和测试脚本。
 
    - 使用 `.load chatroom.lua` 在 aos 中保存并重新加载脚本。
    - 检查注册handler是否加载了以下脚本：
@@ -101,7 +101,7 @@
    Handlers.list
    ```
 
-   ![检查handler列表](/chatroom6.png)
+   ![检查handler列表](./chatroom6.png)
 
    这将返回聊天室中所有handler的列表。 由于这很可能是您第一次在 `aos` 中进行开发，因此您应该只会看到一个名为 `Register` 的handler。
 
@@ -113,7 +113,7 @@
 
    如果成功，您应该会看到一条 `message added to your outbox` 信息，然后您会看到一条新的打印消息，上面写着 `registered`。
 
-   ![注册聊天室](/chatroom7.png)
+   ![注册聊天室](./chatroom7.png)
 
    - 最后，让我们检查一下是否已成功添加到 `Members` 列表中：
 
@@ -123,13 +123,13 @@
 
    如果成功，您现在将在 `Members` 列表中看到您的进程 ID。
 
-   ![查看成员列表](/chatroom8.png)
+   ![查看成员列表](./chatroom8.png)
 
-### 添加广播handler
+### 添加广播 handler
 
 现在您已经有了一个聊天室，让我们创建一个handler，允许您向聊天室的所有成员广播消息。
 
-- 将以下handler添加到 `chatroom.lua` 文件中：
+- 将以下 handler 添加到 `chatroom.lua` 文件中：
 
   ```lua
   Handlers.add(
@@ -144,19 +144,19 @@
   )
   ```
 
-  该handler将允许您向聊天室的所有成员广播消息。
+  该 handler 将允许您向聊天室的所有成员广播消息。
 
-- 让我们通过向聊天室发送消息来测试广播handler：
+- 让我们通过向聊天室发送消息来测试广播 handler：
 
   ```lua
   Send({Target = ao.id, Action = "Broadcast", Data = "Broadcasting My 1st Message" })
   ```
 
-  - 如果成功，您应该会看到一条 `message added to your outbox`，然后您会看到一条新的打印消息，上面写着 `Broadcasting My 1st Message`，因为您是会员，因此也是此消息的收件人 `Members` 聊天室的。
+  - 如果成功，您应该会看到一条 `message added to your outbox`，然后您会看到一条新的打印消息，上面写着 `Broadcasting My 1st Message`，因为您是聊天室中的成员`Members`，所以可以收到消息。
 
 ## 步骤 5：邀请 Morpheus 加入聊天室
 
-现在您已成功注册自己到聊天室，让我们邀请 Morpheus 加入我们。 为此，我们将向他发送邀请，允许他注册到聊天室。
+现在您已成功注册自己到聊天室，让我们邀请 Morpheus 加入我们的聊天室。 为此，我们将向他发送邀请，来将他注册到聊天室。
 
 Morpheus 是一个自主代理，其handler将响应标签 `Action = "Join"`，然后让他使用您的 `Register` 标签注册到聊天室。
 
