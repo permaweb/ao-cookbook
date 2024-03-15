@@ -1,12 +1,12 @@
-# 代币门控这个聊天室
+# 支持 token 的聊天室
 
 ::: info
-现在我们已经创建了一个代币并将其发送到 `Trinity`，我们可以使用该代币来对我们的聊天室进行代币门控。 这将只允许那些拥有代币的人进入聊天室。
+现在我们已经创建了一个 token 并将其发送到 `Trinity`，我们可以使用该 token 来对我们的聊天室进行控。 这将只允许那些拥有 token 的人进入聊天室。
 :::
 
-## 如何对聊天室进行代币门控
+## 如何创建支持 token 的聊天室
 
-让我们创建一个handler，允许我们对聊天室进行代币门控。该handler将响应标签 `Action = "Broadcast"`，这意味着它将替换我们为聊天室构建的原始 `Broadcast` handler。
+让我们创建一个 handler，允许我们对聊天室进行付费控制。该 handler 将响应标签 `Action = "Broadcast"`，这意味着它将替换我们为聊天室构建的原始 `Broadcast` handler。
 
 ## 步骤 1：启动相同的 `aos` 进程
 
@@ -43,7 +43,7 @@ Handlers.add(
 )
 ```
 
-该handler现在将在将消息广播到聊天室之前检查发送者代币的余额。 如果发送者没有代币，则消息将不会被广播。
+该handler现在将在将消息广播到聊天室之前检查发送者 token 的余额。 如果发送者没有 token ，则消息将不会被广播。
 
 保存文件。
 
@@ -55,9 +55,9 @@ Handlers.add(
 .load chatroom.lua
 ```
 
-## 步骤 5：测试代币门控
+## 步骤 5：测试支持 token 的聊天室
 
-现在聊天室已进行代币门控，让我们通过向聊天室发送消息来测试它。
+现在聊天室已经是支持 token 的聊天室，让我们通过向聊天室发送消息来测试它。
 
 ### 来自原来的 aos 进程
 
@@ -72,7 +72,7 @@ Broadcasting message from Neo. Content: Hello.
 
 ## 从新的 aos 进程的另一个进程 ID 进行测试
 
-现在，让我们从一个没有代币的新 aos 进程来测试它。
+现在，让我们从一个没有 token 的新 aos 进程来测试它。
 
 我们首先需要注册到聊天室。
 
@@ -93,7 +93,7 @@ message added to outbox
 UNAUTH REQ: [New Process ID]
 ```
 
-如您所见，该消息未广播，因为新进程没有代币。
+如您所见，该消息未广播，因为新进程没有 token 。
 
 ## 告诉 Trinity "It is done"
 
@@ -107,7 +107,7 @@ Send({ Target = ao.id , Action = "Broadcast", Data = "It is done" })
 了解精确匹配数据和区分大小写非常重要。 如果您没有收到 Morpheus 或 Trinity 的回复，请务必检查您的数据和标签的内容。
 :::
 
-然后 Trinity 将响应聊天室已经成功代币门控。
+然后 Trinity 将响应聊天室已经成功 token 门控。
 
 ### 预期结果
 
@@ -115,7 +115,7 @@ Trinity 会发送一条消息说："I guess Morpheus was right. You are the one.
 
 ## 结论
 
-你已经做到了！ 您已成功对聊天室进行代币门控。现在已经解锁了对 `Construct` 的访问，只有那些完全完成本教程的人才能进入。
+你已经做到了！ 您已成功对聊天室进行 token 门控。现在已经解锁了对 `Construct` 的访问，只有那些完全完成本教程的人才能进入。
 
 ### 恭喜你!
 

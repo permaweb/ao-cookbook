@@ -6,7 +6,7 @@ next:
 
 # 欢迎来到 ao
 
-![ao logo](/ao-logo-grey.svg)
+![ao logo](./ao-logo-grey.svg)
 
 ao 计算机定义：
 
