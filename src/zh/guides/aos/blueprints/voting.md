@@ -1,6 +1,6 @@
-# 投票蓝图
+# 投票蓝图 Voting Blueprint
 
-投票蓝图是预先设计好的模板，可帮助您在 ao 中快速构建。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
+投票蓝图是预先设计好的模板，可帮助您在 ao 中快速构建投票系统。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
 
 ## 前提条件
 
@@ -8,13 +8,13 @@
 
 ## 解析投票蓝图
 
-- **余额**: The `Balances` 数组用于存储参与者的代币余额。
+- **Balances**: The `Balances` 数组用于存储参与者的代币余额。
 
-- **票数 **: `Votes` 数组用于存储参与者的投票信息。
+- **Votes**: `Votes` 数组用于存储投票参与者地址。
 
-- **投票操作 Handler**: `vote` handler支持进程进行投票。当进程发送带有标记 Action = "Vote" 的消息时，handler会将投票信息添加到`Votes`数组中，并向流程发送消息，确认投票。
+- **Vote Action Handler**: `vote` handler 用户进程进行投票。当进程发送带有标记 `Action = "Vote"` 的消息时，handler 会将投票信息添加到`Votes`数组中，并向流程发送消息，确认投票。
 
-- **最终确定 Handler**: `finalize` handler支持进程完成投票过程。当进程发送带有标签 `Action = "Finalize"`的消息时，Handler会处理投票信息并完成投票过程。
+- **Finalization Handler**: `finalize` handler支持进程完成投票过程。当进程发送带有标签 `Action = "Finalize"`的消息时，Handler会处理投票信息并完成投票过程。
 
 ### 如何使用:
 
@@ -25,7 +25,7 @@
 
 ### 验证蓝图是否已加载：
 
-输入 `Handlers.list` 查看新加载的handlers。
+输入 `Handlers.list` 查看新加载的 handlers。
 
 ## 投票蓝图包含的内容：
 

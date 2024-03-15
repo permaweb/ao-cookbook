@@ -1,21 +1,21 @@
-# 代币蓝图
+# Token 蓝图
 
-代币蓝图是预先设计好的模板，可帮助您在 ao 中快速构建。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
+token 蓝图是预先设计好的模板，可帮助您在 ao 中快速创建一个 token。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
 
-## 解析代币蓝图
+## 解析 token 蓝图
 
-- **余额**: `Balances` 数组用于存储参与者的代币余额。
+- **Balances**: `Balances` 数组用于存储参与者的 token 余额。
 
-- **信息 Handler**: `info` handler 支持流程进程检索代币参数，例如名称、代码、徽标和面值。
+- **Info Handler**: `info` handler 可以检索 token 参数，例如名称、代码、Logo 和面值。
 
-- **余额 Handler**: `balance` Handler支持进程检索参与者的代币余额。
-: 
-- **总余额 Handler**: `balances` Handler支持进程检索所有参与者的代币余额。
-:
-- **转移 Handler**: `transfer` Handler支持进程向其他参与者发送代币。
-: 
-- **铸币 Handler**: `mint` Handler支持进程铸造新的代币。
-: 
+- **Balance Handler**: `balance` handler 检索单个用户的 token 余额。
+
+- **Balances Handler**: `balances` handler 检索所有用户的 token 余额。
+
+- **Transfer Handler**: `transfer` handler 向其他用户发送 token 。
+
+- **Mint Handler**: `mint` handler 铸造新的 token 。
+
 ### 如何使用：
 
 1. 打开您的文本编辑器。
@@ -27,7 +27,7 @@
 
 输入 `Handlers.list` 查看新加载的handlers。
 
-## 代币蓝图包含的内容：
+##  token 蓝图包含的内容：
 
 ```lua
 local bint = require('.bint')(256)
