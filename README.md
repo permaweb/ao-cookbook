@@ -38,7 +38,7 @@ Code Snippet
 Guides are longer form informational documentation on various topics.
 The general structure for writing a guide is the following:
 
-```
+```login
 Brief Summary/TLDR
 
 Fact Sheet
