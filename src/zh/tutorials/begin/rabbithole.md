@@ -1,6 +1,6 @@
 # 进入 `The Construct` - 交互式教程
 
-![白兔](/white_rabbit_outline.svg)
+![白兔](./white_rabbit_outline.svg)
 
 ## 醒来吧，尼奥……
 
