@@ -2,7 +2,7 @@
 
 这里有一些命令参数来与 aos 进行交互：
 
-- [name] - 使用您的钱包地址创建或者加载一个进程
+- [name] - 使用你的钱包地址创建或者加载一个进程
 - --load [file] - 加载一个文件，可以多次调用
 - --cron [interval] - 只在创建进程的时候使用
 - --wallet [walletfile] - 使用一个指定的钱包
@@ -45,7 +45,7 @@ aos chatroom --cron 2-minutes
 
 ## Tag 标志
 
-使用 tag 标志，您可以为进程创建用户标识。（例如将它们用作静态环境变量）:
+使用 tag 标志，你可以为进程创建用户标识。（例如将它们用作静态环境变量）:
 
 ```sh
 aos chatroom --tag-name Chat-Theme --tag-value Dark --tag-name Chat-Name --tag-value Mychat

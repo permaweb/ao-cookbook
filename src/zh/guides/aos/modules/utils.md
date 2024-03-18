@@ -44,7 +44,7 @@ concat({ "hello", "world" }, { "and", "you" })
 此函数对数组中的所有元素执行 reducer 函数，最终返回一个 (统一的) 结果。
 
 - **Parameters:**
-  - `fn`: `{function}`  reducer 函数,它按顺序接收之前的结果、当前元素的值和键。
+  - `fn`: `{function}` reducer 函数,它按顺序接收之前的结果、当前元素的值和键。
   - `initial`: `{any}` (可选) 初始值
   - `t`: `{table}` 要处理的数组
 - **Returns:** 通过对所有表格元素运行 reducer 函数所得的单个结果
@@ -127,8 +127,9 @@ utils.filter(
 
 - **Parameters:**
   - `fn`: `{function}` 查找函数。它接收当前数组元素作为参数，如果该元素满足条件则返回`true`，否则返回 `false`。
-  - `t`: `{table}`  要查找元素的数组
+  - `t`: `{table}` 要查找元素的数组
 - **Returns:** 找到的符合条件的第一个元素，如果没有找到则返回 `nil` (表示空值)。
+
 #### Examples
 
 ```lua
@@ -192,7 +193,7 @@ utils.includes(4)({ 3, 5, 7 })
 
 - **Parameters:**
   - `table`: `{table}` 要获取键值的表格
-- **Returns:**  键数组
+- **Returns:** 键数组
 
 #### 示例
 
@@ -269,7 +270,7 @@ utils.prop("age")(user)
 
 ### `compose()`
 
-此函数支持您将多个数组操作链接在一起，然后以逆序的方式对提供的数组执行这些操作。
+此函数支持你将多个数组操作链接在一起，然后以逆序的方式对提供的数组执行这些操作。
 
 - **Parameters:**
   - `...`: `{function[]}` 一组数组操作函数

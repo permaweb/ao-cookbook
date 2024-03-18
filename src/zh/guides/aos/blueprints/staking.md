@@ -1,6 +1,7 @@
 # 质押蓝图 Staking Blueprint
 
-质押蓝图是预先设计好的模板，可帮助您在 ao 中快速构建质押系统。蓝图是入门的绝佳方式，并且可以根据您的需求进行定制。
+质押蓝图是预先设计好的模板，可帮助你在 ao 中快速构建质押系统。蓝图是入门的绝佳方式，并且可以根据你的需求进行定制。
+
 ## 前提条件
 
 质押蓝图要求先加载 [token 蓝图](./token.md)。
@@ -16,6 +17,7 @@
 - **Unstake Action Handler**: `unstake` handler 用于进程解除质押代币。当进程发送带有标签`Action = "Unstake"`的消息时，处理程序会将解除质押请求添加到 `Unstaking` 数组中，并向进程发送一条消息确认解除质押。
 
 - **Finalization Handler**: `finalize` handler支持进程完成质押过程。当进程发送带有标签 `Action = "Finalize"`的消息时，处理程序会处理解除质押请求并完成质押过程。
+
 ### 如何使用:
 
 1. 打开文本编辑器。
@@ -24,7 +26,7 @@
 
 3. 启动`aos`流程。
 
-4. 输入  `.load-blueprint staking`
+4. 输入 `.load-blueprint staking`
 
 ### 验证蓝图已加载:
 

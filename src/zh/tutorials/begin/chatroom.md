@@ -1,7 +1,7 @@
 # 在 aos 中建立一个聊天室
 
 ::: info
-如果您发现自己想学习如何在 `ao` 中创建聊天室，那么这意味着我们至少了解发送和接收消息的基本方法。如果还没有，建议您在继续之前先查看[消息传递](messaging)教程。
+如果你发现自己想学习如何在 `ao` 中创建聊天室，那么这意味着我们至少了解发送和接收消息的基本方法。如果还没有，建议你在继续之前先查看[消息传递](messaging)教程。
 :::
 
 在本教程中，我们将使用 Lua 脚本语言在 `ao` 中构建一个聊天室。 聊天室将具有两个主要功能：
@@ -17,10 +17,10 @@
 
 ## 第 1 步：基础
 
-- 打开您喜欢的代码编辑器。
+- 打开你喜欢的代码编辑器。
 
 ::: info
-您可能会发现在代码编辑器中安装[推荐扩展](../../references/editor-setup.md) 有助于增强您的 Lua 脚本编写体验。
+你可能会发现在代码编辑器中安装[推荐扩展](../../references/editor-setup.md) 有助于增强你的 Lua 脚本编写体验。
 :::
 
 - 创建一个名为 `chatroom.lua` 的新文件。
@@ -29,7 +29,7 @@
 
 ## 步骤 2：创建成员列表
 
-- 在 `chatroom.lua` 中，您将首先初始化一个列表来跟踪参与者：
+- 在 `chatroom.lua` 中，你将首先初始化一个列表来跟踪参与者：
 
   ```lua
   Members = Members or {}
@@ -41,10 +41,10 @@
 
 ## 步骤 3：将聊天室加载到 aos 中
 
-保存 `chatroom.lua` 后，您现在将聊天室加载到 `aos` 中。
+保存 `chatroom.lua` 后，你现在将聊天室加载到 `aos` 中。
 
-- 如果您尚未启动 `aos`，请在终端中保存 chatroom.lua 的目录中启动
-- 在 `aos` CLI 中，键入以下脚本以将您的脚本加载到 `aos` 进程中：
+- 如果你尚未启动 `aos`，请在终端中保存 chatroom.lua 的目录中启动
+- 在 `aos` CLI 中，键入以下脚本以将你的脚本加载到 `aos` 进程中：
 
   ```lua
   .load chatroom.lua
@@ -52,7 +52,7 @@
 
   ![将聊天室加载到aos](./chatroom3.png)
 
-  如上面的屏幕截图所示，您可能会收到 `undefined` 响应。 这是预期的，但我们仍然希望确保文件正确加载。
+  如上面的屏幕截图所示，你可能会收到 `undefined` 响应。 这是预期的，但我们仍然希望确保文件正确加载。
 
   ::: info
   在 aos 的 Lua 求值环境中，当你执行一段没有显式返回值的代码时，`undefined` 是标准响应，表示没有返回结果。在加载资源或执行操作时可以观察到这一点。例如，执行 `X = 1` 将产生 `undefined`，因为该语句不包含 return 语句。
@@ -60,11 +60,11 @@
   但是，如果执行 `X = 1; return X`，环境将返回值 `1`。 在此框架内工作时，理解这种行为至关重要，因为它有助于澄清执行修改状态的命令与旨在产生直接输出的命令之间的区别。
   :::
 
-- 在 `aos` 中输入 `Members` 或您为用户列表命名的任何内容。 它应该返回一个空数组 `{}`。
+- 在 `aos` 中输入 `Members` 或你为用户列表命名的任何内容。 它应该返回一个空数组 `{}`。
 
   ![查看成员列表](./chatroom4.png)
 
-  如果您看到一个空数组，则您的脚本已成功加载到 `os` 中。
+  如果你看到一个空数组，则你的脚本已成功加载到 `os` 中。
 
 ## 步骤 4：创建聊天室功能
 
@@ -103,7 +103,7 @@
 
    ![检查handler列表](./chatroom6.png)
 
-   这将返回聊天室中所有handler的列表。 由于这很可能是您第一次在 `aos` 中进行开发，因此您应该只会看到一个名为 `Register` 的handler。
+   这将返回聊天室中所有handler的列表。 由于这很可能是你第一次在 `aos` 中进行开发，因此你应该只会看到一个名为 `Register` 的handler。
 
    - 让我们通过注册自己到聊天室来测试注册过程：
 
@@ -111,7 +111,7 @@
    Send({ Target = ao.id, Action = "Register" })
    ```
 
-   如果成功，您应该会看到一条 `message added to your outbox` 信息，然后您会看到一条新的打印消息，上面写着 `registered`。
+   如果成功，你应该会看到一条 `message added to your outbox` 信息，然后你会看到一条新的打印消息，上面写着 `registered`。
 
    ![注册聊天室](./chatroom7.png)
 
@@ -121,13 +121,13 @@
    Members
    ```
 
-   如果成功，您现在将在 `Members` 列表中看到您的进程 ID。
+   如果成功，你现在将在 `Members` 列表中看到你的进程 ID。
 
    ![查看成员列表](./chatroom8.png)
 
 ### 添加广播 handler
 
-现在您已经有了一个聊天室，让我们创建一个handler，允许您向聊天室的所有成员广播消息。
+现在你已经有了一个聊天室，让我们创建一个handler，允许你向聊天室的所有成员广播消息。
 
 - 将以下 handler 添加到 `chatroom.lua` 文件中：
 
@@ -144,7 +144,7 @@
   )
   ```
 
-  该 handler 将允许您向聊天室的所有成员广播消息。
+  该 handler 将允许你向聊天室的所有成员广播消息。
 
 - 让我们通过向聊天室发送消息来测试广播 handler：
 
@@ -152,13 +152,13 @@
   Send({Target = ao.id, Action = "Broadcast", Data = "Broadcasting My 1st Message" })
   ```
 
-  - 如果成功，您应该会看到一条 `message added to your outbox`，然后您会看到一条新的打印消息，上面写着 `Broadcasting My 1st Message`，因为您是聊天室中的成员`Members`，所以可以收到消息。
+  - 如果成功，你应该会看到一条 `message added to your outbox`，然后你会看到一条新的打印消息，上面写着 `Broadcasting My 1st Message`，因为你是聊天室中的成员`Members`，所以可以收到消息。
 
 ## 步骤 5：邀请 Morpheus 加入聊天室
 
-现在您已成功注册自己到聊天室，让我们邀请 Morpheus 加入我们的聊天室。 为此，我们将向他发送邀请，来将他注册到聊天室。
+现在你已成功注册自己到聊天室，让我们邀请 Morpheus 加入我们的聊天室。 为此，我们将向他发送邀请，来将他注册到聊天室。
 
-Morpheus 是一个自主代理，其handler将响应标签 `Action = "Join"`，然后让他使用您的 `Register` 标签注册到聊天室。
+Morpheus 是一个自主代理，其handler将响应标签 `Action = "Join"`，然后让他使用你的 `Register` 标签注册到聊天室。
 
 - 让我们向 Morpheus 发送加入聊天室的邀请：
 
@@ -172,11 +172,11 @@ Morpheus 是一个自主代理，其handler将响应标签 `Action = "Join"`，�
   Members
   ```
 
-  如果成功，您将收到来自 Morpheus 的广播消息。
+  如果成功，你将收到来自 Morpheus 的广播消息。
 
 ## 步骤 6：邀请 Trinity 加入聊天室
 
-在此消息中，他将向您提供 Trinity 的进程 ID，并告诉您邀请她加入聊天室。
+在此消息中，他将向你提供 Trinity 的进程 ID，并告诉你邀请她加入聊天室。
 
 使用与使用 Morpheus 相同的流程将她的进程 ID 保存为 `Trinity` 并邀请她加入聊天室。
 
@@ -187,20 +187,20 @@ Morpheus 是一个自主代理，其handler将响应标签 `Action = "Join"`，�
 ### 引导其他人
 
 - 邀请 aos 用户：
-  鼓励其他 aos 用户加入您的聊天室。 他们可以注册并参与广播。
+  鼓励其他 aos 用户加入你的聊天室。 他们可以注册并参与广播。
 
 - 提供入职说明：
   与他们共享一个简单的脚本以方便入门：
 
 ```lua
--- 嘿，我们在aos上聊天吧！ 在您的 aos 环境中发送以下命令来加入我的聊天室：
+-- 嘿，我们在aos上聊天吧！ 在你的 aos 环境中发送以下命令来加入我的聊天室：
 Send({ Target = [Your Process ID], Action = "Register" })
--- 然后，您可以使用以下方式广播消息：
+-- 然后，你可以使用以下方式广播消息：
 Send({Target = [Your Process ID], Action = "Broadcast", Data = "Your Message" })
 ```
 
 ## 下一步
 
-恭喜！ 您已在 `ao` 中成功建立了一个聊天室，并邀请了 Morpheus 加入您。您还创建了一个广播handler来向聊天室的所有成员发送消息。
+恭喜！ 你已在 `ao` 中成功建立了一个聊天室，并邀请了 Morpheus 加入你。你还创建了一个广播handler来向聊天室的所有成员发送消息。
 
-接下来，您将继续与 Morpheus 互动，但这次您将在对话中添加 Trinity。她将带领您应对接下来的挑战。 祝你好运！
+接下来，你将继续与 Morpheus 互动，但这次你将在对话中添加 Trinity。她将带领你应对接下来的挑战。 祝你好运！

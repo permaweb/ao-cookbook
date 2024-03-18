@@ -1,6 +1,6 @@
 # DAO 指南
 
-本指南将带您完成使用 aos 构建 DAO 的过程。如果您还没有，您需要首先在 aos 中构建一个 [代币](token)。 我们会将 DAO 代码与 [token](./token) 指南中的令牌代码一起加载到 aos 中。 在 ao 的上下文中，DAO 可用于管理 MU、CU 和 SU 节点。
+本指南将带你完成使用 aos 构建 DAO 的过程。如果你还没有，你需要首先在 aos 中构建一个 [代币](token)。 我们会将 DAO 代码与 [token](./token) 指南中的令牌代码一起加载到 aos 中。 在 ao 的上下文中，DAO 可用于管理 MU、CU 和 SU 节点。
 
 在我们的 DAO 中，我们将实施一个称为 `slashing` 的进程。 在 ao 的情况下，如果一个单位行为不当，其他单位可能会投票削减它。 削减意味着他们将失去他们的质押，我们稍后将进一步讨论质押的话题。
 
@@ -12,7 +12,7 @@ cd dao
 cp ../token/token.lua .
 ```
 
-现在创建一个名为 `dao.lua` 的新文件并在您喜欢的编辑器中打开它。
+现在创建一个名为 `dao.lua` 的新文件并在你喜欢的编辑器中打开它。
 
 ## 编写 DAO 代码
 
@@ -31,7 +31,7 @@ Votes = Votes or {}
 
 ### 质押
 
-质押是放置您的代币以使您能够投票的过程。 如果有人希望获得投票能力，他们必须拥有并抵押一些代币。让我们添加一个用于质押的handler。 ao 中的成员或节点如果想要获得投票削减或保留节点的能力，他们就会想要进行质押，我们将在稍后进一步讨论。
+质押是放置你的代币以使你能够投票的过程。 如果有人希望获得投票能力，他们必须拥有并抵押一些代币。让我们添加一个用于质押的handler。 ao 中的成员或节点如果想要获得投票削减或保留节点的能力，他们就会想要进行质押，我们将在稍后进一步讨论。
 
 ```lua
 -- 质押动作handler
@@ -236,7 +236,7 @@ aos> Votes
 aos>
 ```
 
-现在等待 Arweave 达到截止时间块高度，然后从 dao aos 发送 Stake 消息以触发 `finalizationHandler`。 您可以在 [https://arweave.net/](https://arweave.net/) 检查块高度
+现在等待 Arweave 达到截止时间块高度，然后从 dao aos 发送 Stake 消息以触发 `finalizationHandler`。 你可以在 [https://arweave.net/](https://arweave.net/) 检查块高度
 
 ```lua
 Send({ Target = ao.id, Tags = { Action = "Stake", Quantity = '1000', UnstakeDelay = "10" }})
@@ -274,4 +274,4 @@ aos> Stakers
 aos>
 ```
 
-DAO 指南到此结束，我们希望它对您有所帮助！
+DAO 指南到此结束，我们希望它对你有所帮助！
