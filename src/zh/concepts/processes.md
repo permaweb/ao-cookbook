@@ -4,7 +4,7 @@
 
 ![流程图](process-diagram.png)
 
-当使用 `aos` 构建进程时，您可以添加`处理程序`(`handlers`)，可以通过调用 `Handlers.add` 函数并传递 “name”、“match”函数和“handle”函数来添加这些处理程序。
+当使用 `aos` 构建进程时，你可以添加`处理程序`(`handlers`)，可以通过调用 `Handlers.add` 函数并传递 “name”、“match”函数和“handle”函数来添加这些处理程序。
 
 ![处理程序图](handler-diagram.png)
 

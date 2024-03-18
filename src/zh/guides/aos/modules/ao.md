@@ -4,7 +4,8 @@
 
 ### 示例
 
-全局对象 `ao` 在您的进程中的任何地方都可以访问：
+全局对象 `ao` 在你的进程中的任何地方都可以访问：
+
 ```lua
 -- sends a message to another process ("Transfer" action)
 ao.send({
@@ -17,10 +18,10 @@ ao.send({
 
 ## 模块变量
 
-- `ao.id`: `{string}` 保存您进程中的 Arweave ID
-- `ao.authorities`: `{table}` 授权的调用者数组 
+- `ao.id`: `{string}` 保存你进程中的 Arweave ID
+- `ao.authorities`: `{table}` 授权的调用者数组
 - `ao._module`: `{string}` 进程的 WASM 基础模块，每次调用都会执行。
-- `ao._ref`: `{number}`  消息计数器，记录发出消息的总数。
+- `ao._ref`: `{number}` 消息计数器，记录发出消息的总数。
 - `ao._version`: `{string}` ao global 库版本。
 - `ao.env`: `{table}` 进程初始化环境信息。
 
@@ -106,6 +107,7 @@ ao.log({
 ### `send()`
 
 向另一个进程发送消息。将消息放入进程的 outbox，并根据 AO 标准(ao specs compliant ) 标注消息的 tag
+
 - **Parameters:**
   - `msg`: `{table}` 待发送的消息
 - **Returns:** 已发送的消息，包含已应用的标签和`DataItem`字段。
@@ -113,6 +115,7 @@ ao.log({
 > **Note:** `msg` 表的每个字段都会作为 `DataItem` 标签，但以下字段除外：`"Target"`, `"Data"`, `"Anchor"`, `"Tags"`，因为这些字段将直接作为根级别的`DataItem`字段使用。
 
 #### Example
+
 ```lua
 -- sends a message to "XjvCPN31XCLPkBo9bUeB7vAK0VC6-eY52-CS-6Iho8F"
 -- with the tag { "name": "Action", "value": "Ping" }
@@ -123,6 +126,7 @@ ao.send({
 ```
 
 ### `spawn()`
+
 创建新进程。
 
 - **Parameters:**
@@ -131,6 +135,7 @@ ao.send({
 - **Returns:** 初始化的消息
 
 #### Example
+
 ```lua
 ao.spawn("n0BFH80b73mi9VAWUzyuG9gEC3LI2zU2BFxum0N8A9s", {
   ["Custom-Tag"]: "Custom-Value"

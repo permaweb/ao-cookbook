@@ -1,8 +1,9 @@
 # JSON
 
-JSON 模块支持您使用 JavaScript 对象表示法对对象进行编码和解码。
+JSON 模块支持你使用 JavaScript 对象表示法对对象进行编码和解码。
 
 ### 示例用法
+
 ```lua
 local json = require("json")
 
@@ -13,6 +14,7 @@ json.encode({
 ```
 
 ## 模块函数
+
 ### `encode()`
 
 将 Lua 对象转换为 JSON 字符串。
@@ -43,7 +45,7 @@ print(json.encode(false))
 
 - **参数:**
   - `val`: `{any}` 待解码的 JSON 字符串
-- **返回值:**  JSON 字符串对应的 Lua 对象（对于无效的 JSON 字符串会抛出错误）
+- **返回值:** JSON 字符串对应的 Lua 对象（对于无效的 JSON 字符串会抛出错误）
 
 #### 示例
 

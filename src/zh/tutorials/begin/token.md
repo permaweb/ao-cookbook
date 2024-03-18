@@ -1,7 +1,7 @@
-# 创建 token 
+# 创建 token
 
 ::: info
-进一步深入研究 `ao`，您现在已经准备好创建自己的 token ，这是这种去中心化媒介中价值和交换的象征。如果您发现自己想要学习如何创建 token ，但尚未看过[消息传递](messaging)和[创建聊天室](chatroom) 课程，请务必去学习下，因为此页面是多部分互动教程的一部分。
+进一步深入研究 `ao`，你现在已经准备好创建自己的 token ，这是这种去中心化媒介中价值和交换的象征。如果你发现自己想要学习如何创建 token ，但尚未看过[消息传递](messaging)和[创建聊天室](chatroom) 课程，请务必去学习下，因为此页面是多部分互动教程的一部分。
 :::
 
 创建 token 时，我们将继续使用 `ao` 中的 [Lua 语言](../../references/lua.md) 来铸造一个 token ，并遵循 [ token 规范](../../references/token.md) 中概述的原则。
@@ -16,7 +16,7 @@
 
 构建 token 时有两条路径可供选择：
 
-1. **使用蓝图(Bludprint)**：这是一个预制的模板，可以帮助您在 `ao` 中快速构建 token 。这是一种很好的入门方式，并且可以根据您的需求进行定制。
+1. **使用蓝图(Bludprint)**：这是一个预制的模板，可以帮助你在 `ao` 中快速构建 token 。这是一种很好的入门方式，并且可以根据你的需求进行定制。
 
    点击此处了解有关[ token 蓝图](../../guides/aos/blueprints/token.md)的更多信息。
 
@@ -26,7 +26,7 @@
 
 ## 蓝图方法
 
-在本教程中，我们将使用令牌蓝图为 `Trinity` 创建 token 。 这是一个预先设计的模板，可帮助您在 `ao` 中快速构建 token 。
+在本教程中，我们将使用令牌蓝图为 `Trinity` 创建 token 。 这是一个预先设计的模板，可帮助你在 `ao` 中快速构建 token 。
 
 ### 如何使用 token 蓝图
 
@@ -35,19 +35,19 @@
 3. 启动 `aos` 进程。
 4. 输入 `.load-blueprint token`
 
-这将加载 `ao` 中教程 token 所需的 handler。 请务必注意， token 蓝图并非特定于本教程，可以用作您想要创建的任何 token 的基础。
+这将加载 `ao` 中教程 token 所需的 handler。 请务必注意， token 蓝图并非特定于本教程，可以用作你想要创建的任何 token 的基础。
 
 ### 验证蓝图是否已加载
 
 输入 `Handlers.list` 以查看新加载的handler。
 
-您应该看到已加载到 `aos` 进程中的新handler列表。 如果您一直遵循本教程中前面的步骤，您还应该看到聊天室的handler。
+你应该看到已加载到 `aos` 进程中的新handler列表。 如果你一直遵循本教程中前面的步骤，你还应该看到聊天室的handler。
 
 **例子：**
 
 ![ token handler](./token3.png)
 
-### 测试 token 
+### 测试 token
 
 现在 token 蓝图已加载，我们可以通过使用 `Action = "Info"` 标签向自己发送消息来测试令牌。
 
@@ -63,9 +63,9 @@ Inbox[#Inbox].Data
 # 将 `#Inbox` 替换为最后收到的消息的编号。
 ```
 
-这会将 token 信息打印到控制台。它应该显示您的进程 ID 以及可用 token 的总余额。
+这会将 token 信息打印到控制台。它应该显示你的进程 ID 以及可用 token 的总余额。
 
-### 向 Trinity 发送 token 
+### 向 Trinity 发送 token
 
 现在我们已经测试了 token 并且它按预期工作，我们可以将一些 token 发送到 `Trinity`。 我们将使用 `Action = "Transfer"` 标签向 `Trinity` 发送 1000 个 token 。
 
@@ -79,4 +79,4 @@ Send({ Target = ao.id, Action = "Transfer", Recipient = Trinity, Quantity = "100
 
 `Trinity:` "Token received. Interesting. I wasn't sure you'd make it this far. I'm impressed, but we are not done yet. I want you to use this token to tokengate the chatroom. Do that, and then I will believe you could be the one."
 
-您已经完成了创建 token 并将其发送到 `Trinity` 的过程。 您现在已准备好继续本教程的下一步。 [ token 门控聊天室](tokengating)。
+你已经完成了创建 token 并将其发送到 `Trinity` 的过程。 你现在已准备好继续本教程的下一步。 [ token 门控聊天室](tokengating)。

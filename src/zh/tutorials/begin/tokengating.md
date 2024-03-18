@@ -10,13 +10,13 @@
 
 ## 步骤 1：启动相同的 `aos` 进程
 
-确保您使用的 `aos` 进程与您在整个教程中使用的进程相同。
+确保你使用的 `aos` 进程与你在整个教程中使用的进程相同。
 
 ## 步骤2：打开 `chatroom.lua` 文件
 
 这与我们在 [聊天室](chatroom) 教程中用于创建聊天室的文件相同。
 
-## 步骤 3：编辑您的 `Broadcast` handler
+## 步骤 3：编辑你的 `Broadcast` handler
 
 将原来的 `Broadcast` handler替换为以下代码：
 
@@ -49,7 +49,7 @@ Handlers.add(
 
 ## 步骤 4：重新加载 `chatroom.lua` 文件
 
-要将原始的 `Broadcast` handler替换为新的handler，您需要重新加载 `chatroom.lua` 文件。
+要将原始的 `Broadcast` handler替换为新的handler，你需要重新加载 `chatroom.lua` 文件。
 
 ```sh
 .load chatroom.lua
@@ -93,7 +93,7 @@ message added to outbox
 UNAUTH REQ: [New Process ID]
 ```
 
-如您所见，该消息未广播，因为新进程没有 token 。
+如你所见，该消息未广播，因为新进程没有 token 。
 
 ## 告诉 Trinity "It is done"
 
@@ -104,7 +104,7 @@ Send({ Target = ao.id , Action = "Broadcast", Data = "It is done" })
 ```
 
 ::: warning
-了解精确匹配数据和区分大小写非常重要。 如果您没有收到 Morpheus 或 Trinity 的回复，请务必检查您的数据和标签的内容。
+了解精确匹配数据和区分大小写非常重要。 如果你没有收到 Morpheus 或 Trinity 的回复，请务必检查你的数据和标签的内容。
 :::
 
 然后 Trinity 将响应聊天室已经成功 token 门控。
@@ -115,8 +115,8 @@ Trinity 会发送一条消息说："I guess Morpheus was right. You are the one.
 
 ## 结论
 
-你已经做到了！ 您已成功对聊天室进行 token 门控。现在已经解锁了对 `Construct` 的访问，只有那些完全完成本教程的人才能进入。
+你已经做到了！ 你已成功对聊天室进行 token 门控。现在已经解锁了对 `Construct` 的访问，只有那些完全完成本教程的人才能进入。
 
 ### 恭喜你!
 
-你已经表现出了很大的希望。 我希望您喜欢本教程。 现在您已准备好在 `ao` 中自由构建。
+你已经表现出了很大的希望。 我希望你喜欢本教程。 现在你已准备好在 `ao` 中自由构建。
