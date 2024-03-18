@@ -1,7 +1,7 @@
 # 使用 ao.link 进行 Debug
 
 
-使用去中心计算机和网络，您必须可以排查自己代码之外的问题。您需要跟踪进程和消息，这就是 [https://ao.link](https://ao.link) 工具箱的必要之处。
+使用去中心计算机和网络，您需要能够排除故障，而不仅仅是您自己的代码。您需要跟踪进程和消息，这就是 [https://ao.link](https://ao.link) 工具箱的必要之处。
 
 ![ao.link homepage displaying ao network stats](aolink.png)
 
@@ -9,14 +9,14 @@
 
 AOLink 4种分析指标:
 
-- 消息总数 Total Messages
-- 用户总数 Total Users
-- 进程总数 Total Processes
-- 模块总数 Total Modules
+- 消息总数 (Total Messages)
+- 用户总数 (Total Users)
+- 进程总数 (Total Processes)
+- 模块总数 (Total Modules)
 
 这些指标可以让您快速了解 ao 网络的总体运行状况。
 
-## 事件 Events
+## 事件 (Events)
 
 下面是 ao 计算机里的最新事件。 它们是一个已执行的消息列表。 这些事件可以是任何 ao 数据协议类型。 您可以单击进程 ID 或消息 ID 来获取详细信息。
 
@@ -26,7 +26,6 @@ AOLink 4种分析指标:
 
 ![ao.link message details displaying the message processed](aolink-message-details.png)
 
-The message details give you key details about:
 消息细节包括以下关键信息：
 
 - From

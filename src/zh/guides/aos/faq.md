@@ -1,6 +1,6 @@
 # FAQ
 
-## 所有权 Ownership
+## 所有权 (Ownership)
 
 <details>
   <summary><strong>进程的所有权</strong></summary>

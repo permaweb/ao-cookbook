@@ -1,11 +1,11 @@
-# 理解收件箱 Inbox
+# 理解收件箱(Inbox)
 
 
 在 aos 中，进程通过 handlers 获取消息并且执行。未处理的消息将进入进程的收件箱(Inbox)
 
 ## 什么是 Handlers?
 
-Handler 是一个函数，接收并且处理进程消息。它通过将消息作为参数来执行动作。
+Handler 是一个函数，接收并且处理进程消息。它处理这些消息是通过将消息作为参数来进行的。
 
 ```lua
 function main(Message, ao)
