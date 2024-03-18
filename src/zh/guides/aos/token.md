@@ -1,13 +1,13 @@
 # 在 ao 中构建 Token
 
-创建 token 时，我们将继续遵循[Token 规范](../../references/token.md)中概述的原则，并使用ao中的[Lua 语言](../../references/lua.md)铸造。
+创建 token 时，我们将遵循[Token 规范](../../references/token.md)中概述的原则，并使用ao中的[Lua 语言](../../references/lua.md)铸造。
 
 ### 创建 Token 的两种方式:
 
 **1 - 使用 token 蓝图（token blueprint）:**
 
 `.load-blueprint token`
-使用蓝图将创建一个 tlken，其中所有 Handler 和状态都已经定义。这是创建 token 最简单的方法。加载蓝图后，你可以自定义这些 Handler 和状态。
+使用蓝图将创建一个 token，其中所有 Handler 和状态都已经定义。这是创建 token 最简单的方法。加载蓝图后，你可以自定义这些 Handler 和状态。
 
 你可以在此处了解更多有关蓝图的信息：[蓝图](../aos/blueprints/index.md)
 
@@ -56,9 +56,9 @@ if not Logo then Logo = 'optional arweave TXID of logo image' end
 `if Denomination ~= 10 then Denomination = 10 end` 表示我们应该将多少个 token 视为一个单位。
 :::
 
-### **步骤 2：信息和余额 Handlers**
+### **步骤 2：信息和余额的 Handlers**
 
-#### 消息 Handlers
+#### 消息de Handlers
 
 现在让我们添加第一个 Handler 来处理收到的消息。
 
@@ -82,7 +82,7 @@ end)
 
 这段代码的意思是，如果有人发送一条带有标签 Action = "info" 的消息，那么我们的 token 将返回一条消息，其中包含所有之前定义的信息。注意的是， Target = msg.From，这是在告诉 ao 我们要回复向我们发送此消息的进程。
 
-#### 信息（Info）和 token 余额（Balance） Handlers
+#### 信息（Info）和 token 余额（Balance）的Handlers
 
 现在我们可以添加两个用于提供 token 余额信息的 Handler。
 
@@ -246,10 +246,12 @@ Inbox[#Inbox].Tags
 ```
 
 这里应该会打印合约中定义的信息。
-::: 信息
-为了确保你能准确查看最新消息，请先运行`#Inbox`查看收件箱中的消息总数。然后，运行最后一个消息编号以查看数据。
-**Example:**
 
+::: 信息
+为了确保你能准确查看最新消息，请先运行`#Inbox`查看收件箱中的消息总数。
+然后，运行最后一个消息编号以查看数据。
+
+** Example: **
 如果 `#Inbox`返回 `5`，则运行 `Inbox[5].Data` 查看数据。
 :::
 
