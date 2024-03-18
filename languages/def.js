@@ -9,12 +9,12 @@ const zhStrings = createRequire(import.meta.url)("./strings/zh.json");
  * @see file://./README.md#add-a-new-language
  */
 const languages = [
-  // {
-  //   display: "中文", // Name of the language displayed in UI
-  //   name: "中文", // Name of the language in English, used by OpenAI translation
-  //   code: "zh", // 2 letter language code (ISO 639‑1)
-  //   strings: zhStrings, // JSON object of translated UI element strings
-  // },
+  {
+    display: "中文", // Name of the language displayed in UI
+    name: "中文", // Name of the language in English, used by OpenAI translation
+    code: "zh", // 2 letter language code (ISO 639‑1)
+    strings: zhStrings, // JSON object of translated UI element strings
+  },
 ];
 
 const i18n_strs = languages.reduce((langs, currentLang) => {
