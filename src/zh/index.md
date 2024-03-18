@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 即刻体验！
-      link: /welcome/index
+      link: /zh/welcome/index
 
 features:
   - title: 教程
