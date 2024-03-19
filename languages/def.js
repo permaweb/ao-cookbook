@@ -7,7 +7,14 @@ const enStrings = createRequire(import.meta.url)("./strings/en.json");
  *
  * @see file://./README.md#add-a-new-language
  */
-const languages = [];
+const languages = [
+  {
+    display: "Türkçe", // Name of the language displayed in UI
+    name: "Turkish", // Name of the language in English, used by OpenAI translation
+    code: "tr", // 2 letter language code (ISO 639‑1)
+    strings: trStrings, // JSON object of translated UI element strings
+  }
+];
 
 const i18n_strs = languages.reduce((langs, currentLang) => {
   langs[currentLang.code] = currentLang.strings;
