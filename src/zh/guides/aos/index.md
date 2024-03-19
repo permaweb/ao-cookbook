@@ -15,9 +15,9 @@ next:
 
 `aos` 选择 [lua](../../concepts/lua.md) 作为开发语言，这是一种健壮的动态语言，使用起来非常有趣。
 
-如果你已经这样做了，请花 15 分钟浏览我们的[教程](../../tutorials/index)。
+如果你还没有这么做，请花 15 分钟浏览我们的[教程](../../tutorials/index)。
 
-## 深入讨论 `aos`
+## 深入了解 `aos`
 
 - [aos概览](./intro)
 - [安装](./installing)
@@ -25,14 +25,14 @@ next:
 - [自定义提示符(prompt)](./prompt)
 - [构建一个 Ping-Pong 服务](./pingpong)
 
-## Developer Guides
+## 开发者指南
 
 - [编辑器初始化](editor)
 - [使用 ao.link 进行 Debug](troubleshooting)
 - [理解收件箱（Inbox）](inbox-and-handlers)
 - [常见问题](faq)
 
-### [**Modules**](modules/index)
+### [**模块**](modules/index)
 
 - [JSON](modules/json)
 - [`ao`](modules/ao)
