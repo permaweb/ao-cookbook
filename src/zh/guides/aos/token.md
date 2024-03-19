@@ -1,4 +1,4 @@
-# 在 ao 中构建 Token
+# 在 ao 中创建 Token
 
 创建 token 时，我们将遵循[Token 规范](../../references/token.md)中概述的原则，并使用ao中的[Lua 语言](../../references/lua.md)铸造。
 
@@ -306,4 +306,4 @@ Inbox[#Inbox].Data
 
 ## 结论
 
-“构建 token ”指南到此结束。学习构建自定义 token 可以为你的项目释放巨大的潜力；无论你是想创建新货币、游戏 token 、治理 token ，还是任何其他你能想到的东西。
+“创建 token”指南到此结束。学习构建自定义 token 可以为你的项目释放巨大的潜力；无论你是想创建新货币、游戏 token 、治理 token ，还是任何其他你能想到的东西。

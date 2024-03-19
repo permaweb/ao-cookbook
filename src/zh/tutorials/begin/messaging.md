@@ -1,10 +1,10 @@
 # `ao` 中的消息传递
 
-## 明白消息是如何为 `ao` 提供并行计算能力的
+## 消息是如何为 `ao` 提供并行计算能力的
 
-在 `ao` 中，每个进程并行运行，创建一个高度可扩展的环境。 传统的进程之间直接函数调用是不可行的，因为每个进程都是独立且异步运行的。
+`ao` 是一个高度可扩展的环境，每个进程并行运行。每个进程独立且异步运行，所以在进程之间直接函数调用是不可行的。
 
-消息传递通过启用异步通信来解决这个问题。 进程之间发送和接收消息，而不是直接相互调用函数。 这种方法允许灵活高效的交互，进程可以响应消息，增强系统的可扩展性和响应能力。
+我们使用异步通信来解决这个问题。 进程之间通过发送和接收消息，而不是直接相互调用函数。 这种方法允许灵活高效的交互，进程可以响应消息，增强系统的可扩展性和响应能力。
 
 我们将首先探索 `aos` 中消息传递的基础知识，如何查看收件箱中收到的消息，以及如何将消息发送到其他进程。
 
@@ -14,7 +14,7 @@
 
 ## 步骤 1：理解消息结构
 
-- **消息基础知识：** `ao` 中的消息是使用 Lua 表构建的，Lua 表是可以保存多个值的通用数据结构。 在这些表中，`数据` 字段至关重要，因为它包含消息的内容或有效负载。这种结构允许在进程之间高效地发送和接收信息，展示了 `ao` 原语如何利用 Arweave 的底层功能来促进复杂的、可组合的操作。
+- **消息基础知识：** `ao` 中的消息是使用 Lua 表构建的，Lua 表是可以保存多个值的通用数据结构。 在这些表中，`数据` 字段至关重要，因为它包含消息的内容或 `payload`。使用这种结构可以在进程之间高效地发送和接收信息，示例中展示了 `ao` 原语如何利用 Arweave 的底层功能进行复杂的、可组合的操作。
 
   规范详情请参考[G8way 规范页面](https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw)上的原始文档。
 
@@ -34,22 +34,22 @@ aos
   Send({ Target = "process ID", Data = "Hello World!" })
 ```
 
-- **Send**：`Send` 功能在 aos 交互环境中全局可用。
-- **Target**：要将消息发送到特定进程，请在消息中包含 `Target` 字段。
-- **Data**：`Data` 是你希望接收进程接收的文本消息。 在此示例中，消息是 `Hello World！`。
+- **Send**：`Send` 是 aos 中全局函数，用于发送消息。
+- **Target**：如果要将消息发送到特定进程，请在消息中包含 `Target` 字段。
+- **Data**：`Data` 是你希望目标进程接收的文本消息。 在此示例中，消息是 `Hello World！`。
 
 ## 步骤 4：存储 `Morpheus` 的进程 ID
 
 我们将使用下面提供的进程 ID 并将其存储为名为 `Morpheus` 的变量。
 
 ```sh
-sOQYMwbbTr5MlPwp-KUmbXgCCvfoVjgTOBuUDQJZAIU
+P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434
 ```
 
 通过复制上面的进程 ID 并在 aos CLI 中运行以下命令以便将其存储为变量：
 
 ```sh
-Morpheus = "sOQYMwbbTr5MlPwp-KUmbXgCCvfoVjgTOBuUDQJZAIU"
+Morpheus = "P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434"
 ```
 
 这会将进程 ID 存储为名为 `Morpheus` 的变量，从而更轻松地与特定进程 ID 进行交互。
@@ -64,7 +64,7 @@ Morpheus = "sOQYMwbbTr5MlPwp-KUmbXgCCvfoVjgTOBuUDQJZAIU"
 # 通过输入 `Morpheus` 检查 Morpheus 变量
 aos> Morpheus
 # 预期结果:
-sOQYMwbbTr5MlPwp-KUmbXgCCvfoVjgTOBuUDQJZAIU
+P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434
 aos>
 
 # 如果 `undefined` 被返回,
@@ -90,7 +90,7 @@ aos> Send({ Target = Morpheus, Data = "Morpheus?"})
 # 消息已添加到发件箱
 message added to outbox
 # 从 `Morpheus` 的进程 ID 收到一条新消息
-New Message From BWM...ulw: Data = I am here. You are f
+New Message From P2R...434: Data = I am here. You are f
 aos>
 ```
 
@@ -131,7 +131,7 @@ aos>
 aos> Inbox[#Inbox].Data
 ```
 
-该命令允许你将数据与消息隔离，并且仅读取数据的内容。
+该命令允许你将数据与消息分离，并且仅读取特定数据字段的内容。
 
 预期返回：
 
@@ -151,19 +151,19 @@ aos>
 
 **标签的用途**：aos 消息中的标签用于有效地分类、路由和处理消息。它们在消息处理中发挥着至关重要的作用，尤其是在处理多个进程或复杂的工作流程时。
 
-某些进程使用专门与具有特定标签的消息进行交互的 `Handlers`。 例如，一个进程可能有一个 handler，仅与具有特定标签的消息交互，我们将在[聊天室](chatroom)教程中看到一个示例。
+某些进程仅与使用特定标签的消息进行交互的 `Handlers`。 例如，一个进程可能有一个 handler，仅与具有特定标签的消息交互，我们将在[聊天室](chatroom)教程中看到一个示例。
 
 ### 如何在消息中使用标签
 
-就 Morpheus 而言，我们可以使用标签对消息进行分类，并且由于 Morpheus 是一个自治进程，因此他拥有可以与具有特定标签的消息进行交互的handler。
+就 Morpheus 而言，我们可以使用标签对消息进行分类，并且由于 Morpheus 是一个自治进程，因此他拥有可以与具有特定标签的消息进行交互的 handler。
 
 **向消息添加标签**：
 
-- 我们已经知道消息的 `Data` 是你想要发送到另一个进程的基于文本的消息。在前面，我们向 Morpheus 发送了一条没有任何标签的消息，其中他使用handler来响应精确匹配的数据。
+- 我们已经知道消息的 `Data` 是你想要发送到另一个进程的文本的消息。此前，我们向 Morpheus 发送了一条没有任何标签的消息，Morpheus 进程使用 handler 响应该数据。
 
 ### 让 Morpheus 知道我们已经准备好了
 
-向 Morpheus 发送一条带有标签 `Action` 和值 `rabbithole` 的消息。
+向 Morpheus 发送一条带有标签 `Action`，Data 值包含 `rabbithole` 的消息。
 
 **例子：**
 
@@ -174,21 +174,21 @@ Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
 **预期返回:**
 ![Morpheus 的回应 2](./messaging2.png)
 
-### 使用标签的其他提示
+### 使用标签的一些建议
 
-- **一致的标记**：为你的应用程序开发一致的标记系统，使消息处理更加可预测。
-- **标签命名**：为标签选择清晰且具有描述性的名称。 这使得一目了然地更容易理解消息的目的和上下文。
+- **一致的标记**：为你的应用程序开发一致的标记系统，使消息处理更具备规则。
+- **标签命名**：为标签选择清晰且具有描述性的名称。 让开发者一目了然地更容易理解消息的目的和上下文。
 - **标签安全**：请记住，标签未加密或隐藏，因此请避免使用敏感信息作为标签。
 
 ### 标签的高级用法
 
-- **工作流程管理**：标签有助于管理工作流程，特别是在消息经过多个阶段或进程的系统中。
+- **工作流程管理**：标签有助于管理工作流程，特别是在消息经过多个进程的系统中。
 
-## 消息传递的其他提示
+## 消息传递的其他建议
 
-- **消息结构**：探索其他字段，如 `Epoch`、 `From` 和 `Nonce`，以满足更复杂的消息传递需求。
+- **消息结构**：可以使用更多字段，如 `Epoch`、 `From` 和 `Nonce`，以满足更复杂的消息传递需求。
 - **调试**：使用 [`Dump`](/zh/concepts/tour#_6-使用-dump-进行数据展示) 函数打印消息以进行调试。
-- **安全注意事项**：谨慎对待消息的内容和处理，切勿发送任何被视为私人或敏感的内容。
+- **安全注意事项**：谨慎对待消息的内容和处理，切勿发送任何私人或敏感的内容。
 
 ## 结论
 
