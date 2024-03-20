@@ -115,10 +115,8 @@ Trinity will then respond to the chatroom being tokengated.
 Trinity will send a message saying, "I guess Morpheus was right. You are the one. Consider me impressed.
 You are now ready to join The Construct, an exclusive chatroom available
 to only those that have completed this tutorial.
-
 Now, go join the others by using the same tag you used `Register`, with
 this process ID: [Construct Process ID]
-
 Good luck.
 -Trinity". Additionally, a footer will follow the message.
 
