@@ -1,13 +1,13 @@
 # 编辑器设置
 
-有时记住所有内置的 ao 函数和实用工具可能很困难。为了提升你的开发体验，建议你在你最喜欢的文本编辑器中安装 [Lua Language Server](https://luals.github.io) 扩展，并添加 [ao插件](https://github.com/martonlederer/ao-definitions)。它支持所有内置的 aos [模块](../guides/aos/index.md) 和 [全局变量](../guides/aos/intro#globals)。
+内置的 ao 函数和实用工具不太好用。为了提升你的开发体验，建议你在你常用的文本编辑器中安装 [Lua Language Server](https://luals.github.io) 扩展插件，并添加 [ao插件](https://github.com/martonlederer/ao-definitions)。它们支持所有内置的 aos [模块](../guides/aos/index.md) 和 [全局变量](../guides/aos/intro#globals)。
 
 ## VS Code
 
-安装 [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) 扩展：
+安装 [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) 扩展插件：
 
 1. 在扩展市场中搜索 sumneko 的 "Lua"。
-2. 下载并安装该扩展。
+2. 下载并安装该扩展插件。
 3. 打开 VS Code 命令面板，使用 `Shift + Command + P`（Mac）/ `Ctrl + Shift + P`（Windows/Linux），然后运行以下命令：
 
 ```

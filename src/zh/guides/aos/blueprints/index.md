@@ -1,9 +1,9 @@
 ---
 prev:
-  text: "Build a Token"
+  text: "创建代币"
   link: "../token"
 next:
-  text: "Token Blueprint"
+  text: "Token 蓝图"
   link: "./token"
 ---
 
@@ -13,13 +13,10 @@ next:
 
 ## 可用的蓝图
 
+- [Token 蓝图](token)
 
 - [聊天室蓝图](chatroom)
 
 - [质押蓝图](staking)
 
-- [Token 蓝图](token)
-
 - [投票蓝图](voting)
-
-

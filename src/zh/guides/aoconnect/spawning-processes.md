@@ -1,8 +1,8 @@
-# 启动一个进程
+# 创建一个进程
 
-可以在[ao Processes](../../concepts/processes.md) 概念中找到关于进程的深入介绍。本指南聚焦于使用 ao connect 启动一个进程。
+可以在[ao Processes](../../concepts/processes.md) 概念中找到关于进程的深入介绍。本指南聚焦于使用 ao connect 创建一个进程。
 
-为了启动一个进程，你必须拥有已经上传到 Arweave 的一个 ao 模块的 TXID。模块是进程的源代码。进程本身是那个源码的实例化。
+为了创建一个进程，你必须拥有已经上传到 Arweave 的一个 ao 模块的 TXID。模块是进程的源代码。进程本身是那个源码的实例化。
 
 你还必须拥有一个调度单元（Scheduler Unit, SU）的钱包地址。指定的 SU 将作为此进程的调度器。这意味着系统中的所有节点都可以知道它们需要为此进程读写到这个 SU。你可以使用下面的地址。
 
@@ -12,7 +12,7 @@
 fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY
 ```
 
-## 在 NodeJS 中启动一个进程
+## 在 NodeJS 中创建一个进程
 
 ```js
 import { readFileSync } from "node:fs";
@@ -41,7 +41,7 @@ const processId = await spawn({
 });
 ```
 
-## 在浏览器中启动一个进程
+## 在浏览器中创建一个进程
 
 ```js
 import { createDataItemSigner, spawn } from "@permaweb/ao-sdk";

@@ -1,10 +1,10 @@
 ---
 prev:
-  text: "Guides"
-  link: "/guides/index"
+  text: "监控 Cron"
+  link: "/zh/guides/aoconnect/monitoring-cron"
 next:
-  text: "References"
-  link: "/references/index"
+  text: "规范"
+  link: "./specs"
 ---
 
 # 概念

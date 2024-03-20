@@ -1,6 +1,6 @@
 ---
 prev:
-  text: "Staking Blueprint"
+  text: "质押蓝图"
   link: "../blueprints/staking"
 next:
   text: "JSON"

@@ -11,7 +11,7 @@
 
 你可以在此处了解更多有关蓝图的信息：[蓝图](../aos/blueprints/index.md)
 
-::: 信息
+::: info
 虽然使用 token 蓝图虽然可以快速创建，但你仍然需要了解如何进行[加载和测试](token.html#loading-and-testing), 以便根据需要进行自定义。
 :::
 
@@ -51,14 +51,14 @@ if not Logo then Logo = 'optional arweave TXID of logo image' end
 
 - 接下来的 4 行，除了 `if Denomination`外，`if Name`、`if Ticker`、`if Denomination` 和 `if not Logo` 都是可选项，它们分别用于定义 token 的名称、代码、最小单位和LOGO。
 
-::: 信息
+::: info
 
 `if Denomination ~= 10 then Denomination = 10 end` 表示我们应该将多少个 token 视为一个单位。
 :::
 
 ### **步骤 2：信息和余额的 Handlers**
 
-#### 消息de Handlers
+#### 消息的 Handlers
 
 现在让我们添加第一个 Handler 来处理收到的消息。
 
@@ -71,7 +71,7 @@ end)
 
 ![Token.lua image 2](./token2.png)
 
-::: 信息
+::: info
 
 此时，你可能已经注意到，我们正在 `token.lua` 文件中构建所有 Handler，而不是使用 `.editor`。
 
@@ -247,7 +247,7 @@ Inbox[#Inbox].Tags
 
 这里应该会打印合约中定义的信息。
 
-::: 信息
+::: info
 为了确保你能准确查看最新消息，请先运行`#Inbox`查看收件箱中的消息总数。
 然后，运行最后一个消息编号以查看数据。
 
@@ -259,7 +259,7 @@ Inbox[#Inbox].Tags
 
 现在，尝试将 token 余额转账到另一个钱包或进程 ID。
 
-::: 信息
+::: info
 如果你需要另一个进程 ID，可以在另一个终端窗口运行`aos [name]` 获取新的进程 ID。确保它与你当前使用的`aos [name]` 不同。
 
 **示例:**

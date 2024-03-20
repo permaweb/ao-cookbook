@@ -1,10 +1,10 @@
 ---
 prev:
-  text: "aos"
-  link: "/guides/aos"
+  text: "Utils"
+  link: "zh/guides/aos/modules/utils"
 next:
-  text: "Installing aoconnect"
-  link: "/guides/aoconnect/installing-connect"
+  text: "安装 aoconnect"
+  link: "zh/guides/aoconnect/installing-connect"
 ---
 
 # aoconnect
