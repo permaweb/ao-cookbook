@@ -36,6 +36,7 @@ If you have done so yet, take 15 minutes and go through our [tutorials](../../tu
 
 - [JSON](modules/json)
 - [`ao`](modules/ao)
+- [crypto](modules/crypto)
 - [Base64](modules/base64)
 - [Pretty](modules/pretty)
 - [Utils](modules/utils)
