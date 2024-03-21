@@ -6,7 +6,6 @@
 You've always known there's more to this world, just outside of your reach. You've been searching for it, not even knowing what it was you were looking for. It... is `ao`.
 
 We begin our journey by installing the `aos` client and starting a new process. This will allow us to interact with the ao computer and complete the rest of the tutorial.
-
 :::
 
 ## Video Tutorial
@@ -98,4 +97,4 @@ If your OS version is different than the latest version, a message asking if you
 
 Welcome to your new home in the ao computer! The prompt you are now looking at is your own personal server in this decentralized machine.
 
-Now, let's journey further down the rabbit hole by exploring one of the two core concept type of ao: [messaging.](messaging)
+Now, let's journey further down the rabbit hole by exploring one of the two core concept type of ao: [messaging](messaging).

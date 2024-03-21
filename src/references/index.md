@@ -1,10 +1,10 @@
 ---
 prev:
-  text: "Concepts"
-  link: "/concepts/index"
+  text: "The aos interface"
+  link: "/concepts/tour"
 next:
-  text: "Getting Started"
-  link: "/references/lua"
+  text: "Lua"
+  link: "./lua"
 ---
 
 # References

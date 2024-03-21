@@ -52,13 +52,13 @@ You should see a new list of handlers that have been loaded into your `aos` proc
 Now that the token blueprint is loaded, we can test the token by sending a message to ourselves using the `Action = "Info"` tag.
 
 ```sh
- Send({ Target = ao.id, Action = "Info" })
+Send({ Target = ao.id, Action = "Info" })
 ```
 
 This will print a message to the console, but to read the message, we'll need to call the `.Data` from the latest message.
 
 ```sh
- Inbox[#Inbox].Data
+Inbox[#Inbox].Data
 
 # Replace `#Inbox` with the number of the last message received.
 ```
@@ -70,7 +70,7 @@ This will print the token information to the console. It should show your proces
 Now that we've tested the token and it's working as expected, we can send some tokens to `Trinity`. We'll send 1000 tokens to `Trinity` using the `Action = "Transfer"` tag.
 
 ```sh
- Send({ Target = ao.id, Action = "Transfer", Recipient = Trinity, Quantity = "1000"})
+Send({ Target = ao.id, Action = "Transfer", Recipient = Trinity, Quantity = "1000"})
 ```
 
 When `Trinity` receives the tokens, she'll respond to the transfer with a message to confirm that she's received the tokens.
