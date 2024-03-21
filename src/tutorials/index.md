@@ -1,10 +1,10 @@
 ---
 prev:
-  text: "Welcome"
-  link: "/welcome/index"
+  text: "Testnet Info"
+  link: "/welcome/testnet-info"
 next:
-  text: "Guides"
-  link: "/guides/index"
+  text: "Begin"
+  link: "./begin/index"
 ---
 
 # Tutorials

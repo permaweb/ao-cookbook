@@ -6,13 +6,13 @@ In our DAO we will implement a process knwon as "slashing". In the case of ao, i
 
 Make a new directory called `dao` and copy in the token.lua created in the token guide.
 
-```
+```sh
 mkdir dao
 cd dao
 cp ../token/token.lua .
 ```
 
-Now create a new file called dao.lua and open it in your favorite editor.
+Now create a new file called `dao.lua` and open it in your favorite editor.
 
 ## Writing the DAO code
 

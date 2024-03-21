@@ -2,14 +2,14 @@
 
 In less than 5 mins, we'll walk you through the process of taking your first peek into the rabbit hole. 🕳️🐇
 
-## System requirements.
+## System requirements
 
 The local client of aos is super simple to install. Just make sure you have:
 
 - [NodeJS](https://nodejs.org) version 20+. (If you haven't yet installed it, check out [this page](https://nodejs.org/en/download/package-manager) to find instructions for your OS).
 - A code editor of your choice.
 
-## Installing aos.
+## Installing aos
 
 Once you have NodeJS on your machine, all you need to do is install aos and run it:
 
@@ -25,7 +25,7 @@ aos
 
 You authenticate yourself to your aos process using a keyfile. If you have an Arweave wallet you can specify it by adding a `--wallet [location]` flag. If you don't, a new keyfile will be generated and stored locally for you at `~/.aos.json`.
 
-## Welcome to the rabbit hole.
+## Welcome to the rabbit hole
 
 The utility you just started is a local client, which is ready to relay messages for you to your new process inside the ao computer.
 
@@ -65,7 +65,7 @@ aos>
 
 Welcome to your new home in the ao computer! The prompt you are now looking at is your own personal server in this decentralized machine. We will be using it to play with and explore ao in the rest of this tutorial.
 
-## Sending your first command.
+## Sending your first command
 
 Your new personal aos process is a server that lives inside the computer, waiting to receive and execute your commands.
 

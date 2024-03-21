@@ -192,10 +192,10 @@ If she successfully joins the chatroom, she'll then pose the next challenge to y
 - Provide Onboarding Instructions:
   Share a simple script with them for easy onboarding:
 
-```
-Hey, let's chat on aos! Join my chatroom by sending this command in your aos environment:
+```lua
+-- Hey, let's chat on aos! Join my chatroom by sending this command in your aos environment:
 Send({ Target = [Your Process ID], Action = "Register" })
-Then, you can broadcast messages using:
+-- Then, you can broadcast messages using:
 Send({Target = [Your Process ID], Action = "Broadcast", Data = "Your Message" })
 ```
 

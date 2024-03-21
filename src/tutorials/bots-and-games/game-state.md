@@ -1,12 +1,3 @@
----
-prev:
-  text: "Interpreting Announcements"
-  link: "/tutorials/bots-and-games/announcements"
-next:
-  text: "Strategic Decicions"
-  link: "/tutorials/bots-and-games/decisions"
----
-
 # Fetching Game State
 
 Now that you're seeing game announcements directly in your terminal, you have a better grasp of the game's dynamics. However, these insights are limited to specific actions occurring within the game.

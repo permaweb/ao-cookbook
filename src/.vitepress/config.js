@@ -39,7 +39,7 @@ const config = defineConfig({
    */
   locales: languages.reduce(
     (locales, { code }) => {
-      locales[`/${code}/`] = localeConfig(code);
+      locales[code] = localeConfig(code);
       return locales;
     },
     { root: localeConfig("en") },

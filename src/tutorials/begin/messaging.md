@@ -1,6 +1,6 @@
 # Messaging in `ao`
 
-### Learn how Messages gives `ao` Parallel Compute Capability
+## Learn how Messages gives `ao` Parallel Compute Capability
 
 In `ao`, every process runs in parallel, creating a highly scalable environment. Traditional direct function calls between processes aren't feasible because each process operates independently and asynchronously.
 
@@ -43,16 +43,16 @@ aos
 We'll use the process ID provided below and store it as a variable called Morpheus.
 
 ```sh
-sOQYMwbbTr5MlPwp-KUmbXgCCvfoVjgTOBuUDQJZAIU
+P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434
 ```
 
 Copy the process ID above and store it as a variable by running the below command in the aos CLI:
 
 ```sh
-Morpheus = "sOQYMwbbTr5MlPwp-KUmbXgCCvfoVjgTOBuUDQJZAIU"
+Morpheus = "P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434"
 ```
 
-This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specifid process ID.
+This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specific process ID.
 
 ::: info
 When creating the `Morpheus` variable, the only response you should see is `undefined`. This is expected. To check if the variable was created successfully, type `Morpheus` and press Enter. You should see the process ID you stored.
@@ -64,7 +64,7 @@ When creating the `Morpheus` variable, the only response you should see is `unde
 # Check the Morpheus variable by typing `Morpheus`
  Morpheus
 # Expected Results:
-sOQYMwbbTr5MlPwp-KUmbXgCCvfoVjgTOBuUDQJZAIU
+P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434
 
 
 # If `undefined` is returned,
@@ -90,7 +90,7 @@ Send({ Target = Morpheus, Data = "Morpheus?" })
 # Message is added to the outbox
 message added to outbox
 # A New Message is received from `Morpheus`'s process ID
-New Message From BWM...ulw: Data = I am here. You are finally awake. Are yo
+New Message From BWM...ulw: Data = I am here. You are f
 
 ```
 
@@ -167,7 +167,7 @@ Send Morpheus a message with the tag `Action` and the value `rabbithole`.
 
 **Example:**
 
-```sh
+```lua
 Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
 ```
 
@@ -184,7 +184,7 @@ Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
 
 - **Workflow Management**: Tags can be instrumental in managing workflows, especially in systems where messages pass through multiple stages or processes.
 
-## Additional Tips for Messaging:
+## Additional Tips for Messaging
 
 - **Message Structure**: Explore other fields like `Epoch`, `From`, and `Nonce` for more complex messaging needs.
 - **Debugging**: Use the [`Dump`](/concepts/tour.html#_6-data-representation-with-dump) function to print messages for debugging.
