@@ -51,7 +51,7 @@ Save the file.
 
 To replace the original `broadcast` handler with the new one, you'll need to reload the `chatroom.lua` file.
 
-```sh
+```lua
 .load chatroom.lua
 ```
 
@@ -63,9 +63,9 @@ Now that the chatroom is tokengated, let's test it by sending a message to the c
 
 First, we'll test it from the original aos process.
 
-```sh
+```lua
 Send({ Target = ao.id , Action = "Broadcast", Data = "Hello" })
-# Expected Results:
+-- Expected Results:
 message added to outbox
 Broadcasting message from Neo. Content: Hello.
 ```
@@ -82,19 +82,19 @@ aos chatroom-no-token # the `chatroom-no-token` is the new process name
 
 We'll first need to register to the chatroom.
 
-```sh
+```lua
 .load chatroom.lua
 Send({ Target = [Your Process ID], Action = "Register" })
-# Expected Results:
+-- Expected Results:
 message added to outbox
 New Message From [Your Process ID]: Data = registered
 ```
 
 Now, let's try to send a message to the chatroom.
 
-```sh
+```lua
 Send({ Target = [Your Process ID] , Action = "Broadcast", Data = "Hello?" })
-# Expected Results:
+-- Expected Results:
 message added to outbox
 UNAUTH REQ: [New Process ID]
 ```
@@ -115,7 +115,7 @@ It's important to be aware of exact match data and case sensitivity. If you're n
 
 Trinity will then respond to the chatroom being tokengated.
 
-#### Expected Results:
+### Expected Results:
 
 Trinity will send a message saying, "I guess Morpheus was right. You are the one. Consider me impressed.
 You are now ready to join The Construct, an exclusive chatroom available
