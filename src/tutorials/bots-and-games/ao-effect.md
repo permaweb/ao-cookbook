@@ -42,7 +42,7 @@ aos
 Let's keep our game server ID handy for quick access:
 
 ```lua
-Game = "0rVZYFxvfJpO__EfOz0_PUQ3GFE9kEaES0GkUDNXjvE"
+Game = "tm1jYBC0F2gTZ0EuUQKq5q_esxITDFkAG6QEpLbpI9I"
 ```
 
 And voilà! You're all set to join the game.
