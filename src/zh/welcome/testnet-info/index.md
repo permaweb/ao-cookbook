@@ -1,32 +1,68 @@
 ---
-next:
+prev:
   text: "入门"
-  link: "/zh/welcome/getting-started"
+  link: "../getting-started"
 next:
-  text: "CRED和任务"
-  link: "/welcome/testnet-info/cred-and-quests"
+  text: "CRED 和任务 FAQ"
+  link: "/zh/welcome/testnet-info/cred-and-quests"
 ---
 
-# 欢迎来到 ao
+# 参与 ao 测试网
 
-![ao logo](./ao-logo-grey.svg)
+2024年2月27日，`ao` 测试网上线，供开发者和早期用户探索这台超并行计算机。
 
-ao 是一个由无数进程组成的世界计算机。这些进程处在一个连贯的计算环境中，进程之间通过原生的消息进行无缝衔接，相互作用。
+## 什么是 ao 测试网？
 
-ao 是一个正在演化的去中心化程序生态系统，类比互联网，这里每个进程就像是一个个独立的网站。它们独立运行，但是又错综复杂的交织为一个统一的”联合体“。
+ao 测试网允许用户免费与 ao 计算机交互，共同测试和构建主网。
 
-## ao + aos: 火箭和火箭燃料
+你可以通过 aos 控制台连接 ao 计算机。 在接下来的文档中，你会发现许多可以尝试的任务，这些任务可以帮助你赚取 CRED 代币（测试网的代币）。
 
-初次接触 ao，你可以使用操作系统 `aos` 与 ao 进行交互。
+## 安装 aos 客户端
 
-aos 是一个运行在进程中的抽象层，使得你可以轻松使用 ao 计算机的全部功能。 本手册将带你学习如何使用 aos，你会获得入门 ao 计算机所需的所有信息。
+如果你已经装好 [NodeJS](https://nodejs.org)，你所需要做的就是安装 aos 并运行它：
 
-## 技术规范
+```sh
+npm i -g https://get_ao.g8way.io
+```
 
-如果你想了解 ao 的更多技术规范，可以参考 [spec](https://ao.g8way.io/#/spec) 进行细节分析
+安装后，我们只需运行以下命令即可启动新的 aos 进程！
 
-## 下一步
+```sh
+aos
+```
 
-在接下来的教程中，我们将一起探索 ao，一起构建具备治理功能的聊天室、去中心化机器人等内容。
+## 加入 ao 的原生社区聊天
 
-让我们开始吧！ 🚀
+ao 网络托管着许多聊天服务器，你可以直接从 aos 控制台与其他开发人员交谈。 要加载聊天客户端，请运行以下命令：
+
+```lua
+.load-blueprint chat
+```
+
+查看可用房间，你可以运行：
+
+```lua
+List()
+```
+
+加入房间并与其他开发者聊天，如下所示：
+
+```lua
+Join("Getting-Started", "yourName")
+Say("Hi")
+```
+
+## AO 测试网的第一步
+
+为了加快在 ao 中的构建速度，查看以下教程：
+
+- 学习 [开始](/zh/tutorials/begin/) 教程来构建你自己的代币化聊天室
+- 学习 [机器人和游戏](/zh/tutorials/bots-and-games/) 教程，构建一个在 ao-effect 竞技场中玩耍的机器人
+
+## 帮助构建 ao 生态系统并赚取 CRED
+
+ao 生态处于非常早期的阶段，充满机遇。 社区里有一个 `quest` 板块（任务板块），其中包含各种方法让你可以参与测试和构建软件以发展生态，同时赚 ao 原生代币 - Testnet CRED。
+
+要列出当前可用的任务，请使用 `Join("Quests")` 和 `Say "/Quests"` 加入 `Quests` 聊天频道以接收任务列表。
+
+玩得开心，如果需要帮助，请随时在 ao 聊天中向其他构建者寻求帮助！
