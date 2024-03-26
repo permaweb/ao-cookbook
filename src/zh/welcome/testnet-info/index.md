@@ -1,3 +1,12 @@
+---
+prev:
+  text: "入门"
+  link: "../getting-started"
+next:
+  text: "CRED 和任务板"
+  link: "./cred-and-quests"
+---
+
 # 参与 ao 测试网
 
 2024年2月27日，`ao` 测试网上线，供开发者和早期用户探索这台超并行计算机。

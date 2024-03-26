@@ -44,19 +44,19 @@ Follow the tutorials and [complete quests to earn CRED](/welcome/testnet-info/cr
 The ao network hosts a number of chat servers that allow you to converse with other devs,
 right from your `aos` console. To load the chat client run the following:
 
-```sh
+```lua
 aos> .load-blueprint chat
 ```
 
 To show the available rooms you can run:
 
-```sh
+```lua
 aos> List()
 ```
 
 You can join a room and start chatting with other devs as follows:
 
-```sh
+```lua
 aos> Join("Getting-Started", "yourName")
 aos> Say("Hi")
 ```

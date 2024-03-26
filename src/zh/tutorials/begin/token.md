@@ -51,16 +51,16 @@
 
 现在 token 蓝图已加载，我们可以通过使用 `Action = "Info"` 标签向自己发送消息来测试 token。
 
-```sh
+```lua
 Send({ Target = ao.id, Action = "Info" })
 ```
 
 这将向控制台打印一条消息，但要读取该消息，我们需要从最新消息中调用 `.Data`。
 
-```sh
+```lua
 Inbox[#Inbox].Data
 
-# 将 `#Inbox` 替换为最后收到的消息的编号。
+-- 将 `#Inbox` 替换为最后收到的消息的编号。
 ```
 
 这会将 token 信息打印到控制台。它应该显示你的可用 token 的总余额。
@@ -69,7 +69,7 @@ Inbox[#Inbox].Data
 
 现在我们已经测试了 token 并且它按预期工作，我们可以将一些 token 发送到 `Trinity`。 我们将使用 `Action = "Transfer"` 标签向 `Trinity` 发送 1000 个 token 。
 
-```sh
+```lua
 Send({ Target = ao.id, Action = "Transfer", Recipient = Trinity, Quantity = "1000"})
 ```
 
@@ -81,7 +81,7 @@ Send({ Target = ao.id, Action = "Transfer", Recipient = Trinity, Quantity = "100
 
 使用下列命令查看 Trinity 的消息：
 
-```sh
+```lua
 Inbox[#Inbox].Data
 ```
 

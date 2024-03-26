@@ -51,7 +51,7 @@ Handlers.add(
 
 要将原始的 `Broadcast` handler 替换为新的 handler，你需要重新加载 `chatroom.lua` 文件。
 
-```sh
+```lua
 .load chatroom.lua
 ```
 
@@ -63,16 +63,16 @@ Handlers.add(
 
 首先，我们将从原始的 aos 进程进行测试。
 
-```sh
+```lua
 Send({ Target = ao.id , Action = "Broadcast", Data = "Hello" })
-# 预期结果:
+-- 预期结果:
 message added to outbox
 Broadcasting message from Neo. Content: Hello.
 ```
 
 记住，当你不知道怎么查看最新的消息的时，一定使用：
 
-```sh
+```lua
 Inbox[#Inbox].Data
 ```
 
@@ -88,18 +88,18 @@ aos name1
 
 我们首先需要注册到聊天室。
 
-```sh
+```lua
 Send({ Target = [聊天室的 Process ID], Action = "Register" })
-# 预期结果:
+-- 预期结果:
 message added to outbox
 New Message From [Your Process ID]: Data = registered
 ```
 
 现在，让我们尝试向聊天室发送消息。
 
-```sh
+```lua
 Send({ Target = [聊天室的 Process ID], Action = "Broadcast", Data = "Hello?" })
-# 预期结果:
+-- 预期结果:
 message added to outbox
 UNAUTH REQ: [New Process ID]
 ```

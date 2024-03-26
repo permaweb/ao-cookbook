@@ -8,7 +8,7 @@ You must also have the wallet address of a Scheduler Unit (SU). This specified S
 
 ## Wallet address of an available Scheduler
 
-```sh
+```lua
 fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY
 ```
 

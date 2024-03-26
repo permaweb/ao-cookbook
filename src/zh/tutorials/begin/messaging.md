@@ -30,7 +30,7 @@ aos
 
 ## 步骤 3：如何发送消息
 
-```sh
+```lua
   Send({ Target = "process ID", Data = "Hello World!" })
 ```
 
@@ -42,13 +42,13 @@ aos
 
 我们将使用下面提供的进程 ID 并将其存储为名为 `Morpheus` 的变量。
 
-```sh
+```lua
 P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434
 ```
 
 通过复制上面的进程 ID 并在 aos CLI 中运行以下命令以便将其存储为变量：
 
-```sh
+```lua
 Morpheus = "P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434"
 ```
 
@@ -60,15 +60,15 @@ Morpheus = "P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434"
 
 ### 检查 `Morpheus` 变量
 
-```sh
-# 通过输入 `Morpheus` 检查 Morpheus 变量
-aos> Morpheus
-# 预期结果:
+```lua
+-- 通过输入 `Morpheus` 检查 Morpheus 变量
+Morpheus
+-- 预期结果:
 P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434
 aos>
 
-# 如果 `undefined` 被返回,
-# 那么变量没有创建成功。
+-- 如果 `undefined` 被返回,
+-- 那么变量没有创建成功。
 ```
 
 ## 步骤 5：向 Morpheus 发送消息
@@ -84,12 +84,12 @@ Send({ Target = Morpheus, Data = "Morpheus?" })
 
 **预期结果：**
 
-```sh
-# 你的消息命令
-aos> Send({ Target = Morpheus, Data = "Morpheus?"})
-# 消息已添加到发件箱
+```lua
+-- 你的消息命令
+Send({ Target = Morpheus, Data = "Morpheus?"})
+-- 消息已添加到发件箱
 message added to outbox
-# 从 `Morpheus` 的进程 ID 收到一条新消息
+-- 从 `Morpheus` 的进程 ID 收到一条新消息
 New Message From P2R...434: Data = I am here. You are f
 aos>
 ```
@@ -107,18 +107,18 @@ aos>
 
 在 aos CLI 中，键入以下命令：
 
-```sh
-aos> #Inbox
+```lua
+#Inbox
 ```
 
 如果你完全按照本教程进行操作，收件箱中不会有太多消息。 但是，如果你一直在尝试 aos 环境，则收件箱中可能会多于 1 条消息。
 
 **返回值示范:**
 
-```sh
-# 你的 `收件箱` 命令
+```lua
+-- 你的 `收件箱` 命令
 aos> #Inbox
-# 该命令将返回你收件箱中的消息数量
+-- 该命令将返回你收件箱中的消息数量
 4
 aos>
 ```
@@ -127,7 +127,7 @@ aos>
 
 由于我们主要是为了寻找 `Morpheus` 的回复，因此我们假设他的消息是最后收到的消息。要阅读收件箱中的最后一条消息，请键入以下命令：
 
-```sh
+```lua
 aos> Inbox[#Inbox].Data
 ```
 
@@ -135,12 +135,12 @@ aos> Inbox[#Inbox].Data
 
 预期返回：
 
-```sh
-# 你的 Inbox[x].Data 命令
+```lua
+-- 你的 Inbox[x].Data 命令
 aos> Inbox[#Inbox].Data
-# 该命令将返回消息的 `Data` 字段。
-# Data 通常代表基于文本的消息
-# 从一个进程接收到另一进程。
+-- 该命令将返回消息的 `Data` 字段。
+-- Data 通常代表基于文本的消息
+-- 从一个进程接收到另一进程。
 I am here. You are finally awake. Are you ready to see how far the rabbit hole goes?
 aos>
 ```
