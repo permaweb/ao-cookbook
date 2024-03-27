@@ -18,10 +18,10 @@ Here is a description of the process as outlined in the flowchart:
 
 2. The `mu` service processes the POST request and forwards the message to the `su` service. This is also done using a POST request with the same data protocol and message type.
 
-3. The `su` service seems to interact with a storage or data layer called Arweave, where the message is stored.
+3. The `su` service stores the assignment and message on Arweave.
 
 4. A GET request is made to the `cu` service to retrieve result based on a message ID. The `cu` is a service that evaluates messages on processes and can return result based on an individual message identifier.
 
-5. A GET request is made to the `su` service to retrieve information. This request is looking for messages from a process ID, within a range of time from a start (from*) to an end (to*).
+5. A GET request is made to the `su` service to retrieve the assignment and message. This request is looking for messages from a process ID, within a range of time from a start (from the last evaluation point) to (to the current messageId).
 
 6. The final step is to push any outbox Messages. It involves reviewing the messages and spawns in the Result Object. Based on the outcome of this check, the steps 2, 3, and 4 may be repeated for each relevant message or spawn.
