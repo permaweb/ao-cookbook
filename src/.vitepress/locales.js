@@ -12,11 +12,23 @@ export const localeConfig = (langCode) => ({
   title: get_i18n_str(langCode, "title"),
   description: get_i18n_str(langCode, "description"),
   themeConfig: {
+    outline: {
+      label: get_i18n_str(langCode, "on-this-page"),
+    },
+    docFooter: {
+      prev: get_i18n_str(langCode, "prev-page"),
+      next: get_i18n_str(langCode, "next-page"),
+    },
+    editLink: {
+      pattern: "https://github.com/permaweb/ao-cookbook/edit/main/src/:path",
+      text: get_i18n_str(langCode, "edit-link-text"),
+    },
     logo: {
       light: { src: "/ao_pictograph_lightmode.svg", height: 26, width: 26 },
       dark: { src: "/ao_pictograph_darkmode.svg", height: 26, width: 26 },
     },
     socialLinks: [
+      { icon: "discord", link: "https://discord.gg/vYctEs7aTd" },
       { icon: "github", link: "https://github.com/permaweb/ao-cookbook" },
     ],
     nav: [
@@ -36,7 +48,19 @@ export const localeConfig = (langCode) => ({
           },
           {
             text: get_i18n_str(langCode, "welcome-testnet-info"),
-            link: get_i18n_link(langCode, "/welcome/testnet-info"),
+            link: get_i18n_link(langCode, "/welcome/testnet-info/index"),
+            items: [
+              {
+                text: get_i18n_str(
+                  langCode,
+                  "welcome-testnet-info-cred-and-quests",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/welcome/testnet-info/cred-and-quests",
+                ),
+              },
+            ],
           },
         ],
       },
@@ -167,9 +191,9 @@ export const localeConfig = (langCode) => ({
               {
                 text: get_i18n_str(langCode, "tutorials-0rbit-get-request"),
                 link: get_i18n_link(langCode, "/tutorials/0rbit/get-request"),
-              }
-            ]
-          }
+              },
+            ],
+          },
         ],
       },
       {
@@ -229,13 +253,6 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(langCode, "/guides/aos/blueprints/index"),
                 items: [
                   {
-                    text: get_i18n_str(langCode, "guides-aos-blueprints-token"),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/aos/blueprints/token",
-                    ),
-                  },
-                  {
                     text: get_i18n_str(
                       langCode,
                       "guides-aos-blueprints-chatroom",
@@ -248,11 +265,11 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(
                       langCode,
-                      "guides-aos-blueprints-voting",
+                      "guides-aos-blueprints-cred-utils",
                     ),
                     link: get_i18n_link(
                       langCode,
-                      "/guides/aos/blueprints/voting",
+                      "/guides/aos/blueprints/cred-utils",
                     ),
                   },
                   {
@@ -263,6 +280,23 @@ export const localeConfig = (langCode) => ({
                     link: get_i18n_link(
                       langCode,
                       "/guides/aos/blueprints/staking",
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(langCode, "guides-aos-blueprints-token"),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/token",
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-aos-blueprints-voting",
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/aos/blueprints/voting",
                     ),
                   },
                 ],

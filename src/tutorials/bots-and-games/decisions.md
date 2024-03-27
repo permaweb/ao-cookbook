@@ -1,15 +1,6 @@
----
-prev:
-  text: "Fetching Game State"
-  link: "/tutorials/bots-and-games/game-state"
-next:
-  text: "Automated Responses"
-  link: "/tutorials/bots-and-games/attacking"
----
-
 # Strategic Decicions
 
-With the [latest game state](game-state) at your disposal, your bot can evolve into an "autonomous agent". This transition marks an upgrade in functionality, enabling not just reactions to game states but strategic actions that consider context, energy, and proximity to make decisions.
+With the [latest game state](game-state) at your disposal, your bot can evolve into an `autonomous agent`. This transition marks an upgrade in functionality, enabling not just reactions to game states but strategic actions that consider context, energy, and proximity to make decisions.
 
 ## Writing the Code
 

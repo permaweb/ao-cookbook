@@ -1,12 +1,3 @@
----
-prev:
-  text: "Automated Responses"
-  link: "/tutorials/bots-and-games/attacking"
-next:
-  text: "Mechanics of the Arena"
-  link: "/tutorials/bots-and-games/arena-mechanics"
----
-
 # Bringing it Together
 
 This final guide wraps up our series, where you've built up an autonomous agent piece by piece. Now, let's refine your agent with some optimizations that fine-tune its operations. Here's a quick overview of the key improvements made:

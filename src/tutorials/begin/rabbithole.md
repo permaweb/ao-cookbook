@@ -1,4 +1,4 @@
-# Enter The Construct - An Interactive Tutorial
+# Enter `The Construct` - An Interactive Tutorial
 
 ![White Rabbit](/white_rabbit_outline.svg)
 

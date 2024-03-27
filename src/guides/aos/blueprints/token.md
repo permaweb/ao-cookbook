@@ -160,7 +160,7 @@ Handlers.add('transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), fu
         Action = 'Credit-Notice',
         Sender = msg.From,
         Quantity = tostring(qty),
-        Data = Colors.gray .. "You received " .. Colors.blue .. msg.Quantity .. Colors.gray .. " from " .. Colors.green .. msg.Recipient .. Colors.reset
+        Data = Colors.gray .. "You received " .. Colors.blue .. msg.Quantity .. Colors.gray .. " from " .. Colors.green .. msg.From .. Colors.reset
       })
     end
   else
