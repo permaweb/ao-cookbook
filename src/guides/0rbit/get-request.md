@@ -1,10 +1,10 @@
 ---
 prev:
   text: "0rbit"
-  link: "/tutorials/0rbit/index"
+  link: "/guides/0rbit/index"
 next:
   text: "Post Data"
-  link: "/tutorials/0rbit/post-request"
+  link: "/guides/0rbit/post-request"
 ---
 
 # Get ANY Data

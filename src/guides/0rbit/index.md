@@ -1,10 +1,10 @@
 ---
 prev:
   text: "Bots and Games"
-  link: "/tutorials/bots-and-games/build-game"
+  link: "/guides/aoconnect/monitoring-cron"
 next:
   text: "Get ANY Data"
-  link: "/tutorials/0rbit/get-request"
+  link: "/guides/0rbit/get-request"
 ---
 
 # 0rbit 💫
