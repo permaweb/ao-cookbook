@@ -41,7 +41,6 @@ import {
 
 #### CJS（Node）即 type: `commonjs`
 
-
 ```js
 const {
   result,

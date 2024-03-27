@@ -51,8 +51,14 @@ export const localeConfig = (langCode) => ({
             link: get_i18n_link(langCode, "/welcome/testnet-info/index"),
             items: [
               {
-                text: get_i18n_str(langCode, "welcome-testnet-info-cred-and-quests"),
-                link: get_i18n_link(langCode, "/welcome/testnet-info/cred-and-quests"),
+                text: get_i18n_str(
+                  langCode,
+                  "welcome-testnet-info-cred-and-quests",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/welcome/testnet-info/cred-and-quests",
+                ),
               },
             ],
           },
@@ -267,10 +273,7 @@ export const localeConfig = (langCode) => ({
                     ),
                   },
                   {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-aos-blueprints-token"
-                    ),
+                    text: get_i18n_str(langCode, "guides-aos-blueprints-token"),
                     link: get_i18n_link(
                       langCode,
                       "/guides/aos/blueprints/token",
@@ -365,6 +368,20 @@ export const localeConfig = (langCode) => ({
                   langCode,
                   "/guides/aoconnect/monitoring-cron",
                 ),
+              },
+            ],
+          },
+          {
+            text: get_i18n_str(langCode, "guides-0rbit"),
+            link: get_i18n_link(langCode, "/guides/0rbit/index"),
+            items: [
+              {
+                text: get_i18n_str(langCode, "guides-0rbit-get-request"),
+                link: get_i18n_link(langCode, "/guides/0rbit/get-request"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-0rbit-post-request"),
+                link: get_i18n_link(langCode, "/guides/0rbit/post-request"),
               },
             ],
           },
