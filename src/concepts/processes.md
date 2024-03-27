@@ -51,8 +51,8 @@ ao.send({
 
 ```lua
 ao.spawn(ao.env.Module.Id, {
-    ['Memory-Limit'] = "500-mb",
-    ['Compute-Limit"] = "900000000000000000"
+    ["Memory-Limit"] = "500-mb",
+    ["Compute-Limit"] = "900000000000000000"
 })
 ```
 

@@ -65,7 +65,7 @@ After a few seconds, a bot will respond by broadcasting the list of available qu
 ## How do I view the detailed quest description?
 
 You can learn more about the details of a specific quest, by sending a `/Quests:[index]` slash
-command into the `Quests` chatroom, where `[index]` should be replaced with the quest number, for exmaple:
+command into the `Quests` chatroom, where `[index]` should be replaced with the quest number, for example:
 
 ```lua
 aos> Say("/Quests:1", "Quests")
