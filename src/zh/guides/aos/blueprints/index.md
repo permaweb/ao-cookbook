@@ -3,8 +3,8 @@ prev:
   text: "创建代币"
   link: "../token"
 next:
-  text: "Token 蓝图"
-  link: "./token"
+  text: "聊天室蓝图"
+  link: "./chatroom"
 ---
 
 # 蓝图 Blueprints
@@ -13,10 +13,12 @@ next:
 
 ## 可用的蓝图
 
-- [Token 蓝图](token)
-
 - [聊天室蓝图](chatroom)
 
+- [CRED 蓝图](cred-utils)
+
 - [质押蓝图](staking)
+
+- [Token 蓝图](token)
 
 - [投票蓝图](voting)
