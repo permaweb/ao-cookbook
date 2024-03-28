@@ -313,7 +313,7 @@ Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAtta
 编写完游戏代码后，就可以将其加载到 `aos` 游戏进程中并测试你的游戏了：
 
 ```lua
-.load ao-effect
+.load ao-effect.lua
 ```
 
 > 注意：确保在同一进程中加载竞技场蓝图。
