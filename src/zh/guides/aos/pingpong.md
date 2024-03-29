@@ -37,7 +37,7 @@
   ```lua
   Send({ Target = ao.id, Data = "ping" })
   ```
-- 进程将在收件箱 `Inbox` 中收到带有 "pone" 的恢复消息。
+- 进程将在收件箱 `Inbox` 中收到带有 "pong" 的恢复消息。
 
 ## 步骤 6: 查看收件箱 Inbox
 
