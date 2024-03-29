@@ -5,6 +5,7 @@
 > **注意:** 为了优化处理大段文本的性能，建议开启缓存功能，最高可以将效率提升一倍。
 
 ### 使用示例
+
 ```lua
 local base64 = require(".base64")
 
@@ -32,6 +33,7 @@ assert(decoded == str)
 - **Returns:** Base64 编码后的字符串
 
 #### 示例
+
 ```lua
 -- prints: "SGVsbG8gd29ybGQ="
 print(base64.encode("Hello world"))
@@ -55,6 +57,7 @@ base64.encode(
 - **Returns:** 解码后的字符串
 
 #### 示例
+
 ```lua
 -- prints: "Hello world"
 print(base64.decode("SGVsbG8gd29ybGQ="))
@@ -72,7 +75,7 @@ base64.decode(
 此函数支持创建一个自定义编码表，以定制 [`encode()`](#encode)函数的输出结果。
 
 - **参数:**
-  - `s62`: `{string}`  可选的自定义字符，用于替换标准的字符 62（默认为 "+"）
+  - `s62`: `{string}` 可选的自定义字符，用于替换标准的字符 62（默认为 "+"）
   - `s63`: `{string}` 可选的自定义字符，用于替换标准的字符 63（默认为 "/"）
   - `spad`: `{string}` 可选的自定义填充字符，用于替换标准的填充字符 "="
 - **Returns:** 自定义的编码表
@@ -88,7 +91,6 @@ print(base64.encode("Hello world", encoder))
 ```
 
 ### `makedecoder()`
-
 
 创建一个自定义解码表，以便解码[自定义编码](#makeencoder) 的 base64 字符串。
 

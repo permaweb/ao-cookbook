@@ -18,7 +18,6 @@
 
 ## 其他编辑器
 
-
 1. 验证你的编辑器是否支持[语言服务器协议](https://microsoft.github.io/language-server-protocol/implementors/tools/)
 2. 安装[luals.github.io](https://luals.github.io/#install)中的 Lua 语言服务
 3. 安装 "ao" 语言扩展服务
