@@ -45,6 +45,7 @@
   "guides-aos-modules": "Modules",
   "guides-aos-modules-json": "JSON",
   "guides-aos-modules-ao": "ao",
+  "guides-aos-modules-crypto": "crypto",
   "guides-aos-modules-base64": "Base64",
   "guides-aos-modules-pretty": "Pretty",
   "guides-aos-modules-utils": "Utils",
