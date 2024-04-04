@@ -1,10 +1,10 @@
 ---
 prev:
-  text: "Guides"
-  link: "/guides/index"
+  text: "Post Data"
+  link: "../guides/0rbit/post-request"
 next:
-  text: "References"
-  link: "/references/index"
+  text: "Specifications"
+  link: "./specs"
 ---
 
 # Concepts
