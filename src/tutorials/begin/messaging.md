@@ -168,7 +168,7 @@ Send Morpheus a message with the tag `Action` and the value `rabbithole`.
 **Example:**
 
 ```lua
-Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
+Send({ Target = Morpheus, Data = "I am ready!", Tags = { Action = "rabbithole" }})
 ```
 
 **Expected Return:**

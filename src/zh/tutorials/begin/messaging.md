@@ -168,7 +168,7 @@ aos>
 **例子：**
 
 ```lua
-Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
+Send({ Target = Morpheus, Data = "I am ready!", Tags = { Action = "rabbithole" }})
 ```
 
 **预期返回:**
