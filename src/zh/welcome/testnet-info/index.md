@@ -3,8 +3,8 @@ prev:
   text: "入门"
   link: "../getting-started"
 next:
-  text: "CRED 和任务板"
-  link: "./cred-and-quests"
+  text: "CRED 和任务 FAQ"
+  link: "/zh/welcome/testnet-info/cred-and-quests"
 ---
 
 # 参与 ao 测试网

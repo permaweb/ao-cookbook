@@ -24,7 +24,7 @@ The following guide will guide you through the process of creating a token from 
 
 ### **Step 1: Initializing the Token**
 
-- Open our preferred text editor, preferrably from within the same folder you used fduring the previous tutorial.
+- Open our preferred text editor, preferrably from within the same folder you used during the previous tutorial.
 - Create a new file named `token.lua`.
 - Within `token.lua`, you'll begin by initializing the token's state, defining its balance, name, ticker, and more:
 

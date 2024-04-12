@@ -27,6 +27,6 @@ Send({Target = Router, Data = require('json').encode({hello = "world"})})
 <details>
   <summary><strong>什么时候使用 Send 或 ao.send</strong></summary>
 
-这两个方法都会将消息发送到一个进程，区别是 `ao.send` 可以返回消息，以便于记录日志或者进行故障排查。`Send` 哈数通常在控制台中使用，更方便访问。在 `handlers` 中更推荐使用 `ao.send`，但他们在 `aos`中是可以相互替换的。
+这两个方法都会将消息发送到一个进程，区别是 `ao.send` 可以返回消息，以便于记录日志或者进行故障排查。`Send` 函数通常在控制台中使用，更方便访问。在 `handlers` 中更推荐使用 `ao.send`，但他们在 `aos`中是可以相互替换的。
 
 </details>

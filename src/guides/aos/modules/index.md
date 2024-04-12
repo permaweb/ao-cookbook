@@ -11,4 +11,11 @@ next:
 
 Documentation on all the built-in modules for aos.
 
-[[toc]]
+## Available Modules
+
+- [JSON](json)
+- [ao](ao)
+- [crypto](crypto)
+- [Base64](base64)
+- [pretty](pretty)
+- [Utils](utils)
