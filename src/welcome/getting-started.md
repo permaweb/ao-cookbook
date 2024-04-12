@@ -31,7 +31,7 @@ The utility you just started is a local client, which is ready to relay messages
 
 After it connects, you should see the following:
 
-```sh
+```lua
           _____                   _______                   _____
          /\    \                 /::\    \                 /\    \
         /::\    \               /::::\    \               /::\    \

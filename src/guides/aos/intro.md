@@ -39,7 +39,7 @@ end
 
 **The Expected Results:**
 
-```sh
+```lua
 undefined
 Inbox: 2 >
 ```
