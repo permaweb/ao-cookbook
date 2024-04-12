@@ -1,49 +1,28 @@
 # Accessing Data from Arweave with ao
 
-There may be times in your ao development workflow that you want to access data from arweave. With ao your process can send a message instructing the network to provide that data to your Process in a Message.
+There may be times in your ao development workflow that you want to access data from arweave. With ao your process can send an assignment instructing the network to provide that data to your Process.
 
-In order, to request data from arweave, you simply include a `Tag` called `Load`, in this tag you supply the TXID of the data you would like to retrieve.
+In order, to request data from arweave, you simply call Assign with a list of processes you would like to assign the data to, and a Message which is the txid of a Message.
 
 ```lua
 
-Send({
-  Target = ao.id,
-  Tags = {
-    Load = "WFM_Mi2FUNGCeP7r99XyeE3ySurt07LHxEGfW-wuIdY",
-    Action = "Data"
-  }
+Assign({
+  Processes = { ao.id },
+  Message = 'message-id'
 })
 
 ```
 
-This message will get processed and when it arrives in the Process, it will have a DataItem references by the `Data` property on the incoming message. Also the `Data` of the DataItem will be passed as base64.
+You can also call Send with a table of process ids in the Assignments parameter. This will tell the network to generate the Message and then assign it to all the process ids in the Assignments list.
 
 ```lua
-{
-  Owner = "[Owner Address]"
-  Target = "[Process Identifier]",
-  Data = {
-    Owner = "xDKpdiZ7H9n_SsdX_CMpkybMGIdin5AUciM00mQgxRE",
-    Tags = {
-      "Content-Type": "application/json"
-    },
-    Data = "[base64]",
-    ...
-  }
-  ...
-}
-
-```
-
-In lua, you can decode your data from base64 to its original format using the ".base64" module.
-
-```lua
-local base64 = require(".base64")
-
-
-local data = base64.decode(Msg.Data.Data)
+Send({
+  Target = ao.id,
+  Data = 'Hello World',
+  Assignments = { 'process-id-1', 'process-id-2' }
+})
 ```
 
 ## Why data from Arweave?
 
-Your Process may need to access data to make a decision about something, or you may want to add features to your Process via the `data` load feature.
+Your Process may need to access data from a message to make a decision about something, or you may want to add features to your Process via the `data` load feature. Or you may want to access a Message from a process without replicating the entire message.
