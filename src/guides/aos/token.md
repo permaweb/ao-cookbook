@@ -228,7 +228,7 @@ Make sure you've started your aos process by running `aos` in your terminal.
 
 If you've followd along with the guide, you'll have a `token.lua` file in the same directory as your aos process. From the aos prompt, load in the file.
 
-```sh
+```lua
 .load token.lua
 ```
 
@@ -236,13 +236,13 @@ If you've followd along with the guide, you'll have a `token.lua` file in the sa
 
 Now we can send Messages to our aos process id, from the same aos prompt to see if is working. If we use ao.id as the Target we are sending a message to ourselves.
 
-```sh
+```lua
 Send({ Target = ao.id, Action = "Info" })
 ```
 
 This should print the Info defined in the contract. Check the latest inbox message for the response.
 
-```sh
+```lua
 Inbox[#Inbox].Tags
 ```
 
@@ -268,7 +268,7 @@ If you need another process id, you can run `aos [name]` in another terminal win
 If you're using `aos` in one terminal window, you can run `aos test` in another terminal window to get a new process id.
 :::
 
-```sh
+```lua
 Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'another wallet or processid', Quantity = '10000' }})
 ```
 
@@ -278,11 +278,11 @@ After sending, you'll receive a printed message in the terminal similar to `Debi
 
 Now that you've transferred some tokens, let's check the balances.
 
-```sh
+```lua
 Send({ Target = ao.id, Tags = { Action = "Balances" }})
 ```
 
-```sh
+```lua
 Inbox[#Inbox].Data
 ```
 
@@ -292,13 +292,13 @@ You will see two process IDs or wallet addresses, each displaying a balance. The
 
 Finally, attempt to mint some tokens.
 
-```sh
+```lua
 Send({ Target = ao.id, Tags = { Action = "Mint", Quantity = '1000' }})
 ```
 
 And check the balances again.
 
-```sh
+```lua
 Send({ Target = ao.id, Tags = { Action = "Balances" }})
 Inbox[#Inbox].Data
 ```
