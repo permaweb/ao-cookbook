@@ -9,7 +9,7 @@
 ## 调度器的钱包地址
 
 ```sh
-fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY
+TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog
 ```
 
 ## 在 NodeJS 中创建一个进程
