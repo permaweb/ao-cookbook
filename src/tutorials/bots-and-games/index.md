@@ -8,6 +8,8 @@ next:
 ---
 
 # Bots and Games
+> [!NOTE]  
+> This Quest no longer pays CRED. It remains open to help users with understanding bots and games to assist with creating their own.
 
 Leveraging insights from our previous chapter, this section will guide you through the realm of automation with bots in aos and the construction of games. You will learn to create autonomous agents, using them to navigate and interact with game environments effectively.
 
