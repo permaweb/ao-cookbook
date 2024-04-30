@@ -17,7 +17,7 @@ Let's begin by setting up the foundation for our chatroom.
 
 ## Step 1: The Foundation
 
-- Open your preferred code editor.
+- Open your preferred code editor, e.g. VS Code.
 
 ::: info
 You may find it helpful to have the [Recommended Extensions](../../references/editor-setup.md) installed in your code editor to enhance your Lua scripting experience.

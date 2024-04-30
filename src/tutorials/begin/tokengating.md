@@ -69,9 +69,14 @@ First, we'll test it from the original aos process.
 
 ```lua
 Send({ Target = ao.id , Action = "Broadcast", Data = "Hello" })
--- Expected Results:
+```
+
+Expected Results:
+
+```
 message added to outbox
-Broadcasting message from Neo. Content: Hello.
+New Message From [Your Process ID]: Action = Broadcasted
+Broadcasting message from [Your Process ID]. Content: Hello.
 ```
 
 ## Testing from another Process ID.
@@ -88,8 +93,12 @@ We'll first need to register to the chatroom.
 
 ```lua
 .load chatroom.lua
-Send({ Target = [Your Process ID], Action = "Register" })
--- Expected Results:
+Send({ Target = ao.id, Action = "Register" })
+```
+
+Expected Results:
+
+```
 message added to outbox
 New Message From [Your Process ID]: Data = registered
 ```
@@ -97,8 +106,12 @@ New Message From [Your Process ID]: Data = registered
 Now, let's try to send a message to the chatroom.
 
 ```lua
-Send({ Target = [Your Process ID] , Action = "Broadcast", Data = "Hello?" })
--- Expected Results:
+Send({ Target = ao.id , Action = "Broadcast", Data = "Hello?" })
+```
+
+Expected Results:
+
+```
 message added to outbox
 UNAUTH REQ: [New Process ID]
 ```
