@@ -17,7 +17,7 @@ export const localeConfig = (langCode) => ({
       dark: { src: "/ao_pictograph_darkmode.svg", height: 26, width: 26 },
     },
     socialLinks: [
-      { icon: "discord", link: "https://discord.gg/vYctEs7aTd" },
+      { icon: "discord", link: "https://discord.gg/qWgGxJKwNJ" },
       { icon: "github", link: "https://github.com/permaweb/ao-cookbook" },
     ],
     nav: [
