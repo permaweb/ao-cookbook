@@ -136,16 +136,39 @@ Handlers.add('transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), fu
       if the Cast tag is not set on the Transfer message
     ]] --
     if not msg.Tags.Cast then
-      -- Send Debit-Notice to the Sender
-      ao.send({
+      -- Debit-Notice message template, that is sent to the Sender of the transfer
+      local debitNotice = {
         Target = msg.From,
-        Tags = { Action = 'Debit-Notice', Recipient = msg.Tags.Recipient, Quantity = tostring(qty) }
-      })
-      -- Send Credit-Notice to the Recipient
-      ao.send({
-        Target = msg.Tags.Recipient,
-        Tags = { Action = 'Credit-Notice', Sender = msg.From, Quantity = tostring(qty) }
-      })
+        Action = 'Debit-Notice',
+        Recipient = msg.Recipient,
+        Quantity = tostring(qty),
+        Data = Colors.gray ..
+            "You transferred " ..
+            Colors.blue .. msg.Quantity .. Colors.gray .. " to " .. Colors.green .. msg.Recipient .. Colors.reset
+      }
+      -- Credit-Notice message template, that is sent to the Recipient of the transfer
+      local creditNotice = {
+        Target = msg.Recipient,
+        Action = 'Credit-Notice',
+        Sender = msg.From,
+        Quantity = tostring(qty),
+        Data = Colors.gray ..
+            "You received " ..
+            Colors.blue .. msg.Quantity .. Colors.gray .. " from " .. Colors.green .. msg.From .. Colors.reset
+      }
+
+      -- Add forwarded tags to the credit and debit notice messages
+      for tagName, tagValue in pairs(msg) do
+        -- Tags beginning with "X-" are forwarded
+        if string.sub(tagName, 1, 2) == "X-" then
+          debitNotice[tagName] = tagValue
+          creditNotice[tagName] = tagValue
+        end
+      end
+
+      -- Send Debit-Notice and Credit-Notice
+      ao.send(debitNotice)
+      ao.send(creditNotice)
     end
   else
     ao.send({

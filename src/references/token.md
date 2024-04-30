@@ -91,7 +91,7 @@ Example response message:
 
 ### Transfer(Target, Quantity)
 
-If the sender has a sufficient balance, send the `Quantity` to the `Target`, issuing a `Credit-Notice` to the recipient and a `Debit-Notice` to the sender. If the sender has an insufficient balance, fail and notify the sender.
+If the sender has a sufficient balance, send the `Quantity` to the `Target`, issuing a `Credit-Notice` to the recipient and a `Debit-Notice` to the sender. The `Credit-` and `Debit-Notice` should forward any and all tags from the original `Transfer` message with the `X-` prefix. If the sender has an insufficient balance, fail and notify the sender.
 
 ```lua
 send({
@@ -99,7 +99,8 @@ send({
     Tags = {
         { name = "Action", value = "Transfer" },
         { name = "Recipient", value = "[ADDRESS]" },
-        { name = "Quantity", value = "100" }
+        { name = "Quantity", value = "100" },
+        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
     }
 })
 ```
@@ -112,7 +113,8 @@ ao.send({
     Tags = {
         { name = "Action", value = "Credit-Notice" },
         { name = "Sender", value = "[ADDRESS]" },
-        { name = "Quantity", value = "100"}
+        { name = "Quantity", value = "100"},
+        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
     }
 })
 ```
@@ -174,7 +176,8 @@ ao.send({
         { name = "Action", value = "Credit-Notice" },
         { name = "Quantity", value = "100"},
         { name = "Source-Token", value = "[ADDRESS]" },
-        { name = "Parent-Token", value = "[ADDRESS]" }
+        { name = "Parent-Token", value = "[ADDRESS]" },
+        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
     }
 })
 ```
