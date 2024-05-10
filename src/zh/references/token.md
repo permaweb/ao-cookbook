@@ -208,7 +208,7 @@ if name ~= "Fun Coin" then
 end
 
 if ticker ~= "Fun" then
-  ticker = "fun"
+  ticker = "Fun"
 end
 
 if denomination ~= 6 then
