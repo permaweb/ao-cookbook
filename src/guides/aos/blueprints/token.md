@@ -52,7 +52,7 @@ local ao = require('ao')
         to the Target. It will also issue a Credit-Notice to the Target and a Debit-Notice to the Sender
 
     - Mint(Quantity: number): if the Sender matches the Process Owner, then mint the desired Quantity of tokens, adding
-        them the Processes' balance
+        them to the Processes' balance
 ]]
 --
 local json = require('json')
