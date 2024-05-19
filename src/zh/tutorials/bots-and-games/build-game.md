@@ -181,6 +181,9 @@ Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAtta
 
 你可以参考下面的 `ao-effect.lua` 最终代码：
 
+<details>
+  <summary><strong>最终的 ao-effect.lua 文件</strong></summary>
+  
 ```lua
 -- AO EFFECT: Game Mechanics for AO Arena Game
 
@@ -307,6 +310,8 @@ Handlers.add("PlayerMove", Handlers.utils.hasMatchingTag("Action", "PlayerMove")
 -- Handler for player attacks
 Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAttack"), attack)
 ```
+
+</details>
 
 ## 加载和测试
 

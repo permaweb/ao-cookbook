@@ -6,6 +6,10 @@
 
 创建 token 时，我们将继续使用 `ao` 中的 [Lua 语言](../../references/lua.md) 来铸造一个 token ，并遵循 [token 规范](../../references/token.md) 中的原则。
 
+## Video Tutorial
+
+<iframe width="680" height="350" src="https://www.youtube.com/embed/yge5Oo7K1vM?si=f3vt2eAbL3ON-DBz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## 继续深入兔子洞
 
 在我们上一篇教程[创建聊天室](chatroom)中，我们学习了如何在 `ao` 中创建一个聊天室，邀请 `Morpheus` 和 `Trinity` 到我们创建的聊天室，然后 `Trinity` 现在要求我们为她创建一个 token ，以证明我们值得继续深入兔子洞。

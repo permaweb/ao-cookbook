@@ -58,7 +58,9 @@ if not Logo then Logo = 'optional arweave TXID of logo image' end
 
 ### **步骤 2：信息和余额的 Handlers**
 
-#### 消息的 Handlers
+<br>
+
+#### 传入消息 Handlers
 
 现在让我们添加第一个 Handler 来处理收到的消息。
 
@@ -251,7 +253,8 @@ Inbox[#Inbox].Tags
 为了确保你能准确查看最新消息，请先运行`#Inbox`查看收件箱中的消息总数。
 然后，运行最后一个消息编号以查看数据。
 
-** Example: **
+**示例:**
+
 如果 `#Inbox`返回 `5`，则运行 `Inbox[5].Data` 查看数据。
 :::
 

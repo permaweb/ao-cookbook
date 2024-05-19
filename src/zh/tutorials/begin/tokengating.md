@@ -4,6 +4,10 @@
 现在我们已经创建了一个 token 并将其发送到 `Trinity`，我们可以使用该 token 来对我们的聊天室进行控制：只允许拥有 token 的人进入聊天室。
 :::
 
+## Video Tutorial
+
+<iframe width="680" height="350" src="https://www.youtube.com/embed/VTYmd_E4Igc?si=CEQ0i8qeh33-eJKN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## 如何创建支持 token 的聊天室
 
 让我们创建一个 handler，允许我们对聊天室进行准入控制。该 handler 将响应标签 `Action = "Broadcast"`，这意味着它将替换我们原始的 `Broadcast` handler。
@@ -25,7 +29,7 @@ Handlers.add(
     "Broadcast",
     Handlers.utils.hasMatchingTag("Action", "Broadcast"),
     function(m)
-        if tonumber(Balances[m.From]) < 1 then
+        if Balances[m.From] == nil or tonumber(Balances[m.From]) < 1 then
             print("UNAUTH REQ: " .. m.From)
             return
         end
@@ -65,9 +69,14 @@ Handlers.add(
 
 ```lua
 Send({ Target = ao.id , Action = "Broadcast", Data = "Hello" })
--- 预期结果:
+```
+
+预期结果:
+
+```
 message added to outbox
-Broadcasting message from Neo. Content: Hello.
+New Message From [Your Process ID]: Action = Broadcasted
+Broadcasting message from [Your Process ID]. Content: Hello.
 ```
 
 记住，当你不知道怎么查看最新的消息的时，一定使用：
@@ -78,19 +87,24 @@ Inbox[#Inbox].Data
 
 ## 用另一个进程 ID 进行测试
 
-另外打开一个终端创建新的进程：
-
-```sh
-aos name1
-```
+### 从一个新 aos 进程开始
 
 现在，让我们使用这个没有 token 的新 aos 进程来测试。
+
+```sh
+aos chatroom-no-token # the `chatroom-no-token` is the new process name
+```
 
 我们首先需要注册到聊天室。
 
 ```lua
-Send({ Target = [聊天室的 Process ID], Action = "Register" })
--- 预期结果:
+.load chatroom.lua
+Send({ Target = ao.id, Action = "Register" })
+```
+
+预期结果:
+
+```
 message added to outbox
 New Message From [Your Process ID]: Data = registered
 ```
@@ -98,8 +112,12 @@ New Message From [Your Process ID]: Data = registered
 现在，让我们尝试向聊天室发送消息。
 
 ```lua
-Send({ Target = [聊天室的 Process ID], Action = "Broadcast", Data = "Hello?" })
--- 预期结果:
+Send({ Target = ao.id , Action = "Broadcast", Data = "Hello?" })
+```
+
+预期结果:
+
+```
 message added to outbox
 UNAUTH REQ: [New Process ID]
 ```
@@ -122,7 +140,17 @@ Send({ Target = ao.id , Action = "Broadcast", Data = "It is done" })
 
 ### 预期结果
 
-Trinity 会发送一条消息说："I guess Morpheus was right. You are the one. Consider me impressed. You are now ready to join The Construct, an exclusive chatroom available to only those that have completed this tutorial. Now, go join the others by using the same tag you used `Register`, with this process ID: [Construct Process ID]. Good luck."
+Trinity 会发送一条消息说："I guess Morpheus was right. You are the one. Consider me impressed.
+You are now ready to join The Construct, an exclusive chatroom available
+to only those that have completed this tutorial.
+Now, go join the others by using the same tag you used `Register`, with
+this process ID: [Construct Process ID]
+Good luck.
+-Trinity".
+
+::: warning
+仔细阅读 Trinity 的信息，了解如何提交您的 claim 并获得您的 CRED 代币。
+:::
 
 ## 结论
 
