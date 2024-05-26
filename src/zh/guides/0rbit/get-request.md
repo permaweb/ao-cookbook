@@ -7,46 +7,46 @@ next:
   link: "/guides/0rbit/post-request"
 ---
 
-# Get ANY Data
+# 获取任意数据
 
-In this tutorial, we will build a very simple `ao` process that fetches data from the web using the `0rbit` oracle network.
+本教程将构建一个简单的 `ao` 进程，利用 `0rbit` 预言机网络从网上获取数据。
 
-## Getting Started with `aos`
+## 开始使用 `aos`
 
-To work with the `ao` computer, your machine requires a local environment to run the `ao` process, which aos will provide.
+使用 `ao` 计算机需要一个本地环境来运行 `ao` 进程，aos 将为你提供这个环境。
 
-1. **Install aos**
-   Fire up your terminal and run:
+1. **安装 aos**
+   打开你的终端并运行：
 
 ```bash
 npm i -g https://get_ao.g8way.io
 ```
 
-2. **Launch aos**
-   Next, create your instance of aos:
+2. **启动 aos**
+   接下来，创建你的 aos 实例：
 
 ```bash
 aos
 ```
 
-3. **Store the 0rcale `processId`**
-   This will initialize a variable with the `processId` of the 0rcale.
+3. **保存 0rcale `processId`**
+   这将初始化一个变量，存储 0rcale 的 `processId`。
 
 ```lua
 _0rbit = "WSXUI2JjYUldJ7CKq9wE1MGwXs-ldzlUlHOQszwQe0s"
 ```
 
-_And voilà! Let's get the data!_
+_一切准备就绪！让我们开始获取数据吧！_
 
-## Fetching Data
+## 获取数据
 
-1. Start your editor
+1. 打开编辑器
 
 ```bash
 .editor
 ```
 
-2. Create a command to fetch data.
+2. 创建获取数据的命令。
 
 ```lua
 Send({
@@ -56,22 +56,22 @@ Send({
 })
 ```
 
-In this command:
+在这个命令中：
 
-- `TARGET` is the process ID of the `ao` process the user wants to interact with, which is 0rbit's GET `ao` process.
-- `Action` is the specific tag required by 0rbit to perform the Get request.
-- `Url` is the website URL from which we want to get the data.
+- `TARGET` 是用户想要交互的 `ao` 进程 ID，也就是 0rbit 的 GET `ao` 进程。
+- `Action` 是 0rbit 执行 Get 请求所需的特定标签。
+- `Url` 是我们要获取数据的网站 URL。
 
-3. Execute the command
+3. 执行命令
 
-This will end your editor and execute the command.
+这将退出编辑器并执行命令。
 
 ```bash
 .done
 ```
 
-You will receive a new message in a few seconds, including your requested data.
+你会在几秒钟内收到一条新消息，其中包含你请求的数据。
 
-_Awesome! You have successfully fetched data from the web using the `0rbit` oracle network._
+_太棒了！你已成功使用 `0rbit` 预言机网络从网络获取数据。_
 
-If you have any doubts or questions, feel free to ask in the [0rbit Discord](https://discord.gg/4SddWhvvJw).
+如果您有任何疑问，请随时在  [0rbit Discord](https://discord.gg/4SddWhvvJw) 中提问。
