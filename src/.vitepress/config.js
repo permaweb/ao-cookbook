@@ -5,6 +5,11 @@ import { localeConfig } from "./locales.js";
 
 // https://vitepress.dev/reference/site-config
 const config = defineConfig({
+  themeConfig: {
+    search: {
+      provider: "local",
+    },
+  },
   head: [
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     [
