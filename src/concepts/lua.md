@@ -2,7 +2,7 @@
 
 Before we can explore ao in greater depth, let's take a moment to learn the basics of Lua: your companion for commanding aos processes.
 
-Lua is a simple language with few surprises. If you know Javascript, it will feel like a simplified, purer version. If you are learning from-scratch, it will seem like a tiny language that focuses on the important stuff: Clean computation with sane syntax.
+Lua is a simple language with few surprises. If you know JavaScript, it will feel like a simplified, purer version. If you are learning from-scratch, it will seem like a tiny language that focuses on the important stuff: Clean computation with sane syntax.
 
 In this section we will cover the basics of Lua in just a few minutes. If you already know Lua, jump right through to the [next chapter]()
 
@@ -10,7 +10,7 @@ In this section we will cover the basics of Lua in just a few minutes. If you al
 
 For the purpose of this tutorial, we will be assuming that you have already completed the [getting started](/welcome/getting-started) guide. If not, complete that first.
 
-If you logged out of your process, you can always re-open it by running `aos` on your commandline, optionally specifying your key file with `--wallet [location]`.
+If you logged out of your process, you can always re-open it by running `aos` on your command-line, optionally specifying your key file with `--wallet [location]`.
 
 ## Basic Lua expressions.
 

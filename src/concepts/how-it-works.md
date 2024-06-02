@@ -1,6 +1,6 @@
 # How ao messaging works
 
-Before we dive in to ao, I want to share with you a little information about unix. Unix is a powerful operating system, but in its design it is focused on two Principal "Types". Files and Programs. A File is data and a program is logic, when you combine the two you get information.
+Before we dive in to ao, I want to share with you a little information about Unix. Unix is a powerful operating system, but in its design it is focused on two Principal "Types". Files and Programs. A File is data and a program is logic, when you combine the two you get information.
 
 `Input.file | TransformProgram | Output.file`
 

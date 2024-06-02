@@ -46,7 +46,7 @@ Let's define a new variable that stores the latest state as follows:
 LatestGameState = LatestGameState or nil
 ```
 
-The syntax preserves exisitng values of the variable when you load successive iterations of the `bot.lua` file in your terminal, instead of overwriting it. If there is no pre-existing value then a `nil` value is assigned to the variable.
+The syntax preserves existing values of the variable when you load successive iterations of the `bot.lua` file in your terminal, instead of overwriting it. If there is no pre-existing value then a `nil` value is assigned to the variable.
 
 Then implement another handler as follows:
 

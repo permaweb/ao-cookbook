@@ -21,7 +21,7 @@ the `Inbox` is a collection of messages that your Process has received.
 Inbox[1]
 ```
 
-If you want to get a count of messages, just add the `#` infront of `Inbox`.
+If you want to get a count of messages, just add the `#` in front of `Inbox`.
 
 ```lua
 #Inbox
@@ -60,7 +60,7 @@ In aos process there are some Globals that can make development a little more in
 | Handlers               | a lua Table that contains helper functions that allows you to create handlers that execute functionality based on the pattern matching function on inbound messages               | table        |
 | Dump                   | a function that takes any lua Table and generates a print friendly output of the data                                                                                             | function     |
 | Utils                  | a functional utility library with functions like map, reduce, filter                                                                                                              | module       |
-| ao                     | this is a core function library for sending messages and spawing processes                                                                                                        | module       |
+| ao                     | this is a core function library for sending messages and spawning processes                                                                                                       | module       |
 
 ## Modules
 

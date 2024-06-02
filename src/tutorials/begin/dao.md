@@ -2,7 +2,7 @@
 
 This guide brings you through the process of building a DAO using aos. If you have not already, you will need to first build a [token](./token.md) in aos. We will load the DAO code into aos alongside the token code from the [token](./token.md) guide. In the context of ao a DAO may be used to govern MU, CU, and SU nodes.
 
-In our DAO we will implement a process knwon as "slashing". In the case of ao, if a unit is misbehaving, other units may vote to slash them. Slashing means they will lose their stake, we will get more into stake later.
+In our DAO we will implement a process known as "slashing". In the case of ao, if a unit is misbehaving, other units may vote to slash them. Slashing means they will lose their stake, we will get more into stake later.
 
 Make a new directory called `dao` and copy in the token.lua created in the token guide.
 
@@ -153,7 +153,7 @@ Handlers.add("finalize", function (msg) return -1 end, finalizationHandler)
 
 ## Loading and Testing
 
-Now that we have dao.lua complete we can load it into aos alongside token.lua from the [token](./token.md) guide. Run a new aos Proces called `dao` while also loading dao.lua and token.lua
+Now that we have dao.lua complete we can load it into aos alongside token.lua from the [token](./token.md) guide. Run a new aos Process called `dao` while also loading dao.lua and token.lua
 
 ```sh
 aos dao --load token.lua --load dao.lua
