@@ -43,13 +43,13 @@ Send({ Target = "process ID", Data = "Hello World!" })
 We'll use the process ID provided below and store it as a variable called Morpheus.
 
 ```lua
-wu_tAUDUveetQZpcN8UxHt51d9dyUkI4Z-MfQV8LnUU
+ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s
 ```
 
 Copy the process ID above and store it as a variable by running the below command in the aos CLI:
 
 ```lua
-Morpheus = "wu_tAUDUveetQZpcN8UxHt51d9dyUkI4Z-MfQV8LnUU"
+Morpheus = "ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s"
 ```
 
 This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specific process ID.
@@ -64,7 +64,7 @@ When creating the `Morpheus` variable, the only response you should see is `unde
 -- Check the Morpheus variable by typing `Morpheus`
  Morpheus
 -- Expected Results:
-wu_tAUDUveetQZpcN8UxHt51d9dyUkI4Z-MfQV8LnUU
+ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s
 
 
 -- If `undefined` is returned,
