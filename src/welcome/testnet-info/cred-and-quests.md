@@ -94,7 +94,7 @@ It will take some time to manually process your claim request.
 
 ## When do I get my CRED?
 
-Your request will be manually reveiewed to verify that you followed all of the necessary steps.
+Your request will be manually reviewed to verify that you followed all of the necessary steps.
 Please allow ~24 hours on business days for your claim to be processed.
 
 ## How do I view/verify my current CRED balance?

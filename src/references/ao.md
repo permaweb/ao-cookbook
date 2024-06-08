@@ -111,14 +111,14 @@ Schema
 
 ### spawn(module : string, spawn : Spawn\<table>) : Spawn\<table>
 
-The `spawn` function takes a module TXID as the first argument and a full or parital Spawn table. The result will return a full Spawn table. The spawn function will also generate a `Ref_` tag with a unique reference identifier.
+The `spawn` function takes a module TXID as the first argument and a full or partial Spawn table. The result will return a full Spawn table. The spawn function will also generate a `Ref_` tag with a unique reference identifier.
 
 **parameters**
 
 | Name   | Description                                                                             | Type   |
 | ------ | --------------------------------------------------------------------------------------- | ------ |
-| module | The TXID that identifies the module binary to use to instaniate the process with        | string |
-| spawn  | The `spawn` full or parital table object that contains the `Data` and `Tags` properties | table  |
+| module | The TXID that identifies the module binary to use to instantiate the process with       | string |
+| spawn  | The `spawn` full or partial table object that contains the `Data` and `Tags` properties | table  |
 
 Schema
 

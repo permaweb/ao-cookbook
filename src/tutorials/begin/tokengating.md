@@ -143,7 +143,7 @@ Good luck.
 -Trinity". Additionally, a footer will follow the message.
 
 ::: warning
-Read the footer on Trinity's message carefully to find out how to submit your claim and recieve your CRED.
+Read the footer on Trinity's message carefully to find out how to submit your claim and receive your CRED.
 :::
 
 ## Conclusion

@@ -27,7 +27,7 @@ ao.send({
 
 ### `ao.env`
 
-The `ao.env` global variable holds informationg about the initializing message of the process. It follows the schema below:
+The `ao.env` global variable holds information about the initializing message of the process. It follows the schema below:
 
 ```json
 {

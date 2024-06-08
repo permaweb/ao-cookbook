@@ -398,7 +398,7 @@ Handlers.add(
 
 ## Arena Game Blueprint
 
-For those interested in using this arena framework, we've made this code easily accesible through a blueprint. Simply run the following code in your terminal:
+For those interested in using this arena framework, we've made this code easily accessible through a blueprint. Simply run the following code in your terminal:
 
 ```lua
 .load-blueprint arena

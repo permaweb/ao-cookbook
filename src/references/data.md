@@ -1,8 +1,8 @@
 # Accessing Data from Arweave with ao
 
-There may be times in your ao development workflow that you want to access data from arweave. With ao your process can send an assignment instructing the network to provide that data to your Process.
+There may be times in your ao development workflow that you want to access data from Arweave. With ao your process can send an assignment instructing the network to provide that data to your Process.
 
-In order, to request data from arweave, you simply call Assign with a list of processes you would like to assign the data to, and a Message which is the txid of a Message.
+In order, to request data from Arweave, you simply call Assign with a list of processes you would like to assign the data to, and a Message which is the txid of a Message.
 
 ```lua
 

@@ -93,4 +93,4 @@ If your OS version is different than the latest version, a message asking if you
 
 Welcome to your new home in the ao computer! The prompt you are now looking at is your own personal server in this decentralized machine.
 
-Now, let's journey further down the rabbit hole by exploring one of the two core concept type of ao: [messaging](messaging).
+Now, let's journey further down the rabbit hole by exploring one of the two core concept types of ao: [messaging](messaging).
