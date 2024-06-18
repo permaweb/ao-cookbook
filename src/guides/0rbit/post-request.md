@@ -3,7 +3,7 @@ prev:
   text: "Get ANY Data"
   link: "/guides/0rbit/get-request"
 next:
-  text: "betteridea"
+  text: "BetterIDEa IDE"
   link: "../betteridea/index.md"
 ---
 

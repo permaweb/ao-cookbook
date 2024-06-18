@@ -1,10 +1,10 @@
 ---
 prev:
-  text: "Get ANY Data"
-  link: "/guides/0rbit/get-request"
+  text: "0rbit"
+  link: "../0rbit/index"
 next:
   text: "aos"
-  link: "./aos/index"
+  link: "../aos/index"
 ---
 
 # BetterIDEa
@@ -22,4 +22,4 @@ Features include:
 - Share projects with anyone through ao processes
 - Tight integration with [ao package manager](https://apm.betteridea.dev)
 
-Read detailed information about the various features and integrations of the ide in the [documentation](https://docs.betteridea.dev/).
+Read detailed information about the various features and integrations of the ide in the [documentation](https://docs.betteridea.dev).
