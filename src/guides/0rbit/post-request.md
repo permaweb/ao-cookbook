@@ -3,8 +3,8 @@ prev:
   text: "Get ANY Data"
   link: "/guides/0rbit/get-request"
 next:
-  text: "Concepts"
-  link: "/concepts/index"
+  text: "betteridea"
+  link: "../betteridea/index.md"
 ---
 
 # Post Data

@@ -16,3 +16,4 @@ These guides are designed to help you navigate ao and aos, and to help you build
 - [aos](aos/index)
 - [aoconnect](aoconnect/aoconnect)
 - [0rbit](0rbit/index)
+- [betteridea](betteridea/index)

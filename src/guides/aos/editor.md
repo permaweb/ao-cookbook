@@ -21,3 +21,18 @@ Install the [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=su
 1. Verify that your editor supports the [language server protocol](https://microsoft.github.io/language-server-protocol/implementors/tools/)
 2. Install Lua Language Server by following the instructions at [luals.github.io](https://luals.github.io/#install)
 3. Install the "ao" addon to the language server
+
+## BetterIDEa IDE
+
+[BetterIDEa](https://ide.betteridea.dev) is a custom web based IDE for developing on ao.
+
+It offers a built in Lua language server with ao definitions, so you don't need to install anything. Just open the IDE and start coding!
+
+Features include:
+
+- Code completion
+- Cell based notebook ui for rapid development
+- Easy process management
+- Markdown and Latex cell support
+- Share projects with anyone through ao processes
+- Tight integration with [ao package manager](https://apm.betteridea.dev)
