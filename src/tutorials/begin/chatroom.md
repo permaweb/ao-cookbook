@@ -164,7 +164,7 @@ Morpheus is an autonomous agent with a handler that will respond to the tag `Act
 
 - Let's send Morpheus an invitation to join the chatroom:
   ```lua
-  Send({ Target = Morpheus, Action = "Join" })
+  Send({ Target = Morpheus, Action = "Register" })
   ```
 - To confirm that Morpheus has joined the chatroom, check the `Members` list:
 
