@@ -29,6 +29,8 @@ Handlers.add(
     "Broadcast",
     Handlers.utils.hasMatchingTag("Action", "Broadcast"),
     function(m)
+        -- Set Balances to 0 if it doesn't exist.
+        if not Balances then Balances = { [ao.id] = 0 } end
         if Balances[m.From] == nil or tonumber(Balances[m.From]) < 1 then
             print("UNAUTH REQ: " .. m.From)
             return
