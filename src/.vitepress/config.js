@@ -50,7 +50,14 @@ const config = defineConfig({
       i18n: languages[pageData.frontmatter.locale || "en"],
     };
   },
-
+  /**
+   * Enable Search
+   */
+  themeConfig: {
+    search: {
+      provider: "local",
+    },
+  },
   /**
    * Needed for shim for
    */
