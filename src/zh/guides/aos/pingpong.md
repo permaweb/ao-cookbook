@@ -8,7 +8,7 @@
 
 ## 步骤 2: 打开内置编辑器
 
-- 在 aos CLI 中输入“.editor”打开内置文本编辑器。 你将在此处编写 pingpong 处理程序代码。
+- 在 aos CLI 中输入 `.editor` 打开内置文本编辑器。 你将在此处编写 pingpong 处理程序代码。
 
 ## 步骤 3: 添加 Pingpong Handler
 

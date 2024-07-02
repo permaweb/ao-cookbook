@@ -36,22 +36,30 @@ AOLink 4种分析指标:
 - Result Type
 - Data
 
-如果你想进一步排除故障和调试，你可以通过单击 “Compute” 来查看 CU（计算单元）的结果。
+如果你想进一步排除故障和调试问题，你可以通过单击 “Compute” 查看 CU（计算单元）的结果。
 
 ![ao.link compute result example for debugging](aolink-compute-example.png)
+
+并进一步理解关联的消息。
+![ao.link linked messages](aolink-linked-message-example.png)
 
 ### 进程细节
 
 ![ao.link displaying a process in details](aolink-process-details.png)
 
-进程细节提供进程的详细信息，在标签（Tag）中查看该进程的实例化所使用的各个模块，这非常有用
+进程细节提供进程的详细信息，在标签（Tag）中查看该进程的实例化所使用的各个模块，这点非常有用。
 左侧的图表显示的是进程的交互图。
-在本例中，这是 DevChat，你可以看到通过注册和广播消息进行交互的所有进程。
 这个例子是 DevChat 进程的实例，你可以看到通过注册和消息广播与之交互的所有进程
+
+你可以很轻松地通过点击 “Fetch” 按钮查看 Info Handler 。
+![ao.link fetching the info hanlder](aolink-info-handler-example.png)
+
+底部显示了进程的余额和所有发送的消息，你可以通过标签将它们细分为代币转移和代币余额。
+![ao.link process message and token info](aolink-message-and-token-example.png)
 
 ## 更多问题?
 
-请随时访问 DataOS 的 Discord 社区。
+对于有关 ao.link 的任何问题和支持，请随时加入 Autonomous Finance 社区 Discord 服务器寻求帮助。
 https://discord.gg/4kF9HKZ4Wu
 
 ## 总结

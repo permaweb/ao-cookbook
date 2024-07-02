@@ -36,6 +36,7 @@ next:
 
 - [JSON](modules/json)
 - [`ao`](modules/ao)
+- [crypto](modules/crypto)
 - [Base64](modules/base64)
 - [Pretty](modules/pretty)
 - [Utils](modules/utils)
