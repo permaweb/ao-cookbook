@@ -19,7 +19,7 @@ import {
 } from "@permaweb/aoconnect";
 ```
 
-## 连接到特定的 MU, CU, 和网关
+## 连接到特定的 MU、CU 和网关
 
 ```js
 import { connect } from "@permaweb/aoconnect";
