@@ -30,8 +30,8 @@ aos
 
 ## Step 3: How to Send a Message
 
-```sh
-  Send({ Target = "process ID", Data = "Hello World!" })
+```lua
+Send({ Target = "process ID", Data = "Hello World!" })
 ```
 
 - **Send**: The `Send` function is globally available in the aos interactive environment.
@@ -42,14 +42,14 @@ aos
 
 We'll use the process ID provided below and store it as a variable called Morpheus.
 
-```sh
-P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434
+```lua
+ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s
 ```
 
 Copy the process ID above and store it as a variable by running the below command in the aos CLI:
 
-```sh
-Morpheus = "P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434"
+```lua
+Morpheus = "ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s"
 ```
 
 This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specific process ID.
@@ -60,15 +60,15 @@ When creating the `Morpheus` variable, the only response you should see is `unde
 
 ### Check the `Morpheus` Variable
 
-```sh
-# Check the Morpheus variable by typing `Morpheus`
+```lua
+-- Check the Morpheus variable by typing `Morpheus`
  Morpheus
-# Expected Results:
-P2RS2VtQ4XtYEvAXYDulEA9pCBCIRpJDcakTR9aW434
+-- Expected Results:
+ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s
 
 
-# If `undefined` is returned,
-# then the variable was not created successfully.
+-- If `undefined` is returned,
+-- then the variable was not created successfully.
 ```
 
 ## Step 5: Send a Message to Morpheus
@@ -84,12 +84,12 @@ Send({ Target = Morpheus, Data = "Morpheus?" })
 
 **Expected Results:**
 
-```sh
-# Your Message Command
+```lua
+-- Your Message Command
  Send({ Target = Morpheus, Data = "Morpheus?"})
-# Message is added to the outbox
+-- Message is added to the outbox
 message added to outbox
-# A New Message is received from `Morpheus`'s process ID
+-- A New Message is received from `Morpheus`'s process ID
 New Message From BWM...ulw: Data = I am here. You are f
 
 ```
@@ -107,7 +107,7 @@ Let's check your inbox to see how many messages you have received.
 
 Inside your aos CLI, type the following command:
 
-```sh
+```lua
  #Inbox
 ```
 
@@ -115,10 +115,10 @@ If you're actively following through the tutorial, the inbox will not have many 
 
 **Example Return:**
 
-```sh
-# Your Inbox Command
+```lua
+-- Your Inbox Command
  #Inbox
-# The command will return the number of messages in your inbox.
+-- The command will return the number of messages in your inbox.
 4
 
 ```
@@ -127,7 +127,7 @@ In the example above, the return is `4`, stating that there are four messages in
 
 As we're actively looking for `Morpheus`'s response, we'll assume his message was the last one received. To read the last message in your inbox, type the following command:
 
-```sh
+```lua
  Inbox[#Inbox].Data
 ```
 
@@ -135,12 +135,12 @@ This command allows you to isolate the Data from the message and only read the c
 
 The Expected Return:
 
-```sh
-# Your Inbox[x].Data Command
+```lua
+-- Your Inbox[x].Data Command
  Inbox[#Inbox].Data
-# The command will return the `Data` of the message.
-# Data is what usually represents the text-based message
-# received from one process to another.
+-- The command will return the `Data` of the message.
+-- Data is what usually represents the text-based message
+-- received from one process to another.
 I am here. You are finally awake. Are you ready to see how far the rabbit hole goes?
 
 ```

@@ -12,23 +12,12 @@ export const localeConfig = (langCode) => ({
   title: get_i18n_str(langCode, "title"),
   description: get_i18n_str(langCode, "description"),
   themeConfig: {
-    outline: {
-      label: get_i18n_str(langCode, "on-this-page"),
-    },
-    docFooter: {
-      prev: get_i18n_str(langCode, "prev-page"),
-      next: get_i18n_str(langCode, "next-page"),
-    },
-    editLink: {
-      pattern: "https://github.com/permaweb/ao-cookbook/edit/main/src/:path",
-      text: get_i18n_str(langCode, "edit-link-text"),
-    },
     logo: {
       light: { src: "/ao_pictograph_lightmode.svg", height: 26, width: 26 },
       dark: { src: "/ao_pictograph_darkmode.svg", height: 26, width: 26 },
     },
     socialLinks: [
-      { icon: "discord", link: "https://discord.gg/vYctEs7aTd" },
+      { icon: "discord", link: "https://discord.gg/qWgGxJKwNJ" },
       { icon: "github", link: "https://github.com/permaweb/ao-cookbook" },
     ],
     nav: [
@@ -51,8 +40,14 @@ export const localeConfig = (langCode) => ({
             link: get_i18n_link(langCode, "/welcome/testnet-info/index"),
             items: [
               {
-                text: get_i18n_str(langCode, "welcome-testnet-info-cred-and-quests"),
-                link: get_i18n_link(langCode, "/welcome/testnet-info/cred-and-quests"),
+                text: get_i18n_str(
+                  langCode,
+                  "welcome-testnet-info-cred-and-quests",
+                ),
+                link: get_i18n_link(
+                  langCode,
+                  "/welcome/testnet-info/cred-and-quests",
+                ),
               },
             ],
           },
@@ -267,10 +262,7 @@ export const localeConfig = (langCode) => ({
                     ),
                   },
                   {
-                    text: get_i18n_str(
-                      langCode,
-                      "guides-aos-blueprints-token"
-                    ),
+                    text: get_i18n_str(langCode, "guides-aos-blueprints-token"),
                     link: get_i18n_link(
                       langCode,
                       "/guides/aos/blueprints/token",
@@ -299,6 +291,10 @@ export const localeConfig = (langCode) => ({
                   {
                     text: get_i18n_str(langCode, "guides-aos-modules-ao"),
                     link: get_i18n_link(langCode, "/guides/aos/modules/ao"),
+                  },
+                  {
+                    text: get_i18n_str(langCode, "guides-aos-modules-crypto"),
+                    link: get_i18n_link(langCode, "/guides/aos/modules/crypto"),
                   },
                   {
                     text: get_i18n_str(langCode, "guides-aos-modules-base64"),
@@ -365,6 +361,10 @@ export const localeConfig = (langCode) => ({
                   langCode,
                   "/guides/aoconnect/monitoring-cron",
                 ),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-assign-data"),
+                link: get_i18n_link(langCode, "/guides/aoconnect/assign-data"),
               },
             ],
           },

@@ -24,7 +24,7 @@ The following guide will guide you through the process of creating a token from 
 
 ### **Step 1: Initializing the Token**
 
-- Open our preferred text editor, preferrably from within the same folder you used fduring the previous tutorial.
+- Open our preferred text editor, preferrably from within the same folder you used during the previous tutorial.
 - Create a new file named `token.lua`.
 - Within `token.lua`, you'll begin by initializing the token's state, defining its balance, name, ticker, and more:
 
@@ -136,16 +136,39 @@ Handlers.add('transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), fu
       if the Cast tag is not set on the Transfer message
     ]] --
     if not msg.Tags.Cast then
-      -- Send Debit-Notice to the Sender
-      ao.send({
+      -- Debit-Notice message template, that is sent to the Sender of the transfer
+      local debitNotice = {
         Target = msg.From,
-        Tags = { Action = 'Debit-Notice', Recipient = msg.Tags.Recipient, Quantity = tostring(qty) }
-      })
-      -- Send Credit-Notice to the Recipient
-      ao.send({
-        Target = msg.Tags.Recipient,
-        Tags = { Action = 'Credit-Notice', Sender = msg.From, Quantity = tostring(qty) }
-      })
+        Action = 'Debit-Notice',
+        Recipient = msg.Recipient,
+        Quantity = tostring(qty),
+        Data = Colors.gray ..
+            "You transferred " ..
+            Colors.blue .. msg.Quantity .. Colors.gray .. " to " .. Colors.green .. msg.Recipient .. Colors.reset
+      }
+      -- Credit-Notice message template, that is sent to the Recipient of the transfer
+      local creditNotice = {
+        Target = msg.Recipient,
+        Action = 'Credit-Notice',
+        Sender = msg.From,
+        Quantity = tostring(qty),
+        Data = Colors.gray ..
+            "You received " ..
+            Colors.blue .. msg.Quantity .. Colors.gray .. " from " .. Colors.green .. msg.From .. Colors.reset
+      }
+
+      -- Add forwarded tags to the credit and debit notice messages
+      for tagName, tagValue in pairs(msg) do
+        -- Tags beginning with "X-" are forwarded
+        if string.sub(tagName, 1, 2) == "X-" then
+          debitNotice[tagName] = tagValue
+          creditNotice[tagName] = tagValue
+        end
+      end
+
+      -- Send Debit-Notice and Credit-Notice
+      ao.send(debitNotice)
+      ao.send(creditNotice)
     end
   else
     ao.send({
@@ -228,7 +251,7 @@ Make sure you've started your aos process by running `aos` in your terminal.
 
 If you've followd along with the guide, you'll have a `token.lua` file in the same directory as your aos process. From the aos prompt, load in the file.
 
-```sh
+```lua
 .load token.lua
 ```
 
@@ -236,13 +259,13 @@ If you've followd along with the guide, you'll have a `token.lua` file in the sa
 
 Now we can send Messages to our aos process id, from the same aos prompt to see if is working. If we use ao.id as the Target we are sending a message to ourselves.
 
-```sh
+```lua
 Send({ Target = ao.id, Action = "Info" })
 ```
 
 This should print the Info defined in the contract. Check the latest inbox message for the response.
 
-```sh
+```lua
 Inbox[#Inbox].Tags
 ```
 
@@ -268,7 +291,7 @@ If you need another process id, you can run `aos [name]` in another terminal win
 If you're using `aos` in one terminal window, you can run `aos test` in another terminal window to get a new process id.
 :::
 
-```sh
+```lua
 Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'another wallet or processid', Quantity = '10000' }})
 ```
 
@@ -278,11 +301,11 @@ After sending, you'll receive a printed message in the terminal similar to `Debi
 
 Now that you've transferred some tokens, let's check the balances.
 
-```sh
+```lua
 Send({ Target = ao.id, Tags = { Action = "Balances" }})
 ```
 
-```sh
+```lua
 Inbox[#Inbox].Data
 ```
 
@@ -292,13 +315,13 @@ You will see two process IDs or wallet addresses, each displaying a balance. The
 
 Finally, attempt to mint some tokens.
 
-```sh
+```lua
 Send({ Target = ao.id, Tags = { Action = "Mint", Quantity = '1000' }})
 ```
 
 And check the balances again.
 
-```sh
+```lua
 Send({ Target = ao.id, Tags = { Action = "Balances" }})
 Inbox[#Inbox].Data
 ```

@@ -1,6 +1,6 @@
 # Troubleshooting using ao.link
 
-Working with a decentralized computer and network, you need to be able to troubleshoot more than your own code. You need to be able to track messages and processes. This is where [https://ao.link](https://ao.link) becomes an essential tool in your toolbox.
+Working with a decentralized computer and network, you need to be able to troubleshoot more than your own code. You need to be able to track messages, token balances, token transfers of processes. This is where [https://ao.link](https://ao.link) becomes an essential tool in your toolbox.
 
 ![ao.link homepage displaying ao network stats](aolink.png)
 
@@ -40,6 +40,9 @@ If you want to further troubleshoot and debug, you have the option to look at th
 
 ![ao.link compute result example for debugging](aolink-compute-example.png)
 
+And further understand linked messages.
+![ao.link linked messages](aolink-linked-message-example.png)
+
 ### Process Details
 
 ![ao.link displaying a process in details](aolink-process-details.png)
@@ -48,9 +51,15 @@ The process details provide you with information about the process it's useful t
 If you notice on the left you see the interaction with the process displayed on a graph.
 In this case, this is DevChat, and you can see all the processes that have interacted by Registering and Broadcasting Messages.
 
+You can effortless check the Info Handler, by pressing the "Fetch" button.
+![ao.link fetching the info hanlder](aolink-info-handler-example.png)
+
+On the bottom you see the processes balance and all messages send, with the option to break it down into Token transfers and Token balances using the tabs.
+![ao.link process message and token info](aolink-message-and-token-example.png)
+
 ## Further Questions?
 
-Feel free to reach out on the community Discord of DataOS.
+Feel free to reach out on the community Discord of Autonomous Finance, for all questions and support regarding ao.link.
 https://discord.gg/4kF9HKZ4Wu
 
 ## Summary

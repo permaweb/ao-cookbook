@@ -8,8 +8,8 @@ You must also have the wallet address of a Scheduler Unit (SU). This specified S
 
 ## Wallet address of an available Scheduler
 
-```sh
-fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY
+```lua
+TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog
 ```
 
 ## Spawning a Process in NodeJS
@@ -27,7 +27,7 @@ const processId = await spawn({
   // The Arweave TXID of the ao Module
   module: "module TXID",
   // The Arweave wallet address of a Scheduler Unit
-  scheduler: "TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog",
+  scheduler: "_GQ33BkPtZrqxA84vM8Zk-N2aO0toNNu_C-l-rawrBA",
   // A signer function containing your wallet
   signer: createDataItemSigner(wallet),
   /*
@@ -50,7 +50,7 @@ const processId = await spawn({
   // The Arweave TXID of the ao Module
   module: "module TXID",
   // The Arweave wallet address of a Scheduler Unit
-  scheduler: "TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog",
+  scheduler: "_GQ33BkPtZrqxA84vM8Zk-N2aO0toNNu_C-l-rawrBA",
   // A signer function containing your wallet
   signer: createDataItemSigner(globalThis.arweaveWallet),
   /*

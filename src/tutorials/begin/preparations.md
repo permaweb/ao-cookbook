@@ -37,10 +37,6 @@ After installation, we can simply run the command itself to start a new aos proc
 aos
 ```
 
-<!-- :::info
-⚠ You authenticate yourself to your aos process using a keyfile. If you have an Arweave wallet you can specify it by adding a `--wallet [location]` flag. If you don't, a new keyfile will be generated and stored locally for you at `~/.aos.json`.
-::: -->
-
 ## Welcome to the rabbit hole
 
 The utility you just started is a local client, which is ready to relay messages for you to your new process inside the ao computer.

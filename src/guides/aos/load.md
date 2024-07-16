@@ -18,7 +18,7 @@ Handlers.add(
 
 aos shell
 
-```sh
+```lua
 .load hello.lua
 ```
 

@@ -329,4 +329,4 @@ Invite friends or create test player processes to experience your game and make 
 
 Congratulations! You've successfully expanded the arena by building your own game on top of its core functionalities. Armed with the knowledge and tools acquired in this guide, you're now equipped to build games on `aos` independently.
 
-The possibilities are endless. Continue adding more features to existing games or create entirely new ones. The sky's the limit! 🚀
+The possibilities are endless. Continue adding more features to existing games or create entirely new ones. The sky's the limit! ⌃◦🚀

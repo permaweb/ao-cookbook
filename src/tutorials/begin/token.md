@@ -6,6 +6,10 @@ Diving deeper into the `ao`, you're now ready to create your own token, a symbol
 
 When creating tokens, we'll continue to use the [Lua Language](../../references/lua.md) within `ao` to mint a token, guided by the principles outlined in the [Token Specification](../../references/token.md).
 
+## Video Tutorial
+
+<iframe width="680" height="350" src="https://www.youtube.com/embed/yge5Oo7K1vM?si=f3vt2eAbL3ON-DBz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Continuing Down the Rabbit Hole
 
 In our last tutorial, [Build a Chatroom](chatroom), we learned how to create a chatroom within `ao`, invited both `Morpheus` and `Trinity` to the chatroom we created, and then `Trinity` has now asked for us to create a token for her as a way of proving ourselves worthy of continuing down the rabbit hole.
@@ -51,13 +55,13 @@ You should see a new list of handlers that have been loaded into your `aos` proc
 
 Now that the token blueprint is loaded, we can test the token by sending a message to ourselves using the `Action = "Info"` tag.
 
-```sh
+```lua
 Send({ Target = ao.id, Action = "Info" })
 ```
 
 This will print a message to the console, but to read the message, we'll need to call the `.Data` from the latest message.
 
-```sh
+```lua
 Inbox[#Inbox].Data
 
 # Replace `#Inbox` with the number of the last message received.
@@ -69,7 +73,7 @@ This will print the token information to the console. It should show your proces
 
 Now that we've tested the token and it's working as expected, we can send some tokens to `Trinity`. We'll send 1000 tokens to `Trinity` using the `Action = "Transfer"` tag.
 
-```sh
+```lua
 Send({ Target = ao.id, Action = "Transfer", Recipient = Trinity, Quantity = "1000"})
 ```
 

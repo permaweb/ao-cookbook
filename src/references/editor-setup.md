@@ -14,7 +14,7 @@ Install the [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=su
 > Lua: Open Addon Manager
 ```
 
-4. In the Addon Manager, search for "ao", it should be the first result. Click "Enable" and enjoy autcomplete!
+1. Open a workspace first. In the Addon Manager, search for "ao", it should be the first result. Click "Enable" and enjoy autcomplete!
 
 If you don't want to do this process for each of your workspaces, you can copy the `Lua.workspace.library` object from the generated workspace `settings.json` file to your global `settings.json` file.
 
