@@ -3,8 +3,8 @@ prev:
   text: "Welcome"
   link: "../index"
 next:
-  text: "CRED and Quests"
-  link: "/welcome/testnet-info/cred-and-quests"
+  text: "Begin"
+  link: "/tutorials/begin/index"
 ---
 
 # Get involved with the ao testnet
@@ -16,7 +16,7 @@ On February 27, 2024, `ao` Testnet was launched, for developers and early adopte
 The `ao` testnet is setup to allow users to interact with the `ao` computer without fees, to test and build towards mainnet.
 
 The best way to get involved is to build and use the `ao` computer with the `aos` console.
-In the `Things to do` section below you will find many activities to try, each helping you earn CRED tokens (the testnet's currency) as you go.
+In the `Things to do` section below you will find many activities to try.
 
 ## Installing the aos client
 
@@ -37,7 +37,7 @@ This will start a process named `default`. See [the aos guide](/guides/aos/index
 
 ## First steps in the ao testnet
 
-Follow the tutorials and [complete quests to earn CRED](/welcome/testnet-info/cred-and-quests), the `ao` testnet native currency.
+Follow the tutorials and learn to build on `ao`. [Begin](/tutorials/begin/index)
 
 ## Joining ao's native community chat
 

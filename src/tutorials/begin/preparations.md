@@ -66,12 +66,17 @@ After it connects, you should see the following:
         \::/    /                 ~~                      \::/    /
          \/____/                                           \/____/
 
-ao Operating System
+Welcome to AOS: Your operating system for AO, the decentralized open
+access supercomputer.
 
-aos - 1.8.9
-2024 - Type ".exit" to exit
-aos process:  1xM1_lDZ428sJHpTX7rtcR6SrDubyRVO06JEEWs_eWo
+Type ".load-blueprint chat" to join the community chat and ask questions!
 
+AOS Client Version: 1.12.1. 2024
+Type "Ctrl-C" twice to exit
+
+Your AOS process:  QFt5SR6UwJSCnmgnROq62-W8KGY9z96k1oExgn4uAzk
+
+default@aos-0.2.2[Inbox:1]>
 
 ```
 

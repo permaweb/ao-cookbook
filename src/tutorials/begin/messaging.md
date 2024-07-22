@@ -76,7 +76,7 @@ ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s
 After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a parallel process running in ao. He receives and sends messages using a series of Handlers. Let's send him a message and see what happens.
 
 ```lua
-Send({ Target = Morpheus, Data = "Morpheus?" })
+Send({Target = Morpheus, Data = "Morpheus?"}).receive().Data
 ```
 
 - Your `Target` is `Morpheus` which is the variable we defined earlier using `Morpheus`'s process ID.
@@ -86,9 +86,13 @@ Send({ Target = Morpheus, Data = "Morpheus?" })
 
 ```lua
 -- Your Message Command
- Send({ Target = Morpheus, Data = "Morpheus?"})
+Send({Target = Morpheus, Data = "Morpheus?"})
 -- Message is added to the outbox
-message added to outbox
+{
+   output = "Message added to outbox",
+   onReply = function: 0x29b0ba0,
+   receive = function: 0x29b0c40
+}
 -- A New Message is received from `Morpheus`'s process ID
 New Message From BWM...ulw: Data = I am here. You are f
 
@@ -147,7 +151,16 @@ I am here. You are finally awake. Are you ready to see how far the rabbit hole g
 
 You are now using your own process to communicate with Morpheus, another parallel process running in ao. You're now ready to move on to the next step in the tutorial.
 
-## Step 7: Sending Messages with Tags
+## Step 7: Waiting for Messages
+
+Using the `.receive` function, you can wait for a response and then execute more commands.
+
+```lua
+Send({Target = Morpheus, Data = "Morpheus?" }).receive().Data
+-- I am here. You are finally awake. Are you ready to see how far the rabbit hole goes?
+```
+
+## Step 8: Sending Messages with Tags
 
 **Purpose of Tags**: Tags in aos messages are used to categorize, route, and process messages efficiently. They play a crucial role in message handling, especially when dealing with multiple processes or complex workflows.
 
@@ -168,7 +181,7 @@ Send Morpheus a message with the tag `Action` and the value `rabbithole`.
 **Example:**
 
 ```lua
-Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
+Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" }).receive().Data
 ```
 
 **Expected Return:**
