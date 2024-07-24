@@ -43,7 +43,7 @@ Now all you need is a handler to make sure this function runs on its own.
 ```lua
 Handlers.add(
   "decideNextAction",
-  Handlers.utils.hasMatchingTag("Action", "UpdatedGameState"),
+  { Action = "UpdatedGameState" },
   function ()
     if LatestGameState.GameMode ~= "Playing" then
       return
@@ -92,7 +92,7 @@ end
 
 Handlers.add(
 "HandleAnnouncements",
-Handlers.utils.hasMatchingTag("Action", "Announcement"),
+{ Action = "Announcement" },
 function (msg)
   ao.send({Target = Game, Action = "GetGameState"})
   print(msg.Event .. ": " .. msg.Data)
@@ -101,7 +101,7 @@ end
 
 Handlers.add(
 "UpdateGameState",
-Handlers.utils.hasMatchingTag("Action", "GameState"),
+{ Action = "GameState" },
 function (msg)
   local json = require("json")
   LatestGameState = json.decode(msg.Data)
@@ -111,7 +111,7 @@ end
 
 Handlers.add(
 "decideNextAction",
-Handlers.utils.hasMatchingTag("Action", "UpdatedGameState"),
+{ Action = "UpdatedGameState" },
 function ()
   if LatestGameState.GameMode ~= "Playing" then
     return

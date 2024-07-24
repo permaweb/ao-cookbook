@@ -307,7 +307,7 @@ Handlers.add(
 -- Registers new players for the next game and subscribes them for event info.
 Handlers.add(
     "Register",
-    Handlers.utils.hasMatchingTag("Action", "Register"),
+   { Action = "Register" },
     function(Msg)
         if Msg.Mode ~= "Listen" and Waiting[Msg.From] == undefined then
             Waiting[Msg.From] = false
@@ -325,7 +325,7 @@ Handlers.add(
 -- Unregisters players and stops sending them event info.
 Handlers.add(
     "Unregister",
-    Handlers.utils.hasMatchingTag("Action", "Unregister"),
+   { Action = "Unregister" },
     function(Msg)
         removeListener(Msg.From)
         ao.send({
@@ -338,7 +338,7 @@ Handlers.add(
 -- Adds bet amount to BonusQty
 Handlers.add(
     "AddBet",
-    Handlers.utils.hasMatchingTag("Reason", "AddBet"),
+    { Reason = "AddBet" },
     function(Msg)
         BonusQty = tonumber(BonusQty) + tonumber(Msg.Tags.Quantity)
         announce("Bet-Added", Msg.From .. "has placed a bet. " .. "BonusQty amount increased by " .. Msg.Tags.Quantity .. "!")
@@ -348,7 +348,7 @@ Handlers.add(
 -- Retrieves the current game state.
 Handlers.add(
     "GetGameState",
-    Handlers.utils.hasMatchingTag("Action", "GetGameState"),
+   { Action = "GetGameState" },
     function (Msg)
         local json = require("json")
         local TimeRemaining = StateChangeTime - Now
@@ -367,7 +367,7 @@ Handlers.add(
 -- Alerts users regarding the time remaining in each game state.
 Handlers.add(
     "AnnounceTick",
-    Handlers.utils.hasMatchingTag("Action", "Tick"),
+   { Action = "Tick" },
     function (Msg)
         local TimeRemaining = StateChangeTime - Now
         if GameMode == "Waiting" then
@@ -381,7 +381,7 @@ Handlers.add(
 -- Sends tokens to players with no balance upon request
 Handlers.add(
     "RequestTokens",
-    Handlers.utils.hasMatchingTag("Action", "RequestTokens"),
+   { Action = "RequestTokens" },
     function (Msg)
         print("Transfering Tokens: " .. tostring(math.floor(10000 * UNIT)))
         ao.send({

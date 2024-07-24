@@ -171,10 +171,10 @@ Lastly, you must setup handlers:
 -- HANDLERS: Game state management for AO-Effect
 
 -- Handler for player movement
-Handlers.add("PlayerMove", Handlers.utils.hasMatchingTag("Action", "PlayerMove"), move)
+Handlers.add("PlayerMove", { Action = "PlayerMove" }, move)
 
 -- Handler for player attacks
-Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAttack"), attack)
+Handlers.add("PlayerAttack", { Action = "PlayerAttack" }, attack)
 ```
 
 As seen in earlier guides, the handlers help trigger functions when their respective patterns are met.
@@ -305,10 +305,10 @@ end
 -- HANDLERS: Game state management for AO-Effect
 
 -- Handler for player movement
-Handlers.add("PlayerMove", Handlers.utils.hasMatchingTag("Action", "PlayerMove"), move)
+Handlers.add("PlayerMove", { Action = "PlayerMove" }, move)
 
 -- Handler for player attacks
-Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAttack"), attack)
+Handlers.add("PlayerAttack", { Action = "PlayerAttack" }, attack)
 ```
 
 </details>
