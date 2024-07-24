@@ -12,7 +12,8 @@ Now, let's dive into the core functionalities that power arena-style games:
 
 Arena games are structured into rounds that operate in a loop with the following progression modes: `"Not-Started"` → `"Waiting"` → `"Playing"` → `[Someone wins or timeout]` → `"Waiting"`...
 
-> Note: The loop timesout if there are not enough players to start a game after the waiting state.
+> [!Note]
+> The loop timesout if there are not enough players to start a game after the waiting state.
 
 Rounds offer a defined timeframe for players to engage, intensifying the excitement of gameplay.
 

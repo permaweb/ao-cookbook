@@ -44,6 +44,11 @@
  * -------------------------------------------------------------------------- */
 
 :root {
+  --vp-c-cyan-1: #3485b1;
+  --vp-c-cyan-2: #3a98cc;
+  --vp-c-cyan-3: #55a3cd;
+  --vp-c-cyan-soft: rgba(99, 172, 255, 0.14);
+
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);
@@ -68,6 +73,7 @@
   --vp-c-danger-2: var(--vp-c-red-2);
   --vp-c-danger-3: var(--vp-c-red-3);
   --vp-c-danger-soft: var(--vp-c-red-soft);
+
   --nav-background-color: #a1a1a1;
   --background-color: #f2f2f2;
   --faded-accent-color: #0a0705;
@@ -100,11 +106,9 @@
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: var(--vp-c-text-1);
 
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #bd34fe 50%,
-    #47caff 50%
-  );
+  --vp-home-hero-image-background-image: linear-gradient(-45deg,
+      #bd34fe 50%,
+      #47caff 50%);
   --vp-home-hero-image-filter: blur(44px);
 }
 
@@ -127,8 +131,13 @@
 :root {
   --vp-custom-block-tip-border: transparent;
   --vp-custom-block-tip-text: var(--vp-c-text-1);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
-  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+  --vp-custom-block-tip-bg: var(--vp-c-green-soft);
+  --vp-custom-block-tip-code-bg: var(--vp-c-green-soft);
+
+  --vp-custom-block-note-border: transparent;
+  --vp-custom-block-note-text: var(--vp-c-text-1);
+  --vp-custom-block-note-bg: var(--vp-c-cyan-soft);
+  --vp-custom-block-note-code-bg: var(--vp-c-cyan-soft);
 }
 
 /**
