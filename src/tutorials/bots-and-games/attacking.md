@@ -10,7 +10,7 @@ Add the following handler to your `bot.lua` file and you're set:
 -- Handler to automatically attack when hit by another player.
 Handlers.add(
   "ReturnAttack",
-  Handlers.utils.hasMatchingTag("Action", "Hit"),
+  { Action = "Hit" },
   function (msg)
       local playerEnergy = LatestGameState.Players[ao.id].energy
       if playerEnergy == undefined then
@@ -67,7 +67,7 @@ end
 
 Handlers.add(
   "HandleAnnouncements",
-  Handlers.utils.hasMatchingTag("Action", "Announcement"),
+  { Action =  "Announcement" },
   function (msg)
     ao.send({Target = Game, Action = "GetGameState"})
     print(msg.Event .. ": " .. msg.Data)
@@ -76,7 +76,7 @@ Handlers.add(
 
 Handlers.add(
   "UpdateGameState",
-  Handlers.utils.hasMatchingTag("Action", "GameState"),
+  { Action =  "GameState" },
   function (msg)
     local json = require("json")
     LatestGameState = json.decode(msg.Data)
@@ -86,7 +86,7 @@ Handlers.add(
 
 Handlers.add(
   "decideNextAction",
-  Handlers.utils.hasMatchingTag("Action", "UpdatedGameState"),
+  { Action =  "UpdatedGameState" },
   function ()
     if LatestGameState.GameMode ~= "Playing" then
       return
@@ -98,7 +98,7 @@ Handlers.add(
 
 Handlers.add(
   "ReturnAttack",
-  Handlers.utils.hasMatchingTag("Action", "Hit"),
+  { Action =  "Hit" },
   function (msg)
       local playerEnergy = LatestGameState.Players[ao.id].energy
       if playerEnergy == undefined then

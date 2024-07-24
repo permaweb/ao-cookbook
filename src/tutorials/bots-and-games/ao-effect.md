@@ -24,25 +24,45 @@ Checkout the guides on the [Mechanics of the Arena](arena-mechanics.md) and [Exp
 
 To join this global escapade, you'll need to set things up. Don't worry, it's as easy as 1-2-3!
 
-1.**Install aos**
+1. **Install aos**
+
 Fire up your terminal and run:
 
 ```bash
 npm i -g https://get_ao.g8way.io
 ```
 
-2.**Launch aos**
+2. **Launch aos**
+
 Next, create your instance of aos:
 
 ```bash
 aos
 ```
 
-3.**Set Up the Game ID**
+3. **Set Up the Game ID**
+
 Let's keep our game server ID handy for quick access:
 
 ```lua
 Game = "tm1jYBC0F2gTZ0EuUQKq5q_esxITDFkAG6QEpLbpI9I"
+```
+
+4. **Print Game Announcements Directly To Terminal (Optional)**
+
+Here's how you can write a handler for printing announcement details:
+
+_This is temporary as we will be loading this via a lua script in the next section._
+
+```lua
+Handlers.add(
+  "PrintAnnouncements",
+  { Action = "Announcement" },
+  function (msg)
+    ao.send({Target = Game, Action = "GetGameState"})
+    print(msg.Event .. ": " .. msg.Data)
+  end
+)
 ```
 
 And voilà! You're all set to join the game.
@@ -57,6 +77,15 @@ All communication between processes in `ao` occurs through messages. To register
 
 ```lua
 Send({ Target = Game, Action = "Register" })
+
+-- Expected Result --
+{
+   output = "Message added to outbox",
+   onReply = function: 0x29e5ac0,
+   receive = function: 0x29fe440
+}
+New Message From tm1...I9I: Action = Registered
+New Player Registered: a1b...y1z has joined in waiting.
 ```
 
 This places you in the `Waiting` Lobby. A small fee is needed to confirm your spot.
@@ -66,13 +95,34 @@ This places you in the `Waiting` Lobby. A small fee is needed to confirm your sp
 In order to confirm your spot you need some tokens. You can acquire them by sending the following message to the game:
 
 ```lua
-Send({ Target = Game, Action = "RequestTokens"})
+Send({ Target = Game, Action = "RequestTokens"}).receive().Data
+
+-- Expected Result --
+You received 10000000 from a1b2C3d4e5F6g7h8IjkLm0nOpqR8s7t6U5v4w3X2y1z
 ```
+
+> [!NOTE]
+> The `.receive().Data` will wait for a response by adding a temporary [Handler](../../references/handlers.md#handlers-once-name-pattern-handler) that only runs once and will print the response Data. If you would like to instead just wait for the response to hit your Inbox you can call `Send()` without `.receive()` and run `Inbox[#Inbox].Data` to see the response `Data`.
+>
+> Handler added by `.receive()`:
+>
+> ```
+> {
+>   name = "_once_0",
+>   maxRuns = 1,
+>   pattern = {  },
+>   handle = function: 0x2925700
+> }
+> ```
 
 Once you receive the tokens, confirm your spot by paying the game's entry fee like this:
 
 ```lua
-Send({ Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1000"})
+Send({ Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1000"}).receive().Data
+
+-- Expected Result --
+You transferred 1000 to tm1jYBC0F2gTZ0EuUQKq5q_esxITDFkAG6QEpLbpI9I
+New Message From tm1...I9I: Action = Payment-Received
 ```
 
 Wait for a few seconds, and you'll see live updates in your terminal about player payments and statuses.
