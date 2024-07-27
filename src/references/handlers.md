@@ -11,6 +11,7 @@ The Handlers library provides a flexible way to manage and execute a series of p
 Pattern Matching Tables is a concept of providing a Table representation of the matching shape of the incoming message. Here are the rules:
 
 ```lua
+
 { "Action" = "Do-Something" } -- Match any message via a table of tags it must contain
 
 { "Recipient" = '_' } -- Match messages that have a recipient tag with any value..
@@ -39,7 +40,8 @@ if you want to match on every message with the Quantity being a Number
 Resolvers are tables in which each key is a pattern matching table and the value is a function that is executed based on the matching key. This allows developers to create case like statements in the resolver property.
 
 ```lua
-Handlers.add("foobarbaz", { Action = "Update" }, {
+Handlers.add("foobarbaz",
+  { Action = "Update" }, {
   [{ Status = "foo" }] = function (msg) print("foo") end,
   [{ Status = "bar" }] = function (msg) print("bar") end,
   [{ Status = "baz" }] = function (msg) print("baz") end
@@ -95,16 +97,21 @@ Removes a handler from the handlers list by name.
 ### Using pattern Table
 
 ```lua
-Handlers.add("ping", { Action = "ping" }, function (msg)
-  print('ping')
-  msg.reply({Data = "pong" })
-end)
+Handlers.add("ping",
+  { Action = "ping" },
+  function (msg)
+    print('ping')
+    msg.reply({Data = "pong" })
+  end
+)
 ```
 
 ### Using resolvers
 
 ```lua
-Handlers.add("foobarbaz", { Action = "Speak" }, {
+Handlers.add(
+  "foobarbaz",
+  { Action = "Speak" }, {
   [{Status = "foo"}] = function (msg) print("foo") end,
   [{Status = "bar"}] = function (msg) print("bar") end,
   [{Status = "baz"}] = function (msg) print("baz") end
