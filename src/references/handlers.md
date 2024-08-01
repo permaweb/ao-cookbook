@@ -1,13 +1,66 @@
-# Handlers (Version 0.0.3)
+# Handlers (Version 0.0.5)
 
 ## Overview
 
-The Handlers library provides a flexible way to manage and execute a series of handlers based on patterns. Each handler consists of a pattern function, a handle function, and a name. This library is suitable for scenarios where different actions need to be taken based on varying input criteria.
+The Handlers library provides a flexible way to manage and execute a series of process functions based on pattern matching. An AO process responds based on receiving Messages, these messages are defined using the Arweave DataItem specification which consists of Tags, and Data. Using the Handlers library, you can define a pipeline of process evaluation based on the attributes of the AO Message. Each handler items consists of a pattern function, a handle function, and a name. This library is suitable for scenarios where different actions need to be taken based on varying input criteria.
+
+## Concepts
+
+### Pattern Matching Tables
+
+Pattern Matching Tables is a concept of providing a Table representation of the matching shape of the incoming message. Here are the rules:
+
+```lua
+
+{ "Action" = "Do-Something" } -- Match any message via a table of tags it must contain
+
+{ "Recipient" = '_' } -- Match messages that have a recipient tag with any value..
+
+{ "Quantity" = "%d+" } -- Validate a tag against a Lua string match (similar to regular expressions)
+
+{ "Quantity" = function(v) return tonumber(v) ~= Nil end } -- Apply a function to the tag to check it. Nil or false do not match
+```
+
+Example:
+
+if you want to match on every message with the Action equal to "Balance"
+
+```lua
+{ Action = "Balance" }
+```
+
+if you want to match on every message with the Quantity being a Number
+
+```lua
+{ Quantity = "%d+" }
+```
+
+### Resolvers
+
+Resolvers are tables in which each key is a pattern matching table and the value is a function that is executed based on the matching key. This allows developers to create case like statements in the resolver property.
+
+```lua
+Handlers.add("foobarbaz",
+  { Action = "Update" }, {
+  [{ Status = "foo" }] = function (msg) print("foo") end,
+  [{ Status = "bar" }] = function (msg) print("bar") end,
+  [{ Status = "baz" }] = function (msg) print("baz") end
+})
+```
 
 ## Module Structure
 
 - `Handlers._version`: String representing the version of the Handlers library.
 - `Handlers.list`: Table storing the list of registered handlers.
+
+## Handler method common function signature
+
+| Parameter          | Type                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------ | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name               | string                       | The identifier of the handler item in the handlers list.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| pattern            | Table or Function            | This parameter can take a table that specifies a pattern that the message MUST match, for example `{ Action = "Balance", Recipient = "_" }` this table describes a message that has a Tag called action and it equals the string "Balance", and the message MUST have a Recipient Tag with a value. If you are unable to add a pattern via a table, you can also use the `function` which receives the message DataItem as its argument and you can return a `true`, `false` or `"continue"` result. The `true` result tells the Handlers evaluation pipeline to invoke this handler and exit out of the pipeline. The `false` result tells the Handlers evaluation pipeline to skip this handler and try to find a pattern matched by the next Handler item in the pipeline. Finally, the `"continue"` informs the Handlers evaluation to invoke this handler and continue evaluating. |
+| handler            | Table (Resolver) or Function | This parameter can take a table that acts as a conditional that invokes a function based on a pattern matched key. or a Function that takes the message DataItem as an argument and performs some business logic.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| maxRuns (optional) | number                       | As of 0.0.5, each handler function takes an optional function to define the amount of times the handler should match before it is removed. The default is infinity.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 ## Functions
 
@@ -19,89 +72,69 @@ adds a new handler or updates an existing handler by name
 
 Appends a new handler to the end of the handlers list.
 
-#### Parameters
+### `Handlers.once(name, pattern, handler)`
 
-- `pattern` (function): Function that determines if the handler should be executed.
-- `handle` (function): The handler function to execute.
-- `name` (string): A unique name for the handler.
+Only runs once when the pattern is matched.
 
 ### `Handlers.prepend(name, pattern, handle)`
 
 Prepends a new handler to the beginning of the handlers list.
 
-#### Parameters
-
-- Same as `handlers.append`.
-
 ### `Handlers.before(handleName)`
 
 Returns an object that allows adding a new handler before a specified handler.
-
-#### Parameters
-
-- `handleName` (string): The name of the handler before which the new handler will be added.
-
-#### Returns
-
-- An object with an `add` method to insert the new handler.
 
 ### `Handlers.after(handleName)`
 
 Returns an object that allows adding a new handler after a specified handler.
 
-#### Parameters
-
-- `handleName` (string): The name of the handler after which the new handler will be added.
-
-#### Returns
-
-- An object with an `add` method to insert the new handler.
-
 ### `Handlers.remove(name)`
 
 Removes a handler from the handlers list by name.
 
-#### Parameters
+## Examples
 
-- `name` (string): The name of the handler to be removed.
-
-### `Handlers.evaluate(msg, env)`
-
-Evaluates each handler against a given message and environment. Handlers are called in the order they appear in the handlers list.
-
-#### Parameters
-
-- `msg` (table): The message to be processed by the handlers.
-- `env` (table): The environment in which the handlers are executed.
-
-#### Returns
-
-- `response` (varies): The response from the handler(s). Returns a default message if no handler matches.
-
-## Usage Example
+### Using pattern Table
 
 ```lua
--- Define pattern and handle functions
-local function myPattern(msg)
-    -- Determine if the handler should be executed
-end
+Handlers.add("ping",
+  { Action = "ping" },
+  function (msg)
+    print('ping')
+    msg.reply({Data = "pong" })
+  end
+)
+```
 
-local function myHandle(msg, env, response)
-    -- Handler logic
-end
+### Using resolvers
 
--- Add a new handler
-Handlers.add("myHandler", myPattern, myHandle)
+```lua
+Handlers.add(
+  "foobarbaz",
+  { Action = "Speak" }, {
+  [{Status = "foo"}] = function (msg) print("foo") end,
+  [{Status = "bar"}] = function (msg) print("bar") end,
+  [{Status = "baz"}] = function (msg) print("baz") end
+})
+```
 
--- Evaluate a message
-local response = handlers.evaluate({ key = "value" }, { envKey = "envValue" })
+### Using functions
+
+```lua
+Handlers.add("example",
+  function (msg)
+    return msg.Action == "Speak"
+  end,
+  function (msg)
+    print(msg.Status)
+  end
+)
 ```
 
 ## Notes
 
 - Handlers are executed in the order they appear in `handlers.list`.
-- The pattern function should return `0` to skip the handler, `-1` to break after the handler is executed, or `1` to continue with the next handler.
-- The `evaluate` function can concatenate responses from multiple handlers.
+- The pattern function should return false to skip the handler, true to break after the handler is executed, or `"continue"` to execute handler and continue with the next handler.
 
 ## Handlers.utils
 

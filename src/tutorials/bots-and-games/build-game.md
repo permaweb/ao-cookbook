@@ -14,6 +14,7 @@ Whether you're a seasoned developer or an aspiring game creator, this guide will
 
 Start by creating a new file named `ao-effect.lua` in your preferred directory.
 
+> [!Note]
 > Ideally, this file should be placed in the same directory where your game process runs to ease the loading of the code. Else, you'll need to use relative paths to access the file.
 
 ## Writing the Code
@@ -171,10 +172,10 @@ Lastly, you must setup handlers:
 -- HANDLERS: Game state management for AO-Effect
 
 -- Handler for player movement
-Handlers.add("PlayerMove", Handlers.utils.hasMatchingTag("Action", "PlayerMove"), move)
+Handlers.add("PlayerMove", { Action = "PlayerMove" }, move)
 
 -- Handler for player attacks
-Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAttack"), attack)
+Handlers.add("PlayerAttack", { Action = "PlayerAttack" }, attack)
 ```
 
 As seen in earlier guides, the handlers help trigger functions when their respective patterns are met.
@@ -305,10 +306,10 @@ end
 -- HANDLERS: Game state management for AO-Effect
 
 -- Handler for player movement
-Handlers.add("PlayerMove", Handlers.utils.hasMatchingTag("Action", "PlayerMove"), move)
+Handlers.add("PlayerMove", { Action = "PlayerMove" }, move)
 
 -- Handler for player attacks
-Handlers.add("PlayerAttack", Handlers.utils.hasMatchingTag("Action", "PlayerAttack"), attack)
+Handlers.add("PlayerAttack", { Action = "PlayerAttack" }, attack)
 ```
 
 </details>
@@ -321,7 +322,8 @@ Once you've written your game code, it's time to load it into the `aos` game pro
 .load ao-effect.lua
 ```
 
-> Note: Make sure to load the arena blueprint in the same process as well.
+> [!Important]
+> Make sure to load the arena blueprint in the same process as well.
 
 Invite friends or create test player processes to experience your game and make any necessary adjustments for optimal performance.
 

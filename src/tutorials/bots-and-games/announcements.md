@@ -30,16 +30,17 @@ Here's how you can write a handler for printing announcement details:
 -- Handler to print game announcements directly in the terminal.
 Handlers.add(
   "PrintAnnouncements",
-  Handlers.utils.hasMatchingTag("Action", "Announcement"),
+  { Action = "Announcement" },
   function (msg)
     print(msg.Event .. ": " .. msg.Data)
   end
 )
 ```
 
-In this case, the name of the handler is `"PrintAnnouncements"`. It uses a special in-built utility (`hasMatchingTags`) to check if the incoming message has been tagged as an announcement. If true, the handler prints the Event and Data, which represent the title and description of the announcement.
+In this case, the name of the handler is `"PrintAnnouncements"`. It uses a special in-built utility (`hasMatchingTags`) represented by `{ Action = "Announcement" }` to check if the incoming message has been tagged as an announcement. If true, the handler prints the Event and Data, which represent the title and description of the announcement.
 
-> Note: Once a message is "handled", it will be discarded from your `Inbox`.
+> [!Note]
+> Once a message is "handled", it will be discarded from your `Inbox`.
 
 ## Loading and Testing
 

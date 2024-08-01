@@ -27,7 +27,7 @@ Replace the original `Broadcast` handler with the following code:
 ```lua
 Handlers.add(
     "Broadcast",
-    Handlers.utils.hasMatchingTag("Action", "Broadcast"),
+    { Action = "Broadcast" },
     function(m)
         if Balances[m.From] == nil or tonumber(Balances[m.From]) < 1 then
             print("UNAUTH REQ: " .. m.From)
@@ -74,9 +74,12 @@ Send({ Target = ao.id , Action = "Broadcast", Data = "Hello" })
 Expected Results:
 
 ```
-message added to outbox
-New Message From [Your Process ID]: Action = Broadcasted
+{
+   output = "Message added to outbox",
+   ...
+}
 Broadcasting message from [Your Process ID]. Content: Hello.
+New Message From [Your Process ID]: Action = Broadcasted
 ```
 
 ## Testing from another Process ID.
@@ -141,10 +144,6 @@ Now, go join the others by using the same tag you used `Register`, with
 this process ID: [Construct Process ID]
 Good luck.
 -Trinity". Additionally, a footer will follow the message.
-
-::: warning
-Read the footer on Trinity's message carefully to find out how to submit your claim and recieve your CRED.
-:::
 
 ## Conclusion
 

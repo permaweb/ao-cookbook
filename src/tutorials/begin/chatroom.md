@@ -81,10 +81,11 @@ The register handler will allow processes to join the chatroom.
 
      Handlers.add(
        "Register",
-       Handlers.utils.hasMatchingTag("Action", "Register"),
+       { Action = "Register"},
        function (msg)
          table.insert(Members, msg.From)
-         Handlers.utils.reply("registered")(msg)
+         print(msg.From .. " registered")
+         msg.reply({ Data = "registered." })
        end
      )
    ```
@@ -109,7 +110,7 @@ The register handler will allow processes to join the chatroom.
    - Let's test the registration process by registering ourselves to the chatroom:
 
    ```lua
-    Send({ Target = ao.id, Action = "Register" })
+   Send({ Target = ao.id, Action = "Register" })
    ```
 
    If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `registered`.
@@ -135,12 +136,12 @@ Now that you have a chatroom, let's create a handler that will allow you to broa
   ```lua
     Handlers.add(
       "Broadcast",
-      Handlers.utils.hasMatchingTag("Action", "Broadcast"),
+      { Action = "Broadcast" },
       function (msg)
         for _, recipient in ipairs(Members) do
           ao.send({Target = recipient, Data = msg.Data})
         end
-        Handlers.utils.reply("Broadcasted.")(msg)
+        msg.reply({Data = "Broadcasted." })
       end
     )
   ```
@@ -151,10 +152,8 @@ Now that you have a chatroom, let's create a handler that will allow you to broa
 - Let's test the broadcast handler by sending a message to the chatroom:
 
   ```lua
-    Send({Target = ao.id, Action = "Broadcast", Data = "Broadcasting My 1st Message" })
+  Send({Target = ao.id, Action = "Broadcast", Data = "Broadcasting My 1st Message" }).receive().Data
   ```
-
-  - If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `Broadcasting My 1st Message` because you are also a recipient of this message since you're a member of the `Members` chatroom.
 
 ## Step 5: Inviting Morpheus to the Chatroom
 

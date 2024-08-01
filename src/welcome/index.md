@@ -16,7 +16,8 @@ Typically when you use ao, you will interact with it through its operating syste
 
 aos is an abstraction layer that runs in your processes, making it easy to use the full functionality of the ao computer. In this cookbook, you will learn everything you need to know about getting started with the ao computer using aos.
 
-## Specs
+## Paper
+
 
 If you would like to learn more about the technical specifications of ao, please check out its [spec](https://ao.g8way.io/#/read) for detailed analysis.
 

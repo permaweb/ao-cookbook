@@ -11,7 +11,7 @@ InAction = InAction or false -- Prevents the agent from taking multiple actions 
 - **Dynamic State Updates and Decisions:** The agent now employs an automatic tick logic, allowing for dynamic updates and decisions. This logic enables the agent to self-trigger state updates and make subsequent decisions either upon receiving a Tick message or upon completing an action, promoting autonomous operation.
 
 ```lua
-Handlers.add("GetGameStateOnTick", Handlers.utils.hasMatchingTag("Action", "Tick"), function ()
+Handlers.add("GetGameStateOnTick", { Action = "Tick" }, function ()
   if not InAction then
     InAction = true
     ao.send({Target = Game, Action = "GetGameState"})
@@ -22,7 +22,7 @@ end)
 - **Automated Fee Transfer:** To further streamline its operation and ensure uninterrupted participation in games, the autonomous agent now autonomously handles the transfer of confirmation fees.
 
 ```lua
-Handlers.add("AutoPay", Handlers.utils.hasMatchingTag("Action", "AutoPay"), function ()
+Handlers.add("AutoPay", { Action = "AutoPay" }, function ()
   ao.send({Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1000"})
 end)
 ```
@@ -91,7 +91,7 @@ end
 -- Handler to print game announcements and trigger game state updates.
 Handlers.add(
   "PrintAnnouncements",
-  Handlers.utils.hasMatchingTag("Action", "Announcement"),
+  { Action = "Announcement" },
   function (msg)
     if msg.Event == "Started-Waiting-Period" then
       ao.send({Target = ao.id, Action = "AutoPay"})
@@ -108,7 +108,7 @@ Handlers.add(
 -- Handler to trigger game state updates.
 Handlers.add(
   "GetGameStateOnTick",
-  Handlers.utils.hasMatchingTag("Action", "Tick"),
+  { Action =  "Tick" },
   function ()
     if not InAction then -- InAction logic added
       InAction = true -- InAction logic added
@@ -123,7 +123,7 @@ Handlers.add(
 -- Handler to automate payment confirmation when waiting period starts.
 Handlers.add(
   "AutoPay",
-  Handlers.utils.hasMatchingTag("Action", "AutoPay"),
+  { Action =  "AutoPay" },
   function (msg)
     print("Auto-paying confirmation fees.")
     ao.send({ Target = Game, Action = "Transfer", Recipient = Game, Quantity = "1000"})
@@ -133,7 +133,7 @@ Handlers.add(
 -- Handler to update the game state upon receiving game state information.
 Handlers.add(
   "UpdateGameState",
-  Handlers.utils.hasMatchingTag("Action", "GameState"),
+  { Action =  "GameState" },
   function (msg)
     local json = require("json")
     LatestGameState = json.decode(msg.Data)
@@ -145,7 +145,7 @@ Handlers.add(
 -- Handler to decide the next best action.
 Handlers.add(
   "decideNextAction",
-  Handlers.utils.hasMatchingTag("Action", "UpdatedGameState"),
+  { Action =  "UpdatedGameState" },
   function ()
     if LatestGameState.GameMode ~= "Playing" then
       InAction = false -- InAction logic added
@@ -160,7 +160,7 @@ Handlers.add(
 -- Handler to automatically attack when hit by another player.
 Handlers.add(
   "ReturnAttack",
-  Handlers.utils.hasMatchingTag("Action", "Hit"),
+  { Action =  "Hit" },
   function (msg)
     if not InAction then -- InAction logic added
       InAction = true -- InAction logic added

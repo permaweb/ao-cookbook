@@ -40,14 +40,8 @@ export const localeConfig = (langCode) => ({
             link: get_i18n_link(langCode, "/welcome/testnet-info/index"),
             items: [
               {
-                text: get_i18n_str(
-                  langCode,
-                  "welcome-testnet-info-cred-and-quests",
-                ),
-                link: get_i18n_link(
-                  langCode,
-                  "/welcome/testnet-info/cred-and-quests",
-                ),
+                text: get_i18n_str(langCode, "welcome-testnet-info-quests"),
+                link: get_i18n_link(langCode, "/welcome/testnet-info/quests"),
               },
             ],
           },
