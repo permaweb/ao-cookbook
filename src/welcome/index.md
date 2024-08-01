@@ -18,7 +18,8 @@ aos is an abstraction layer that runs in your processes, making it easy to use t
 
 ## Paper
 
-If you would like to learn more about the technical specifications of ao, please check out its [paper](https://ao.g8way.io/#/read) for detailed analysis.
+
+If you would like to learn more about the technical specifications of ao, please check out its [spec](https://ao.g8way.io/#/read) for detailed analysis.
 
 ## Next Steps
 
