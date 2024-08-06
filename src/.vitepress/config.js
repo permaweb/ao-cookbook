@@ -6,6 +6,9 @@ import { localeConfig } from "./locales.js";
 // https://vitepress.dev/reference/site-config
 const config = defineConfig({
   themeConfig: {
+    /**
+     * Enable Search
+     */
     search: {
       provider: "local",
     },
@@ -54,14 +57,6 @@ const config = defineConfig({
     return {
       i18n: languages[pageData.frontmatter.locale || "en"],
     };
-  },
-  /**
-   * Enable Search
-   */
-  themeConfig: {
-    search: {
-      provider: "local",
-    },
   },
   /**
    * Needed for shim for
