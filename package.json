@@ -14,9 +14,9 @@
     "staged": "lint-staged --allow-empty --concurrent false"
   },
   "devDependencies": {
+    "@ar.io/sdk": "^2.1.0",
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "arweave": "^1.15.1",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.8",
     "markdown-toc-gen": "^1.0.1",

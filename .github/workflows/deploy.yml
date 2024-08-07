@@ -36,7 +36,7 @@ jobs:
 
       - name: 📥 Download deps
         run: |
-          yarn
+          yarn --ignore-engines
 
       - name: 🛠 Build Docs
         run: |
@@ -63,7 +63,7 @@ jobs:
 
       - name: 📥 Download deps
         run: |
-          yarn
+          yarn --ignore-engines
 
       - name: 👀 Env
         run: |
