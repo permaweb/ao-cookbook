@@ -88,7 +88,7 @@ jobs:
       - name: 💾 Publish to Arweave
         id: publish_artifacts
         run: |
-          permaweb-deploy \
+          npx permaweb-deploy \
             --ant-process=${ANT_PROCESS} \
             --undername=${UNDERNAME} \
             --deploy-folder=${ARTIFACTS_OUTPUT_DIR}
