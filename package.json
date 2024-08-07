@@ -14,12 +14,12 @@
     "staged": "lint-staged --allow-empty --concurrent false"
   },
   "devDependencies": {
-    "@ar.io/sdk": "^2.1.0",
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.8",
     "markdown-toc-gen": "^1.0.1",
+    "permaweb-deploy": "^1.1.7",
     "prettier": "^3.3.3",
     "vitepress": "1.3.2",
     "vue": "^3.4.36"
