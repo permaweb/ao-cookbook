@@ -37,6 +37,13 @@ The main functions to look at in this `ao` helper is
 - ao.send(Message) - sends a message to a process
 - ao.spawn(Module, Message) - creates a new process
 
+## Ethereum Signed Process or Module
+
+For an `ao` `Process` or `Module`, if the [ANS-104 DataItem](https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw) was signed using Ethereum keys,
+then the value in the `env.Process.Owner` or `env.Module.Owner` field, respectively, will be the
+[EIP-55](https://github.com/ethereum/ercs/blob/master/ERCS/erc-55.md) Ethereum address of the signer.
+For example: `0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359`
+
 ## ao.send Example
 
 ```lua
