@@ -27,5 +27,8 @@
   "authors": {
     "name": "Tyler Hall",
     "email": "tyler@hyper.io"
+  },
+  "dependencies": {
+    "@betteridea/codecell": "^1.4.3"
   }
 }
