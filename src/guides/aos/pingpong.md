@@ -1,3 +1,25 @@
+<script setup>
+  import {onMounted} from "vue"
+  import {renderRepl} from "../../tools/replRenderer.jsx"
+
+  const codes = {
+    "step-3": `Handlers.add(
+      "pingpong",
+      Handlers.utils.hasMatchingData("ping"),
+      Handlers.utils.reply("pong")
+      )`,
+    "step-5": `Send({ Target = ao.id, Data = "ping" })`,
+    "step-6": `Inbox[#Inbox].Data`
+  }
+
+  onMounted(() => {
+      Object.keys(codes).forEach((key) => {
+        renderRepl(key, codes[key])
+      })
+    }
+  )
+</script>
+
 # Creating a Pingpong Process in aos
 
 This tutorial will guide you through creating a simple "ping-pong" process in aos. In this process, whenever it receives a message with the data "ping", it will automatically reply with "pong". This is a basic example of message handling and interaction between processes in aos.
@@ -22,6 +44,8 @@ This tutorial will guide you through creating a simple "ping-pong" process in ao
   )
   ```
 
+  <div id="step-3"></div>
+
 - This lua script does three things:
   1. It adds a new handler named "pingpong".
   2. It uses `Handlers.utils.hasMatchingData("ping")` to check if incoming messages contain the data "ping".
@@ -34,9 +58,13 @@ This tutorial will guide you through creating a simple "ping-pong" process in ao
 ## Step 5: Test the Pingpong Process
 
 - To test the process, send a message with the data "ping" to the process. You can do this by typing the following command in the aos CLI:
+
   ```lua
   Send({ Target = ao.id, Data = "ping" })
   ```
+
+  <div id="step-5"></div>
+
 - The process should respond with a message containing "pong" in the `Inbox`.
 
 ## Step 6: Monitor the Inbox
@@ -46,6 +74,8 @@ This tutorial will guide you through creating a simple "ping-pong" process in ao
 ```lua
 Inbox[#Inbox].Data
 ```
+
+<div id="step-6"></div>
 
 ## Step 7: Experiment and Observe
 

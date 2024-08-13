@@ -1,10 +1,11 @@
 <script setup>
   import {onMounted} from "vue"
-  import {renderRepl} from "../replRenderer.jsx"
+  import {renderRepl} from "../../tools/replRenderer.jsx"
 
   const codes = {
     "step-3": `Send({ Target = "process ID", Data = "Hello World!" })`,
     "step-4": `Morpheus = "ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s"`,
+    "step-4-1": `Morpheus`,
     "step-5": `Send({ Target = Morpheus, Data = "Morpheus?" })`,
     "step-6": `#Inbox`,
     "step-6-1": `Inbox[#Inbox].Data`,
@@ -96,6 +97,8 @@ ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s
 -- If `undefined` is returned,
 -- then the variable was not created successfully.
 ```
+
+<div id="step-4-1"></div>
 
 ## Step 5: Send a Message to Morpheus
 
