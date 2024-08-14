@@ -35,7 +35,7 @@ touch 0rbit-Post-Request.lua
 local json = require("json")
 
 _0RBIT = "BaMK1dfayo75s3q1ow6AO64UDpD9SEFbeE8xYrY2fyQ"
-_0RBT_TOKEN = "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc"
+_0RBT_POINTS = "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc"
 
 FEE_AMOUNT = "1000000000000" -- 1 $0RBT
 BASE_URL = "https://arweave.dev/graphql"
