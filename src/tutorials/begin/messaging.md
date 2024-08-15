@@ -1,3 +1,26 @@
+<script setup>
+  import {onMounted} from "vue"
+  import {renderRepl} from "../../tools/replRenderer.jsx"
+
+  const codes = {
+    "step-3": `Send({ Target = "process ID", Data = "Hello World!" })`,
+    "step-4": `Morpheus = "ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s"`,
+    "step-4-1": `Morpheus`,
+    "step-5": `Send({ Target = Morpheus, Data = "Morpheus?" })`,
+    "step-6": `#Inbox`,
+    "step-6-1": `Inbox[#Inbox].Data`,
+    "step-7": `Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })`,
+    "step-7-2": `Inbox[#Inbox].Data`
+  }
+
+  onMounted(() => {
+      Object.keys(codes).forEach((key) => {
+        renderRepl(key, codes[key])
+      })
+    }
+  )
+</script>
+
 # Messaging in `ao`
 
 ## Learn how Messages gives `ao` Parallel Compute Capability
@@ -34,6 +57,8 @@ aos
 Send({ Target = "process ID", Data = "Hello World!" })
 ```
 
+<div id="step-3"></div>
+
 - **Send**: The `Send` function is globally available in the aos interactive environment.
 - **Target**: To send a message to a specific process, include a `Target` field in your message.
 - **Data**: The `Data` is the text message you want received by the receiving process. In this example, the message is "Hello World!".
@@ -51,6 +76,8 @@ Copy the process ID above and store it as a variable by running the below comman
 ```lua
 Morpheus = "ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s"
 ```
+
+<div id="step-4"></div>
 
 This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specific process ID.
 
@@ -71,13 +98,17 @@ ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s
 -- then the variable was not created successfully.
 ```
 
+<div id="step-4-1"></div>
+
 ## Step 5: Send a Message to Morpheus
 
 After obtaining Morpheus's process ID and storing it in a variable, you're ready to communicate with it. To do this, you use the Send function. Morpheus, himself, is a parallel process running in ao. He receives and sends messages using a series of Handlers. Let's send him a message and see what happens.
 
 ```lua
-Send({Target = Morpheus, Data = "Morpheus?"}).receive().Data
+Send({ Target = Morpheus, Data = "Morpheus?" })
 ```
+
+<div id="step-5"></div>
 
 - Your `Target` is `Morpheus` which is the variable we defined earlier using `Morpheus`'s process ID.
 - The `Data` is the message you want to send to Morpheus. In this case, it's "Morpheus?".
@@ -86,13 +117,9 @@ Send({Target = Morpheus, Data = "Morpheus?"}).receive().Data
 
 ```lua
 -- Your Message Command
-Send({Target = Morpheus, Data = "Morpheus?"})
+ Send({ Target = Morpheus, Data = "Morpheus?"})
 -- Message is added to the outbox
-{
-   output = "Message added to outbox",
-   onReply = function: 0x29b0ba0,
-   receive = function: 0x29b0c40
-}
+message added to outbox
 -- A New Message is received from `Morpheus`'s process ID
 New Message From BWM...ulw: Data = I am here. You are f
 
@@ -115,6 +142,8 @@ Inside your aos CLI, type the following command:
  #Inbox
 ```
 
+<div id="step-6"></div>
+
 If you're actively following through the tutorial, the inbox will not have many messages. However, if you've been experimenting with the aos environment, you may more than 1 message in your inbox.
 
 **Example Return:**
@@ -135,6 +164,8 @@ As we're actively looking for `Morpheus`'s response, we'll assume his message wa
  Inbox[#Inbox].Data
 ```
 
+<div id="step-6-1"></div>
+
 This command allows you to isolate the Data from the message and only read the contents of the data.
 
 The Expected Return:
@@ -151,16 +182,7 @@ I am here. You are finally awake. Are you ready to see how far the rabbit hole g
 
 You are now using your own process to communicate with Morpheus, another parallel process running in ao. You're now ready to move on to the next step in the tutorial.
 
-## Step 7: Waiting for Messages
-
-Using the `.receive` function, you can wait for a response and then execute more commands.
-
-```lua
-Send({Target = Morpheus, Data = "Morpheus?" }).receive().Data
--- I am here. You are finally awake. Are you ready to see how far the rabbit hole goes?
-```
-
-## Step 8: Sending Messages with Tags
+## Step 7: Sending Messages with Tags
 
 **Purpose of Tags**: Tags in aos messages are used to categorize, route, and process messages efficiently. They play a crucial role in message handling, especially when dealing with multiple processes or complex workflows.
 
@@ -181,8 +203,18 @@ Send Morpheus a message with the tag `Action` and the value `rabbithole`.
 **Example:**
 
 ```lua
-Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" }).receive().Data
+Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
 ```
+
+<div id="step-7"></div>
+
+**Read the message from Morpheus:**
+
+```lua
+Inbox[#Inbox].data
+```
+
+<div id="step-7-2"></div>
 
 **Expected Return:**
 ![Morpheus Responds 2](/messaging2.png)
