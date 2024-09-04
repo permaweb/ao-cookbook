@@ -13,11 +13,11 @@ The goal of this library is to provide this core functionality in the box of the
 ## Properties
 
 | Name        | Description                                                                                                  | Type   |
-| ----------- | ------------------------------------------------------------------------------------------------------------ | ------ | --------------------------------------------- |
+| ----------- | ------------------------------------------------------------------------------------------------------------ | ------ |
 | id          | Process Identifier (TXID)                                                                                    | string |
 | \_module    | Module Identifier (TXID)                                                                                     | string |
 | authorities | Set of Trusted TXs                                                                                           | string |
-| Authority   | Identifiers that the process is able to accept transactions from that are not the owner or the process (0-n) | string | "fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY" |
+| Authority   | Identifiers that the process is able to accept transactions from that are not the owner or the process (0-n) | string |
 | \_version   | The version of the library                                                                                   | string |
 | env         | Evaluation Environment                                                                                       | string |
 | outbox      | Holds Messages and Spawns for response                                                                       | object |
