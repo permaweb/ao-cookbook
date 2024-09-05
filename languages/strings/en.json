@@ -85,5 +85,6 @@
   "references-token": "Token",
   "references-data": "Loading Data",
   "references-cron": "CRON Messages",
-  "references-editor-setup": "ao Editor Setup"
+  "references-editor-setup": "ao Editor Setup",
+  "references-community": "Community"
 }

@@ -434,6 +434,10 @@ export const localeConfig = (langCode) => ({
             text: get_i18n_str(langCode, "references-editor-setup"),
             link: get_i18n_link(langCode, "/references/editor-setup"),
           },
+          {
+            text: get_i18n_str(langCode, "references-community"),
+            link: get_i18n_link(langCode, "/references/community"),
+          },
         ],
       },
     ],
