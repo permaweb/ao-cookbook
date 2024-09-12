@@ -1,6 +1,6 @@
 ---
 prev:
-  text: "Post Data"
+  text: "First POST Request"
   link: "../guides/0rbit/post-request"
 next:
   text: "Specifications"

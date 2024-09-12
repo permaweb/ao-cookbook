@@ -362,6 +362,20 @@ export const localeConfig = (langCode) => ({
               },
             ],
           },
+          {
+            text: get_i18n_str(langCode, "guides-0rbit"),
+            link: get_i18n_link(langCode, "/guides/0rbit/index"),
+            items: [
+              {
+                text: get_i18n_str(langCode, "guides-0rbit-get-request"),
+                link: get_i18n_link(langCode, "/guides/0rbit/get-request"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-0rbit-post-request"),
+                link: get_i18n_link(langCode, "/guides/aoconnect/post-request"),
+              },
+            ],
+          },
         ],
       },
       {
