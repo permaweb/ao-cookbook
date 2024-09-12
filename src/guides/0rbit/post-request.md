@@ -3,8 +3,8 @@ prev:
   text: "0rbit"
   link: "/guides/0rbit/get-request"
 next:
-  text: "Concepts"
-  link: "/concepts/index"
+  text: "BetterIDEa IDE"
+  link: "../betteridea/index.md"
 ---
 
 # First POST Request
