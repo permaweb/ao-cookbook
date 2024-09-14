@@ -80,5 +80,6 @@
   "references-token": "代币",
   "references-data": "加载数据",
   "references-cron": "定时消息",
-  "references-editor-setup": "ao 编辑器设置"
+  "references-editor-setup": "ao 编辑器设置",
+  "references-community": "社区"
 }
