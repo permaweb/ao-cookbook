@@ -84,8 +84,8 @@ The register handler will allow processes to join the chatroom.
        { Action = "Register"},
        function (msg)
          table.insert(Members, msg.From)
-         print(msg.From .. " registered")
-         msg.reply({ Data = "registered." })
+         print(msg.From .. " Registered")
+         msg.reply({ Data = "Registered." })
        end
      )
    ```
