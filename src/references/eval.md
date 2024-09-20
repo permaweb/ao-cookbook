@@ -36,10 +36,7 @@ await message({
 import { message, createDataItemSigner } from "@permaweb/aoconnect";
 
 await message({
-  /*
-    The arweave TXID of the process, this will become the "target".
-    This is the process the message is ultimately sent to.
-  */
+  // The arweave TXID of the process, this will become the "target".
   process: "process-id",
   // Tagging the Eval Action so the recieving process evaluates and adds the new Handler from the Data field.
   tags: [
