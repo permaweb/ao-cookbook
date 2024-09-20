@@ -1,8 +1,8 @@
 # Eval 
 
-Each AO process includes an onboard `Eval` function, which evaluates any data sent to it. This function enables the process to determine the appropriate action based on incoming messages and also checks if the message came from the process owner.
+Each AO process includes an onboard `Eval` Handler, which evaluates any data sent to it. This Handler enables the process to determine the appropriate action based on incoming messages and also checks if the message came from the process owner.
 
-The `Eval` handler can also be manually triggered to evaluate recieved data such as in the case of sending a message to upload new Handlers to a process from it's parent process. 
+The `Eval` handler can also be manually triggered to evaluate received data, such as when a parent process sends a message to upload new handlers to its child process.
 
 ## Sending Eval Action To Load Code Into A Child Process
 ```lua
