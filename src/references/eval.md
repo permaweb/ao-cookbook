@@ -4,7 +4,7 @@ Each AO process includes an onboard `Eval` Handler, which evaluates any data sen
 
 The `Eval` handler can also be manually triggered to evaluate received data, such as when a parent process sends a message to upload new handlers to its child process.
 
-## Sending Eval Action To Load Code Into A Child Process
+## Sending The Eval Action To Load Code Into A Child Process
 ```lua
 Send({
     Target = Child_Process,
