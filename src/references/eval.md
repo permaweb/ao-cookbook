@@ -37,12 +37,14 @@ import { message, createDataItemSigner } from "@permaweb/aoconnect";
 
 await message({
   // The arweave TXID of the process, this will become the "target".
-  process: "process-id",
+  process: "process-id", // Replace with the actual process ID
+
   // Tagging the Eval Action so the recieving process evaluates and adds the new Handler from the Data field.
   tags: [
     { name: "Action", value: "Eval" },
     { name: "Data", value: 'Handlers.add("ping", Handlers.utils.reply("pong"))' },
   ],
+
   // A signer function used to build the message "signature"
   signer: createDataItemSigner(globalThis.arweaveWallet),
 
