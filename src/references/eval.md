@@ -1,8 +1,21 @@
-# Eval
+# Eval 
 
-Each AO process includes an onboard 'Eval' function, which evaluates any data sent to it. This function enables the process to determine the appropriate action based on incoming messages and also checks if the message came from the process owner.
+Each AO process includes an onboard `Eval` function, which evaluates any data sent to it. This function enables the process to determine the appropriate action based on incoming messages and also checks if the message came from the process owner.
 
-## Eval
+The `Eval` handler can also be manually triggered to evaluate recieved data such as in the case of sending a message to upload new Handlers to a process from it's parent process. 
+
+## Sending Eval Action To Load Code Into A Child Process
+```lua
+Send({
+    Target = Child_Process,
+    Action = "Eval",
+    Data = [[
+        Handlers.add("ping", Handlers.utils.reply("pong"))
+    ]]
+})
+```
+
+## Eval Handler (_eval)
 ```sh
 local stringify = require(".stringify")
 -- handler for eval
