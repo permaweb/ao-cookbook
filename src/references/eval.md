@@ -1,58 +1,55 @@
 # Eval 
 
-Each AO process includes an onboard `Eval` Handler, which evaluates any new code sent to it. This Handler enables the process to determine the appropriate action for code being added and checks if the message came from the process owner.
+Each AO process includes an onboard `Eval` handler that evaluates any new code it receives. This handler enables the process to determine the appropriate action for the incoming code and verifies if the message originates from the process owner.
 
-The `Eval` handler can also be manually triggered to evaluate received data, such as when a parent process sends a message to upload new handlers to its child process.
+The `Eval` handler can also be manually triggered to evaluate received Data from an incoming message.
 
-## Sending The Eval Action To Load Code Into A Child Process
+## Sending an Eval Message in NodeJS
 ```lua
-Send({
-    Target = Child_Process,
-    Action = "Eval",
-    Data = [[
-        Handlers.add("ping", Handlers.utils.reply("pong"))
-    ]]
+import { readFileSync } from "node:fs";
+import { message, createDataItemSigner } from "@permaweb/aoconnect";
+
+const wallet = JSON.parse(
+  readFileSync("/path/to/arweave/wallet.json").toString()
+);
+
+await message({
+  // The arweave TXID of the process, this will become the "target".
+  process: "process-id", // Replace with the actual process ID
+
+  // Tagging the Eval Action so the recieving process evaluates and adds the new Handler from the Data field.
+  tags: [
+    { name: "Action", value: "Eval" },
+    { name: "Data", value: 'Handlers.add("ping", Handlers.utils.reply("pong"))' },
+  ],
+
+  // A signer function used to build the message "signature"
+  signer: createDataItemSigner(wallet),
+
 })
+  .then(console.log)
+  .catch(console.error);
 ```
 
-## Eval Handler (_eval)
-```sh
-local stringify = require(".stringify")
--- handler for eval
-return function (ao)
-  return function (msg)
-    -- exec expression
-    local expr = msg.Data
-    local func, err = load("return " .. expr, 'aos', 't', _G)
-    local output = ""
-    local e = nil
-    if err then
-      func, err = load(expr, 'aos', 't', _G)
-    end
-    if func then
-      output, e = func()
-    else
-      ao.outbox.Error = err
-      return
-    end
-    if e then 
-      ao.outbox.Error = e
-      return 
-    end
-    if HANDLER_PRINT_LOGS and output then
-      table.insert(HANDLER_PRINT_LOGS, type(output) == "table" and stringify.format(output) or tostring(output))
-    else 
-      -- set result in outbox.Output (Left for backwards compatibility)
-      ao.outbox.Output = {  
-        json = type(output) == "table" and pcall(function () return json.encode(output) end) and output or "undefined",
-        data = {
-          output = type(output) == "table" and stringify.format(output) or output,
-          prompt = Prompt()
-        }, 
-        prompt = Prompt() 
-      }
+## Sending an Eval Message in a Browser
+```lua
+import { message, createDataItemSigner } from "@permaweb/aoconnect";
 
-    end
-  end 
-end
+await message({
+  /*
+    The arweave TXID of the process, this will become the "target".
+    This is the process the message is ultimately sent to.
+  */
+  process: "process-id",
+  // Tagging the Eval Action so the recieving process evaluates and adds the new Handler from the Data field.
+  tags: [
+    { name: "Action", value: "Eval" },
+    { name: "Data", value: 'Handlers.add("ping", Handlers.utils.reply("pong"))' },
+  ],
+  // A signer function used to build the message "signature"
+  signer: createDataItemSigner(globalThis.arweaveWallet),
+
+})
+  .then(console.log)
+  .catch(console.error);
 ```
