@@ -5,7 +5,7 @@ Each AO process includes an onboard `Eval` handler that evaluates any new code i
 The `Eval` handler can also be manually triggered to evaluate received Data from an incoming message.
 
 ## Sending an Eval Message in NodeJS
-```lua
+```js
 import { readFileSync } from "node:fs";
 import { message, createDataItemSigner } from "@permaweb/aoconnect";
 
@@ -32,7 +32,7 @@ await message({
 ```
 
 ## Sending an Eval Message in a Browser
-```lua
+```js
 import { message, createDataItemSigner } from "@permaweb/aoconnect";
 
 await message({
