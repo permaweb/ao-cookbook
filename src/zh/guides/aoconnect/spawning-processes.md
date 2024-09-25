@@ -35,7 +35,7 @@ const processId = await spawn({
     for tags that may effect its computation.
   */
   tags: [
-    { name: "Your-Tag-Name-Here", value: "your-tag-value" },
+    { name: "Authority", value: "fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY" },
     { name: "Another-Tag", value: "another-value" },
   ],
 });
@@ -58,7 +58,7 @@ const processId = await spawn({
     for tags that may effect its computation.
   */
   tags: [
-    { name: "Your-Tag-Name-Here", value: "your-tag-value" },
+    { name: "Authority", value: "fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY" },
     { name: "Another-Tag", value: "another-value" },
   ],
 });
