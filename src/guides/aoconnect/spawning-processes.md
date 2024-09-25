@@ -6,10 +6,18 @@ In order to spawn a Process you must have the TXID of an ao Module that has been
 
 You must also have the wallet address of a Scheduler Unit (SU). This specified SU will act as the scheduler for this Process. This means that all nodes in the system can tell that they need to read and write to this SU for this Process. You can use the address below.
 
-## Wallet address of an available Scheduler
+### Wallet address of an available Scheduler
 
 ```lua
 _GQ33BkPtZrqxA84vM8Zk-N2aO0toNNu_C-l-rawrBA
+```
+
+In addition, in order to receive messages from other processes an `Authority` tag must be supplied with the wallet address of an authorised Messaging Unit (MU).
+
+### Wallet address of the testnet MU
+
+```lua
+fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY
 ```
 
 ## Spawning a Process in NodeJS
@@ -35,7 +43,7 @@ const processId = await spawn({
     for tags that may effect its computation.
   */
   tags: [
-    { name: "Your-Tag-Name-Here", value: "your-tag-value" },
+    { name: "Authority", value: "fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY" },
     { name: "Another-Tag", value: "another-value" },
   ],
 });
@@ -58,7 +66,7 @@ const processId = await spawn({
     for tags that may effect its computation.
   */
   tags: [
-    { name: "Your-Tag-Name-Here", value: "your-tag-value" },
+    { name: "Authority", value: "fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY" },
     { name: "Another-Tag", value: "another-value" },
   ],
 });
