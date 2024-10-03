@@ -1,6 +1,6 @@
 <script setup>
   import {onMounted} from "vue"
-  import {renderRepl} from "../../tools/replRenderer.jsx"
+  import {renderRepl} from "../../../tools/replRenderer.jsx"
 
   const codes = {
     "step-3": `Handlers.add(
