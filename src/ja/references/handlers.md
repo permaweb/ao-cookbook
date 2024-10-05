@@ -1,4 +1,4 @@
-# Handlers (Version 0.0.5)
+<!-- # Handlers (Version 0.0.5)
 
 ## Overview
 
@@ -8,36 +8,49 @@ The Handlers library provides a flexible way to manage and execute a series of p
 
 ### Pattern Matching Tables
 
-Pattern Matching Tables is a concept of providing a Table representation of the matching shape of the incoming message. Here are the rules:
+Pattern Matching Tables is a concept of providing a Table representation of the matching shape of the incoming message. Here are the rules: -->
+
+# ハンドラ (バージョン 0.0.5)
+
+## 概要
+
+Handlersライブラリは、パターンマッチングに基づいて一連のプロセス関数を管理・実行する柔軟な方法を提供します。AOプロセスは、メッセージを受信して応答します。これらのメッセージは、タグとデータで構成されたArweave DataItem仕様を使用して定義されます。Handlersライブラリを使用することで、AOメッセージの属性に基づいてプロセス評価のパイプラインを定義できます。各ハンドラアイテムは、パターン関数、ハンドル関数、および名前で構成されています。このライブラリは、さまざまな入力条件に基づいて異なるアクションを実行する必要があるシナリオに適しています。
+
+## コンセプト
+
+### パターンマッチングテーブル
+
+パターンマッチングテーブルは、受信メッセージのマッチング形状をテーブル形式で提供する概念です。以下がそのルールです：
 
 ```lua
 
-{ "Action" = "Do-Something" } -- Match any message via a table of tags it must contain
+{ "Action" = "Do-Something" } -- 含めるべきタグのテーブルを通じて、任意のメッセージをマッチング
 
-{ "Recipient" = '_' } -- Match messages that have a recipient tag with any value..
+{ "Recipient" = '_' } -- 受信者タグが任意の値を持つメッセージをマッチング
 
-{ "Quantity" = "%d+" } -- Validate a tag against a Lua string match (similar to regular expressions)
+{ "Quantity" = "%d+" } -- Luaの文字列マッチ（正規表現に似ている）を使用してタグを検証
 
-{ "Quantity" = function(v) return tonumber(v) ~= Nil end } -- Apply a function to the tag to check it. Nil or false do not match
+{ "Quantity" = function(v) return tonumber(v) ~= Nil end } -- タグに関数を適用してチェック。Nilやfalseはマッチしない
+
 ```
 
 Example:
 
-if you want to match on every message with the Action equal to "Balance"
+Actionが「Balance」に等しいすべてのメッセージにマッチさせたい場合：
 
 ```lua
 { Action = "Balance" }
 ```
 
-if you want to match on every message with the Quantity being a Number
+Quantityが数値であるすべてのメッセージにマッチさせたい場合：
 
 ```lua
 { Quantity = "%d+" }
 ```
 
-### Resolvers
+### リゾルバ
 
-Resolvers are tables in which each key is a pattern matching table and the value is a function that is executed based on the matching key. This allows developers to create case like statements in the resolver property.
+リゾルバは、各キーがパターンマッチングテーブルであり、値がマッチしたキーに基づいて実行される関数であるテーブルです。これにより、開発者はリゾルバプロパティ内でcaseのようなステートメントを作成できます。
 
 ```lua
 Handlers.add("foobarbaz",
@@ -48,12 +61,17 @@ Handlers.add("foobarbaz",
 })
 ```
 
-## Module Structure
+## モジュール構造
 
-- `Handlers._version`: String representing the version of the Handlers library.
+- `Handlers._version`: Handlersライブラリのバージョンを表す文字列。
+- `Handlers.list`: 登録されたハンドラのリストを格納するテーブル。
+
+## ハンドラメソッドの共通関数シグネチャ
+
+<!-- - `Handlers._version`: String representing the version of the Handlers library.
 - `Handlers.list`: Table storing the list of registered handlers.
 
-## Handler method common function signature
+## Handler method common function signature -->
 
 | Parameter          | Type                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------------------ | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,6 +80,7 @@ Handlers.add("foobarbaz",
 | handler            | Table (Resolver) or Function | This parameter can take a table that acts as a conditional that invokes a function based on a pattern matched key. or a Function that takes the message DataItem as an argument and performs some business logic.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | maxRuns (optional) | number                       | As of 0.0.5, each handler function takes an optional function to define the amount of times the handler should match before it is removed. The default is infinity.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
+<!--
 ## Functions
 
 ### `Handlers.add(name, pattern, handler)`
@@ -94,7 +113,41 @@ Removes a handler from the handlers list by name.
 
 ## Examples
 
-### Using pattern Table
+### Using pattern Table -->
+
+## 関数
+
+### `Handlers.add(name, pattern, handler)`
+
+新しいハンドラを追加するか、既存のハンドラを名前で更新します。
+
+### `Handlers.append(name, pattern, handle)`
+
+新しいハンドラをハンドラリストの最後に追加します。
+
+### `Handlers.once(name, pattern, handler)`
+
+パターンがマッチした場合に一度だけ実行されます。
+
+### `Handlers.prepend(name, pattern, handle)`
+
+新しいハンドラをハンドラリストの最初に追加します。
+
+### `Handlers.before(handleName)`
+
+指定されたハンドラの前に新しいハンドラを追加するオブジェクトを返します。
+
+### `Handlers.after(handleName)`
+
+指定されたハンドラの後に新しいハンドラを追加するオブジェクトを返します。
+
+### `Handlers.remove(name)`
+
+名前でハンドラをハンドラリストから削除します。
+
+## 例
+
+### パターンテーブルの使用
 
 ```lua
 Handlers.add("ping",
@@ -131,6 +184,7 @@ Handlers.add("example",
 )
 ```
 
+<!--
 ## Notes
 
 - Handlers are executed in the order they appear in `handlers.list`.
@@ -146,7 +200,24 @@ The Handlers.utils module provides two functions that are common matching patter
 
 ### Handlers.utils.hasMatchingData(data : string)
 
-This helper returns a function that requires a message argument, so you can drop this into the pattern argument of any handler. The function compares the data on the incoming message with the string provided as an argument.
+This helper returns a function that requires a message argument, so you can drop this into the pattern argument of any handler. The function compares the data on the incoming message with the string provided as an argument. -->
+
+## 注意事項
+
+- ハンドラは`handlers.list`に表示される順序で実行されます。
+- パターン関数は、ハンドラをスキップするには`false`を返し、ハンドラ実行後に終了するには`true`を返し、次のハンドラを実行するには`"continue"`を返す必要があります。
+
+## Handlers.utils
+
+Handlers.utilsモジュールは、一般的なマッチングパターンの2つの関数と、一般的なハンドル関数を1つ提供します。
+
+- hasMatchingData(data)
+- hasMatchingTag(name, value)
+- reply(txt)
+
+### Handlers.utils.hasMatchingData(data : string)
+
+このヘルパーはメッセージ引数を必要とする関数を返すため、任意のハンドラのパターン引数に組み込むことができます。この関数は、受信メッセージのデータと引数として提供された文字列を比較します。
 
 ```lua
 Handlers.add("ping",
@@ -155,11 +226,18 @@ Handlers.add("ping",
 )
 ```
 
+<!--
 If a message comes into the process with data set to ping, this handler will match on it and invoke the handle function.
 
 ### Handlers.hasMatchingTag(name : string, value : string)
 
-This helper returns a function that requires a message argument, so you can drop this into any pattern argument on the Handlers module. The function compares the Tag Name and Value, if they are equal then it invokes the handle function.
+This helper returns a function that requires a message argument, so you can drop this into any pattern argument on the Handlers module. The function compares the Tag Name and Value, if they are equal then it invokes the handle function. -->
+
+メッセージがデータに`ping`が設定された状態でプロセスに入ってくると、このハンドラはそれにマッチし、ハンドル関数が実行されます。
+
+### Handlers.hasMatchingTag(name : string, value : string)
+
+このヘルパーはメッセージ引数を必要とする関数を返すため、Handlersモジュールの任意のパターン引数に組み込むことができます。この関数は、タグ名と値を比較し、それらが等しい場合にハンドル関数を呼び出します。
 
 ```lua
 Handlers.add("ping",
@@ -168,9 +246,13 @@ Handlers.add("ping",
 )
 ```
 
+<!-- ### Handlers.reply(text : string)
+
+This helper is a simple handle function, it basically places the text value in to the Data property of the outbound message. -->
+
 ### Handlers.reply(text : string)
 
-This helper is a simple handle function, it basically places the text value in to the Data property of the outbound message.
+このヘルパーはシンプルなハンドル関数で、基本的にテキストの値を送信メッセージのDataプロパティに設定します。
 
 ```lua
 Handlers.add("ping",

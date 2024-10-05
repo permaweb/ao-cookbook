@@ -1,4 +1,19 @@
-# ao Token and Subledger Specification
+# aoトークンおよびサブレッジャー仕様
+
+**ステータス:** DRAFT-1  
+**対象ネットワーク:** ao.TN.1
+
+この仕様は、標準のaoトークンプロセスに必要なメッセージハンドラと機能を説明します。この標準の実装は通常、プロセスによって維持される希少性を持つ転送可能な資産を制御する能力をユーザーに提供します。
+
+各準拠プロセスは、プロセスが表す資産の所有権を符号化するために、残高の台帳を実装することが期待されます。準拠プロセスには、通常、トークンの所有権の希少性を保証するための安全策を伴って、この台帳を変更するためのメソッドのセットがあります。
+
+さらに、この仕様では「サブレッジャー」プロセスタイプを説明しています。これは、実装されると、親プロセスから子プロセスにトークンの数を分割移動する能力を提供します。この子プロセスは同じトークンインターフェース仕様を実装します。サブレッジャープロセスの`From-Module`が参加者によって信頼される場合、これらのサブレッジャーを使って「ソース」トークンで取引することができます。これは、直接メッセージを交換することなく行えます。これにより、プロセスが混雑している場合でも、参加者はそのプロセスからトークンを使用できます。オプションとして、参加者がサブレッジャープロセスが実行されている`Module`を信頼している場合、これらのプロセス間での残高を*代替可能*として扱うことができます。この結果、任意の数の並列プロセス、およびそれに伴う取引を単一のトークンで同時に処理できます。
+
+# トークンプロセス
+
+仕様に準拠したトークンプロセスは、さまざまな形式のメッセージに応答し、各形式は`Action`タグで指定されます。トークンがサポートしなければならない`Action`メッセージの完全なセットは以下の通りです：
+
+<!-- # ao Token and Subledger Specification
 
 **Status:** DRAFT-1
 **Targeting Network:** ao.TN.1
@@ -11,7 +26,7 @@ Additionally, this specification describes a 'subledger' process type which, whe
 
 # Token Processes
 
-A specification-compliant token process responds to a number of different forms of messages, with each form specified in an `Action` tag. The full set of `Action` messages that the token must support are as follows:
+A specification-compliant token process responds to a number of different forms of messages, with each form specified in an `Action` tag. The full set of `Action` messages that the token must support are as follows: -->
 
 | Name     | Description                                                                                            | Read-Only          |
 | -------- | ------------------------------------------------------------------------------------------------------ | ------------------ |
@@ -20,11 +35,17 @@ A specification-compliant token process responds to a number of different forms 
 | Transfer | send 1 or more units from the callers balance to one or move targets with the option to notify targets | :x:                |
 | Mint     | if the ledger process is the root and you would like to increase token supply                          | :x:                |
 
-In the remainder of this section the tags necessary to spawn a compliant token process, along with the form of each of the `Action` messages and their results is described.
+このセクションの残りでは、準拠トークンプロセスを生成するために必要なタグと、各`Action`メッセージの形式およびその結果について説明します。
+
+## 生成パラメータ
+
+すべての準拠トークンプロセスは、その生成メッセージに以下の不変パラメータを含める必要があります：
+
+<!-- In the remainder of this section the tags necessary to spawn a compliant token process, along with the form of each of the `Action` messages and their results is described.
 
 ## Spawning Parameters
 
-Every compliant token process must carry the following immutable parameters upon its spawning message:
+Every compliant token process must carry the following immutable parameters upon its spawning message: -->
 
 | Tag          | Description                                                                                                           | Optional?          |
 | ------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------ |
@@ -33,13 +54,21 @@ Every compliant token process must carry the following immutable parameters upon
 | Logo         | An image that applications may deserire to show next to the token, in order to make it quickly visually identifiable. | :heavy_check_mark: |
 | Denomination | The number of the token that should be treated as a single unit when quantities and balances are displayed to users.  | :x:                |
 
-## Messaging Protocol
+## メッセージングプロトコル
+
+### Balance(Target? : string)
+
+ターゲットの残高を返します。ターゲットが指定されていない場合は、メッセージの送信者の残高を返す必要があります。
+
+例 `Action` メッセージ：
+
+<!-- ## Messaging Protocol
 
 ### Balance(Target? : string)
 
 Returns the balance of a target, if a target is not supplied then the balance of the sender of the message must be returned.
 
-Example `Action` message:
+Example `Action` message: -->
 
 ```lua=
 send({
@@ -63,9 +92,14 @@ Example response message:
 }
 ```
 
+<!--
 ### Balances()
 
-Returns the balance of all participants in the token.
+Returns the balance of all participants in the token. -->
+
+### Balances()
+
+トークンのすべての参加者の残高を返します。
 
 ```lua
 send({
@@ -89,9 +123,13 @@ Example response message:
 }
 ```
 
+<!-- ### Transfer(Target, Quantity)
+
+If the sender has a sufficient balance, send the `Quantity` to the `Target`, issuing a `Credit-Notice` to the recipient and a `Debit-Notice` to the sender. The `Credit-` and `Debit-Notice` should forward any and all tags from the original `Transfer` message with the `X-` prefix. If the sender has an insufficient balance, fail and notify the sender. -->
+
 ### Transfer(Target, Quantity)
 
-If the sender has a sufficient balance, send the `Quantity` to the `Target`, issuing a `Credit-Notice` to the recipient and a `Debit-Notice` to the sender. The `Credit-` and `Debit-Notice` should forward any and all tags from the original `Transfer` message with the `X-` prefix. If the sender has an insufficient balance, fail and notify the sender.
+送信者に十分な残高がある場合、`Quantity`を`Target`に送信し、受取人に`Credit-Notice`を発行し、送信者に`Debit-Notice`を発行します。`Credit-`および`Debit-Notice`は、元の`Transfer`メッセージからすべてのタグを`X-`プレフィックス付きで転送する必要があります。送信者に残高が不足している場合は、失敗し、送信者に通知します。
 
 ```lua
 send({
@@ -105,7 +143,9 @@ send({
 })
 ```
 
-If a successful transfer occurs a notification message should be sent if `Cast` is not set.
+<!-- If a successful transfer occurs a notification message should be sent if `Cast` is not set. -->
+
+成功した転送が行われた場合、`Cast`が設定されていない場合は通知メッセージを送信する必要があります。
 
 ```lua
 ao.send({
@@ -119,7 +159,9 @@ ao.send({
 })
 ```
 
-Recipients will infer from the `From-Process` tag of the message which tokens they have received.
+<!-- Recipients will infer from the `From-Process` tag of the message which tokens they have received. -->
+
+受取人は、メッセージの`From-Process`タグから、どのトークンを受け取ったかを推測します。
 
 ### Get-Info()
 
@@ -134,7 +176,9 @@ send({
 
 ### Mint() [optional]
 
-Implementing a `Mint` action gives the process a way of allowing valid participants to create new tokens.
+<!-- Implementing a `Mint` action gives the process a way of allowing valid participants to create new tokens. -->
+
+`Mint`アクションを実装することで、プロセスは有効な参加者に新しいトークンを作成する方法を提供します。
 
 ```lua
 send({
@@ -146,20 +190,29 @@ send({
 })
 ```
 
-# Subledger Processes
+<!-- # Subledger Processes
 
-In order to function appropriately, subledgers must implement the full messaging protocol of token contracts (excluding the `Mint` action). Subledgers must also implement additional features and spawn parameters for their processes. These modifications are described in the following section.
+In order to function appropriately, subledgers must implement the full messaging protocol of token contracts (excluding the `Mint` action). Subledgers must also implement additional features and spawn parameters for their processes. These modifications are described in the following section. -->
 
+# サブレッジャープロセス
+
+適切に機能するために、サブレッジャーはトークン契約の完全なメッセージングプロトコルを実装する必要があります（`Mint`アクションを除く）。サブレッジャーはまた、プロセスのために追加の機能や生成パラメータを実装する必要があります。これらの変更は、次のセクションで説明されます。
+
+<!--
 ### Spawning Parameters
 
-Every compliant subledger process must carry the following immutable parameters upon its spawning message:
+Every compliant subledger process must carry the following immutable parameters upon its spawning message: -->
+
+### 生成パラメータ
+
+すべての準拠したサブレッジャープロセスは、その生成メッセージに以下の不変パラメータを含める必要があります：
 
 | Tag          | Description                                                        | Optional? |
 | ------------ | ------------------------------------------------------------------ | --------- |
 | Source-Token | The `ID` of the top-most process that this subledger represents.   | :x:       |
 | Parent-Token | The `ID` of the parent process that this subledger is attached to. | :x:       |
 
-### `Credit-Notice` Handler
+<!-- ### `Credit-Notice` Handler
 
 Upon receipt of a `Credit-Notice` message, a compliant subledger process must check if the process in question is the `Parent-Token`. If it is, the subledger must increase the balance of the `Sender` by the specified quantity.
 
@@ -168,6 +221,17 @@ Upon receipt of a `Credit-Notice` message, a compliant subledger process must ch
 In addition to the normal tags that are passed in the `Credit-Notice` message to the recipient of tokens, a compliant subledger process must also provide both of the `Source-Token` and `Parent-Token` values. This allows the recipient of the `Transfer` message -- if they trust the `Module` of the subledger process -- to credit a receipt that is analogous (fungible with) deposits from the `Source-Token`.
 
 The modified `Credit-Notice` should be structured as follows:
+ -->
+
+### `Credit-Notice`ハンドラ
+
+`Credit-Notice`メッセージを受信した際、準拠したサブレッジャープロセスは、対象のプロセスが`Parent-Token`であるかどうかを確認する必要があります。もしそうであれば、サブレッジャーは`Sender`の残高を指定された数量だけ増加させる必要があります。
+
+### Transfer(Target, Quantity)
+
+トークンの受取人に渡される`Credit-Notice`メッセージに含まれる通常のタグに加えて、準拠したサブレッジャープロセスは、`Source-Token`と`Parent-Token`の両方の値も提供する必要があります。これにより、`Transfer`メッセージの受取人は、サブレッジャープロセスの`Module`を信頼している場合、`Source-Token`からの預金と同様の（代替可能な）受領をクレジットできるようになります。
+
+修正された`Credit-Notice`は以下のように構成されるべきです：
 
 ```lua
 ao.send({
@@ -182,9 +246,14 @@ ao.send({
 })
 ```
 
+<!--
 ### Withdraw(Target?, Quantity)
 
-All subledgers must allow balance holders to withdraw their tokens to the parent ledger. Upon receipt of an `Action: Withdraw` message, the subledger must send an `Action` message to its `Parent-Ledger`, transferring the requested tokens to the caller's address, while debiting their account locally. This transfer will result in a `Credit-Notice` from the `Parent-Ledger` for the caller.
+All subledgers must allow balance holders to withdraw their tokens to the parent ledger. Upon receipt of an `Action: Withdraw` message, the subledger must send an `Action` message to its `Parent-Ledger`, transferring the requested tokens to the caller's address, while debiting their account locally. This transfer will result in a `Credit-Notice` from the `Parent-Ledger` for the caller. -->
+
+### Withdraw(Target?, Quantity)
+
+すべてのサブレッジャーは、残高保有者がトークンを親台帳に引き出すことを許可する必要があります。`Action: Withdraw`メッセージを受信した際、サブレッジャーはその`Parent-Ledger`に`Action`メッセージを送り、要求されたトークンを呼び出し元のアドレスに転送し、ローカルでアカウントから引き落とします。この転送により、呼び出し元に対して`Parent-Ledger`から`Credit-Notice`が発行されます。
 
 ```lua
 send({

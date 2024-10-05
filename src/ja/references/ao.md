@@ -1,4 +1,18 @@
-# ao Module
+# aoモジュール
+
+バージョン: 0.0.3
+
+`ao`プロセスの通信はメッセージによって処理され、各プロセスはANS-104 DataItems形式でメッセージを受信し、以下の一般的な操作を実行できる必要があります。
+
+- isTrusted(msg) - このメッセージが信頼できるかどうかを確認
+- send(msg) - 別のプロセスにメッセージを送信
+- spawn(module, msg) - プロセスを生成
+
+このライブラリの目的は、`ao`開発者ツールキットの中でこのコア機能を提供することです。開発者として、このライブラリを利用するかどうかは任意ですが、デフォルトで統合されています。
+
+## プロパティ
+
+<!-- # ao Module
 
 version: 0.0.3
 
@@ -10,7 +24,7 @@ version: 0.0.3
 
 The goal of this library is to provide this core functionality in the box of the `ao` developer toolkit. As a developer you have the option to leverage this library or not, but it integrated by default.
 
-## Properties
+## Properties -->
 
 | Name        | Description                                                                                                  | Type   |
 | ----------- | ------------------------------------------------------------------------------------------------------------ | ------ |
@@ -22,7 +36,19 @@ The goal of this library is to provide this core functionality in the box of the
 | env         | Evaluation Environment                                                                                       | string |
 | outbox      | Holds Messages and Spawns for response                                                                       | object |
 
-## Methods
+## メソッド
+
+### send(msg: Message\<table>) : Message\<table>
+
+send関数は、メッセージオブジェクトまたは部分的なメッセージオブジェクトを受け取り、オブジェクトに追加の`ao`特有のタグを追加して完全なメッセージオブジェクトを返します。また、ao.outbox.Messagesテーブルにも挿入されます。
+
+**パラメータ**
+
+- msg
+
+スキーマ
+
+<!-- ## Methods
 
 ### send(msg: Message\<table>) : Message\<table>
 
@@ -32,7 +58,7 @@ The send function takes a Message object or partial message object, it adds addi
 
 - msg
 
-Schema
+Schema -->
 
 ```json
 {
@@ -112,9 +138,15 @@ Schema
 
 ### spawn(module : string, spawn : Spawn\<table>) : Spawn\<table>
 
+`spawn`関数は、最初の引数としてモジュールのTXIDと、完全または部分的なSpawnテーブルを受け取ります。結果として、完全なSpawnテーブルが返されます。また、spawn関数は一意の参照識別子を持つ`Ref_`タグも生成します。
+
+**パラメータ**
+
+<!-- ### spawn(module : string, spawn : Spawn\<table>) : Spawn\<table>
+
 The `spawn` function takes a module TXID as the first argument and a full or parital Spawn table. The result will return a full Spawn table. The spawn function will also generate a `Ref_` tag with a unique reference identifier.
 
-**parameters**
+**parameters** -->
 
 | Name   | Description                                                                             | Type   |
 | ------ | --------------------------------------------------------------------------------------- | ------ |
@@ -171,7 +203,12 @@ Schema
 
 ### isTrusted(msg : Message\<table>) : boolean
 
+プロセスを生成する際に、0個以上の権限タグを指定できます。aoライブラリは、これらの値を`authorities`と呼ばれる`ao`プロパティのテーブル配列に追加します。このセットは、ao.TN.1の`Proof of Authority`機能を提供します。メッセージが`handle`関数に到着すると、開発者は`ao.isTrusted`を呼び出して、そのメッセージが信頼できるソースからのものであるかを確認できます。
+
+<!-- ### isTrusted(msg : Message\<table>) : boolean
+
 When spawning a process, 0 or more Authority Tags can be supplied, the ao library adds each of these values to a table array on the `ao` properties called `authorities`. This set provides the `Proof of Authority` feature for ao.TN.1. When a message arrives in the `handle` function, the developer can call `ao.isTrusted` to verify if the message is from a trusted source.
+ -->
 
 **parameters**
 

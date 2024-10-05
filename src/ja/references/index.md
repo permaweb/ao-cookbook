@@ -1,14 +1,14 @@
 ---
 prev:
-  text: "The aos interface"
+  text: "aosインターフェース"
   link: "/concepts/tour"
 next:
   text: "Lua"
   link: "./lua"
 ---
 
-# References
+# 参考資料
 
-## Index
+## 目次
 
 - [Lua](lua)
