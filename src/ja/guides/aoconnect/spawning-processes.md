@@ -1,4 +1,14 @@
-# Spawning a Process
+# プロセスの生成
+
+プロセスの概念についての詳細は、[aoプロセス](../../concepts/processes.md)のコンセプトを参照してください。このガイドでは、ao connectを使用してプロセスを生成する方法に焦点を当てています。
+
+プロセスを生成するには、ArweaveにアップロードされたaoモジュールのTXIDが必要です。このモジュールはプロセスのソースコードです。プロセス自体は、そのソースのインスタンス化です。
+
+また、スケジューラーユニット（SU）のウォレットアドレスも必要です。この指定されたSUは、このプロセスのスケジューラとして機能します。つまり、システム内のすべてのノードは、このプロセスに対してこのSUに読み書きする必要があることを知ることができます。以下のアドレスを使用できます。
+
+## 利用可能なスケジューラのウォレットアドレス
+
+<!-- # Spawning a Process
 
 A deep dive into the concept of Processes can be found in the [ao Processes](../../concepts/processes.md) concept. This guide focuses on using ao connect to spawn a Process.
 
@@ -6,7 +16,7 @@ In order to spawn a Process you must have the TXID of an ao Module that has been
 
 You must also have the wallet address of a Scheduler Unit (SU). This specified SU will act as the scheduler for this Process. This means that all nodes in the system can tell that they need to read and write to this SU for this Process. You can use the address below.
 
-## Wallet address of an available Scheduler
+## Wallet address of an available Scheduler -->
 
 ```lua
 TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog

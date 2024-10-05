@@ -1,10 +1,18 @@
-# Connecting to specific ao nodes
+# 特定のaoノードへの接続
+
+コードにao connectを含めると、特定のMUおよびCUに接続する能力と、Arweaveゲートウェイを指定する能力があります。これは、"connect"関数をインポートし、"connect"関数への呼び出しから関数を抽出することで実現できます。
+
+メッセージを送信する際にどのMUが呼び出されているかを知りたい場合、後で指定したMUからデバッグできるようにするために、これを行うことがあります。また、特定のCUから結果を読み取りたい場合もあります。別の理由で特定のMUとCUを好むこともあるかもしれません。デフォルトのarweave.net以外のものを使用するために、ゲートウェイを指定することができます。
+
+## connectへの呼び出しなしでのインポート
+
+<!-- # Connecting to specific ao nodes
 
 When including ao connect in your code you have the ability to connect to a specific MU and CU, as well as being able to specifiy an Arweave gateway. This can be done by importing the "connect" function and extracting the functions from a call to the "connect" function.
 
 You may want to do this if you want to know which MU is being called when you send your message so that later you can debug from the specified MU. You also may want to read a result from a specific CU. You may in fact just prefer a particular MU and CU for a different reason. You can specify the gateway in order to use something other than the default, which is arweave.net.
 
-## Importing without a call to connect
+## Importing without a call to connect -->
 
 ```js
 // Here aoconnect will implicitly use the default nodes/units

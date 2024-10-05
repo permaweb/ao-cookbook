@@ -1,11 +1,20 @@
-# Installing ao connect
+# ao connectのインストール
+
+## 前提条件
+
+---
+
+ao connectをアプリにインストールするには、NodeJS/NPMのバージョンが18以上である必要があります。
+<br>
+
+<!-- # Installing ao connect
 
 ## Prerequisites
 
 ---
 
 In order to install ao connect into your app you must have NodeJS/NPM 18 or higher.
-<br>
+<br> -->
 
 ## Installing
 
@@ -23,7 +32,9 @@ yarn add @permaweb/aoconnect -D
 
 <br>
 
-This module can now be used from NodeJS as well as a browser, it can be included as shown below.
+このモジュールは、NodeJSおよびブラウザの両方から使用できるようになり、以下のように含めることができます。
+
+<!-- This module can now be used from NodeJS as well as a browser, it can be included as shown below. -->
 
 #### ESM (Node & Browser) aka type: `module`
 
