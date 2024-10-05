@@ -1,26 +1,47 @@
-# Building a Chatroom in aos
+<!-- # Building a Chatroom in aos -->
+
+# aosでチャットルームを構築する
 
 ::: info
-If you've found yourself wanting to learn how to create a chatroom within `ao`, then that means we understand at least the basic methodology of sending and receiving messages. If not, it's suggested that you review the [Messaging](messaging) tutorial before proceeding.
+
+<!-- If you've found yourself wanting to learn how to create a chatroom within `ao`, then that means we understand at least the basic methodology of sending and receiving messages. If not, it's suggested that you review the [Messaging](messaging) tutorial before proceeding. -->
+
+もし、`ao` 内でチャットルームを作成する方法を学びたいと思っているなら、メッセージの送受信に関する基本的な手法を少なくとも理解していることを意味します。まだ理解していない場合は、先に [メッセージング](messaging) のチュートリアルを確認することをお勧めします。
+
 :::
 
-In this tutorial, we'll be building a chatroom within `ao` using the Lua scripting language. The chatroom will feature two primary functions:
+<!-- In this tutorial, we'll be building a chatroom within `ao` using the Lua scripting language. The chatroom will feature two primary functions: -->
 
-1. **Register**: Allows processes to join the chatroom.
-2. **Broadcast**: Sends messages from one process to all registered participants.
+このチュートリアルでは、Luaスクリプト言語を使用して `ao` 内にチャットルームを構築します。このチャットルームには、次の2つの主要な機能が備わっています：
 
-Let's begin by setting up the foundation for our chatroom.
+<!-- 1. **Register**: Allows processes to join the chatroom.
+2. **Broadcast**: Sends messages from one process to all registered participants. -->
+
+1. **登録**: プロセスがチャットルームに参加できるようにする機能。
+2. **ブロードキャスト**: 1つのプロセスからすべての登録済み参加者にメッセージを送信する機能。
+
+<!-- Let's begin by setting up the foundation for our chatroom. -->
+
+では、チャットルームの基盤を設定するところから始めましょう。
 
 ## Video Tutorial
 
 <iframe width="680" height="350" src="https://www.youtube.com/embed/oPCx-cfubF0?si=D5yWxmyFMV-4mh2P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-## Step 1: The Foundation
+<!-- ## Step 1: The Foundation -->
 
-- Open your preferred code editor, e.g. VS Code.
+## ステップ1: 基礎
+
+<!-- - Open your preferred code editor, e.g. VS Code. -->
+
+- 好きなコードエディタを開きます（例：VS Code）。
 
 ::: info
-You may find it helpful to have the [Recommended Extensions](../../references/editor-setup.md) installed in your code editor to enhance your Lua scripting experience.
+
+<!-- You may find it helpful to have the [Recommended Extensions](../../references/editor-setup.md) installed in your code editor to enhance your Lua scripting experience. -->
+
+Luaスクリプトの体験を向上させるために、コードエディタに[推奨拡張機能](../../references/editor-setup.md) をインストールしておくと便利です。
+
 :::
 
 - Create a new file named `chatroom.lua`.
