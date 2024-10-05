@@ -51,7 +51,7 @@
 </defs>
 </svg>
 
-## What is a Unit?
+<!-- ## What is a Unit?
 
 The ao Computer is composed of three Unit types, each type contains a set of responsibilities for the computer. And each Unit is horizontally scalable.
 
@@ -77,4 +77,32 @@ The MU acts as the entry point, receiving external messages and managing process
 
 The SU ensures messages are properly sequenced and stored on Arweave, maintaining order for consistent replay and verification of message evaluations.
 
-The CU handles computation, loading binary modules, and managing memory to ensure processes run with current data. It then returns the evaluation results to the MU for further message handling.
+The CU handles computation, loading binary modules, and managing memory to ensure processes run with current data. It then returns the evaluation results to the MU for further message handling. -->
+
+## ユニットとは何ですか？
+
+aoコンピュータは3つのユニットタイプで構成されており、それぞれのタイプにはコンピュータの責任が割り当てられています。各ユニットは水平にスケール可能です。
+
+aoでは、`Messager Unit`（MU）、`Scheduler Unit`（SU）、および`Compute Unit`（CU）があります。これらのユニットはaoコンピュータグリッドの構成要素です。ネットワーク上には1つ以上のユニットが存在し、それらが協力してaoオペレーティングシステム（`aos`）を動かしています。
+
+![MU](MU-diagram.png)
+
+- メッセンジャーユニット（Messager Unit） - これはaoへの玄関口であり、外部からのすべてのメッセージを受け取り、プロセスの通信を管理します。この通信の流れを「プッシュ」と呼びます。各プロセスは、メッセージを評価するとOutboxを返すことができ、このOutboxにはメッセージや新しいプロセスを生成するリクエストが含まれることがあります。メッセンジャーユニットは、Outboxからこれらのメッセージを抽出し、それらに署名してスケジューラーユニットに送信する役割を担っています。
+
+![SU Diagram](SU-diagram.png)
+
+- スケジューラーユニット（Scheduler Unit） - スケジューラーユニットは、メッセージの順序を決定し、そのメッセージをArweaveに保存する責任を持ちます。メッセージが適切に順序付けされることは、評価が再生され検証されるために重要です。このプロセスを担うのがスケジューラーユニットです。また、評価のためのメッセージの順序を取得するためにエンドポイントからクエリを行う機能も提供します。
+
+![CU Diagram](CU-diagram.png)
+
+- コンピュートユニット（Compute Unit） - コンピュートユニットは計算を担当しており、このユニットはバイナリモジュールをロードし、そのモジュールのメモリを管理します。これにより、プロセスの実行は常に最新のメモリ上で行われます。コンピュートユニットは評価の結果をメッセンジャーユニットに返し、その後、該当するプロセスのOutbox内のメッセージが処理されます。
+
+## まとめ
+
+aoコンピュータは、スケーラブルな3つのユニットタイプ（メッセンジャーユニット（MU）、スケジューラーユニット（SU）、およびコンピュートユニット（CU））で構成されており、これらがaoコンピュータの基盤を形成しています。これらのユニットはネットワーク上に複数存在し、協力してaoオペレーティングシステム（aos）を動かします。
+
+MUはエントリーポイントとして機能し、外部のメッセージを受け取り、プロセス間の通信を管理します。プロセスのOutboxからの送信メッセージや生成リクエストを処理し、それらをSUに転送します。
+
+SUは、メッセージが適切な順序で処理され、Arweaveに保存されることを保証し、メッセージ評価の再生と検証が一貫して行えるようにします。
+
+CUは計算処理を担当し、バイナリモジュールをロードし、メモリを管理してプロセスが最新データで実行されるようにします。その後、評価結果をMUに返し、MUがさらにメッセージを処理します。

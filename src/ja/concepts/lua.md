@@ -1,4 +1,4 @@
-# A whistle stop tour of Lua.
+<!-- # A whistle stop tour of Lua.
 
 Before we can explore ao in greater depth, let's take a moment to learn the basics of Lua: your companion for commanding aos processes.
 
@@ -24,11 +24,39 @@ Try out on the examples on your aos process as you go, or skip them if they are 
 - **Using variables**: Now type `a * 2`. You will see `20`returned on the command line.
 - **String concatenation**: Say hello to yourself by executing `"Hello, " .. ao.id`.
 
-## Experimenting with conditional statements.
+## Experimenting with conditional statements. -->
 
-- **If-Else**: Like most programming languages, Lua uses if-else blocks to conditionally execute code.
+# Luaの短期ツアー
 
-  In your aos process, type `.editor` and press enter. This will open an in-line text editor within your command-line interface.
+aoをより深く探索する前に、Luaの基本を学びましょう。Luaは、aosプロセスを制御するためのコンパニオンです。
+
+Luaはシンプルな言語で、驚くことは少ないです。もしJavascriptを知っているなら、Luaは簡潔で純粋なバージョンに感じるでしょう。もしゼロから学ぶ場合でも、Luaは重要な部分に焦点を当てた小さな言語であり、シンプルで分かりやすい構文で計算を行います。
+
+このセクションでは、わずか数分でLuaの基本を紹介します。すでにLuaを知っている場合は[次の章]()に進んでください。
+
+## aosプロセスに戻る
+
+このチュートリアルでは、すでに[はじめに](/welcome/getting-started)ガイドを完了していることを前提とします。まだ完了していない場合は、最初にそれを完了してください。
+
+プロセスからログアウトしている場合は、コマンドラインで`aos`を実行することで再度開くことができます。必要に応じて、`--wallet [location]`を指定してキー ファイルを指定できます。
+
+## Luaの基本式
+
+この基本レクチャーの残りでは、Luaのコア機能と構文を簡単に紹介します。
+
+例を実際にaosプロセスで試してみてください。直感的に理解できる場合は、スキップしてもかまいません。
+
+- **基本的な算術**: `5 + 3`などの基本的な算術を試してください。処理後、結果は`8`と表示されます。`+`、`-`、`*`、`/`、`^`は期待通りに動作します。`%`はLuaでモジュラス（剰余）を表す記号です。
+- **変数の設定**: `a = 10`と入力してEnterを押します。これで変数`a`に10が設定されます。慣習的に（言語で強制されているわけではありませんが）、Luaではグローバル変数は大文字で始まります（例：`Handlers`）。
+
+- **変数の使用**: 次に`a * 2`と入力すると、コマンドラインに`20`が表示されます。
+- **文字列の連結**: 自分に挨拶をしてみましょう。`"Hello, " .. ao.id`を実行します。
+
+## 条件文の実験
+
+- **If-Else**: ほとんどのプログラミング言語と同様に、Luaではif-elseブロックを使用して条件付きでコードを実行します。
+
+  aosプロセスで`.editor`と入力してEnterキーを押します。これにより、コマンドラインインターフェイス内にインラインテキストエディタが開きます。
 
   ```lua
   aos_coolness = 9001
@@ -39,15 +67,15 @@ Try out on the examples on your aos process as you go, or skip them if they are 
   end
   ```
 
-  Once you are finished editing on your terminal, type `.done` on a new line and press enter. This will terminate edit mode and submit the expression to your process for evaluation.
+  ターミナルでの編集が完了したら、新しい行に`.done`と入力してEnterを押します。これで編集モードが終了し、式がプロセスに送信されて評価されます。
 
-  As a result, you will see that aos is >9,000 cool. Good to know.
+  その結果、aosのクールさが9,000を超えていることがわかります。知っておいてよかったですね。
 
-  `if` statements in Lua can also have additional `elseif [condition] then` blocks, making conditional execution hierarchies easier.
+  Luaの`if`文には追加の`elseif [条件] then`ブロックを追加することもでき、条件付き実行の階層をより簡単に構築できます。
 
-## Looping in Lua.
+## Luaでのループ
 
-There are a few different ways to loop in your code in Lua. Here are our favorites:
+Luaでは、コード内でループを作成するいくつかの方法があります。ここでは私たちのお気に入りの方法を紹介します。
 
 - **While loops**:
 
@@ -61,11 +89,11 @@ There are a few different ways to loop in your code in Lua. Here are our favorit
   end
   ```
 
-  Type `.done` on a new line to execute the while loop. You can check the result of the loop by simply running `n`.
+  新しい行に`.done`と入力してwhileループを実行します。ループの結果は、`n`と入力するだけで確認できます。
 
 - **For loops**:
 
-  Lua can also execute python-style `for` loops between a set of values. For example, use the `.editor` to enter the following code block:
+  Luaは、Pythonスタイルの`for`ループも実行できます。例えば、`.editor`を使用して次のコードブロックを入力します：
 
   ```lua
   for m = 1, 100 do
@@ -73,13 +101,13 @@ There are a few different ways to loop in your code in Lua. Here are our favorit
   end
   ```
 
-  Request the new value of the variable by running `n` again.
+  `n`を再度実行して、変数の新しい値を確認します。
 
 ## Getting functional.
 
 - **Define a function**:
 
-  Using the `.editor` once again, submit the following lines:
+  再び`.editor`を使用して、次の行を入力して送信します：
 
   ```lua
   function greeting(name)
@@ -87,9 +115,9 @@ There are a few different ways to loop in your code in Lua. Here are our favorit
   end
   ```
 
-  Once submitted, aos will return `undefined`, as function (and variable) definition in Lua doesn't return a value.
+  送信すると、aosは`undefined`を返します。Luaでは、関数（および変数）の定義は値を返さないためです。
 
-  Lua also has 'anonymous' or 'higher order' functions. These essentially allow you to use functions themselves as if they are normal data -- to be passed as arguments to other functions, etc. The following example defines an anonymous function and is equivalent to the above:
+  Luaには「無名関数」や「高階関数」もあります。これにより、関数自体を通常のデータのように扱い、他の関数への引数として渡すことができます。次の例は無名関数を定義しており、上記の例と同等です：
 
   ```lua
   greeting =
@@ -100,6 +128,7 @@ There are a few different ways to loop in your code in Lua. Here are our favorit
 
 - **Calling the function**: Call the function with `greeting("Earthling")`. aos will return `"Hello, Earthling"`.
 
+<!--
 ## Defining deep objects with tables.
 
 Tables are Lua's only compound data structure. They map `keys` to `values`, but can also be used like traditional arrays.
@@ -107,8 +136,41 @@ Tables are Lua's only compound data structure. They map `keys` to `values`, but 
 - **Create a simple table**: Type `ao_is = {"hyper", "parallel", "compute"}`to create a simple table.
 - **Accessing the table's elements**: Access an element with `ao_is[2]`. aos will return `parallel`. Note: Indices in Lua start from 1!
 - **Count a table's elements**: The size of a table in Lua is found with the operator `#`. For example, running `#ao_is` will return `3`.
-- **Set a named element**: Type `ao_is["cool"] = true` to add a new named key to the table. Named elements can also be accessed with the `.` operator, for example `ao_is.cool`.
+- **Set a named element**: Type `ao_is["cool"] = true` to add a new named key to the table. Named elements can also be accessed with the `.` operator, for example `ao_is.cool`. -->
 
+## テーブルを使って深いオブジェクトを定義
+
+テーブルは、Luaにおける唯一の複合データ構造です。`keys`を`values`にマッピングしますが、従来の配列のようにも使用できます。
+
+- **シンプルなテーブルを作成**: `ao_is = {"hyper", "parallel", "compute"}`と入力して、シンプルなテーブルを作成します。
+- **テーブルの要素にアクセス**: `ao_is[2]`で要素にアクセスします。aosは`parallel`を返します。注意：Luaのインデックスは1から始まります！
+- **テーブルの要素数をカウント**: Luaでテーブルのサイズを取得するには、演算子`#`を使用します。例えば、`#ao_is`を実行すると`3`が返されます。
+- **名前付き要素を設定**: `ao_is["cool"] = true`と入力して、テーブルに新しい名前付きキーを追加します。名前付き要素は`.`演算子でもアクセスできます。例えば、`ao_is.cool`です。
+
+<!-- ## Defining deep objects with tables.
+
+Tables are Lua's only compound data structure. They map `keys` to `values`, but can also be used like traditional arrays.
+
+- **Create a simple table**: Type `ao_is = {"hyper", "parallel", "compute"}`to create a simple table.
+- **Accessing the table's elements**: Access an element with `ao_is[2]`. aos will return `parallel`. Note: Indices in Lua start from 1!
+- **Count a table's elements**: The size of a table in Lua is found with the operator `#`. For example, running `#ao_is` will return `3`.
+- **Set a named element**: Type `ao_is["cool"] = true` to add a new named key to the table. Named elements can also be accessed with the `.` operator, for example `ao_is.cool`. -->
+
+## LuaのWats
+
+aosは、シンプルでクリーンな言語であるためLuaを採用しています。経験豊富なプログラマーなら非常に短期間で習得でき、Robloxのようなビデオゲームで使用されていることから、初学者向けのプログラミング言語としても人気が高まっています。
+
+それでもなお、Luaを初めて使う開発者がつまづきやすい点がいくつかあります。好みは人それぞれですが、以下にLuaの[wat](https://www.destroyallsoftware.com/talks/wat)を紹介します。
+
+- **覚えておくべきこと**: テーブルのインデックスは0ではなく1から始まります！
+- **覚えておくべきこと**: 「等しくない」は`!=`ではなく`~=`で表現されます。
+- **覚えておくべきこと**: Luaではオブジェクトは「テーブル」と呼ばれ、一般的な名前とは異なります。
+
+## さあ、始めましょう！
+
+これで、Luaを使って素晴らしい分散プロセスを構築するために必要な知識はすべて手に入れました！次の章では、Luaとaosを使って並列プロセスの構築を始めます。
+
+<!--
 ## Lua Wats.
 
 aos uses Lua because it is a simple, clean language that most experienced programmers can learn very quickly, and is an increasingly popular first programming language, too, thanks to its use in video games like Roblox.
@@ -121,4 +183,4 @@ Nonetheless, there are a few things about the language that are prone to trip up
 
 ## Let's go!
 
-With this in mind, you now know everything you need in order to build awesome decentralized processes with Lua! In the next chapter we will begin to build parallel processes with Lua and aos.
+With this in mind, you now know everything you need in order to build awesome decentralized processes with Lua! In the next chapter we will begin to build parallel processes with Lua and aos. -->

@@ -1,26 +1,26 @@
 ---
 prev:
-  text: "First POST Request"
+  text: "最初のPOSTリクエスト"
   link: "../guides/0rbit/post-request"
 next:
-  text: "Specifications"
+  text: "仕様"
   link: "./specs"
 ---
 
-# Concepts
+# コンセプト
 
-ao has a lot of concepts built into the design, but the core concepts are very simple principles:
+aoには多くのコンセプトが組み込まれていますが、コアとなるコンセプトは非常にシンプルな原則に基づいています：
 
-- Two core types: Messages and Processes
-- No shared state, only Holographic State
-- Decentralized Computer (Grid)
+- 2つのコアタイプ: メッセージとプロセス
+- 共有状態なし、ホログラフィック状態のみ
+- 分散型コンピュータ（グリッド）
 
-Below is a set of concept documents that break down the ao system into its distinct parts.
+以下は、aoシステムをその特徴的な部分に分解したコンセプト文書のセットです。
 
-- [Specifications](specs)
-- [Processes](processes)
-- [Messages](messages)
-- [Units](units)
-- [How messaging works](how-it-works)
+- [仕様](specs)
+- [プロセス](processes)
+- [メッセージ](messages)
+- [ユニット](units)
+- [メッセージングの仕組み](how-it-works)
 
 [[toc]]
