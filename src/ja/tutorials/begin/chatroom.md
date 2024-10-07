@@ -1,34 +1,21 @@
-<!-- # Building a Chatroom in aos -->
-
 # aosでチャットルームを構築する
 
 ::: info
-
-<!-- If you've found yourself wanting to learn how to create a chatroom within `ao`, then that means we understand at least the basic methodology of sending and receiving messages. If not, it's suggested that you review the [Messaging](messaging) tutorial before proceeding. -->
 
 もし、`ao` 内でチャットルームを作成する方法を学びたいと思っているなら、メッセージの送受信に関する基本的な手法を少なくとも理解していることを意味します。まだ理解していない場合は、先に [メッセージング](messaging) のチュートリアルを確認することをお勧めします。
 
 :::
 
-<!-- In this tutorial, we'll be building a chatroom within `ao` using the Lua scripting language. The chatroom will feature two primary functions: -->
-
 このチュートリアルでは、Luaスクリプト言語を使用して `ao` 内にチャットルームを構築します。このチャットルームには、次の2つの主要な機能が備わっています：
-
-<!-- 1. **Register**: Allows processes to join the chatroom.
-2. **Broadcast**: Sends messages from one process to all registered participants. -->
 
 1. **登録**: プロセスがチャットルームに参加できるようにする機能。
 2. **ブロードキャスト**: 1つのプロセスからすべての登録済み参加者にメッセージを送信する機能。
-
-<!-- Let's begin by setting up the foundation for our chatroom. -->
 
 では、チャットルームの基盤を設定するところから始めましょう。
 
 ## Video Tutorial
 
 <iframe width="680" height="350" src="https://www.youtube.com/embed/oPCx-cfubF0?si=D5yWxmyFMV-4mh2P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<!-- ## Step 1: The Foundation -->
 
 ## ステップ1: 基礎
 
@@ -38,19 +25,19 @@
 
 ::: info
 
-<!-- You may find it helpful to have the [Recommended Extensions](../../references/editor-setup.md) installed in your code editor to enhance your Lua scripting experience. -->
-
 Luaスクリプトの体験を向上させるために、コードエディタに[推奨拡張機能](../../references/editor-setup.md) をインストールしておくと便利です。
 
 :::
 
+- Create a new file named `chatroom.lua`.
+
 - `chatroom.lua`という新しいファイルを作成します。
 
-![チャットルームLuaファイル](/chatroom1.png)
+  ![チャットルームLuaファイル](/chatroom1.png)
 
-## ステップ2: メンバーリストの作成
+## Step 2: Creating The Member List
 
-- `chatroom.lua`では、参加者を追跡するためのリストを初期化します：
+- In `chatroom.lua`, you'll begin by initializing a list to track participants:
 
   ```lua
   Members = Members or {}
@@ -58,7 +45,7 @@ Luaスクリプトの体験を向上させるために、コードエディタ�
 
   ![Chatroom Lua File - Naming the Member List](/chatroom2.png)
 
-  - `chatroom.lua`ファイルを保存します。
+  - Save the `chatroom.lua` file
 
 ## ステップ3: チャットルームをaosに読み込む
 
@@ -80,13 +67,6 @@ Luaスクリプトの体験を向上させるために、コードエディタ�
 
   しかし、`X = 1; return X`を実行すると、環境は値`1`を返します。この挙動は、このフレームワーク内で作業する際に理解することが重要です。なぜなら、状態を変更するためのコマンドを実行することと、直接的な出力を生成することを目的としたコマンドとの違いを明確にする助けになるからです。
   :::
-  <!-- As the screenshot above shows, you may receive `undefined` as a response. This is expected, but we still want to make sure the file loaded correctly.
-
-  ::: info
-  In the Lua Eval environment of aos, when you execute a piece of code that doesn't explicitly return a value, `undefined` is a standard response, indicating that no result was returned. This can be observed when loading resources or executing operations. For instance, executing `X = 1` will yield `undefined` because the statement does not include a return statement.
-
-  However, if you execute `X = 1; return X`, the environment will return the value `1`. This behavior is essential to understand when working within this framework, as it helps clarify the distinction between executing commands that modify state versus those intended to produce a direct output.
-  ::: -->
 
 - `aos`で`Members`、またはユーザーリストに付けた名前を入力します。空の配列`{ }`が返されるはずです。
 
