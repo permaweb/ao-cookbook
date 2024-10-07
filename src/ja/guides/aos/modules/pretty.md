@@ -1,17 +1,17 @@
 # Pretty
 
-This module allows printing formatted, human-friendly and readable syntax.
+このモジュールは、フォーマットされた人間に優しく、読みやすい構文を印刷することを可能にします。
 
-## Module functions
+## モジュール関数
 
 ### `tprint()`
 
-Returns a formatted string of the structure of the provided table.
+提供されたテーブルの構造のフォーマットされた文字列を返します。
 
-- **Parameters:**
-  - `tbl`: `{table}` The table to format
-  - `indent`: `{number}` Optional indentation of each level of the table
-- **Returns:** Table structure formatted as a string
+- **パラメータ:**
+  - `tbl`: `{table}` フォーマットするテーブル
+  - `indent`: `{number}` 各レベルのテーブルのオプションのインデント
+- **戻り値:** フォーマットされたテーブル構造の文字列
 
 #### Examples
 

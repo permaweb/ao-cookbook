@@ -7,11 +7,11 @@ next:
   link: "./json"
 ---
 
-# Modules
+# モジュール
 
-Documentation on all the built-in modules for aos.
+aosのすべての組み込みモジュールに関するドキュメントです。
 
-## Available Modules
+## 利用可能なモジュール
 
 - [JSON](json)
 - [ao](ao)
