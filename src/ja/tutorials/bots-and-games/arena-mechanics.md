@@ -1,4 +1,51 @@
-# Mechanics of the Arena
+# アリーナのメカニクス
+
+このガイドでは、`aos`におけるアリーナスタイルのゲームを設計および管理するために必要な基本的なメカニクスの包括的な概要を提供します。アリーナゲームでは、参加者がラウンドごとに戦略的に競い合い、最終的に唯一の勝者が出るまで互いに排除していきます。
+
+ここで示すフレームワークは、同じコア機能を共有するさまざまなゲームを作成するための基盤を提供します。ゲーム開発の詳細を探求し、この多目的アリーナの中で創造性を発揮しましょう。
+
+## コア機能
+
+それでは、アリーナスタイルのゲームを支えるコア機能に dive してみましょう。
+
+1. **ゲーム進行モード:**
+
+アリーナゲームは、以下の進行モードでループするラウンドに構成されています: `"Not-Started"` → `"Waiting"` → `"Playing"` → `[誰かが勝つかタイムアウト]` → `"Waiting"`...
+
+> [!Note]
+> 待機状態後にゲームを開始するのに十分なプレイヤーがいない場合、ループはタイムアウトします。
+
+ラウンドはプレイヤーが参加するための定義された時間枠を提供し、ゲームプレイの興奮を高めます。
+
+2. **トークンの賭け:**
+
+プレイヤーはゲームに参加するために、指定された数量のトークン（`PaymentQty`で定義）を預けなければなりません。これらのトークンは、ゲームに具体的な賭け要素を加えます。
+
+3. **ボーナス報酬:**
+
+勝利の興奮を超えて、プレイヤーは追加の報酬の見込みに魅了されます。ビルダーは、各ラウンドごとに分配されるボーナストークン（`BonusQty`で定義）を提供する柔軟性を持っています。プレイヤーが賭けたすべての金額もこれらのボーナスに追加されます。これらのボーナスは追加のインセンティブとして機能し、ゲームプレイの競争心を高めます。
+
+4. **プレイヤー管理:**
+
+- 次のゲームに参加するのを待っているプレイヤーは、`Waiting`テーブルで追跡されます。
+- アクティブなプレイヤーとそのゲーム状態は、`Players`テーブルに保存されます。
+- 排除されたプレイヤーは、迅速に`Players`テーブルから削除され、次のゲームのために`Waiting`テーブルに置かれます。
+
+5. **ラウンド勝者への報酬:**
+
+プレイヤーが他のプレイヤーを排除すると、勝者は誇りだけでなく、排除されたプレイヤーの預けトークンも報酬として獲得します。さらに、各ラウンドの勝者はボーナストークンの一部を共有し、元の賭け金も手に入れることで、勝利を目指す動機付けがされます。
+
+6. **リスナーモード:**
+
+アクションを観察することを好む人々のために、「リスン」モードは積極的な参加なしで情報を得る機会を提供します。プロセスはリスナーとして登録でき、ゲームからのすべての発表にアクセスできます。プレイヤーとして参加することはありませんが、リスナーは明示的に削除を要求するまでゲームの進行を観察し続けることができます。
+
+7. **ゲーム状態管理:**
+
+アリーナゲームの流れと公正性を維持するために、自動システムがゲーム状態の遷移を監視します。これらの遷移には、待機、プレイ、終了の各フェーズが含まれます。`WaitTime`や`GameTime`のような各状態の時間の定義により、ラウンドが定義された時間枠に従うことを保証し、ゲームが無期限に続くことを防ぎます。
+
+アリーナのコードは、以下のドロップダウンで参照できます。
+
+<!-- # Mechanics of the Arena
 
 This guide provides a comprehensive overview of the fundamental mechanics essential for designing and managing arena-style games in `aos`. In arena games, participants engage in rounds, strategically vying to eliminate each other until a sole victor emerges.
 
@@ -43,7 +90,7 @@ For those who prefer to watch the action unfold, the "Listen" mode offers an opp
 
 To maintain the flow and fairness of arena games, an automated system oversees game state transitions. These transitions encompass waiting, playing, and ending phases. Time durations for each state, such as `WaitTime` and `GameTime`, ensure that rounds adhere to defined timeframes, preventing games from lasting indefinitely.
 
-You can refer to the code for the arena in the dropdown below:
+You can refer to the code for the arena in the dropdown below: -->
 
 <details>
   <summary><strong>Arena Game Blueprint</strong></summary>
@@ -397,16 +444,27 @@ Handlers.add(
 
 </details>
 
+## アリーナゲームブループリント
+
+このアリーナフレームワークを利用したい方のために、コードをブループリントとして簡単にアクセスできるようにしました。ターミナルで以下のコードを実行してください：
+
+<!--
 ## Arena Game Blueprint
 
-For those interested in using this arena framework, we've made this code easily accesible through a blueprint. Simply run the following code in your terminal:
+For those interested in using this arena framework, we've made this code easily accesible through a blueprint. Simply run the following code in your terminal: -->
 
 ```lua
 .load-blueprint arena
 ```
 
-## Summary
+## 要約
+
+アリーナのメカニクスを理解することは、前のセクションで作成した自律エージェントを改善するだけでなく、独自のゲームを構築するためのコア機能を活用する力を与えます。
+
+次のセクション「ゲームの構築」では、これらのメカニクスを活用して魅力的でユニークなゲームをこのフレームワーク内で構築するアートに深く掘り下げます。ゲーム開発のダイナミックな世界への旅に出る準備をしてください！ 🎮
+
+<!-- ## Summary
 
 Understanding the mechanics of the arena can not only help you improve your autonomous agent created in the previous section but also empowers you to harness core functionalities for crafting your unique games.
 
-In the upcoming section, "Building a Game," we will dive deep into the art of utilizing these mechanics to construct captivating and one-of-a-kind games within this framework. Get ready to embark on a journey into the dynamic realm of game development! 🎮
+In the upcoming section, "Building a Game," we will dive deep into the art of utilizing these mechanics to construct captivating and one-of-a-kind games within this framework. Get ready to embark on a journey into the dynamic realm of game development! 🎮 -->
