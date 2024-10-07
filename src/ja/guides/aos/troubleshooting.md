@@ -1,67 +1,65 @@
-# Troubleshooting using ao.link
+# ao.linkを使用したトラブルシューティング
 
-Working with a decentralized computer and network, you need to be able to troubleshoot more than your own code. You need to be able to track messages, token balances, token transfers of processes. This is where [https://ao.link](https://ao.link) becomes an essential tool in your toolbox.
+分散型コンピュータとネットワークで作業する際には、自分のコードだけでなく、メッセージ、トークン残高、プロセスのトークン転送を追跡できる必要があります。ここで[https://ao.link](https://ao.link)があなたのツールボックスに不可欠なツールとなります。
 
-![ao.link homepage displaying ao network stats](aolink.png)
+![ao.linkのホームページ、aoネットワークの統計を表示](aolink.png)
 
-## Analytics
+## 分析
 
-AOLink has a set of 4 analytic measures:
+AOLinkには4つの分析指標があります：
 
-- Total Messages
-- Total Users
-- Total Processes
-- Total Modules
+- 総メッセージ数
+- 総ユーザー数
+- 総プロセス数
+- 総モジュール数
 
-These analytics give you a quick view into the ao network's total processing health.
+これらの分析は、aoネットワークの全体的な処理の健康状態を迅速に把握するのに役立ちます。
 
-## Events
+## イベント
 
-Below, the analytics are the latest events that have appeared on the ao computer. You have a list of messages being scheduled and that have been executed. These events are any of the ao Data Protocol Types. And you can click on the Process ID or the Message ID to get details about each.
+下部には、aoコンピュータで最近発生した最新のイベントが表示されています。スケジュールされているメッセージと実行されたメッセージのリストがあります。これらのイベントは、aoデータプロトコルタイプのいずれかです。プロセスIDまたはメッセージIDをクリックすると、それぞれの詳細を取得できます。
 
-![ao.link list of events](aolink-list-example.png)
+![ao.linkのイベントリスト](aolink-list-example.png)
 
-### Message Details
+### メッセージの詳細
 
-![ao.link message details displaying the message processed](aolink-message-details.png)
+![ao.linkメッセージの詳細を表示](aolink-message-details.png)
 
-The message details give you key details about:
+メッセージの詳細には、以下の重要な情報が含まれています：
 
-- From
-- To
-- Block Height
-- Created
-- Tags
-- Data
-- Result Type
-- Data
+- 送信元
+- 送信先
+- ブロック高
+- 作成日時
+- タグ
+- データ
+- 結果のタイプ
+- データ
 
-If you want to further troubleshoot and debug, you have the option to look at the result of the CU (Compute Unit) by clicking on "Compute".
+さらにトラブルシューティングやデバッグを行いたい場合は、「Compute」をクリックしてCU（計算ユニット）の結果を確認するオプションがあります。
 
-![ao.link compute result example for debugging](aolink-compute-example.png)
+![ao.linkのデバッグ用計算結果の例](aolink-compute-example.png)
 
-And further understand linked messages.
-![ao.link linked messages](aolink-linked-message-example.png)
+リンクされたメッセージをさらに理解することもできます。
+![ao.linkのリンクされたメッセージ](aolink-linked-message-example.png)
 
-### Process Details
+### プロセスの詳細
 
-![ao.link displaying a process in details](aolink-process-details.png)
+![ao.linkのプロセス詳細表示](aolink-process-details.png)
 
-The process details provide you with information about the process it's useful to see in the tags with what module this got instantiated from.
-If you notice on the left you see the interaction with the process displayed on a graph.
-In this case, this is DevChat, and you can see all the processes that have interacted by Registering and Broadcasting Messages.
+プロセスの詳細には、プロセスに関する情報が提供されており、どのモジュールからインスタンス化されたかを示すタグを見るのに便利です。左側には、グラフで表示されたプロセスとのインタラクションが見えます。この場合、これはDevChatであり、登録やメッセージのブロードキャストによって相互作用したすべてのプロセスが表示されています。
 
-You can effortless check the Info Handler, by pressing the "Fetch" button.
-![ao.link fetching the info hanlder](aolink-info-handler-example.png)
+「Fetch」ボタンを押すことで、Info Handlerを簡単にチェックできます。
+![ao.link情報ハンドラーを取得](aolink-info-handler-example.png)
 
-On the bottom you see the processes balance and all messages send, with the option to break it down into Token transfers and Token balances using the tabs.
-![ao.link process message and token info](aolink-message-and-token-example.png)
+下部にはプロセスの残高や送信されたすべてのメッセージが表示されており、タブを使用してトークンの転送とトークンの残高に分けるオプションがあります。
+![ao.linkプロセスメッセージとトークン情報](aolink-message-and-token-example.png)
 
-## Further Questions?
+## さらなる質問は？
 
-Feel free to reach out on the community Discord of Autonomous Finance, for all questions and support regarding ao.link.
+ao.linkに関するすべての質問やサポートについては、自律ファイナンスのコミュニティDiscordに気軽にお問い合わせください。
 https://discord.gg/4kF9HKZ4Wu
 
-## Summary
+## まとめ
 
-AOLink is an excellent tool for tracking events in the ao computer. Give it a try. Also, there is another scanner tool available on the permaweb: https://ao_marton.g8way.io/ - check it out!
+AOLinkは、aoコンピュータ内のイベントを追跡するための優れたツールです。ぜひ試してみてください。また、パーマウェブに別のスキャナーツールも利用可能です：https://ao_marton.g8way.io/ - ぜひチェックしてください！

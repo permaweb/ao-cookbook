@@ -1,11 +1,11 @@
 # Installing aos
 
-Installing aos only requires `NodeJS` - https://nodejs.org
+`aos`のインストールには`NodeJS`が必要です - https://nodejs.org
 
-> NOTE: If you are on windows you may get better results with WSL Console.
+> NOTE: Windowsを使用している場合、WSLコンソールでより良い結果が得られるかもしれません。
 
 ```sh
 npm i -g https://get_ao.g8way.io
 ```
 
-Once installed you can run by typing `aos`
+インストールが完了したら、 `aos` と入力して実行できます。

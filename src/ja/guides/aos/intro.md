@@ -1,35 +1,34 @@
-# Introduction
+# はじめに
 
-aos is a different approach to building Processes or Contracts, the ao computer is a decentralized computer network that allows compute to run anywhere and aos in a unique
-interactive shell. You can use aos as your personal operating system, your development environment for building ao Processes, and your bot Army.
+aosは、プロセスや契約を構築するための異なるアプローチを提供します。aoコンピュータは、計算がどこでも実行できる分散型コンピュータネットワークであり、aosはユニークなインタラクティブシェルを持っています。あなたは、aosを個人的なオペレーティングシステム、aoプロセスを構築するための開発環境、そしてボットアーミーとして利用できます。
 
-Lets go over some basic commands.
+基本的なコマンドをいくつか見ていきましょう。
 
-## Variables
+## 変数
 
-If you want to display the contents of any variable through the console, simply type the variable name.
+コンソールを通じて任意の変数の内容を表示したい場合は、単に変数名を入力してください。
 
 ```lua
 Name
 ```
 
-## Inbox
+## インボックス
 
-the `Inbox` is a collection of messages that your Process has received.
+`Inbox`は、あなたのプロセスが受信したメッセージのコレクションです。
 
 ```lua
 Inbox[1]
 ```
 
-If you want to get a count of messages, just add the `#` infront of `Inbox`.
+メッセージのカウントを取得したい場合は、`#`を`Inbox`の前に追加してください。
 
 ```lua
 #Inbox
 ```
 
-The process of checking how many messages are in the inbox is a very common pattern. To make this easier, you can create a function that returns the number of messages within the inbox and displays it in the prompt.
+インボックスに何件のメッセージがあるかを確認するプロセスは非常に一般的なパターンです。これを簡単にするために、インボックス内のメッセージ数を返し、それをプロンプトに表示する関数を作成できます。
 
-Use either `.editor` or `.load file` to load this function on your process.
+`.editor`または`.load file`を使用して、この関数をプロセスにロードしてください。
 
 ```lua
 function Prompt()
@@ -44,11 +43,11 @@ undefined
 Inbox: 2 >
 ```
 
-Your prompt now has changed to include the number of messages in your inbox.
+あなたのプロンプトは、インボックス内のメッセージ数を含むように変更されました。
 
-## Globals
+## グローバル
 
-In aos process there are some Globals that can make development a little more intuitive.
+aosプロセスには、開発を少し直感的にするためのいくつかのグローバル変数があります。
 
 | Name                   | Description                                                                                                                                                                       | Type         |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
@@ -62,9 +61,9 @@ In aos process there are some Globals that can make development a little more in
 | Utils                  | a functional utility library with functions like map, reduce, filter                                                                                                              | module       |
 | ao                     | this is a core function library for sending messages and spawing processes                                                                                                        | module       |
 
-## Modules
+## モジュール
 
-In aos there are some built in common lua modules that are already available for you to work with, these modules can be referenced with a "require" function.
+aosには、すでに利用可能な一般的なLuaモジュールがいくつか組み込まれており、これらのモジュールは`require`関数で参照できます。
 
 | Name    | Description                                                                |
 | ------- | -------------------------------------------------------------------------- |
