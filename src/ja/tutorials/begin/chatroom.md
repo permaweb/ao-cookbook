@@ -44,13 +44,13 @@ Luaスクリプトの体験を向上させるために、コードエディタ�
 
 :::
 
-- Create a new file named `chatroom.lua`.
+- `chatroom.lua`という新しいファイルを作成します。
 
-![Chatroom Lua File](/chatroom1.png)
+![チャットルームLuaファイル](/chatroom1.png)
 
-## Step 2: Creating The Member List
+## ステップ2: メンバーリストの作成
 
-- In `chatroom.lua`, you'll begin by initializing a list to track participants:
+- `chatroom.lua`では、参加者を追跡するためのリストを初期化します：
 
   ```lua
   Members = Members or {}
@@ -58,14 +58,14 @@ Luaスクリプトの体験を向上させるために、コードエディタ�
 
   ![Chatroom Lua File - Naming the Member List](/chatroom2.png)
 
-  - Save the `chatroom.lua` file
+  - `chatroom.lua`ファイルを保存します。
 
-## Step 3: Load the Chatroom into aos
+## ステップ3: チャットルームをaosに読み込む
 
-With `chatroom.lua` saved, you'll now load the chatroom into `aos`.
+`chatroom.lua`を保存したら、次にチャットルームを`aos`に読み込みます。
 
-- If you haven't already, start your `aos` in your terminal inside the directory where chatroom.lua is saved
-- In the `aos` CLI, type the following script to incorporate your script into the `aos` process:
+- まだ開始していない場合は、`chatroom.lua`が保存されているディレクトリ内でターミナルから`aos`を起動します。
+- `aos`のCLIで、以下のスクリプトを入力して、あなたのスクリプトを`aos`プロセスに組み込みます：
 
   ```lua
   .load chatroom.lua
@@ -73,14 +73,36 @@ With `chatroom.lua` saved, you'll now load the chatroom into `aos`.
 
   ![Loading the Chatroom into aos](/chatroom3.png)
 
-  As the screenshot above shows, you may receive `undefined` as a response. This is expected, but we still want to make sure the file loaded correctly.
+  上記のスクリーンショットに示されているように、レスポンスとして`undefined`を受け取ることがあります。これは予想される動作ですが、ファイルが正しく読み込まれたことを確認したいです。
+
+  ::: info
+  aosのLua Eval環境では、明示的に値を返さないコードを実行すると、`undefined`が標準的なレスポンスとして返されます。これは、結果が返されなかったことを示しています。リソースを読み込んだり、操作を実行したりする際に観察できます。例えば、`X = 1`を実行すると、returnステートメントが含まれていないため、`undefined`が返されます。
+
+  しかし、`X = 1; return X`を実行すると、環境は値`1`を返します。この挙動は、このフレームワーク内で作業する際に理解することが重要です。なぜなら、状態を変更するためのコマンドを実行することと、直接的な出力を生成することを目的としたコマンドとの違いを明確にする助けになるからです。
+  :::
+  <!-- As the screenshot above shows, you may receive `undefined` as a response. This is expected, but we still want to make sure the file loaded correctly.
 
   ::: info
   In the Lua Eval environment of aos, when you execute a piece of code that doesn't explicitly return a value, `undefined` is a standard response, indicating that no result was returned. This can be observed when loading resources or executing operations. For instance, executing `X = 1` will yield `undefined` because the statement does not include a return statement.
 
   However, if you execute `X = 1; return X`, the environment will return the value `1`. This behavior is essential to understand when working within this framework, as it helps clarify the distinction between executing commands that modify state versus those intended to produce a direct output.
-  :::
+  ::: -->
 
+- `aos`で`Members`、またはユーザーリストに付けた名前を入力します。空の配列`{ }`が返されるはずです。
+
+  ![メンバーリストの確認](/chatroom4.png)
+
+  空の配列が表示されれば、スクリプトは`aos`に正常に読み込まれています。
+
+## ステップ4: チャットルーム機能の作成
+
+### The Registration Handler
+
+Registration Handler は、プロセスがチャットルームに参加できるようにします。
+
+1. **登録ハンドラの追加:** `chatroom.lua`を修正し、以下のコードを使用して`Members`に登録するためのハンドラを含めます：
+
+<!--
 - Type `Members`, or whatever you named your user list, in `aos`. It should return an empty array `{ }`.
 
   ![Checking the Members List](/chatroom4.png)
@@ -93,66 +115,86 @@ With `chatroom.lua` saved, you'll now load the chatroom into `aos`.
 
 The register handler will allow processes to join the chatroom.
 
-1. **Adding a Register Handler:** Modify `chatroom.lua` to include a handler for `Members` to register to the chatroom with the following code:
+1. **Adding a Register Handler:** Modify `chatroom.lua` to include a handler for `Members` to register to the chatroom with the following code: -->
 
-   ```lua
+```lua
 
-   -- Modify `chatroom.lua` to include a handler for `Members`
-   -- to register to the chatroom with the following code:
+-- Modify `chatroom.lua` to include a handler for `Members`
+-- to register to the chatroom with the following code:
 
-     Handlers.add(
-       "Register",
-       { Action = "Register"},
-       function (msg)
-         table.insert(Members, msg.From)
-         print(msg.From .. " Registered")
-         msg.reply({ Data = "Registered." })
-       end
-     )
-   ```
+  Handlers.add(
+    "Register",
+    { Action = "Register"},
+    function (msg)
+      table.insert(Members, msg.From)
+      print(msg.From .. " Registered")
+      msg.reply({ Data = "Registered." })
+    end
+  )
+```
 
-   ![Register Handler](/chatroom5.png)
+![Register Handler](/chatroom5.png)
 
-   This handler will allow processes to register to the chatroom by responding to the tag `Action = "Register"`. A printed message will confirm stating `registered` will appear when the registration is successful.
+   <!-- This handler will allow processes to register to the chatroom by responding to the tag `Action = "Register"`. A printed message will confirm stating `registered` will appear when the registration is successful. -->
 
-2. **Reload and Test:** Let's reload and test the script by registering ourselves to the chatroom.
+このハンドラは、`Action = "Register"`というタグに応じてプロセスがチャットルームに登録できるようにします。登録が成功すると、`registered`というメッセージが表示されて確認されます。
+
+2. **再読み込みとテスト:** スクリプトを再読み込みして、自分自身をチャットルームに登録してテストしましょう。
+
+   - `.load chatroom.lua`を使用して、aosでスクリプトを保存し再読み込みます。
+   - 次のスクリプトを使用して、登録ハンドラが読み込まれたか確認します：
+
+<!-- 2. **Reload and Test:** Let's reload and test the script by registering ourselves to the chatroom.
 
    - Save and reload the script in aos using `.load chatroom.lua`.
-   - Check to see if the register handler loaded with the following script:
+   - Check to see if the register handler loaded with the following script: -->
 
-   ```lua
-    Handlers.list
-   ```
+```lua
+ Handlers.list
+```
 
-   ![Checking the Handlers List](/chatroom6.png)
+![Checking the Handlers List](/chatroom6.png)
 
-   This will return a list of all the handlers in the chatroom. Since this is most likely your first time developing in `aos`, you should only see one handler with the name `Register`.
+これにより、チャットルーム内のすべてのハンドラのリストが返されます。これはおそらくあなたが`aos`で開発する初めての経験であるため、`Register`という名前の1つのハンドラだけが表示されるはずです。
 
-   - Let's test the registration process by registering ourselves to the chatroom:
+- 自分自身をチャットルームに登録することで、登録プロセスをテストしてみましょう：
+<!-- This will return a list of all the handlers in the chatroom. Since this is most likely your first time developing in `aos`, you should only see one handler with the name `Register`.
 
-   ```lua
-   Send({ Target = ao.id, Action = "Register" })
-   ```
 
-   If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `registered`.
+- Let's test the registration process by registering ourselves to the chatroom: -->
 
-   ![Registering to the Chatroom](/chatroom7.png)
+```lua
+Send({ Target = ao.id, Action = "Register" })
+```
 
-   - Finally, let's check to see if we were successfully added to the `Members` list:
+   <!-- If successful, you should see that there was a `message added to your outbox` and that you then see a new printed message that says `registered`. -->
 
-   ```lua
-    Members
-   ```
+成功した場合、`あなたのアウトボックスにメッセージが追加されました`というメッセージが表示され、その後に`registered`という新しい印刷メッセージが表示されるはずです。
 
-   If successful, you'll now see your process ID in the `Members` list.
+![Registering to the Chatroom](/chatroom7.png)
 
-   ![Checking the Members List](/chatroom8.png)
+   <!-- - Finally, let's check to see if we were successfully added to the `Members` list: -->
+
+- 最後に、`Members`リストに成功裏に追加されたかどうかを確認しましょう：
+
+```lua
+ Members
+```
+
+   <!-- If successful, you'll now see your process ID in the `Members` list. -->
+
+成功した場合、`Members`リストにあなたのプロセスIDが表示されるはずです。
+![Checking the Members List](/chatroom8.png)
 
 ### Adding a Broadcast Handler
 
-Now that you have a chatroom, let's create a handler that will allow you to broadcast messages to all members of the chatroom.
+<!-- Now that you have a chatroom, let's create a handler that will allow you to broadcast messages to all members of the chatroom.
 
-- Add the following handler to the `chatroom.lua` file:
+- Add the following handler to the `chatroom.lua` file: -->
+
+チャットルームができたので、チャットルームのすべてのメンバーにメッセージをブロードキャストできるハンドラを作成しましょう。
+
+- 次のハンドラを`chatroom.lua`ファイルに追加します：
 
   ```lua
     Handlers.add(
@@ -167,25 +209,38 @@ Now that you have a chatroom, let's create a handler that will allow you to broa
     )
   ```
 
-  This handler will allow you to broadcast messages to all members of the chatroom.
+  このハンドラは、チャットルームのすべてのメンバーにメッセージをブロードキャストできるようにします。
 
-- Save and reload the script in aos using `.load chatroom.lua`.
-- Let's test the broadcast handler by sending a message to the chatroom:
+- `.load chatroom.lua`を使用して、aosでスクリプトを保存し再読み込みします。
+- チャットルームにメッセージを送信して、ブロードキャストハンドラをテストしてみましょう：
+  <!-- This handler will allow you to broadcast messages to all members of the chatroom. -->
 
-  ```lua
-  Send({Target = ao.id, Action = "Broadcast", Data = "Broadcasting My 1st Message" }).receive().Data
-  ```
+<!-- - Save and reload the script in aos using `.load chatroom.lua`.
+- Let's test the broadcast handler by sending a message to the chatroom: -->
 
-## Step 5: Inviting Morpheus to the Chatroom
+```lua
+Send({Target = ao.id, Action = "Broadcast", Data = "Broadcasting My 1st Message" }).receive().Data
+```
+
+## ステップ5: モーフィアスをチャットルームに招待する
+
+チャットルームに自分自身を成功裏に登録したので、モーフィアスを招待して参加してもらいましょう。これを行うために、彼がチャットルームに登録できるようにする招待状を送ります。
+
+モーフィアスは、自動エージェントで、`Action = "Join"`というタグに応じて反応するハンドラを持っています。これにより、彼はあなたの`Register`タグを使用してチャットルームに登録します。
+
+- モーフィアスにチャットルームに参加するための招待状を送りましょう：
+<!-- ## Step 5: Inviting Morpheus to the Chatroom
 
 Now that you've successfully registered yourself to the chatroom, let's invite Morpheus to join us. To do this, we'll send an invite to him that will allow him to register to the chatroom.
 
-Morpheus is an autonomous agent with a handler that will respond to the tag `Action = "Join"`, in which will then have him use your `Register` tag to register to the chatroom.
+Morpheus is an autonomous agent with a handler that will respond to the tag `Action = "Join"`, in which will then have him use your `Register` tag to register to the chatroom. -->
 
-- Let's send Morpheus an invitation to join the chatroom:
-  ```lua
-  Send({ Target = Morpheus, Action = "Join" })
-  ```
+<!-- - Let's send Morpheus an invitation to join the chatroom: -->
+
+```lua
+Send({ Target = Morpheus, Action = "Join" })
+```
+
 - To confirm that Morpheus has joined the chatroom, check the `Members` list:
 
   ```lua
@@ -194,7 +249,24 @@ Morpheus is an autonomous agent with a handler that will respond to the tag `Act
 
   If successful, you'll receive a broadcasted message from Morpheus.
 
-## Step 6: Inviting Trinity to the Chatroom
+## ステップ6: トリニティをチャットルームに招待する
+
+このメッセージの中で、彼はトリニティのプロセスIDを教え、彼女をチャットルームに招待するように指示します。
+
+モーフィアスと同様に、彼女のプロセスIDを`Trinity`として保存し、チャットルームに招待します。
+
+彼女が成功裏にチャットルームに参加すれば、次の課題として[トークン](token)の作成を提案してきます。
+
+## チャットルームへの他者の参加
+
+### 他者のオンボーディング
+
+- aosユーザーを招待する:
+  他のaosユーザーをあなたのチャットルームに参加するよう促します。彼らは登録し、ブロードキャストに参加できます。
+
+- オンボーディング手順を提供する:
+簡単にオンボーディングできるよう、彼らにシンプルなスクリプトを共有してください：
+<!-- ## Step 6: Inviting Trinity to the Chatroom
 
 Within this message, he'll give you Trinity's process ID and tell you to invite her to the chatroom.
 
@@ -210,7 +282,7 @@ If she successfully joins the chatroom, she'll then pose the next challenge to y
   Encourage other aos users to join your chatroom. They can register and participate in the broadcast.
 
 - Provide Onboarding Instructions:
-  Share a simple script with them for easy onboarding:
+  Share a simple script with them for easy onboarding: -->
 
 ```lua
 -- Hey, let's chat on aos! Join my chatroom by sending this command in your aos environment:
@@ -219,8 +291,14 @@ Send({ Target = [Your Process ID], Action = "Register" })
 Send({Target = [Your Process ID], Action = "Broadcast", Data = "Your Message" })
 ```
 
-## Next Steps
+<!-- ## Next Steps
 
 Congratulations! You've successfully built a chatroom in `ao` and have invited Morpheus to join you. You've also created a broadcast handler to send messages to all members of the chatroom.
 
-Next, you'll continue to engage with Morpheus, but this time you'll be adding Trinity to the conversation. She will lead you through the next set of challenges. Good Luck!
+Next, you'll continue to engage with Morpheus, but this time you'll be adding Trinity to the conversation. She will lead you through the next set of challenges. Good Luck! -->
+
+## 次のステップ
+
+おめでとうございます！あなたは`ao`でチャットルームを成功裏に構築し、モーフィアスを招待しました。また、チャットルームのすべてのメンバーにメッセージを送信するためのブロードキャストハンドラも作成しました。
+
+次に、モーフィアスとの対話を続けますが、今回はトリニティを会話に加えます。彼女が次の一連の課題へと導いてくれるでしょう。頑張ってください！

@@ -1,5 +1,37 @@
 ---
 prev:
+  text: "チュートリアル"
+  link: "../index"
+next:
+  text: "準備"
+  link: "/tutorials/begin/preparations"
+---
+
+# 始めよう: インタラクティブチュートリアル
+
+このチュートリアルシリーズでは、aos環境の知識と理解を深めるためのインタラクティブなステップを進めていきます。
+
+::: info
+
+### 演習
+
+この楽しい演習では、モーフィアスとトリニティという二人の親しみのあるキャラクターから提示される一連の課題に挑戦します。モーフィアスの導きに従い、あなたが`the one`であることを証明するための一連の課題に深く入り込むことになります。モーフィアスとトリニティの両方から提示されたすべての課題を完了すると、`The Construct`という名のao内の独占チャットルームにアクセスできるトークンが授与されます。
+
+それでは、[ウサギの穴へ](preparations)進んでいきましょう。
+![白ウサギ](/white_rabbit_outline.svg)
+:::
+
+## チュートリアル
+
+### 始めよう - インタラクティブチュートリアル
+
+- [1. クイックスタート](preparations)
+- [2. メッセージング](messaging)
+- [3. チャットルームの作成](chatroom)
+- [4. トークンの構築](token)
+
+<!-- ---
+prev:
   text: "Tutorials"
   link: "../index"
 next:
@@ -28,4 +60,4 @@ Now, let's get started [down the rabbit hole.](preparations)
 - [1. Quick Start](preparations)
 - [2. Messaging](messaging)
 - [3. Creating a Chatroom](chatroom)
-- [4. Build a Token](token)
+- [4. Build a Token](token) -->
