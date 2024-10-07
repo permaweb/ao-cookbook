@@ -1,46 +1,46 @@
 ---
 next:
-  text: "Community"
+  text: "コミュニティ"
   link: "/references/community"
 ---
 
-# Editor setup
+# エディタのセットアップ
 
-Remembering all the built in ao functions and utilites can sometimes be hard. To enhance your developer experience, it is recommended to install the [Lua Language Server](https://luals.github.io) extension into your favorite text editor and add the [ao addon](https://github.com/martonlederer/ao-definitions). It supports all built in aos [modules](../guides/aos/modules/index.md) and [globals](../guides/aos/intro.md#globals).
+aoの組み込み関数やユーティリティをすべて覚えるのは難しい場合があります。開発者体験を向上させるために、お気に入りのテキストエディタに[Lua Language Server](https://luals.github.io)拡張機能をインストールし、[ao addon](https://github.com/martonlederer/ao-definitions)を追加することをお勧めします。これにより、すべての組み込みのaos[モジュール](../guides/aos/modules/index.md)や[グローバル変数](../guides/aos/intro.md#globals)がサポートされます。
 
 ## VS Code
 
-Install the [sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) extension:
+[sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)拡張機能をインストールします：
 
-1. Search for "Lua" by sumneko in the extension marketplace
-2. Download and install the extension
-3. Open the VS Code command palette with `Shift + Command + P` (Mac) / `Ctrl + Shift + P` (Windows/Linux) and run the following command:
+1. 拡張機能マーケットプレイスで「Lua」を検索し、sumnekoの拡張機能を見つけます
+2. 拡張機能をダウンロードしてインストールします
+3. `Shift + Command + P`（Mac）/ `Ctrl + Shift + P`（Windows/Linux）でVS Codeのコマンドパレットを開き、次のコマンドを実行します：
 
 ```
 > Lua: Open Addon Manager
 ```
 
-4. In the Addon Manager, search for "ao", it should be the first result. Click "Enable" and enjoy autcomplete!
+4. Addon Managerで「ao」を検索すると、最初に表示されるはずです。「Enable」をクリックして、オートコンプリートを楽しんでください！
 
-## Other editors
+## その他のエディタ
 
-1. Verify that your editor supports the [language server protocol](https://microsoft.github.io/language-server-protocol/implementors/tools/)
-2. Install Lua Language Server by following the instructions at [luals.github.io](https://luals.github.io/#install)
-3. Install the "ao" addon to the language server
+1. あなたのエディタが[Language Server Protocol](https://microsoft.github.io/language-server-protocol/implementors/tools/)をサポートしていることを確認してください
+2. [luals.github.io](https://luals.github.io/#install)の指示に従ってLua Language Serverをインストールします
+3. Language Serverに「ao」アドオンをインストールします
 
 ## BetterIDEa
 
-[BetterIDEa](https://ide.betteridea.dev) is a custom web based IDE for developing on ao.
+[BetterIDEa](https://ide.betteridea.dev)は、ao上での開発のためのカスタムWebベースのIDEです。
 
-It offers a built in Lua language server with ao definitions, so you don't need to install anything. Just open the IDE and start coding!
+ao定義が組み込まれたLua Language Serverを提供しているため、何もインストールする必要はありません。IDEを開いてコーディングを開始するだけです！
 
-Features include:
+機能には以下が含まれます：
 
-- Code completion
-- Cell based notebook ui for rapid development
-- Easy process management
-- Markdown and Latex cell support
-- Share projects with anyone through ao processes
-- Tight integration with [ao package manager](https://apm.betteridea.dev)
+- コード補完
+- セルベースのノートブックUIによる迅速な開発
+- 簡単なプロセス管理
+- MarkdownおよびLatexセルのサポート
+- aoプロセスを介して誰とでもプロジェクトを共有
+- [aoパッケージマネージャ](https://apm.betteridea.dev)との緊密な統合
 
-Read detailed information about the various features and integrations of the ide in the [documentation](https://docs.betteridea.dev).
+IDEのさまざまな機能や統合についての詳細は、[ドキュメント](https://docs.betteridea.dev)をご覧ください。

@@ -1,10 +1,10 @@
 # Eval
 
-Each AO process includes an onboard `Eval` handler that evaluates any new code it receives. This handler enables the process to determine the appropriate action for the incoming code and verifies if the message originates from the process owner.
+各AOプロセスには、受信した新しいコードを評価するオンボードの`Eval`ハンドラが含まれています。このハンドラにより、プロセスは受信コードに対して適切なアクションを決定し、そのメッセージがプロセスの所有者からのものであるかを確認します。
 
-The `Eval` handler can also be manually triggered to evaluate received Data from an incoming message.
+`Eval`ハンドラは、受信メッセージから受け取ったデータを評価するために手動でトリガーすることもできます。
 
-## Sending an Eval Message in NodeJS
+## NodeJSでEvalメッセージを送信する
 
 ```js
 import { readFileSync } from "node:fs";
@@ -34,7 +34,7 @@ await message({
   .catch(console.error);
 ```
 
-## Sending an Eval Message in a Browser
+## ブラウザでEvalメッセージを送信する
 
 ```js
 import { message, createDataItemSigner } from "@permaweb/aoconnect";
