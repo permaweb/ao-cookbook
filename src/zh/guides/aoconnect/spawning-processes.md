@@ -9,7 +9,7 @@
 ## 调度器的钱包地址
 
 ```sh
-TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog
+_GQ33BkPtZrqxA84vM8Zk-N2aO0toNNu_C-l-rawrBA
 ```
 
 ## 在 NodeJS 中创建一个进程
@@ -27,7 +27,7 @@ const processId = await spawn({
   // The Arweave TXID of the ao Module
   module: "module TXID",
   // The Arweave wallet address of a Scheduler Unit
-  scheduler: "TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog",
+  scheduler: "_GQ33BkPtZrqxA84vM8Zk-N2aO0toNNu_C-l-rawrBA",
   // A signer function containing your wallet
   signer: createDataItemSigner(wallet),
   /*
@@ -35,7 +35,7 @@ const processId = await spawn({
     for tags that may effect its computation.
   */
   tags: [
-    { name: "Your-Tag-Name-Here", value: "your-tag-value" },
+    { name: "Authority", value: "fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY" },
     { name: "Another-Tag", value: "another-value" },
   ],
 });
@@ -50,7 +50,7 @@ const processId = await spawn({
   // The Arweave TXID of the ao Module
   module: "module TXID",
   // The Arweave wallet address of a Scheduler Unit
-  scheduler: "TZ7o7SIZ06ZEJ14lXwVtng1EtSx60QkPy-kh-kdAXog",
+  scheduler: "_GQ33BkPtZrqxA84vM8Zk-N2aO0toNNu_C-l-rawrBA",
   // A signer function containing your wallet
   signer: createDataItemSigner(globalThis.arweaveWallet),
   /*
@@ -58,7 +58,7 @@ const processId = await spawn({
     for tags that may effect its computation.
   */
   tags: [
-    { name: "Your-Tag-Name-Here", value: "your-tag-value" },
+    { name: "Authority", value: "fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY" },
     { name: "Another-Tag", value: "another-value" },
   ],
 });
