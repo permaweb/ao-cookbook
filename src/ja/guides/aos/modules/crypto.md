@@ -160,7 +160,8 @@ return crypto.digest.md5(str).asHex() -- adac5e63f80f8629e9573527b25891d3
   - `asBytes()`: バイトテーブル形式のダイジェスト。
   - `asHex()`: 16進形式の文字列としてのダイジェスト。
   - `asString()`: 文字列形式のダイジェスト。
-  <!-- ## SHA1
+
+<!-- ## SHA1
 
 Calculates the SHA1 digest of a given message.
 
@@ -172,7 +173,7 @@ Calculates the SHA1 digest of a given message.
   - `asBytes()`: The digest as byte table.
   - `asHex()`: The digest as string in hexadecimal format.
   - `asString()`: The digest as string format.
-    -->
+-->
 
 Example:
 
@@ -223,17 +224,6 @@ return crypto.digest.sha2_256(str).asHex() -- ba7816bf8f01cfea414140de5dae2223b0
   - `asBytes()`: バイトテーブル形式のダイジェスト。
   - `asHex()`: 16進形式の文字列としてのダイジェスト。
   - `asString()`: 文字列形式のダイジェスト。
-  <!-- ## SHA2_512
-
-Calculates the SHA2-512 digest of a given message.
-
-- **Parameters:**
-  - `msg` (string): The message to calculate the digest
-- **Returns:** A table containing functions to get digest in different formats.
-  - `asBytes()`: The digest as byte table.
-  - `asHex()`: The digest as string in hexadecimal format.
-  - `asString()`: The digest as string format.
-    -->
 
 Example:
 
