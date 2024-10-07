@@ -1,4 +1,35 @@
-# Voting Blueprint
+# 投票ブループリント
+
+投票ブループリントは、`ao`で迅速に投票システムを構築するための事前設計されたテンプレートです。これは、始めるのに最適な方法であり、ニーズに合わせてカスタマイズできます。
+
+## 前提条件
+
+投票ブループリントを使用するには、まず[トークンブループリント](./token.md)をロードする必要があります。
+
+## 投票ブループリントの内容
+
+- **バランス**: `Balances`配列は、参加者のトークンバランスを保存するために使用されます。
+
+- **投票**: `Votes`配列は、参加者の投票を保存するために使用されます。
+
+- **投票アクションハンドラー**: `vote`ハンドラーは、プロセスが投票できるようにします。プロセスが`Action = "Vote"`というタグのメッセージを送信すると、ハンドラーは投票を`Votes`配列に追加し、投票が確認されたことを示すメッセージをプロセスに返します。
+
+- **最終化ハンドラー**: `finalize`ハンドラーは、プロセスが投票プロセスを最終化できるようにします。プロセスが`Action = "Finalize"`というタグのメッセージを送信すると、ハンドラーは投票を処理し、投票プロセスを最終化します。
+
+### 使用方法:
+
+1. 好みのテキストエディタを開きます。
+2. ターミナルを開きます。
+3. `aos`プロセスを開始します。
+4. `.load-blueprint voting`と入力します。
+
+### ブループリントがロードされたか確認する:
+
+`Handlers.list`と入力して、新しくロードされたハンドラーを確認します。
+
+## 投票ブループリントの内容:
+
+<!-- # Voting Blueprint
 
 The Voting Blueprint is a predesigned template that helps you quickly build a voting system in `ao`. It is a great way to get started and can be customized to fit your needs.
 
@@ -27,7 +58,7 @@ The Staking Blueprint requires the [Token Blueprint](./token.md) to be loaded, f
 
 Type in `Handlers.list` to see the newly loaded handlers.
 
-## What's in the Voting Blueprint:
+## What's in the Voting Blueprint: -->
 
 ```lua
 Balances = Balances or {}
