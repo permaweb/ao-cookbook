@@ -211,7 +211,7 @@ Send({ Target = Morpheus, Data = "Code: rabbithole", Action = "Unlock" })
 **Read the message from Morpheus:**
 
 ```lua
-Inbox[#Inbox].data
+Inbox[#Inbox].Data
 ```
 
 <div id="step-7-2"></div>
