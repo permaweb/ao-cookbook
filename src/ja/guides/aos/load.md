@@ -1,10 +1,10 @@
 # .load
 
-This feature allows you to load lua code from a source file on your local machine, this simple feature gives you a nice DX experience for working with aos processes.
+この機能を使用すると、ローカルマシン上のソースファイルからLuaコードをロードできます。このシンプルな機能は、aosプロセスで作業するための素晴らしい開発体験を提供します。
 
-When creating handlers you may have a lot of code and you want to take advantage of a rich development environment like vscode. You can even install the lua extension to get some syntax checking.
+ハンドラーを作成する際、多くのコードが必要になることがあります。そのため、vscodeのような豊富な開発環境を活用したいと思うことでしょう。Lua拡張機能をインストールすれば、構文チェックも受けられます。
 
-So how do you publish your local lua source code to your ao process? This is where the `.load` command comes into play.
+では、ローカルのLuaソースコードをaoプロセスに公開するにはどうすればよいのでしょうか？ここで`.load`コマンドが役立ちます。
 
 hello.lua
 

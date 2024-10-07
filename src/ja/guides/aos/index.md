@@ -9,15 +9,15 @@ next:
 
 # aos
 
-While `ao` is a hyper parallel computer that enables distributed compute, `aos` is an operating system on top of that computer.
+`ao`は、分散コンピュートを可能にするハイパーパラレルコンピュータであり、`aos`はそのコンピュータ上のオペレーティングシステムです。
 
-With `aos` you can interact with processes and you can code processes in a very simple and intuitive way. All you need is a terminal and an editor.
+`aos`を使用すると、プロセスと対話し、非常にシンプルで直感的な方法でプロセスをコーディングできます。必要なのはターミナルとエディターだけです。
 
-The language chosen for `aos` is [lua](../../concepts/lua.md), which is a robust and deterministic dynamic language that is a lot of fun to work with.
+`aos`で選ばれた言語は[Lua](../../concepts/lua.md)であり、堅牢で決定論的な動的言語で、非常に楽しく作業できます。
 
-If you have done so yet, take 15 minutes and go through our [tutorials](../../tutorials/index).
+まだ行っていない場合は、15分間で当社の[チュートリアル](../../tutorials/index)を確認してください。
 
-## Diving Deeper into `aos`
+## `aos`の詳細
 
 - [Introduction to aos](intro)
 - [Installing](installing)
@@ -25,7 +25,7 @@ If you have done so yet, take 15 minutes and go through our [tutorials](../../tu
 - [Prompt Customization](prompt)
 - [A Ping-Pong Server](pingpong)
 
-## Developer Guides
+## 開発者ガイド
 
 - [Editor Setup](editor)
 - [Troubleshooting with ao.link](troubleshooting)
