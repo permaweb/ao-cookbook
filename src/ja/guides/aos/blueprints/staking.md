@@ -1,4 +1,37 @@
-# Staking Blueprint
+# ステーキングブループリント
+
+ステーキングブループリントは、`ao`でステーキングシステムを迅速に構築するための事前設計されたテンプレートです。これは、始めるのに最適な方法であり、ニーズに合わせてカスタマイズできます。
+
+## 前提条件
+
+ステーキングブループリントを使用するには、最初に[トークンブループリント](./token.md)をロードする必要があります。
+
+## ステーキングブループリントの内容
+
+- **ステーカー**: `Stakers`配列は、参加者のステークされたトークンを保存するために使用されます。
+
+- **アンステーキング**: `Unstaking`配列は、参加者のアンステーキングリクエストを保存するために使用されます。
+
+- **ステークアクションハンドラー**: `stake`ハンドラーは、プロセスがトークンをステークできるようにします。プロセスがタグ`Action = "Stake"`のメッセージを送信すると、ハンドラーはステークされたトークンを`Stakers`配列に追加し、ステーキングを確認するメッセージをプロセスに返します。
+
+- **アンステークアクションハンドラー**: `unstake`ハンドラーは、プロセスがトークンをアンステークできるようにします。プロセスがタグ`Action = "Unstake"`のメッセージを送信すると、ハンドラーはアンステーキングリクエストを`Unstaking`配列に追加し、アンステーキングを確認するメッセージをプロセスに返します。
+
+- **最終化ハンドラー**: `finalize`ハンドラーは、プロセスがステーキングプロセスを最終化できるようにします。プロセスがタグ`Action = "Finalize"`のメッセージを送信すると、ハンドラーはアンステーキングリクエストを処理し、ステーキングプロセスを最終化します。
+
+### 使用方法:
+
+1. 好みのテキストエディタを開きます。
+2. ターミナルを開きます。
+3. `aos`プロセスを開始します。
+4. `.load-blueprint staking`と入力します。
+
+### ブループリントがロードされたか確認する:
+
+`Handlers.list`と入力して、新しくロードされたハンドラーを確認します。
+
+## ステーキングブループリントの内容:
+
+<!-- # Staking Blueprint
 
 The Staking Blueprint is a predesigned template that helps you quickly build a staking system in `ao`. It is a great way to get started and can be customized to fit your needs.
 
@@ -29,7 +62,7 @@ The Staking Blueprint requires the [Token Blueprint](./token.md) to be loaded, f
 
 Type in `Handlers.list` to see the newly loaded handlers.
 
-## What's in the Staking Blueprint:
+## What's in the Staking Blueprint: -->
 
 ```lua
 Stakers = Stakers or {}

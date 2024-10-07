@@ -1,4 +1,39 @@
-# Token Blueprint
+# トークンブループリント
+
+トークンブループリントは、`ao`でトークンを迅速に構築するための事前設計されたテンプレートです。これは、始めるのに最適な方法であり、ニーズに合わせてカスタマイズできます。
+
+## トークンブループリントの内容
+
+- **バランス**: `Balances`配列は、参加者のトークンバランスを保存するために使用されます。
+
+- **情報ハンドラー**: `info`ハンドラーは、プロセスがトークンのパラメーター（名前、ティッカー、ロゴ、単位など）を取得できるようにします。
+
+- **バランスハンドラー**: `balance`ハンドラーは、プロセスが参加者のトークンバランスを取得できるようにします。
+
+- **バランス一覧ハンドラー**: `balances`ハンドラーは、プロセスがすべての参加者のトークンバランスを取得できるようにします。
+
+- **転送ハンドラー**: `transfer`ハンドラーは、プロセスが他の参加者にトークンを送信できるようにします。
+
+- **ミントハンドラー**: `mint`ハンドラーは、プロセスが新しいトークンをミントできるようにします。
+
+- **総供給ハンドラー**: `totalSupply`ハンドラーは、プロセスがトークンの総供給量を取得できるようにします。
+
+- **バーナーハンドラー**: `burn`ハンドラーは、プロセスがトークンを焼却できるようにします。
+
+### 使用方法:
+
+1. 好みのテキストエディタを開きます。
+2. ターミナルを開きます。
+3. `aos`プロセスを開始します。
+4. `.load-blueprint token`と入力します。
+
+### ブループリントがロードされたか確認する:
+
+`Handlers.list`と入力して、新しくロードされたハンドラーを確認します。
+
+## トークンブループリントの内容:
+
+<!-- # Token Blueprint
 
 The Token Blueprint is a predesigned template that helps you quickly build a token in `ao`. It is a great way to get started and can be customized to fit your needs.
 
@@ -31,7 +66,7 @@ The Token Blueprint is a predesigned template that helps you quickly build a tok
 
 Type in `Handlers.list` to see the newly loaded handlers.
 
-## What's in the Token Blueprint:
+## What's in the Token Blueprint: -->
 
 ```lua
 local bint = require('.bint')(256)

@@ -1,4 +1,45 @@
-# CRED Utils Blueprint
+# CRED ユーティリティブループリント
+
+CRED ユーティリティブループリントは、`ao` テストネットで CRED 残高を迅速に確認するのに役立つ事前設計されたテンプレートです。
+
+## CRED ユーティリティブループリントの内容
+
+### `CRED` メタテーブル
+
+- **CRED.balance**: `CRED.balance` を評価すると、プロセスの CRED の最後の既知の残高が表示されます。
+  以前に CRED 残高を取得したことがない場合、自動的に取得されます。
+  最近 CRED が変わったと思われる場合は、まず `CRED.update` を実行することを検討してください。
+
+- **CRED.process**: `CRED.process` を評価すると、CRED トークン発行者のプロセス ID が表示されます。
+
+- **CRED.send**: `CRED.send(targetProcessId, amount)` を関数のように呼び出すと、`ao` プロセスから別の `ao` プロセスに CRED を転送します。
+
+  - `targetProcessId`: **string**: 受信者の 43 文字のプロセス ID。
+  - `amount`: **integer**: 送信する CRED 単位の数量。1 CRED === 1000 CRED 単位。
+
+- **CRED.update**: `CRED.update` を評価すると、CRED 発行者プロセスにメッセージを送信して最新の CRED 残高を取得します。
+  `UpdateCredBalance` ハンドラー（下記参照）が応答メッセージを受け取ります。
+
+### ハンドラー定義
+
+- **クレジットハンドラー**: `CRED_Credit` ハンドラーは、CRED 発行者プロセス（および `aos`）が CRED 残高の増加を自動的に通知できるようにします。
+
+- **デビットハンドラー**: `CRED_Debit` ハンドラーは、CRED 発行者プロセス（および `aos`）が CRED 残高の減少を自動的に通知できるようにします。
+
+- **残高更新ハンドラー**: `UpdateCredBalance` ハンドラーは、任意の `CRED.update` リクエストへの応答を受け取ります。
+
+## ブループリントの使用方法
+
+1. ターミナルを開きます。
+2. `aos` プロセスを開始します。
+3. `.load-blueprint credUtils` と入力します。
+4. `CRED.balance` と入力します。
+
+## CRED ユーティリティブループリントの内容:
+
+最新バージョンの `aos` に付属するブループリントについては、`aos` の [GitHub ソースコード](https://github.com/permaweb/aos/blob/main/blueprints/credUtils.lua) を参照してください。
+
+<!-- # CRED Utils Blueprint
 
 The CRED Utils Blueprint is a predesigned template that helps you quickly check your CRED balance in `ao` testnet.
 
@@ -41,7 +82,7 @@ The CRED Utils Blueprint is a predesigned template that helps you quickly check 
 ## What's in the CRED Utils Blueprint:
 
 See the `aos` [source code on GitHub](https://github.com/permaweb/aos/blob/main/blueprints/credUtils.lua)
-for the blueprint shipped in the latest version of `aos`.
+for the blueprint shipped in the latest version of `aos`. -->
 
 ```lua
 CRED_PROCESS = "Sa0iBLPNyJQrwpTTG-tWLQU-1QeUAJA73DdxGGiKoJc"

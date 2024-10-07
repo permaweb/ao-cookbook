@@ -9,12 +9,12 @@ next:
 
 # Blueprints
 
-Blueprints are predesigned templates that help you quickly build in `ao`. They are a great way to get started and can be customized to fit your needs.
+Blueprintsは、`ao`で迅速に構築するのに役立つ事前設計されたテンプレートです。これらは、始めるための優れた方法であり、ニーズに合わせてカスタマイズできます。
 
-## Available Blueprints
+## 利用可能なブループリント
 
-- [Chatroom](chatroom)
+- [チャットルーム](chatroom)
 - [CRED Utils](cred-utils)
-- [Staking](staking)
-- [Token](token)
-- [Voting](voting)
+- [ステーキング](staking)
+- [トークン](token)
+- [投票](voting)
