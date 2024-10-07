@@ -8,7 +8,8 @@
 
 ## Overview
 
-The `crypto` module provides a set of cryptographic primitives like digests, ciphers and other cryptographic algorithms in pure Lua. It offers several functionalities to hash, encrypt and decrypt data, simplifying the development of secure communication and data storage. This document will guide you through the module's functionalities, installation, and usage. -->
+The `crypto` module provides a set of cryptographic primitives like digests, ciphers and other cryptographic algorithms in pure Lua. It offers several functionalities to hash, encrypt and decrypt data, simplifying the development of secure communication and data storage. This document will guide you through the module's functionalities, installation, and usage.
+-->
 
 ## Usage
 
@@ -67,7 +68,8 @@ Calculates the MD2 digest of a given message.
 - **Returns:** A table containing functions to get digest in different formats.
   - `asBytes()`: The digest as byte table.
   - `asHex()`: The digest as string in hexadecimal format.
-  - `asString()`: The digest as string format. -->
+  - `asString()`: The digest as string format.
+-->
 
 Example:
 
@@ -100,7 +102,8 @@ Calculates the MD4 digest of a given message.
 - **Returns:** A table containing functions to get digest in different formats.
   - `asBytes()`: The digest as byte table.
   - `asHex()`: The digest as string in hexadecimal format.
-  - `asString()`: The digest as string format. -->
+  - `asString()`: The digest as string format.
+-->
 
 Example:
 
@@ -134,7 +137,8 @@ Calculates the MD5 digest of a given message.
 - **Returns:** A table containing functions to get digest in different formats.
   - `asBytes()`: The digest as byte table.
   - `asHex()`: The digest as string in hexadecimal format.
-  - `asString()`: The digest as string format. -->
+  - `asString()`: The digest as string format.
+-->
 
 Example:
 
@@ -167,7 +171,8 @@ Calculates the SHA1 digest of a given message.
 - **Returns:** A table containing functions to get digest in different formats.
   - `asBytes()`: The digest as byte table.
   - `asHex()`: The digest as string in hexadecimal format.
-  - `asString()`: The digest as string format. -->
+  - `asString()`: The digest as string format.
+    -->
 
 Example:
 
@@ -197,7 +202,8 @@ Calculates the SHA2-256 digest of a given message.
 - **Returns:** A table containing functions to get digest in different formats.
   - `asBytes()`: The digest as byte table.
   - `asHex()`: The digest as string in hexadecimal format.
-  - `asString()`: The digest as string format. -->
+  - `asString()`: The digest as string format.
+-->
 
 Example:
 
@@ -226,7 +232,8 @@ Calculates the SHA2-512 digest of a given message.
 - **Returns:** A table containing functions to get digest in different formats.
   - `asBytes()`: The digest as byte table.
   - `asHex()`: The digest as string in hexadecimal format.
-  - `asString()`: The digest as string format. -->
+  - `asString()`: The digest as string format.
+    -->
 
 Example:
 
@@ -532,7 +539,8 @@ Generates a random number using the ISAAC cipher.
   - `min` (number) optional: The minimum value of the random number. **defaults to 0**.
   - `max` (number) optional: The maximum value of the random number. **defaults to 2^31 - 1**.
   - `seed` (string) optional: The seed to be used for generating the random number. **defaults to math.random(0,2^32 - 1)**.
-- **Returns:** A random number between the given range. -->
+- **Returns:** A random number between the given range.
+-->
 
 Example:
 
@@ -571,7 +579,8 @@ Decrypts a given message using the MORUS cipher.
 - **Returns:** A table containing functions to get decrypted data in different formats.
   - `asBytes()`: The decrypted data as byte table.
   - `asHex()`: The decrypted data as string in hexadecimal format.
-  - `asString()`: The decrypted data as string format. -->
+  - `asString()`: The decrypted data as string format.
+-->
 
 ## Morus Cipher
 
@@ -652,7 +661,8 @@ Decrypts a given message using the NORX cipher.
 - **Returns:** A table containing functions to get decrypted data in different formats.
   - `asBytes()`: The decrypted data as byte table.
   - `asHex()`: The decrypted data as string in hexadecimal format.
-  - `asString()`: The decrypted data as string format. -->
+  - `asString()`: The decrypted data as string format.
+-->
 
 ## NORX Cipher
 
@@ -729,7 +739,8 @@ The module contains a random number generator using ISAAC which is a cryptograph
   - `min` (number) optional: The minimum value of the random number. **defaults to 0**.
   - `max` (number) optional: The maximum value of the random number. **defaults to 2^31 - 1**.
   - `seed` (string) optional: The seed to be used for generating the random number. **defaults to math.random(0,2^32 - 1)**.
-- **Returns:** A random number between the given range. -->
+- **Returns:** A random number between the given range.
+-->
 
 Example:
 
@@ -772,7 +783,8 @@ The modules exposes a function called `createHmac` which is used to create a HMA
 - **Returns:** A table containing functions to get HMAC in different formats.
   - `asBytes()`: The HMAC as byte table.
   - `asHex()`: The HMAC as string in hexadecimal format.
-  - `asString()`: The HMAC as string format. -->
+  - `asString()`: The HMAC as string format.
+  -->
 
 Example:
 
@@ -819,7 +831,8 @@ The Password-Based Key Derivation Function 2 (PBKDF2) applies a pseudorandom fun
 - **Returns:** A table containing functions to get derived key in different formats.
   - `asBytes()`: The derived key as byte table.
   - `asHex()`: The derived key as string in hexadecimal format.
-  - `asString()`: The derived key as string format. -->
+  - `asString()`: The derived key as string format.
+-->
 
 Example:
 
@@ -1008,7 +1021,8 @@ Creates a slice of an array.
 
 ## Stream
 
-Stream is a data structure that represents a sequence of bytes. It is used to store and manipulate data in a streaming fashion. -->
+Stream is a data structure that represents a sequence of bytes. It is used to store and manipulate data in a streaming fashion.
+-->
 
 ### `size`
 
@@ -1218,7 +1232,8 @@ Converts a stream to a hexadecimal string.
 
 - **Parameters:**
   - `stream` (Stream): The stream to convert to a hexadecimal string.
-- **Returns:** The stream as a hexadecimal string. -->
+- **Returns:** The stream as a hexadecimal string.
+-->
 
 ### `fromString`
 
@@ -1302,7 +1317,8 @@ Converts a string to a hexadecimal string.
 
 ## Queue
 
-Queue is a data structure that represents a sequence of elements. It is used to store and manipulate data in a first-in, first-out (FIFO) fashion. -->
+Queue is a data structure that represents a sequence of elements. It is used to store and manipulate data in a first-in, first-out (FIFO) fashion.
+-->
 
 ### `hexToString`
 
@@ -1385,7 +1401,8 @@ Resets the queue.
 
 - **Parameters:** None
 
---- -->
+---
+-->
 
 ### `push`
 
