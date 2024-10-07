@@ -1,6 +1,6 @@
 # JSON
 
-The JSON module allows you to encode and decode objects using JavaScript Object Notation.
+JSONモジュールは、JavaScript Object Notationを使用してオブジェクトのエンコードとデコードを可能にします。
 
 ### Example usage
 
@@ -13,7 +13,7 @@ json.encode({
 })
 ```
 
-## Module functions
+<!-- ## Module functions
 
 ### `encode()`
 
@@ -21,7 +21,17 @@ This function returns a string representation of a Lua object in JSON.
 
 - **Parameters:**
   - `val`: `{any}` The object to format as JSON
-- **Returns:** JSON string representation of the provided object
+- **Returns:** JSON string representation of the provided object -->
+
+## Module functions
+
+### `encode()`
+
+この関数は、LuaオブジェクトのJSON文字列表現を返します。
+
+- **Parameters:**
+  - `val`: `{any}` JSONとしてフォーマットするオブジェクト
+- **Returns:** 提供されたオブジェクトのJSON文字列表現
 
 #### Example
 
@@ -39,13 +49,21 @@ print(json.encode({
 print(json.encode(false))
 ```
 
-### `decode()`
+<!-- ### `decode()`
 
 The function takes a JSON string and turns it into a Lua object.
 
 - **Parameters:**
   - `val`: `{any}` The JSON string to decode
-- **Returns:** Lua object corresponding to the JSON string (throws an error for invalid JSON strings)
+- **Returns:** Lua object corresponding to the JSON string (throws an error for invalid JSON strings) -->
+
+### `decode()`
+
+この関数は、JSON文字列を受け取り、それをLuaオブジェクトに変換します。
+
+- **Parameters:**
+  - `val`: `{any}` デコードするJSON文字列
+- **Returns:** JSON文字列に対応するLuaオブジェクト（無効なJSON文字列の場合はエラーをスローします）
 
 #### Example
 
