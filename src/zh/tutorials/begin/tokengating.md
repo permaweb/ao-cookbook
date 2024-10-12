@@ -25,7 +25,7 @@ Handlers.add(
     "Broadcast",
     Handlers.utils.hasMatchingTag("Action", "Broadcast"),
     function(m)
-        if tonumber(Balances[m.From]) < 1 then
+        if Balances[m.From] == nil or tonumber(Balances[m.From]) < 1 then
             print("UNAUTH REQ: " .. m.From)
             return
         end
