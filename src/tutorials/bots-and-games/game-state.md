@@ -46,7 +46,7 @@ Let's define a new variable that stores the latest state as follows:
 LatestGameState = LatestGameState or nil
 ```
 
-The syntax preserves exisitng values of the variable when you load successive iterations of the `bot.lua` file in your terminal, instead of overwriting it. If there is no pre-existing value then a `nil` value is assigned to the variable.
+The syntax preserves existing values of the variable when you load successive iterations of the `bot.lua` file in your terminal, instead of overwriting it. If there is no pre-existing value then a `nil` value is assigned to the variable.
 
 Then implement another handler as follows:
 
@@ -54,7 +54,7 @@ Then implement another handler as follows:
 -- Handler to update the game state upon receiving game state information.
 Handlers.add(
   "UpdateGameState",
-  { Action = "Announcement" },
+  { Action = "GameState" },
   function (msg)
     local json = require("json")
     LatestGameState = json.decode(msg.Data)
@@ -107,7 +107,7 @@ As usual, to test this new feature, load the file in your aos player terminal as
 .load bot.lua
 ```
 
-Then check the `LatestStateVariable` to see if it has updated correctly by simply passing its name as follows:
+Then check the `LatestGameState` variable to see if it has updated correctly by simply passing its name as follows:
 
 ```lua
 LatestGameState
