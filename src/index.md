@@ -24,3 +24,8 @@ features:
     details: Learn how the ao network works under the hood.
     link: /concepts/index
 ---
+
+## More Information
+
+- [Community Guides and Links](/community/index)
+- [Release Notes](/releasenotes/index)
