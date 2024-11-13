@@ -6,7 +6,11 @@ Sending a message is the central way in which your app can interact with ao. A m
 
 Refer to your process module's source code or documentation to see how the message is used in its computation. The ao connect library will translate the parameters you pass it in the code below, construct a message, and send it.
 
+> 🎓 To Learn more about Wallets visit the [Permaweb Cookbook](https://cookbook.g8way.io/concepts/keyfiles-and-wallets.html)
+
 ## Sending a Message in NodeJS
+
+> Need a test wallet, use `npx -y @permaweb/wallet > /path/to/wallet.json` to create a wallet keyfile.
 
 ```js
 import { readFileSync } from "node:fs";
@@ -43,6 +47,8 @@ await message({
 
 ## Sending a Message in a browser
 
+> New to building permaweb apps check out the [Permaweb Cookbook](https://cookbook.arweave.net)
+
 ```js
 import { message, createDataItemSigner } from "@permaweb/aoconnect";
 
@@ -69,3 +75,5 @@ await message({
   .then(console.log)
   .catch(console.error);
 ```
+
+If you would like to learn more about signers, [click here](signers)
