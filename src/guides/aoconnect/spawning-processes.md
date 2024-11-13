@@ -6,6 +6,11 @@ In order to spawn a Process you must have the TXID of an ao Module that has been
 
 You must also have the wallet address of a Scheduler Unit (SU). This specified SU will act as the scheduler for this Process. This means that all nodes in the system can tell that they need to read and write to this SU for this Process. You can use the address below.
 
+### Wallet address of current AO Module
+
+Find the current module version and address in the header of the main AOS [github repo](https://github.com/permaweb/aos/blob/main/README.md).
+
+
 ### Wallet address of an available Scheduler
 
 ```lua
