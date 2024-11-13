@@ -5,6 +5,10 @@
 - [0rbit](/guides/0rbit/index)
 - [BetterIdea](/guides/betteridea/index)
 
+## AO Packages
+
+- [AO Package Manager](https://apm_betteridea.arweave.net)
+
 ## Links
 
 - [Autonomous Finance](https://www.autonomous.finance/)
