@@ -55,7 +55,6 @@ Other Resources
 You need to have node v18 installed - https://nodejs.org
 
 ```sh
-cd docs
 yarn
 yarn dev
 ```
