@@ -419,6 +419,10 @@ export const localeConfig = (langCode) => ({
             link: get_i18n_link(langCode, "/references/ao"),
           },
           {
+            text: get_i18n_str(langCode, "references-eval"),
+            link: get_i18n_link(langCode, "/references/eval"),
+          },
+          {
             text: get_i18n_str(langCode, "references-handlers"),
             link: get_i18n_link(langCode, "/references/handlers"),
           },
