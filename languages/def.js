@@ -4,6 +4,7 @@ import { createRequire } from "node:module";
 const enStrings = createRequire(import.meta.url)("./strings/en.json");
 const zhStrings = createRequire(import.meta.url)("./strings/zh.json");
 const jaStrings = createRequire(import.meta.url)("./strings/ja.json");
+const idStrings = createRequire(import.meta.url)("./strings/id.json");
 /**
  * Start adding new languages by making a new language object inside the array
  *
@@ -21,6 +22,12 @@ const languages = [
     name: "Japanese", // Name of the language in English, used by OpenAI translation
     code: "ja", // 2 letter language code (ISO 639‑1)
     strings: jaStrings, // JSON object of translated UI element strings
+  },
+{
+    display: "Bahasa", // Name of the language displayed in UI
+    name: "Indonesia", // Name of the language in English, used by OpenAI translation
+    code: "id", // 2 letter language code (ISO 639‑1)
+    strings: idStrings, // JSON object of translated UI element strings
   },
 ];
 
