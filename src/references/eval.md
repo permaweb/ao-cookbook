@@ -17,7 +17,7 @@ await message({
   // The arweave TXID of the process, this will become the "target".
   process: "process-id", // Replace with the actual process ID
 
-  // Tagging the Eval Action so the recieving process evaluates and adds the new Handler from the Data field.
+  // Tagging the Eval Action so the receiving process evaluates and adds the new Handler from the Data field.
   tags: [
     { name: "Action", value: "Eval" },
     { name: "Data", value: 'Handlers.add("ping", Handlers.utils.reply("pong"))' },
@@ -39,7 +39,7 @@ await message({
   // The arweave TXID of the process, this will become the "target".
   process: "process-id", // Replace with the actual process ID
 
-  // Tagging the Eval Action so the recieving process evaluates and adds the new Handler from the Data field.
+  // Tagging the Eval Action so the receiving process evaluates and adds the new Handler from the Data field.
   tags: [
     { name: "Action", value: "Eval" },
     { name: "Data", value: 'Handlers.add("ping", Handlers.utils.reply("pong"))' },

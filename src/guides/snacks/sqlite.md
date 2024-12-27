@@ -14,7 +14,7 @@ Sqlite is a relational database engine. In this guide, we will show how you can 
 
 > NOTE: make sure you have aos installed, if not checkout [Getting Started](/welcome/getting-started)
 
-spawn a new process `mydb` with a `--sqlite` flag, this instucts ao to use the latest sqlite module.
+spawn a new process `mydb` with a `--sqlite` flag, this instructs ao to use the latest sqlite module.
 
 ```sh
 aos mydb --sqlite

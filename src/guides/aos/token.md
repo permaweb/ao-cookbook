@@ -24,7 +24,7 @@ The following guide will guide you through the process of creating a token from 
 
 ### **Step 1: Initializing the Token**
 
-- Open our preferred text editor, preferrably from within the same folder you used during the previous tutorial.
+- Open our preferred text editor, preferably from within the same folder you used during the previous tutorial.
 - Create a new file named `token.lua`.
 - Within `token.lua`, you'll begin by initializing the token's state, defining its balance, name, ticker, and more:
 
@@ -76,7 +76,7 @@ end)
 ::: info
 At this point, you've probably noticed that we're building all of the handlers inside the `token.lua` file rather than using .`editor`.
 
-With many handlers and processes, it's perfectly fine to create your handlers using `.editor`, but because we're creating a full process for initizialing a token, setting up info and balances handlers, transfer handlers, and a minting handler, it's best to keep everything in one file.
+With many handlers and processes, it's perfectly fine to create your handlers using `.editor`, but because we're creating a full process for initializing a token, setting up info and balances handlers, transfer handlers, and a minting handler, it's best to keep everything in one file.
 
 This also allows us to maintain consistency since each handler will be updated every time we reload the `token.lua` file into `aos`.
 :::
@@ -249,7 +249,7 @@ Make sure you've started your aos process by running `aos` in your terminal.
 
 #### 2 - Loading the token.lua file
 
-If you've followd along with the guide, you'll have a `token.lua` file in the same directory as your aos process. From the aos prompt, load in the file.
+If you've followed along with the guide, you'll have a `token.lua` file in the same directory as your aos process. From the aos prompt, load in the file.
 
 ```lua
 .load token.lua

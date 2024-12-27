@@ -51,7 +51,7 @@ There are a few different ways to loop in your code in Lua. Here are our favorit
 
 - **While loops**:
 
-  Start by initalizing your counter to zero by typing `n = 0` and pressing enter.
+  Start by initializing your counter to zero by typing `n = 0` and pressing enter.
 
   Then open the inline editor again with `.editor` .
 

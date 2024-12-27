@@ -15,7 +15,7 @@ A specification-compliant token process responds to a number of different forms 
 
 | Name     | Description                                                                                            | Read-Only          |
 | -------- | ------------------------------------------------------------------------------------------------------ | ------------------ |
-| Balance  | get the balance of an identifer                                                                        | :heavy_check_mark: |
+| Balance  | get the balance of an identifier                                                                        | :heavy_check_mark: |
 | Balances | get a list of all ledger/account balances                                                              | :heavy_check_mark: |
 | Transfer | send 1 or more units from the callers balance to one or move targets with the option to notify targets | :x:                |
 | Mint     | if the ledger process is the root and you would like to increase token supply                          | :x:                |
@@ -30,7 +30,7 @@ Every compliant token process must carry the following immutable parameters upon
 | ------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------ |
 | Name         | The title of the token, as it should be displayed to users.                                                           | :heavy_check_mark: |
 | Ticker       | A suggested shortened name for the token, such that it can be referenced quickly.                                     | :heavy_check_mark: |
-| Logo         | An image that applications may deserire to show next to the token, in order to make it quickly visually identifiable. | :heavy_check_mark: |
+| Logo         | An image that applications may desire to show next to the token, in order to make it quickly visually identifiable. | :heavy_check_mark: |
 | Denomination | The number of the token that should be treated as a single unit when quantities and balances are displayed to users.  | :x:                |
 
 ## Messaging Protocol
@@ -73,7 +73,7 @@ send({
     Tags = {
         Action = "Balances",
         Limit = 1000, # TODO: Is this necessary if the user is paying for the compute and response?
-        Cursor? = "BalanceIdentifer"
+        Cursor? = "BalanceIdentifier"
     }
 })
 ```
@@ -236,7 +236,7 @@ handlers.add(
 
     local qty = tonumber(msg.Tags.Quantity)
     assert(type(qty) == 'number', 'qty must be number')
-    -- handlers.utils.reply("Transfering qty")(msg)
+    -- handlers.utils.reply("Transferring qty")(msg)
     if balances[msg.From] >= qty then
       balances[msg.From] = balances[msg.From] - qty
       balances[msg.Tags.Recipient] = balances[msg.Tags.Recipient] + qty

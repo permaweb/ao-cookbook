@@ -11,7 +11,7 @@ next:
 
 [0rbit](https://0rbit.co/) is the first-ever Decentralised Oracle Network on Arweave using `ao`.
 
-0rbit enables Access to ANY Real-World data present and accessible across interent into your `ao` process.
+0rbit enables Access to ANY Real-World data present and accessible across internet into your `ao` process.
 
 0rbit provides the following features to get access to the data using the HTTP protocol:
 
