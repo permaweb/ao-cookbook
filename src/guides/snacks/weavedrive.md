@@ -65,7 +65,7 @@ Lets create a new AOS process with WeaveDrive enabled and the wallet we created 
 aos test-weavedrive --tag-name Extension --tag-value WeaveDrive --tag-name Attestor --tag-value vfSWG3girEwCBggs9xeztuRyiltsT2CJH_m-S8A58yQ --tag-name Availability-Type --tag-value Assignments
 ```
 
-> NOTE: It does take a few minutes for the data to get 20 plus confirmations which is the treshold for data existing on arweave. You may want to go grab a coffee. :coffee:
+> NOTE: It does take a few minutes for the data to get 20 plus confirmations which is the threshold for data existing on arweave. You may want to go grab a coffee. :coffee:
 
 ## Install apm and WeaveDrive
 

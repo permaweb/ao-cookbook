@@ -1,6 +1,6 @@
 # Cron Messages
 
-ao has the ability to generate messages on a specified interval, this interval could be seconds, minutes, hours, or blocks. These messages automatically get evaluated by a monitoring process to inform the Process to evalute these messages over time. The result is a real-time Process that can communicate with the full ao network or oracles in the outside network.
+ao has the ability to generate messages on a specified interval, this interval could be seconds, minutes, hours, or blocks. These messages automatically get evaluated by a monitoring process to inform the Process to evaluate these messages over time. The result is a real-time Process that can communicate with the full ao network or oracles in the outside network.
 
 ## Setting up cron in a process
 

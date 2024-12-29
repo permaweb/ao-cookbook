@@ -1,4 +1,4 @@
-# Strategic Decicions
+# Strategic Decisions
 
 With the [latest game state](game-state) at your disposal, your bot can evolve into an `autonomous agent`. This transition marks an upgrade in functionality, enabling not just reactions to game states but strategic actions that consider context, energy, and proximity to make decisions.
 

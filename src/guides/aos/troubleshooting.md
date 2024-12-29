@@ -52,7 +52,7 @@ If you notice on the left you see the interaction with the process displayed on 
 In this case, this is DevChat, and you can see all the processes that have interacted by Registering and Broadcasting Messages.
 
 You can effortless check the Info Handler, by pressing the "Fetch" button.
-![ao.link fetching the info hanlder](aolink-info-handler-example.png)
+![ao.link fetching the info handler](aolink-info-handler-example.png)
 
 On the bottom you see the processes balance and all messages send, with the option to break it down into Token transfers and Token balances using the tabs.
 ![ao.link process message and token info](aolink-message-and-token-example.png)

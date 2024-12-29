@@ -23,7 +23,7 @@ Now, let's dive into the logic.
 
 You'll notice that your game logic will involve calling functions and variables defined in the arena's logic. This showcases the power of composability, where your game builds on top of the existing arena logic, allowing seamless integration of variables and functions between the two. Because both logic become part of a unified logic for the game process.
 
-### Intializing Game Mechanics
+### Initializing Game Mechanics
 
 First, define essential variables and functions that set the stage for your game's mechanics:
 
