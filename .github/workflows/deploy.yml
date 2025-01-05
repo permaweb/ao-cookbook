@@ -96,5 +96,5 @@ jobs:
           DEPLOY_KEY: ${{ secrets.CI_WALLET }}
           ARTIFACTS_HASH: ${{ steps.build_artifacts.outputs.artifacts_hash }}
           ARTIFACTS_OUTPUT_DIR: ${{ steps.build_artifacts.outputs.artifacts_output_dir }}
-          ANT_PROCESS: YFbfeqZMbPVGFjQ-PHJY-Y99JQu7O3Jdet06pJnD5iI
+          ANT_PROCESS: HY021r2MQL9Zi0qSNFAQ9QRshIc2mNPYf65pZBP04cE
           UNDERNAME: cookbook

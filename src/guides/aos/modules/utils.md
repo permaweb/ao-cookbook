@@ -168,7 +168,7 @@ utils.reverse({ 1, 2, 3 })
 
 ### `includes()`
 
-Determinates whether a value is part of an array.
+Determines whether a value is part of an array.
 
 - **Parameters:**
   - `val`: `{any}` The element to check for
