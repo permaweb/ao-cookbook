@@ -93,7 +93,7 @@ The following command creates a new AO process with the name "chatroom-no-token"
 aos chatroom-no-token # the `chatroom-no-token` is the new process name
 ```
 
-Next need to register to the chatroom on our original process that we created with our new process.
+Next we need to register to the chatroom we built on our original process, from our new process.
 Hint: type `ao.id` into your console to get the Process ID of the process you are currently connected to.
 
 ```lua
