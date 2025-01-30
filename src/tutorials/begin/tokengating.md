@@ -97,7 +97,6 @@ Next we need to register to the chatroom we built on our original process, from 
 Hint: type `ao.id` into your console to get the Process ID of the process you are currently connected to.
 
 ```lua
-.load chatroom.lua
 Send({ Target = "Your_Original_Process_ID", Action = "Register" })
 ```
 
