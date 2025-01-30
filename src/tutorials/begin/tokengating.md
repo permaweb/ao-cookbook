@@ -87,16 +87,18 @@ New Message From [Your Process ID]: Action = Broadcasted
 ### From a new aos process
 
 Now, let's test it from a new aos process that doesn't have a token.
+The following command creates a new AO process with the name "chatroom-no-token".
 
 ```sh
 aos chatroom-no-token # the `chatroom-no-token` is the new process name
 ```
 
-We'll first need to register to the chatroom.
+Next need to register to the chatroom on our original process that we created with our new process.
+Hint: type `ao.id` into your console to get the Process ID of the process you are currently connected to.
 
 ```lua
 .load chatroom.lua
-Send({ Target = ao.id, Action = "Register" })
+Send({ Target = "Your_Original_Process_ID", Action = "Register" })
 ```
 
 Expected Results:
@@ -109,7 +111,7 @@ New Message From [Your Process ID]: Data = registered
 Now, let's try to send a message to the chatroom.
 
 ```lua
-Send({ Target = ao.id , Action = "Broadcast", Data = "Hello?" })
+Send({ Target = "Your_Original_Process_ID" , Action = "Broadcast", Data = "Hello?" })
 ```
 
 Expected Results:
