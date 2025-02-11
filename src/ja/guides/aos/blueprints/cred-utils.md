@@ -41,7 +41,7 @@ CRED ユーティリティブループリントは、`ao` テストネットで 
 
 <!-- # CRED Utils Blueprint
 
-The CRED Utils Blueprint is a predesigned template that helps you quickly check your CRED balance in `ao` testnet.
+The CRED Utils Blueprint is a predesigned template that helps you quickly check your CRED balance in `ao` legacynet.
 
 ## Unpacking the CRED Utils Blueprint
 

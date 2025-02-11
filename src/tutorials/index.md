@@ -1,7 +1,7 @@
 ---
 prev:
-  text: "Testnet Info"
-  link: "/welcome/testnet-info"
+  text: "legacynet Info"
+  link: "/welcome/legacynet-info"
 next:
   text: "Begin"
   link: "./begin/index"

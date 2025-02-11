@@ -1,7 +1,7 @@
 ---
 prev:
   text: "测试网信息"
-  link: "/welcome/testnet-info"
+  link: "/welcome/legacynet-info"
 next:
   text: "开始"
   link: "./begin/index"

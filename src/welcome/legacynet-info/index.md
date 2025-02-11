@@ -7,13 +7,13 @@ next:
   link: "/tutorials/begin/index"
 ---
 
-# Get involved with the ao testnet
+# Get involved with the ao legacynet
 
-On February 27, 2024, `ao` Testnet was launched, for developers and early adopters to explore the hyper parallel computer.
+On February 27, 2024, `ao` legacynet was launched, for developers and early adopters to explore the hyper parallel computer.
 
-## What is the ao testnet?
+## What is the ao legacynet?
 
-The `ao` testnet is setup to allow users to interact with the `ao` computer without fees, to test and build towards mainnet.
+The `ao` legacynet is setup to allow users to interact with the `ao` computer without fees, to test and build towards mainnet.
 
 The best way to get involved is to build and use the `ao` computer with the `aos` console.
 In the `Things to do` section below you will find many activities to try.
@@ -35,7 +35,7 @@ $ aos
 
 This will start a process named `default`. See [the aos guide](/guides/aos/index) for more details.
 
-## First steps in the ao testnet
+## First steps in the ao legacynet
 
 Follow the tutorials and learn to build on `ao`. [Begin](/tutorials/begin/index)
 

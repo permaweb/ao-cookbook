@@ -4,7 +4,7 @@ prev:
   link: "../getting-started"
 next:
   text: "CRED 和任务 FAQ"
-  link: "/zh/welcome/testnet-info/cred-and-quests"
+  link: "/zh/welcome/legacynet-info/cred-and-quests"
 ---
 
 # 参与 ao 测试网
@@ -61,7 +61,7 @@ Say("Hi")
 
 ## 帮助构建 ao 生态系统并赚取 CRED
 
-ao 生态处于非常早期的阶段，充满机遇。 社区里有一个 `quest` 板块（任务板块），其中包含各种方法让你可以参与测试和构建软件以发展生态，同时赚 ao 原生代币 - Testnet CRED。
+ao 生态处于非常早期的阶段，充满机遇。 社区里有一个 `quest` 板块（任务板块），其中包含各种方法让你可以参与测试和构建软件以发展生态，同时赚 ao 原生代币 - legacynet CRED。
 
 要列出当前可用的任务，请使用 `Join("Quests")` 和 `Say "/Quests"` 加入 `Quests` 聊天频道以接收任务列表。
 
