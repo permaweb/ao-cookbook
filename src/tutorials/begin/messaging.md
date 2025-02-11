@@ -198,7 +198,7 @@ In the case of Morpheus, we can use tags to categorize our messages, and because
 
 ### Let's Show Morpheus That We're Ready
 
-Send Morpheus a message with the tag `Action` and the value `rabbithole`.
+Send Morpheus a message with the tag `Action` and the value `Unlock`.
 
 **Example:**
 
