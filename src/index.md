@@ -12,9 +12,9 @@ hero:
       link: /welcome/index
 
 features:
-  - title: Tutorials
-    details: Follow the step-by-step tutorials to start building on ao.
-    link: /tutorials/index
+  - title: Mainnet
+    details: Learn how to build on AO Mainnet with guides and key concepts.
+    link: /mainnet/index
 
   - title: Guides
     details: Bite size walkthroughs on specific features.
