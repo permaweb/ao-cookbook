@@ -26,8 +26,7 @@ AOS is an abstraction layer that runs in your processes, making it easy to use t
 
 Phase 1 of Mainnet AO Core is now live in relay mode through HyperBEAM nodes, which serve as payment gateways to AO. See the guide below to get started.
 
-- [Mainnet AO Core](/mainnet/ao-core)
-- [HyperBEAM](/concepts/hyperbeam)
+- [AO Core Relay](ao-core-relay)
 
 ## Legacynet Documentation
 

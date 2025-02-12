@@ -16,11 +16,6 @@ Learn how to start interacting with HyperBEAM allowing you to send messages and 
 
 - [AO Core Relay](ao-core-relay)
 
-## Core Concepts
-
-- [AO Core](/concepts/ao-core)
-- [HyperBEAM](/concepts/hyperbeam)
-
 ## Launch Video
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3LxPt0EuFvU?si=Uf7QtUgj5twWJtNd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

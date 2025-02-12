@@ -22,8 +22,3 @@ Below is a set of concept documents that break down the ao system into its disti
 - [Messages](messages)
 - [Units](units)
 - [How messaging works](how-it-works)
-
-## AO Mainnet
-
-- [AO Core](ao-core)
-- [HyperBEAM](hyperbeam)
