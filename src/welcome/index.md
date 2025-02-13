@@ -26,16 +26,16 @@ AOS is an abstraction layer that runs in your processes, making it easy to use t
 
 Phase 1 of Mainnet AO Core is now live in relay mode through HyperBEAM nodes, which serve as payment gateways to AO. See the guide below to get started.
 
-- [AO Core Relay](ao-core-relay)
+- [AO Core Relay](/mainnet/ao-core-relay)
 
 ## Legacynet Documentation
 
 These tutorials explore AO Legacynet, covering everything from building chatrooms to developing autonomous, decentralized bots. It’s a great starting point for experimenting with AO’s hyper-parallel architecture.
 
-- [Legacynet Tutorials](/tutorials)
+- [Legacynet Tutorials](/tutorials/)
 
 ## Further References
 
-- [Guides](/guides)
-- [Concepts](/concepts)
-- [References](/references)
+- [Guides](/guides/)
+- [Concepts](/concepts/)
+- [References](/references/)
