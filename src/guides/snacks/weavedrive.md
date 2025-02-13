@@ -8,7 +8,7 @@ next: false
 
 # Using WeaveDrive
 
-WeaveDrive has been released on AO Testnet, which is great! But how to use it with your process? This post aims to provide a step by step guide on how to use WeaveDrive in your AOS process.
+WeaveDrive has been released on AO legacynet, which is great! But how to use it with your process? This post aims to provide a step by step guide on how to use WeaveDrive in your AOS process.
 
 The current availability time is called `Assignments` and this type puts WeaveDrive in a mode that allows you to define an Attestor wallet address when you create your AOS process. This will enable the process to load data from dataItems that have a Attestation created by this wallet.
 

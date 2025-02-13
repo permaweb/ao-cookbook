@@ -7,19 +7,19 @@ next:
   link: "/tutorials/begin/index"
 ---
 
-<!-- # Get involved with the ao testnet -->
+<!-- # Get involved with the ao legacynet -->
 
 # aoテストネットに参加しよう
 
-<!-- On February 27, 2024, `ao` Testnet was launched, for developers and early adopters to explore the hyper parallel computer. -->
+<!-- On February 27, 2024, `ao` legacynet was launched, for developers and early adopters to explore the hyper parallel computer. -->
 
 2024年2月27日、開発者やアーリーアダプター向けに `ao` テストネットがローンチされ、ハイパーパラレルコンピュータを探索できるようになりました。
 
-<!-- ## What is the ao testnet? -->
+<!-- ## What is the ao legacynet? -->
 
 ## aoテストネットとは？
 
-<!-- The `ao` testnet is setup to allow users to interact with the `ao` computer without fees, to test and build towards mainnet. -->
+<!-- The `ao` legacynet is setup to allow users to interact with the `ao` computer without fees, to test and build towards mainnet. -->
 
 `ao` テストネットは、ユーザーが手数料なしで `ao` コンピュータとやり取りし、メインネットに向けたテストや構築を行えるように設置された環境です。
 
@@ -50,7 +50,7 @@ $ aos
 
 This will start a process named `default`. See [the aos guide](/guides/aos/index) for more details.
 
-<!-- ## First steps in the ao testnet -->
+<!-- ## First steps in the ao legacynet -->
 
 ## aoテストネットでの最初のステップ
 

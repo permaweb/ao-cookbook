@@ -11,7 +11,7 @@ next:
 
 # ボットとゲーム
 
-<!-- > Build your own unique bot to complete Quest 3 and earn 1000 CRED, then enter games like the [Grid](https://github.com/twilson63/grid) to earn testnet CRED 24/7! -->
+<!-- > Build your own unique bot to complete Quest 3 and earn 1000 CRED, then enter games like the [Grid](https://github.com/twilson63/grid) to earn legacynet CRED 24/7! -->
 
 > [!NOTE]  
 > 独自のボットを作成してクエスト3を完了し、1000 CREDを獲得しましょう。その後、 [Grid](https://github.com/twilson63/grid) のようなゲームに参加して、テストネットCREDを24時間365日獲得できます！

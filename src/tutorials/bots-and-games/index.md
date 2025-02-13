@@ -8,8 +8,9 @@ next:
 ---
 
 # Bots and Games
+
 > [!NOTE]  
-> Build your own unique bot to complete Quest 3 and earn 1000 CRED, then enter games like the [Grid](https://github.com/twilson63/grid) to earn testnet CRED 24/7!
+> Build your own unique bot to complete Quest 3 and earn 1000 CRED, then enter games like the [Grid](https://github.com/twilson63/grid) to earn legacynet CRED 24/7!
 
 Leveraging insights from our previous chapter, this section will guide you through the realm of automation with bots in aos and the construction of games. You will learn to create autonomous agents, using them to navigate and interact with game environments effectively.
 

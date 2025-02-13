@@ -14,7 +14,7 @@ _GQ33BkPtZrqxA84vM8Zk-N2aO0toNNu_C-l-rawrBA
 
 In addition, in order to receive messages from other processes an `Authority` tag must be supplied with the wallet address of an authorised Messaging Unit (MU).
 
-### Wallet address of the testnet MU
+### Wallet address of the legacynet MU
 
 ```lua
 fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY
