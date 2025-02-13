@@ -18,7 +18,7 @@ AOS is an abstraction layer that runs in your processes, making it easy to use t
 
 ## Mainnet and Legacynet
 
-- **AO Mainnet** launched on **February 8, 2024**, introducing AO Core and enabling onchain computation with payments and relays.
+- **AO Mainnet** launched on **February 8, 2025**, introducing AO Core and enabling onchain computation with payments and relays.
 
 - **AO Legacynet** launched on **February 27, 2024**, providing a fee-free environment for early adopters to experiment with AO’s hyper-parallel architecture.
 
