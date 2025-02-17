@@ -104,7 +104,7 @@ Expected Results:
 
 ```
 message added to outbox
-New Message From [Your Process ID]: Data = registered
+New Message From [Your Process ID]: Data = Registered.
 ```
 
 Now, let's try to send a message to the chatroom.

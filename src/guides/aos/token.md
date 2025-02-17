@@ -65,7 +65,7 @@ The code `if Denomination ~= 10 then Denomination = 10 end` tells us the number 
 Now lets add our first Handler to handle incoming Messages.
 
 ```lua
-Handlers.add('info', Handlers.utils.hasMatchingTag('Action', 'Info'), function(msg)
+Handlers.add('Info', Handlers.utils.hasMatchingTag('Action', 'Info'), function(msg)
   ao.send(
       { Target = msg.From, Tags = { Name = Name, Ticker = Ticker, Logo = Logo, Denomination = tostring(Denomination) } })
 end)
@@ -81,14 +81,14 @@ With many handlers and processes, it's perfectly fine to create your handlers us
 This also allows us to maintain consistency since each handler will be updated every time we reload the `token.lua` file into `aos`.
 :::
 
-This code means that if someone Sends a message with the Tag, Action = "info", our token will Send back a message with all of the information defined above. Note the Target = msg.From, this tells ao we are replying to the process that sent us this message.
+This code means that if someone Sends a message with the Tag, Action = "Info", our token will Send back a message with all of the information defined above. Note the Target = msg.From, this tells ao we are replying to the process that sent us this message.
 
 #### Info & Token Balance Handlers
 
 Now we can add 2 Handlers which provide information about token Balances.
 
 ```lua
-Handlers.add('balance', Handlers.utils.hasMatchingTag('Action', 'Balance'), function(msg)
+Handlers.add('Balance', Handlers.utils.hasMatchingTag('Action', 'Balance'), function(msg)
   local bal = '0'
 
   -- If not Target is provided, then return the Senders balance
@@ -104,19 +104,19 @@ Handlers.add('balance', Handlers.utils.hasMatchingTag('Action', 'Balance'), func
   })
 end)
 
-Handlers.add('balances', Handlers.utils.hasMatchingTag('Action', 'Balances'),
+Handlers.add('Balances', Handlers.utils.hasMatchingTag('Action', 'Balances'),
              function(msg) ao.send({ Target = msg.From, Data = json.encode(Balances) }) end)
 
 ```
 
-The first Handler above `Handlers.add('balance'` handles a process or person requesting their own balance or the balance of a Target. Then replies with a message containing the info. The second Handler `Handlers.add('balances'` just replies with the entire Balances table.
+The first Handler above `Handlers.add('Balance'` handles a process or person requesting their own balance or the balance of a Target. Then replies with a message containing the info. The second Handler `Handlers.add('Balances'` just replies with the entire Balances table.
 
 ### **Step 3: Transfer Handlers**
 
 Before we begin testing we will add 2 more Handlers one which allows for the transfer of tokens between processes or users.
 
 ```lua
-Handlers.add('transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), function(msg)
+Handlers.add('Transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), function(msg)
   assert(type(msg.Tags.Recipient) == 'string', 'Recipient is required!')
   assert(type(msg.Tags.Quantity) == 'string', 'Quantity is required!')
 
@@ -217,7 +217,7 @@ The line `if not msg.Tags.Cast then` Means were not producing any messages to pu
 Finally, we will add a Handler to allow the minting of new tokens.
 
 ```lua
-Handlers.add('mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), function(msg, env)
+Handlers.add('Mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), function(msg, env)
   assert(type(msg.Tags.Quantity) == 'string', 'Quantity is required!')
 
   if msg.From == env.Process.Id then

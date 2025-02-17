@@ -92,7 +92,7 @@ The register handler will allow processes to join the chatroom.
 
    ![Register Handler](/chatroom5.png)
 
-   This handler will allow processes to register to the chatroom by responding to the tag `Action = "Register"`. A printed message will confirm stating `registered` will appear when the registration is successful.
+   This handler will allow processes to register to the chatroom by responding to the tag `Action = "Register"`. A printed message will confirm stating `Registered.` will appear when the registration is successful.
 
 2. **Reload and Test:** Let's reload and test the script by registering ourselves to the chatroom.
 
@@ -154,6 +154,10 @@ Now that you have a chatroom, let's create a handler that will allow you to broa
   ```lua
   Send({Target = ao.id, Action = "Broadcast", Data = "Broadcasting My 1st Message" }).receive().Data
   ```
+
+::: info
+While we use `Send` in the console for convenience, it's recommended to use `ao.send` in handlers - see the [FAQ](../../guides/aos/faq.md#send-vs-aosend) for more details.
+:::
 
 ## Step 5: Inviting Morpheus to the Chatroom
 
