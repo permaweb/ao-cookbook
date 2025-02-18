@@ -207,13 +207,7 @@ The `ao.spawn` function implements the following JSON schema:
       "type": "any",
       "description": "data to initialize process with"
     },
-    "Data": {
-      "type": "any",
-      "description": "data to initialize process with"
-    },
     "Tags": {
-      "type": "object or array<name,value>",
-      "description": "This property can be an array of name,value objects or an object"
       "type": "object or array<name,value>",
       "description": "This property can be an array of name,value objects or an object"
     }
@@ -248,7 +242,6 @@ local process = ao.spawn("processId", {
     "Data": { "type": "any" },
     "Tags": {
       "type": "array",
-      "description": "name/value array",
       "description": "name/value array",
       "items": {
         "type": "object",
@@ -288,28 +281,6 @@ The `ao.isTrusted` function implements the following JSON schema:
 
 ```json
 {
-  "type": "object",
-  "properties": {
-    "Target": {
-      "type": "string",
-      "description": "Process/Wallet address"
-    },
-    "Data": {
-      "type": "any",
-      "description": "Message payload"
-    },
-    "Tags": {
-      "type": "array",
-      "description": "Message tags as name/value pairs",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": { "type": "string" },
-          "value": { "type": "string" }
-        }
-      }
-    }
-  }
   "type": "object",
   "properties": {
     "Target": {
