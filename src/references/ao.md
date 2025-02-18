@@ -24,7 +24,7 @@ The goal of this library is to provide this core functionality in the box of the
 
 ## Methods
 
-### `ao.send`
+### `ao.send(msg)`
 
 The send function takes a Message object or partial message object, it adds additional `ao` specific tags to the object and returns a full Message object, as well as insert into the ao.outbox.Messages table.
 
@@ -117,7 +117,7 @@ local message = ao.send({
 }
 ```
 
-### `ao.spawn`
+### `ao.spawn(module, spawn)`
 
 The spawn function takes a module TxID and a spawn configuration to create a new process. It returns a full Spawn table and generates a unique `Ref_` tag.
 
@@ -188,7 +188,7 @@ local process = ao.spawn("processId", {
 }
 ```
 
-### `ao.isTrusted`
+### `ao.isTrusted(msg)`
 
 Verifies if a message comes from a trusted source based on the process's authorities list.
 
