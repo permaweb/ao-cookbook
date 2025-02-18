@@ -27,19 +27,11 @@ aoコンピュータは、無数の並行プロセスが単一の統合された
 
 aosは、あなたのプロセス内で動作する抽象化レイヤーで、aoコンピュータの全機能を簡単に利用できるようにします。このクックブックでは、aosを使ってaoコンピュータを始めるために必要なすべての知識を学んでいきます。
 
-<!-- ## Paper -->
-
-<!-- If you would like to learn more about the technical specifications of ao, please check out its [spec](https://ao.g8way.io/#/read) for detailed analysis. -->
-
-## 技術文書
-
-aoの技術的な詳細についてもっと知りたい場合は、スペックを参照して、詳細な分析を確認してください。
-
 <!-- ## Next Steps -->
 
 <!-- In the tutorials that follow, we will explore ao and build everything from chatrooms to autonomous, decentralized bots. -->
 
-次のステップ
+## 次のステップ
 
 今後のチュートリアルでは、aoを探索し、チャットルームから自律的かつ分散化されたボットまで、さまざまなものを構築していきます。
 
