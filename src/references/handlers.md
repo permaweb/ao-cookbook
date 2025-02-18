@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Handlers library provides a flexible way to manage and execute a series of process functions based on pattern matching. An AO process responds based on receiving Messages, these messages are defined using the Arweave DataItem specification which consists of Tags, and Data. Using the Handlers library, you can define a pipeline of process evaluation based on the attributes of the AO Message. Each handler items consists of a pattern function, a handle function, and a name. This library is suitable for scenarios where different actions need to be taken based on varying input criteria.
+The Handlers library provides a flexible way to manage and execute a series of process functions based on pattern matching. An AO process responds based on receiving Messages, these messages are defined using the Arweave DataItem specification which consists of Tags, and Data. Using the Handlers library, you can define a pipeline of process evaluation based on the attributes of the AO Message. Each Handler is instantiated with a name, a pattern matching function, and a function to execute on the incoming message. This library is suitable for scenarios where different actions need to be taken based on varying input criteria.
 
 ## Concepts
 
@@ -21,31 +21,33 @@ Pattern Matching Tables is a concept of providing a Table representation of the 
 { "Quantity" = function(v) return tonumber(v) ~= Nil end } -- Apply a function to the tag to check it. Nil or false do not match
 ```
 
-Example:
+**Example:**
 
-if you want to match on every message with the Action equal to "Balance"
+- If you want to match on every message with the Action equal to "Balance"
 
-```lua
-{ Action = "Balance" }
-```
+  ```lua
+  { Action = "Balance" }
+  ```
 
-if you want to match on every message with the Quantity being a Number
+- If you want to match on every message with the Quantity being a Number
 
-```lua
-{ Quantity = "%d+" }
-```
+  ```lua
+  { Quantity = "%d+" }
+  ```
 
 ### Resolvers
 
-Resolvers are tables in which each key is a pattern matching table and the value is a function that is executed based on the matching key. This allows developers to create case like statements in the resolver property.
+Resolvers are tables that enable conditional execution of functions based on pattern matching. Each key in a resolver table is a pattern matching table, and its corresponding value is a function that executes when that pattern matches. This structure allows developers to create switch/case-like statements where different functions are triggered based on which pattern matches the incoming message.
 
 ```lua
 Handlers.add("foobarbaz",
-  { Action = "Update" }, {
-  [{ Status = "foo" }] = function (msg) print("foo") end,
-  [{ Status = "bar" }] = function (msg) print("bar") end,
-  [{ Status = "baz" }] = function (msg) print("baz") end
-})
+  { Action = "Update" },
+  {
+    [{ Status = "foo" }] = function (msg) print("foo") end,
+    [{ Status = "bar" }] = function (msg) print("bar") end,
+    [{ Status = "baz" }] = function (msg) print("baz") end
+  }
+)
 ```
 
 ## Module Structure
@@ -55,53 +57,53 @@ Handlers.add("foobarbaz",
 
 ## Handler method common function signature
 
-| Parameter          | Type                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ------------------ | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name               | string                       | The identifier of the handler item in the handlers list.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| pattern            | Table or Function            | This parameter can take a table that specifies a pattern that the message MUST match, for example `{ Action = "Balance", Recipient = "_" }` this table describes a message that has a Tag called action and it equals the string "Balance", and the message MUST have a Recipient Tag with a value. If you are unable to add a pattern via a table, you can also use the `function` which receives the message DataItem as its argument and you can return a `true`, `false` or `"continue"` result. The `true` result tells the Handlers evaluation pipeline to invoke this handler and exit out of the pipeline. The `false` result tells the Handlers evaluation pipeline to skip this handler and try to find a pattern matched by the next Handler item in the pipeline. Finally, the `"continue"` informs the Handlers evaluation to invoke this handler and continue evaluating. |
-| handler            | Table (Resolver) or Function | This parameter can take a table that acts as a conditional that invokes a function based on a pattern matched key. or a Function that takes the message DataItem as an argument and performs some business logic.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| maxRuns (optional) | number                       | As of 0.0.5, each handler function takes an optional function to define the amount of times the handler should match before it is removed. The default is infinity.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Parameter          | Type                         | Description                                                                                                                                                                                                                                                                                                                                                                              |
+| ------------------ | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name               | string                       | The identifier of the handler item in the handlers list.                                                                                                                                                                                                                                                                                                                                 |
+| pattern            | Table or Function            | Specifies how to match messages. As a table, defines required message tags (e.g. `{ Action = "Balance", Recipient = "_" }` requires an "Action" tag with value "Balance" and any "Recipient" tag value). As a function, takes a message DataItem and returns: `true` (invoke handler and exit pipeline), `false` (skip handler), or `"continue"` (invoke handler and continue pipeline). |
+| handler            | Table (Resolver) or Function | Either a resolver table containing pattern-function pairs for conditional execution, or a single function that processes the message. When using a resolver table, each key is a pattern matching table and its value is the function to execute when that pattern matches. When using a function, it takes the message DataItem as an argument and executes business logic.             |
+| maxRuns (optional) | number                       | As of 0.0.5, each handler function takes an optional function to define the amount of times the handler should match before it is removed. The default is infinity.                                                                                                                                                                                                                      |
 
 ## Functions
 
 ### `Handlers.add(name, pattern, handler)`
 
-adds a new handler or updates an existing handler by name
+- adds a new handler or updates an existing handler by name
 
 ### `Handlers.append(name, pattern, handle)`
 
-Appends a new handler to the end of the handlers list.
+- Appends a new handler to the end of the handlers list.
 
 ### `Handlers.once(name, pattern, handler)`
 
-Only runs once when the pattern is matched.
+- Only runs once when the pattern is matched.
 
 ### `Handlers.prepend(name, pattern, handle)`
 
-Prepends a new handler to the beginning of the handlers list.
+- Prepends a new handler to the beginning of the handlers list.
 
 ### `Handlers.before(handleName)`
 
-Returns an object that allows adding a new handler before a specified handler.
+- Returns an object that allows adding a new handler before a specified handler.
 
 ### `Handlers.after(handleName)`
 
-Returns an object that allows adding a new handler after a specified handler.
+- Returns an object that allows adding a new handler after a specified handler.
 
 ### `Handlers.remove(name)`
 
-Removes a handler from the handlers list by name.
+- Removes a handler from the handlers list by name.
 
 ## Examples
 
 ### Using pattern Table
 
 ```lua
-Handlers.add("ping",
-  { Action = "ping" },
-  function (msg)
-    print('ping')
-    msg.reply({Data = "pong" })
+Handlers.add("Ping",    -- Name of the handler
+  { Action = "Ping" },  -- Matches messages with Action = "Ping" tag
+  function (msg)        -- Business logic to execute on Message
+      print('ping');
+      msg.reply({Data = "pong" })
   end
 )
 ```
@@ -109,23 +111,27 @@ Handlers.add("ping",
 ### Using resolvers
 
 ```lua
-Handlers.add(
-  "foobarbaz",
-  { Action = "Speak" }, {
-  [{Status = "foo"}] = function (msg) print("foo") end,
-  [{Status = "bar"}] = function (msg) print("bar") end,
-  [{Status = "baz"}] = function (msg) print("baz") end
-})
+Handlers.add("Foobarbaz",  -- Name of the handler
+  { Action = "Speak" },    -- Matches messages with Action = "Speak" tag
+  {
+    -- Resolver with pattern-function pairs
+    [{Status = "foo"}] = function (msg) print("foo") end,
+    [{Status = "bar"}] = function (msg) print("bar") end,
+    [{Status = "baz"}] = function (msg) print("baz") end
+  }
+)
 ```
 
 ### Using functions
 
 ```lua
-Handlers.add("example",
-  function (msg)
+Handlers.add("Example",  -- Name of the handler
+  -- Pattern function matches messages with Action = "Speak" tag
+  function(msg)
     return msg.Action == "Speak"
   end,
-  function (msg)
+  -- Handler function that executes business logic
+  function(msg)
     print(msg.Status)
   end
 )
@@ -133,48 +139,48 @@ Handlers.add("example",
 
 ## Notes
 
-- Handlers are executed in the order they appear in `handlers.list`.
+- Handlers are executed in the order they appear in `Handlers.list`.
 - The pattern function should return false to skip the handler, true to break after the handler is executed, or `"continue"` to execute handler and continue with the next handler.
 
 ## Handlers.utils
 
-The Handlers.utils module provides two functions that are common matching patterns and one function that is a common handle function.
+The `Handlers.utils` module provides two functions that are common matching patterns and one function that is a common handle function.
 
-- hasMatchingData(data)
-- hasMatchingTag(name, value)
-- reply(txt)
+- `hasMatchingData(data: string)`
+- `hasMatchingTag(name: string, value: string)`
+- `reply(text: string)`
 
-### Handlers.utils.hasMatchingData(data : string)
+---
 
-This helper returns a function that requires a message argument, so you can drop this into the pattern argument of any handler. The function compares the data on the incoming message with the string provided as an argument.
+### `Handlers.utils.hasMatchingData(data: string)`
 
-```lua
-Handlers.add("ping",
-    Handlers.utils.hasMatchingData("ping"),
-    ...
-)
-```
+- This helper function returns a pattern matching function that takes a message as input. The returned function checks if the message's `Data` field contains the specified string. You can use this helper directly as the pattern argument when adding a new handler.
 
-If a message comes into the process with data set to ping, this handler will match on it and invoke the handle function.
+  ```lua
+  Handlers.add("ping",
+      Handlers.utils.hasMatchingData("ping"),
+      ...
+  )
+  ```
 
-### Handlers.hasMatchingTag(name : string, value : string)
+### `Handlers.utils.hasMatchingTag(name: string, value: string)`
 
-This helper returns a function that requires a message argument, so you can drop this into any pattern argument on the Handlers module. The function compares the Tag Name and Value, if they are equal then it invokes the handle function.
+- This helper function returns a pattern matching function that takes a message as input. The returned function checks if the message has a tag with the specified `name` and `value`. If they match exactly, the pattern returns true and the handler function will be invoked. This helper can be used directly as the pattern argument when adding a new handler.
 
-```lua
-Handlers.add("ping",
-    Handlers.utils.hasMatchingData("ping"),
-    ...
-)
-```
+  ```lua
+  Handlers.add("ping",
+      Handlers.utils.hasMatchingTag("Action", "Ping"),
+      ...
+  )
+  ```
 
-### Handlers.reply(text : string)
+### `Handlers.utils.reply(text: string)`
 
-This helper is a simple handle function, it basically places the text value in to the Data property of the outbound message.
+- This helper is a simple handle function, it basically places the text value in to the `Data` property of the outbound message.
 
-```lua
-Handlers.add("ping",
-    Handlers.utils.hasMatchingData("ping"),
-    Handlers.utils.reply("pong")
-)
-```
+  ```lua
+  Handlers.add("ping",
+      Handlers.utils.hasMatchingData("ping"),
+      Handlers.utils.reply("pong")
+  )
+  ```

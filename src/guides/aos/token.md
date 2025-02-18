@@ -39,7 +39,7 @@ if Ticker ~= 'COIN' then Ticker = 'COIN' end
 
 if Denomination ~= 10 then Denomination = 10 end
 
-if not Logo then Logo = 'optional arweave TXID of logo image' end
+if not Logo then Logo = 'optional arweave TxID of logo image' end
 ```
 
 ![token.lua image 1](/token1.png)
@@ -74,7 +74,7 @@ end)
 ![Token.lua image 2](/token2.png)
 
 ::: info
-At this point, you've probably noticed that we're building all of the handlers inside the `token.lua` file rather than using .`editor`.
+At this point, you've probably noticed that we're building all of the handlers inside the `token.lua` file rather than using `.editor`.
 
 With many handlers and processes, it's perfectly fine to create your handlers using `.editor`, but because we're creating a full process for initializing a token, setting up info and balances handlers, transfer handlers, and a minting handler, it's best to keep everything in one file.
 

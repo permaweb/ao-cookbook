@@ -79,7 +79,7 @@
   "references-lua": "Lua",
   "references-wasm": "Web Assembly",
   "references-ao": "ao Module",
-  "references-handlers": "handlers",
+  "references-handlers": "Handlers",
   "references-token": "Token",
   "references-data": "Loading Data",
   "references-cron": "CRON Messages",
