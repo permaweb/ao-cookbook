@@ -4,53 +4,64 @@ version: 0.0.3
 
 `ao` process communication is handled by messages, each process receives messages in the form of ANS-104 DataItems, and needs to be able to do the following common operations.
 
-- isTrusted(msg) - check to see if this message trusted?
-- send(msg) - send message to another process
-- spawn(module, msg) - spawn a process
+- `isTrusted(msg)` - check to see if this message trusted?
+- `send(msg)` - send message to another process
+- `spawn(module, msg)` - spawn a process
 
 The goal of this library is to provide this core functionality in the box of the `ao` developer toolkit. As a developer you have the option to leverage this library or not, but it integrated by default.
 
 ## Properties
 
-| Name               | Description                                                                                                  | Type     |
-| ------------------ | ------------------------------------------------------------------------------------------------------------ | -------- |
-| id                 | Process Identifier (TXID)                                                                                    | string   |
-| \_module           | Module Identifier (TXID)                                                                                     | string   |
-| authorities        | Set of Trusted TXs                                                                                           | string   |
-| Authority          | Identifiers that the process is able to accept transactions from that are not the owner or the process (0-n) | string   |
-| \_version          | The version of the library                                                                                   | string   |
-| reference          | Reference number of the process                                                                              | number   |
-| env                | Evaluation Environment                                                                                       | object   |
-| outbox             | Holds Messages and Spawns for response                                                                       | object   |
-| assignables        | List of assignables of the process                                                                           | list     |
-| nonExtractableTags | List of non-extractable tags of the process                                                                  | list     |
-| nonForwardableTags | List of non-forwardable tags of the process                                                                  | list     |
-| init               | Initializes the AO environment                                                                               | function |
-| send               | Sends a message to a target process                                                                          | function |
-| assign             | Assigns a message to the process                                                                             | function |
-| spawn              | Spawns a process                                                                                             | function |
-| result             | Returns the result of a message                                                                              | function |
-| isTrusted          | Checks if a message is trusted                                                                               | function |
-| isAssignment       | Checks if a message is an assignment                                                                         | function |
-| isAssignable       | Checks if a message is assignable                                                                            | function |
-| addAssignable      | Adds an assignable to the assignables list                                                                   | function |
-| removeAssignable   | Removes an assignable from the assignables list                                                              | function |
-| clearOutbox        | Clears the outbox                                                                                            | function |
-| normalize          | Normalizes a message by extracting tags                                                                      | function |
-| sanitize           | Sanitizes a message by removing non-forwardable tags                                                         | function |
-| clone              | Clones a table recursively                                                                                   | function |
+| Name        | Description                                                                                                  | Type   |
+| ----------- | ------------------------------------------------------------------------------------------------------------ | ------ |
+| id          | Process Identifier (TxID)                                                                                    | string |
+| _module     | Module Identifier (TxID)                                                                                     | string |
+| authorities | Set of Trusted TXs                                                                                           | string |
+| Authority   | Identifiers that the process is able to accept transactions from that are not the owner or the process (0-n) | string |
+| _version    | The version of the library                                                                                   | string |
+| reference   | Reference number of the process                                                                              | number |
+| env         | Evaluation Environment                                                                                       | object |
+| outbox      | Holds Messages and Spawns for response                                                                       | object |
+| assignables | List of assignables of the process                                                                           | list   |
+| nonExtractableTags | List of non-extractable tags of the process                                                                  | list   |
+| nonForwardableTags | List of non-forwardable tags of the process                                                                  | list   |
+| init        | Initializes the AO environment                                                                               | function |
+| send        | Sends a message to a target process                                                                          | function |
+| assign      | Assigns a message to the process                                                                             | function |
+| spawn       | Spawns a process                                                                                             | function |
+| result      | Returns the result of a message                                                                              | function |
+| isTrusted   | Checks if a message is trusted                                                                               | function |
+| isAssignment| Checks if a message is an assignment                                                                         | function |
+| isAssignable| Checks if a message is assignable                                                                            | function |
+| addAssignable| Adds an assignable to the assignables list                                                                   | function |
+| removeAssignable| Removes an assignable from the assignables list                                                              | function |
+| clearOutbox | Clears the outbox                                                                                            | function |
+| normalize   | Normalizes a message by extracting tags                                                                      | function |
+| sanitize    | Sanitizes a message by removing non-forwardable tags                                                         | function |
+| clone       | Clones a table recursively                                                                                   | function |
 
 ## Methods
 
-### send(msg: Message\<table>) : Message\<table>
+## `ao.send(msg: Message)`
 
-The send function takes a Message object or partial message object, it adds additional `ao` specific tags to the object and returns a full Message object, as well as insert into the ao.outbox.Messages table.
+The `ao.send` function transmits messages between processes. It takes a Message object, adds `ao`-specific tags, and returns an enhanced Message object while also storing it in the `ao.outbox.Messages` table.
 
-**parameters**
+### Parameters
+| Parameter | Type   | Description                          |
+|-----------|--------|--------------------------------------|
+| `msg`     | table  | Message configuration table          |
 
-- msg
+#### Message Table Structure
+```lua
+{
+    Target = "string", -- Process/wallet address
+    Data = any,        -- Message payload
+    Tags = table       -- Optional message tags
+}
+```
 
-Schema
+### Send Schema
+The `ao.send` function implements the following JSON schema:
 
 ```json
 {
@@ -65,44 +76,68 @@ Schema
             "description": "data to send in message DataItem"
         },
         "Tags": {
-            "type": "object or array<name,value>"
+            "type": "object or array<name,value>",
             "description": "This property can be an array of name,value objects or an object"
         }
     }
 }
 ```
 
-Example 1
+### Examples
 
+**Using name-value pairs (array style):**
 ```lua
 local message = ao.send({
     Target = msg.From,
     Data = "ping",
     Tags = {
-        {
-            name = "Content-Type",
-            value = "text/plain"
-        }
+        { name = "Content-Type", value = "text/plain" },
+        { name = "Action", value = "Ping" }
     }
 })
 ```
 
-Example 2
-
+**Using object notation (key-value style):**
 ```lua
 local message = ao.send({
     Target = msg.From,
     Data = "ping",
     Tags = {
-        "Content-Type" = "text/plain"
+        ["Content-Type"] = "text/plain",
+        ["Action"] = "Ping"
     }
 })
 ```
 
-**returns**
+**Using mixed style (not recommended):**
+```lua
+local message = ao.send({
+    Target = msg.From,
+    Data = "ping",
+    Tags = {
+        ["Content-Type"] = "text/plain",
+        { name = "Action", value = "Ping" }
+    }
+})
+```
 
-Schema
+**Using single tag (array style):**
+```lua
+local message = ao.send({
+    Target = msg.From,
+    Data = "ping",
+    Tags = { name = "Content-Type", value = "text/plain" }
+})
+```
 
+> Note: While all these syntaxes are valid, it's recommended to stick to one style consistently throughout your code. The object notation (key-value style) is generally more concise and readable.
+
+### Returns
+| Type    | Description                          |
+|---------|--------------------------------------|
+| table   | Enhanced message object with standardized tags |
+
+#### Return Object Schema
 ```json
 {
     "type": "object",
@@ -114,7 +149,7 @@ Schema
             "type": "any"
         },
         "Tags": {
-            "type": "array"
+            "type": "array",
             "description": "name/value array",
             "items": {
                 "type": "object",
@@ -128,46 +163,61 @@ Schema
 }
 ```
 
-### spawn(module : string, spawn : Spawn\<table>) : Spawn\<table>
 
-The `spawn` function takes a module TXID as the first argument and a full or partial Spawn table. The result will return a full Spawn table. The spawn function will also generate a `Ref_` tag with a unique reference identifier.
+## `ao.spawn(module: string, spawn: SpawnConfig)`
 
-**parameters**
+The `ao.spawn` function creates a new process using a module TxID and spawn configuration. It returns a full Spawn table and generates a unique `Ref_` tag.
 
-| Name   | Description                                                                             | Type   |
-| ------ | --------------------------------------------------------------------------------------- | ------ |
-| module | The TXID that identifies the module binary to use to instantiate the process with        | string |
-| spawn  | The `spawn` full or partial table object that contains the `Data` and `Tags` properties | table  |
+### Parameters
+| Parameter | Type   | Description                          |
+|-----------|--------|--------------------------------------|
+| `module`  | string | Process module identifier (TxID)     |
+| `spawn`   | table  | Spawn configuration table           |
 
-Schema
-
-module
-
-```json
+#### Spawn Table Structure
+```lua
 {
-  "type": "string"
+    Data = any,        -- Spawn payload
+    Tags = table       -- Optional spawn tags
 }
 ```
 
-spawn
+### Spawn Schema
+The `ao.spawn` function implements the following JSON schema:
 
 ```json
 {
   "type": "object",
   "properties": {
-    "Data": { "type": "any" },
+    "Data": {
+      "type": "any",
+      "description": "data to initialize process with"
+    },
     "Tags": {
-      "type": "object or array",
-      "description": "can be either <name,value> array, or object"
+      "type": "object or array<name,value>",
+      "description": "This property can be an array of name,value objects or an object"
     }
   }
 }
 ```
 
-**returns**
+### Example
+```lua
+local process = ao.spawn("processId", {
+    Data = { initial = "state" },
+    Tags = {
+        name = "Process-Type",
+        value = "calculator"
+    }
+})
+```
 
-Schema
+### Returns
+| Type    | Description                          |
+|---------|--------------------------------------|
+| table   | Spawn object with generated Ref_ tag |
 
+#### Return Object Schema
 ```json
 {
   "type": "object",
@@ -175,6 +225,7 @@ Schema
     "Data": { "type": "any" },
     "Tags": {
       "type": "array",
+      "description": "name/value array",
       "items": {
         "type": "object",
         "properties": {
@@ -187,15 +238,89 @@ Schema
 }
 ```
 
-### assign(assignment: Assignment\<table>): void
 
-The `assign` function assigns a message to one or more processes by taking an assignment object, validating its structure, and then adding it to the `ao.outbox.Assignments` table.
+## `ao.isTrusted(msg: Message)`
 
-**parameters**
+The `ao.isTrusted` function verifies if a message comes from a trusted source based on the process's authorities list.
 
-- `assignment` (table): The assignment to be made.
+### Parameters
+| Parameter | Type   | Description                          |
+|-----------|--------|--------------------------------------|
+| `msg`     | table  | Message to verify trust status      |
 
-**Schema**
+#### Message Table Structure
+```lua
+{
+    Target = "string", -- Process/wallet address
+    Data = any,        -- Message payload
+    Tags = table       -- Message tags
+}
+```
+
+### Schema
+The `ao.isTrusted` function implements the following JSON schema:
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "Target": {
+      "type": "string",
+      "description": "Process/Wallet address"
+    },
+    "Data": {
+      "type": "any",
+      "description": "Message payload"
+    },
+    "Tags": {
+      "type": "array",
+      "description": "Message tags as name/value pairs",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "value": { "type": "string" }
+        }
+      }
+    }
+  }
+}
+```
+
+### Example
+```lua
+if ao.isTrusted(msg) then
+    -- Process trusted message
+else
+    -- Handle untrusted message
+end
+```
+
+### Returns
+| Type     | Description                                  |
+|----------|----------------------------------------------|
+| boolean  | True if message is from a trusted source     |
+
+
+## `ao.assign(assignment: Assignment)`
+
+The `ao.assign` function assigns a message to one or more processes by validating and adding it to the `ao.outbox.Assignments` table.
+
+### Parameters
+| Parameter    | Type   | Description                          |
+|--------------|--------|--------------------------------------|
+| `assignment` | table  | Assignment configuration table       |
+
+#### Assignment Table Structure
+```lua
+{
+    Processes = {"string"},  -- List of processes to assign to
+    Message = "string"       -- Message content to be assigned
+}
+```
+
+### Assign Schema
+The `ao.assign` function implements the following JSON schema:
 
 ```json
 {
@@ -216,8 +341,7 @@ The `assign` function assigns a message to one or more processes by taking an as
 }
 ```
 
-**Example**
-
+### Example
 ```lua
 ao.assign({
     Processes = {"process-1", "process-2"},
@@ -225,15 +349,30 @@ ao.assign({
 })
 ```
 
-### result(result: Result\<table>) : Result\<table>
 
-The `result` function returns the final outcome of a process, including outputs, messages, spawns, and assignments. If an error is encountered in the process, only the error information is returned to the caller.
 
-**parameters**
+## `ao.result(result: Result)`
 
-- `result` (table): The process result details, which may include output data or error information.
+The `ao.result` function processes and returns the final outcome of a process execution, including outputs, messages, spawns, and assignments.
 
-**Schema**
+### Parameters
+| Parameter | Type   | Description                          |
+|-----------|--------|--------------------------------------|
+| `result`  | table  | Process result details              |
+
+#### Result Table Structure
+```lua
+{
+    Output = any,           -- Main process output
+    Messages = table,       -- Generated messages
+    Spawns = table,        -- Spawned processes
+    Assignments = table,    -- Process assignments
+    Error = string         -- Optional error information
+}
+```
+
+### Result Schema
+The `ao.result` function implements the following JSON schema:
 
 ```json
 {
@@ -263,8 +402,7 @@ The `result` function returns the final outcome of a process, including outputs,
 }
 ```
 
-**Example**
-
+### Example
 ```lua
 local process_result = ao.result({
     Output = "Process completed successfully",
@@ -276,91 +414,72 @@ local process_result = ao.result({
 })
 ```
 
-**returns**
+### Returns
+| Type    | Description                          |
+|---------|--------------------------------------|
+| table   | Process result containing Output, Messages, Spawns, and Assignments (or Error) |
 
-- `table`: Returns a table containing the process `Output`, `Messages`, `Spawns`, and `Assignments` if successful, or an `Error` if an error occurred.
 
-### isTrusted(msg : Message\<table>) : boolean
+## `ao.isAssignable(msg: Message)`
 
-When spawning a process, 0 or more Authority Tags can be supplied, the ao library adds each of these values to a table array on the `ao` properties called `authorities`. This set provides the `Proof of Authority` feature for ao.TN.1. When a message arrives in the `handle` function, the developer can call `ao.isTrusted` to verify if the message is from a trusted source.
+The `ao.isAssignable` function checks if a given message matches any predefined patterns in the `ao.assignables` table.
 
-**parameters**
+### Parameters
+| Parameter | Type   | Description                          |
+|-----------|--------|--------------------------------------|
+| `msg`     | table  | Message to check for assignability   |
 
-| Name | Description                                 | Type  |
-| ---- | ------------------------------------------- | ----- |
-| msg  | Message to check if trusted by this process | table |
-
-Schema
-
-```json
+#### Message Table Structure
+```lua
 {
-    "type": "object",
-    "properties": {
-        "Target": {
-            "type": "string"
-        },
-        "Data": {
-            "type": "any"
-        },
-        "Tags": {
-            "type": "array"
-            "description": "name/value array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "name": {"type": "string"},
-                    "value":{"type":"string"}
-                }
-            }
-        }
-    }
+    Target = "string",     -- Process/wallet address
+    Data = any,            -- Message payload
+    Tags = table           -- Message tags
 }
 ```
 
-### isAssignment(msg: Message\<table>) : boolean
+### Example
+```lua
+local can_be_assigned = ao.isAssignable({
+    Target = "ProcessA",
+    Data = "Some content",
+    Tags = {
+         ["Category"] = "Info"
+    }
+})
+```
 
-The `isAssignment` function checks if a given message is an assignment to the current process. It returns `true` if the message's `Target` does not match the current process `ao.id`, indicating that the message is assigned to a different process.
+### Returns
+| Type     | Description                                  |
+|----------|----------------------------------------------|
+| boolean  | True if message matches an assignable pattern |
 
-**parameters**
+## `ao.isAssignment(msg: Message)`
 
-| Name | Description                                        | Type  |
-| ---- | -------------------------------------------------- | ----- |
-| msg  | Message to check if it is assigned to this process | table |
+The `ao.isAssignment` function checks if a given message is an assignment to the current process by verifying if the message's Target differs from the current process ID.
 
-**Example**
+### Parameters
+| Parameter | Type   | Description                          |
+|-----------|--------|--------------------------------------|
+| `msg`     | table  | Message to check for assignment      |
 
+#### Message Table Structure
+```lua
+{
+    Target = "string",     -- Process/wallet address
+    Data = any,            -- Message payload
+    Tags = table           -- Message tags
+}
+```
+
+### Example
 ```lua
 local is_assigned_elsewhere = ao.isAssignment({
     Target = "AnotherProcess"
 })
 ```
 
-**returns**
-
-- `boolean`: Returns `true` if the message is not targeted to the current process (`ao.id`), otherwise `false`.
-
-### isAssignable(msg: Message\<table>) : boolean
-
-The `isAssignable` function checks if a given message matches any predefined patterns in the `ao.assignables` table, indicating whether it can be assigned to the current process. Each entry in `ao.assignables` includes a pattern, and the function uses `utils.matchesSpec` to determine if the message matches any of these patterns.
-
-**parameters**
-
-| Name | Description                                        | Type  |
-| ---- | -------------------------------------------------- | ----- |
-| msg  | Message to check if it matches assignable patterns | table |
-
-**Example**
-
-```lua
-local can_be_assigned = ao.isAssignable({
-    Target = "ProcessA",
-    Data = "Some content",
-    Tags = {
-        { name = "Category", value = "Info" }
-    }
-})
-```
-
-**returns**
-
-- `boolean`: Returns `true` if the message matches an assignable pattern in `ao.assignables`; otherwise, `false`. If `ao.assignables` is empty, all messages are considered non-assignable by default.
+### Returns
+| Type     | Description                                  |
+|----------|----------------------------------------------|
+| boolean  | True if message is not targeted to current process |

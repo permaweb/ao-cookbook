@@ -10,7 +10,7 @@ The easiest way to create these cron messages is by spawning a new process in th
 aos [myProcess] --cron 5-minutes
 ```
 
-When spawning a new process, you can pass a cron argument in your command-line followed by the interval you would like the cron to tick. If you want the messages to trigger in real-time you must initiate a monitor event. In aos, you simply call `.monitor` and it will kick off a worker process on the `mu` that triggers the cron messages from the `cu`. Then your Process will receive the cron messages every `x-interval`.
+When spawning a new process, you can pass a cron argument in your command-line followed by the interval you would like the cron to tick. If you want the messages to trigger in real-time, you must initiate a monitor event. In aos, simply call `.monitor` and it will kick off a worker process on the `mu` that triggers the cron messages from the `cu`. Then your Process will receive the cron messages every `x-interval`.
 
 ```lua
 .monitor
@@ -24,10 +24,10 @@ Every cron message has an `Action` tag with the value `Cron`. [Handlers](handler
 
 ```lua
 Handlers.add(
-  "CronTick", -- handler name
-  Handlers.utils.hasMatchingTag("Action", "Cron"), -- handler pattern to identify cron message
-  function () -- handler task to execute on cron message
-    -- do something
+  "CronTick", -- Handler name
+  Handlers.utils.hasMatchingTag("Action", "Cron"), -- Handler pattern to identify cron message
+  function () -- Handler task to execute on cron message
+    -- Do something
   end
 )
 ```
