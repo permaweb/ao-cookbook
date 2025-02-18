@@ -1,5 +1,9 @@
 # CRED Utils Blueprint
 
+::: warning CRED is now deprecated
+CRED was a token used during ao's legacynet phase to reward early developers. It is no longer earnable or redeemable.
+:::
+
 The CRED Utils Blueprint is a predesigned template that helps you quickly check your CRED balance in `ao` legacynet.
 
 ## Unpacking the CRED Utils Blueprint
@@ -10,12 +14,12 @@ The CRED Utils Blueprint is a predesigned template that helps you quickly check 
   If you have never fetched your CRED balance before, it will be fetched automatically.
   If you think your CRED has recently changed, consider running `CRED.update` first.
 
-- **CRED.process**: Evaluating `CRED.process` will print the process id of the CRED token issuer.
+- **CRED.process**: Evaluating `CRED.process` will print the process ID of the CRED token issuer.
 
 - **CRED.send**: Invoking `CRED.send(targetProcessId, amount)` like a function will transfer CRED from your `ao` process
   to another `ao` process.
 
-  - `targetProcessId`: **string**: the 43-character process id of the recipient.
+  - `targetProcessId`: **string**: the 43-character process ID of the recipient.
   - `amount`: **integer**: The quantity of CRED units to send. 1 CRED === 1000 CRED units.
 
 - **CRED.update**: Evaluating `CRED.update` will fetch your latest CRED balance by sending a message to the CRED

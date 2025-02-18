@@ -91,8 +91,6 @@ There are a few different ways to loop in your code in Lua. Here are our favorit
   end
   ```
 
-  Once submitted, aos will return `undefined`, as function (and variable) definition in Lua doesn't return a value.
-
   Lua also has 'anonymous' or 'higher order' functions. These essentially allow you to use functions themselves as if they are normal data -- to be passed as arguments to other functions, etc. The following example defines an anonymous function and is equivalent to the above:
 
   ```lua

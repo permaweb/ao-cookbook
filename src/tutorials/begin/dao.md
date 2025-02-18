@@ -168,7 +168,7 @@ aos voter
 Now from the dao aos shell send that voter some tokens
 
 ```lua
-Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'process id of the voter aos', Quantity = '100000' }})
+Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'process ID of the voter aos', Quantity = '100000' }})
 ```
 
 From another terminal run another aos Process called cu
@@ -180,7 +180,7 @@ aos cu
 Now from the dao aos shell send that cu some tokens
 
 ```lua
-Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'process id of the cu aos', Quantity = '100000' }})
+Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'process ID of the cu aos', Quantity = '100000' }})
 ```
 
 Check the Balances from the dao aos shell, we should see a balance for the voter and cu Process. In the below examples `bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s` is the dao aos, `QcGIOXJ1p2SOGzGAccOcV-nSudVRiaPYbU7SjeLx1OE` is the voter aos, and `X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s` is the cu aos.

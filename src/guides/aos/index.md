@@ -15,7 +15,7 @@ With `aos` you can interact with processes and you can code processes in a very 
 
 The language chosen for `aos` is [lua](../../concepts/lua.md), which is a robust and deterministic dynamic language that is a lot of fun to work with.
 
-If you haven't done so yet, take 15 minutes and go through our [tutorials](../../tutorials/index).
+If you haven't done so yet, take 15-30 minutes and go through our [tutorials](../../tutorials/index).
 
 ## Diving Deeper into `aos`
 

@@ -257,7 +257,7 @@ If you've followed along with the guide, you'll have a `token.lua` file in the s
 
 #### 3 - Testing the Token
 
-Now we can send Messages to our aos process id, from the same aos prompt to see if is working. If we use ao.id as the Target we are sending a message to ourselves.
+Now we can send Messages to our aos process ID, from the same aos prompt to see if is working. If we use ao.id as the Target we are sending a message to ourselves.
 
 ```lua
 Send({ Target = ao.id, Action = "Info" })
@@ -281,14 +281,14 @@ If `#Inbox` returns `5`, then run `Inbox[5].Data` to see the data.
 
 #### 4 - Transfer
 
-Now, try to transfer a balance of tokens to another wallet or process id.
+Now, try to transfer a balance of tokens to another wallet or process ID.
 
 ::: info
-If you need another process id, you can run `aos [name]` in another terminal window to get a new process id. Make sure it's not the same `aos [name]` as the one you're currently using.
+If you need another process ID, you can run `aos [name]` in another terminal window to get a new process ID. Make sure it's not the same `aos [name]` as the one you're currently using.
 
 **Example:**
 
-If you're using `aos` in one terminal window, you can run `aos test` in another terminal window to get a new process id.
+If you're using `aos` in one terminal window, you can run `aos test` in another terminal window to get a new process ID.
 :::
 
 ```lua
