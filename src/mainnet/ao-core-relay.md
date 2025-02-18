@@ -31,7 +31,7 @@ aos <name or process_id> --wallet <path_to_wallet> --relay <relay_url>
 
 Replace:
 
-- `<name or process_id>`: A human-readable name for the new process you want to spawn, or an existing process id that you want to connect to.
+- `<name or process_id>`: A human-readable name for the new process you want to spawn, or an existing process ID that you want to connect to.
 - `<path_to_wallet>`: Path to the wallet that owns or will own this process.
 - `<relay_url>`: The URL of your relay node (e.g., `http://relay.ao-hb.xyz`).
 
@@ -42,6 +42,7 @@ Relays will charge for usage of the node. If you are attempting to access a node
 When you access AOS in relay mode, `--relay <relay_url>` you will be able to see the associated wallet address. If this wallet address does not hold any of the tokens needed to access this node (by default AO), you will have to transfer some to them. Only a small amount is needed to send messages through the relayer.
 
 1. Transfer some AO (0.0000001 is enough) to the wallet that you will use in AOS.
+
    - `Send({ Target = AO_TOKEN, Action = 'Transfer', Quantity = '0.0000001', Recipient = WALLET_ADDRESS })`
 
 2. Spawn a new process or connect to an existing one in relay mode.

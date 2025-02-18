@@ -81,10 +81,6 @@ Morpheus = "ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s"
 
 This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specific process ID.
 
-::: info
-When creating the `Morpheus` variable, the only response you should see is `undefined`. This is expected. To check if the variable was created successfully, type `Morpheus` and press Enter. You should see the process ID you stored.
-:::
-
 ### Check the `Morpheus` Variable
 
 ```lua
