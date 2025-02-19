@@ -35,6 +35,16 @@ Pattern Matching Tables is a concept of providing a Table representation of the 
   { Quantity = "%d+" }
   ```
 
+::: info Default Action Handlers
+As of AOS 2.0, you can use a string shorthand for Action-based handlers. Instead of writing a pattern function or table, simply pass the Action value as a string:
+
+```lua
+// Before: Handlers.add("Get-Balance", function (msg) return msg.Action == "Balance", doBalance)
+// After:  Handlers.add("Get-Balance", "Balance", doBalance)
+```
+
+:::
+
 ### Resolvers
 
 Resolvers are tables that enable conditional execution of functions based on pattern matching. Each key in a resolver table is a pattern matching table, and its corresponding value is a function that executes when that pattern matches. This structure allows developers to create switch/case-like statements where different functions are triggered based on which pattern matches the incoming message.
