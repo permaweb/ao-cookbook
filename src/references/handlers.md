@@ -70,7 +70,7 @@ Handlers.add("foobarbaz",
 
 - adds a new handler or updates an existing handler by name
 
-### `Handlers.append(name, pattern, handle)`
+### `Handlers.append(name, pattern, handler)`
 
 - Appends a new handler to the end of the handlers list.
 
@@ -78,7 +78,7 @@ Handlers.add("foobarbaz",
 
 - Only runs once when the pattern is matched.
 
-### `Handlers.prepend(name, pattern, handle)`
+### `Handlers.prepend(name, pattern, handler)`
 
 - Prepends a new handler to the beginning of the handlers list.
 
