@@ -56,12 +56,12 @@ local credMeta = {
     __index = function(t, key)
         -- sends CRED balance request
         if key == "update" then
-            Send({ Target = CRED_PROCESS, Action = "Balance", Tags = { Target = ao.id } })
+            Send({ Target = CRED_PROCESS, Action = "Balance", Tags = { ["Target"] = ao.id } })
             return "Balance update requested."
             -- prints local CRED balance, requests it if not set
         elseif key == "balance" then
             if _CRED.balance == "Your CRED balance has not been checked yet. Updating now." then
-                Send({ Target = CRED_PROCESS, Action = "Balance", Tags = { Target = ao.id } })
+                Send({ Target = CRED_PROCESS, Action = "Balance", Tags = { ["Target"] = ao.id } })
             end
             return _CRED.balance
             -- prints CRED process ID
@@ -73,7 +73,7 @@ local credMeta = {
                 -- ensures amount is string
                 amount = tostring(amount)
                 print("sending " .. amount .. "CRED to " .. target)
-                Send({ Target = CRED_PROCESS, Action = "Transfer", Recipient = target, Quantity = amount })
+                Send({ Target = CRED_PROCESS, Action = "Transfer", ["Recipient"] = target, ["Quantity"] = amount })
             end
         else
             return nil

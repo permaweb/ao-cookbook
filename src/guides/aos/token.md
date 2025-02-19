@@ -67,7 +67,7 @@ Now lets add our first Handler to handle incoming Messages.
 ```lua
 Handlers.add('Info', Handlers.utils.hasMatchingTag('Action', 'Info'), function(msg)
   ao.send(
-      { Target = msg.From, Tags = { Name = Name, Ticker = Ticker, Logo = Logo, Denomination = tostring(Denomination) } })
+      { Target = msg.From, Tags = { ["Name"] = Name, ["Ticker"] = Ticker, ["Logo"] = Logo, ["Denomination"] = tostring(Denomination) } })
 end)
 ```
 
@@ -100,7 +100,8 @@ Handlers.add('Balance', Handlers.utils.hasMatchingTag('Action', 'Balance'), func
 
   ao.send({
     Target = msg.From,
-    Tags = { Target = msg.From, Balance = bal, Ticker = Ticker, Data = json.encode(tonumber(bal)) }
+    Data = json.encode(tonumber(bal)),
+    Tags = { ["Balance"] = bal, ["Ticker"] = Ticker }
   })
 end)
 
@@ -173,7 +174,7 @@ Handlers.add('Transfer', Handlers.utils.hasMatchingTag('Action', 'Transfer'), fu
   else
     ao.send({
       Target = msg.Tags.From,
-      Tags = { Action = 'Transfer-Error', ['Message-Id'] = msg.Id, Error = 'Insufficient Balance!' }
+      Tags = { ["Action"] = 'Transfer-Error', ['Message-Id'] = msg.Id, ["Error"] = 'Insufficient Balance!' }
     })
   end
 end)
@@ -192,12 +193,12 @@ If the transfer was successful a Debit-Notice is sent to the sender of the origi
 -- Send Debit-Notice to the Sender
 ao.send({
     Target = msg.From,
-    Tags = { Action = 'Debit-Notice', Recipient = msg.Tags.Recipient, Quantity = tostring(qty) }
+    Tags = { ["Action"] = 'Debit-Notice', ["Recipient"] = msg.Tags.Recipient, ["Quantity"] = tostring(qty) }
 })
 -- Send Credit-Notice to the Recipient
 ao.send({
     Target = msg.Tags.Recipient,
-    Tags = { Action = 'Credit-Notice', Sender = msg.From, Quantity = tostring(qty) }
+    Tags = { ["Action"] = 'Credit-Notice', ["Sender"] = msg.From, ["Quantity"] = tostring(qty) }
 })
 ```
 
@@ -206,7 +207,7 @@ If there was insufficient balance for the transfer it sends back a failure messa
 ```lua
 ao.send({
     Target = msg.Tags.From,
-    Tags = { Action = 'Transfer-Error', ['Message-Id'] = msg.Id, Error = 'Insufficient Balance!' }
+    Tags = { ["Action"] = 'Transfer-Error', ['Message-Id'] = msg.Id, ["Error"] = 'Insufficient Balance!' }
 })
 ```
 
@@ -228,9 +229,9 @@ Handlers.add('Mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), function(m
     ao.send({
       Target = msg.Tags.From,
       Tags = {
-        Action = 'Mint-Error',
-        ['Message-Id'] = msg.Id,
-        Error = 'Only the Process Owner can mint new ' .. Ticker .. ' tokens!'
+        ["Action"] = 'Mint-Error',
+        ["Message-Id"] = msg.Id,
+        ["Error"] = 'Only the Process Owner can mint new ' .. Ticker .. ' tokens!'
       }
     })
   end
@@ -292,7 +293,7 @@ If you're using `aos` in one terminal window, you can run `aos test` in another 
 :::
 
 ```lua
-Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'another wallet or processid', Quantity = '10000' }})
+Send({ Target = ao.id, Tags = { ["Action"] = "Transfer", ["Recipient"] = 'another wallet or processid', ["Quantity"] = '10000' }})
 ```
 
 After sending, you'll receive a printed message in the terminal similar to `Debit-Notice` on the sender's side and `Credit-Notice` on the recipient's side.
@@ -302,7 +303,7 @@ After sending, you'll receive a printed message in the terminal similar to `Debi
 Now that you've transferred some tokens, let's check the balances.
 
 ```lua
-Send({ Target = ao.id, Tags = { Action = "Balances" }})
+Send({ Target = ao.id, Tags = { ["Action"] = "Balances" }})
 ```
 
 ```lua
@@ -316,13 +317,13 @@ You will see two process IDs or wallet addresses, each displaying a balance. The
 Finally, attempt to mint some tokens.
 
 ```lua
-Send({ Target = ao.id, Tags = { Action = "Mint", Quantity = '1000' }})
+Send({ Target = ao.id, Tags = { ["Action"] = "Mint", ["Quantity"] = '1000' }})
 ```
 
 And check the balances again.
 
 ```lua
-Send({ Target = ao.id, Tags = { Action = "Balances" }})
+Send({ Target = ao.id, Tags = { ["Action"] = "Balances" }})
 Inbox[#Inbox].Data
 ```
 

@@ -41,24 +41,24 @@ Every compliant token process must carry the following immutable parameters upon
 
 **Example `Action` message:**
 
-```lua=
+```lua
 ao.send({
     Target = "{TokenProcess Identifier}",
     Tags = {
-        Action = "Balance",
-        Target = "{IDENTIFIER}"
+        ["Action"] = "Balance",
+        ["Target"] = "{IDENTIFIER}"
     }
 })
 ```
 
 **Example response message:**
 
-```
+```lua
 {
     Tags = {
-        Balance = "50",
-        Target = "LcldyO8wwiGDzC3iXzGofdO8JdR4S1_2A6Qtz-o33-0",
-        Ticker = "FUN"
+        ["Balance"] = "50",
+        ["Target"] = "LcldyO8wwiGDzC3iXzGofdO8JdR4S1_2A6Qtz-o33-0",
+        ["Ticker"] = "FUN"
     }
 }
 ```
@@ -71,9 +71,9 @@ ao.send({
 ao.send({
     Target = "[TokenProcess Identifier]",
     Tags = {
-        Action = "Balances",
-        Limit = 1000, # TODO: Is this necessary if the user is paying for the compute and response?
-        Cursor? = "BalanceIdentifier"
+        ["Action"] = "Balances",
+        ["Limit"] = 1000, # TODO: Is this necessary if the user is paying for the compute and response?
+        ["Cursor"] = "BalanceIdentifier"
     }
 })
 ```
@@ -97,10 +97,10 @@ If the sender has a sufficient balance, send the `Quantity` to the `Target`, iss
 ao.send({
     Target = "[TokenProcess Identifier]",
     Tags = {
-        { name = "Action", value = "Transfer" },
-        { name = "Recipient", value = "[ADDRESS]" },
-        { name = "Quantity", value = "100" },
-        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
+        ["Action"] = "Transfer",
+        ["Recipient"] = "[ADDRESS]",
+        ["Quantity"] = "100",
+        ["X-[Forwarded Tag(s) Name]"] = "[VALUE]"
     }
 })
 ```
@@ -111,10 +111,10 @@ If a successful transfer occurs a notification message should be sent if `Cast` 
 ao.send({
     Target = "[Recipient Address]",
     Tags = {
-        { name = "Action", value = "Credit-Notice" },
-        { name = "Sender", value = "[ADDRESS]" },
-        { name = "Quantity", value = "100"},
-        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
+        ["Action"] = "Credit-Notice",
+        ["Sender"] = "[ADDRESS]",
+        ["Quantity"] = "100",
+        ["X-[Forwarded Tag(s) Name]"] = "[VALUE]"
     }
 })
 ```
@@ -127,7 +127,7 @@ Recipients will infer from the `From-Process` tag of the message which tokens th
 ao.send({
     Target = "{Token}",
     Tags = {
-        Action = "Info"
+        ["Action"] = "Info"
     }
 })
 ```
@@ -140,8 +140,8 @@ Implementing a `Mint` action gives the process a way of allowing valid participa
 ao.send({
     Target ="{Token Process}",
     Tags = {
-        Action = "Mint",
-        Quantity = "1000"
+        ["Action"] = "Mint",
+        ["Quantity"] = "1000"
     }
 })
 ```
@@ -173,11 +173,11 @@ The modified `Credit-Notice` should be structured as follows:
 ao.send({
     Target = "[Recipient Address]",
     Tags = {
-        { name = "Action", value = "Credit-Notice" },
-        { name = "Quantity", value = "100"},
-        { name = "Source-Token", value = "[ADDRESS]" },
-        { name = "Parent-Token", value = "[ADDRESS]" },
-        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
+        ["Action"] = "Credit-Notice",
+        ["Quantity"] = "100",
+        ["Source-Token"] = "[ADDRESS]",
+        ["Parent-Token"] = "[ADDRESS]",
+        ["X-[Forwarded Tag(s) Name]"] = "[VALUE]"
     }
 })
 ```
@@ -190,9 +190,9 @@ All subledgers must allow balance holders to withdraw their tokens to the parent
 ao.send({
     Target = "[TokenProcess Identifier]",
     Tags = {
-     { name = "Action", value = "Withdraw" },
-     { name = "Recipient", value = "[ADDRESS]" },
-     { name = "Quantity", value = "100" }
+        ["Action"] = "Withdraw",
+        ["Recipient"] = "[ADDRESS]",
+        ["Quantity"] = "100"
     }
 })
 ```
@@ -243,16 +243,17 @@ Handlers.add(
       ao.send({
         Target = msg.From,
         Tags = {
-          Action = "Debit-Notice",
-          Quantity = tostring(qty)
+          ["Action"] = "Debit-Notice",
+          ["Quantity"] = tostring(qty)
         }
       })
       ao.send({
-      Target = msg.Tags.Recipient,
-      Tags = {
-        Action = "Credit-Notice",
-        Quantity = tostring(qty)
-      }})
+        Target = msg.Tags.Recipient,
+        Tags = {
+          ["Action"] = "Credit-Notice",
+          ["Quantity"] = tostring(qty)
+        }
+      })
       -- if msg.Tags.Cast and msg.Tags.Cast == "true" then
       --   return
       -- end
@@ -270,11 +271,13 @@ Handlers.add(
     if balances[msg.Tags.Target] then
       bal = tostring(balances[msg.Tags.Target])
     end
-    ao.send({Target = msg.From, Tags = {
+    ao.send({
       Target = msg.From,
-      Balance = bal,
-      Ticker = ticker or ""
-    }})
+      Tags = {
+        ["Balance"] = bal,
+        ["Ticker"] = ticker or ""
+      }
+    })
   end
 )
 
@@ -296,11 +299,14 @@ Handlers.add(
   "Info",
   Handlers.utils.hasMatchingTag("Action", "Info"),
   function (msg)
-    ao.send({Target = msg.From, Tags = {
-      Name = name,
-      Ticker = ticker,
-      Denomination = tostring(denomination)
-    }})
+    ao.send({
+      Target = msg.From,
+      Tags = {
+        ["Name"] = name,
+        ["Ticker"] = ticker,
+        ["Denomination"] = tostring(denomination)
+      }
+    })
   end
 )
 ```

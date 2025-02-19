@@ -4,9 +4,9 @@ version: 0.0.3
 
 `ao` process communication is handled by messages, each process receives messages in the form of [ANS-104 DataItems](https://specs.arweave.net/view/xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw), and needs to be able to do the following common operations.
 
-- [ao.send(msg)](#ao-send-msg-messageconfig) - send message to another process
-- [ao.spawn(module, msg)](#ao-spawn-module-string-spawn-spawnconfig) - spawn a process
-- [ao.isTrusted(msg)](#ao-istrusted-msg-messageconfig) - check to see if this message trusted?
+- [ao.send(msg)](#ao-send-msg-message) - send message to another process
+- [ao.spawn(module, msg)](#ao-spawn-module-string-spawn-spawn) - spawn a process
+- [ao.isTrusted(msg)](#ao-istrusted-msg-message) - check to see if this message trusted?
 
 The goal of this library is to provide this core functionality in the box of the `ao` developer toolkit. As a developer you have the option to leverage this library or not, but it integrated by default.
 
@@ -40,11 +40,47 @@ The goal of this library is to provide this core functionality in the box of the
 | sanitize           | Sanitizes a message by removing non-forwardable tags                                                         | function |
 | clone              | Clones a table recursively                                                                                   | function |
 
+### Environment Schema
+
+The `ao.env` variable contains information about the initializing message of the process. It follows this schema:
+
+```lua
+ao.env = {
+  Process = {
+    Id = string,      -- Process ID
+    Owner = string,   -- Process owner
+    TagArray = {      -- Array of name-value pairs
+      { name = string, value = string }
+    },
+    Tags = {          -- Tags as key-value pairs
+      [string] = string
+    }
+  }
+}
+```
+
+#### Example
+
+```lua
+{
+  Process = {
+    Id = "A1b2C3d4E5f6G7h8I9j0K1L2M3N4O5P6Q7R8S9T0",
+    Owner = "Xy9PqW3vR5sT8uB1nM6dK0gF2hL4jC7iE9rV3wX5",
+    TagArray = {
+      { name = "App-Name", value = "aos" }
+    },
+    Tags = {
+      ["App-Name"] = "aos"
+    }
+  }
+}
+```
+
 ## Methods
 
-### `ao.send(msg: MessageConfig)`
+### `ao.send(msg: Message)`
 
-Takes a [MessageConfig](#messageconfig) as input. The function adds `ao`-specific tags and stores the message in `ao.outbox.Messages`.
+Takes a [Message](#message) as input. The function adds `ao`-specific tags and stores the message in `ao.outbox.Messages`.
 
 #### Example
 
@@ -53,15 +89,24 @@ local message = ao.send({
     Target = msg.From,
     Data = "ping",
     Tags = {
-        { name = "Content-Type", value = "text/plain" },
-        { name = "Action", value = "Ping" }
+        ["Content-Type"] = "text/plain",
+        ["Action"] = "Ping"
     }
+})
+
+-- or
+
+local message = ao.send({
+    Target = msg.From,
+    Data = "ping",
+    Action = "Ping",               -- will be converted to Tags
+    ["Content-Type"] = "text/plain"  -- will be converted to Tags
 })
 ```
 
-### `ao.spawn(module: string, spawn: SpawnConfig)`
+### `ao.spawn(module: string, spawn: Spawn)`
 
-Takes a module ID string and [SpawnConfig](#spawnconfig) as input. Returns a Spawn table with a generated `Ref_` tag.
+Takes a module ID string and [Spawn](#spawn) as input. Returns a Spawn table with a generated `Ref_` tag.
 
 #### Example
 
@@ -69,15 +114,14 @@ Takes a module ID string and [SpawnConfig](#spawnconfig) as input. Returns a Spa
 local process = ao.spawn("processId", {
     Data = { initial = "state" },
     Tags = {
-        name = "Process-Type",
-        value = "calculator"
+        ["Process-Type"] = "calculator"
     }
 })
 ```
 
-### `ao.isTrusted(msg: MessageConfig)`
+### `ao.isTrusted(msg: Message)`
 
-Takes a [MessageConfig](#messageconfig) as input. Returns `true` if the message is from a trusted source.
+Takes a [Message](#message) as input. Returns `true` if the message is from a trusted source.
 
 #### Example
 
@@ -89,9 +133,9 @@ else
 end
 ```
 
-### `ao.assign(assignment: AssignmentConfig)`
+### `ao.assign(assignment: Assignment)`
 
-Takes an [AssignmentConfig](#assignmentconfig) as input. Adds the assignment to `ao.outbox.Assignments`.
+Takes an [Assignment](#assignment) as input. Adds the assignment to `ao.outbox.Assignments`.
 
 #### Example
 
@@ -102,9 +146,9 @@ ao.assign({
 })
 ```
 
-### `ao.result(result: ResultConfig)`
+### `ao.result(result: Result)`
 
-Takes a [ResultConfig](#resultconfig) as input. Returns the final process execution result.
+Takes a [Result](#result) as input. Returns the final process execution result.
 
 #### Example
 
@@ -112,16 +156,16 @@ Takes a [ResultConfig](#resultconfig) as input. Returns the final process execut
 local process_result = ao.result({
     Output = "Process completed successfully",
     Messages = {
-        { Target = "ProcessY", Data = "Result data", Tags = { {name = "Status", value = "Success"} } }
+        { Target = "ProcessY", Data = "Result data", Tags = { ["Status"] = "Success" } }
     },
     Spawns = { "spawned-process-1" },
     Assignments = { {Processes = { "process-1" }, Message = "assignment-message-id"} }
 })
 ```
 
-### `ao.isAssignable(msg: MessageConfig)`
+### `ao.isAssignable(msg: Message)`
 
-Takes a [MessageConfig](#messageconfig) as input. Returns `true` if the message matches a pattern in `ao.assignables`.
+Takes a [Message](#message) as input. Returns `true` if the message matches a pattern in `ao.assignables`.
 
 #### Example
 
@@ -135,9 +179,9 @@ local can_be_assigned = ao.isAssignable({
 })
 ```
 
-### `ao.isAssignment(msg: MessageConfig)`
+### `ao.isAssignment(msg: Message)`
 
-Takes a [MessageConfig](#messageconfig) as input. Returns `true` if the message is assigned to a different process.
+Takes a [Message](#message) as input. Returns `true` if the message is assigned to a different process.
 
 #### Example
 
@@ -149,32 +193,67 @@ local is_assigned_elsewhere = ao.isAssignment({
 
 ## Custom `ao` Table Structures
 
-### MessageConfig
+### Tags
+
+All of the below syntaxes are valid, but each syntax gets converted to `{ name = string, value = string }` tables behind the scenes. We use **alternative 1** throughout the documentation for brevity and consistency.
 
 ```lua
--- Message configuration table structure
+-- Default: Array of name-value pair tables
+Tags = {
+    { name = "Content-Type", value = "text/plain" },
+    { name = "Action", value = "Ping" }
+}
+
+-- Alternative 1: Direct key-value pairs in Tags table using string keys
+Tags = {
+    ["Content-Type"] = "text/plain",
+    ["Action"] = "Ping"
+}
+
+-- Alternative 2: Direct key-value pairs in Tags table using dot notation
+Tags = {
+    Category = "Info",
+    Action = "Ping"
+}
+```
+
+::: info Root-level Tag Conversion
+Any keys in the root message object that are not one of: `Target`, `Data`, `Anchor`, `Tags`, or `From` will automatically be converted into Tags using the key as the tag name and its value as the tag value.
+
+```lua
+-- These root-level keys will be automatically converted to Tags
+{
+    Target = "process-id",
+    Data = "Hello",
+    ["Content-Type"] = "text/plain",  -- Will become a Tag
+    Action = "Ping"                   -- Will become a Tag
+}
+```
+
+:::
+
+### Message
+
+```lua
+-- Message structure
 {
     Target = string,     -- Required: Process/wallet address
     Data = any,          -- Required: Message payload
-    Tags = {             -- Required: Message tags
-        { name = string, value = string }
-    }
+    Tags = Tag<table>
 }
 ```
 
-### SpawnConfig
+### Spawn
 
 ```lua
--- Spawn configuration table structure
+-- Spawn structure
 {
     Data = any,          -- Required: Initial process state
-    Tags = {             -- Required: Process tags
-        { name = string, value = string }
-    }
+    Tags = Tag<table>    -- Required: Process tags
 }
 ```
 
-### AssignmentConfig
+### Assignment
 
 ```lua
 -- Assignment configuration table structure
@@ -184,15 +263,15 @@ local is_assigned_elsewhere = ao.isAssignment({
 }
 ```
 
-### ResultConfig
+### Result
 
 ```lua
--- Process result configuration table structure
+-- Process result structure
 {
     Output = string,           -- Optional: Process output
-    Messages = MessageConfig<table>,   -- Optional: Generated messages
-    Spawns = SpawnConfig<table>,        -- Optional: Spawned processes
-    Assignments = AssignmentConfig<table>,    -- Optional: Process assignments
+    Messages = Message<table>,   -- Optional: Generated messages
+    Spawns = Spawn<table>,        -- Optional: Spawned processes
+    Assignments = Assignment<table>,    -- Optional: Process assignments
     Error = string         -- Optional: Error information
 }
 ```
