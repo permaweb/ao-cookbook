@@ -71,7 +71,7 @@ Handlers.add("foobarbaz",
 - `Handlers._version`: String representing the version of the Handlers library.
 - `Handlers.list`: Table storing the list of registered handlers.
 
-## Handler method common function signature
+## Common Handler Function Parameters
 
 | Parameter            | Type                             | Description                                                                                                                                                                                                                                                                                                                                                                              |
 | -------------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -153,21 +153,37 @@ Handlers.add("Example",  -- Name of the handler
 )
 ```
 
-## Notes
+## Handler Execution Notes
+
+### Execution Order
 
 - Handlers are executed in the order they appear in `Handlers.list`.
-- Pattern functions can return different values to control handler execution:
-  - Numeric returns:
-    - `0`: Skip the handler (do not call)
-    - `-1`: Break after calling the handler
-    - `1`: Continue to next handler after calling this one
-  - Boolean returns:
-    - `true`: Same as -1 (break after calling handler)
-    - `false`: Same as 0 (skip handler)
-  - String returns:
-    - `"continue"`: Same as 1 (continue to next handler)
-    - `"break"`: Same as -1 (break after calling handler)
-    - Any other string: Same as 0 (skip handler)
+- When a message arrives, each handler's pattern function is called sequentially to determine if it should process the message.
+
+### Pattern Function Return Values
+
+Pattern functions determine the message handling flow based on their return values:
+
+1. **Skip Handler (No Match)**
+
+   - **Return**: `0`, `false`, or any string except "continue" or "break"
+   - **Effect**: Skips current handler and proceeds to the next one in the list
+
+2. **Handle and Continue**
+
+   - **Return**: `1` or `"continue"`
+   - **Effect**: Processes the message and continues checking subsequent handlers
+   - **Use Case**: Ideal for handlers that should always execute (e.g., logging)
+
+3. **Handle and Stop**
+   - **Return**: `-1`, `true`, or `"break"`
+   - **Effect**: Processes the message and stops checking further handlers
+   - **Use Case**: Most common scenario where a handler exclusively handles its matched message
+
+### Practical Examples
+
+- **Logging Handler**: Place at the start of the list and return `"continue"` to log all messages while allowing other handlers to process them.
+- **Specific Message Handler**: Return `"break"` to handle matched messages exclusively and prevent further processing by other handlers.
 
 ## Handlers.utils
 
