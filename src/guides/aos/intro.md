@@ -1,7 +1,6 @@
 # Introduction
 
-aos is a different approach to building processes (ao's smart contracts), the ao computer is a decentralized computer network that allows compute to run anywhere and aos in a unique
-interactive shell. You can use aos as your personal operating system, your development environment for building ao processes, and your bot army.
+aos introduces a new approach to building `processes` — asynchronous, parallel-executing smart contracts. The ao computer is a decentralized computer network that allows compute to run anywhere and aos in a unique, interactive shell. You can use aos as your personal operating system, your development environment for building ao processes, and your bot army.
 
 Lets go over some basic commands.
 

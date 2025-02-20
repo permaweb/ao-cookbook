@@ -156,7 +156,18 @@ Handlers.add("Example",  -- Name of the handler
 ## Notes
 
 - Handlers are executed in the order they appear in `Handlers.list`.
-- The pattern function should return false to skip the handler, true to break after the handler is executed, or `"continue"` to execute handler and continue with the next handler.
+- Pattern functions can return different values to control handler execution:
+  - Numeric returns:
+    - `0`: Skip the handler (do not call)
+    - `-1`: Break after calling the handler
+    - `1`: Continue to next handler after calling this one
+  - Boolean returns:
+    - `true`: Same as -1 (break after calling handler)
+    - `false`: Same as 0 (skip handler)
+  - String returns:
+    - `"continue"`: Same as 1 (continue to next handler)
+    - `"break"`: Same as -1 (break after calling handler)
+    - Any other string: Same as 0 (skip handler)
 
 ## Handlers.utils
 
