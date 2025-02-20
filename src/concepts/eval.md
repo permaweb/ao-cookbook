@@ -1,8 +1,8 @@
 # Eval
 
-Each AO process includes an onboard `Eval` handler that evaluates any new code it receives. This handler enables the process to determine the appropriate action for the incoming code and verifies if the message originates from the process owner.
+Each AO process includes an onboard `Eval` handler that evaluates any new code it receives. This handler determines the appropriate action for the code and verifies that the message originates from the process owner.
 
-The `Eval` handler can also be manually triggered to evaluate received Data from an incoming message.
+The `Eval` handler can also be manually triggered to evaluate the `Data` field from an incoming message. When you use the `.load` function to load a file into a process, it relies on the `Eval` handler to evaluate the file’s content under the hood.
 
 ## Sending an Eval Message in NodeJS
 
@@ -16,7 +16,7 @@ const wallet = JSON.parse(
 
 await message({
   // The arweave TxID of the process, this will become the "target".
-  process: "process-id", // Replace with the actual process ID
+  process: "process-ID", // Replace with the actual process ID
 
   // Tagging the Eval Action so the receiving process evaluates and adds the new Handler from the Data field.
   tags: [
@@ -41,7 +41,7 @@ import { message, createDataItemSigner } from "@permaweb/aoconnect";
 
 await message({
   // The arweave TxID of the process, this will become the "target".
-  process: "process-id", // Replace with the actual process ID
+  process: "process-ID", // Replace with the actual process ID
 
   // Tagging the Eval Action so the receiving process evaluates and adds the new Handler from the Data field.
   tags: [

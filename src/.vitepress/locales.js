@@ -381,6 +381,10 @@ export const localeConfig = (langCode) => ({
             link: get_i18n_link(langCode, "/concepts/messages"),
           },
           {
+            text: get_i18n_str(langCode, "concepts-eval"),
+            link: get_i18n_link(langCode, "/concepts/eval"),
+          },
+          {
             text: get_i18n_str(langCode, "concepts-processes"),
             link: get_i18n_link(langCode, "/concepts/processes"),
           },
