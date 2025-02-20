@@ -47,7 +47,7 @@ Inbox: 2 >
 Your prompt now has changed to include the number of messages in your inbox.
 
 ::: info
-The `Inbox` is a Lua table (similar to an array) that contains all messages received by your process. The `#` operator is used to get the length of a table in Lua - so `#Inbox` returns the total number of messages currently in your inbox. This is a common Lua syntax pattern for getting the size/length of tables and strings.
+The `Inbox` is a Lua table (similar to an array) that contains messages received by your process that were not handled by any Handlers. The `#` operator is used to get the length of a table in Lua - so `#Inbox` returns the total number of unhandled messages currently in your inbox. This is a common Lua syntax pattern for getting the size/length of tables and strings.
 :::
 
 ## Globals
