@@ -36,13 +36,19 @@ Pattern Matching Tables is a concept of providing a Table representation of the 
   ```
 
 ::: info Default Action Handlers
-As of AOS 2.0, you can use a string shorthand for Action-based handlers. Instead of writing a pattern function or table, simply pass the Action value as a string:
+As of AOS 2.0, you can use a string shorthand for Action-based handlers. Instead of writing a pattern function or table, simply pass the Action value as a string, or for even more brevity, you can use two parameters, where the name and action are passed as the same string:
 
 ```lua
-// Before: Handlers.add("Get-Balance", function (msg) return msg.Action == "Balance", doBalance)
-// After:  Handlers.add("Get-Balance", "Balance", doBalance)
+-- Before:
+Handlers.add("Get-Balance", function (msg) return msg.Action == "Balance", doBalance)
+
+-- After:
+Handlers.add("Balance", "Balance", doBalance)
+-- -- or --
+Handlers.add("Balance", doBalance)
 ```
 
+Note that all three syntaxes are valid, but the last two are more concise and easier to read.
 :::
 
 ### Resolvers
