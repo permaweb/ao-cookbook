@@ -55,11 +55,11 @@
 
 The ao Computer is composed of three Unit types, each type contains a set of responsibilities for the computer. And each Unit is horizontally scalable.
 
-In ao we have the `Messager Unit` or `MU`, and the `Scheduler Unit` or `SU`, and the `Compute Unit` or the `CU`. These units are the building blocks of the ao Computer Grid. There can be 1 or more of these units on the network and they work together to power the ao Operating System or `aos`.
+In ao we have the `Messenger Unit` or `MU`, and the `Scheduler Unit` or `SU`, and the `Compute Unit` or the `CU`. These units are the building blocks of the ao Computer Grid. There can be 1 or more of these units on the network and they work together to power the ao Operating System or `aos`.
 
 ![MU](MU-diagram.png)
 
-- Messager Unit - This unit is the front door to ao, it receives all the messages from the outside and as well as directs traffic flow for Processes. This traffic flow we call `pushing`. Each process can return an Outbox when it evaluates a Message, and this Outbox can be filled with Messages or requests to Spawn new processes, and the Messenger Unit is responsible for extracting these Messages from the Outbox and signing them and sending them to the Scheduler Units for processing.
+- Messenger Unit - This unit is the front door to ao, it receives all the messages from the outside and as well as directs traffic flow for Processes. This traffic flow we call `pushing`. Each process can return an Outbox when it evaluates a Message, and this Outbox can be filled with Messages or requests to Spawn new processes, and the Messenger Unit is responsible for extracting these Messages from the Outbox and signing them and sending them to the Scheduler Units for processing.
 
 ![SU Diagram](SU-diagram.png)
 
@@ -71,7 +71,7 @@ In ao we have the `Messager Unit` or `MU`, and the `Scheduler Unit` or `SU`, and
 
 ## Summary
 
-The ao Computer consists of three scalable unit types—Messager Unit (MU), Scheduler Unit (SU), and Compute Unit (CU)—which form the foundation of the ao Computer. These units can exist in multiples on the network and collectively operate the ao Operating System (aos).
+The ao Computer consists of three scalable unit types—Messenger Unit (MU), Scheduler Unit (SU), and Compute Unit (CU)—which form the foundation of the ao Computer. These units can exist in multiples on the network and collectively operate the ao Operating System (aos).
 
 The MU acts as the entry point, receiving external messages and managing process communications. It processes outgoing messages and spawn requests from process outboxes and forwards them to the SU.
 
