@@ -362,10 +362,10 @@ export const localeConfig = (langCode) => ({
               },
             ],
           },
-          // {
-          //   text: get_i18n_str(langCode, "guides-cli"),
-          //   link: get_i18n_link(langCode, "/guides/dev-cli/index"),
-          // },
+          {
+            text: get_i18n_str(langCode, "guides-sqlite"),
+            link: get_i18n_link(langCode, "/guides/snacks/sqlite"),
+          },
         ],
       },
       {

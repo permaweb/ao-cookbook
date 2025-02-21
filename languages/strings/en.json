@@ -61,6 +61,7 @@
   "guides-spawning-processes": "Spawning Processes",
   "guides-assign-data": "Assign Data",
   "guides-cli": "AO Module CLI",
+  "guides-sqlite": "SQLite",
   "tutorials": "Tutorials",
   "tutorials-begin": "Begin",
   "tutorials-begin-preparations": "Preparations",
@@ -83,7 +84,7 @@
   "references-ao": "ao Module",
   "references-handlers": "Handlers",
   "references-token": "Token",
-  "references-data": "Loading Data",
+  "references-data": "Accessing Data in Arweave",
   "references-cron": "CRON Messages",
   "references-editor-setup": "ao Editor Setup",
   "references-community": "Community"

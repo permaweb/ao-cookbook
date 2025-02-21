@@ -20,7 +20,7 @@ These guides are designed to help you navigate ao and aos, and to help you build
 
 - [CLI: AO Module Builder](dev-cli/index)
 - [Using WeaveDrive](snacks/weavedrive)
-- [Using Sqlite](snacks/sqlite)
+- [Using SQLite](snacks/sqlite)
 
 ## Additional
 
