@@ -1,11 +1,11 @@
 # CLI
 
-There are some command-line arguments you pass to our aos to do the following:
+There are some command-line arguments you pass to `aos` to do the following:
 
 - [name] - create a new process or loads an existing process for your wallet
-- --load [file] - load a file, you can add one or many of this command
-- --cron [interval] - only used when creating a process
-- --wallet [walletfile] - use a specific wallet
+- `--load` \<file> - load a file, you can add one or many of this command
+- `--cron` \<interval> - only used when creating a process
+- `--wallet` \<walletfile> - use a specific wallet
 
 ## Managing multiple processes with aos
 

@@ -1,7 +1,6 @@
 # Introduction
 
-aos is a different approach to building Processes or Contracts, the ao computer is a decentralized computer network that allows compute to run anywhere and aos in a unique
-interactive shell. You can use aos as your personal operating system, your development environment for building ao Processes, and your bot Army.
+aos introduces a new approach to building `processes` — asynchronous, parallel-executing smart contracts. The ao computer is a decentralized computer network that allows compute to run anywhere and aos in a unique, interactive shell. You can use aos as your personal operating system, your development environment for building ao processes, and your bot army.
 
 Lets go over some basic commands.
 
@@ -45,6 +44,10 @@ Inbox: 2 >
 ```
 
 Your prompt now has changed to include the number of messages in your inbox.
+
+::: info
+The `Inbox` is a Lua table (similar to an array) that contains messages received by your process that were not handled by any Handlers. The `#` operator is used to get the length of a table in Lua - so `#Inbox` returns the total number of unhandled messages currently in your inbox. This is a common Lua syntax pattern for getting the size/length of tables and strings.
+:::
 
 ## Globals
 

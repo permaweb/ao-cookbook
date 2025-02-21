@@ -10,7 +10,7 @@ In this section we will cover the basics of Lua in just a few minutes. If you al
 
 For the purpose of this tutorial, we will be assuming that you have already completed the [getting started](/welcome/getting-started) guide. If not, complete that first.
 
-If you logged out of your process, you can always re-open it by running `aos` on your commandline, optionally specifying your key file with `--wallet [location]`.
+If you logged out of your process, you can always re-open it by running `aos` on your command line, optionally specifying your key file with `--wallet [location]`.
 
 ## Basic Lua expressions.
 
@@ -21,8 +21,12 @@ Try out on the examples on your aos process as you go, or skip them if they are 
 - **Basic arithmetic**: Try some basic arithmetic, like `5 + 3`. After processing, you will see the result `8`. `+`, `-`, `*`, `/`, and `^` all work as you might expect. `%` is the symbol that Lua uses for modulus.
 - **Setting variables**: Type `a = 10` and press enter. This sets the variable `a` to 10. By convention (not enforced by the language), global variables start with a capital letter in Lua (for example `Handlers`).
 
-- **Using variables**: Now type `a * 2`. You will see `20`returned on the command line.
+- **Using variables**: Now type `a * 2`. You will see `20` returned on the command line.
 - **String concatenation**: Say hello to yourself by executing `"Hello, " .. ao.id`.
+
+::: info
+Note that while global variables conventionally start with a capital letter in Lua, this is not enforced by the language. For example, the `ao` module is a global variable that was intentionally lowercased for stylistic purposes.
+:::
 
 ## Experimenting with conditional statements.
 
@@ -33,7 +37,7 @@ Try out on the examples on your aos process as you go, or skip them if they are 
   ```lua
   aos_coolness = 9001
   if aos_coolness > 9000 then
-      return "aos is coolness is over 9000!"
+      return "aos has a coolness level over 9000!"
   else
       return "Oh. 🤷"
   end
@@ -41,7 +45,7 @@ Try out on the examples on your aos process as you go, or skip them if they are 
 
   Once you are finished editing on your terminal, type `.done` on a new line and press enter. This will terminate edit mode and submit the expression to your process for evaluation.
 
-  As a result, you will see that aos is >9,000 cool. Good to know.
+  As a result, you will see that aos coolness is >9,000 cool. Good to know.
 
   `if` statements in Lua can also have additional `elseif [condition] then` blocks, making conditional execution hierarchies easier.
 
@@ -87,8 +91,6 @@ There are a few different ways to loop in your code in Lua. Here are our favorit
   end
   ```
 
-  Once submitted, aos will return `undefined`, as function (and variable) definition in Lua doesn't return a value.
-
   Lua also has 'anonymous' or 'higher order' functions. These essentially allow you to use functions themselves as if they are normal data -- to be passed as arguments to other functions, etc. The following example defines an anonymous function and is equivalent to the above:
 
   ```lua
@@ -100,6 +102,11 @@ There are a few different ways to loop in your code in Lua. Here are our favorit
 
 - **Calling the function**: Call the function with `greeting("Earthling")`. aos will return `"Hello, Earthling"`.
 
+::: info
+Handlers in ao commonly utilize anonymous functions. When using `Handlers.add()`, the third argument is an anonymous function in the form `function(msg) ... end`. This is a key pattern you'll see frequently when working with ao processes.
+
+:::
+
 ## Defining deep objects with tables.
 
 Tables are Lua's only compound data structure. They map `keys` to `values`, but can also be used like traditional arrays.
@@ -107,7 +114,7 @@ Tables are Lua's only compound data structure. They map `keys` to `values`, but 
 - **Create a simple table**: Type `ao_is = {"hyper", "parallel", "compute"}`to create a simple table.
 - **Accessing the table's elements**: Access an element with `ao_is[2]`. aos will return `parallel`. Note: Indices in Lua start from 1!
 - **Count a table's elements**: The size of a table in Lua is found with the operator `#`. For example, running `#ao_is` will return `3`.
-- **Set a named element**: Type `ao_is["cool"] = true` to add a new named key to the table. Named elements can also be accessed with the `.` operator, for example `ao_is.cool`.
+- **Set a named element**: Type `ao_is["cool"] = true` to add a new named key to the table. Named elements can also be accessed with the `.` operator (e.g. `ao_is.cool`), but only if the key is a valid identifier - for other keys like `"my key"`, use brackets.
 
 ## Lua Wats.
 

@@ -6,9 +6,9 @@ prev:
 next: false
 ---
 
-# Getting started with Sqlite
+# Getting started with SQLite
 
-Sqlite is a relational database engine. In this guide, we will show how you can spawn a process with sqlite and work with data using a relational database.
+SQLite is a relational database engine. In this guide, we will show how you can spawn a process with SQLite and work with data using a relational database.
 
 ## Setup
 

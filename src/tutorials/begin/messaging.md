@@ -61,7 +61,7 @@ Send({ Target = "process ID", Data = "Hello World!" })
 
 - **Send**: The `Send` function is globally available in the aos interactive environment.
 - **Target**: To send a message to a specific process, include a `Target` field in your message.
-- **Data**: The `Data` is the text message you want received by the receiving process. In this example, the message is "Hello World!".
+- **Data**: The `Data` is the string message (or payload) you want to be received by the receiving process. In this example, the message is "Hello World!".
 
 ## Step 4: Store `Morpheus`'s Process ID
 
@@ -80,10 +80,6 @@ Morpheus = "ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s"
 <div id="step-4"></div>
 
 This will store the process ID as a variable called `Morpheus`, making it easier to interact with the specific process ID.
-
-::: info
-When creating the `Morpheus` variable, the only response you should see is `undefined`. This is expected. To check if the variable was created successfully, type `Morpheus` and press Enter. You should see the process ID you stored.
-:::
 
 ### Check the `Morpheus` Variable
 
@@ -194,7 +190,7 @@ In the case of Morpheus, we can use tags to categorize our messages, and because
 
 **Adding Tags to a Message**:
 
-- We already know that the `Data` of a message is the text-based message you want to send to another process. Earlier, we sent a message to Morpheus without any tags, in which he used a handler to respond to an exact matching data.
+- We already know that the `Data` of a message is the payload of the message you want to send to another process. Earlier, we sent a message to Morpheus without any tags, in which he used a handler to respond to an exact match within the `Data` field.
 
 ### Let's Show Morpheus That We're Ready
 

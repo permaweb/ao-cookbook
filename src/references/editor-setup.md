@@ -43,4 +43,4 @@ Features include:
 - Share projects with anyone through ao processes
 - Tight integration with [ao package manager](https://apm.betteridea.dev)
 
-Read detailed information about the various features and integrations of the ide in the [documentation](https://docs.betteridea.dev).
+Read detailed information about the various features and integrations of the IDE in the [documentation](https://docs.betteridea.dev).

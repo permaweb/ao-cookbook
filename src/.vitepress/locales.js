@@ -362,10 +362,10 @@ export const localeConfig = (langCode) => ({
               },
             ],
           },
-          // {
-          //   text: get_i18n_str(langCode, "guides-cli"),
-          //   link: get_i18n_link(langCode, "/guides/dev-cli/index"),
-          // },
+          {
+            text: get_i18n_str(langCode, "guides-sqlite"),
+            link: get_i18n_link(langCode, "/guides/snacks/sqlite"),
+          },
         ],
       },
       {
@@ -379,6 +379,10 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "concepts-messages"),
             link: get_i18n_link(langCode, "/concepts/messages"),
+          },
+          {
+            text: get_i18n_str(langCode, "concepts-eval"),
+            link: get_i18n_link(langCode, "/concepts/eval"),
           },
           {
             text: get_i18n_str(langCode, "concepts-processes"),

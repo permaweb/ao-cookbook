@@ -21,7 +21,7 @@ The core module contains a helper library that gets injected into the handler fu
         Module = {
             Id = "UAUszdznoUPQvXRbrFuIIH6J0N_LnJ1h4Trej28UgrE",
             Owner = "_r9LpP4FtClpsGX3TOohubyaeb0IQTZZMcxQ24tTsGo",
-            Tags = {..}
+            Tags = {...}
         }
     },
     id = "5WzR7rJCuqCKEq02WUPhTjwnzllLjGu6SA7qhYpcKRs",
@@ -79,7 +79,7 @@ env = {
     Module = {
         Id = "UAUszdznoUPQvXRbrFuIIH6J0N_LnJ1h4Trej28UgrE",
         Owner = "_r9LpP4FtClpsGX3TOohubyaeb0IQTZZMcxQ24tTsGo",
-        Tags = {..}
+        Tags = {...}
     }
 }
 ```
