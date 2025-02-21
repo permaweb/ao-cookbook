@@ -50,6 +50,6 @@ When you access AOS in relay mode, `--relay <relay_url>` you will be able to see
 3. If you have not yet topped up with this node, AOS will prompt you to transfer some tokens to the relay. In order to continue you must enter **Yes** and then choose an amount (0.0000001 AO is the default and is enough to get started, but you can enter more to top up less frequently).
 4. At this point AOS will handle the transfer to the relay and you will now be able to start sending messages.
 
-::: tip
+::: info
 Note that `Quantity` is the amount of Armstrongs to send, not $AO. One AO is one trillion Armstrongs, so 1,000,000 Armstrongs = 0.0000001 AO.
 :::
