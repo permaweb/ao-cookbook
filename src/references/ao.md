@@ -195,6 +195,8 @@ local is_assigned_elsewhere = ao.isAssignment({
 
 ### Tags
 
+Used by: `ao.send()`, `ao.spawn()`, `ao.normalize()`, `ao.sanitize()`
+
 All of the below syntaxes are valid, but each syntax gets converted to `{ name = string, value = string }` tables behind the scenes. We use **alternative 1** throughout the documentation for brevity and consistency.
 
 ```lua
@@ -234,6 +236,8 @@ Any keys in the root message object that are not one of: `Target`, `Data`, `Anch
 
 ### Message
 
+Used by: `ao.send()`, `ao.isTrusted()`, `ao.isAssignment()`, `ao.isAssignable()`, `ao.normalize()`, `ao.sanitize()`
+
 ```lua
 -- Message structure
 {
@@ -245,6 +249,8 @@ Any keys in the root message object that are not one of: `Target`, `Data`, `Anch
 
 ### Spawn
 
+Used by: `ao.spawn()`
+
 ```lua
 -- Spawn structure
 {
@@ -255,6 +261,8 @@ Any keys in the root message object that are not one of: `Target`, `Data`, `Anch
 
 ### Assignment
 
+Used by: `ao.assign()`, `ao.result()`
+
 ```lua
 -- Assignment configuration table structure
 {
@@ -264,6 +272,8 @@ Any keys in the root message object that are not one of: `Target`, `Data`, `Anch
 ```
 
 ### Result
+
+Used by: `ao.result()`
 
 ```lua
 -- Process result structure

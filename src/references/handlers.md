@@ -6,65 +6,74 @@ The Handlers library provides a flexible way to manage and execute a series of p
 
 ## Concepts
 
+### Handler Arguments Overview
+
+When adding a handler using `Handlers.add()`, you provide three main arguments:
+
+1. `name` (string): The identifier for your handler
+2. `pattern` (table or function): Defines how to match incoming messages
+3. `handler` (function or resolver table): Defines what to do with matched messages
+
 ### Pattern Matching Tables
 
-Pattern Matching Tables is a concept of providing a Table representation of the matching shape of the incoming message. Here are the rules:
+Pattern Matching Tables provide a declarative way to match incoming messages based on their attributes. This is used as the second argument in `Handlers.add()` to specify which messages your handler should process.
+
+#### Basic Pattern Matching Rules
+
+1. **Simple Tag Matching**
+
+   ```lua
+   { "Action" = "Do-Something" }  -- Match messages that have an exact Action tag value
+   ```
+
+2. **Wildcard Matching**
+
+   ```lua
+   { "Recipient" = '_' }  -- Match messages with any Recipient tag value
+   ```
+
+3. **Pattern Matching**
+
+   ```lua
+   { "Quantity" = "%d+" }  -- Match using Lua string patterns (similar to regex)
+   ```
+
+4. **Function-based Matching**
+   ```lua
+   { "Quantity" = function(v) return tonumber(v) ~= nil end }  -- Custom validation function
+   ```
+
+#### Common Pattern Examples
+
+1. **Balance Action Handler**
+
+   ```lua
+   { Action = "Balance" }  -- Match messages with Action = "Balance"
+   ```
+
+2. **Numeric Quantity Handler**
+   ```lua
+   { Quantity = "%d+" }  -- Match messages where Quantity is a number
+   ```
+
+### Default Action Handlers (AOS 2.0+)
+
+AOS 2.0 introduces simplified syntax for Action-based handlers. Instead of writing explicit pattern functions, you can use these shorthand forms:
 
 ```lua
-
-{ "Action" = "Do-Something" } -- Match any message via a table of tags it must contain
-
-{ "Recipient" = '_' } -- Match messages that have a recipient tag with any value..
-
-{ "Quantity" = "%d+" } -- Validate a tag against a Lua string match (similar to regular expressions)
-
-{ "Quantity" = function(v) return tonumber(v) ~= Nil end } -- Apply a function to the tag to check it. Nil or false do not match
-```
-
-**Example:**
-
-- If you want to match on every message with the Action equal to "Balance"
-
-  ```lua
-  { Action = "Balance" }
-  ```
-
-- If you want to match on every message with the Quantity being a Number
-
-  ```lua
-  { Quantity = "%d+" }
-  ```
-
-::: info Default Action Handlers
-As of AOS 2.0, you can use a string shorthand for Action-based handlers. Instead of writing a pattern function or table, simply pass the Action value as a string, or for even more brevity, you can use two parameters, where the name and action are passed as the same string:
-
-```lua
--- Before:
+-- Traditional syntax
 Handlers.add("Get-Balance", function (msg) return msg.Action == "Balance", doBalance)
 
--- After:
-Handlers.add("Balance", "Balance", doBalance)
--- -- or --
-Handlers.add("Balance", doBalance)
+-- Simplified syntax options:
+Handlers.add("Balance", "Balance", doBalance)  -- Explicit action matching
+Handlers.add("Balance", doBalance)             -- Implicit action matching
 ```
-
-Note that all three syntaxes are valid, but the last two are more concise and easier to read.
-:::
 
 ### Resolvers
 
-Resolvers are tables that enable conditional execution of functions based on pattern matching. Each key in a resolver table is a pattern matching table, and its corresponding value is a function that executes when that pattern matches. This structure allows developers to create switch/case-like statements where different functions are triggered based on which pattern matches the incoming message.
+Resolvers are special tables that can be used as the third argument in `Handlers.add()` to enable conditional execution of functions based on additional pattern matching. Each key in a resolver table is a pattern matching table, and its corresponding value is a function that executes when that pattern matches.
 
-```lua
-Handlers.add("foobarbaz",
-  { Action = "Update" },
-  {
-    [{ Status = "foo" }] = function (msg) print("foo") end,
-    [{ Status = "bar" }] = function (msg) print("bar") end,
-    [{ Status = "baz" }] = function (msg) print("baz") end
-  }
-)
-```
+This structure allows developers to create switch/case-like statements where different functions are triggered based on which pattern matches the incoming message. Resolvers are particularly useful when you need to handle a group of related messages differently based on additional criteria.
 
 ## Module Structure
 
@@ -82,72 +91,52 @@ Handlers.add("foobarbaz",
 
 ## Functions
 
-### `Handlers.add(name, pattern, handler)`
-
-- adds a new handler or updates an existing handler by name
-
-### `Handlers.append(name, pattern, handler)`
-
-- Appends a new handler to the end of the handlers list.
-
-### `Handlers.once(name, pattern, handler)`
-
-- Only runs once when the pattern is matched.
-
-### `Handlers.prepend(name, pattern, handler)`
-
-- Prepends a new handler to the beginning of the handlers list.
-
-### `Handlers.before(handleName)`
-
-- Returns an object that allows adding a new handler before a specified handler.
-
-### `Handlers.after(handleName)`
-
-- Returns an object that allows adding a new handler after a specified handler.
-
-### `Handlers.remove(name)`
-
-- Removes a handler from the handlers list by name.
+| Handlers.**Function**              | Description                                                                   |
+| ---------------------------------- | ----------------------------------------------------------------------------- |
+| `.add(name, pattern, handler)`     | Adds a new handler or updates an existing handler by name                     |
+| `.append(name, pattern, handler)`  | Appends a new handler to the end of the handlers list                         |
+| `.once(name, pattern, handler)`    | Only runs once when the pattern is matched                                    |
+| `.prepend(name, pattern, handler)` | Prepends a new handler to the beginning of the handlers list                  |
+| `.before(handleName)`              | Returns an object that allows adding a new handler before a specified handler |
+| `.after(handleName)`               | Returns an object that allows adding a new handler after a specified handler  |
+| `.remove(name)`                    | Removes a handler from the handlers list by name                              |
 
 ## Examples
 
-### Using pattern Table
+### Pattern Matching Table
 
 ```lua
 Handlers.add("Ping",    -- Name of the handler
   { Action = "Ping" },  -- Matches messages with Action = "Ping" tag
-  function (msg)        -- Business logic to execute on Message
-      print('ping');
-      msg.reply({Data = "pong" })
+  function(msg)         -- Business logic to execute on Message
+    print("ping")
+    msg.reply({ Data = "pong" })
   end
 )
 ```
 
-### Using resolvers
+### Resolver Table Handler
 
 ```lua
 Handlers.add("Foobarbaz",  -- Name of the handler
   { Action = "Speak" },    -- Matches messages with Action = "Speak" tag
   {
     -- Resolver with pattern-function pairs
-    [{Status = "foo"}] = function (msg) print("foo") end,
-    [{Status = "bar"}] = function (msg) print("bar") end,
-    [{Status = "baz"}] = function (msg) print("baz") end
+    [{ Status = "foo" }] = function(msg) print("foo") end,
+    [{ Status = "bar" }] = function(msg) print("bar") end,
+    [{ Status = "baz" }] = function(msg) print("baz") end
   }
 )
 ```
 
-### Using functions
+### Function-Based Pattern Matching & Handler
 
 ```lua
-Handlers.add("Example",  -- Name of the handler
-  -- Pattern function matches messages with Action = "Speak" tag
-  function(msg)
+Handlers.add("Example",    -- Name of the handler
+  function(msg)           -- Pattern function matches messages with Action = "Speak" tag
     return msg.Action == "Speak"
   end,
-  -- Handler function that executes business logic
-  function(msg)
+  function(msg)           -- Handler function that executes business logic
     print(msg.Status)
   end
 )
