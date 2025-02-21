@@ -10,7 +10,7 @@ The easiest way to create these cron messages is by spawning a new process in th
 aos [myProcess] --cron 5-minutes
 ```
 
-When spawning a new process, you can pass a cron argument in your command-line followed by the interval you would like the cron to tick. If you want the messages to trigger in real-time, you must initiate a monitor event. In aos, simply call `.monitor` and it will kick off a worker process on the `mu` that triggers the cron messages from the `cu`. Then your Process will receive the cron messages every `x-interval`.
+When spawning a new process, you can pass a cron argument in your command line followed by the interval you would like the cron to tick. By default, cron messages are lazily evaluated, meaning they will not be evaluated until the next scheduled message. To initiate these scheduled cron messages, call `.monitor` in aos - this kicks off a worker process on the `mu` that triggers the cron messages from the `cu`. Your Process will then receive cron messages every `x-interval`.
 
 ```lua
 .monitor
