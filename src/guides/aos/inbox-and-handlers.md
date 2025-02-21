@@ -6,19 +6,9 @@ In aos, processes are executed in response to messages via handlers. Unhandled m
 
 A handler is a function that receives and evaluates messages within your process. It acts upon messages by taking them as parameters.
 
-```lua
-function main(Message, ao)
-  ...dostuff
-  return {
-    Output = ...,
-    Messages = {},
-    Spawns = {}
-  }
+Handlers are defined using the `Handlers.add()` function.
 
-end
-```
-
-And the `main` function returns a lua Table providing `Output, Messages, and Spawns` or an `Error`. With aos you can add functionality to your process by using a Handler. The Handler takes three parameters:
+The function takes three parameters:
 
 1. Name of the Handler
 2. Matcher function

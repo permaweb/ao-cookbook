@@ -33,10 +33,10 @@ This function concatenates array `b` to array `a`.
 
 ```lua
 -- returns { 1, 2, 3, 4, 5, 6 }
-concat({ 1, 2, 3 })({ 4, 5, 6 })
+concat({ 1, 2, 3 })({ 4, 5, 6 }) -- curry syntax
 
 -- returns { "hello", "world", "and", "you" }
-concat({ "hello", "world" }, { "and", "you" })
+concat({ "hello", "world" }, { "and", "you" }) -- traditional syntax
 ```
 
 ### `reduce()`

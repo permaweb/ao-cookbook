@@ -168,7 +168,7 @@ aos voter
 Now from the dao aos shell send that voter some tokens
 
 ```lua
-Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'process id of the voter aos', Quantity = '100000' }})
+Send({ Target = ao.id, Tags = { ["Action"] = "Transfer", ["Recipient"] = 'process ID of the voter aos', ["Quantity"] = '100000' }})
 ```
 
 From another terminal run another aos Process called cu
@@ -180,7 +180,7 @@ aos cu
 Now from the dao aos shell send that cu some tokens
 
 ```lua
-Send({ Target = ao.id, Tags = { Action = "Transfer", Recipient = 'process id of the cu aos', Quantity = '100000' }})
+Send({ Target = ao.id, Tags = { ["Action"] = "Transfer", ["Recipient"] = 'process ID of the cu aos', ["Quantity"] = '100000' }})
 ```
 
 Check the Balances from the dao aos shell, we should see a balance for the voter and cu Process. In the below examples `bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s` is the dao aos, `QcGIOXJ1p2SOGzGAccOcV-nSudVRiaPYbU7SjeLx1OE` is the voter aos, and `X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s` is the cu aos.
@@ -197,13 +197,13 @@ Balances
 From the voter aos Process, Stake some tokens
 
 ```lua
-Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action = "Stake", Quantity = '1000', UnstakeDelay = "10" }})
+Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { ["Action"] = "Stake", ["Quantity"] = '1000', ["UnstakeDelay"] = "10" }})
 ```
 
 From the cu aos Process, Stake some tokens
 
 ```lua
-Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action = "Stake", Quantity = '1000', UnstakeDelay = "10" }})
+Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { ["Action"] = "Stake", ["Quantity"] = '1000', ["UnstakeDelay"] = "10" }})
 ```
 
 This means we want to Stake 1000 tokens for 10 blocks. So after 10 blocks we have the ability to Unstake.
@@ -222,7 +222,7 @@ Stakers
 Now lets vote to slash the cu from the voter aos process, our vote takes effect in 1 block
 
 ```lua
-Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action = "Vote", Target = "X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s(the cu aos)", Side = "nay", Deadline = "1"  }})
+Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { ["Action"] = "Vote", ["Target"] = "X6mkYwt87mIsfsQzDAJr54S0BBxLrDwWMdq7seBcS6s(the cu aos)", ["Side"] = "nay", ["Deadline"] = "1"  }})
 ```
 
 From the dao aos check the Votes
@@ -238,7 +238,7 @@ From the dao aos check the Votes
 Now wait for Arweave to reach the deadline block height and then send a Stake Message from the dao aos just to trigger the finalizationHandler. You can check the block height at [https://arweave.net/](https://arweave.net/)
 
 ```lua
-Send({ Target = ao.id, Tags = { Action = "Stake", Quantity = '1000', UnstakeDelay = "10" }})
+Send({ Target = ao.id, Tags = { ["Action"] = "Stake", ["Quantity"] = '1000', ["UnstakeDelay"] = "10" }})
 ```
 
 Now check Votes and Stakers, Votes should be empty and the cu aos Process should have lost their Stake.
@@ -258,7 +258,7 @@ Now check Votes and Stakers, Votes should be empty and the cu aos Process should
 Finally lets Unstake our tokens from the voter aos process
 
 ```lua
-Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { Action = "Unstake", Quantity = '1000'}})
+Send({ Target = "bclTw5QOm5soeMXoaBfXLvzjheT1_kwc2vLfDntRE4s", Tags = { ["Action"] = "Unstake", ["Quantity"] = '1000'}})
 ```
 
 And check the Stakers table from the dao aos

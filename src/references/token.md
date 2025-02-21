@@ -15,7 +15,7 @@ A specification-compliant token process responds to a number of different forms 
 
 | Name     | Description                                                                                            | Read-Only          |
 | -------- | ------------------------------------------------------------------------------------------------------ | ------------------ |
-| Balance  | get the balance of an identifier                                                                        | :heavy_check_mark: |
+| Balance  | get the balance of an identifier                                                                       | :heavy_check_mark: |
 | Balances | get a list of all ledger/account balances                                                              | :heavy_check_mark: |
 | Transfer | send 1 or more units from the callers balance to one or move targets with the option to notify targets | :x:                |
 | Mint     | if the ledger process is the root and you would like to increase token supply                          | :x:                |
@@ -26,59 +26,59 @@ In the remainder of this section the tags necessary to spawn a compliant token p
 
 Every compliant token process must carry the following immutable parameters upon its spawning message:
 
-| Tag          | Description                                                                                                           | Optional?          |
-| ------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| Name         | The title of the token, as it should be displayed to users.                                                           | :heavy_check_mark: |
-| Ticker       | A suggested shortened name for the token, such that it can be referenced quickly.                                     | :heavy_check_mark: |
-| Logo         | An image that applications may desire to show next to the token, in order to make it quickly visually identifiable. | :heavy_check_mark: |
-| Denomination | The number of the token that should be treated as a single unit when quantities and balances are displayed to users.  | :x:                |
+| Tag          | Description                                                                                                          | Optional?          |
+| ------------ | -------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| Name         | The title of the token, as it should be displayed to users.                                                          | :heavy_check_mark: |
+| Ticker       | A suggested shortened name for the token, such that it can be referenced quickly.                                    | :heavy_check_mark: |
+| Logo         | An image that applications may desire to show next to the token, in order to make it quickly visually identifiable.  | :heavy_check_mark: |
+| Denomination | The number of the token that should be treated as a single unit when quantities and balances are displayed to users. | :x:                |
 
 ## Messaging Protocol
 
 ### Balance(Target? : string)
 
-Returns the balance of a target, if a target is not supplied then the balance of the sender of the message must be returned.
+- Returns the balance of a target, if a target is not supplied then the balance of the sender of the message must be returned.
 
-Example `Action` message:
+**Example `Action` message:**
 
-```lua=
-send({
+```lua
+ao.send({
     Target = "{TokenProcess Identifier}",
     Tags = {
-        Action = "Balance",
-        Target = "{IDENTIFIER}"
+        ["Action"] = "Balance",
+        ["Target"] = "{IDENTIFIER}"
     }
 })
 ```
 
-Example response message:
+**Example response message:**
 
-```
+```lua
 {
     Tags = {
-        Balance = "50",
-        Target = "LcldyO8wwiGDzC3iXzGofdO8JdR4S1_2A6Qtz-o33-0",
-        Ticker = "FUN"
+        ["Balance"] = "50",
+        ["Target"] = "LcldyO8wwiGDzC3iXzGofdO8JdR4S1_2A6Qtz-o33-0",
+        ["Ticker"] = "FUN"
     }
 }
 ```
 
 ### Balances()
 
-Returns the balance of all participants in the token.
+- Returns the balance of all participants in the token.
 
 ```lua
-send({
+ao.send({
     Target = "[TokenProcess Identifier]",
     Tags = {
-        Action = "Balances",
-        Limit = 1000, # TODO: Is this necessary if the user is paying for the compute and response?
-        Cursor? = "BalanceIdentifier"
+        ["Action"] = "Balances",
+        ["Limit"] = 1000, # TODO: Is this necessary if the user is paying for the compute and response?
+        ["Cursor"] = "BalanceIdentifier"
     }
 })
 ```
 
-Example response message:
+**Example response message:**
 
 ```lua
 {
@@ -94,13 +94,13 @@ Example response message:
 If the sender has a sufficient balance, send the `Quantity` to the `Target`, issuing a `Credit-Notice` to the recipient and a `Debit-Notice` to the sender. The `Credit-` and `Debit-Notice` should forward any and all tags from the original `Transfer` message with the `X-` prefix. If the sender has an insufficient balance, fail and notify the sender.
 
 ```lua
-send({
+ao.send({
     Target = "[TokenProcess Identifier]",
     Tags = {
-        { name = "Action", value = "Transfer" },
-        { name = "Recipient", value = "[ADDRESS]" },
-        { name = "Quantity", value = "100" },
-        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
+        ["Action"] = "Transfer",
+        ["Recipient"] = "[ADDRESS]",
+        ["Quantity"] = "100",
+        ["X-[Forwarded Tag(s) Name]"] = "[VALUE]"
     }
 })
 ```
@@ -111,10 +111,10 @@ If a successful transfer occurs a notification message should be sent if `Cast` 
 ao.send({
     Target = "[Recipient Address]",
     Tags = {
-        { name = "Action", value = "Credit-Notice" },
-        { name = "Sender", value = "[ADDRESS]" },
-        { name = "Quantity", value = "100"},
-        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
+        ["Action"] = "Credit-Notice",
+        ["Sender"] = "[ADDRESS]",
+        ["Quantity"] = "100",
+        ["X-[Forwarded Tag(s) Name]"] = "[VALUE]"
     }
 })
 ```
@@ -124,10 +124,10 @@ Recipients will infer from the `From-Process` tag of the message which tokens th
 ### Get-Info()
 
 ```lua
-send({
+ao.send({
     Target = "{Token}",
     Tags = {
-        Action = "Info"
+        ["Action"] = "Info"
     }
 })
 ```
@@ -137,11 +137,11 @@ send({
 Implementing a `Mint` action gives the process a way of allowing valid participants to create new tokens.
 
 ```lua
-send({
+ao.send({
     Target ="{Token Process}",
     Tags = {
-        Action = "Mint",
-        Quantity = "1000"
+        ["Action"] = "Mint",
+        ["Quantity"] = "1000"
     }
 })
 ```
@@ -173,11 +173,11 @@ The modified `Credit-Notice` should be structured as follows:
 ao.send({
     Target = "[Recipient Address]",
     Tags = {
-        { name = "Action", value = "Credit-Notice" },
-        { name = "Quantity", value = "100"},
-        { name = "Source-Token", value = "[ADDRESS]" },
-        { name = "Parent-Token", value = "[ADDRESS]" },
-        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
+        ["Action"] = "Credit-Notice",
+        ["Quantity"] = "100",
+        ["Source-Token"] = "[ADDRESS]",
+        ["Parent-Token"] = "[ADDRESS]",
+        ["X-[Forwarded Tag(s) Name]"] = "[VALUE]"
     }
 })
 ```
@@ -187,12 +187,12 @@ ao.send({
 All subledgers must allow balance holders to withdraw their tokens to the parent ledger. Upon receipt of an `Action: Withdraw` message, the subledger must send an `Action` message to its `Parent-Ledger`, transferring the requested tokens to the caller's address, while debiting their account locally. This transfer will result in a `Credit-Notice` from the `Parent-Ledger` for the caller.
 
 ```lua
-send({
+ao.send({
     Target = "[TokenProcess Identifier]",
     Tags = {
-     { name = "Action", value = "Withdraw" },
-     { name = "Recipient", value = "[ADDRESS]" },
-     { name = "Quantity", value = "100" }
+        ["Action"] = "Withdraw",
+        ["Recipient"] = "[ADDRESS]",
+        ["Quantity"] = "100"
     }
 })
 ```
@@ -219,9 +219,9 @@ if denomination ~= 6 then
 end
 
 -- handlers that handler incoming msg
-handlers.add(
-  "transfer",
-  handlers.utils.hasMatchingTag("Action", "Transfer"),
+Handlers.add(
+  "Transfer",
+  Handlers.utils.hasMatchingTag("Action", "Transfer"),
   function (msg)
     assert(type(msg.Tags.Recipient) == 'string', 'Recipient is required!')
     assert(type(msg.Tags.Quantity) == 'string', 'Quantity is required!')
@@ -243,16 +243,17 @@ handlers.add(
       ao.send({
         Target = msg.From,
         Tags = {
-          Action = "Debit-Notice",
-          Quantity = tostring(qty)
+          ["Action"] = "Debit-Notice",
+          ["Quantity"] = tostring(qty)
         }
       })
       ao.send({
-      Target = msg.Tags.Recipient,
-      Tags = {
-        Action = "Credit-Notice",
-        Quantity = tostring(qty)
-      }})
+        Target = msg.Tags.Recipient,
+        Tags = {
+          ["Action"] = "Credit-Notice",
+          ["Quantity"] = tostring(qty)
+        }
+      })
       -- if msg.Tags.Cast and msg.Tags.Cast == "true" then
       --   return
       -- end
@@ -261,28 +262,30 @@ handlers.add(
   end
 )
 
-handlers.add(
-  "balance",
-  handlers.utils.hasMatchingTag("Action", "Balance"),
+Handlers.add(
+  "Balance",
+  Handlers.utils.hasMatchingTag("Action", "Balance"),
   function (msg)
     assert(type(msg.Tags.Target) == "string", "Target Tag is required!")
     local bal = "0"
     if balances[msg.Tags.Target] then
       bal = tostring(balances[msg.Tags.Target])
     end
-    ao.send({Target = msg.From, Tags = {
+    ao.send({
       Target = msg.From,
-      Balance = bal,
-      Ticker = ticker or ""
-    }})
+      Tags = {
+        ["Balance"] = bal,
+        ["Ticker"] = ticker or ""
+      }
+    })
   end
 )
 
 local json = require("json")
 
-handlers.add(
-  "balances",
-  handlers.utils.hasMatchingTag("Action", "Balances"),
+Handlers.add(
+  "Balances",
+  Handlers.utils.hasMatchingTag("Action", "Balances"),
   function (msg)
     ao.send({
       Target = msg.From,
@@ -292,15 +295,18 @@ handlers.add(
 
 )
 
-handlers.add(
-  "info",
-  handlers.utils.hasMatchingTag("Action", "Info"),
+Handlers.add(
+  "Info",
+  Handlers.utils.hasMatchingTag("Action", "Info"),
   function (msg)
-    ao.send({Target = msg.From, Tags = {
-      Name = name,
-      Ticker = ticker,
-      Denomination = tostring(denomination)
-    }})
+    ao.send({
+      Target = msg.From,
+      Tags = {
+        ["Name"] = name,
+        ["Ticker"] = ticker,
+        ["Denomination"] = tostring(denomination)
+      }
+    })
   end
 )
 ```

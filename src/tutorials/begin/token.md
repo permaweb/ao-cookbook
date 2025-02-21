@@ -56,7 +56,8 @@ You should see a new list of handlers that have been loaded into your `aos` proc
 Now that the token blueprint is loaded, we can test the token by sending a message to ourselves using the `Action = "Info"` tag.
 
 ```lua
-Send({ Target = ao.id, Action = "Info" }).receive().Tags
+Send({ Target = ao.id, Action = "Info" })
+Inbox[#Inbox].Tags
 ```
 
 This will print the token information to the console. It should show your process ID with the total balance of tokens available.
