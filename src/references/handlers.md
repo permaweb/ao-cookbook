@@ -73,6 +73,16 @@ Handlers.add("Balance", doBalance)             -- Implicit action matching
 
 Resolvers are special tables that can be used as the third argument in `Handlers.add()` to enable conditional execution of functions based on additional pattern matching. Each key in a resolver table is a pattern matching table, and its corresponding value is a function that executes when that pattern matches.
 
+```lua
+Handlers.add("Update",
+  {
+    [{ Status = "Ready" }] = function (msg) print("Ready") end,
+    [{ Status = "Pending" }] = function (msg) print("Pending") end,
+    [{ Status = "Failed" }] = function (msg) print("Failed") end
+  }
+)
+```
+
 This structure allows developers to create switch/case-like statements where different functions are triggered based on which pattern matches the incoming message. Resolvers are particularly useful when you need to handle a group of related messages differently based on additional criteria.
 
 ## Module Structure
@@ -91,56 +101,33 @@ This structure allows developers to create switch/case-like statements where dif
 
 ## Functions
 
-| Handlers.**Function**              | Description                                                                   |
-| ---------------------------------- | ----------------------------------------------------------------------------- |
-| `.add(name, pattern, handler)`     | Adds a new handler or updates an existing handler by name                     |
-| `.append(name, pattern, handler)`  | Appends a new handler to the end of the handlers list                         |
-| `.once(name, pattern, handler)`    | Only runs once when the pattern is matched                                    |
-| `.prepend(name, pattern, handler)` | Prepends a new handler to the beginning of the handlers list                  |
-| `.before(handleName)`              | Returns an object that allows adding a new handler before a specified handler |
-| `.after(handleName)`               | Returns an object that allows adding a new handler after a specified handler  |
-| `.remove(name)`                    | Removes a handler from the handlers list by name                              |
+### `Handlers.add(name, pattern, handler)`
 
-## Examples
+Adds a new handler or updates an existing handler by name
 
-### Pattern Matching Table
+### `Handlers.append(name, pattern, handler)`
 
-```lua
-Handlers.add("Ping",    -- Name of the handler
-  { Action = "Ping" },  -- Matches messages with Action = "Ping" tag
-  function(msg)         -- Business logic to execute on Message
-    print("ping")
-    msg.reply({ Data = "pong" })
-  end
-)
-```
+Appends a new handler to the end of the handlers list.
 
-### Resolver Table Handler
+### `Handlers.once(name, pattern, handler)`
 
-```lua
-Handlers.add("Foobarbaz",  -- Name of the handler
-  { Action = "Speak" },    -- Matches messages with Action = "Speak" tag
-  {
-    -- Resolver with pattern-function pairs
-    [{ Status = "foo" }] = function(msg) print("foo") end,
-    [{ Status = "bar" }] = function(msg) print("bar") end,
-    [{ Status = "baz" }] = function(msg) print("baz") end
-  }
-)
-```
+Only runs once when the pattern is matched. Equivalent to setting `maxRuns = 1`.
 
-### Function-Based Pattern Matching & Handler
+### `Handlers.prepend(name, pattern, handler)`
 
-```lua
-Handlers.add("Example",    -- Name of the handler
-  function(msg)           -- Pattern function matches messages with Action = "Speak" tag
-    return msg.Action == "Speak"
-  end,
-  function(msg)           -- Handler function that executes business logic
-    print(msg.Status)
-  end
-)
-```
+Prepends a new handler to the beginning of the handlers list.
+
+### `Handlers.before(handleName)`
+
+Returns an object that allows adding a new handler before a specified handler.
+
+### `Handlers.after(handleName)`
+
+Returns an object that allows adding a new handler after a specified handler.
+
+### `Handlers.remove(name)`
+
+Removes a handler from the handlers list by name.
 
 ## Handler Execution Notes
 
@@ -182,8 +169,6 @@ The `Handlers.utils` module provides two functions that are common matching patt
 - `hasMatchingTag(name: string, value: string)`
 - `reply(text: string)`
 
----
-
 ### `Handlers.utils.hasMatchingData(data: string)`
 
 - This helper function returns a pattern matching function that takes a message as input. The returned function checks if the message's `Data` field contains the specified string. You can use this helper directly as the pattern argument when adding a new handler.
@@ -216,3 +201,44 @@ The `Handlers.utils` module provides two functions that are common matching patt
       Handlers.utils.reply("pong")
   )
   ```
+
+## Example Handlers
+
+### Pattern Matching Table
+
+```lua
+Handlers.add("Ping",    -- Name of the handler
+  { Action = "Ping" },  -- Matches messages with Action = "Ping" tag
+  function(msg)         -- Business logic to execute on Message
+    print("ping")
+    msg.reply({ Data = "pong" })
+  end
+)
+```
+
+### Resolver Table Handler
+
+```lua
+Handlers.add("Foobarbaz",  -- Name of the handler
+  { Action = "Speak" },    -- Matches messages with Action = "Speak" tag
+  {
+    -- Resolver with pattern-function pairs
+    [{ Status = "foo" }] = function(msg) print("foo") end,
+    [{ Status = "bar" }] = function(msg) print("bar") end,
+    [{ Status = "baz" }] = function(msg) print("baz") end
+  }
+)
+```
+
+### Function-Based Pattern Matching & Handler
+
+```lua
+Handlers.add("Example",    -- Name of the handler
+  function(msg)           -- Pattern function matches messages with Action = "Speak" tag
+    return msg.Action == "Speak"
+  end,
+  function(msg)           -- Handler function that executes business logic
+    print(msg.Status)
+  end
+)
+```
