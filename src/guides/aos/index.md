@@ -7,36 +7,57 @@ next:
   link: "/guides/aos/intro"
 ---
 
-# aos
+# AOS: AO Operating System
 
-While `ao` is a hyper parallel computer that enables distributed compute, `aos` is an operating system on top of that computer.
+AOS is a powerful operating system built on top of the AO hyper-parallel computer. While AO provides the distributed compute infrastructure, AOS offers a simplified interface for interacting with and developing processes in this environment.
 
-With `aos` you can interact with processes and you can code processes in a very simple and intuitive way. All you need is a terminal and an editor.
+## What is AOS?
 
-The language chosen for `aos` is [lua](../../concepts/lua.md), which is a robust and deterministic dynamic language that is a lot of fun to work with.
+AOS enables you to:
 
-If you haven't done so yet, take 15-30 minutes and go through our [tutorials](../../tutorials/index).
+- Create and interact with processes on the AO network
+- Develop distributed applications using a simple, intuitive approach
+- Leverage the Lua programming language for deterministic, reliable operations
 
-## Diving Deeper into `aos`
+All you need to get started is a terminal and a code editor. AOS uses [Lua](../../concepts/lua.md) as its primary language - a robust, deterministic, and user-friendly programming language that's ideal for distributed applications.
 
-- [Introduction to aos](intro)
-- [Installing](installing)
-- [`aos` CLI](cli)
-- [Prompt Customization](prompt)
-- [A Ping-Pong Server](pingpong)
+> **New to AO?** If you're just getting started, we recommend completing our [tutorials](../../tutorials/index) first. They take just 15-30 minutes and provide an excellent foundation.
 
-## Developer Guides
+## Getting Started with AOS
 
-- [Editor Setup](editor)
-- [Troubleshooting with ao.link](troubleshooting)
-- [Understanding the Inbox](inbox-and-handlers)
-- [Frequently Asked Questions](faq)
+Start here if you're new to AOS:
 
-### [**Modules**](modules/index)
+- [Introduction to AOS](intro) - Overview of AOS capabilities and concepts
+- [Installation Guide](installing) - Step-by-step instructions for setting up AOS
+- [AOS Command Line Interface](cli) - Learn to use the AOS CLI effectively
+- [Customizing Your Prompt](prompt) - Personalize your AOS development environment
+- [Building a Ping-Pong Server](pingpong) - Create your first interactive AOS application
 
-- [JSON](modules/json)
-- [`ao`](modules/ao)
-- [crypto](modules/crypto)
-- [Base64](modules/base64)
-- [Pretty](modules/pretty)
-- [Utils](modules/utils)
+## Developer Resources
+
+More advanced topics for AOS development:
+
+- [Editor Setup & Configuration](editor) - Configure your development environment
+- [Troubleshooting with ao.link](troubleshooting) - Debug AOS applications
+- [Understanding the Inbox & Message Handlers](inbox-and-handlers) - Learn how message handling works
+- [Frequently Asked Questions](faq) - Find answers to common questions
+
+## AOS Modules
+
+AOS includes several built-in modules for common operations:
+
+- [JSON Module](modules/json) - Parse and generate JSON data
+- [AO Module](modules/ao) - Interface with the AO ecosystem
+- [Crypto Module](modules/crypto) - Perform cryptographic operations
+- [Base64 Module](modules/base64) - Encode and decode Base64 data
+- [Pretty Module](modules/pretty) - Format data for easier reading
+- [Utils Module](modules/utils) - Common utility functions
+
+## Additional Resources
+
+- [Load Management](load) - Understand how to optimize process performance
+- [Token Creation](token) - Learn to create and manage tokens
+
+## Navigation
+
+Use the sidebar to browse through specific AOS guides. For a more structured learning path, we recommend following the guides in the order listed above.
