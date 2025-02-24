@@ -6,15 +6,15 @@ This reference guide explains the different messaging patterns available in ao a
 
 ### Sending Messages
 
-- `ao.send` is non-blocking and returns immediately, enables direct **_A → B_** messaging patterns
-- `msg.reply` is non-blocking, enables **_B → A_** response patterns with message reference tracking
-- `msg.forward` is non-blocking, enables multi-process routing **_A → B → C → A_** patterns
-- `Handlers.utils.reply` creates automated response handlers for common **_B → A_** patterns
+- [`ao.send`](#ao-send-asynchronous-message-sending) is non-blocking and returns immediately, enables direct **_A → B_** messaging patterns
+- [`msg.reply`](#msg-reply-asynchronous-response-sending) is non-blocking, enables **_B → A_** response patterns with message reference tracking
+- [`msg.forward`](#msg-forward-message-forwarding) is non-blocking, enables multi-process routing **_A → B → C → A_** patterns
+- [`Handlers.utils.reply`](#handlers-utils-reply-simple-reply-handler-creation) creates automated response handlers for common **_B → A_** patterns
 
 ### Receiving Messages
 
-- `Receive` (capital R) is blocking, enables waiting for any matching message from any sender
-- `.receive` (lowercase) is blocking, enables completion of **_A → B → A_** request-response cycles
+- [`Receive` (capital R)](#receive-capital-r-blocking-pattern-matcher) is blocking, enables waiting for any matching message from any sender
+- [`.receive` (lowercase)](#ao-send-receive-lowercase-r-blocking-reference-matcher) is blocking, enables completion of **_A → B → A_** request-response cycles
 
 ### Message Properties
 
@@ -22,18 +22,16 @@ This reference guide explains the different messaging patterns available in ao a
 - `X-Origin` preserves the original sender ID throughout forwarding chains
 - `Reply-To` determines where responses should be directed
 
-## Summary Table
-
-| Function               | Behavior     | Pattern             | Key Features                                                                                   | Best For                                                                                   |
-| ---------------------- | ------------ | ------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `ao.send`              | Non-blocking | **_A → B_**         | • Returns immediately<br>• Returns a promise-like object<br>• Can be chained with `.receive()` | • Fire-and-forget notifications<br>• Starting async conversations<br>• Parallel processing |
-| `msg.reply`            | Non-blocking | **_B → A_**         | • Auto-tracks via `X-Reference`<br>• Sets `Target` to original sender<br>• Used in handlers    | • Responding to requests<br>• Async request-response<br>• Handler-based flows              |
-| `msg.forward`          | Non-blocking | **_A → B → C → A_** | • Preserves message chain<br>• Sets `X-Origin` to original sender<br>• Sanitizes message copy  | • Multi-process pipelines<br>• Service composition<br>• Request delegation                 |
-| `Handlers.utils.reply` | Non-blocking | **_B → A_**         | • Automatic handler creation<br>• Simplified syntax<br>• Wraps `msg.reply`                     | • Simple responses<br>• Standard reply patterns<br>• Reducing boilerplate                  |
-| `Receive` (capital R)  | Blocking     | Any → Process       | • Waits for any matching message<br>• Pattern-based matching<br>• Sender-agnostic              | • Event listeners<br>• Waiting for updates<br>• Synchronous flows                          |
-| `.receive` (lowercase) | Blocking     | **_A → B → A_**     | • Waits for specific reply<br>• Reference-based matching<br>• Can target specific responder    | • Request-response cycles<br>• Waiting for results<br>• Synchronous processing             |
-
 ## What is Each Function For?
+
+| Function               | Behavior     | Message Flow        | Description                                         |
+| ---------------------- | ------------ | ------------------- | --------------------------------------------------- |
+| `ao.send`              | Non-blocking | **_A → B_**         | Sends message and returns immediately               |
+| `msg.reply`            | Non-blocking | **_B → A_**         | Responds to original sender with reference tracking |
+| `msg.forward`          | Non-blocking | **_A → B → C → A_** | Routes messages through multiple processes          |
+| `.receive` (lowercase) | Blocking     | **_A → B → A_**     | Waits for specific reply by reference               |
+| `Receive` (capital R)  | Blocking     | **_Any → A_**       | Waits for any matching message                      |
+| `Handlers.utils.reply` | Non-blocking | **_B → A_**         | Creates automatic response handlers                 |
 
 ### `ao.send`: Asynchronous Message Sending
 
@@ -149,14 +147,12 @@ Handlers.add("status-handler",
 ```
 
 ```
-           Incoming
-              ↓
-Service (B) → Handler → Auto-Reply
-              ↓
-         Continues execution
+Client (A) → Service (B)
+          ←
+Response tagged with X-Reference
 ```
 
-## Message Reception Methods
+---
 
 ### `Receive` (Capital R): Blocking Pattern Matcher
 
@@ -177,10 +173,11 @@ end
 ```
 
 ```
-     ↓ Any matching message
-Process
-     ↓ Blocks until match
-Continues execution
+        Process (A)
+            ↓
+Blocks until match received
+            ↓
+    Continues execution
 ```
 
 ### `ao.send().receive` (Lowercase r): Blocking Reference Matcher
@@ -214,14 +211,7 @@ Process blocks until response
 
 ## Common Messaging Patterns
 
-These common patterns demonstrate complete solutions to messaging scenarios.
-
-| Pattern                          | Behavior     | Flow                | Key Components                                                      | Use Cases                                                                           |
-| -------------------------------- | ------------ | ------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| **Asynchronous Notification**    | Non-blocking | **_A → B_**         | • `ao.send`<br>• No response expected                               | • System alerts<br>• Event broadcasts<br>• Log messages                             |
-| **Synchronous Request-Response** | Blocking     | **_A → B → A_**     | • `ao.send().receive()`<br>• Waits for response                     | • Database queries<br>• API requests<br>• Validated operations                      |
-| **Asynchronous Service Handler** | Non-blocking | **_B → A_**         | • `Handlers.add`<br>• `msg.reply`                                   | • Background processing<br>• Compute-intensive tasks<br>• Event handling            |
-| **Multi-Process Pipeline**       | Mixed        | **_A → B → C → A_** | • `ao.send().receive()`<br>• `msg.forward`<br>• `X-Origin` tracking | • Data transformation chains<br>• Microservice orchestration<br>• Complex workflows |
+These patterns demonstrate complete solutions to messaging scenarios.
 
 ### Asynchronous Notification (Non-blocking)
 
