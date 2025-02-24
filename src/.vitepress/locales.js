@@ -420,7 +420,7 @@ export const localeConfig = (langCode) => ({
             ],
           },
           {
-            text: "System Overview",
+            text: "AO Fundamentals",
             collapsed: true,
             items: [
               {
