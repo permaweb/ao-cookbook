@@ -20,7 +20,7 @@ This reference guide explains the messaging patterns available in ao and when to
 Non-blocking direct **_A → B_** messaging that returns immediately after sending.
 
 - Use for fire-and-forget notifications or starting async conversations
-- Returns a promise-like object that can be chained with [`.receive()`](#ao-sendreceive-lowercase-r-blocking-reference-matcher) if needed
+- Returns a promise-like object that can be chained with [`.receive()`](#ao-send-receive-lowercase-r-blocking-reference-matcher) if needed
 - Good for parallel processing since it doesn't block execution
 
 ```
