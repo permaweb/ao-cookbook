@@ -86,6 +86,8 @@
   "references-token": "Token",
   "references-data": "Accessing Arweave Data",
   "references-cron": "CRON Messages",
+  "references-lua-optimization": "Lua Optimization",
+  "references-messaging": "Messaging Patterns",
   "references-editor-setup": "ao Editor Setup",
   "references-community": "Community"
 }

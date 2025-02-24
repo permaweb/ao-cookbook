@@ -25,6 +25,10 @@ export const localeConfig = (langCode) => ({
         text: get_i18n_str(langCode, "docs"),
         link: get_i18n_link(langCode, "/welcome/index"),
       },
+      {
+        text: "LLMs.txt",
+        link: "/LLMs.txt",
+      },
     ],
     sidebar: [
       {
@@ -437,6 +441,14 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "references-cron"),
             link: get_i18n_link(langCode, "/references/cron"),
+          },
+          {
+            text: get_i18n_str(langCode, "references-lua-optimization"),
+            link: get_i18n_link(langCode, "/references/lua-optimization"),
+          },
+          {
+            text: get_i18n_str(langCode, "references-messaging"),
+            link: get_i18n_link(langCode, "/references/messaging"),
           },
           {
             text: get_i18n_str(langCode, "references-editor-setup"),
