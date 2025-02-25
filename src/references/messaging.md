@@ -197,8 +197,8 @@ Blocks execution until a specific reply arrives, enabling **_A → B → A_** an
 - Only matches messages linked by [`X-Reference`](#message-properties)
 - Can specify a target process ID to indicate which process will reply
 - Implicitly waits for the proper response based on message reference chains
-- For **_A → B → A_** flows, use [`msg.reply`](#msg-reply-asynchronous-response-sending)
-- For **_A → B → C → A_** flows, use [`msg.forward`](#msg-forward-message-forwarding)
+- For **_A → B → A_** flows, process B uses [`msg.reply`](#msg-reply-asynchronous-response-sending)
+- For **_A → B → C → A_** flows, processes B and C use [`msg.forward`](#msg-forward-message-forwarding)
 
 **Basic Request-Response Example:**
 
