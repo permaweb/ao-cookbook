@@ -192,17 +192,13 @@ end
 
 ### `ao.send().receive` (Lowercase r): Blocking Reference Matcher
 
-Blocks execution until a specific reply arrives, enabling **_A → B → A_** request-response cycles.
+Blocks execution until a specific reply arrives, enabling **_A → B → A_** and **_A → B → C → A_** request-response cycles.
 
 - Only matches messages linked by [`X-Reference`](#message-properties)
 - Can specify a target process ID to indicate which process will reply
 - Implicitly waits for the proper response based on message reference chains
-
-```
-Client (A) → Service (B)
-          ←
-Process blocks until response
-```
+- For **_A → B → A_** flows, use [`msg.reply`](#msg-reply-asynchronous-response-sending)
+- For **_A → B → C → A_** flows, use [`msg.forward`](#msg-forward-message-forwarding)
 
 **Basic Request-Response Example:**
 
@@ -215,23 +211,6 @@ local reply = ao.send({
   Action = "Query",
   Data = { query: "select" }
 }).receive() -- Blocks until response received
-```
-
-**Error Handling Example:**
-
-```lua
--- For a synchronous request-response pattern:
-local databaseServiceId = "database-process-001"
-
-local response = ao.send({
-  Target = databaseServiceId,
-  Action = "Query",
-  Data = { table = "users", id = 123 }
-}).receive()
-
-if not response then
-  error("Request failed")
-end
 ```
 
 ## Message Properties
