@@ -23,11 +23,11 @@ Resources for the programming languages used in AO:
 
 Documentation for AO's core APIs and functionality:
 
-- [AO Core](./ao) - Core AO system API reference
-- [Messaging](./messaging) - Comprehensive guide to the AO messaging system
+- [AO Core](./ao) - Core `ao` module and API reference
+- [Messaging](./messaging) - Comprehensive guide to the AO messaging system patterns
 - [Handlers](./handlers) - Reference for event handlers and message processing
 - [Token](./token) - Information about token creation and management
-- [Data](./data) - Guide to data handling and storage in AO
+- [Arweave Data](./data) - Guide to data handling and storage in AO
 - [Cron](./cron) - Documentation for scheduling and managing timed events
 
 ## Development Environment
@@ -35,12 +35,13 @@ Documentation for AO's core APIs and functionality:
 Tools and setup for AO development:
 
 - [Editor Setup](./editor-setup) - Guide to setting up your development environment for AO
+- [BetterIDEa](./betteridea/index) - The ultimate native web IDE for AO development
 
 ## Community Resources
 
 Connect with the AO community:
 
-- [Community](./community) - Information about AO community resources and support
+- [Community Resources](./community) - Information about AO community resources and support
 
 ## Navigation
 

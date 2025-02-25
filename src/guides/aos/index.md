@@ -31,16 +31,20 @@ Start here if you're new to aos:
 - [Installation Guide](installing) - Step-by-step instructions for setting up aos
 - [aos Command Line Interface](cli) - Learn to use the aos CLI effectively
 - [Customizing Your Prompt](prompt) - Personalize your aos development environment
+- [Load Lua Files](load) - Learn how to load and execute Lua files in aos
 - [Building a Ping-Pong Server](pingpong) - Create your first interactive aos application
 
-## Developer Resources
+## Blueprints
 
-More advanced topics for aos development:
+Blueprints in aos are templates that streamline the development of distributed applications by providing a framework for creating consistent and efficient processes across the AO network.
 
-- [Editor Setup & Configuration](editor) - Configure your development environment
-- [Troubleshooting with ao.link](troubleshooting) - Debug aos applications
-- [Understanding the Inbox & Message Handlers](inbox-and-handlers) - Learn how message handling works
-- [Frequently Asked Questions](faq) - Find answers to common questions
+### Available Blueprints
+
+- [Chatroom](blueprints/chatroom) - Template for building chatroom applications
+- [Cred Utils](blueprints/cred-utils) - Tools for managing credentials
+- [Staking](blueprints/staking) - Framework for implementing staking mechanisms
+- [Token](blueprints/token) - Guide for creating and managing tokens
+- [Voting](blueprints/voting) - Blueprint for setting up voting systems
 
 ## aos Modules
 
@@ -53,17 +57,15 @@ aos includes several built-in modules for common operations:
 - [Pretty Module](modules/pretty) - Format data for easier reading
 - [Utils Module](modules/utils) - Common utility functions
 
-## Blueprints
+## Developer Resources
 
-Blueprints in aos are templates that streamline the development of distributed applications by providing a framework for creating consistent and efficient processes across the AO network.
+More advanced topics for aos development:
 
-### Available Blueprints
-
-- [Cred Utils](blueprints/cred-utils) - Tools for managing credentials
-- [Staking](blueprints/staking) - Framework for implementing staking mechanisms
-- [Token](blueprints/token) - Guide for creating and managing tokens
-- [Voting](blueprints/voting) - Blueprint for setting up voting systems
-- [Chatroom](blueprints/chatroom) - Template for building chatroom applications
+- [Editor Setup & Configuration](editor) - Configure your development environment
+- [Understanding the Inbox & Message Handlers](inbox-and-handlers) - Learn how message handling works
+- [Troubleshooting with ao.link](troubleshooting) - Debug aos applications
+- [Frequently Asked Questions](faq) - Find answers to common questions
+- [Build a Token](token) - Create your own token on AO
 
 ## Navigation
 
