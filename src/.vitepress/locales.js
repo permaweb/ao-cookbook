@@ -25,8 +25,22 @@ export const localeConfig = (langCode) => ({
         text: get_i18n_str(langCode, "docs"),
         link: get_i18n_link(langCode, "/welcome/index"),
       },
+      {
+        text: "LLMs.txt",
+        link: "/LLMs.txt",
+      },
     ],
     sidebar: [
+      {
+        text: get_i18n_str(langCode, "mainnet"),
+        link: get_i18n_link(langCode, "/mainnet/index"),
+        items: [
+          {
+            text: get_i18n_str(langCode, "mainnet-ao-core-relay"),
+            link: get_i18n_link(langCode, "/mainnet/ao-core-relay"),
+          },
+        ],
+      },
       {
         text: get_i18n_str(langCode, "welcome"),
         link: get_i18n_link(langCode, "/welcome/index"),
@@ -38,12 +52,7 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "welcome-legacynet-info"),
             link: get_i18n_link(langCode, "/welcome/legacynet-info/index"),
-            items: [
-              {
-                text: get_i18n_str(langCode, "welcome-legacynet-info-quests"),
-                link: get_i18n_link(langCode, "/welcome/legacynet-info/quests"),
-              },
-            ],
+            items: [],
           },
         ],
       },
@@ -54,6 +63,7 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "tutorials-begin"),
             link: get_i18n_link(langCode, "/tutorials/begin/index"),
+            collapsed: true,
             items: [
               {
                 text: get_i18n_str(langCode, "tutorials-begin-preparations"),
@@ -84,6 +94,7 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "tutorials-bots-and-games"),
             link: get_i18n_link(langCode, "/tutorials/bots-and-games/index"),
+            collapsed: true,
             items: [
               {
                 text: get_i18n_str(
@@ -176,6 +187,7 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "guides-aos"),
             link: get_i18n_link(langCode, "/guides/aos/index"),
+            collapsed: true,
             items: [
               {
                 text: get_i18n_str(langCode, "guides-aos-intro"),
@@ -192,6 +204,10 @@ export const localeConfig = (langCode) => ({
               {
                 text: get_i18n_str(langCode, "guides-aos-prompt"),
                 link: get_i18n_link(langCode, "/guides/aos/prompt"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-aos-load"),
+                link: get_i18n_link(langCode, "/guides/aos/load"),
               },
               {
                 text: get_i18n_str(langCode, "guides-aos-pingpong"),
@@ -214,16 +230,13 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(langCode, "/guides/aos/faq"),
               },
               {
-                text: get_i18n_str(langCode, "guides-aos-load"),
-                link: get_i18n_link(langCode, "/guides/aos/load"),
-              },
-              {
                 text: get_i18n_str(langCode, "guides-aos-token"),
                 link: get_i18n_link(langCode, "/guides/aos/token"),
               },
               {
                 text: get_i18n_str(langCode, "guides-aos-blueprints"),
                 link: get_i18n_link(langCode, "/guides/aos/blueprints/index"),
+                collapsed: true,
                 items: [
                   {
                     text: get_i18n_str(
@@ -277,6 +290,7 @@ export const localeConfig = (langCode) => ({
               {
                 text: get_i18n_str(langCode, "guides-aos-modules"),
                 link: get_i18n_link(langCode, "/guides/aos/modules/index"),
+                collapsed: true,
                 items: [
                   {
                     text: get_i18n_str(langCode, "guides-aos-modules-json"),
@@ -309,6 +323,7 @@ export const localeConfig = (langCode) => ({
           {
             text: get_i18n_str(langCode, "guides-aoconnect"),
             link: get_i18n_link(langCode, "/guides/aoconnect/aoconnect"),
+            collapsed: true,
             items: [
               {
                 text: get_i18n_str(langCode, "guides-installing-connect"),
@@ -360,11 +375,50 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "guides-assign-data"),
                 link: get_i18n_link(langCode, "/guides/aoconnect/assign-data"),
               },
+              {
+                text: get_i18n_str(langCode, "guides-signers"),
+                link: get_i18n_link(langCode, "/guides/aoconnect/signers"),
+              },
             ],
           },
           {
-            text: get_i18n_str(langCode, "guides-sqlite"),
-            link: get_i18n_link(langCode, "/guides/snacks/sqlite"),
+            text: "Additional Technologies",
+            collapsed: true,
+            items: [
+              {
+                text: get_i18n_str(langCode, "guides-dev-cli"),
+                link: get_i18n_link(langCode, "/guides/dev-cli/index"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-sqlite"),
+                link: get_i18n_link(langCode, "/guides/snacks/sqlite"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-weavedrive"),
+                link: get_i18n_link(langCode, "/guides/snacks/weavedrive"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-0rbit"),
+                link: get_i18n_link(langCode, "/guides/snacks/0rbit/index"),
+                collapsed: true,
+                items: [
+                  {
+                    text: get_i18n_str(langCode, "guides-0rbit-get-request"),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/snacks/0rbit/get-request",
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(langCode, "guides-0rbit-post-request"),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/snacks/0rbit/post-request",
+                    ),
+                  },
+                ],
+              },
+            ],
           },
         ],
       },
@@ -373,36 +427,48 @@ export const localeConfig = (langCode) => ({
         link: get_i18n_link(langCode, "/concepts/index"),
         items: [
           {
-            text: get_i18n_str(langCode, "concepts-specs"),
-            link: get_i18n_link(langCode, "/concepts/specs"),
+            text: "AO System Architecture",
+            collapsed: true,
+            items: [
+              {
+                text: get_i18n_str(langCode, "concepts-how-it-works"),
+                link: get_i18n_link(langCode, "/concepts/how-it-works"),
+              },
+              {
+                text: get_i18n_str(langCode, "concepts-processes"),
+                link: get_i18n_link(langCode, "/concepts/processes"),
+              },
+              {
+                text: get_i18n_str(langCode, "concepts-messages"),
+                link: get_i18n_link(langCode, "/concepts/messages"),
+              },
+              {
+                text: get_i18n_str(langCode, "concepts-eval"),
+                link: get_i18n_link(langCode, "/concepts/eval"),
+              },
+              {
+                text: get_i18n_str(langCode, "concepts-units"),
+                link: get_i18n_link(langCode, "/concepts/units"),
+              },
+              {
+                text: get_i18n_str(langCode, "concepts-specs"),
+                link: get_i18n_link(langCode, "/concepts/specs"),
+              },
+            ],
           },
           {
-            text: get_i18n_str(langCode, "concepts-messages"),
-            link: get_i18n_link(langCode, "/concepts/messages"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-eval"),
-            link: get_i18n_link(langCode, "/concepts/eval"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-processes"),
-            link: get_i18n_link(langCode, "/concepts/processes"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-units"),
-            link: get_i18n_link(langCode, "/concepts/units"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-how-it-works"),
-            link: get_i18n_link(langCode, "/concepts/how-it-works"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-meet-lua"),
-            link: get_i18n_link(langCode, "/concepts/lua"),
-          },
-          {
-            text: get_i18n_str(langCode, "concepts-tour"),
-            link: get_i18n_link(langCode, "/concepts/tour"),
+            text: "Programming Environment",
+            collapsed: true,
+            items: [
+              {
+                text: get_i18n_str(langCode, "concepts-tour"),
+                link: get_i18n_link(langCode, "/concepts/tour"),
+              },
+              {
+                text: get_i18n_str(langCode, "concepts-meet-lua"),
+                link: get_i18n_link(langCode, "/concepts/lua"),
+              },
+            ],
           },
         ],
       },
@@ -411,42 +477,77 @@ export const localeConfig = (langCode) => ({
         link: get_i18n_link(langCode, "/references/index"),
         items: [
           {
-            text: get_i18n_str(langCode, "references-lua"),
-            link: get_i18n_link(langCode, "/references/lua"),
+            text: "Programming Languages",
+            collapsed: true,
+            items: [
+              {
+                text: get_i18n_str(langCode, "references-lua"),
+                link: get_i18n_link(langCode, "/references/lua"),
+              },
+              {
+                text: get_i18n_str(langCode, "references-wasm"),
+                link: get_i18n_link(langCode, "/references/wasm"),
+              },
+              {
+                text: get_i18n_str(langCode, "references-lua-optimization"),
+                link: get_i18n_link(langCode, "/references/lua-optimization"),
+              },
+            ],
           },
           {
-            text: get_i18n_str(langCode, "references-wasm"),
-            link: get_i18n_link(langCode, "/references/wasm"),
+            text: "AO API Reference",
+            collapsed: true,
+            items: [
+              {
+                text: get_i18n_str(langCode, "references-ao"),
+                link: get_i18n_link(langCode, "/references/ao"),
+              },
+              {
+                text: get_i18n_str(langCode, "references-messaging"),
+                link: get_i18n_link(langCode, "/references/messaging"),
+              },
+              {
+                text: get_i18n_str(langCode, "references-handlers"),
+                link: get_i18n_link(langCode, "/references/handlers"),
+              },
+              {
+                text: get_i18n_str(langCode, "references-token"),
+                link: get_i18n_link(langCode, "/references/token"),
+              },
+              {
+                text: get_i18n_str(langCode, "references-data"),
+                link: get_i18n_link(langCode, "/references/data"),
+              },
+              {
+                text: get_i18n_str(langCode, "references-cron"),
+                link: get_i18n_link(langCode, "/references/cron"),
+              },
+            ],
           },
           {
-            text: get_i18n_str(langCode, "references-ao"),
-            link: get_i18n_link(langCode, "/references/ao"),
-          },
-          {
-            text: get_i18n_str(langCode, "references-handlers"),
-            link: get_i18n_link(langCode, "/references/handlers"),
-          },
-          {
-            text: get_i18n_str(langCode, "references-token"),
-            link: get_i18n_link(langCode, "/references/token"),
-          },
-          {
-            text: get_i18n_str(langCode, "references-data"),
-            link: get_i18n_link(langCode, "/references/data"),
-          },
-          {
-            text: get_i18n_str(langCode, "references-cron"),
-            link: get_i18n_link(langCode, "/references/cron"),
-          },
-          {
-            text: get_i18n_str(langCode, "references-editor-setup"),
-            link: get_i18n_link(langCode, "/references/editor-setup"),
+            text: "Development Environment",
+            collapsed: true,
+            items: [
+              {
+                text: get_i18n_str(langCode, "references-editor-setup"),
+                link: get_i18n_link(langCode, "/references/editor-setup"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-betteridea"),
+                link: get_i18n_link(langCode, "/references/betteridea/index"),
+              },
+            ],
           },
           {
             text: get_i18n_str(langCode, "references-community"),
             link: get_i18n_link(langCode, "/references/community"),
           },
         ],
+      },
+      {
+        text: get_i18n_str(langCode, "releasenotes"),
+        link: get_i18n_link(langCode, "/releasenotes/index"),
+        items: [],
       },
     ],
   },

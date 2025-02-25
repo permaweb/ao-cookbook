@@ -4,7 +4,7 @@ prev:
   link: "/guides/aoconnect/monitoring-cron"
 next:
   text: "First GET Request"
-  link: "/guides/0rbit/get-request"
+  link: "/guides/snacks/0rbit/get-request"
 ---
 
 # 0rbit 💫

@@ -37,3 +37,6 @@ wallet.json
 
 # VS Code
 .vscode/
+
+# Cursor rules
+.cursor/rules
