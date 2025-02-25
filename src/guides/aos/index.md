@@ -53,10 +53,17 @@ aos includes several built-in modules for common operations:
 - [Pretty Module](modules/pretty) - Format data for easier reading
 - [Utils Module](modules/utils) - Common utility functions
 
-## Additional Resources
+## Blueprints
 
-- [Load Management](load) - Understand how to optimize process performance
-- [Token Creation](token) - Learn to create and manage tokens
+Blueprints in aos are templates that streamline the development of distributed applications by providing a framework for creating consistent and efficient processes across the AO network.
+
+### Available Blueprints
+
+- [Cred Utils](blueprints/cred-utils) - Tools for managing credentials
+- [Staking](blueprints/staking) - Framework for implementing staking mechanisms
+- [Token](blueprints/token) - Guide for creating and managing tokens
+- [Voting](blueprints/voting) - Blueprint for setting up voting systems
+- [Chatroom](blueprints/chatroom) - Template for building chatroom applications
 
 ## Navigation
 
