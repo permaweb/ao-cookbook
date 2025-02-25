@@ -1,7 +1,7 @@
 ---
 prev:
   text: "First POST Request"
-  link: "../guides/0rbit/post-request"
+  link: "../guides/snacks/0rbit/post-request"
 next:
   text: "Specifications"
   link: "./specs"

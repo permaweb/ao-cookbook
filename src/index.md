@@ -27,5 +27,5 @@ features:
 
 ## More Information
 
-- [Community Guides and Links](/community/index)
+- [Community Resources](/references/community)
 - [Release Notes](/releasenotes/index)

@@ -1,10 +1,10 @@
 ---
 prev:
   text: "0rbit"
-  link: "/guides/0rbit/index"
+  link: "/guides/snacks/0rbit/index"
 next:
   text: "First POST Request"
-  link: "/guides/0rbit/post-request"
+  link: "/guides/snacks/0rbit/post-request"
 ---
 
 # First GET Request

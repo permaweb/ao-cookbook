@@ -16,9 +16,9 @@ A wallet/keyfile is a public/private key pair that can be used to sign and encry
 
 ## What is an ao message/dataItem?
 
-You often see the terms `message` and `dataItem` used interchangeably in the documentation, a message is a data-protocol type in ao that uses the dataItem specification to describe the messages intent. A dataItem is defined in the `ans-104` bundle specification. A dataItem is the preferred format of storage for arweave bundles. A bundle is a collection of these signed dataItems. A message implements specific tags using the dataItem specification. When developers send messages to ao, they are publishing dataItems on arweave.
+You often see the terms `message` and `dataItem` used interchangeably in the documentation, a message is a data-protocol type in ao that uses the dataItem specification to describe the messages intent. A dataItem is defined in the `ANS-104` bundle specification. A dataItem is the preferred format of storage for arweave bundles. A bundle is a collection of these signed dataItems. A message implements specific tags using the dataItem specification. When developers send messages to ao, they are publishing dataItems on arweave.
 
-> 🎓 To learn more about messages [click here](/concepts/messages) and to learn more about ans-104 dataItems [click here](https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw)
+> 🎓 To learn more about messages [click here](/concepts/messages) and to learn more about ANS-104 dataItems [click here](https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw)
 
 ## What is a signer?
 

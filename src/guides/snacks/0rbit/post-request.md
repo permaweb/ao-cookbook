@@ -1,7 +1,7 @@
 ---
 prev:
   text: "0rbit"
-  link: "/guides/0rbit/get-request"
+  link: "/guides/snacks/0rbit/get-request"
 next:
   text: "BetterIDEa IDE"
   link: "../betteridea/index.md"

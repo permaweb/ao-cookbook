@@ -49,8 +49,8 @@ The cookbook is organized into five main sections:
    - Key sections:
      - [aos Documentation](/guides/aos/index.html): Complete compute system guide
      - [AOConnect](/guides/aoconnect/aoconnect.html): JavaScript/library integration
-     - [0rbit Integration](/guides/0rbit/index.html): Distributed storage system
-     - [BetterIDEa](/guides/betteridea/index.html): IDE setup and usage
+     - [0rbit Integration](/guides/snacks/0rbit/index.html): Distributed storage system
+     - [BetterIDEa](/references/betteridea/index.html): IDE setup and usage
      - [Additional Technologies](/guides/snacks/sqlite.html): SQLite and other integrations
 
 4. [Concepts](/concepts/index.html)
@@ -114,7 +114,7 @@ aos provides several core modules:
 
 ## Optional
 
-- [Community Resources](/community/index.html): User-contributed guides and tools
+- [Community Resources](/references/community): User-contributed guides and tools
 - [Release Notes](/releasenotes/index.html): Version history and changes
 - [Contributing](/CONTRIBUTING.html): Guidelines for contributors
 - [Translations](/languages/README.html): Documentation in other languages
@@ -195,8 +195,7 @@ aos provides several core modules:
 - /guides/aoconnect/calling-dryrun: Guide to testing and simulating operations
 - /guides/aoconnect/monitoring-cron: Complete guide to scheduled task monitoring
 - /guides/aoconnect/assign-data: Detailed guide to data assignment and management
-- /guides/0rbit/index: Complete guide to integrating with 0rbit storage system
-- /guides/betteridea/index: Comprehensive guide to the BetterIDEa development environment
+- /guides/snacks/0rbit/index: Complete guide to integrating with 0rbit storage system
 - /guides/snacks/sqlite: Detailed guide to SQLite integration and usage
 
 ### References
@@ -212,11 +211,11 @@ aos provides several core modules:
 - /references/cron: Complete guide to scheduled task system
 - /references/editor-setup: Detailed guide to development environment configuration
 - /references/community: Comprehensive guide to community resources and tools
+- /references/betteridea/index: Comprehensive guide to the BetterIDEa development environment
 
 ### Additional Resources
 - /mainnet/index: Information about AO Mainnet and its capabilities
 - /mainnet/ao-core-relay: Guide to using AO Core Relay for mainnet interactions
-- /community/index: User-contributed guides and tools
 - /releasenotes/index: Comprehensive changelog of all AO versions and updates
 - /CONTRIBUTING: Detailed guidelines for contributing to AO development
 - /languages/README: Complete guide to documentation translation process 

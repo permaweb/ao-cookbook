@@ -44,7 +44,7 @@ Helpful tools and storage solutions:
 
 ## Additional Resources
 
-- [Community Resources](/community/index) - Connect with the AO community
+- [Community Resources](/references/community) - Connect with the AO community
 - [Release Notes](/releasenotes/index) - Stay updated on the latest changes and features
 
 ## Navigation

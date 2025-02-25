@@ -32,6 +32,16 @@ export const localeConfig = (langCode) => ({
     ],
     sidebar: [
       {
+        text: get_i18n_str(langCode, "mainnet"),
+        link: get_i18n_link(langCode, "/mainnet/index"),
+        items: [
+          {
+            text: get_i18n_str(langCode, "mainnet-ao-core-relay"),
+            link: get_i18n_link(langCode, "/mainnet/ao-core-relay"),
+          },
+        ],
+      },
+      {
         text: get_i18n_str(langCode, "welcome"),
         link: get_i18n_link(langCode, "/welcome/index"),
         items: [
@@ -365,6 +375,10 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "guides-assign-data"),
                 link: get_i18n_link(langCode, "/guides/aoconnect/assign-data"),
               },
+              {
+                text: get_i18n_str(langCode, "guides-signers"),
+                link: get_i18n_link(langCode, "/guides/aoconnect/signers"),
+              },
             ],
           },
           {
@@ -372,8 +386,37 @@ export const localeConfig = (langCode) => ({
             collapsed: true,
             items: [
               {
+                text: get_i18n_str(langCode, "guides-dev-cli"),
+                link: get_i18n_link(langCode, "/guides/dev-cli/index"),
+              },
+              {
                 text: get_i18n_str(langCode, "guides-sqlite"),
                 link: get_i18n_link(langCode, "/guides/snacks/sqlite"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-weavedrive"),
+                link: get_i18n_link(langCode, "/guides/snacks/weavedrive"),
+              },
+              {
+                text: get_i18n_str(langCode, "guides-0rbit"),
+                link: get_i18n_link(langCode, "/guides/snacks/0rbit/index"),
+                collapsed: true,
+                items: [
+                  {
+                    text: get_i18n_str(langCode, "guides-0rbit-get-request"),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/snacks/0rbit/get-request",
+                    ),
+                  },
+                  {
+                    text: get_i18n_str(langCode, "guides-0rbit-post-request"),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/snacks/0rbit/post-request",
+                    ),
+                  },
+                ],
               },
             ],
           },
@@ -407,12 +450,6 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "concepts-units"),
                 link: get_i18n_link(langCode, "/concepts/units"),
               },
-            ],
-          },
-          {
-            text: "Technical Specifications",
-            collapsed: true,
-            items: [
               {
                 text: get_i18n_str(langCode, "concepts-specs"),
                 link: get_i18n_link(langCode, "/concepts/specs"),
@@ -420,7 +457,7 @@ export const localeConfig = (langCode) => ({
             ],
           },
           {
-            text: "AO Fundamentals",
+            text: "Programming Environment",
             collapsed: true,
             items: [
               {
@@ -495,19 +532,22 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "references-editor-setup"),
                 link: get_i18n_link(langCode, "/references/editor-setup"),
               },
-            ],
-          },
-          {
-            text: "Community Resources",
-            collapsed: true,
-            items: [
               {
-                text: get_i18n_str(langCode, "references-community"),
-                link: get_i18n_link(langCode, "/references/community"),
+                text: get_i18n_str(langCode, "guides-betteridea"),
+                link: get_i18n_link(langCode, "/references/betteridea/index"),
               },
             ],
           },
+          {
+            text: get_i18n_str(langCode, "references-community"),
+            link: get_i18n_link(langCode, "/references/community"),
+          },
         ],
+      },
+      {
+        text: get_i18n_str(langCode, "releasenotes"),
+        link: get_i18n_link(langCode, "/releasenotes/index"),
+        items: [],
       },
     ],
   },
