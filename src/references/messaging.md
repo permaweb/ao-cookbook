@@ -215,13 +215,17 @@ local reply = ao.send({
 
 ## Message Properties
 
-Three key properties track messages across processes:
+The following properties track message chains and ensure proper routing:
 
-- `X-Reference`: Links related messages in a conversation chain
-- `X-Origin`: Remembers who started the conversation
-- `Reply-To`: Specifies where to send responses
+- `Reference`: Unique identifier automatically assigned to each message.
+- `Reply-To`: Specifies the destination for responses.
+- `X-`: Any property starting with `X-` denotes a 'forwarded' tag and is automatically managed by the system.
+  - `X-Reference`: Maintains the conversation chain across replies and forwards.
+  - `X-Origin`: Tracks the conversation originator.
 
-The system handles all data conversion and tracking automatically.
+The system automatically manages these properties when using `msg.reply` and `msg.forward`. Check
+out the [source code](https://github.com/permaweb/aos/blob/e9fc10c54b4f21302ee8d084d31f3383b46857b2/process/process.lua#L377-L406) to see exactly how these
+properties are managed.
 
 ## Blocking vs. Non-Blocking
 
