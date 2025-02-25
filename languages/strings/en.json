@@ -30,7 +30,7 @@
   "guides-aos-intro": "Introduction",
   "guides-aos-installing": "Installing",
   "guides-aos-cli": "CLI",
-  "guides-aos-load": ".load",
+  "guides-aos-load": "Load Lua Files",
   "guides-aos-token": "Build a Token",
   "guides-aos-prompt": "Prompt Customization",
   "guides-aos-pingpong": "A Ping-Pong Server",

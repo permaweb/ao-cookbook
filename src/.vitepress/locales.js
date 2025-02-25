@@ -196,6 +196,10 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(langCode, "/guides/aos/prompt"),
               },
               {
+                text: get_i18n_str(langCode, "guides-aos-load"),
+                link: get_i18n_link(langCode, "/guides/aos/load"),
+              },
+              {
                 text: get_i18n_str(langCode, "guides-aos-pingpong"),
                 link: get_i18n_link(langCode, "/guides/aos/pingpong"),
               },
@@ -214,10 +218,6 @@ export const localeConfig = (langCode) => ({
               {
                 text: get_i18n_str(langCode, "guides-aos-faq"),
                 link: get_i18n_link(langCode, "/guides/aos/faq"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-aos-load"),
-                link: get_i18n_link(langCode, "/guides/aos/load"),
               },
               {
                 text: get_i18n_str(langCode, "guides-aos-token"),
