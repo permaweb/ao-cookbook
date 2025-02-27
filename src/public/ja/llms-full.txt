@@ -1,0 +1,1249 @@
+# JA Technical Documentation
+
+Generated: 2025-02-27T16:49:09.441Z
+
+This file contains technical reference documentation and release notes.
+
+
+
+# API AND FUNCTION REFERENCES
+
+
+
+## aoモジュール
+Source: https://cookbook_ao.arweave.net/ja/references/ao.html
+
+バージョン: 0.0.3
+
+`ao`プロセスの通信はメッセージによって処理され、各プロセスはANS-104 DataItems形式でメッセージを受信し、以下の一般的な操作を実行できる必要があります。
+
+- isTrusted(msg) - このメッセージが信頼できるかどうかを確認
+- send(msg) - 別のプロセスにメッセージを送信
+- spawn(module, msg) - プロセスを生成
+
+このライブラリの目的は、`ao`開発者ツールキットの中でこのコア機能を提供することです。開発者として、このライブラリを利用するかどうかは任意ですが、デフォルトで統合されています。
+
+## プロパティ
+
+<!-- # ao Module
+
+version: 0.0.3
+
+`ao` process communication is handled by messages, each process receives messages in the form of ANS-104 DataItems, and needs to be able to do the following common operations.
+
+- isTrusted(msg) - check to see if this message trusted?
+- send(msg) - send message to another process
+- spawn(module, msg) - spawn a process
+
+The goal of this library is to provide this core functionality in the box of the `ao` developer toolkit. As a developer you have the option to leverage this library or not, but it integrated by default.
+
+## Properties -->
+
+| Name        | Description                                                                                                  | Type   |
+| ----------- | ------------------------------------------------------------------------------------------------------------ | ------ |
+| id          | Process Identifier (TXID)                                                                                    | string |
+| \_module    | Module Identifier (TXID)                                                                                     | string |
+| authorities | Set of Trusted TXs                                                                                           | string |
+| Authority   | Identifiers that the process is able to accept transactions from that are not the owner or the process (0-n) | string |
+| \_version   | The version of the library                                                                                   | string |
+| env         | Evaluation Environment                                                                                       | string |
+| outbox      | Holds Messages and Spawns for response                                                                       | object |
+
+## メソッド
+
+### send(msg: Message\<table>) : Message\<table>
+
+send関数は、メッセージオブジェクトまたは部分的なメッセージオブジェクトを受け取り、オブジェクトに追加の`ao`特有のタグを追加して完全なメッセージオブジェクトを返します。また、ao.outbox.Messagesテーブルにも挿入されます。
+
+**パラメータ**
+
+- msg
+
+スキーマ
+
+<!-- ## Methods
+
+### send(msg: Message\<table>) : Message\<table>
+
+The send function takes a Message object or partial message object, it adds additional `ao` specific tags to the object and returns a full Message object, as well as insert into the ao.outbox.Messages table.
+
+**parameters**
+
+- msg
+
+Schema -->
+
+```json
+{
+    "type": "object",
+    "properties": {
+        "Target": {
+            "type": "string",
+            "description": "Process/Wallet to send message to"
+        },
+        "Data": {
+            "type": "any",
+            "description": "data to send in message DataItem"
+        },
+        "Tags": {
+            "type": "object or array<name,value>"
+            "description": "This property can be an array of name,value objects or an object"
+        }
+    }
+}
+```
+
+Example 1
+
+```lua
+local message = ao.send({
+    Target = msg.From,
+    Data = "ping",
+    Tags = {
+        {
+            name = "Content-Type",
+            value = "text/plain"
+        }
+    }
+})
+```
+
+Example 2
+
+```lua
+local message = ao.send({
+    Target = msg.From,
+    Data = "ping",
+    Tags = {
+        "Content-Type" = "text/plain"
+    }
+})
+```
+
+**returns**
+
+Schema
+
+```json
+{
+    "type": "object",
+    "properties": {
+        "Target": {
+            "type": "string"
+        },
+        "Data": {
+            "type": "any"
+        },
+        "Tags": {
+            "type": "array"
+            "description": "name/value array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "value":{"type":"string"}
+                }
+            }
+        }
+    }
+}
+```
+
+### spawn(module : string, spawn : Spawn\<table>) : Spawn\<table>
+
+`spawn`関数は、最初の引数としてモジュールのTXIDと、完全または部分的なSpawnテーブルを受け取ります。結果として、完全なSpawnテーブルが返されます。また、spawn関数は一意の参照識別子を持つ`Ref_`タグも生成します。
+
+**パラメータ**
+
+<!-- ### spawn(module : string, spawn : Spawn\<table>) : Spawn\<table>
+
+The `spawn` function takes a module TXID as the first argument and a full or parital Spawn table. The result will return a full Spawn table. The spawn function will also generate a `Ref_` tag with a unique reference identifier.
+
+**parameters** -->
+
+| Name   | Description                                                                             | Type   |
+| ------ | --------------------------------------------------------------------------------------- | ------ |
+| module | The TXID that identifies the module binary to use to instaniate the process with        | string |
+| spawn  | The `spawn` full or parital table object that contains the `Data` and `Tags` properties | table  |
+
+Schema
+
+module
+
+```json
+{
+  "type": "string"
+}
+```
+
+spawn
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "Data": { "type": "any" },
+    "Tags": {
+      "type": "object or array",
+      "description": "can be either <name,value> array, or object"
+    }
+  }
+}
+```
+
+**returns**
+
+Schema
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "Data": { "type": "any" },
+    "Tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "value": { "type": "string" }
+        }
+      }
+    }
+  }
+}
+```
+
+### isTrusted(msg : Message\<table>) : boolean
+
+プロセスを生成する際に、0個以上の権限タグを指定できます。aoライブラリは、これらの値を`authorities`と呼ばれる`ao`プロパティのテーブル配列に追加します。このセットは、ao.TN.1の`Proof of Authority`機能を提供します。メッセージが`handle`関数に到着すると、開発者は`ao.isTrusted`を呼び出して、そのメッセージが信頼できるソースからのものであるかを確認できます。
+
+<!-- ### isTrusted(msg : Message\<table>) : boolean
+
+When spawning a process, 0 or more Authority Tags can be supplied, the ao library adds each of these values to a table array on the `ao` properties called `authorities`. This set provides the `Proof of Authority` feature for ao.TN.1. When a message arrives in the `handle` function, the developer can call `ao.isTrusted` to verify if the message is from a trusted source.
+ -->
+
+**parameters**
+
+| Name | Description                                 | Type  |
+| ---- | ------------------------------------------- | ----- |
+| msg  | Message to check if trusted by this process | table |
+
+Schema
+
+```json
+{
+    "type": "object",
+    "properties": {
+        "Target": {
+            "type": "string"
+        },
+        "Data": {
+            "type": "any"
+        },
+        "Tags": {
+            "type": "array"
+            "description": "name/value array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "value":{"type":"string"}
+                }
+            }
+        }
+    }
+}
+```
+
+## コミュニティ
+Source: https://cookbook_ao.arweave.net/ja/references/community.html
+
+[Autonomous Finance](https://www.autonomous.finance/)
+
+- Autonomous Financeは、aoネットワーク内の金融インフラの複雑さに焦点を当てた、専用の研究および技術機関です。
+
+[BetterIdea](https://betteridea.dev/)
+
+- BetterIDEaを使用して、より高速でスマート、そして効率的に開発しましょう。AO開発向けの究極のネイティブWeb IDEです。
+
+[Orbit](https://www.0rbit.co/)
+
+- 0rbitは、aoプロセスにウェブからのデータを提供します。aoの力と0rbitノードを活用することで、ユーザーは0rbit aoにメッセージを送り、0rbitノードがデータを取得し、ユーザープロセスがそのデータを受け取ります。
+
+## Cronメッセージ
+Source: https://cookbook_ao.arweave.net/ja/references/cron.html
+
+aoには、指定した間隔でメッセージを生成する機能があります。この間隔は、秒、分、時間、またはブロック単位で設定できます。これらのメッセージは、監視プロセスによって自動的に評価され、時間の経過とともにプロセスがこれらのメッセージを評価するように通知します。その結果、リアルタイムで全aoネットワークや外部ネットワークのオラクルと通信できるプロセスが実現されます。
+
+## プロセスでのcronの設定
+
+これらのcronメッセージを作成する最も簡単な方法は、aosコンソールで新しいプロセスを生成し、時間間隔を定義することです。
+
+```sh
+aos [myProcess] --cron 5-minutes
+```
+
+<!-- # Cron Messages
+
+ao has the ability to generate messages on a specified interval, this interval could be seconds, minutes, hours, or blocks. These messages automatically get evaluated by a monitoring process to inform the Process to evalute these messages over time. The result is a real-time Process that can communicate with the full ao network or oracles in the outside network.
+
+## Setting up cron in a process
+
+The easiest way to create these cron messages is by spawning a new process in the aos console and defining the time interval.
+
+```sh
+aos [myProcess] --cron 5-minutes
+``` -->
+
+<!-- When spawning a new process, you can pass a cron argument in your command-line followed by the interval you would like the cron to tick. If you want the messages to trigger in real-time you must initiate a monitor event. In aos, you simply call `.monitor` and it will kick off a worker process on the `mu` that triggers the cron messages from the `cu`. Then your Process will receive the cron messages every `x-interval`. -->
+
+新しいプロセスを生成する際、コマンドラインでcron引数を指定し、その後にcronの間隔を設定します。メッセージをリアルタイムでトリガーしたい場合は、モニターイベントを開始する必要があります。aosでは、単に`.monitor`を呼び出すことで、`mu`上でワーカープロセスが開始され、`cu`からcronメッセージがトリガーされます。その後、プロセスは指定した`x-interval`ごとにcronメッセージを受信します。
+
+```lua
+.monitor
+```
+
+<!-- If you wish to stop triggering the cron messages simply call `.unmonitor` and this will stop the triggering process, but the next time you send a message, the generated cron messages will still get created and processed.
+
+## Handling cron messages
+
+Every cron message has an `Action` tag with the value `Cron`. [Handlers](handlers.md) can be defined to perform specific tasks autonomously, each time a cron message is received. -->
+
+cronメッセージのトリガーを停止したい場合は、単に`.unmonitor`を呼び出すだけでトリガープロセスが停止します。ただし、次回メッセージを送信すると、生成されたcronメッセージは依然として作成され、処理されます。
+
+## cronメッセージの処理
+
+すべてのcronメッセージには、値が`Cron`の`Action`タグが付いています。[Handlers](handlers.md)を定義して、cronメッセージが受信されるたびに自律的に特定のタスクを実行させることができます。
+
+```lua
+Handlers.add(
+  "CronTick", -- handler name
+  Handlers.utils.hasMatchingTag("Action", "Cron"), -- handler pattern to identify cron message
+  function () -- handler task to execute on cron message
+    -- do something
+  end
+)
+```
+
+<!-- Cron messages are a powerful utility that can be used to create "autonomous agents" with expansive capabilities. -->
+
+Cronメッセージは、広範な機能を持つ「自律型エージェント」を作成するために使用できる強力なユーティリティです。
+
+## aoを使ってArweaveからデータにアクセスする
+Source: https://cookbook_ao.arweave.net/ja/references/data.html
+
+<!-- # Accessing Data from Arweave with ao
+
+There may be times in your ao development workflow that you want to access data from arweave. With ao your process can send an assignment instructing the network to provide that data to your Process.
+
+In order, to request data from arweave, you simply call Assign with a list of processes you would like to assign the data to, and a Message which is the txid of a Message.
+
+```lua
+
+Assign({
+  Processes = { ao.id },
+  Message = 'message-id'
+})
+
+``` -->
+
+
+
+aoの開発ワークフローにおいて、Arweaveからデータにアクセスしたい時があるかもしれません。aoでは、プロセスがネットワークにデータをプロセスに提供するよう指示するアサインメントを送信できます。
+
+Arweaveからデータをリクエストするには、データを割り当てたいプロセスのリストと、メッセージ（メッセージのtxid）を指定してAssignを呼び出すだけです。
+
+```lua
+Assign({
+  Processes = { ao.id },
+  Message = 'message-id'
+})
+```
+
+また、Sendを呼び出して、AssignmentsパラメータにプロセスIDのテーブルを指定することもできます。これにより、ネットワークはメッセージを生成し、Assignmentsリスト内のすべてのプロセスIDに割り当てるよう指示されます。
+
+<!-- You can also call Send with a table of process ids in the Assignments parameter. This will tell the network to generate the Message and then assign it to all the process ids in the Assignments list. -->
+
+```lua
+Send({
+  Target = ao.id,
+  Data = 'Hello World',
+  Assignments = { 'process-id-1', 'process-id-2' }
+})
+```
+
+## なぜArweaveからデータを取得するのか？
+
+<!-- Your Process may need to access data from a message to make a decision about something, or you may want to add features to your Process via the `data` load feature. Or you may want to access a Message from a process without replicating the entire message. -->
+
+あなたのプロセスは、何かを決定するためにメッセージからデータにアクセスする必要があるかもしれません。また、`data`ロード機能を使用してプロセスに機能を追加したい場合もあります。あるいは、メッセージ全体を複製することなく、他のプロセスからメッセージにアクセスしたい場合もあるでしょう。
+
+## エディタのセットアップ
+Source: https://cookbook_ao.arweave.net/ja/references/editor-setup.html
+
+aoの組み込み関数やユーティリティをすべて覚えるのは難しい場合があります。開発者体験を向上させるために、お気に入りのテキストエディタに[Lua Language Server](https://luals.github.io)拡張機能をインストールし、[ao addon](https://github.com/martonlederer/ao-definitions)を追加することをお勧めします。これにより、すべての組み込みのaos[モジュール](../guides/aos/modules/index.md)や[グローバル変数](../guides/aos/intro.md#globals)がサポートされます。
+
+## VS Code
+
+[sumneko.lua](https://marketplace.visualstudio.com/items?itemName=sumneko.lua)拡張機能をインストールします：
+
+1. 拡張機能マーケットプレイスで「Lua」を検索し、sumnekoの拡張機能を見つけます
+2. 拡張機能をダウンロードしてインストールします
+3. `Shift + Command + P`（Mac）/ `Ctrl + Shift + P`（Windows/Linux）でVS Codeのコマンドパレットを開き、次のコマンドを実行します：
+
+```
+> Lua: Open Addon Manager
+```
+
+4. Addon Managerで「ao」を検索すると、最初に表示されるはずです。「Enable」をクリックして、オートコンプリートを楽しんでください！
+
+## その他のエディタ
+
+1. あなたのエディタが[Language Server Protocol](https://microsoft.github.io/language-server-protocol/implementors/tools/)をサポートしていることを確認してください
+2. [luals.github.io](https://luals.github.io/#install)の指示に従ってLua Language Serverをインストールします
+3. Language Serverに「ao」アドオンをインストールします
+
+## BetterIDEa
+
+[BetterIDEa](https://ide.betteridea.dev)は、ao上での開発のためのカスタムWebベースのIDEです。
+
+ao定義が組み込まれたLua Language Serverを提供しているため、何もインストールする必要はありません。IDEを開いてコーディングを開始するだけです！
+
+機能には以下が含まれます：
+
+- コード補完
+- セルベースのノートブックUIによる迅速な開発
+- 簡単なプロセス管理
+- MarkdownおよびLatexセルのサポート
+- aoプロセスを介して誰とでもプロジェクトを共有
+- [aoパッケージマネージャ](https://apm.betteridea.dev)との緊密な統合
+
+IDEのさまざまな機能や統合についての詳細は、[ドキュメント](https://docs.betteridea.dev)をご覧ください。
+
+## Eval
+Source: https://cookbook_ao.arweave.net/ja/references/eval.html
+
+各AOプロセスには、受信した新しいコードを評価するオンボードの`Eval`ハンドラが含まれています。このハンドラにより、プロセスは受信コードに対して適切なアクションを決定し、そのメッセージがプロセスの所有者からのものであるかを確認します。
+
+`Eval`ハンドラは、受信メッセージから受け取ったデータを評価するために手動でトリガーすることもできます。
+
+## NodeJSでEvalメッセージを送信する
+
+```js
+import { readFileSync } from "node:fs";
+import { message, createDataItemSigner } from "@permaweb/aoconnect";
+
+const wallet = JSON.parse(
+  readFileSync("/path/to/arweave/wallet.json").toString(),
+);
+
+await message({
+  // The arweave TXID of the process, this will become the "target".
+  process: "process-id", // Replace with the actual process ID
+
+  // Tagging the Eval Action so the recieving process evaluates and adds the new Handler from the Data field.
+  tags: [
+    { name: "Action", value: "Eval" },
+    {
+      name: "Data",
+      value: 'Handlers.add("ping", Handlers.utils.reply("pong"))',
+    },
+  ],
+
+  // A signer function used to build the message "signature"
+  signer: createDataItemSigner(wallet),
+})
+  .then(console.log)
+  .catch(console.error);
+```
+
+## ブラウザでEvalメッセージを送信する
+
+```js
+import { message, createDataItemSigner } from "@permaweb/aoconnect";
+
+await message({
+  // The arweave TXID of the process, this will become the "target".
+  process: "process-id", // Replace with the actual process ID
+
+  // Tagging the Eval Action so the recieving process evaluates and adds the new Handler from the Data field.
+  tags: [
+    { name: "Action", value: "Eval" },
+    {
+      name: "Data",
+      value: 'Handlers.add("ping", Handlers.utils.reply("pong"))',
+    },
+  ],
+
+  // A signer function used to build the message "signature"
+  signer: createDataItemSigner(globalThis.arweaveWallet),
+})
+  .then(console.log)
+  .catch(console.error);
+```
+
+## ハンドラ (バージョン 0.0.5)
+Source: https://cookbook_ao.arweave.net/ja/references/handlers.html
+
+<!-- # Handlers (Version 0.0.5)
+
+## Overview
+
+The Handlers library provides a flexible way to manage and execute a series of process functions based on pattern matching. An AO process responds based on receiving Messages, these messages are defined using the Arweave DataItem specification which consists of Tags, and Data. Using the Handlers library, you can define a pipeline of process evaluation based on the attributes of the AO Message. Each handler items consists of a pattern function, a handle function, and a name. This library is suitable for scenarios where different actions need to be taken based on varying input criteria.
+
+## Concepts
+
+### Pattern Matching Tables
+
+Pattern Matching Tables is a concept of providing a Table representation of the matching shape of the incoming message. Here are the rules: -->
+
+
+
+## 概要
+
+Handlersライブラリは、パターンマッチングに基づいて一連のプロセス関数を管理・実行する柔軟な方法を提供します。AOプロセスは、メッセージを受信して応答します。これらのメッセージは、タグとデータで構成されたArweave DataItem仕様を使用して定義されます。Handlersライブラリを使用することで、AOメッセージの属性に基づいてプロセス評価のパイプラインを定義できます。各ハンドラアイテムは、パターン関数、ハンドル関数、および名前で構成されています。このライブラリは、さまざまな入力条件に基づいて異なるアクションを実行する必要があるシナリオに適しています。
+
+## コンセプト
+
+### パターンマッチングテーブル
+
+パターンマッチングテーブルは、受信メッセージのマッチング形状をテーブル形式で提供する概念です。以下がそのルールです：
+
+```lua
+
+{ "Action" = "Do-Something" } -- 含めるべきタグのテーブルを通じて、任意のメッセージをマッチング
+
+{ "Recipient" = '_' } -- 受信者タグが任意の値を持つメッセージをマッチング
+
+{ "Quantity" = "%d+" } -- Luaの文字列マッチ（正規表現に似ている）を使用してタグを検証
+
+{ "Quantity" = function(v) return tonumber(v) ~= Nil end } -- タグに関数を適用してチェック。Nilやfalseはマッチしない
+
+```
+
+Example:
+
+Actionが「Balance」に等しいすべてのメッセージにマッチさせたい場合：
+
+```lua
+{ Action = "Balance" }
+```
+
+Quantityが数値であるすべてのメッセージにマッチさせたい場合：
+
+```lua
+{ Quantity = "%d+" }
+```
+
+### リゾルバ
+
+リゾルバは、各キーがパターンマッチングテーブルであり、値がマッチしたキーに基づいて実行される関数であるテーブルです。これにより、開発者はリゾルバプロパティ内でcaseのようなステートメントを作成できます。
+
+```lua
+Handlers.add("foobarbaz",
+  { Action = "Update" }, {
+  [{ Status = "foo" }] = function (msg) print("foo") end,
+  [{ Status = "bar" }] = function (msg) print("bar") end,
+  [{ Status = "baz" }] = function (msg) print("baz") end
+})
+```
+
+## モジュール構造
+
+- `Handlers._version`: Handlersライブラリのバージョンを表す文字列。
+- `Handlers.list`: 登録されたハンドラのリストを格納するテーブル。
+
+## ハンドラメソッドの共通関数シグネチャ
+
+<!-- - `Handlers._version`: String representing the version of the Handlers library.
+- `Handlers.list`: Table storing the list of registered handlers.
+
+## Handler method common function signature -->
+
+| Parameter          | Type                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------ | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name               | string                       | The identifier of the handler item in the handlers list.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| pattern            | Table or Function            | This parameter can take a table that specifies a pattern that the message MUST match, for example `{ Action = "Balance", Recipient = "_" }` this table describes a message that has a Tag called action and it equals the string "Balance", and the message MUST have a Recipient Tag with a value. If you are unable to add a pattern via a table, you can also use the `function` which receives the message DataItem as its argument and you can return a `true`, `false` or `"continue"` result. The `true` result tells the Handlers evaluation pipeline to invoke this handler and exit out of the pipeline. The `false` result tells the Handlers evaluation pipeline to skip this handler and try to find a pattern matched by the next Handler item in the pipeline. Finally, the `"continue"` informs the Handlers evaluation to invoke this handler and continue evaluating. |
+| handler            | Table (Resolver) or Function | This parameter can take a table that acts as a conditional that invokes a function based on a pattern matched key. or a Function that takes the message DataItem as an argument and performs some business logic.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| maxRuns (optional) | number                       | As of 0.0.5, each handler function takes an optional function to define the amount of times the handler should match before it is removed. The default is infinity.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+<!--
+## Functions
+
+### `Handlers.add(name, pattern, handler)`
+
+adds a new handler or updates an existing handler by name
+
+### `Handlers.append(name, pattern, handle)`
+
+Appends a new handler to the end of the handlers list.
+
+### `Handlers.once(name, pattern, handler)`
+
+Only runs once when the pattern is matched.
+
+### `Handlers.prepend(name, pattern, handle)`
+
+Prepends a new handler to the beginning of the handlers list.
+
+### `Handlers.before(handleName)`
+
+Returns an object that allows adding a new handler before a specified handler.
+
+### `Handlers.after(handleName)`
+
+Returns an object that allows adding a new handler after a specified handler.
+
+### `Handlers.remove(name)`
+
+Removes a handler from the handlers list by name.
+
+## Examples
+
+### Using pattern Table -->
+
+## 関数
+
+### `Handlers.add(name, pattern, handler)`
+
+新しいハンドラを追加するか、既存のハンドラを名前で更新します。
+
+### `Handlers.append(name, pattern, handle)`
+
+新しいハンドラをハンドラリストの最後に追加します。
+
+### `Handlers.once(name, pattern, handler)`
+
+パターンがマッチした場合に一度だけ実行されます。
+
+### `Handlers.prepend(name, pattern, handle)`
+
+新しいハンドラをハンドラリストの最初に追加します。
+
+### `Handlers.before(handleName)`
+
+指定されたハンドラの前に新しいハンドラを追加するオブジェクトを返します。
+
+### `Handlers.after(handleName)`
+
+指定されたハンドラの後に新しいハンドラを追加するオブジェクトを返します。
+
+### `Handlers.remove(name)`
+
+名前でハンドラをハンドラリストから削除します。
+
+## 例
+
+### パターンテーブルの使用
+
+```lua
+Handlers.add("ping",
+  { Action = "ping" },
+  function (msg)
+    print('ping')
+    msg.reply({Data = "pong" })
+  end
+)
+```
+
+### Using resolvers
+
+```lua
+Handlers.add(
+  "foobarbaz",
+  { Action = "Speak" }, {
+  [{Status = "foo"}] = function (msg) print("foo") end,
+  [{Status = "bar"}] = function (msg) print("bar") end,
+  [{Status = "baz"}] = function (msg) print("baz") end
+})
+```
+
+### Using functions
+
+```lua
+Handlers.add("example",
+  function (msg)
+    return msg.Action == "Speak"
+  end,
+  function (msg)
+    print(msg.Status)
+  end
+)
+```
+
+<!--
+## Notes
+
+- Handlers are executed in the order they appear in `handlers.list`.
+- The pattern function should return false to skip the handler, true to break after the handler is executed, or `"continue"` to execute handler and continue with the next handler.
+
+## Handlers.utils
+
+The Handlers.utils module provides two functions that are common matching patterns and one function that is a common handle function.
+
+- hasMatchingData(data)
+- hasMatchingTag(name, value)
+- reply(txt)
+
+### Handlers.utils.hasMatchingData(data : string)
+
+This helper returns a function that requires a message argument, so you can drop this into the pattern argument of any handler. The function compares the data on the incoming message with the string provided as an argument. -->
+
+## 注意事項
+
+- ハンドラは`handlers.list`に表示される順序で実行されます。
+- パターン関数は、ハンドラをスキップするには`false`を返し、ハンドラ実行後に終了するには`true`を返し、次のハンドラを実行するには`"continue"`を返す必要があります。
+
+## Handlers.utils
+
+Handlers.utilsモジュールは、一般的なマッチングパターンの2つの関数と、一般的なハンドル関数を1つ提供します。
+
+- hasMatchingData(data)
+- hasMatchingTag(name, value)
+- reply(txt)
+
+### Handlers.utils.hasMatchingData(data : string)
+
+このヘルパーはメッセージ引数を必要とする関数を返すため、任意のハンドラのパターン引数に組み込むことができます。この関数は、受信メッセージのデータと引数として提供された文字列を比較します。
+
+```lua
+Handlers.add("ping",
+    Handlers.utils.hasMatchingData("ping"),
+    ...
+)
+```
+
+<!--
+If a message comes into the process with data set to ping, this handler will match on it and invoke the handle function.
+
+### Handlers.hasMatchingTag(name : string, value : string)
+
+This helper returns a function that requires a message argument, so you can drop this into any pattern argument on the Handlers module. The function compares the Tag Name and Value, if they are equal then it invokes the handle function. -->
+
+メッセージがデータに`ping`が設定された状態でプロセスに入ってくると、このハンドラはそれにマッチし、ハンドル関数が実行されます。
+
+### Handlers.hasMatchingTag(name : string, value : string)
+
+このヘルパーはメッセージ引数を必要とする関数を返すため、Handlersモジュールの任意のパターン引数に組み込むことができます。この関数は、タグ名と値を比較し、それらが等しい場合にハンドル関数を呼び出します。
+
+```lua
+Handlers.add("ping",
+    Handlers.utils.hasMatchingData("ping"),
+    ...
+)
+```
+
+<!-- ### Handlers.reply(text : string)
+
+This helper is a simple handle function, it basically places the text value in to the Data property of the outbound message. -->
+
+### Handlers.reply(text : string)
+
+このヘルパーはシンプルなハンドル関数で、基本的にテキストの値を送信メッセージのDataプロパティに設定します。
+
+```lua
+Handlers.add("ping",
+    Handlers.utils.hasMatchingData("ping"),
+    Handlers.utils.reply("pong")
+)
+```
+
+## 参考資料
+Source: https://cookbook_ao.arweave.net/ja/references/index.html
+
+## 目次
+
+- [Lua](lua)
+
+## Luaに触れてみよう
+Source: https://cookbook_ao.arweave.net/ja/references/lua.html
+
+<!-- # Meet Lua
+
+### Understanding Lua
+
+- **Background**: Lua is a lightweight, high-level, multi-paradigm programming language designed primarily for embedded systems and clients. It's known for its efficiency, simplicity, and flexibility.
+- **Key Features**: Lua offers powerful data description constructs, dynamic typing, efficient memory management, and good support for object-oriented programming.
+
+### Setting Up
+
+1. **Installation**: Visit [Lua's official website](http://www.lua.org/download.html) to download and install Lua.
+2. **Environment**: You can use a simple text editor and command line, or an IDE like ZeroBrane Studio or Eclipse with a Lua plugin.
+
+### Basic Syntax and Concepts (in aOS)
+
+- **Hello World**:
+  ```lua
+  "Hello, World!"
+  ``` -->
+
+
+
+### Luaの理解
+
+- **背景**: Luaは、主に組み込みシステムやクライアント向けに設計された軽量で高水準の多パラダイムプログラミング言語です。その効率性、シンプルさ、柔軟性で知られています。
+- **主な特徴**: Luaは強力なデータ記述構造、動的型付け、効率的なメモリ管理、そしてオブジェクト指向プログラミングの良好なサポートを提供します。
+
+### セットアップ
+
+1. **インストール**: [Luaの公式ウェブサイト](http://www.lua.org/download.html)を訪れてLuaをダウンロードし、インストールします。
+2. **環境**: シンプルなテキストエディタとコマンドライン、またはZeroBrane StudioやLuaプラグインを備えたEclipseのようなIDEを使用できます。
+
+### 基本構文とコンセプト（aOSで）
+
+- **Hello World**:
+
+  ```lua
+  "Hello, World!"
+  ```
+
+- **変数と型**: Luaは動的型付けです。基本型には、`nil`、`boolean`、`number`、`string`、`function`、`userdata`、`thread`、`table`があります。
+- **制御構造**: `if`、`while`、`repeat...until`、`for`が含まれます。
+- **関数**: Luaでは関数は第一級の市民であり、クロージャや高階関数をサポートしています。
+- **テーブル**: Luaにおける唯一のデータ構造機構であり、配列、セット、レコードなどを表すことができます。
+
+### 実践練習
+
+- **Luaの対話モードで実験**: ターミナルで`aos`を実行し、Luaコマンドを使って実験を始めましょう。
+- **簡単なスクリプトを作成**: `.lua`ファイルを作成し、Luaインタープリタを使って実行します。`.load file.lua`機能を使用して、Luaコードを`aos`プロセスにアップロードします。
+
+### リソース
+
+- **公式ドキュメント**: [Lua 5.3リファレンスマニュアル](https://www.lua.org/manual/5.3/)
+- **オンラインチュートリアル**: [Learn Lua](https://www.learn-lua.org/)のようなウェブサイトは、インタラクティブな学習に最適です。
+- **書籍**: "Programming in Lua"（[オンラインで利用可能](http://www.lua.org/pil/contents.html)な初版）は包括的なリソースです。
+- **コミュニティ**: [Lua Users](http://lua-users.org/)のようなフォーラムやコミュニティに参加して、サポートや議論に参加しましょう。
+
+### ベストプラクティス
+
+- **シンプルに保つ**: Luaはシンプルで柔軟に設計されています。この哲学をコードに取り入れましょう。
+- **パフォーマンス**: Luaのガベージコレクションやテーブルの効率的な使用について学びましょう。
+- **統合**: Luaが他のアプリケーション、特にC/C++プロジェクトにどのように組み込まれるかを考慮しましょう。
+
+### 結論
+
+Luaは、特に組み込みシステムやゲーム開発の文脈で非常に強力な言語です。そのシンプルさと効率性は、特定のユースケースに最適な選択肢となります。Luaプログラミングの旅を楽しんでください！
+
+<!-- - **Variables and Types**: Lua is dynamically typed. Basic types include `nil`, `boolean`, `number`, `string`, `function`, `userdata`, `thread`, and `table`.
+- **Control Structures**: Includes `if`, `while`, `repeat...until`, and `for`.
+- **Functions**: First-class citizens in Lua, supporting closures and higher-order functions.
+- **Tables**: The only data structuring mechanism in Lua, which can be used to represent arrays, sets, records, etc.
+
+### Hands-On Practice
+
+- **Experiment with Lua's Interactive Mode**: Run `aos` in your terminal and start experimenting with Lua commands.
+- **Write Simple Scripts**: Create `.lua` files and run them using the Lua interpreter. Use `.load file.lua` feature to upload lua code on your `aos` process.
+
+### Resources
+
+- **Official Documentation**: [Lua 5.3 Reference Manual](https://www.lua.org/manual/5.3/)
+- **Online Tutorials**: Websites like [Learn Lua](https://www.learn-lua.org/) are great for interactive learning.
+- **Books**: "Programming in Lua" (first edition available [online](http://www.lua.org/pil/contents.html)) is a comprehensive resource.
+- **Community**: Join forums or communities like [Lua Users](http://lua-users.org/) for support and discussions.
+
+### Best Practices
+
+- **Keep It Simple**: Lua is designed to be simple and flexible. Embrace this philosophy in your code.
+- **Performance**: Learn about Lua's garbage collection and efficient use of tables.
+- **Integration**: Consider how Lua can be embedded into other applications, particularly C/C++ projects.
+
+### Conclusion
+
+Lua is a powerful language, especially in the context of embedded systems and game development. Its simplicity and efficiency make it a great choice for specific use cases. Enjoy your journey into Lua programming! -->
+
+## aoトークンおよびサブレッジャー仕様
+Source: https://cookbook_ao.arweave.net/ja/references/token.html
+
+**ステータス:** DRAFT-1  
+**対象ネットワーク:** ao.TN.1
+
+この仕様は、標準のaoトークンプロセスに必要なメッセージハンドラと機能を説明します。この標準の実装は通常、プロセスによって維持される希少性を持つ転送可能な資産を制御する能力をユーザーに提供します。
+
+各準拠プロセスは、プロセスが表す資産の所有権を符号化するために、残高の台帳を実装することが期待されます。準拠プロセスには、通常、トークンの所有権の希少性を保証するための安全策を伴って、この台帳を変更するためのメソッドのセットがあります。
+
+さらに、この仕様では「サブレッジャー」プロセスタイプを説明しています。これは、実装されると、親プロセスから子プロセスにトークンの数を分割移動する能力を提供します。この子プロセスは同じトークンインターフェース仕様を実装します。サブレッジャープロセスの`From-Module`が参加者によって信頼される場合、これらのサブレッジャーを使って「ソース」トークンで取引することができます。これは、直接メッセージを交換することなく行えます。これにより、プロセスが混雑している場合でも、参加者はそのプロセスからトークンを使用できます。オプションとして、参加者がサブレッジャープロセスが実行されている`Module`を信頼している場合、これらのプロセス間での残高を*代替可能*として扱うことができます。この結果、任意の数の並列プロセス、およびそれに伴う取引を単一のトークンで同時に処理できます。
+
+# トークンプロセス
+
+仕様に準拠したトークンプロセスは、さまざまな形式のメッセージに応答し、各形式は`Action`タグで指定されます。トークンがサポートしなければならない`Action`メッセージの完全なセットは以下の通りです：
+
+<!-- # ao Token and Subledger Specification
+
+**Status:** DRAFT-1
+**Targeting Network:** ao.TN.1
+
+This specification describes the necessary message handlers and functionality required for a standard ao token process. Implementations of this standard typically offer users the ability to control a transferrable asset, whose scarcity is maintained by the process.
+
+Each compliant process will likely implement a ledger of balances in order to encode ownership of the asset that the process represents. Compliant processes have a set of methods that allow for the modification of this ledger, typically with safe-guards to ensure the scarcity of ownership of the token represented by the process.
+
+Additionally, this specification describes a 'subledger' process type which, when implemented, offers the ability to split move a number of the tokens from the parent into a child process that implements the same token interface specification. If the `From-Module` of the subledger process is trusted by the participants, these subledgers can be used to transact in the 'source' token, without directly exchanging messages with it. This allows participants to use the tokens from a process, even if that process is congested. Optionally, if the participants trust the `Module` a subledger process is running, they are able to treat balances across these processes as _fungible_. The result of this is that an arbitrary numbers of parallel processes -- and thus, transactions -- can be processed by a single token at any one time.
+
+# Token Processes
+
+A specification-compliant token process responds to a number of different forms of messages, with each form specified in an `Action` tag. The full set of `Action` messages that the token must support are as follows: -->
+
+| Name     | Description                                                                                            | Read-Only          |
+| -------- | ------------------------------------------------------------------------------------------------------ | ------------------ |
+| Balance  | get the balance of an identifer                                                                        | :heavy_check_mark: |
+| Balances | get a list of all ledger/account balances                                                              | :heavy_check_mark: |
+| Transfer | send 1 or more units from the callers balance to one or move targets with the option to notify targets | :x:                |
+| Mint     | if the ledger process is the root and you would like to increase token supply                          | :x:                |
+
+このセクションの残りでは、準拠トークンプロセスを生成するために必要なタグと、各`Action`メッセージの形式およびその結果について説明します。
+
+## 生成パラメータ
+
+すべての準拠トークンプロセスは、その生成メッセージに以下の不変パラメータを含める必要があります：
+
+<!-- In the remainder of this section the tags necessary to spawn a compliant token process, along with the form of each of the `Action` messages and their results is described.
+
+## Spawning Parameters
+
+Every compliant token process must carry the following immutable parameters upon its spawning message: -->
+
+| Tag          | Description                                                                                                           | Optional?          |
+| ------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| Name         | The title of the token, as it should be displayed to users.                                                           | :heavy_check_mark: |
+| Ticker       | A suggested shortened name for the token, such that it can be referenced quickly.                                     | :heavy_check_mark: |
+| Logo         | An image that applications may deserire to show next to the token, in order to make it quickly visually identifiable. | :heavy_check_mark: |
+| Denomination | The number of the token that should be treated as a single unit when quantities and balances are displayed to users.  | :x:                |
+
+## メッセージングプロトコル
+
+### Balance(Target? : string)
+
+ターゲットの残高を返します。ターゲットが指定されていない場合は、メッセージの送信者の残高を返す必要があります。
+
+例 `Action` メッセージ：
+
+<!-- ## Messaging Protocol
+
+### Balance(Target? : string)
+
+Returns the balance of a target, if a target is not supplied then the balance of the sender of the message must be returned.
+
+Example `Action` message: -->
+
+```lua=
+send({
+    Target = "{TokenProcess Identifier}",
+    Tags = {
+        Action = "Balance",
+        Target = "{IDENTIFIER}"
+    }
+})
+```
+
+Example response message:
+
+```
+{
+    Tags = {
+        Balance = "50",
+        Target = "LcldyO8wwiGDzC3iXzGofdO8JdR4S1_2A6Qtz-o33-0",
+        Ticker = "FUN"
+    }
+}
+```
+
+<!--
+### Balances()
+
+Returns the balance of all participants in the token. -->
+
+### Balances()
+
+トークンのすべての参加者の残高を返します。
+
+```lua
+send({
+    Target = "[TokenProcess Identifier]",
+    Tags = {
+        Action = "Balances",
+        Limit = 1000, # TODO: Is this necessary if the user is paying for the compute and response?
+        Cursor? = "BalanceIdentifer"
+    }
+})
+```
+
+Example response message:
+
+```lua
+{
+    Data = {
+        "MV8B3MAKTsUOqyCzQ0Tsa2AR3TiWTBU1Dx0xM4MO-f4": 100,
+        "LcldyO8wwiGDzC3iXzGofdO8JdR4S1_2A6Qtz-o33-0": 50
+    }
+}
+```
+
+<!-- ### Transfer(Target, Quantity)
+
+If the sender has a sufficient balance, send the `Quantity` to the `Target`, issuing a `Credit-Notice` to the recipient and a `Debit-Notice` to the sender. The `Credit-` and `Debit-Notice` should forward any and all tags from the original `Transfer` message with the `X-` prefix. If the sender has an insufficient balance, fail and notify the sender. -->
+
+### Transfer(Target, Quantity)
+
+送信者に十分な残高がある場合、`Quantity`を`Target`に送信し、受取人に`Credit-Notice`を発行し、送信者に`Debit-Notice`を発行します。`Credit-`および`Debit-Notice`は、元の`Transfer`メッセージからすべてのタグを`X-`プレフィックス付きで転送する必要があります。送信者に残高が不足している場合は、失敗し、送信者に通知します。
+
+```lua
+send({
+    Target = "[TokenProcess Identifier]",
+    Tags = {
+        { name = "Action", value = "Transfer" },
+        { name = "Recipient", value = "[ADDRESS]" },
+        { name = "Quantity", value = "100" },
+        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
+    }
+})
+```
+
+<!-- If a successful transfer occurs a notification message should be sent if `Cast` is not set. -->
+
+成功した転送が行われた場合、`Cast`が設定されていない場合は通知メッセージを送信する必要があります。
+
+```lua
+ao.send({
+    Target = "[Recipient Address]",
+    Tags = {
+        { name = "Action", value = "Credit-Notice" },
+        { name = "Sender", value = "[ADDRESS]" },
+        { name = "Quantity", value = "100"},
+        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
+    }
+})
+```
+
+<!-- Recipients will infer from the `From-Process` tag of the message which tokens they have received. -->
+
+受取人は、メッセージの`From-Process`タグから、どのトークンを受け取ったかを推測します。
+
+### Get-Info()
+
+```lua
+send({
+    Target = "{Token}",
+    Tags = {
+        Action = "Info"
+    }
+})
+```
+
+### Mint() [optional]
+
+<!-- Implementing a `Mint` action gives the process a way of allowing valid participants to create new tokens. -->
+
+`Mint`アクションを実装することで、プロセスは有効な参加者に新しいトークンを作成する方法を提供します。
+
+```lua
+send({
+    Target ="{Token Process}",
+    Tags = {
+        Action = "Mint",
+        Quantity = "1000"
+    }
+})
+```
+
+<!-- # Subledger Processes
+
+In order to function appropriately, subledgers must implement the full messaging protocol of token contracts (excluding the `Mint` action). Subledgers must also implement additional features and spawn parameters for their processes. These modifications are described in the following section. -->
+
+# サブレッジャープロセス
+
+適切に機能するために、サブレッジャーはトークン契約の完全なメッセージングプロトコルを実装する必要があります（`Mint`アクションを除く）。サブレッジャーはまた、プロセスのために追加の機能や生成パラメータを実装する必要があります。これらの変更は、次のセクションで説明されます。
+
+<!--
+### Spawning Parameters
+
+Every compliant subledger process must carry the following immutable parameters upon its spawning message: -->
+
+### 生成パラメータ
+
+すべての準拠したサブレッジャープロセスは、その生成メッセージに以下の不変パラメータを含める必要があります：
+
+| Tag          | Description                                                        | Optional? |
+| ------------ | ------------------------------------------------------------------ | --------- |
+| Source-Token | The `ID` of the top-most process that this subledger represents.   | :x:       |
+| Parent-Token | The `ID` of the parent process that this subledger is attached to. | :x:       |
+
+<!-- ### `Credit-Notice` Handler
+
+Upon receipt of a `Credit-Notice` message, a compliant subledger process must check if the process in question is the `Parent-Token`. If it is, the subledger must increase the balance of the `Sender` by the specified quantity.
+
+### Transfer(Target, Quantity)
+
+In addition to the normal tags that are passed in the `Credit-Notice` message to the recipient of tokens, a compliant subledger process must also provide both of the `Source-Token` and `Parent-Token` values. This allows the recipient of the `Transfer` message -- if they trust the `Module` of the subledger process -- to credit a receipt that is analogous (fungible with) deposits from the `Source-Token`.
+
+The modified `Credit-Notice` should be structured as follows:
+ -->
+
+### `Credit-Notice`ハンドラ
+
+`Credit-Notice`メッセージを受信した際、準拠したサブレッジャープロセスは、対象のプロセスが`Parent-Token`であるかどうかを確認する必要があります。もしそうであれば、サブレッジャーは`Sender`の残高を指定された数量だけ増加させる必要があります。
+
+### Transfer(Target, Quantity)
+
+トークンの受取人に渡される`Credit-Notice`メッセージに含まれる通常のタグに加えて、準拠したサブレッジャープロセスは、`Source-Token`と`Parent-Token`の両方の値も提供する必要があります。これにより、`Transfer`メッセージの受取人は、サブレッジャープロセスの`Module`を信頼している場合、`Source-Token`からの預金と同様の（代替可能な）受領をクレジットできるようになります。
+
+修正された`Credit-Notice`は以下のように構成されるべきです：
+
+```lua
+ao.send({
+    Target = "[Recipient Address]",
+    Tags = {
+        { name = "Action", value = "Credit-Notice" },
+        { name = "Quantity", value = "100"},
+        { name = "Source-Token", value = "[ADDRESS]" },
+        { name = "Parent-Token", value = "[ADDRESS]" },
+        { name = "X-[Forwarded Tag(s) Name]", value= "[VALUE]" }
+    }
+})
+```
+
+<!--
+### Withdraw(Target?, Quantity)
+
+All subledgers must allow balance holders to withdraw their tokens to the parent ledger. Upon receipt of an `Action: Withdraw` message, the subledger must send an `Action` message to its `Parent-Ledger`, transferring the requested tokens to the caller's address, while debiting their account locally. This transfer will result in a `Credit-Notice` from the `Parent-Ledger` for the caller. -->
+
+### Withdraw(Target?, Quantity)
+
+すべてのサブレッジャーは、残高保有者がトークンを親台帳に引き出すことを許可する必要があります。`Action: Withdraw`メッセージを受信した際、サブレッジャーはその`Parent-Ledger`に`Action`メッセージを送り、要求されたトークンを呼び出し元のアドレスに転送し、ローカルでアカウントから引き落とします。この転送により、呼び出し元に対して`Parent-Ledger`から`Credit-Notice`が発行されます。
+
+```lua
+send({
+    Target = "[TokenProcess Identifier]",
+    Tags = {
+     { name = "Action", value = "Withdraw" },
+     { name = "Recipient", value = "[ADDRESS]" },
+     { name = "Quantity", value = "100" }
+    }
+})
+```
+
+# Token Example
+
+> NOTE: When implementing a token it is important to remember that all Tags on a message MUST be "string"s. Using the`tostring` function you can convert simple types to strings.
+
+```lua
+if not balances then
+  balances = { [ao.id] = 100000000000000 }
+end
+
+if name ~= "Fun Coin" then
+  name = "Fun Coin"
+end
+
+if ticker ~= "Fun" then
+  ticker = "fun"
+end
+
+if denomination ~= 6 then
+  denomination = 6
+end
+
+-- handlers that handler incoming msg
+handlers.add(
+  "transfer",
+  handlers.utils.hasMatchingTag("Action", "Transfer"),
+  function (msg)
+    assert(type(msg.Tags.Recipient) == 'string', 'Recipient is required!')
+    assert(type(msg.Tags.Quantity) == 'string', 'Quantity is required!')
+
+    if not balances[msg.From] then
+      balances[msg.From] = 0
+    end
+
+    if not balances[msg.Tags.Recipient] then
+      balances[msg.Tags.Recipient] = 0
+    end
+
+    local qty = tonumber(msg.Tags.Quantity)
+    assert(type(qty) == 'number', 'qty must be number')
+    -- handlers.utils.reply("Transfering qty")(msg)
+    if balances[msg.From] >= qty then
+      balances[msg.From] = balances[msg.From] - qty
+      balances[msg.Tags.Recipient] = balances[msg.Tags.Recipient] + qty
+      ao.send({
+        Target = msg.From,
+        Tags = {
+          Action = "Debit-Notice",
+          Quantity = tostring(qty)
+        }
+      })
+      ao.send({
+      Target = msg.Tags.Recipient,
+      Tags = {
+        Action = "Credit-Notice",
+        Quantity = tostring(qty)
+      }})
+      -- if msg.Tags.Cast and msg.Tags.Cast == "true" then
+      --   return
+      -- end
+
+    end
+  end
+)
+
+handlers.add(
+  "balance",
+  handlers.utils.hasMatchingTag("Action", "Balance"),
+  function (msg)
+    assert(type(msg.Tags.Target) == "string", "Target Tag is required!")
+    local bal = "0"
+    if balances[msg.Tags.Target] then
+      bal = tostring(balances[msg.Tags.Target])
+    end
+    ao.send({Target = msg.From, Tags = {
+      Target = msg.From,
+      Balance = bal,
+      Ticker = ticker or ""
+    }})
+  end
+)
+
+local json = require("json")
+
+handlers.add(
+  "balances",
+  handlers.utils.hasMatchingTag("Action", "Balances"),
+  function (msg)
+    ao.send({
+      Target = msg.From,
+      Data = json.encode(balances)
+    })
+  end
+
+)
+
+handlers.add(
+  "info",
+  handlers.utils.hasMatchingTag("Action", "Info"),
+  function (msg)
+    ao.send({Target = msg.From, Tags = {
+      Name = name,
+      Ticker = ticker,
+      Denomination = tostring(denomination)
+    }})
+  end
+)
+```
+
+## Web Assemblyについて
+Source: https://cookbook_ao.arweave.net/ja/references/wasm.html
+
+<!-- # Meet Web Assembly
+
+WebAssembly (often abbreviated as Wasm) is a modern binary instruction format providing a portable compilation target for high-level languages like C, C++, and Rust. It enables deployment on the web for client and server applications, offering a high level of performance and efficiency. WebAssembly is designed to maintain the security and sandboxing features of web browsers, making it a suitable choice for web-based applications. It's a key technology for web developers, allowing them to write code in multiple languages and compile it into bytecode that runs in the browser at near-native speed.
+
+The significance of WebAssembly lies in its ability to bridge the gap between web and native applications. It allows complex applications and games, previously limited to desktop environments, to run in the browser with comparable performance. This opens up new possibilities for web development, including the creation of high-performance web apps, games, and even the porting of existing desktop applications to the web. WebAssembly operates alongside JavaScript, complementing it by enabling performance-critical components to be written in languages better suited for such tasks, thereby enhancing the capabilities and performance of web applications. -->
+
+
+
+WebAssembly（一般的にWasmと略される）は、C、C++、Rustのような高水準言語のためのポータブルなコンパイルターゲットを提供する、現代的なバイナリ命令形式です。クライアントおよびサーバーアプリケーション向けに、ウェブ上で高いレベルのパフォーマンスと効率を提供することができます。WebAssemblyは、ウェブブラウザのセキュリティとサンドボックス機能を維持するように設計されており、ウェブベースのアプリケーションに適した選択肢です。複数の言語でコードを書き、それをブラウザでネイティブに近い速度で実行されるバイトコードにコンパイルできるため、ウェブ開発者にとって重要な技術です。
+
+WebAssemblyの重要性は、ウェブアプリケーションとネイティブアプリケーションのギャップを埋める能力にあります。従来はデスクトップ環境に限定されていた複雑なアプリケーションやゲームを、ブラウザで同等のパフォーマンスで実行できるようにします。これにより、高性能のウェブアプリやゲーム、さらには既存のデスクトップアプリケーションをウェブに移植する新たな可能性が開かれます。WebAssemblyはJavaScriptと並行して動作し、パフォーマンスが重要なコンポーネントを、そうしたタスクにより適した言語で記述できるよう​⬤
+
+# Summary
+
+Total files processed: 11
