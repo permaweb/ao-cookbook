@@ -27,7 +27,7 @@ export const localeConfig = (langCode) => ({
       },
       {
         text: "LLMs.txt",
-        link: "/LLMs.txt",
+        link: get_i18n_link(langCode, "/llms-explanation"),
       },
     ],
     sidebar: [

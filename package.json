@@ -7,11 +7,12 @@
   "type": "module",
   "scripts": {
     "arns": "ACTION=UPDATE_ARNS node deploy.js",
-    "build": "vitepress build src",
-    "dev": "vitepress dev src",
+    "build": "node scripts/generate-llms-txt.js && vitepress build src",
+    "dev": "node scripts/generate-llms-txt.js && vitepress dev src",
     "prepare": "husky",
     "preview": "vitepress preview src",
-    "staged": "lint-staged --allow-empty --concurrent false"
+    "staged": "lint-staged --allow-empty --concurrent false",
+    "generate-llms": "node scripts/generate-llms-txt.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
@@ -29,6 +30,7 @@
     "email": "tyler@hyper.io"
   },
   "dependencies": {
-    "@betteridea/codecell": "^1.4.3"
+    "@betteridea/codecell": "^1.4.3",
+    "globby": "^14.1.0"
   }
 }

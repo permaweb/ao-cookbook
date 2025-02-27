@@ -1,221 +1,610 @@
-# AO and the AO Cookbook
+# EN Documentation for LLMs
 
-> AO is a decentralized compute system that enables countless parallel processes to interact within a single, cohesive environment. The AO Cookbook provides comprehensive documentation and code snippets for developers, focusing on aos (AO Operating System) integration and development patterns. This documentation is designed to be both human-readable and LLM-friendly, offering detailed context about AO's architecture, components, and development practices.
+Generated: 2025-02-27T16:43:02.158Z
 
-## System Architecture
+This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
-- AO Core: The foundational decentralized computer with infinite parallel threads
-- aos: The operating system layer that simplifies interaction with AO
-- Message-Passing Layer: Native communication system connecting independent processes
-- Execution Model: Hyper-parallel architecture similar to how websites form the World Wide Web
-- Primary Language: Lua with aos runtime environment
+# Documentation Directory
 
-## Network Information
+## Concepts
 
-- **AO Mainnet** (Launched February 8, 2025)
-  - Production environment with full features
-  - Introduces AO Core capabilities
-  - Enables onchain computation with payments and relays
-  - Accessible through HyperBEAM nodes serving as payment gateways
-  - Supports production deployments and live applications
+- [A whistle stop tour of Lua.](https://cookbook_ao.arweave.net/concepts/lua.html)
+- [ao Specs](https://cookbook_ao.arweave.net/concepts/specs.html)
+- [aos Brief Tour](https://cookbook_ao.arweave.net/concepts/tour.html)
+- [Concepts](https://cookbook_ao.arweave.net/concepts/index.html)
+- [Eval](https://cookbook_ao.arweave.net/concepts/eval.html)
+- [Holographic State](https://cookbook_ao.arweave.net/concepts/holographic-state.html)
+- [How ao messaging works](https://cookbook_ao.arweave.net/concepts/how-it-works.html)
+- [Messages](https://cookbook_ao.arweave.net/concepts/messages.html)
+- [Processes](https://cookbook_ao.arweave.net/concepts/processes.html)
+- [Units](https://cookbook_ao.arweave.net/concepts/units.html)
 
-- **AO Legacynet** (Launched February 27, 2024)
-  - Provides a fee-free environment for early adopters
-  - Perfect for experimenting with AO's hyper-parallel architecture
-  - Full feature support for development and testing
-  - Ideal for learning and prototyping
-  - No cost barrier for developers
+## Guides
 
-## Documentation Structure
+### Aoconnect
 
-The cookbook is organized into five main sections:
+- [aoconnect](https://cookbook_ao.arweave.net/guides/aoconnect/aoconnect.html)
+- [Calling DryRun](https://cookbook_ao.arweave.net/guides/aoconnect/calling-dryrun.html)
+- [Connecting to specific ao nodes](https://cookbook_ao.arweave.net/guides/aoconnect/connecting.html)
+- [DataItem Signers](https://cookbook_ao.arweave.net/guides/aoconnect/signers.html)
+- [Installing ao connect](https://cookbook_ao.arweave.net/guides/aoconnect/installing-connect.html)
+- [Monitoring Cron](https://cookbook_ao.arweave.net/guides/aoconnect/monitoring-cron.html)
+- [Reading results from an ao Process](https://cookbook_ao.arweave.net/guides/aoconnect/reading-results.html)
+- [Sending a Message to a Process](https://cookbook_ao.arweave.net/guides/aoconnect/sending-messages.html)
+- [Sending an Assignment to a Process](https://cookbook_ao.arweave.net/guides/aoconnect/assign-data.html)
+- [Spawning a Process](https://cookbook_ao.arweave.net/guides/aoconnect/spawning-processes.html)
 
-1. [Welcome](/welcome/index.html)
-   - Purpose: Resources for beginning development on AO
-   - Best for: New developers starting their AO journey
-   - Key topics: Installation, basic concepts, first steps
-   - Includes practical examples and setup guides
-   - [Getting Started](/welcome/getting-started.html): Step-by-step guide for first-time setup
-   - [Legacynet Info](/welcome/legacynet-info/index.html): Guide to AO's fee-free development network
+### Aos
 
-2. [Tutorials](/tutorials/index.html)
-   - Purpose: Hands-on learning resources for AO development
-   - Includes:
-     - [Begin Tutorials](/tutorials/begin/index.html): Fundamental development concepts
-     - [Bots and Games](/tutorials/bots-and-games/index.html): Advanced application patterns
+#### Blueprints
 
-3. [Guides](/guides/index.html)
-   - Purpose: Detailed guides for different development tools
-   - Key sections:
-     - [aos Documentation](/guides/aos/index.html): Complete compute system guide
-     - [AOConnect](/guides/aoconnect/aoconnect.html): JavaScript/library integration
-     - [0rbit Integration](/guides/snacks/0rbit/index.html): Distributed storage system
-     - [BetterIDEa](/references/betteridea/index.html): IDE setup and usage
-     - [Additional Technologies](/guides/snacks/sqlite.html): SQLite and other integrations
+- [Blueprints](https://cookbook_ao.arweave.net/guides/aos/blueprints/index.html)
+- [Chatroom Blueprint](https://cookbook_ao.arweave.net/guides/aos/blueprints/chatroom.html)
+- [CRED Utils Blueprint](https://cookbook_ao.arweave.net/guides/aos/blueprints/cred-utils.html)
+- [Staking Blueprint](https://cookbook_ao.arweave.net/guides/aos/blueprints/staking.html)
+- [Token Blueprint](https://cookbook_ao.arweave.net/guides/aos/blueprints/token.html)
+- [Voting Blueprint](https://cookbook_ao.arweave.net/guides/aos/blueprints/voting.html)
 
-4. [Concepts](/concepts/index.html)
-   - Purpose: Essential building blocks of AO for development
-   - Comprehensive coverage of:
-     - [System Architecture](/concepts/how-it-works.html): Detailed system design
-     - [Processes](/concepts/processes.html): Handling parallel processes
-     - [Messages](/concepts/messages.html): Communication architecture
-     - [Evaluation System](/concepts/eval.html): Code execution and processing
-     - [Units System](/concepts/units.html): Understanding AO units
-     - [System Specifications](/concepts/specs.html): Detailed technical specifications
-     - [aos Tour](/concepts/tour.html): Operating system overview
-     - [Lua Programming](/concepts/lua.html): Programming language basics
+#### Modules
 
-5. [References](/references/index.html)
-   - Purpose: Technical references and code examples
-   - Includes:
-     - [Programming Languages](/references/lua.html): Lua and WebAssembly documentation
-     - [AO API Reference](/references/ao.html): Core module documentation
-     - [Development Environment](/references/editor-setup.html): Setup guides
+- [ao](https://cookbook_ao.arweave.net/guides/aos/modules/ao.html)
+- [Base64](https://cookbook_ao.arweave.net/guides/aos/modules/base64.html)
+- [crypto](https://cookbook_ao.arweave.net/guides/aos/modules/crypto.html)
+- [JSON](https://cookbook_ao.arweave.net/guides/aos/modules/json.html)
+- [Modules](https://cookbook_ao.arweave.net/guides/aos/modules/index.html)
+- [Pretty](https://cookbook_ao.arweave.net/guides/aos/modules/pretty.html)
+- [Utils](https://cookbook_ao.arweave.net/guides/aos/modules/utils.html)
 
-## Development Resources
+- [aos: AO Operating System](https://cookbook_ao.arweave.net/guides/aos/index.html)
+- [Building a Token in `ao`](https://cookbook_ao.arweave.net/guides/aos/token.html)
+- [CLI](https://cookbook_ao.arweave.net/guides/aos/cli.html)
+- [Creating a Pingpong Process in aos](https://cookbook_ao.arweave.net/guides/aos/pingpong.html)
+- [Customizing the Prompt in aos](https://cookbook_ao.arweave.net/guides/aos/prompt.html)
+- [Editor setup](https://cookbook_ao.arweave.net/guides/aos/editor.html)
+- [FAQ](https://cookbook_ao.arweave.net/guides/aos/faq.html)
+- [Installing aos](https://cookbook_ao.arweave.net/guides/aos/installing.html)
+- [Introduction](https://cookbook_ao.arweave.net/guides/aos/intro.html)
+- [Load Lua Files with `.load <filename>`](https://cookbook_ao.arweave.net/guides/aos/load.html)
+- [Troubleshooting using ao.link](https://cookbook_ao.arweave.net/guides/aos/troubleshooting.html)
+- [Understanding the Inbox](https://cookbook_ao.arweave.net/guides/aos/inbox-and-handlers.html)
 
-### Built-in Modules
-aos provides several core modules:
-- [JSON Module](/guides/aos/modules/json.html): Data format handling
-- [AO Core](/guides/aos/modules/ao.html): System fundamentals
-- [Crypto](/guides/aos/modules/crypto.html): Cryptographic operations
-- [Base64](/guides/aos/modules/base64.html): Encoding utilities
-- [Pretty](/guides/aos/modules/pretty.html): Output formatting
-- [Utils](/guides/aos/modules/utils.html): Common utilities
+### Dev cli
 
-### Development Tools
-- [AO Package Manager](https://apm_betteridea.arweave.net): Package management system
-- [BetterIDEa IDE](https://ide.betteridea.dev): Web-based development environment
-- [Editor Setup](/guides/aos/editor.html): Local environment configuration
-- [Troubleshooting](/guides/aos/troubleshooting.html): Common issues and solutions
-- [FAQ](/guides/aos/faq.html): Frequently asked questions
+- [AO Dev-Cli 0.1](https://cookbook_ao.arweave.net/guides/dev-cli/index.html)
 
-### Learning Path
+### Snacks
 
-1. Getting Started:
-   - Begin with [Welcome Guide](/welcome/index.html)
-   - Continue to [Begin Tutorial](/tutorials/begin/index.html)
-   - Practice with [Basic Examples](/tutorials/begin/preparations.html)
+#### 0rbit
 
-2. System Understanding:
-   - Study [Core Specifications](/concepts/specs.html)
-   - Review [Architecture](/concepts/how-it-works.html)
-   - Explore [Message Patterns](/concepts/messages.html)
+- [0rbit 💫](https://cookbook_ao.arweave.net/guides/snacks/0rbit/index.html)
+- [First GET Request](https://cookbook_ao.arweave.net/guides/snacks/0rbit/get-request.html)
+- [First POST Request](https://cookbook_ao.arweave.net/guides/snacks/0rbit/post-request.html)
 
-3. Application Development:
-   - Use [aos Guide](/guides/aos/index.html) for implementation
-   - Reference [API Documentation](/references/ao.html)
-   - Follow [Best Practices](/guides/aos/blueprints/index.html)
+- [Getting started with SQLite](https://cookbook_ao.arweave.net/guides/snacks/sqlite.html)
+- [Using WeaveDrive](https://cookbook_ao.arweave.net/guides/snacks/weavedrive.html)
 
-4. Advanced Topics:
-   - Learn [Performance Optimization](/references/lua-optimization.html)
-   - Master [Token Creation](/guides/aos/token.html)
-   - Implement [Complex Patterns](/tutorials/bots-and-games/index.html)
+- [Guides](https://cookbook_ao.arweave.net/guides/index.html)
 
-## Optional
+## Mainnet
 
-- [Community Resources](/references/community): User-contributed guides and tools
-- [Release Notes](/releasenotes/index.html): Version history and changes
-- [Contributing](/CONTRIBUTING.html): Guidelines for contributors
-- [Translations](/languages/README.html): Documentation in other languages
-- [Quest System](/welcome/legacynet-info/quests.html): Learning challenges
-- [Community Forums](https://discord.gg/qWgGxJKwNJ): Discussion and support
+- [AO Core Payment Relays](https://cookbook_ao.arweave.net/mainnet/ao-core-relay.html)
+- [AO Mainnet](https://cookbook_ao.arweave.net/mainnet/index.html)
 
-## All Documentation Routes
+## References
 
-### Welcome & Getting Started
-- /welcome/index: Complete overview of AO ecosystem, system capabilities, and documentation structure
-- /welcome/getting-started: Step-by-step guide for first-time setup, including environment configuration and basic AO concepts
-- /welcome/legacynet-info/index: Comprehensive guide to AO's fee-free development network, including features and limitations
-- /welcome/legacynet-info/quests: Interactive learning challenges designed to teach AO development through hands-on exercises
+### Betteridea
 
-### Tutorials
-- /tutorials/index: Directory of all available tutorials, organized by difficulty and topic
-- /tutorials/begin/index: Introduction to fundamental AO development concepts and practices
-- /tutorials/begin/preparations: Detailed environment setup guide including IDE configuration and dependency installation
-- /tutorials/begin/messaging: Complete guide to AO's message passing system with practical examples
-- /tutorials/begin/chatroom: Tutorial for building a decentralized chat application using AO's core features
-- /tutorials/begin/token: Comprehensive guide to creating and managing custom tokens on AO
-- /tutorials/begin/tokengating: Implementation guide for access control systems using AO tokens
-- /tutorials/begin/dao: Step-by-step tutorial for building a decentralized autonomous organization
-- /tutorials/bots-and-games/index: Overview of advanced application development patterns and architectures
-- /tutorials/bots-and-games/ao-effect: Implementation guide for AO's effect system in interactive applications
-- /tutorials/bots-and-games/announcements: Building broadcast and notification systems in AO
-- /tutorials/bots-and-games/game-state: Comprehensive guide to managing persistent state in decentralized games
-- /tutorials/bots-and-games/decisions: Implementation of complex decision-making systems and logic
-- /tutorials/bots-and-games/attacking: Guide to implementing secure combat and competition mechanics
-- /tutorials/bots-and-games/bringing-together: System integration patterns for complex AO applications
-- /tutorials/bots-and-games/arena-mechanics: Detailed guide to building multiplayer arena systems
-- /tutorials/bots-and-games/build-game: Complete walkthrough of building a full-featured decentralized game
+- [BetterIDEa](https://cookbook_ao.arweave.net/references/betteridea/index.html)
 
-### Concepts
-- /concepts/index: Foundational overview of AO's architecture and design principles
-- /concepts/how-it-works: Deep dive into AO's internal architecture and system design
-- /concepts/processes: Detailed coverage of process creation, management, and interaction
-- /concepts/messages: In-depth explanation of AO's message passing architecture and patterns
-- /concepts/eval: Comprehensive guide to AO's code evaluation and execution system
-- /concepts/units: Complete documentation of AO's native unit system and economic model
-- /concepts/specs: Detailed technical specifications of AO's core systems and protocols
-- /concepts/lua: Comprehensive guide to Lua programming in the AO context
-- /concepts/tour: Interactive walkthrough of AO's key features and capabilities
+- [Accessing Data from Arweave with ao](https://cookbook_ao.arweave.net/references/data.html)
+- [ao Module](https://cookbook_ao.arweave.net/references/ao.html)
+- [ao Token and Subledger Specification](https://cookbook_ao.arweave.net/references/token.html)
+- [Community Resources](https://cookbook_ao.arweave.net/references/community.html)
+- [Cron Messages](https://cookbook_ao.arweave.net/references/cron.html)
+- [Editor setup](https://cookbook_ao.arweave.net/references/editor-setup.html)
+- [Handlers (Version 0.0.5)](https://cookbook_ao.arweave.net/references/handlers.html)
+- [Lua Optimization Guide for AO Platform](https://cookbook_ao.arweave.net/references/lua-optimization.html)
+- [Meet Lua](https://cookbook_ao.arweave.net/references/lua.html)
+- [Meet Web Assembly](https://cookbook_ao.arweave.net/references/wasm.html)
+- [Messaging Patterns in ao](https://cookbook_ao.arweave.net/references/messaging.html)
+- [References](https://cookbook_ao.arweave.net/references/index.html)
 
-### Guides
-- /guides/index: Complete catalog of all development guides and documentation
-- /guides/aos/index: Comprehensive documentation of the AO Operating System
-- /guides/aos/intro: Introduction to aos features, capabilities, and architecture
-- /guides/aos/installing: Detailed aos installation guide for all supported platforms
-- /guides/aos/cli: Complete reference for aos command-line interface tools
-- /guides/aos/prompt: Guide to using aos's interactive development environment
-- /guides/aos/pingpong: Tutorial implementing basic message passing with examples
-- /guides/aos/editor: Detailed setup guide for popular code editors and IDEs
-- /guides/aos/inbox-and-handlers: Complete guide to message handling and inbox management
-- /guides/aos/troubleshooting: Common issues and detailed resolution steps
-- /guides/aos/faq: Comprehensive answers to frequently asked development questions
-- /guides/aos/load: Detailed guide to data loading and management in aos
-- /guides/aos/token: Complete documentation of aos token system implementation
-- /guides/aos/blueprints/index: Library of reusable design patterns and architectures
-- /guides/aos/blueprints/chatroom: Reference implementation of a decentralized chat system
-- /guides/aos/blueprints/cred-utils: Comprehensive guide to credential management utilities
-- /guides/aos/blueprints/staking: Complete implementation guide for token staking systems
-- /guides/aos/blueprints/token: Advanced token implementation patterns and examples
-- /guides/aos/blueprints/voting: Detailed guide to implementing voting systems
-- /guides/aos/modules/index: Complete reference of all built-in aos modules
-- /guides/aos/modules/json: Detailed guide to JSON handling in aos
-- /guides/aos/modules/ao: Complete reference for core AO system module
-- /guides/aos/modules/crypto: Comprehensive guide to cryptographic operations
-- /guides/aos/modules/base64: Complete reference for encoding and decoding
-- /guides/aos/modules/pretty: Guide to output formatting and display
-- /guides/aos/modules/utils: Reference for common utility functions and helpers
-- /guides/aoconnect/aoconnect: Complete guide to JavaScript integration with AO
-- /guides/aoconnect/installing-connect: Detailed AOConnect installation instructions
-- /guides/aoconnect/connecting: Guide to establishing and managing AO connections
-- /guides/aoconnect/sending-messages: Comprehensive guide to message transmission
-- /guides/aoconnect/reading-results: Complete guide to handling operation results
-- /guides/aoconnect/spawning-processes: Detailed process creation and management guide
-- /guides/aoconnect/calling-dryrun: Guide to testing and simulating operations
-- /guides/aoconnect/monitoring-cron: Complete guide to scheduled task monitoring
-- /guides/aoconnect/assign-data: Detailed guide to data assignment and management
-- /guides/snacks/0rbit/index: Complete guide to integrating with 0rbit storage system
-- /guides/snacks/sqlite: Detailed guide to SQLite integration and usage
+## Releasenotes
+
+- [AOS Release Notes v2.0.0](https://cookbook_ao.arweave.net/releasenotes/aos-2_0_0.html)
+- [AOS Release Notes v2.0.1](https://cookbook_ao.arweave.net/releasenotes/aos-2_0_1.html)
+- [AOS Release Notes v2.0.2](https://cookbook_ao.arweave.net/releasenotes/aos-2_0_2.html)
+- [Release Notes](https://cookbook_ao.arweave.net/releasenotes/index.html)
+
+## Tutorials
+
+### Begin
+
+- [Begin: An Interactive Tutorial](https://cookbook_ao.arweave.net/tutorials/begin/index.html)
+- [Building a Chatroom in aos](https://cookbook_ao.arweave.net/tutorials/begin/chatroom.html)
+- [Crafting a Token](https://cookbook_ao.arweave.net/tutorials/begin/token.html)
+- [DAO Guide](https://cookbook_ao.arweave.net/tutorials/begin/dao.html)
+- [Enter `The Construct` - An Interactive Tutorial](https://cookbook_ao.arweave.net/tutorials/begin/rabbithole.html)
+- [Messaging in `ao`](https://cookbook_ao.arweave.net/tutorials/begin/messaging.html)
+- [Preparations](https://cookbook_ao.arweave.net/tutorials/begin/preparations.html)
+- [Tokengating the Chatroom](https://cookbook_ao.arweave.net/tutorials/begin/tokengating.html)
+
+### Bots and games
+
+- [Automated Responses](https://cookbook_ao.arweave.net/tutorials/bots-and-games/attacking.html)
+- [Bots and Games](https://cookbook_ao.arweave.net/tutorials/bots-and-games/index.html)
+- [Bringing it Together](https://cookbook_ao.arweave.net/tutorials/bots-and-games/bringing-together.html)
+- [Expanding the Arena](https://cookbook_ao.arweave.net/tutorials/bots-and-games/build-game.html)
+- [Fetching Game State](https://cookbook_ao.arweave.net/tutorials/bots-and-games/game-state.html)
+- [Interpreting Announcements](https://cookbook_ao.arweave.net/tutorials/bots-and-games/announcements.html)
+- [Let's Play A Game!](https://cookbook_ao.arweave.net/tutorials/bots-and-games/ao-effect.html)
+- [Mechanics of the Arena](https://cookbook_ao.arweave.net/tutorials/bots-and-games/arena-mechanics.html)
+- [Strategic Decisions](https://cookbook_ao.arweave.net/tutorials/bots-and-games/decisions.html)
+
+- [Tutorials](https://cookbook_ao.arweave.net/tutorials/index.html)
+
+## Welcome
+
+### Legacynet info
+
+- [Get involved with the ao legacynet](https://cookbook_ao.arweave.net/welcome/legacynet-info/index.html)
+- [Quests FAQ](https://cookbook_ao.arweave.net/welcome/legacynet-info/quests.html)
+
+- [Get started in 5 minutes](https://cookbook_ao.arweave.net/welcome/getting-started.html)
+- [Welcome to ao](https://cookbook_ao.arweave.net/welcome/index.html)
+
+- [https://vitepress.dev/reference/default-theme-home-page](https://cookbook_ao.arweave.net/index.html)
+- [LLMs Documentation](https://cookbook_ao.arweave.net/llms-explanation.html)
+
+
+
+# Detailed Content
+
+## TABLE OF CONTENTS
+
+- API AND FUNCTION REFERENCES
+  - ao Module
+  - BetterIDEa
+  - Community Resources
+  - Cron Messages
+  - Accessing Data from Arweave with ao
+  - Editor setup
+  - Handlers (Version 0.0.5)
+  - References
+  - Lua Optimization Guide for AO Platform
+  - Meet Lua
+  - Messaging Patterns in ao
+  - ao Token and Subledger Specification
+  - Meet Web Assembly
+- RELEASE NOTES AND CHANGELOGS
+  - AOS Release Notes v2.0.0
+  - AOS Release Notes v2.0.1
+  - AOS Release Notes v2.0.2
+  - Release Notes
+
+
+
+## API AND FUNCTION REFERENCES
+
+
+
+### ao Module
+Source: https://cookbook_ao.arweave.net/references/ao.html
+
+### API Definitions
+- Properties
+- Environment
+- Example
+- Methods
+- `ao.send
+- Example
+- `ao.spawn
+- Example
+- `ao.isTrusted
+- Example
+- `ao.assign
+- Example
+- `ao.result
+- Example
+- `ao.isAssignable
+- Example
+- `ao.isAssignment
+- Example
+- Custom
+- Tags
+- Message
+- Spawn
+- Assignment
+- Result
+
+### Code Examples
+```
+## Methods
+
+### `ao.send(msg: Message)`
+
+Takes a [Message](#message) as input. The function adds `ao`-specific tags and stores the message in `ao.outbox.Messages`.
+
+#### Example
+```
+
+```
+### `ao.spawn(module: string, spawn: Spawn)`
+
+Takes a module ID string and [Spawn](#spawn) as input. Returns a Spawn table with a generated `Ref_` tag.
+
+#### Example
+```
+
+```
+### `ao.isTrusted(msg: Message)`
+
+Takes a [Message](#message) as input. Returns `true` if the message is from a trusted source.
+
+#### Example
+```
+
+
+### Parameters
+|
+| ------------------ | ------------------------------------------------------------------------------------------------------------ | -------- |
+| id                 | Process Identifier (TxID)                                                                                    | string   |
+| \_module           | Module Identifier (TxID)                                                                                     | string   |
+| authorities        | Set of Trusted TXs                                                                                           | string   |
+| Authority          | Identifiers that the process is able to accept transactions from that are not the owner or the process (0-n) | string   |
+| \_version          | The version of the library                                                                                   | string   |
+| reference          | Reference number of the process                                                                              | number   |
+| env                | Evaluation Environment                                                                                       | object   |
+| outbox             | Holds Messages and Spawns for response                                                                       | object   |
+| assignables        | List of assignables of the process                                                                           | list     |
+| nonExtractableTags | List of non-extractable tags of the process                                                                  | list     |
+| nonForwardableTags | List of non-forwardable tags of the process                                                                  | list     |
+| init               | Initializes the AO environment                                                                               | function |
+| send               | Sends a message to a target process                                                                          | function |
+| assign             | Assigns a message to the process                                                                             | function |
+| spawn              | Spawns a process                                                                                             | function |
+| result             | Returns the result of a message                                                                              | function |
+| isTrusted          | Checks if a message is trusted                                                                               | function |
+| isAssignment       | Checks if a message is an assignment                                                                         | function |
+| isAssignable       | Checks if a message is assignable                                                                            | function |
+| addAssignable      | Adds an assignable to the assignables list                                                                   | function |
+| removeAssignable   | Removes an assignable from the assignables list                                                              | function |
+| clearOutbox        | Clears the outbox                                                                                            | function |
+| normalize          | Normalizes a message by extracting tags                                                                      | function |
+| sanitize           | Sanitizes a message by removing non-forwardable tags                                                         | function |
+| clone              | Clones a table recursively                                                                                   | function |
+
+
+
+### BetterIDEa
+Source: https://cookbook_ao.arweave.net/references/betteridea/index.html
+
+[BetterIDEa](https://ide.betteridea.dev) is a custom web based IDE for developing on ao.
+
+### Community Resources
+Source: https://cookbook_ao.arweave.net/references/community.html
+
+### API Definitions
+- Core
+- Developer
+- Contributing
+
+
+### Cron Messages
+Source: https://cookbook_ao.arweave.net/references/cron.html
+
+### API Definitions
+- Setting
+- Handling
+
+
+### Accessing Data from Arweave with ao
+Source: https://cookbook_ao.arweave.net/references/data.html
+
+### API Definitions
+- Why
+
+
+### Editor setup
+Source: https://cookbook_ao.arweave.net/references/editor-setup.html
+
+### API Definitions
+- VS
+- Other
+- BetterIDEa
+
+
+### Handlers (Version 0.0.5)
+Source: https://cookbook_ao.arweave.net/references/handlers.html
+
+### API Definitions
+- Overview
+- Concepts
+- Handler
+- Pattern
+- Basic
+- Common
+- Default
+- Resolvers
+- Module
+- Common
+- Functions
+- `Handlers.add
+- `Handlers.append
+- `Handlers.once
+- `Handlers.prepend
+- `Handlers.before
+- `Handlers.after
+- `Handlers.remove
+- Handler
+- Execution
+- Pattern
+- Practical
+- Handlers.utils
+- `Handlers.utils.hasMatchingData
+- `Handlers.utils.hasMatchingTag
+- `Handlers.utils.reply
+- Example
+- Pattern
+- Resolver
+- Function
+
+### Code Examples
+```
+### Default Action Handlers (AOS 2.0+)
+
+AOS 2.0 introduces simplified syntax for Action-based handlers. Instead of writing explicit pattern functions, you can use these shorthand forms:
+```
+
+```
+### `Handlers.utils.reply(text: string)`
+
+- This helper is a simple handle function, it basically places the text value in to the `Data` property of the outbound message.
+```
+
+
+### Parameters
+|
+| -------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`               | `string`                         | The identifier of the handler item in the handlers list.                                                                                                                                                                                                                                                                                                                                                                |
+| `pattern`            | `table` or `function`            | Specifies how to match messages. As a table, defines required message tags with string values (e.g. `{ Action = "Balance", Recipient = "_" }` requires an "Action" tag with string value "Balance" and any string "Recipient" tag value). As a function, takes a message DataItem and returns: "true" (invoke handler and exit pipeline), "false" (skip handler), or "continue" (invoke handler and continue pipeline). |
+| `handler`            | (Resolver) `table` or `function` | Either a resolver table containing pattern-function pairs for conditional execution, or a single function that processes the message. When using a resolver table, each key is a pattern matching table and its value is the function to execute when that pattern matches. When using a function, it takes the message DataItem as an argument and executes business logic.                                            |
+| `maxRuns` (optional) | number                           | As of 0.0.5, each handler function takes an optional function to define the amount of times the handler should match before it is removed. The default is infinity.                                                                                                                                                                                                                                                     |
+
+
 
 ### References
-- /references/index: Complete catalog of technical references and documentation
-- /references/lua: Comprehensive reference for Lua programming in AO
-- /references/wasm: Detailed guide to WebAssembly integration and usage
-- /references/lua-optimization: Comprehensive guide to performance optimization
-- /references/ao: Complete technical reference for AO system APIs
-- /references/messaging: Complete reference for message patterns and protocols
-- /references/handlers: Comprehensive guide to message handler implementation
-- /references/token: Complete technical reference for token system
-- /references/data: Detailed reference for data management operations
-- /references/cron: Complete guide to scheduled task system
-- /references/editor-setup: Detailed guide to development environment configuration
-- /references/community: Comprehensive guide to community resources and tools
-- /references/betteridea/index: Comprehensive guide to the BetterIDEa development environment
+Source: https://cookbook_ao.arweave.net/references/index.html
 
-### Additional Resources
-- /mainnet/index: Information about AO Mainnet and its capabilities
-- /mainnet/ao-core-relay: Guide to using AO Core Relay for mainnet interactions
-- /releasenotes/index: Comprehensive changelog of all AO versions and updates
-- /CONTRIBUTING: Detailed guidelines for contributing to AO development
-- /languages/README: Complete guide to documentation translation process 
+### API Definitions
+- Programming
+- AO
+- Development
+- Community
+- Navigation
+
+
+### Lua Optimization Guide for AO Platform
+Source: https://cookbook_ao.arweave.net/references/lua-optimization.html
+
+### API Definitions
+- Table
+- Appending
+- Removing
+- Variable
+- Local
+- Upvalues
+- String
+- String
+- Pattern
+- Memory
+- Table
+- Minimize
+- Blockchain
+- State
+- Additional
+
+
+### Meet Lua
+Source: https://cookbook_ao.arweave.net/references/lua.html
+
+### API Definitions
+- Understanding
+- Setting
+- Basic
+- Hands
+- Resources
+- Best
+- Conclusion
+
+
+### Messaging Patterns in ao
+Source: https://cookbook_ao.arweave.net/references/messaging.html
+
+### API Definitions
+- Quick
+- Sending
+- `ao.send`
+- `msg.reply`
+- `msg.forward`
+- `Handlers.utils.reply`
+- Receiving
+- `Receive`
+- `ao.send
+- Message
+- Blocking
+
+### Code Examples
+```
+Client (A) → Service (B)
+   ↓           ↓
+Continues    Processes
+ execution    message
+```
+
+```
+### `Handlers.utils.reply`: Simple Reply Handler Creation
+
+Creates a handler function that automatically replies with a fixed response. A wrapper around [`msg.reply`](#msg-reply-asynchronous-response-sending) for common use cases.
+
+**Simple String Response Example:**
+```
+
+```
+## Receiving Messages
+
+### `Receive` (Capital R): Blocking Pattern Matcher
+
+Blocks execution until any matching message arrives from any sender.
+
+- Waits for any message matching the pattern, regardless of origin
+- Use for synchronous message processing flows or event listening
+```
+
+
+
+### ao Token and Subledger Specification
+Source: https://cookbook_ao.arweave.net/references/token.html
+
+### API Definitions
+- Spawning
+- Messaging
+- Balance
+- Balances
+- Transfer
+- Get
+- Mint
+- Spawning
+- `Credit
+- Transfer
+- Withdraw
+
+### Code Examples
+```
+### Balances()
+
+- Returns the balance of all participants in the token.
+```
+
+```
+Recipients will infer from the `From-Process` tag of the message which tokens they have received.
+
+### Get-Info()
+```
+
+```
+### Mint() [optional]
+
+Implementing a `Mint` action gives the process a way of allowing valid participants to create new tokens.
+```
+
+
+### Parameters
+|
+| -------- | ------------------------------------------------------------------------------------------------------ | ------------------ |
+| Balance  | get the balance of an identifier                                                                       | :heavy_check_mark: |
+| Balances | get a list of all ledger/account balances                                                              | :heavy_check_mark: |
+| Transfer | send 1 or more units from the callers balance to one or move targets with the option to notify targets | :x:                |
+| Mint     | if the ledger process is the root and you would like to increase token supply                          | :x:                |
+
+
+### Parameters
+|
+| ------------ | -------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| Name         | The title of the token, as it should be displayed to users.                                                          | :heavy_check_mark: |
+| Ticker       | A suggested shortened name for the token, such that it can be referenced quickly.                                    | :heavy_check_mark: |
+| Logo         | An image that applications may desire to show next to the token, in order to make it quickly visually identifiable.  | :heavy_check_mark: |
+| Denomination | The number of the token that should be treated as a single unit when quantities and balances are displayed to users. | :x:                |
+
+
+### Parameters
+|
+| ------------ | ------------------------------------------------------------------ | --------- |
+| Source-Token | The `ID` of the top-most process that this subledger represents.   | :x:       |
+| Parent-Token | The `ID` of the parent process that this subledger is attached to. | :x:       |
+
+
+
+### Meet Web Assembly
+Source: https://cookbook_ao.arweave.net/references/wasm.html
+
+WebAssembly (often abbreviated as Wasm) is a modern binary instruction format providing a portable compilation target for high-level languages like C, C++, and Rust. It enables deployment on the web for client and server applications, offering a high level of performance and efficiency. WebAssembly is designed to maintain the security and sandboxing features of web browsers, making it a suitable choice for web-based applications. It's a key technology for web developers, allowing them to write code in multiple languages and compile it into bytecode that runs in the browser at near-native speed.
+
+## RELEASE NOTES AND CHANGELOGS
+
+
+
+### AOS Release Notes v2.0.0
+Source: https://cookbook_ao.arweave.net/releasenotes/aos-2_0_0.html
+
+Version: 2.0.0
+
+Changes:
+- Receive the `await` of aos
+- REQ/RES semantics with References
+- default actions for handlers.
+- Authority tags are required for all processes. Messages will not be trusted by default, any Spawn MUST supply Authority tags if they plan to receive messages from MUs. The new test MU is `fcoN_xJeisVsPXA-trzVAuIiqO3ydLQxM-L4XbrQKzY`
+- Message Tag `Ref_` has been replaced for `Reference` - aos 2.0 process will always use the 'Reference' tag as a unique message counter.
+- No more `result.Output.data.output`, aos processes always return a consistent `Output.data` shape:
+- Strings as match, checking against the Action tag.
+- 'MessageMatchSpecs': Partially described messages.
+- Wildcard (`_`): Is the tag given at all?
+- Function: Run a function against the tag value (optional second argument is the full message)
+- String: Exact match
+- String: Lua matching syntax
+- Improved processid identification - https://github.com/permaweb/aos/pull/301
+- update: assignable package installer - https://github.com/permaweb/aos/pull/302
+
+
+### AOS Release Notes v2.0.1
+Source: https://cookbook_ao.arweave.net/releasenotes/aos-2_0_1.html
+
+Version: 2.0.1
+
+Changes:
+- Bootloader
+- Handlers.once (defaults to prepend mode)
+- WeaveDrive with Attestors
+- WeaveDrive L2 Headers
+- Spawn module by name
+- Graphql Modules
+- msg.reply patch
+- bubble up errors during co-routine resume functions - https://github.com/permaweb/aos/pull/374
+- update token.lua to check for .reply before using the replay method
+- staking blueprint improvement to default unstake delay block wait, and prepend finalize handler.
+- fixed bug with Handlers.remove - https://github.com/permaweb/aos/pull/366
+
+
+### AOS Release Notes v2.0.2
+Source: https://cookbook_ao.arweave.net/releasenotes/aos-2_0_2.html
+
+Version: 2.0.2
+
+Changes:
+- **Improved Spawn Process Times**: This release improves the process creation times for testnet. When you create new `aos` processes, it should now take only a few seconds to spawn.
+- Issue [#388](https://github.com/permaweb/aos/pull/388): fix(services/version): prevent checkForUpdate() 5xx response codes from stopping connection
+- Issue [#392](https://github.com/permaweb/aos/pull/392): Add Action Tag to broadcasted messages in Chatroom Blueprint
+- Issue [#391](https://github.com/permaweb/aos/pull/391): feat(aos): if multiple processes have the same name, allow user to select which process to run
+- Issue [#390](https://github.com/permaweb/aos/pull/390): fix(aos): fix error lines base cases, loading
+- Issue [#386](https://github.com/permaweb/aos/pull/386): fix(aos): get blueprints now uses dir
+- Issue [#337](https://github.com/permaweb/aos/issues/337): matchesspec does not work with from-process
+
+
+### Release Notes
+Source: https://cookbook_ao.arweave.net/releasenotes/index.html
+
+Changes:
+- [AOS 2.0.2](aos-2_0_2) - Improved spawn process times and various bug fixes
+- [AOS 2.0.1](aos-2_0_1) - Details about patch updates and fixes in the 2.0.1 release
+- [AOS 2.0.0](aos-2_0_0) - Major release information, including new features and significant changes
+- Learn about new features that could enhance your applications
+- Understand potential breaking changes that might affect existing code
+- Discover bug fixes that resolve issues you may have encountered
+- Stay informed about security updates and best practices
+
+
+# Summary
+
+Total files processed: 17
+Total documentation pages: 95
+This documentation is focused on technical references and release notes, prioritizing accuracy and relevance for LLM processing.
