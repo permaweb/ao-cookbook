@@ -191,6 +191,36 @@ local is_assigned_elsewhere = ao.isAssignment({
 })
 ```
 
+### `ao.addAssignable(name: string, condition: function)`
+
+Adds a named condition function to the process's list of assignables. Messages matching any condition will be accepted when assigned.
+
+> **Note:** The `condition` parameter uses a similar pattern matching approach as the `pattern` parameter in `Handlers.add()`. For more advanced pattern matching techniques, see the [Handlers Pattern Matching documentation](../references/handlers.md#pattern-matching-tables).
+
+#### Example
+
+```lua
+-- Allow transactions from ArDrive
+ao.addAssignable("allowArDrive", function (msg)
+    return msg.Tags["App-Name"] == "ArDrive-App"
+end)
+
+-- Allow transactions with specific content type
+ao.addAssignable("allowJson", function (msg)
+    return msg.Tags["Content-Type"] == "application/json"
+end)
+```
+
+### `ao.removeAssignable(name: string)`
+
+Removes a previously added assignable condition from the process's list of assignables.
+
+#### Example
+
+```lua
+ao.removeAssignable("allowArDrive")
+```
+
 ## Custom `ao` Table Structures
 
 ### Tags

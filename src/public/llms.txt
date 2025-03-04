@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-02-27T16:49:09.424Z
+Generated: 2025-03-04T14:36:28.464Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -302,6 +302,14 @@ Source: https://cookbook_ao.arweave.net/references/cron.html
 Source: https://cookbook_ao.arweave.net/references/data.html
 
 ### API Definitions
+- Controlling
+- Proper
+- Using
+- Removing
+- Assigning
+- Important
+- Transactions
+- Blacklisted
 - Why
 
 

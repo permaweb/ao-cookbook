@@ -1,6 +1,6 @@
 # EN Technical Documentation
 
-Generated: 2025-02-27T16:49:09.423Z
+Generated: 2025-03-04T14:36:28.461Z
 
 This file contains technical reference documentation and release notes.
 
@@ -396,6 +396,50 @@ Source: https://cookbook_ao.arweave.net/references/data.html
 
 There may be times in your ao development workflow that you want to access data from Arweave. With ao, your process can send an assignment instructing the network to provide that data to your Process.
 
+## Controlling Which L1 Transactions Can Be Assigned
+
+By default, a process won't accept arbitrary L1 transactions. You need to explicitly define which transactions are allowed through the use of `ao.addAssignable`. This function lets you define conditions that determine which L1 transactions your process will accept.
+
+### Proper Sequence for Assigning L1 Transactions
+
+For successful assignment of L1 transactions, follow these steps in order:
+
+1. **Define assignables** to specify which L1 transactions your process will accept
+2. **Wait for any transaction confirmations** (by default, 20 confirmations are required)
+3. **Assign the L1 transaction** to your process
+4. **Process the data** within your handlers
+
+If you attempt to assign transactions before defining appropriate assignables, they will be permanently blacklisted.
+
+### Using ao.addAssignable
+
+The `ao.addAssignable` function takes two parameters:
+1. A name for the assignable condition (for identification)
+2. A function that examines the message and returns `true` if it should be allowed
+
+```lua
+-- Example: Allow transactions from ArDrive
+ao.addAssignable("allowArDrive", function (msg) 
+    return msg.Tags["App-Name"] == "ArDrive-App" 
+end)
+
+-- Example: Allow verified JSON content
+ao.addAssignable("allowVerifiedJson", function (msg)
+    return msg.Tags["Content-Type"] == "application/json" and
+           msg.Tags["Verified"] == "true"
+end)
+```
+
+### Removing Assignables
+
+You can remove a previously added assignable using `ao.removeAssignable`:
+
+```lua
+ao.removeAssignable("allowArDrive")
+```
+
+## Assigning Data
+
 To request data from Arweave, you simply call `Assign` with a list of every `Process` you would like to assign the data to, along with a `Message`, which is the TxID of a Message.
 
 ```lua
@@ -415,6 +459,25 @@ Send({
   Assignments = { 'process-id-1', 'process-id-2' }
 })
 ```
+
+## Important Limitations
+
+### Transactions Can Only Be Assigned Once
+
+A critical point to understand is that **the same L1 transaction cannot be assigned twice to the same process**. If you attempt to assign the same transaction again, the assignment will be ignored.
+
+### Blacklisted Transactions Remain Blacklisted
+
+If an Assignment was initially blacklisted (not trusted/accepted), then later an assignable was added that would theoretically whitelist it, the transaction will **still remain blacklisted**. In other words, once a transaction is rejected by a process, it cannot be re-assigned to that process later, even if the conditions for acceptance change.
+
+Example scenario:
+1. You attempt to assign an L1 transaction with `App-Name: "ArDrive-App"` but have no assignable for it
+2. The transaction is blacklisted (rejected)
+3. You add `ao.addAssignable("allowArDrive", function (msg) return msg.Tags["App-Name"] == "ArDrive-App" end)`
+4. You attempt to assign the same L1 transaction again
+5. The assignment will still be rejected because the transaction was previously blacklisted
+
+This behavior means it's important to define your assignables before attempting to assign transactions that would match those criteria.
 
 ## Why data from Arweave?
 
