@@ -129,6 +129,8 @@ if ArweaveData then
 end
 ```
 
+> **Note:** When using [`.load`](../guides/aos/load.md#load-lua-files-with-load-filename), the script will pause at the `Receive` call until matching data is received, as described in the [Messaging Patterns documentation](../references/messaging.md#receive-capital-r-blocking-pattern-matcher). When running commands separately in the aos shell, each command executes independently, allowing you to set up the listener, then make the assignment request, and finally process the data when it arrives.
+
 This pattern creates a synchronous flow where your process:
 
 1. Defines which transactions are acceptable
@@ -162,21 +164,22 @@ For successful assignment of Arweave transactions, follow these steps in order:
 
 There are several practical reasons to access Arweave data from your ao process:
 
-1. **External Data for Decision-Making**: Your process may need data stored on Arweave to make informed decisions. For example:
+1. **Efficient Handling of Large Data**: For larger content, directly accessing Arweave is more efficient:
+
+   - Reference large media files (images, videos, documents) without storing them in your process
+   - Work with datasets too large to fit in process memory
+   - Maintain a lightweight process that can access substantial external resources
+
+2. **External Data for Decision-Making**: Your process may need data stored on Arweave to make informed decisions. For example:
 
    - Reading token price data stored by an oracle
    - Accessing verified identity information
    - Retrieving voting records or governance data
 
-2. **Dynamic Loading of Features**: Rather than including all functionality in your initial process code:
+3. **Dynamic Loading of Features**: Rather than including all functionality in your initial process code:
 
    - Load modules or plugins from Arweave as needed
    - Update configuration without redeploying your entire process
    - Implement upgradable components with new versions stored on Arweave
-
-3. **Efficient Handling of Large Data**: For larger content, directly accessing Arweave is more efficient:
-   - Reference large media files (images, videos, documents) without storing them in your process
-   - Work with datasets too large to fit in process memory
-   - Maintain a lightweight process that can access substantial external resources
 
 This approach allows you to create more sophisticated applications that leverage Arweave's permanent storage while maintaining efficient process execution in the ao environment.

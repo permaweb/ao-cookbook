@@ -6,7 +6,6 @@ version: 0.0.3
 
 - [ao.send(msg)](#ao-send-msg-message) - send message to another process
 - [ao.spawn(module, msg)](#ao-spawn-module-string-spawn-spawn) - spawn a process
-- [ao.isTrusted(msg)](#ao-istrusted-msg-message) - check to see if this message trusted?
 
 The goal of this library is to provide this core functionality in the box of the `ao` developer toolkit. As a developer you have the option to leverage this library or not, but it integrated by default.
 
@@ -119,20 +118,6 @@ local process = ao.spawn("processId", {
 })
 ```
 
-### `ao.isTrusted(msg: Message)`
-
-Takes a [Message](#message) as input. Returns `true` if the message is from a trusted source.
-
-#### Example
-
-```lua
-if ao.isTrusted(msg) then
-    -- Process trusted message
-else
-    -- Handle untrusted message
-end
-```
-
 ### `ao.assign(assignment: Assignment)`
 
 Takes an [Assignment](#assignment) as input. Adds the assignment to `ao.outbox.Assignments`.
@@ -219,6 +204,20 @@ Removes a previously added assignable condition from the process's list of assig
 
 ```lua
 ao.removeAssignable("allowArDrive")
+```
+
+### `ao.isTrusted(msg: Message)`
+
+Takes a [Message](#message) as input. Returns `true` if the message is from a trusted source.
+
+#### Example
+
+```lua
+if ao.isTrusted(msg) then
+    -- Process trusted message
+else
+    -- Handle untrusted message
+end
 ```
 
 ## Custom `ao` Table Structures

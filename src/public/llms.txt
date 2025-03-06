@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-03-04T14:36:28.464Z
+Generated: 2025-03-06T18:39:53.791Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -200,8 +200,6 @@ Source: https://cookbook_ao.arweave.net/references/ao.html
 - Example
 - `ao.spawn
 - Example
-- `ao.isTrusted
-- Example
 - `ao.assign
 - Example
 - `ao.result
@@ -209,6 +207,12 @@ Source: https://cookbook_ao.arweave.net/references/ao.html
 - `ao.isAssignable
 - Example
 - `ao.isAssignment
+- Example
+- `ao.addAssignable
+- Example
+- `ao.removeAssignable
+- Example
+- `ao.isTrusted
 - Example
 - Custom
 - Tags
@@ -237,9 +241,9 @@ Takes a module ID string and [Spawn](#spawn) as input. Returns a Spawn table wit
 ```
 
 ```
-### `ao.isTrusted(msg: Message)`
+### `ao.assign(assignment: Assignment)`
 
-Takes a [Message](#message) as input. Returns `true` if the message is from a trusted source.
+Takes an [Assignment](#assignment) as input. Adds the assignment to `ao.outbox.Assignments`.
 
 #### Example
 ```
@@ -302,14 +306,16 @@ Source: https://cookbook_ao.arweave.net/references/cron.html
 Source: https://cookbook_ao.arweave.net/references/data.html
 
 ### API Definitions
-- Controlling
-- Proper
+- Defining
+- Working
+- Setting
+- Assignment
 - Using
-- Removing
-- Assigning
+- Using
+- Accessing
+- Complete
 - Important
-- Transactions
-- Blacklisted
+- Proper
 - Why
 
 
