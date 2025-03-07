@@ -1,6 +1,6 @@
 # EN Technical Documentation
 
-Generated: 2025-03-07T18:42:41.489Z
+Generated: 2025-03-07T20:21:03.231Z
 
 This file contains technical reference documentation and release notes.
 
@@ -534,25 +534,21 @@ ao.addAssignable("allowArDrive", function (msg)
     return msg.Tags["App-Name"] == "ArDrive-App"
 end)
 
--- Step 2: Set up a listener to capture the data
-ArweaveData = Receive(function(msg)
-  return msg.Tags["App-Name"] == "ArDrive-App"
-end)
-
--- Step 3: Request the data
+-- Step 2: Request the data
 Assign({
   Processes = { ao.id },
   Message = '<arweave-transaction-id>'
 })
 
--- Step 4: Process the received data
-if ArweaveData then
-  print(ArweaveData.Tags["App-Name"]) -- e.g., "ArDrive-CLI"
-  -- Raw Arweave Data is available in ArweaveData.Data
-end
-```
+-- Step 3: Set up a listener to capture the data
+ArweaveData = Receive(function(msg)
+  return msg.Tags["App-Name"] == "ArDrive-App"
+end)
 
-> **Note:** When using [`.load`](../guides/aos/load.md#load-lua-files-with-load-filename), the script will pause at the `Receive` call until matching data is received. When running commands separately in the aos shell, each command executes independently, allowing you to set up the listener, then make the assignment request, and finally process the data when it arrives. For programmatic processing, you'll need another process to handle the Assignments.
+-- Step 4: Process the received data
+print(ArweaveData.Tags["App-Name"]) -- e.g., "ArDrive-CLI"
+-- Raw Arweave Data is available in ArweaveData.Data
+```
 
 ## Practical Examples
 
@@ -594,6 +590,7 @@ end)
 ```
 
 This example shows how to:
+
 - Cache Arweave data using a self-executing function
 - Use the cached data in subsequent message handling
 - Combine Arweave data with new incoming data
@@ -603,9 +600,6 @@ This example shows how to:
 This example shows how to process arbitrary Arweave transactions and maintain state between requests:
 
 ```lua
--- Initialize state
-local Number = 0
-
 -- Table to store pending requests (maps transaction ID to original sender)
 local PendingRequests = {}
 
@@ -666,6 +660,7 @@ Handlers.add(
 ```
 
 To use this example:
+
 ```lua
 Send({
     Target = ao.id,
@@ -677,10 +672,25 @@ Send({
 ```
 
 This example demonstrates:
+
 - Processing arbitrary Arweave transactions
 - Maintaining state between requests using a pending requests table
 - Sending results back to the original requester
 - Error handling and request cleanup
+
+:::warning
+When using `Assign` to bridge Arweave data to AO, you must ensure that:
+
+1. The Arweave transaction you're assigning matches one of your defined assignables
+2. You have a corresponding handler or receiver set up to process that transaction type
+3. The handler's pattern matching matches the assigned transaction's tags/properties
+
+For example, if you're assigning a transaction with `Action = "Number"`, you need:
+
+- An assignable that accepts `msg.Tags["Action"] == "Number"`
+- Either a `Receive` function or a handler that matches the same pattern
+- Both the assignable and handler must use consistent pattern matching
+  :::
 
 ## Important Limitations {#assignable-limitations}
 
