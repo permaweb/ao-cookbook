@@ -90,7 +90,7 @@ end)
 For persistent processing, set up a handler:
 
 ```lua
-Handlers.add("process-ardrive",
+Handlers.add("ProcessArDriveFiles",
   { Tags = { ["App-Name"] = "ArDrive-App" } },
   function(msg)
     print(msg.Tags["App-Name"])

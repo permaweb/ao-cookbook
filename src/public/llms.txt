@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-03-07T20:21:03.235Z
+Generated: 2025-03-07T21:06:25.015Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -307,12 +307,12 @@ Source: https://cookbook_ao.arweave.net/references/data.html
 
 ### API Definitions
 - Defining
-- Working
-- Setting
 - Assignment
 - Using
 - Using
-- Accessing
+- Working
+- Using
+- Using
 - Complete
 - Practical
 - Example
@@ -320,6 +320,16 @@ Source: https://cookbook_ao.arweave.net/references/data.html
 - Important
 - Proper
 - Why
+
+### Code Examples
+```
+> **Note:** When using [`.load`](../guides/aos/load.md#load-lua-files-with-load-filename), the script pauses at `Receive` until data arrives. When running commands separately in the shell, each command executes independently.
+
+### Using Handlers
+
+For persistent processing, set up a handler:
+```
+
 
 
 ### Editor setup

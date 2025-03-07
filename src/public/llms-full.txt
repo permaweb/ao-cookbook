@@ -1,6 +1,6 @@
 # EN Technical Documentation
 
-Generated: 2025-03-07T20:21:03.231Z
+Generated: 2025-03-07T21:06:25.015Z
 
 This file contains technical reference documentation and release notes.
 
@@ -427,8 +427,6 @@ There may be times in your ao development workflow that you want to access data 
 
 ## Defining Acceptable Transactions (Required First Step)
 
-> **Critical:** By default, a process won't accept any Arweave transactions. You must explicitly define which transactions are allowed before attempting to assign them.
-
 Before you can assign any Arweave transaction to your process, you must first define which transactions your process will accept using [`ao.addAssignable`](../references/ao.md#ao-addassignable-name-string-condition-function). This function creates conditions that determine which Arweave transactions your process will accept.
 
 ```lua
@@ -448,42 +446,6 @@ end)
 You can remove assignables with `ao.removeAssignable("<name>")`.
 
 The condition functions use similar pattern matching techniques as found in the [Handlers documentation](../references/handlers.md#pattern-matching-tables). For complete details on the `ao.addAssignable` function, including parameter descriptions and additional examples, see the [ao Module Reference](../references/ao.md#ao-addassignable-name-string-condition-function).
-
-## Working with Assigned Data
-
-To access assigned data in your code, you'll need to set up a listener using the `Receive` function and then make your assignment request.
-
-### Setting Up a Listener with `Receive`
-
-> **Critical Timing:** You must set up your `Receive` listener _before_ making the assignment request. If you call `Assign` first, the listener won't capture the data.
-
-The `Receive` function lets you create a listener that waits for specific incoming messages:
-
-```lua
--- Listen for messages from ArDrive
-ArweaveData = Receive(function(msg)
-  return msg.Tags["App-Name"] == "ArDrive-App"
-end)
-
--- After setting up the listener, you can make your assignment request
-```
-
-You can create specific filters to match exactly the transaction you're interested in:
-
-```lua
--- Match a specific transaction ID
-ArweaveData = Receive(function(msg)
-  return msg.Id == "<arweave-transaction-id>"
-end)
-
--- Or combine multiple conditions
-ArweaveData = Receive(function(msg)
-  return msg.Tags["App-Name"] == "ArDrive-CLI" and
-         msg.Tags["Content-Type"] == "image/png"
-end)
-```
-
-> **Note:** For more details on the `Receive` function and other messaging patterns, see the [Messaging Patterns documentation](../references/messaging.md#receive-capital-r-blocking-pattern-matcher).
 
 ## Assignment Methods
 
@@ -512,17 +474,61 @@ Send({
 })
 ```
 
-### Accessing the Data
+## Working with Assigned Data
 
-Once the data has been assigned and captured by your listener, you can access it and its metadata:
+You can process assigned data using either `Receive` or `Handlers`:
+
+### Using `Receive` Directly
 
 ```lua
+-- Listen for messages from ArDrive
+ArweaveData = Receive(function(msg)
+  return msg.Tags["App-Name"] == "ArDrive-App"
+end)
+
+-- Process the data when received
 if ArweaveData then
-  -- Process the Arweave data
-  print(ArweaveData.Tags["App-Name"]) -- e.g., "ArDrive-CLI"
+  print(ArweaveData.Tags["App-Name"])
   -- Raw Arweave Data is available in ArweaveData.Data
 end
 ```
+
+You can also match specific transactions or combine conditions:
+
+```lua
+-- Match a specific transaction ID
+ArweaveData = Receive({ Id = "<arweave-transaction-id>" })
+
+-- Or combine multiple conditions
+ArweaveData = Receive(function(msg)
+  return msg.Tags["App-Name"] == "ArDrive-CLI" and
+         msg.Tags["Content-Type"] == "image/png"
+end)
+```
+
+> **Note:** When using [`.load`](../guides/aos/load.md#load-lua-files-with-load-filename), the script pauses at `Receive` until data arrives. When running commands separately in the shell, each command executes independently.
+
+### Using Handlers
+
+For persistent processing, set up a handler:
+
+```lua
+Handlers.add("process-ardrive",
+  { Tags = { ["App-Name"] = "ArDrive-App" } },
+  function(msg)
+    print(msg.Tags["App-Name"])
+    -- Raw Arweave Data is available in msg.Data
+  end
+)
+```
+
+Handlers are ideal for:
+
+- Processing multiple assignments over time
+- Automated processing without manual intervention
+- Building services that other processes can interact with
+
+For more details, see the [Messaging Patterns](../references/messaging.md#receive-capital-r-blocking-pattern-matcher) and [Handlers](../references/handlers.md#pattern-matching-tables) documentation.
 
 ## Complete Example Workflow
 
@@ -540,15 +546,21 @@ Assign({
   Message = '<arweave-transaction-id>'
 })
 
--- Step 3: Set up a listener to capture the data
+-- Step 3: Immediately capture the Assignment; blocking until received
 ArweaveData = Receive(function(msg)
   return msg.Tags["App-Name"] == "ArDrive-App"
 end)
 
--- Step 4: Process the received data
 print(ArweaveData.Tags["App-Name"]) -- e.g., "ArDrive-CLI"
 -- Raw Arweave Data is available in ArweaveData.Data
 ```
+
+This pattern creates a synchronous flow where your process:
+
+1. Defines acceptable transactions
+2. Requests the data
+3. Captures the data using `Receive`
+4. Processes the data
 
 ## Practical Examples
 
@@ -679,7 +691,7 @@ This example demonstrates:
 - Error handling and request cleanup
 
 :::warning
-When using `Assign` to bridge Arweave data to AO, you must ensure that:
+When using `Assign` to bridge Arweave data into AO, you must ensure that:
 
 1. The Arweave transaction you're assigning matches one of your defined assignables
 2. You have a corresponding handler or receiver set up to process that transaction type
@@ -704,15 +716,17 @@ There are critical limitations to be aware of when working with assignables:
 
 ## Proper Sequence for Assigning Arweave Transactions
 
-For successful assignment of Arweave transactions, follow these steps in order:
+For successful assignment of Arweave transactions, follow these steps:
 
 1. **Define assignables** to specify which Arweave transactions your process will accept
-2. **Set up any listeners** with `Receive` if you need to capture the data
-3. **Wait for any transaction confirmations** (by default, 20 confirmations are required)
+2. **Wait for any transaction confirmations** (by default, 20 confirmations are required)
+3. **Set up handlers or listeners** with `Receive` or `Handlers.add` to process the data
 4. **Assign the Arweave transaction** to your process (see [Assignment Methods](#assignment-methods))
-5. **Process the data** captured by your listener (see [Working with Assigned Data](#working-with-assigned-data))
 
-> **Important:** Be sure to follow this sequence to avoid missing data or encountering the permanent blacklisting described in [Important Limitations](#assignable-limitations).
+The order of steps 3 and 4 can be interchanged based on your needs:
+
+- When using `Receive` in a script loaded with `.load`, ensure `Assign` is placed before `Receive` to prevent the process from hanging, as `Receive` is blocking.
+- When using handlers or running commands separately in the shell, the order doesn't matter as handlers will catch messages whenever they arrive
 
 ## Why Access Data from Arweave?
 
