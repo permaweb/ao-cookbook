@@ -255,17 +255,19 @@ This example demonstrates:
 - Sending results back to the original requester
 - Error handling and request cleanup
 
-> **Critical Note:** When using `Assign` to bridge Arweave data to AO, you must ensure that:
->
-> 1. The Arweave transaction you're assigning matches one of your defined assignables
-> 2. You have a corresponding handler or receiver set up to process that transaction type
-> 3. The handler's pattern matching matches the assigned transaction's tags/properties
->
-> For example, if you're assigning a transaction with `Action = "Number"`, you need:
->
-> - An assignable that accepts `msg.Tags["Action"] == "Number"`
-> - Either a `Receive` function or a handler that matches the same pattern
-> - Both the assignable and handler must use consistent pattern matching
+:::warning
+When using `Assign` to bridge Arweave data to AO, you must ensure that:
+
+1. The Arweave transaction you're assigning matches one of your defined assignables
+2. You have a corresponding handler or receiver set up to process that transaction type
+3. The handler's pattern matching matches the assigned transaction's tags/properties
+
+For example, if you're assigning a transaction with `Action = "Number"`, you need:
+
+- An assignable that accepts `msg.Tags["Action"] == "Number"`
+- Either a `Receive` function or a handler that matches the same pattern
+- Both the assignable and handler must use consistent pattern matching
+  :::
 
 ## Important Limitations {#assignable-limitations}
 
