@@ -111,32 +111,161 @@ ao.addAssignable("allowArDrive", function (msg)
     return msg.Tags["App-Name"] == "ArDrive-App"
 end)
 
--- Step 2: Set up a listener to capture the data
-ArweaveData = Receive(function(msg)
-  return msg.Tags["App-Name"] == "ArDrive-App"
-end)
-
--- Step 3: Request the data
+-- Step 2: Request the data
 Assign({
   Processes = { ao.id },
   Message = '<arweave-transaction-id>'
 })
 
+-- Step 3: Set up a listener to capture the data
+ArweaveData = Receive(function(msg)
+  return msg.Tags["App-Name"] == "ArDrive-App"
+end)
+
 -- Step 4: Process the received data
-if ArweaveData then
-  print(ArweaveData.Tags["App-Name"]) -- e.g., "ArDrive-CLI"
-  -- Raw Arweave Data is available in ArweaveData.Data
-end
+print(ArweaveData.Tags["App-Name"]) -- e.g., "ArDrive-CLI"
+-- Raw Arweave Data is available in ArweaveData.Data
 ```
 
-> **Note:** When using [`.load`](../guides/aos/load.md#load-lua-files-with-load-filename), the script will pause at the `Receive` call until matching data is received, as described in the [Messaging Patterns documentation](../references/messaging.md#receive-capital-r-blocking-pattern-matcher). When running commands separately in the aos shell, each command executes independently, allowing you to set up the listener, then make the assignment request, and finally process the data when it arrives.
+## Practical Examples
 
-This pattern creates a synchronous flow where your process:
+Here are two practical examples showing different approaches to working with Arweave data in your ao process:
 
-1. Defines which transactions are acceptable
-2. Sets up a listener with `Receive`
-3. Requests specific data with `Assign`
-4. Processes the received data when it arrives
+### Example 1: Caching Arweave Data
+
+This example demonstrates how to load and cache data from Arweave, then use it in subsequent operations:
+
+```lua
+-- Initialize state
+local Number = 0
+
+-- Step 1: Define which transactions your process will accept
+print("Step 1: Defining acceptable transactions")
+ao.addAssignable("addNumber", function (msg)
+    return msg.Tags["Action"] == "Number"
+end)
+
+-- Step 2: Request and cache the initial number from Arweave
+-- This uses a self-executing function to fetch and cache the value only once
+NumberFromArweave = NumberFromArweave or (function()
+    print("Step 2: Requesting initial number from Arweave")
+    Assign({
+        Processes = { ao.id },
+        Message = 'DivdWHaNj8mJhQQCdatt52rt4QvceBR_iyX58aZctZQ'
+    })
+    return tonumber(Receive({ Action = "Number"}).Data)
+end)()
+
+-- Step 3: Set up handler for future number updates
+-- This handler will add new numbers to our cached Arweave number
+Handlers.add("Number", function (msg)
+    print("Received message with Data = " .. msg.Data)
+    print("Old Number: " .. Number)
+    Number = NumberFromArweave + tonumber(msg.Data)
+    print("New Number: " .. Number)
+end)
+```
+
+This example shows how to:
+
+- Cache Arweave data using a self-executing function
+- Use the cached data in subsequent message handling
+- Combine Arweave data with new incoming data
+
+### Example 2: Dynamic Transaction Processing
+
+This example shows how to process arbitrary Arweave transactions and maintain state between requests:
+
+```lua
+-- Table to store pending requests (maps transaction ID to original sender)
+local PendingRequests = {}
+
+-- Step 1: Define which transactions your process will accept
+print("Step 1: Defining acceptable transactions")
+ao.addAssignable("processArweaveNumber", function (msg)
+    return msg.Tags["Action"] == "Number"
+end)
+
+-- Step 2: Set up handler for initiating the processing
+Handlers.add(
+    "ProcessArweaveNumber",
+    function (msg)
+        if not msg.Tags["ArweaveTx"] then
+            print("Error: No ArweaveTx tag provided")
+            return
+        end
+        local txId = msg.Tags["ArweaveTx"]
+        print("Assigning Arweave transaction: " .. txId)
+        -- Store the original sender associated with this transaction ID
+        PendingRequests[txId] = msg.From
+        -- Assign the transaction to this process
+        Assign({
+            Processes = { ao.id },
+            Message = txId
+        })
+        print("Assignment requested; waiting for data...")
+    end
+)
+
+-- Step 3: Set up handler for processing the assigned message
+Handlers.add(
+    "Number",
+    function (msg)
+        local txId = msg.Id  -- The ID of the assigned message
+        local originalSender = PendingRequests[txId]
+        if not originalSender then
+            print("Error: No pending request found for transaction " .. txId)
+            return
+        end
+        local data = msg.Data
+        if not data or not tonumber(data) then
+            print("Error: Invalid number data in assigned message")
+            return
+        end
+        local number = tonumber(data)
+        local result = number + 1
+        print(string.format("Processing: %d + 1 = %d", number, result))
+        -- Send the result back to the original sender
+        Send({
+            Target = originalSender,
+            Data = tostring(result)
+        })
+        -- Clean up the pending request
+        PendingRequests[txId] = nil
+    end
+)
+```
+
+To use this example:
+
+```lua
+Send({
+    Target = ao.id,
+    Action = "ProcessArweaveNumber",
+    Tags = {
+        ArweaveTx = "YOUR-ARWEAVE-TX-ID"  -- ID of a transaction containing a number
+    }
+})
+```
+
+This example demonstrates:
+
+- Processing arbitrary Arweave transactions
+- Maintaining state between requests using a pending requests table
+- Sending results back to the original requester
+- Error handling and request cleanup
+
+> **Critical Note:** When using `Assign` to bridge Arweave data to AO, you must ensure that:
+>
+> 1. The Arweave transaction you're assigning matches one of your defined assignables
+> 2. You have a corresponding handler or receiver set up to process that transaction type
+> 3. The handler's pattern matching matches the assigned transaction's tags/properties
+>
+> For example, if you're assigning a transaction with `Action = "Number"`, you need:
+>
+> - An assignable that accepts `msg.Tags["Action"] == "Number"`
+> - Either a `Receive` function or a handler that matches the same pattern
+> - Both the assignable and handler must use consistent pattern matching
 
 ## Important Limitations {#assignable-limitations}
 
@@ -183,3 +312,5 @@ There are several practical reasons to access Arweave data from your ao process:
    - Implement upgradable components with new versions stored on Arweave
 
 This approach allows you to create more sophisticated applications that leverage Arweave's permanent storage while maintaining efficient process execution in the ao environment.
+
+When another process Assigns a transaction to this process, you can also use handlers to process the data asynchronously.

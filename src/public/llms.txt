@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-03-06T18:39:53.791Z
+Generated: 2025-03-07T18:42:41.490Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -314,6 +314,9 @@ Source: https://cookbook_ao.arweave.net/references/data.html
 - Using
 - Accessing
 - Complete
+- Practical
+- Example
+- Example
 - Important
 - Proper
 - Why
