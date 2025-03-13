@@ -1,6 +1,6 @@
 # EN Technical Documentation
 
-Generated: 2025-02-27T16:49:09.423Z
+Generated: 2025-03-13T13:13:46.517Z
 
 This file contains technical reference documentation and release notes.
 
@@ -461,6 +461,11 @@ Features include:
 - Tight integration with [ao package manager](https://apm.betteridea.dev)
 
 Read detailed information about the various features and integrations of the IDE in the [documentation](https://docs.betteridea.dev).
+
+## glossary
+Source: https://cookbook_ao.arweave.net/references/glossary.html
+
+<iframe src="https://glossary_tiny4vr.permagate.io/" height="400" width="100%" style="border: none;"></iframe>
 
 ## Handlers (Version 0.0.5)
 Source: https://cookbook_ao.arweave.net/references/handlers.html
@@ -2153,4 +2158,4 @@ Use the sidebar to navigate between different release notes. Notes are organized
 
 # Summary
 
-Total files processed: 17
+Total files processed: 18
