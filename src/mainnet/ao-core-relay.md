@@ -51,5 +51,5 @@ When you access AOS in relay mode, `--relay <relay_url>` you will be able to see
 4. At this point AOS will handle the transfer to the relay and you will now be able to start sending messages.
 
 ::: info
-Note that `Quantity` is the amount of Armstrongs to send, not $AO. One AO is one trillion Armstrongs, so 1,000,000 Armstrongs = 0.0000001 AO.
+Note that `Quantity` is the amount of Armstrongs to send, not $AO. One AO is one trillion Armstrongs, so 1,000,000 Armstrongs = 0.000001 AO.
 :::
