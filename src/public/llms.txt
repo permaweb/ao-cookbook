@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-03-07T21:06:25.015Z
+Generated: 2025-03-13T13:13:46.518Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -102,6 +102,7 @@ This file contains structured reference documentation, release notes, and a comp
 - [Community Resources](https://cookbook_ao.arweave.net/references/community.html)
 - [Cron Messages](https://cookbook_ao.arweave.net/references/cron.html)
 - [Editor setup](https://cookbook_ao.arweave.net/references/editor-setup.html)
+- [Glossary](https://cookbook_ao.arweave.net/references/glossary.html)
 - [Handlers (Version 0.0.5)](https://cookbook_ao.arweave.net/references/handlers.html)
 - [Lua Optimization Guide for AO Platform](https://cookbook_ao.arweave.net/references/lua-optimization.html)
 - [Meet Lua](https://cookbook_ao.arweave.net/references/lua.html)
@@ -169,6 +170,7 @@ This file contains structured reference documentation, release notes, and a comp
   - Cron Messages
   - Accessing Data from Arweave with ao
   - Editor setup
+  - glossary
   - Handlers (Version 0.0.5)
   - References
   - Lua Optimization Guide for AO Platform
@@ -340,6 +342,11 @@ Source: https://cookbook_ao.arweave.net/references/editor-setup.html
 - Other
 - BetterIDEa
 
+
+### glossary
+Source: https://cookbook_ao.arweave.net/references/glossary.html
+
+<iframe src="https://glossary_tiny4vr.permagate.io/" height="400" width="100%" style="border: none;"></iframe>
 
 ### Handlers (Version 0.0.5)
 Source: https://cookbook_ao.arweave.net/references/handlers.html
@@ -632,6 +639,6 @@ Changes:
 
 # Summary
 
-Total files processed: 17
-Total documentation pages: 95
+Total files processed: 18
+Total documentation pages: 96
 This documentation is focused on technical references and release notes, prioritizing accuracy and relevance for LLM processing.
