@@ -6,7 +6,6 @@ version: 0.0.3
 
 - [ao.send(msg)](#ao-send-msg-message) - send message to another process
 - [ao.spawn(module, msg)](#ao-spawn-module-string-spawn-spawn) - spawn a process
-- [ao.isTrusted(msg)](#ao-istrusted-msg-message) - check to see if this message trusted?
 
 The goal of this library is to provide this core functionality in the box of the `ao` developer toolkit. As a developer you have the option to leverage this library or not, but it integrated by default.
 
@@ -119,20 +118,6 @@ local process = ao.spawn("processId", {
 })
 ```
 
-### `ao.isTrusted(msg: Message)`
-
-Takes a [Message](#message) as input. Returns `true` if the message is from a trusted source.
-
-#### Example
-
-```lua
-if ao.isTrusted(msg) then
-    -- Process trusted message
-else
-    -- Handle untrusted message
-end
-```
-
 ### `ao.assign(assignment: Assignment)`
 
 Takes an [Assignment](#assignment) as input. Adds the assignment to `ao.outbox.Assignments`.
@@ -189,6 +174,50 @@ Takes a [Message](#message) as input. Returns `true` if the message is assigned 
 local is_assigned_elsewhere = ao.isAssignment({
     Target = "AnotherProcess"
 })
+```
+
+### `ao.addAssignable(name: string, condition: function)`
+
+Adds a named condition function to the process's list of assignables. Messages matching any condition will be accepted when assigned.
+
+> **Note:** The `condition` parameter uses a similar pattern matching approach as the `pattern` parameter in `Handlers.add()`. For more advanced pattern matching techniques, see the [Handlers Pattern Matching documentation](../references/handlers.md#pattern-matching-tables).
+
+#### Example
+
+```lua
+-- Allow transactions from ArDrive
+ao.addAssignable("allowArDrive", function (msg)
+    return msg.Tags["App-Name"] == "ArDrive-App"
+end)
+
+-- Allow transactions with specific content type
+ao.addAssignable("allowJson", function (msg)
+    return msg.Tags["Content-Type"] == "application/json"
+end)
+```
+
+### `ao.removeAssignable(name: string)`
+
+Removes a previously added assignable condition from the process's list of assignables.
+
+#### Example
+
+```lua
+ao.removeAssignable("allowArDrive")
+```
+
+### `ao.isTrusted(msg: Message)`
+
+Takes a [Message](#message) as input. Returns `true` if the message is from a trusted source.
+
+#### Example
+
+```lua
+if ao.isTrusted(msg) then
+    -- Process trusted message
+else
+    -- Handle untrusted message
+end
 ```
 
 ## Custom `ao` Table Structures

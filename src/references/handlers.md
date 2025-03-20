@@ -111,7 +111,7 @@ Appends a new handler to the end of the handlers list.
 
 ### `Handlers.once(name, pattern, handler)`
 
-Only runs once when the pattern is matched. Equivalent to setting `maxRuns = 1`.
+Only runs once when the pattern is matched. Equivalent to setting `maxRuns = 1`. This is the underlying implementation used by the `Receive` function in the messaging system.
 
 ### `Handlers.prepend(name, pattern, handler)`
 

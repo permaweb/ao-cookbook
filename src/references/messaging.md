@@ -164,10 +164,11 @@ Handlers.add("status-handler",
 
 ### `Receive` (Capital R): Blocking Pattern Matcher
 
-Blocks execution until any matching message arrives from any sender.
+Blocks execution until any matching message arrives from any sender. Under the hood, this is implemented using `Handlers.once`, making it a one-time pattern matcher that automatically removes itself after execution.
 
 - Waits for any message matching the pattern, regardless of origin
 - Use for synchronous message processing flows or event listening
+- Automatically removes the handler after first match (using `Handlers.once` internally)
 
 ```
         Process (A)

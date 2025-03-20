@@ -202,8 +202,6 @@ Source: https://cookbook_ao.arweave.net/references/ao.html
 - Example
 - `ao.spawn
 - Example
-- `ao.isTrusted
-- Example
 - `ao.assign
 - Example
 - `ao.result
@@ -211,6 +209,12 @@ Source: https://cookbook_ao.arweave.net/references/ao.html
 - `ao.isAssignable
 - Example
 - `ao.isAssignment
+- Example
+- `ao.addAssignable
+- Example
+- `ao.removeAssignable
+- Example
+- `ao.isTrusted
 - Example
 - Custom
 - Tags
@@ -239,9 +243,9 @@ Takes a module ID string and [Spawn](#spawn) as input. Returns a Spawn table wit
 ```
 
 ```
-### `ao.isTrusted(msg: Message)`
+### `ao.assign(assignment: Assignment)`
 
-Takes a [Message](#message) as input. Returns `true` if the message is from a trusted source.
+Takes an [Assignment](#assignment) as input. Adds the assignment to `ao.outbox.Assignments`.
 
 #### Example
 ```
@@ -304,7 +308,30 @@ Source: https://cookbook_ao.arweave.net/references/cron.html
 Source: https://cookbook_ao.arweave.net/references/data.html
 
 ### API Definitions
+- Defining
+- Assignment
+- Using
+- Using
+- Working
+- Using
+- Using
+- Complete
+- Practical
+- Example
+- Example
+- Important
+- Proper
 - Why
+
+### Code Examples
+```
+> **Note:** When using [`.load`](../guides/aos/load.md#load-lua-files-with-load-filename), the script pauses at `Receive` until data arrives. When running commands separately in the shell, each command executes independently.
+
+### Using Handlers
+
+For persistent processing, set up a handler:
+```
+
 
 
 ### Editor setup
