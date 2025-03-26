@@ -4,7 +4,7 @@
 
   const codes = {
     "step-3": `Send({ Target = "process ID", Data = "Hello World!" })`,
-    "step-4": `Morpheus = "ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s"`,
+    "step-4": `Morpheus = "Fvan28CFY0JYl5f_ETB7d3PDwBhGS8Yq5IA0vcWulUc"`,
     "step-4-1": `Morpheus`,
     "step-5": `Send({ Target = Morpheus, Data = "Morpheus?" })`,
     "step-6": `#Inbox`,
@@ -68,13 +68,13 @@ Send({ Target = "process ID", Data = "Hello World!" })
 We'll use the process ID provided below and store it as a variable called Morpheus.
 
 ```lua
-ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s
+Fvan28CFY0JYl5f_ETB7d3PDwBhGS8Yq5IA0vcWulUc
 ```
 
 Copy the process ID above and store it as a variable by running the below command in the aos CLI:
 
 ```lua
-Morpheus = "ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s"
+Morpheus = "Fvan28CFY0JYl5f_ETB7d3PDwBhGS8Yq5IA0vcWulUc"
 ```
 
 <div id="step-4"></div>
@@ -87,7 +87,7 @@ This will store the process ID as a variable called `Morpheus`, making it easier
 -- Check the Morpheus variable by typing `Morpheus`
  Morpheus
 -- Expected Results:
-ajrGnUq9x9-K1TY1MSiKwNWhNTbq7-IdtFa33T59b7s
+Fvan28CFY0JYl5f_ETB7d3PDwBhGS8Yq5IA0vcWulUc
 
 
 -- If `undefined` is returned,
