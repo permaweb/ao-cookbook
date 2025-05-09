@@ -23,7 +23,7 @@ In the `Things to do` section below you will find many activities to try.
 Once you have [NodeJS](https://nodejs.org) on your machine, all you need to do is install `aos` and run it:
 
 ```sh
-$ npm i -g https://get_ao.g8way.io
+$ npm i -g https://get_ao.arweave.net
 ```
 
 Running this command at a later date will upgrade `aos` to the latest version.
