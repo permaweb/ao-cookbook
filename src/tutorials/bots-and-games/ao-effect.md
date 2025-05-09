@@ -29,7 +29,7 @@ To join this global escapade, you'll need to set things up. Don't worry, it's as
 Fire up your terminal and run:
 
 ```bash
-npm i -g https://get_ao.g8way.io
+npm i -g https://get_ao.arweave.net
 ```
 
 2. **Launch aos**
