@@ -7,7 +7,41 @@ next:
   link: "/tutorials/begin/index"
 ---
 
-# Get involved with the ao legacynet
+# Legacynet → HyperBEAM
+
+As the AO ecosystem evolves, we are transitioning from Legacynet to HyperBEAM Mainnet, marking a significant upgrade in the implementation of the AO-Core protocol.
+
+## Legacynet: The Initial Implementation
+
+Legacynet was the first implementation of the AO-Core protocol, written in JavaScript. Launched on February 27, 2024, it provided a fee-free environment for early adopters to experiment with AO's hyper-parallel architecture. However, being a JavaScript implementation, Legacynet had inherent limitations in terms of scalability and native support for the actor-oriented model that AO is based on.
+
+## HyperBEAM: The Future of AO-Core
+
+HyperBEAM is the new, advanced implementation of the AO-Core protocol, written in Erlang—the language that inspired AO's actor-oriented design. This implementation innately benefits from Erlang's strengths in:
+
+- **Actor-Oriented Design**: Erlang's native support for the actor model aligns perfectly with AO's architecture, where processes (actors) operate independently and communicate via message passing.
+- **Scalability**: Erlang is renowned for its ability to handle massive concurrency, allowing HyperBEAM to scale efficiently with the growing demands of the AO computer.
+- **Reliability**: Erlang's design for fault tolerance ensures that HyperBEAM can maintain system stability even under high load or during failures of individual components.
+
+## Transition and Deprecation
+
+Legacynet is currently being scaled down and will eventually be deprecated in favor of HyperBEAM. This transition represents a move towards a more robust, scalable, and true-to-design implementation of AO-Core. Users are encouraged to migrate their processes and familiarize themselves with HyperBEAM Mainnet.
+
+## HyperBEAM Documentation
+
+For detailed documentation on HyperBEAM, including how to build on it and run nodes, visit [HyperBEAM.arweave.net](https://hyperbeam.arweave.net).
+
+## Next Steps for Legacynet Users
+
+If you have been using Legacynet, we recommend:
+
+- Reviewing the HyperBEAM documentation to understand the new environment.
+- Planning the migration of your existing processes to HyperBEAM Mainnet.
+- Exploring the enhanced capabilities that HyperBEAM offers due to its Erlang foundation.
+
+This transition is a significant step forward for the AO ecosystem, ensuring that we can deliver on the promise of decentralized, hyper-parallel computation at any scale.
+
+## Get involved with the ao legacynet
 
 On February 27, 2024, `ao` legacynet was launched, for developers and early adopters to explore the hyper parallel computer.
 

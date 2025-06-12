@@ -12,17 +12,17 @@ hero:
       link: /welcome/index
 
 features:
-  - title: Mainnet
-    details: Learn how to build on AO Mainnet with guides and key concepts.
-    link: /mainnet/index
+  - title: AO-Core
+    details: Learn about the protocol and standard that powers the AO computer.
+    link: /welcome/ao-core-introduction
 
-  - title: Guides
-    details: Bite size walkthroughs on specific features.
-    link: /guides/index
+  - title: AO Processes
+    details: Build smart contracts and autonomous agents using AO Processes.
+    link: /welcome/ao-processes
 
-  - title: Concepts
-    details: Learn how the ao network works under the hood.
-    link: /concepts/index
+  - title: HyperBEAM
+    details: The future of AO, written in Erlang.
+    link: https://hyperbeam.arweave.net
 ---
 
 ## More Information
