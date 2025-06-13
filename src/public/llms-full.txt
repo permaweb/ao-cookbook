@@ -1,6 +1,6 @@
 # EN Technical Documentation
 
-Generated: 2025-05-09T12:58:00.174Z
+Generated: 2025-06-10T20:08:36.528Z
 
 This file contains technical reference documentation and release notes.
 
@@ -1914,7 +1914,7 @@ Source: https://cookbook_ao.arweave.net/releasenotes/aos-2_0_0.html
 ## Install instructions for AOS 2.0.0
 
 ```shell
-npm i -g https://get_ao.g8way.io
+npm i -g https://get_ao.arweave.net
 ```
 
 > Use `.update` to update earlier aos processes. See the **note** below on what features are not supported on earlier processes.

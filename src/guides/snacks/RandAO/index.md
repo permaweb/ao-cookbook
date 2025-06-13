@@ -27,9 +27,12 @@ The RandAO module enables your `ao` process to:
 - **Provider Flexibility**: Use the default provider pool or specify your own trusted providers
 - **Quick Resolution**: Response time of <10 seconds, improving with network updates as mainnet approaches
 
+## Example Projects
+
+Check out our [example projects](https://github.com/RandAOLabs/Random-Module/tree/main/examples) on GitHub to get some inspiration for your next project.
+
 ## Next Steps
 
 - [Random Number Requests](./get-request.md): Learn how to request and receive random numbers
-- [Request Verification](./post-request.md): Understand how to verify and track your random number requests
 
-> Learn more about interacting with the RandAO protocol through the [developer docs](https://randaolabs.github.io/ao-process-clients/)
+> Learn more about interacting with the RandAO protocol through the [developer docs](https://github.com/RandAOLabs/Random-Module) or our [provider docs](https://providers_randao.arweave.net/)

@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-05-09T12:58:00.175Z
+Generated: 2025-06-10T20:08:36.529Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -83,7 +83,7 @@ This file contains structured reference documentation, release notes, and a comp
 #### RandAO
 
 - [RandAO 🎲](https://cookbook_ao.arweave.net/guides/snacks/RandAO/index.html)
-- [Random Number Requests](https://cookbook_ao.arweave.net/guides/snacks/RandAO/get-request.html)
+- [Random Number Requests](https://cookbook_ao.arweave.net/guides/snacks/RandAO/requesting-random.html)
 
 - [Getting started with SQLite](https://cookbook_ao.arweave.net/guides/snacks/sqlite.html)
 - [Using WeaveDrive](https://cookbook_ao.arweave.net/guides/snacks/weavedrive.html)

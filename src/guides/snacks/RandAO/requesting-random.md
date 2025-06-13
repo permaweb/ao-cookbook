@@ -10,8 +10,8 @@ In this tutorial, we'll learn how to request random numbers from the RandAO prot
 
 ## Prerequisites
 
-- Some RandAO tokens (100 base units per request)
-  - To get some tokens shoot our team a DM on Discord (https://discord.gg/sustb26z) or check out the faucet (coming soon)
+- Some RandAO tokens (1 Random costs 1 Token)
+- To get some tokens head over to the [faucet](https://providers_randao.arweave.net/faucet)
 
 ## Install AO Package Manager
 
@@ -21,7 +21,7 @@ Install apm, the ao package manager so we can add a helper module to make it eas
 .load-blueprint apm
 ```
 
-## Install Random package
+## APM Install Random package
 
 Random is a module that provides functions to work with the RandAO protocol.
 
@@ -31,7 +31,7 @@ https://apm_betteridea.g8way.io/pkg?id=@randao/random
 apm.install('@randao/random')
 ```
 
-## Setting Up
+## Manual Set Up
 
 Create a new file named `random-request.lua` in your project directory:
 
@@ -100,12 +100,7 @@ randomModule.requestRandomFromProviders(callbackId)
 
 ## Important Notes
 
-- Each random number request costs **100 RandAO token base units**
-- The typical response time is currently **Sub 10 seconds and increasing weekly as mainnet approaches**
-- Always store your `callbackId` to track your request status
-- Use the [Request Verification](./post-request.md) guide to check request status
+- Each random number request costs **1 RNG Token**
+- The typical response time is currently **Sub 5 seconds and decreasing weekly as mainnet approaches**
+- Always store your `callbackId` to track your request status and to use the value once returned
 - Check out the example projects on our [github](https://github.com/RandAOLabs/Random-Module/tree/main/examples) to get some inspiration for your next project
-
-## Next Steps
-
-Learn how to verify and track the status of your random number requests in the [Request Verification](./post-request.md) guide.
