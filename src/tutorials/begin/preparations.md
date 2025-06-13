@@ -28,7 +28,7 @@ Though it's not required, we do recommend installing the [ao addon](../../refere
 Once you have NodeJS on your machine, all you need to do is install aos and run it:
 
 ```sh
-npm i -g https://get_ao.g8way.io
+npm i -g https://get_ao.arweave.net
 ```
 
 After installation, we can simply run the command itself to start a new aos process!
