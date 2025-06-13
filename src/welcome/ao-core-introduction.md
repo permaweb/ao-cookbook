@@ -1,6 +1,6 @@
 # Introduction to AO-Core
 
-AO (Actor Oriented) Core is a protocol and standard for distributed computation that forms the foundation of the AO computer. Inspired by and built upon concepts from the Erlang language, AO-Core embraces the actor model for concurrent, distributed systems. Unlike traditional blockchain systems, AO-Core defines a flexible, powerful computation protocol that enables a wide range of applications beyond just running Lua programs.
+AO-Core is a protocol and standard for distributed computation that forms the foundation of the AO computer. Inspired by and built upon concepts from the Erlang language, AO-Core embraces the actor model for concurrent, distributed systems. Unlike traditional blockchain systems, AO-Core defines a flexible, powerful computation protocol that enables a wide range of applications beyond just running Lua programs.
 
 ## What is AO-Core?
 
@@ -14,7 +14,7 @@ AO-Core is the fundamental protocol of the AO computer that:
 
 ## The Actor Model in AO
 
-The "Actor Oriented" in AO refers to the actor model of computation where:
+AO references the actor model of computation where:
 
 - Each actor (or process) is an independent unit of computation
 - Actors communicate exclusively through message passing
@@ -38,15 +38,6 @@ While AO Processes (smart contracts built using the AO-Core protocol) are powerf
 - Hybrid applications combining smart contract and serverless functionality
 - Custom execution environments through different devices
 - Composable systems using the path language
-
-## Path Language: The Power of AO-Core
-
-At the heart of AO-Core is its path language, which functions similar to Bash for blockchains. Paths in AO-Core:
-
-- Are interpreted as messages and executed within the system
-- Allow for powerful composition of different components
-- Enable interaction with the system through simple URL-like structures
-- Form the foundation for building complex applications
 
 ## Next Steps
 

@@ -1,76 +1,37 @@
 # AO Processes
 
-AO (Actor Oriented) Processes are smart contracts built using the AO-Core protocol, providing a structured way of creating autonomous agents and other decentralized applications. Embodying the actor model from Erlang that inspired AO, these processes operate as independent computational units that communicate through message passing. While AO-Core defines the fundamental protocol, AO Processes offer a more accessible approach to building on the AO computer.
+AO Processes are persistent, programmable smart contracts that live inside the AO computer. Embodying the actor model from Erlang that inspired AO, these processes operate as independent computational units that have their own state and communicate with each other through message passing. This architecture makes them ideal for creating autonomous agents and complex decentralized applications.
 
 ## What are AO Processes?
 
-AO Processes are independent, persistent smart contracts that live inside the AO computer. Following the actor model, each process:
+Following the actor model, each AO Process functions as an independent actor within the system, executing code—typically written in Lua—in response to messages it receives. Three core characteristics define them:
 
-- Functions as an independent actor in the system
-- Has its own state and memory
-- Can receive and send messages to other processes
-- Executes code (typically in Lua) in response to messages
-- Persists permanently on Arweave
-- Can create other processes (actors)
+- **Stateful**: Each process has its own private state and memory, which persist across interactions.
+- **Persistent**: All processes and their entire message history are permanently stored on Arweave.
+- **Generative**: Processes can dynamically spawn new processes, enabling complex and evolving systems.
 
 ## AO Processes and the Actor Model
 
-The actor model that inspired AO provides several key benefits for process-based development:
+The actor model provides several key benefits for process-based development, enabling naturally concurrent and resilient systems. By treating every process as an isolated "actor," it simplifies development and enhances fault tolerance. Key advantages include:
 
-- **Concurrency**: Each process executes independently, enabling natural parallelism
-- **Isolation**: Processes are isolated from each other, preventing cascading failures
-- **Message-Passing**: Communication happens exclusively through messages, simplifying interactions
-- **Location Transparency**: Processes can interact regardless of where they're physically located
-- **Fault Tolerance**: The system can continue operating even if individual processes fail
-
-## How AO Processes Differ from AO-Core
-
-While AO-Core provides the fundamental protocol and standards, AO Processes offer a higher-level abstraction:
-
-| AO Processes                          | AO-Core                                  |
-| ------------------------------------- | ---------------------------------------- |
-| Smart contracts built on the protocol | The protocol/standard itself             |
-| Focus on Lua programming              | Supports multiple execution environments |
-| Process-oriented with state           | More flexible computation model          |
-| Simplified message passing            | Lower-level message handling             |
-| Built for smart contracts and agents  | Enables broader range of applications    |
-| Accessed primarily through AOS        | Can be accessed through paths and URLs   |
+- **Concurrency & Isolation**: Processes execute independently and are isolated from each other, enabling parallelism and preventing cascading failures.
+- **Message-Passing**: All communication happens exclusively through asynchronous messages, simplifying interactions.
+- **Location Transparency & Fault Tolerance**: Processes can interact without knowing each other's physical location on the network, and the system can continue operating even if individual processes fail.
 
 ## AOS: The Operating System for AO Processes
 
-AOS (AO Operating System) is an abstraction layer that makes it easy to interact with AO Processes. It provides:
-
-- A shell interface for sending commands
-- Tools for managing process state
-- Libraries for common functionality
-- A simplified development experience
+AOS (AO Operating System) is an abstraction layer designed to simplify interaction with AO Processes. It provides developers with a powerful shell interface for sending commands, tools for managing process state, and a set of libraries for common functionalities, all contributing to a more streamlined development experience.
 
 ## Use Cases for AO Processes
 
-AO Processes are ideal for building:
+The persistent and concurrent nature of AO Processes makes them ideal for a wide range of decentralized applications. Here are a few examples:
 
-- Smart contracts with persistent state
-- Autonomous agents that can interact with other processes
-- Decentralized applications requiring persistent storage
-- Multi-user systems like chatrooms or games
-- Concurrent, distributed systems that benefit from the actor model
+- **Autonomous Agents & Bots**: Imagine a price-monitoring bot that tracks token prices across different decentralized exchanges (DEXs) and executes arbitrage trades automatically. AO makes it possible to build entire marketplaces for such agents, like [Marketverse](https://marketverse.arweave.net/).
 
-## When to Use AO Processes vs. Direct AO-Core
+- **Decentralized Finance (DeFi)**: You could build automated market makers (AMMs) or lending protocols where account balances and token reserves are tracked persistently within the process's state. A live example of this is [Dexi](https://dexi.arweave.net), a decentralized exchange built on AO.
 
-Choose AO Processes when:
-
-- You need persistent state across interactions
-- You're building traditional smart contract applications
-- You want a simplified development experience with AOS
-- Your application benefits from the actor model approach
-
-Consider direct AO-Core when:
-
-- You need serverless function-like behavior
-- You're building hybrid applications
-- You require custom execution environments
-- You want to leverage the full power of the path language
+- **On-Chain Games & Social Platforms**: AO Processes can power fully on-chain games where the game state (like player positions or inventory) is managed by one or more processes, like the space strategy game [Stargrid](https://stargrid.arweave.net/). They're also perfect for decentralized chat applications or social networks where user profiles, posts, and interactions are censorship-resistant.
 
 ## Next Steps
 
-In the next section, we'll walk you through getting started with AO Processes using AOS, allowing you to take your first steps into the AO computer.
+Now that you understand the capabilities of AO Processes, the next step is to dive into [Hyperbeam](./legacynet-info/index), the high-performance network that powers them.

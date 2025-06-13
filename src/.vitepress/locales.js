@@ -36,11 +36,11 @@ export const localeConfig = (langCode) => ({
         // link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
         items: [
           {
-            text: "Introduction to AO-Core",
+            text: "Intro to AO-Core",
             link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
           },
           {
-            text: "AO Processes",
+            text: "Intro to AO Processes",
             link: get_i18n_link(langCode, "/welcome/ao-processes"),
           },
           {

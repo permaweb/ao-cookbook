@@ -23,21 +23,23 @@ HyperBEAM is the new, advanced implementation of the AO-Core protocol, written i
 - **Scalability**: Erlang is renowned for its ability to handle massive concurrency, allowing HyperBEAM to scale efficiently with the growing demands of the AO computer.
 - **Reliability**: Erlang's design for fault tolerance ensures that HyperBEAM can maintain system stability even under high load or during failures of individual components.
 
-## Transition and Deprecation
+## The Transition to HyperBEAM
 
-Legacynet is currently being scaled down and will eventually be deprecated in favor of HyperBEAM. This transition represents a move towards a more robust, scalable, and true-to-design implementation of AO-Core. Users are encouraged to migrate their processes and familiarize themselves with HyperBEAM Mainnet.
+While HyperBEAM represents the future of AO, the transition from Legacynet is being handled carefully to ensure a smooth experience for developers. Currently, most development activity remains on Legacynet, which provides a stable environment for building and testing.
+
+The goal is to provide a seamless future upgrade path to HyperBEAM Mainnet. While Legacynet will eventually be deprecated, for now, it is the primary environment for new developers to begin building on AO.
 
 ## HyperBEAM Documentation
 
 For detailed documentation on HyperBEAM, including how to build on it and run nodes, visit [HyperBEAM.arweave.net](https://hyperbeam.arweave.net).
 
-## Next Steps for Legacynet Users
+## Preparing for the Future
 
-If you have been using Legacynet, we recommend:
+While you build on Legacynet, you can prepare for the future of AO by:
 
-- Reviewing the HyperBEAM documentation to understand the new environment.
-- Planning the migration of your existing processes to HyperBEAM Mainnet.
+- Reviewing the [HyperBEAM documentation](https://hyperbeam.arweave.net) to understand the new environment and its architecture.
 - Exploring the enhanced capabilities that HyperBEAM offers due to its Erlang foundation.
+- Building with the knowledge that a seamless migration path to HyperBEAM Mainnet is a core priority.
 
 This transition is a significant step forward for the AO ecosystem, ensuring that we can deliver on the promise of decentralized, hyper-parallel computation at any scale.
 
