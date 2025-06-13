@@ -23,7 +23,7 @@ export const localeConfig = (langCode) => ({
     nav: [
       {
         text: get_i18n_str(langCode, "docs"),
-        link: get_i18n_link(langCode, "/welcome/index"),
+        link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
       },
       {
         text: "LLMs.txt",
@@ -32,27 +32,25 @@ export const localeConfig = (langCode) => ({
     ],
     sidebar: [
       {
-        text: get_i18n_str(langCode, "mainnet"),
-        link: get_i18n_link(langCode, "/mainnet/index"),
+        text: get_i18n_str(langCode, "welcome"),
+        // link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
         items: [
           {
-            text: get_i18n_str(langCode, "mainnet-ao-core-relay"),
-            link: get_i18n_link(langCode, "/mainnet/ao-core-relay"),
+            text: "Intro to AO-Core",
+            link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
           },
-        ],
-      },
-      {
-        text: get_i18n_str(langCode, "welcome"),
-        link: get_i18n_link(langCode, "/welcome/index"),
-        items: [
+          {
+            text: "Intro to AO Processes",
+            link: get_i18n_link(langCode, "/welcome/ao-processes"),
+          },
+          {
+            text: "HyperBEAM Mainnet",
+            link: get_i18n_link(langCode, "/welcome/legacynet-info/index"),
+            items: [],
+          },
           {
             text: get_i18n_str(langCode, "welcome-getting-started"),
             link: get_i18n_link(langCode, "/welcome/getting-started"),
-          },
-          {
-            text: get_i18n_str(langCode, "welcome-legacynet-info"),
-            link: get_i18n_link(langCode, "/welcome/legacynet-info/index"),
-            items: [],
           },
         ],
       },
@@ -396,27 +394,6 @@ export const localeConfig = (langCode) => ({
               {
                 text: get_i18n_str(langCode, "guides-weavedrive"),
                 link: get_i18n_link(langCode, "/guides/snacks/weavedrive"),
-              },
-              {
-                text: get_i18n_str(langCode, "guides-0rbit"),
-                link: get_i18n_link(langCode, "/guides/snacks/0rbit/index"),
-                collapsed: true,
-                items: [
-                  {
-                    text: get_i18n_str(langCode, "guides-0rbit-get-request"),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/snacks/0rbit/get-request",
-                    ),
-                  },
-                  {
-                    text: get_i18n_str(langCode, "guides-0rbit-post-request"),
-                    link: get_i18n_link(
-                      langCode,
-                      "/guides/snacks/0rbit/post-request",
-                    ),
-                  },
-                ],
               },
             ],
           },

@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-03-13T13:13:46.518Z
+Generated: 2025-06-13T20:13:28.021Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -148,10 +148,12 @@ This file contains structured reference documentation, release notes, and a comp
 
 ### Legacynet info
 
-- [Get involved with the ao legacynet](https://cookbook_ao.arweave.net/welcome/legacynet-info/index.html)
+- [Legacynet → HyperBEAM](https://cookbook_ao.arweave.net/welcome/legacynet-info/index.html)
 - [Quests FAQ](https://cookbook_ao.arweave.net/welcome/legacynet-info/quests.html)
 
+- [AO Processes](https://cookbook_ao.arweave.net/welcome/ao-processes.html)
 - [Get started in 5 minutes](https://cookbook_ao.arweave.net/welcome/getting-started.html)
+- [Introduction to AO-Core](https://cookbook_ao.arweave.net/welcome/ao-core-introduction.html)
 - [Welcome to ao](https://cookbook_ao.arweave.net/welcome/index.html)
 
 - [https://vitepress.dev/reference/default-theme-home-page](https://cookbook_ao.arweave.net/index.html)
@@ -346,7 +348,21 @@ Source: https://cookbook_ao.arweave.net/references/editor-setup.html
 ### glossary
 Source: https://cookbook_ao.arweave.net/references/glossary.html
 
-<iframe src="https://glossary_tiny4vr.permagate.io/" height="400" width="100%" style="border: none;"></iframe>
+<style>
+  .glossary-iframe {
+    height: 400px;
+    width: 100%;
+    border: none;
+  }
+  
+  html:not(.dark) .dark-mode-iframe {
+    display: none;
+  }
+  
+  html.dark .light-mode-iframe {
+    display: none;
+  }
+</style>
 
 ### Handlers (Version 0.0.5)
 Source: https://cookbook_ao.arweave.net/references/handlers.html
@@ -482,17 +498,6 @@ Continues    Processes
 Creates a handler function that automatically replies with a fixed response. A wrapper around [`msg.reply`](#msg-reply-asynchronous-response-sending) for common use cases.
 
 **Simple String Response Example:**
-```
-
-```
-## Receiving Messages
-
-### `Receive` (Capital R): Blocking Pattern Matcher
-
-Blocks execution until any matching message arrives from any sender.
-
-- Waits for any message matching the pattern, regardless of origin
-- Use for synchronous message processing flows or event listening
 ```
 
 
@@ -640,5 +645,5 @@ Changes:
 # Summary
 
 Total files processed: 18
-Total documentation pages: 96
+Total documentation pages: 98
 This documentation is focused on technical references and release notes, prioritizing accuracy and relevance for LLM processing.
