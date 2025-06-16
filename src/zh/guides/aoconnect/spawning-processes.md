@@ -44,7 +44,7 @@ const processId = await spawn({
 ## 在浏览器中创建一个进程
 
 ```js
-import { createDataItemSigner, spawn } from "@permaweb/ao-sdk";
+import { createDataItemSigner, spawn } from "@permaweb/aoconnect";
 
 const processId = await spawn({
   // The Arweave TXID of the ao Module
