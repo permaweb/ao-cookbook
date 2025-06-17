@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-06-17T16:00:37.645Z
+Generated: 2025-06-17T16:58:11.836Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -74,8 +74,11 @@ This file contains structured reference documentation, release notes, and a comp
 
 ### Migrating to hyperbeam
 
+- [Connecting to HyperBEAM with `aos`](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/aos-with-hyperbeam.html)
+- [Exposing Process State to HyperBEAM](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/exposing-process-state.html)
 - [HyperBEAM from AO Connect](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/ao-connect.html)
-- [Migrating from `legacynet` to HyperBEAM](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/migrating-from-legacynet.html)
+- [Reading Dynamic State](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/reading-dynamic-state.html)
+- [Why Migrate to HyperBEAM?](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/index.html)
 
 ### Snacks
 
@@ -650,5 +653,5 @@ Changes:
 # Summary
 
 Total files processed: 18
-Total documentation pages: 100
+Total documentation pages: 103
 This documentation is focused on technical references and release notes, prioritizing accuracy and relevance for LLM processing.

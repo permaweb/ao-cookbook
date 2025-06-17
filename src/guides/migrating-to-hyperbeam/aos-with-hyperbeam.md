@@ -12,12 +12,13 @@ The primary tool for interacting with AO and developing processes is `aos`, a co
 npm i -g https://get_ao.arweave.net
 ```
 
-```bash [bun]
-bun install -g https://get_ao.arweave.net
-```
-
 ```bash [pnpm]
 pnpm add -g https://get_ao.arweave.net
+```
+
+```bash [bun]
+# Bun is not supported yet
+# bun install -g https://get_ao.arweave.net
 ```
 
 :::

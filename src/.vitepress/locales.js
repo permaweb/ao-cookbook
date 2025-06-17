@@ -287,7 +287,10 @@ export const localeConfig = (langCode) => ({
               },
               {
                 text: get_i18n_str(langCode, "guides-aos-modules"),
-                link: get_i18n_link(langCode, "/guides/aos/modules/index"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/aos/modules/why-migrate",
+                ),
                 collapsed: true,
                 items: [
                   {
@@ -381,15 +384,12 @@ export const localeConfig = (langCode) => ({
           },
           {
             text: "Migrating to HyperBEAM",
+            link: get_i18n_link(
+              langCode,
+              "/guides/migrating-to-hyperbeam/index",
+            ),
             collapsed: true,
             items: [
-              {
-                text: "Why Migrate?",
-                link: get_i18n_link(
-                  langCode,
-                  "/guides/migrating-to-hyperbeam/why-migrate",
-                ),
-              },
               {
                 text: "Exposing State",
                 link: get_i18n_link(
