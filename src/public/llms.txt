@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-06-17T16:58:11.836Z
+Generated: 2025-06-17T17:29:21.019Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -78,7 +78,7 @@ This file contains structured reference documentation, release notes, and a comp
 - [Exposing Process State to HyperBEAM](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/exposing-process-state.html)
 - [HyperBEAM from AO Connect](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/ao-connect.html)
 - [Reading Dynamic State](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/reading-dynamic-state.html)
-- [Why Migrate to HyperBEAM?](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/index.html)
+- [Why Migrate to HyperBEAM?](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/why-migrate.html)
 
 ### Snacks
 

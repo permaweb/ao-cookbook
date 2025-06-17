@@ -34,4 +34,4 @@ The persistent and concurrent nature of AO Processes makes them ideal for a wide
 
 ## Next Steps
 
-Now that you understand the capabilities of AO Processes, the next step is to dive into [Hyperbeam](../../guides/migrating-to-hyperbeam/index.md), the high-performance network that powers them.
+Now that you understand the capabilities of AO Processes, the next step is to dive into [Hyperbeam](../guides/migrating-to-hyperbeam/why-migrate.md), the high-performance network that powers them.
