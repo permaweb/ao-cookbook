@@ -287,7 +287,10 @@ export const localeConfig = (langCode) => ({
               },
               {
                 text: get_i18n_str(langCode, "guides-aos-modules"),
-                link: get_i18n_link(langCode, "/guides/aos/modules/index"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/aos/modules/why-migrate",
+                ),
                 collapsed: true,
                 items: [
                   {
@@ -376,6 +379,44 @@ export const localeConfig = (langCode) => ({
               {
                 text: get_i18n_str(langCode, "guides-signers"),
                 link: get_i18n_link(langCode, "/guides/aoconnect/signers"),
+              },
+            ],
+          },
+          {
+            text: "Migrating to HyperBEAM",
+            link: get_i18n_link(
+              langCode,
+              "/guides/migrating-to-hyperbeam/index",
+            ),
+            collapsed: true,
+            items: [
+              {
+                text: "Exposing State",
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/migrating-to-hyperbeam/exposing-process-state",
+                ),
+              },
+              {
+                text: "Reading Dynamic State",
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/migrating-to-hyperbeam/reading-dynamic-state",
+                ),
+              },
+              {
+                text: "Connecting with aos",
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/migrating-to-hyperbeam/aos-with-hyperbeam",
+                ),
+              },
+              {
+                text: "ao-connect & HyperBEAM",
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/migrating-to-hyperbeam/ao-connect",
+                ),
               },
             ],
           },

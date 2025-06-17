@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-06-13T20:13:28.021Z
+Generated: 2025-06-17T17:29:21.019Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -71,6 +71,14 @@ This file contains structured reference documentation, release notes, and a comp
 ### Dev cli
 
 - [AO Dev-Cli 0.1](https://cookbook_ao.arweave.net/guides/dev-cli/index.html)
+
+### Migrating to hyperbeam
+
+- [Connecting to HyperBEAM with `aos`](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/aos-with-hyperbeam.html)
+- [Exposing Process State to HyperBEAM](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/exposing-process-state.html)
+- [HyperBEAM from AO Connect](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/ao-connect.html)
+- [Reading Dynamic State](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/reading-dynamic-state.html)
+- [Why Migrate to HyperBEAM?](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/why-migrate.html)
 
 ### Snacks
 
@@ -350,7 +358,7 @@ Source: https://cookbook_ao.arweave.net/references/glossary.html
 
 <style>
   .glossary-iframe {
-    height: 400px;
+    height: 500px;
     width: 100%;
     border: none;
   }
@@ -645,5 +653,5 @@ Changes:
 # Summary
 
 Total files processed: 18
-Total documentation pages: 98
+Total documentation pages: 103
 This documentation is focused on technical references and release notes, prioritizing accuracy and relevance for LLM processing.
