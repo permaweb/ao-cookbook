@@ -95,12 +95,12 @@ To prevent conflicts, **always use lowercase keys** in your `cache` table (e.g.,
 ## Key Points
 
 - **Path Structure:** Data is exposed at a path structured like this, where `<key>` is a key from your `cache` table:
-  ```URL
+  ```HyperBEAM
   https://<hyperbeam-node-url>/<process-id>~process@1.0/cache/<key>
   ```
 - **Data Types:** Basic data types like strings and numbers work best. Complex objects may require serialization.
 - **`compute` vs `now`:** Accessing patched data can be done via two main paths:
-  ```URL
+  ```HyperBEAM
   https://<hyperbeam-node-url>/<process-id>~process@1.0/compute/cache/...
   https://<hyperbeam-node-url>/<process-id>~process@1.0/now/cache/...
   ```
@@ -108,3 +108,7 @@ To prevent conflicts, **always use lowercase keys** in your `cache` table (e.g.,
 - **Read-Only Exposure:** Patching is for efficient reads and does not replace your process's core state management logic.
 
 Using the `patch` device enables efficient, standard HTTP access to your process state, seamlessly connecting decentralized logic with web applications.
+
+## Next Steps
+
+Now that you know how to expose static state, learn how to perform on-the-fly computations on that state by [reading dynamic state](./reading-dynamic-state.md).

@@ -398,6 +398,20 @@ export const localeConfig = (langCode) => ({
                 ),
               },
               {
+                text: "Reading Dynamic State",
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/migrating-to-hyperbeam/reading-dynamic-state",
+                ),
+              },
+              {
+                text: "Connecting with aos",
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/migrating-to-hyperbeam/aos-with-hyperbeam",
+                ),
+              },
+              {
                 text: "ao-connect & HyperBEAM",
                 link: get_i18n_link(
                   langCode,

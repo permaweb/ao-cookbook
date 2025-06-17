@@ -6,10 +6,15 @@ This guide explains how to interact with a process using HyperBEAM and `aoconnec
 
 - Node.js environment
 - `@permaweb/aoconnect` library
-- The latest version of `aos`
+- The latest version of aos
 - Wallet file (`wallet.json`) containing your cryptographic keys
-- A `HyperBEAM` node running with the `genesis_wasm` profile (`rebar3 as genesis_wasm shell` from your HyperBEAM directory)
-- The Process ID for a process created with `genesis_wasm` (this is the default in the latest version of `aos`).
+- A HyperBEAM node running with the genesis_wasm profile
+
+  ```bash
+  rebar3 as genesis_wasm shell
+  ```
+
+- The Process ID for a process created with genesis_wasm (this is the default in the latest version of aos).
 
 ## Step 1: Environment Setup
 
@@ -21,8 +26,10 @@ npm install @permaweb/aoconnect
 
 Ensure your wallet file (`wallet.json`) is correctly formatted and placed in your project directory.
 
-> NOTE: you can create a test wallet using this line:
-> `npx -y @permaweb/wallet > wallet.json`
+:::info
+You can create a test wallet using this command:
+`npx -y @permaweb/wallet > wallet.json`
+:::
 
 ## Step 2: Establish Connection
 
