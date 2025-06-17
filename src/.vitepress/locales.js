@@ -380,6 +380,33 @@ export const localeConfig = (langCode) => ({
             ],
           },
           {
+            text: "Migrating to HyperBEAM",
+            collapsed: true,
+            items: [
+              {
+                text: "Why Migrate?",
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/migrating-to-hyperbeam/why-migrate",
+                ),
+              },
+              {
+                text: "Exposing State",
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/migrating-to-hyperbeam/exposing-process-state",
+                ),
+              },
+              {
+                text: "ao-connect & HyperBEAM",
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/migrating-to-hyperbeam/ao-connect",
+                ),
+              },
+            ],
+          },
+          {
             text: "Additional Technologies",
             collapsed: true,
             items: [

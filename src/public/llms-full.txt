@@ -1,6 +1,6 @@
 # EN Technical Documentation
 
-Generated: 2025-06-13T20:13:28.020Z
+Generated: 2025-06-17T16:00:37.644Z
 
 This file contains technical reference documentation and release notes.
 
@@ -513,7 +513,7 @@ end)
 For persistent processing, set up a handler:
 
 ```lua
-Handlers.add("process-ardrive",
+Handlers.add("ProcessArDriveFiles",
   { Tags = { ["App-Name"] = "ArDrive-App" } },
   function(msg)
     print(msg.Tags["App-Name"])
@@ -801,7 +801,7 @@ Source: https://cookbook_ao.arweave.net/references/glossary.html
 
 <style>
   .glossary-iframe {
-    height: 400px;
+    height: 500px;
     width: 100%;
     border: none;
   }
@@ -1914,7 +1914,7 @@ Source: https://cookbook_ao.arweave.net/releasenotes/aos-2_0_0.html
 ## Install instructions for AOS 2.0.0
 
 ```shell
-npm i -g https://get_ao.g8way.io
+npm i -g https://get_ao.arweave.net
 ```
 
 > Use `.update` to update earlier aos processes. See the **note** below on what features are not supported on earlier processes.
