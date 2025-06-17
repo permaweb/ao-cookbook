@@ -17,7 +17,7 @@ Exposing state is a four-step process involving your process and HyperBEAM:
     ```
 3.  **HyperBEAM Execution:** HyperBEAM's `dev_patch` module processes this message, mapping the key-value pairs from the `cache` table to a URL path.
 4.  **HTTP Access:** The exposed data is then immediately available via a standard HTTP GET request to the process's endpoint.
-    ```
+    ```HyperBEAM
     GET /<process-id>~process@1.0/compute/cache/<mydatakey>
     ```
 
@@ -82,27 +82,27 @@ now, compute, state, info, test
 For instance, prefer a key like `myappstate` over a generic key like `state`.
 
 ::: warning
-HTTP paths are case-insensitive. While the `patch` device stores keys with case sensitivity (e.g., `MyKey` vs `mykey`), HTTP access to paths like the following is ambiguous and may lead to unpredictable results:
-
-```
-/cache/MyKey
-/cache/mykey
-```
+HTTP paths are case-insensitive. While the `patch` device stores keys with case sensitivity (e.g., `MyKey` vs `mykey`), HTTP access to paths like the following is ambiguous and may lead to unpredictable results.
 
 To prevent conflicts, **always use lowercase keys** in your `cache` table (e.g., `mykey`, `usercount`).
+
+```HyperBEAM
+GET /<process-id>~process@1.0/cache/mykey
+```
+
 :::
 
 ## Key Points
 
 - **Path Structure:** Data is exposed at a path structured like this, where `<key>` is a key from your `cache` table:
   ```HyperBEAM
-  https://<hyperbeam-node-url>/<process-id>~process@1.0/cache/<key>
+  /<process-id>~process@1.0/cache/<key>
   ```
 - **Data Types:** Basic data types like strings and numbers work best. Complex objects may require serialization.
 - **`compute` vs `now`:** Accessing patched data can be done via two main paths:
   ```HyperBEAM
-  https://<hyperbeam-node-url>/<process-id>~process@1.0/compute/cache/...
-  https://<hyperbeam-node-url>/<process-id>~process@1.0/now/cache/...
+  GET /<process-id>~process@1.0/compute/cache/...
+  GET /<process-id>~process@1.0/now/cache/...
   ```
   The `compute` endpoint serves the last known value quickly, while `now` may perform additional computation to get the most recent state.
 - **Read-Only Exposure:** Patching is for efficient reads and does not replace your process's core state management logic.
