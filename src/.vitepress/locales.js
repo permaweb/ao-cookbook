@@ -386,7 +386,7 @@ export const localeConfig = (langCode) => ({
             text: "Migrating to HyperBEAM",
             link: get_i18n_link(
               langCode,
-              "/guides/migrating-to-hyperbeam/index",
+              "/guides/migrating-to-hyperbeam/why-migrate",
             ),
             collapsed: true,
             items: [
