@@ -98,6 +98,54 @@ local callbackId = randomModule.generateUUID()
 randomModule.requestRandomFromProviders(callbackId)
 ```
 
+### Prepay for Randomness Credits
+
+```lua
+randomModule.prepayForRandom(units)
+```
+
+Sends a token transfer to the configured `RandomProcess` to pre-pay for a specified number of future random requests.
+
+- **Arguments**:
+  - `units` (number): Number of randomness units to purchase.  
+- **Behavior**:
+  - Computes `quantity = units * RandomCost` (on-chain value).  
+  - Sends a `"Transfer"` action to `RandomProcess` with header `X-Prepayment = "true"`.  
+
+---
+
+### Redeem Random Credit
+
+```lua
+randomModule.redeemRandomCredit(callbackId)
+-- or
+randomModule.redeemRandomCredit(callbackId, providerList)
+```
+
+Uses prepaid randomness credits to make a randomness request.
+
+- **Arguments**:
+  - `callbackId` (string): Unique identifier to correlate the response.  
+  - `providerList` (optional, table of strings): If provided, limits entropy generation to this subset of providers.  
+- **Behavior**:
+  - If `providerList` is **nil**, sends `Redeem-Random-Credit` with only `CallbackId`.  
+  - If provided, includes header `X-Providers = providerList`.  
+
+**Examples**:
+```lua
+-- Redeem credit without specifying providers:
+local tx1 = randomModule.redeemRandomCredit("cb-1234")
+
+-- Redeem credit using a custom provider list:
+local providers = {
+  "ProviderA_ID",
+  "ProviderB_ID"
+}
+local tx2 = randomModule.redeemRandomCredit("cb-5678", providers)
+```
+
+---
+
 ## Important Notes
 
 - Each random number request costs **1 RNG Token**
