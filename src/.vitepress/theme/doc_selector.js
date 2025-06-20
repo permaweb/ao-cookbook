@@ -1,0 +1,357 @@
+console.log("hello from doc selector");
+
+// after the page is loaded, add an SVG structure to the bottom right of the page
+
+window.addEventListener("DOMContentLoaded", () => {
+  // Create container for the layered SVG structure
+  const svgContainer = document.createElement("div");
+  svgContainer.style.position = "fixed";
+  svgContainer.style.bottom = "15px";
+  svgContainer.style.right = "30px";
+  svgContainer.style.zIndex = "1000";
+  svgContainer.style.cursor = "pointer";
+  svgContainer.style.transition = "transform 0.3s ease";
+
+  // Select your documentation text with chevron
+  const docText = document.createElement("div");
+  docText.innerHTML = `
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 14px; color: #000; text-align: center; font-family: monospace; font-weight: 400; font-size: 10px;">
+      <span>Select your documentation</span>
+      <svg width="12" height="7" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.875 1L4.4375 4.125L1 1" stroke="#939393" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  `;
+  docText.style.position = "absolute";
+  docText.style.top = "-70px";
+  docText.style.left = "50%";
+  docText.style.transform = "translateX(-50%)";
+  docText.style.transition = "opacity 0.3s ease";
+  docText.style.opacity = "1";
+
+  // Create a wrapper for the layered SVGs
+  const layerWrapper = document.createElement("div");
+  layerWrapper.style.position = "relative";
+  layerWrapper.style.width = "77px";
+  layerWrapper.style.height = "70px";
+  layerWrapper.style.transition = "all 0.3s ease";
+
+  // Create label containers for each layer
+  const createLayerLabel = (text, color, position, lineDirection) => {
+    const labelContainer = document.createElement("div");
+    labelContainer.style.position = "absolute";
+    labelContainer.style.display = "flex";
+    labelContainer.style.alignItems = "center";
+    labelContainer.style.transition = "all 0.3s ease";
+    labelContainer.style.opacity = "0"; // Initially hidden
+    labelContainer.style.pointerEvents = "none";
+
+    // Create text label first
+    const label = document.createElement("span");
+    label.textContent = text;
+    label.style.position = "absolute";
+    label.style.fontSize = "12px";
+    label.style.fontFamily = "Arial, sans-serif";
+    label.style.color = "#333";
+    label.style.fontWeight = "400";
+    label.style.whiteSpace = "nowrap";
+    label.style.padding = "2px 0";
+    label.style.letterSpacing = "0.5px";
+    label.style.display = "flex"; // for the orange square
+    label.style.alignItems = "center";
+
+    // Create connecting line using SVG for angled lines
+    const lineSvg = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "svg",
+    );
+    lineSvg.setAttribute("width", "60");
+    lineSvg.setAttribute("height", "30");
+    lineSvg.setAttribute("viewBox", "0 0 60 30");
+    lineSvg.style.position = "absolute";
+
+    let linePath, labelPosition, svgPosition;
+
+    switch (position) {
+      case "top-right":
+        // Line goes from bottom-left to top-right
+        linePath = "M-3.57628e-07 7H48V0";
+        labelPosition = { right: "-20px", top: "-12px" };
+        svgPosition = { right: "-31px", top: "10px" };
+        labelContainer.style.flexDirection = "row";
+        break;
+      case "left":
+        // Line goes horizontally to the left
+        linePath = "M39.5 6H1V0";
+        labelPosition = { right: "30px", top: "-20px", position: "relative" };
+        svgPosition = { right: "0px", top: "10px" };
+        labelContainer.style.flexDirection = "row";
+        break;
+      case "bottom-right":
+        // Line goes from top-left to bottom-right
+        linePath = "M2.38419e-07 1H49V8";
+        labelPosition = { right: "-55px", bottom: "-10px" };
+        svgPosition = { right: "-30px", top: "-24px" };
+        labelContainer.style.flexDirection = "row";
+        break;
+    }
+
+    // Set label position
+    Object.assign(label.style, labelPosition);
+
+    // Create the line path
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", linePath);
+    path.setAttribute("stroke", "#666");
+    path.setAttribute("stroke-width", "1");
+    path.setAttribute("fill", "none");
+
+    lineSvg.appendChild(path);
+
+    // Set SVG position
+    Object.assign(lineSvg.style, svgPosition);
+
+    labelContainer.appendChild(label);
+    labelContainer.appendChild(lineSvg);
+
+    return { container: labelContainer, svg: lineSvg, label: label };
+  };
+
+  // Create labels for each layer with different positions
+  const topLabel = createLayerLabel("AO", "#333", "top-right");
+  const middleLabel = createLayerLabel("HYPERBEAM", "#333", "left");
+  const bottomLabel = createLayerLabel("ARWEAVE", "#333", "bottom-right");
+
+  // Add orange square accent to ARWEAVE label
+  const orangeSquare = document.createElement("div");
+  orangeSquare.style.width = "12px";
+  orangeSquare.style.height = "12px";
+  orangeSquare.style.marginRight = "6px";
+  orangeSquare.style.flexShrink = "0";
+  orangeSquare.style.position = "relative";
+  orangeSquare.style.backgroundColor = "#FF6A13";
+  orangeSquare.style.border = "1px solid #FF6A13";
+
+  // Create inner white square
+  const innerWhiteSquare = document.createElement("div");
+  innerWhiteSquare.style.width = "10px";
+  innerWhiteSquare.style.height = "10px";
+  innerWhiteSquare.style.backgroundColor = "white";
+  innerWhiteSquare.style.position = "absolute";
+  innerWhiteSquare.style.border = "1px solid #FF6A13";
+
+  // Create innermost orange square
+  const innermostSquare = document.createElement("div");
+  innermostSquare.style.width = "4px";
+  innermostSquare.style.height = "4px";
+  innermostSquare.style.backgroundColor = "#FF6A13";
+  innermostSquare.style.position = "absolute";
+  innermostSquare.style.top = "2px";
+  innermostSquare.style.left = "2px";
+
+  innerWhiteSquare.appendChild(innermostSquare);
+  orangeSquare.appendChild(innerWhiteSquare);
+
+  // Add the orange square directly to the bottom label container
+  bottomLabel.label.insertBefore(orangeSquare, bottomLabel.label.firstChild);
+
+  // Position the label containers relative to the layer wrapper
+  topLabel.container.style.top = "0px";
+  topLabel.container.style.right = "0px";
+
+  middleLabel.container.style.top = "22px";
+  middleLabel.container.style.left = "-74px";
+
+  bottomLabel.container.style.bottom = "-15px";
+  bottomLabel.container.style.right = "-140px";
+
+  // Create bottom layer SVG
+  const bottomSvg = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg",
+  );
+  bottomSvg.setAttribute("width", "77");
+  bottomSvg.setAttribute("height", "70");
+  bottomSvg.setAttribute("viewBox", "0 0 77 70");
+  bottomSvg.style.position = "absolute";
+  bottomSvg.style.top = "17px";
+  bottomSvg.style.left = "0";
+  bottomSvg.style.transition = "all 0.3s ease";
+  bottomSvg.innerHTML = `
+    <path d="M75.749 31.3628L38.5 52.8696L1.25 31.3628L38.5 9.85596L75.749 31.3628Z" fill="black" stroke="white" stroke-width="0.25" />
+    <path d="M75.875 22.7754V31.1465L38.625 9.63965V1.26855L75.875 22.7754Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
+    <path d="M38.3751 9.63965L1.12506 31.1465V22.7754L38.3751 1.26855V9.63965Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M1 22.7031L38.5 44.3538V53.014L1 31.3634V22.7031Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M38.5 44.3538L76 22.7031V31.3634L38.5 53.014V44.3538Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
+    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 1.05273)" fill="black" fill-opacity="0.9" stroke="white" stroke-width="0.25" />
+    <rect x="0.194856" y="0.3375" width="4.09545" height="4.09545" transform="matrix(0.866025 0.5 0 1 32.8443 42.9934)" stroke="#FF6A13" stroke-width="0.45" />
+    <rect width="1.81818" height="1.81818" transform="matrix(-1.89276e-08 1 -0.866025 -0.5 35.5737 46.0454)" fill="#FF6A13" />
+  `;
+
+  // Create middle layer SVG
+  const middleSvg = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg",
+  );
+  middleSvg.setAttribute("width", "77");
+  middleSvg.setAttribute("height", "70");
+  middleSvg.setAttribute("viewBox", "0 0 77 70");
+  middleSvg.style.position = "absolute";
+  middleSvg.style.top = "9px";
+  middleSvg.style.left = "0";
+  middleSvg.style.transition = "all 0.3s ease";
+  middleSvg.innerHTML = `
+    <path d="M75.749 30.7031L38.5 52.21L1.25 30.7031L38.5 9.19629L75.749 30.7031Z" fill="#CACACA" stroke="black" stroke-width="0.25" />
+    <path d="M75.875 22.1152V30.4863L38.625 8.97949V0.608398L75.875 22.1152Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path d="M38.3751 8.97949L1.12506 30.4863V22.1152L38.3751 0.608398V8.97949Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M1 22.0435L38.5 43.6941V52.3543L1 30.7037V22.0435Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M38.5 43.6941L76 22.0435V30.7037L38.5 52.3543V43.6941Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 0.392578)" fill="#CACACA" fill-opacity="0.9" stroke="black" stroke-width="0.25" />
+  `;
+
+  // Create top layer SVG
+  const topSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  topSvg.setAttribute("width", "77");
+  topSvg.setAttribute("height", "70");
+  topSvg.setAttribute("viewBox", "0 0 77 70");
+  topSvg.style.position = "absolute";
+  topSvg.style.top = "0px";
+  topSvg.style.left = "0";
+  topSvg.style.transition = "all 0.3s ease";
+  topSvg.innerHTML = `
+    <path d="M75.749 31.311L38.5 52.8179L1.25 31.311L38.5 9.8042L75.749 31.311Z" fill="white" stroke="black" stroke-width="0.25" />
+    <path d="M75.875 22.7227V31.0938L38.625 9.58691V1.21582L75.875 22.7227Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path d="M38.3751 9.58691L1.12506 31.0938V22.7227L38.3751 1.21582V9.58691Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M1 22.6504L38.5 44.301V52.9613L1 31.3106V22.6504Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M38.5 44.301L76 22.6504V31.3106L38.5 52.9613V44.301Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 1)" fill="white" fill-opacity="0.9" stroke="black" stroke-width="0.25" />
+  `;
+
+  // Add hover effects to the container
+  svgContainer.addEventListener("mouseenter", () => {
+    svgContainer.style.right = "70px";
+
+    // Hide the documentation text when hovering over layers
+    docText.style.opacity = "0";
+
+    // Show the labels
+    topLabel.container.style.opacity = "1";
+    middleLabel.container.style.opacity = "1";
+    bottomLabel.container.style.opacity = "1";
+
+    // Increase container size to accommodate scaling and gaps
+    layerWrapper.style.width = "120px";
+    layerWrapper.style.height = "90px";
+
+    // Scale and reposition each layer to create gaps
+    topSvg.style.transform = "scale(1.4)";
+    topSvg.style.top = "-7px";
+
+    middleSvg.style.transform = "scale(1.4)";
+    middleSvg.style.top = "15px";
+
+    bottomSvg.style.transform = "scale(1.4)";
+    bottomSvg.style.top = "35px";
+
+    // Adjust label positions to match the new layer positions
+    topLabel.container.style.top = "-0px";
+    topLabel.container.style.right = "0px";
+
+    middleLabel.container.style.top = "22px";
+    middleLabel.container.style.left = "-74px";
+
+    bottomLabel.container.style.bottom = "0px";
+    bottomLabel.container.style.right = "0px";
+  });
+
+  svgContainer.addEventListener("mouseleave", () => {
+    svgContainer.style.right = "30px";
+
+    // Show the documentation text when not hovering
+    docText.style.opacity = "1";
+
+    // Hide the labels
+    topLabel.container.style.opacity = "0";
+    middleLabel.container.style.opacity = "0";
+    bottomLabel.container.style.opacity = "0";
+
+    // Reset container size
+    layerWrapper.style.width = "77px";
+    layerWrapper.style.height = "70px";
+
+    // Reset scale and positioning
+    topSvg.style.transform = "scale(1)";
+    topSvg.style.top = "0px";
+
+    middleSvg.style.transform = "scale(1)";
+    middleSvg.style.top = "9px";
+
+    bottomSvg.style.transform = "scale(1)";
+    bottomSvg.style.top = "17px";
+
+    // Reset label positions
+    topLabel.container.style.top = "-7px";
+    topLabel.container.style.right = "-140px";
+
+    middleLabel.container.style.top = "15px";
+    middleLabel.container.style.left = "-140px";
+
+    bottomLabel.container.style.bottom = "-15px";
+    bottomLabel.container.style.right = "-140px";
+  });
+
+  // Function to handle layer opacity based on mouse position
+  function handleLayerOpacity(event) {
+    const rect = layerWrapper.getBoundingClientRect();
+    const mouseY = event.clientY - rect.top;
+    const containerHeight = rect.height;
+
+    // Divide the container into three equal sections
+    const sectionHeight = containerHeight / 3;
+
+    // Reset all layers to default opacity
+    topSvg.style.opacity = "0.5";
+    middleSvg.style.opacity = "0.5";
+    bottomSvg.style.opacity = "0.05";
+
+    // Determine which section the mouse is in and highlight that layer
+    if (mouseY <= sectionHeight) {
+      // Top third - highlight top layer
+      topSvg.style.opacity = "1";
+    } else if (mouseY <= sectionHeight * 2) {
+      // Middle third - highlight middle layer
+      middleSvg.style.opacity = "1";
+    } else {
+      // Bottom third - highlight bottom layer
+      bottomSvg.style.opacity = "1";
+    }
+  }
+
+  // Function to reset all layers to full opacity when mouse leaves
+  function resetLayerOpacity() {
+    topSvg.style.opacity = "1";
+    middleSvg.style.opacity = "1";
+    bottomSvg.style.opacity = "1";
+  }
+
+  // Add mouse tracking to the layer wrapper
+  layerWrapper.addEventListener("mousemove", handleLayerOpacity);
+  layerWrapper.addEventListener("mouseleave", resetLayerOpacity);
+
+  // Layer the SVGs (bottom to top)
+  layerWrapper.appendChild(bottomSvg);
+  layerWrapper.appendChild(middleSvg);
+  layerWrapper.appendChild(topSvg);
+
+  // Add the labels to the layer wrapper
+  layerWrapper.appendChild(topLabel.container);
+  layerWrapper.appendChild(middleLabel.container);
+  layerWrapper.appendChild(bottomLabel.container);
+
+  // Add the documentation text and layer wrapper to the main container
+  layerWrapper.appendChild(docText);
+  svgContainer.appendChild(layerWrapper);
+
+  // Append container to body
+  document.body.appendChild(svgContainer);
+});
