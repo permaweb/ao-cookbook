@@ -1,9 +1,15 @@
 /* For each cookbook:
 - Update updateThemeColors function to detect the dark mode of the page.
 - Update the currentCookbook variable to the current cookbook.
+- Update the link constants below for each documentation.
 */
 
-const currentCookbook = "ARWEAVE"; // AO, HYPERBEAM, ARWEAVE
+const currentCookbook = "AO"; // AO, HYPERBEAM, ARWEAVE
+
+// Documentation links for each layer
+const AO_LINK = "/";
+const HYPERBEAM_LINK = "https://hyperbeam.arweave.net/";
+const ARWEAVE_LINK = "https://cookbook.arweave.net/";
 
 const bottomLayer = `
     <path d="M75.749 31.3628L38.5 52.8696L1.25 31.3628L38.5 9.85596L75.749 31.3628Z" fill="black" stroke="white" stroke-width="0.25"/>
@@ -67,6 +73,7 @@ const selectedTopLayer = `
 window.addEventListener("DOMContentLoaded", () => {
   let isDark = false;
   let topLabel, middleLabel, bottomLabel, docText, innerWhiteSquare;
+  let activeLayer = null;
 
   function onThemeChange(cb) {
     const root = document.documentElement;
@@ -118,8 +125,7 @@ window.addEventListener("DOMContentLoaded", () => {
   svgContainer.style.bottom = "15px";
   svgContainer.style.right = "30px";
   svgContainer.style.zIndex = "1000";
-  svgContainer.style.cursor = "pointer";
-  svgContainer.style.transition = "transform 0.3s ease";
+  // svgContainer.style.transition = "transform 0.3s ease";
 
   // Select your documentation text with chevron
   docText = document.createElement("div");
@@ -143,10 +149,33 @@ window.addEventListener("DOMContentLoaded", () => {
   layerWrapper.style.position = "relative";
   layerWrapper.style.width = "77px";
   layerWrapper.style.height = "70px";
-  layerWrapper.style.transition = "all 0.3s ease";
+  layerWrapper.style.transition = "all 0.1s ease";
   layerWrapper.style.zIndex = "1001"; // Higher than hover zone
 
-  // Create label containers for each layer
+  // Create containers for each layer that will be either an 'a' or 'div' tag
+  const createLayerContainer = (cookbookName, link) => {
+    const container = document.createElement("div");
+    const isCurrent = currentCookbook === cookbookName;
+
+    if (isCurrent) {
+      container.style.cursor = "default";
+    }
+
+    container.style.position = "absolute";
+    container.style.display = "block";
+    container.style.width = "100%";
+    container.style.height = "100%";
+    container.style.top = "0";
+    container.style.left = "0";
+    container.style.pointerEvents = "none";
+
+    return container;
+  };
+
+  const aoContainer = createLayerContainer("AO", AO_LINK);
+  const hyperbeamContainer = createLayerContainer("HYPERBEAM", HYPERBEAM_LINK);
+  const arweaveContainer = createLayerContainer("ARWEAVE", ARWEAVE_LINK);
+
   const createLayerLabel = (text, color, position, lineDirection) => {
     const labelContainer = document.createElement("div");
     labelContainer.style.position = "absolute";
@@ -227,10 +256,20 @@ window.addEventListener("DOMContentLoaded", () => {
     return { container: labelContainer, svg: lineSvg, label: label };
   };
 
-  // Create labels for each layer with different positions
+  // Create label containers for each layer
   topLabel = createLayerLabel("AO", "#333", "top-right");
   middleLabel = createLayerLabel("HYPERBEAM", "#333", "left");
   bottomLabel = createLayerLabel("ARWEAVE", "#333", "bottom-right");
+
+  topLabel.container.addEventListener("click", () => {
+    if (currentCookbook !== "AO") window.location.href = AO_LINK;
+  });
+  middleLabel.container.addEventListener("click", () => {
+    if (currentCookbook !== "HYPERBEAM") window.location.href = HYPERBEAM_LINK;
+  });
+  bottomLabel.container.addEventListener("click", () => {
+    if (currentCookbook !== "ARWEAVE") window.location.href = ARWEAVE_LINK;
+  });
 
   // Add orange square accent to ARWEAVE label
   const orangeSquare = document.createElement("div");
@@ -366,6 +405,20 @@ window.addEventListener("DOMContentLoaded", () => {
     middleLabel.container.style.opacity = "1";
     bottomLabel.container.style.opacity = "1";
 
+    // Enable pointer events for clickable labels
+    if (currentCookbook !== "AO") {
+      topLabel.container.style.pointerEvents = "auto";
+      topLabel.container.style.cursor = "pointer";
+    }
+    if (currentCookbook !== "HYPERBEAM") {
+      middleLabel.container.style.pointerEvents = "auto";
+      middleLabel.container.style.cursor = "pointer";
+    }
+    if (currentCookbook !== "ARWEAVE") {
+      bottomLabel.container.style.pointerEvents = "auto";
+      bottomLabel.container.style.cursor = "pointer";
+    }
+
     // Increase container size to accommodate scaling and gaps
     layerWrapper.style.width = "120px";
     layerWrapper.style.height = "90px";
@@ -408,6 +461,11 @@ window.addEventListener("DOMContentLoaded", () => {
     middleLabel.container.style.opacity = "0";
     bottomLabel.container.style.opacity = "0";
 
+    // Disable pointer events when not hovering
+    topLabel.container.style.pointerEvents = "none";
+    middleLabel.container.style.pointerEvents = "none";
+    bottomLabel.container.style.pointerEvents = "none";
+
     // Reset container size
     layerWrapper.style.width = "77px";
     layerWrapper.style.height = "70px";
@@ -436,6 +494,22 @@ window.addEventListener("DOMContentLoaded", () => {
   // Only use hoverZone for mouseleave to prevent jitter
   hoverZone.addEventListener("mouseleave", resetHoverState);
 
+  // Add click listener to the wrapper
+  layerWrapper.addEventListener("click", () => {
+    if (!activeLayer || activeLayer === currentCookbook) return;
+
+    const links = {
+      AO: AO_LINK,
+      HYPERBEAM: HYPERBEAM_LINK,
+      ARWEAVE: ARWEAVE_LINK,
+    };
+
+    const link = links[activeLayer];
+    if (link) {
+      window.location.href = link;
+    }
+  });
+
   // Function to handle layer opacity based on mouse position
   function handleLayerOpacity(event) {
     const rect = layerWrapper.getBoundingClientRect();
@@ -454,12 +528,22 @@ window.addEventListener("DOMContentLoaded", () => {
     if (mouseY <= sectionHeight) {
       // Top third - highlight top layer
       topSvg.style.opacity = "1";
+      activeLayer = "AO";
+      // Set cursor based on clickability
+      layerWrapper.style.cursor =
+        currentCookbook !== "AO" ? "pointer" : "default";
     } else if (mouseY <= sectionHeight * 2) {
       // Middle third - highlight middle layer
       middleSvg.style.opacity = "1";
+      activeLayer = "HYPERBEAM";
+      layerWrapper.style.cursor =
+        currentCookbook !== "HYPERBEAM" ? "pointer" : "default";
     } else {
       // Bottom third - highlight bottom layer
       bottomSvg.style.opacity = "1";
+      activeLayer = "ARWEAVE";
+      layerWrapper.style.cursor =
+        currentCookbook !== "ARWEAVE" ? "pointer" : "default";
     }
   }
 
@@ -468,6 +552,8 @@ window.addEventListener("DOMContentLoaded", () => {
     topSvg.style.opacity = "1";
     middleSvg.style.opacity = "1";
     bottomSvg.style.opacity = "1";
+    layerWrapper.style.cursor = "default";
+    activeLayer = null;
   }
 
   // Add mouse tracking to the layer wrapper
@@ -475,14 +561,19 @@ window.addEventListener("DOMContentLoaded", () => {
   layerWrapper.addEventListener("mouseleave", resetLayerOpacity);
 
   // Layer the SVGs (bottom to top)
-  layerWrapper.appendChild(bottomSvg);
-  layerWrapper.appendChild(middleSvg);
-  layerWrapper.appendChild(topSvg);
+  arweaveContainer.appendChild(bottomSvg);
+  hyperbeamContainer.appendChild(middleSvg);
+  aoContainer.appendChild(topSvg);
 
   // Add the labels to the layer wrapper
   layerWrapper.appendChild(topLabel.container);
   layerWrapper.appendChild(middleLabel.container);
   layerWrapper.appendChild(bottomLabel.container);
+
+  // Add the new containers to the main wrapper
+  layerWrapper.appendChild(arweaveContainer);
+  layerWrapper.appendChild(hyperbeamContainer);
+  layerWrapper.appendChild(aoContainer);
 
   // Append container to body
   document.body.appendChild(svgContainer);
