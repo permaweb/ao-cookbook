@@ -647,6 +647,7 @@ window.addEventListener("DOMContentLoaded", () => {
       activeLayer = "AO";
       layerWrapper.style.cursor =
         currentCookbook !== "AO" ? "pointer" : "default";
+      greyOutOtherLabels("AO");
     } else if (layerName === "HYPERBEAM") {
       topSvg.style.opacity = "0.15";
       middleSvg.style.opacity = "1";
@@ -654,6 +655,7 @@ window.addEventListener("DOMContentLoaded", () => {
       activeLayer = "HYPERBEAM";
       layerWrapper.style.cursor =
         currentCookbook !== "HYPERBEAM" ? "pointer" : "default";
+      greyOutOtherLabels("HYPERBEAM");
     } else if (layerName === "ARWEAVE") {
       topSvg.style.opacity = "0.15";
       middleSvg.style.opacity = "0.15";
@@ -661,6 +663,7 @@ window.addEventListener("DOMContentLoaded", () => {
       activeLayer = "ARWEAVE";
       layerWrapper.style.cursor =
         currentCookbook !== "ARWEAVE" ? "pointer" : "default";
+      greyOutOtherLabels("ARWEAVE");
     }
   }
 
@@ -706,6 +709,7 @@ window.addEventListener("DOMContentLoaded", () => {
     bottomSvg.style.opacity = "1";
     layerWrapper.style.cursor = "default";
     activeLayer = null;
+    resetLabelColors();
   }
 
   // Add mouse tracking to the layer wrapper
