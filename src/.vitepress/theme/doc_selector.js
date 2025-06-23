@@ -66,7 +66,7 @@ const selectedTopLayer = `
 
 window.addEventListener("DOMContentLoaded", () => {
   let isDark = false;
-  let topLabel, middleLabel, bottomLabel, docText;
+  let topLabel, middleLabel, bottomLabel, docText, innerWhiteSquare;
 
   function onThemeChange(cb) {
     const root = document.documentElement;
@@ -106,6 +106,9 @@ window.addEventListener("DOMContentLoaded", () => {
     if (bottomLabel && bottomLabel.label) {
       bottomLabel.label.style.color = textColor;
       bottomLabel.svg.querySelector("path").setAttribute("stroke", lineColor);
+    }
+    if (innerWhiteSquare) {
+      innerWhiteSquare.style.backgroundColor = isDark ? "black" : "white";
     }
   }
 
@@ -240,7 +243,7 @@ window.addEventListener("DOMContentLoaded", () => {
   orangeSquare.style.border = "1px solid #FF6A13";
 
   // Create inner white square
-  const innerWhiteSquare = document.createElement("div");
+  innerWhiteSquare = document.createElement("div");
   innerWhiteSquare.style.width = "10px";
   innerWhiteSquare.style.height = "10px";
   innerWhiteSquare.style.backgroundColor = "white";
@@ -350,8 +353,8 @@ window.addEventListener("DOMContentLoaded", () => {
   layerWrapper.addEventListener("mouseenter", () => {
     hoverZone.style.width = "300px"; // Expand to cover the moved container
     hoverZone.style.height = "200px"; // Increase height to cover labels above
-    hoverZone.style.right = "-40px"; // Extend further left to cover labels
-    hoverZone.style.bottom = "-20px"; // Extend lower to cover expanded bottom
+    hoverZone.style.right = "0px"; // Extend further left to cover labels
+    hoverZone.style.bottom = "0px"; // Extend lower to cover expanded bottom
     hoverZone.style.pointerEvents = "auto"; // Enable blocking during hover
     svgContainer.style.right = "70px";
 
