@@ -519,27 +519,28 @@ window.addEventListener("DOMContentLoaded", () => {
     // Divide the container into three equal sections
     const sectionHeight = containerHeight / 3;
 
-    // Reset all layers to default opacity
-    topSvg.style.opacity = "0.5";
-    middleSvg.style.opacity = "0.5";
-    bottomSvg.style.opacity = "0.05";
-
     // Determine which section the mouse is in and highlight that layer
     if (mouseY <= sectionHeight) {
       // Top third - highlight top layer
       topSvg.style.opacity = "1";
+      middleSvg.style.opacity = "0.15";
+      bottomSvg.style.opacity = "0.05";
       activeLayer = "AO";
       // Set cursor based on clickability
       layerWrapper.style.cursor =
         currentCookbook !== "AO" ? "pointer" : "default";
     } else if (mouseY <= sectionHeight * 2) {
       // Middle third - highlight middle layer
+      topSvg.style.opacity = "0.15";
       middleSvg.style.opacity = "1";
+      bottomSvg.style.opacity = "0.05";
       activeLayer = "HYPERBEAM";
       layerWrapper.style.cursor =
         currentCookbook !== "HYPERBEAM" ? "pointer" : "default";
     } else {
       // Bottom third - highlight bottom layer
+      topSvg.style.opacity = "0.15";
+      middleSvg.style.opacity = "0.15";
       bottomSvg.style.opacity = "1";
       activeLayer = "ARWEAVE";
       layerWrapper.style.cursor =
