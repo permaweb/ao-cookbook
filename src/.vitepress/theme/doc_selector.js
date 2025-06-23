@@ -74,6 +74,8 @@ window.addEventListener("DOMContentLoaded", () => {
   let isDark = false;
   let topLabel, middleLabel, bottomLabel, docText, innerWhiteSquare;
   let activeLayer = null;
+  let isExpanded = false;
+  let mouseMoveHandler = null; // will hold document-level mousemove handler
 
   function onThemeChange(cb) {
     const root = document.documentElement;
@@ -376,25 +378,22 @@ window.addEventListener("DOMContentLoaded", () => {
   layerWrapper.appendChild(docText);
   svgContainer.appendChild(layerWrapper);
 
-  // Create an invisible hover detection area that's larger and stable
+  // Create a large hover detection area that covers the entire bottom-right corner
   const hoverZone = document.createElement("div");
-  hoverZone.style.position = "absolute";
-  hoverZone.style.width = "150px"; // Larger stable area
-  hoverZone.style.height = "160px"; // Larger stable area
+  hoverZone.style.position = "absolute"; // relative to svgContainer
+  hoverZone.style.width = "150px"; // Collapsed stable area
+  hoverZone.style.height = "160px";
   hoverZone.style.bottom = "0px";
   hoverZone.style.right = "0px";
   hoverZone.style.background = "transparent";
-  hoverZone.style.pointerEvents = "none"; // Allow events to pass through by default
+  hoverZone.style.pointerEvents = "none"; // Allow passthrough when collapsed
   hoverZone.style.zIndex = "1000";
   svgContainer.appendChild(hoverZone);
 
-  // Add hover effects to the layer wrapper directly
-  layerWrapper.addEventListener("mouseenter", () => {
-    hoverZone.style.width = "300px"; // Expand to cover the moved container
-    hoverZone.style.height = "200px"; // Increase height to cover labels above
-    hoverZone.style.right = "0px"; // Extend further left to cover labels
-    hoverZone.style.bottom = "0px"; // Extend lower to cover expanded bottom
-    hoverZone.style.pointerEvents = "auto"; // Enable blocking during hover
+  function expandState() {
+    if (isExpanded) return;
+    isExpanded = true;
+
     svgContainer.style.right = "70px";
 
     // Hide the documentation text when hovering over layers
@@ -442,15 +441,28 @@ window.addEventListener("DOMContentLoaded", () => {
 
     bottomLabel.container.style.bottom = "0px";
     bottomLabel.container.style.right = "0px";
-  });
+
+    // Enlarge hoverZone and enable pointer capture during expanded state
+    hoverZone.style.width = "300px";
+    hoverZone.style.height = "220px";
+    hoverZone.style.pointerEvents = "auto";
+  }
+
+  // Add hover effects to the layer wrapper to trigger expansion
+  layerWrapper.addEventListener("mouseenter", expandState);
+  // Fallback: also listen on hoverZone in case user hovers near corner edges
+  hoverZone.addEventListener("mouseenter", expandState);
 
   // Function to reset hover state
   function resetHoverState() {
+    if (!isExpanded) return;
+    isExpanded = false;
+
+    // Shrink hoverZone and disable pointer capture
     hoverZone.style.width = "150px";
-    hoverZone.style.height = "160px"; // Reset height
-    hoverZone.style.right = "0px"; // Reset position
-    hoverZone.style.bottom = "0px"; // Reset bottom position
-    hoverZone.style.pointerEvents = "none"; // Allow passthrough when not hovering
+    hoverZone.style.height = "160px";
+    hoverZone.style.pointerEvents = "none";
+
     svgContainer.style.right = "30px";
 
     // Show the documentation text when not hovering
@@ -460,6 +472,9 @@ window.addEventListener("DOMContentLoaded", () => {
     topLabel.container.style.opacity = "0";
     middleLabel.container.style.opacity = "0";
     bottomLabel.container.style.opacity = "0";
+
+    // Reset label colors when collapsing
+    resetLabelColors();
 
     // Disable pointer events when not hovering
     topLabel.container.style.pointerEvents = "none";
@@ -489,10 +504,31 @@ window.addEventListener("DOMContentLoaded", () => {
 
     bottomLabel.container.style.bottom = "-15px";
     bottomLabel.container.style.right = "-140px";
+
+    // Remove global mousemove handler
+    if (mouseMoveHandler) {
+      document.removeEventListener("mousemove", mouseMoveHandler);
+      mouseMoveHandler = null;
+    }
   }
 
-  // Only use hoverZone for mouseleave to prevent jitter
+  // Reset when mouse leaves the hover zone (basic)
   hoverZone.addEventListener("mouseleave", resetHoverState);
+
+  // Additionally, track mouse movement globally to collapse when cursor
+  // exits the component entirely (handles quick diagonal exits)
+  mouseMoveHandler = (event) => {
+    const bounds = svgContainer.getBoundingClientRect();
+    if (
+      event.clientX < bounds.left - 2 ||
+      event.clientX > bounds.right + 2 ||
+      event.clientY < bounds.top - 2 ||
+      event.clientY > bounds.bottom + 2
+    ) {
+      resetHoverState();
+    }
+  };
+  document.addEventListener("mousemove", mouseMoveHandler);
 
   // Add click listener to the wrapper
   layerWrapper.addEventListener("click", () => {
@@ -538,6 +574,70 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Function to grey out non-active labels
+  function greyOutOtherLabels(activeLayerName) {
+    const greyColor = isDark ? "#666" : "#999";
+    const greyLineColor = isDark ? "#444" : "#bbb";
+    const normalColor = isDark ? "#e5e5e5" : "#333";
+    const normalLineColor = isDark ? "#888" : "#666";
+
+    // Reset all labels and lines to normal color first
+    topLabel.label.style.color = normalColor;
+    middleLabel.label.style.color = normalColor;
+    bottomLabel.label.style.color = normalColor;
+    topLabel.svg.querySelector("path").setAttribute("stroke", normalLineColor);
+    middleLabel.svg
+      .querySelector("path")
+      .setAttribute("stroke", normalLineColor);
+    bottomLabel.svg
+      .querySelector("path")
+      .setAttribute("stroke", normalLineColor);
+
+    // Grey out the non-active labels and their lines
+    if (activeLayerName === "AO") {
+      middleLabel.label.style.color = greyColor;
+      bottomLabel.label.style.color = greyColor;
+      middleLabel.svg
+        .querySelector("path")
+        .setAttribute("stroke", greyLineColor);
+      bottomLabel.svg
+        .querySelector("path")
+        .setAttribute("stroke", greyLineColor);
+    } else if (activeLayerName === "HYPERBEAM") {
+      topLabel.label.style.color = greyColor;
+      bottomLabel.label.style.color = greyColor;
+      topLabel.svg.querySelector("path").setAttribute("stroke", greyLineColor);
+      bottomLabel.svg
+        .querySelector("path")
+        .setAttribute("stroke", greyLineColor);
+    } else if (activeLayerName === "ARWEAVE") {
+      topLabel.label.style.color = greyColor;
+      middleLabel.label.style.color = greyColor;
+      topLabel.svg.querySelector("path").setAttribute("stroke", greyLineColor);
+      middleLabel.svg
+        .querySelector("path")
+        .setAttribute("stroke", greyLineColor);
+    }
+  }
+
+  // Function to reset all labels to normal color
+  function resetLabelColors() {
+    const normalColor = isDark ? "#e5e5e5" : "#333";
+    const normalLineColor = isDark ? "#888" : "#666";
+
+    topLabel.label.style.color = normalColor;
+    middleLabel.label.style.color = normalColor;
+    bottomLabel.label.style.color = normalColor;
+
+    topLabel.svg.querySelector("path").setAttribute("stroke", normalLineColor);
+    middleLabel.svg
+      .querySelector("path")
+      .setAttribute("stroke", normalLineColor);
+    bottomLabel.svg
+      .querySelector("path")
+      .setAttribute("stroke", normalLineColor);
+  }
+
   // Function to set the highlight state of the layers
   function setHighlight(layerName) {
     if (layerName === "AO") {
@@ -565,16 +665,24 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // Add mouseenter events to labels to set the highlight
-  topLabel.container.addEventListener("mouseenter", () => setHighlight("AO"));
-  middleLabel.container.addEventListener("mouseenter", () =>
-    setHighlight("HYPERBEAM"),
-  );
-  bottomLabel.container.addEventListener("mouseenter", () =>
-    setHighlight("ARWEAVE"),
-  );
+  topLabel.container.addEventListener("mouseenter", () => {
+    setHighlight("AO");
+    greyOutOtherLabels("AO");
+  });
+  middleLabel.container.addEventListener("mouseenter", () => {
+    setHighlight("HYPERBEAM");
+    greyOutOtherLabels("HYPERBEAM");
+  });
+  bottomLabel.container.addEventListener("mouseenter", () => {
+    setHighlight("ARWEAVE");
+    greyOutOtherLabels("ARWEAVE");
+  });
 
   // When leaving a label, re-evaluate position-based highlighting
   const handleLabelMouseLeave = (event) => {
+    // Reset label colors when leaving a label
+    resetLabelColors();
+
     // We need to manually trigger a mousemove to re-evaluate the position
     // as the mousemove event on layerWrapper won't fire if the mouse
     // was over the label element.
