@@ -1,8 +1,114 @@
-console.log("hello from doc selector");
+/* For each cookbook:
+- Update updateThemeColors function to detect the dark mode of the page.
+- Update the currentCookbook variable to the current cookbook.
+*/
 
+const currentCookbook = "ARWEAVE"; // AO, HYPERBEAM, ARWEAVE
+
+const bottomLayer = `
+    <path d="M75.749 31.3628L38.5 52.8696L1.25 31.3628L38.5 9.85596L75.749 31.3628Z" fill="black" stroke="white" stroke-width="0.25"/>
+    <path d="M75.875 22.7754V31.1465L38.625 9.63965V1.26855L75.875 22.7754Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round"/>
+    <path d="M38.3751 9.63965L1.12506 31.1465V22.7754L38.3751 1.26855V9.63965Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round"/>
+    <path opacity="0.9" d="M1 22.7031L38.5 44.3538V53.014L1 31.3634V22.7031Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round"/>
+    <path opacity="0.9" d="M38.5 44.3538L76 22.7031V31.3634L38.5 53.014V44.3538Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round"/>
+    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 1.05273)" fill="black" fill-opacity="0.9" stroke="white" stroke-width="0.25"/>
+`;
+
+const selectedBottomLayer = `<path d="M75.749 31.3628L38.5 52.8696L1.25 31.3628L38.5 9.85596L75.749 31.3628Z" fill="black" stroke="white" stroke-width="0.25" />
+    <path d="M75.875 22.7754V31.1465L38.625 9.63965V1.26855L75.875 22.7754Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
+    <path d="M38.3751 9.63965L1.12506 31.1465V22.7754L38.3751 1.26855V9.63965Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M1 22.7031L38.5 44.3538V53.014L1 31.3634V22.7031Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M38.5 44.3538L76 22.7031V31.3634L38.5 53.014V44.3538Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
+    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 1.05273)" fill="black" fill-opacity="0.9" stroke="white" stroke-width="0.25" />
+    <rect x="0.194856" y="0.3375" width="4.09545" height="4.09545" transform="matrix(0.866025 0.5 0 1 32.8443 42.9934)" stroke="#FF6A13" stroke-width="0.45" />
+    <rect width="1.81818" height="1.81818" transform="matrix(-1.89276e-08 1 -0.866025 -0.5 35.5737 46.0454)" fill="#FF6A13" />
+ `;
+
+const middleLayer = `
+    <path d="M75.749 30.7031L38.5 52.21L1.25 30.7031L38.5 9.19629L75.749 30.7031Z" fill="#CACACA" stroke="black" stroke-width="0.25" />
+    <path d="M75.875 22.1152V30.4863L38.625 8.97949V0.608398L75.875 22.1152Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path d="M38.3751 8.97949L1.12506 30.4863V22.1152L38.3751 0.608398V8.97949Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M1 22.0435L38.5 43.6941V52.3543L1 30.7037V22.0435Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M38.5 43.6941L76 22.0435V30.7037L38.5 52.3543V43.6941Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 0.392578)" fill="#CACACA" fill-opacity="0.9" stroke="black" stroke-width="0.25" />
+  
+`;
+
+const selectedMiddleLayer = `
+    <path d="M75.749 30.7031L38.5 52.21L1.25 30.7031L38.5 9.19629L75.749 30.7031Z" fill="#CACACA" stroke="black" stroke-width="0.25"/>
+    <path d="M75.875 22.1152V30.4863L38.625 8.97949V0.608398L75.875 22.1152Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round"/>
+    <path d="M38.3751 8.97949L1.12506 30.4863V22.1152L38.3751 0.608398V8.97949Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round"/>
+    <path opacity="0.9" d="M1 22.0435L38.5 43.6941V52.3543L1 30.7037V22.0435Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round"/>
+    <path opacity="0.9" d="M38.5 43.6941L76 22.0435V30.7037L38.5 52.3543V43.6941Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round"/>
+    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 0.392578)" fill="#CACACA" fill-opacity="0.9" stroke="black" stroke-width="0.25"/>
+`;
+
+const topLayer = `
+    <path d="M75.749 31.311L38.5 52.8179L1.25 31.311L38.5 9.8042L75.749 31.311Z" fill="white" stroke="black" stroke-width="0.25" />
+    <path d="M75.875 22.7227V31.0938L38.625 9.58691V1.21582L75.875 22.7227Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path d="M38.3751 9.58691L1.12506 31.0938V22.7227L38.3751 1.21582V9.58691Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M1 22.6504L38.5 44.301V52.9613L1 31.3106V22.6504Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <path opacity="0.9" d="M38.5 44.301L76 22.6504V31.3106L38.5 52.9613V44.301Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
+    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 1)" fill="white" fill-opacity="0.9" stroke="black" stroke-width="0.25" />
+`;
+
+const selectedTopLayer = `
+    <path d="M75.749 31.311L38.5 52.8179L1.25 31.311L38.5 9.8042L75.749 31.311Z" fill="white" stroke="black" stroke-width="0.25"/>
+    <path d="M75.875 22.7227V31.0938L38.625 9.58691V1.21582L75.875 22.7227Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round"/>
+    <path d="M38.3751 9.58691L1.12506 31.0938V22.7227L38.3751 1.21582V9.58691Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round"/>
+    <path opacity="0.9" d="M1 22.6504L38.5 44.301V52.9613L1 31.3106V22.6504Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round"/>
+    <rect x="0.194856" y="0.3375" width="4.09545" height="4.09545" transform="matrix(0.866025 0.5 0 1 31.7079 42.948)" stroke="#FF6A13" stroke-width="0.45"/>
+    <rect width="1.81818" height="1.81818" transform="matrix(-1.89276e-08 1 -0.866025 -0.5 34.4374 46)" fill="#FF6A13"/>
+    <path opacity="0.9" d="M38.5 44.301L76 22.6504V31.3106L38.5 52.9613V44.301Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round"/>
+    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 1)" fill="white" fill-opacity="0.9" stroke="black" stroke-width="0.25"/>
+`;
 // after the page is loaded, add an SVG structure to the bottom right of the page
 
 window.addEventListener("DOMContentLoaded", () => {
+  let isDark = false;
+  let topLabel, middleLabel, bottomLabel, docText;
+
+  function onThemeChange(cb) {
+    const root = document.documentElement;
+
+    // Fire once on start-up
+    cb(root.classList.contains("dark"));
+
+    // Observe further changes
+    const ob = new MutationObserver(() => cb(root.classList.contains("dark")));
+    ob.observe(root, { attributes: true, attributeFilter: ["class"] });
+    return () => ob.disconnect(); // optional: call to stop watching
+  }
+
+  // Function to update theme colors
+  function updateThemeColors(dark) {
+    isDark = dark;
+    console.log("isDark", isDark);
+
+    const textColor = isDark ? "#e5e5e5" : "#333";
+    const lineColor = isDark ? "#888" : "#666";
+
+    // Update the "Select your documentation" text color
+    const docTextSpan = docText.querySelector("span");
+    if (docTextSpan) {
+      docTextSpan.style.color = textColor;
+    }
+
+    // Update label colors
+    if (topLabel && topLabel.label) {
+      topLabel.label.style.color = textColor;
+      topLabel.svg.querySelector("path").setAttribute("stroke", lineColor);
+    }
+    if (middleLabel && middleLabel.label) {
+      middleLabel.label.style.color = textColor;
+      middleLabel.svg.querySelector("path").setAttribute("stroke", lineColor);
+    }
+    if (bottomLabel && bottomLabel.label) {
+      bottomLabel.label.style.color = textColor;
+      bottomLabel.svg.querySelector("path").setAttribute("stroke", lineColor);
+    }
+  }
+
   // Create container for the layered SVG structure
   const svgContainer = document.createElement("div");
   svgContainer.style.position = "fixed";
@@ -13,9 +119,9 @@ window.addEventListener("DOMContentLoaded", () => {
   svgContainer.style.transition = "transform 0.3s ease";
 
   // Select your documentation text with chevron
-  const docText = document.createElement("div");
+  docText = document.createElement("div");
   docText.innerHTML = `
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 14px; color: #000; text-align: center; font-family: monospace; font-weight: 400; font-size: 10px;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 14px; text-align: center; font-family: monospace; font-weight: 400; font-size: 10px;">
       <span>Select your documentation</span>
       <svg width="12" height="7" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7.875 1L4.4375 4.125L1 1" stroke="#939393" stroke-linecap="round" stroke-linejoin="round"/>
@@ -35,6 +141,7 @@ window.addEventListener("DOMContentLoaded", () => {
   layerWrapper.style.width = "77px";
   layerWrapper.style.height = "70px";
   layerWrapper.style.transition = "all 0.3s ease";
+  layerWrapper.style.zIndex = "1001"; // Higher than hover zone
 
   // Create label containers for each layer
   const createLayerLabel = (text, color, position, lineDirection) => {
@@ -76,22 +183,22 @@ window.addEventListener("DOMContentLoaded", () => {
       case "top-right":
         // Line goes from bottom-left to top-right
         linePath = "M-3.57628e-07 7H48V0";
-        labelPosition = { right: "-20px", top: "-12px" };
+        labelPosition = { right: "-28px", top: "-15px" };
         svgPosition = { right: "-31px", top: "10px" };
         labelContainer.style.flexDirection = "row";
         break;
       case "left":
         // Line goes horizontally to the left
         linePath = "M39.5 6H1V0";
-        labelPosition = { right: "30px", top: "-20px", position: "relative" };
-        svgPosition = { right: "0px", top: "10px" };
+        labelPosition = { right: "-52px", top: "-15px" };
+        svgPosition = { right: "-80px", top: "10px" };
         labelContainer.style.flexDirection = "row";
         break;
       case "bottom-right":
         // Line goes from top-left to bottom-right
         linePath = "M2.38419e-07 1H49V8";
-        labelPosition = { right: "-55px", bottom: "-10px" };
-        svgPosition = { right: "-30px", top: "-24px" };
+        labelPosition = { right: "-55px", bottom: "-2px" };
+        svgPosition = { right: "-31px", top: "-30px" };
         labelContainer.style.flexDirection = "row";
         break;
     }
@@ -118,9 +225,9 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   // Create labels for each layer with different positions
-  const topLabel = createLayerLabel("AO", "#333", "top-right");
-  const middleLabel = createLayerLabel("HYPERBEAM", "#333", "left");
-  const bottomLabel = createLayerLabel("ARWEAVE", "#333", "bottom-right");
+  topLabel = createLayerLabel("AO", "#333", "top-right");
+  middleLabel = createLayerLabel("HYPERBEAM", "#333", "left");
+  bottomLabel = createLayerLabel("ARWEAVE", "#333", "bottom-right");
 
   // Add orange square accent to ARWEAVE label
   const orangeSquare = document.createElement("div");
@@ -153,14 +260,20 @@ window.addEventListener("DOMContentLoaded", () => {
   orangeSquare.appendChild(innerWhiteSquare);
 
   // Add the orange square directly to the bottom label container
-  bottomLabel.label.insertBefore(orangeSquare, bottomLabel.label.firstChild);
+  if (currentCookbook === "ARWEAVE") {
+    bottomLabel.label.insertBefore(orangeSquare, bottomLabel.label.firstChild);
+  } else if (currentCookbook === "HYPERBEAM") {
+    middleLabel.label.insertBefore(orangeSquare, middleLabel.label.firstChild);
+  } else if (currentCookbook === "AO") {
+    topLabel.label.insertBefore(orangeSquare, topLabel.label.firstChild);
+  }
 
   // Position the label containers relative to the layer wrapper
   topLabel.container.style.top = "0px";
   topLabel.container.style.right = "0px";
 
   middleLabel.container.style.top = "22px";
-  middleLabel.container.style.left = "-74px";
+  middleLabel.container.style.left = "0px";
 
   bottomLabel.container.style.bottom = "-15px";
   bottomLabel.container.style.right = "-140px";
@@ -177,16 +290,11 @@ window.addEventListener("DOMContentLoaded", () => {
   bottomSvg.style.top = "17px";
   bottomSvg.style.left = "0";
   bottomSvg.style.transition = "all 0.3s ease";
-  bottomSvg.innerHTML = `
-    <path d="M75.749 31.3628L38.5 52.8696L1.25 31.3628L38.5 9.85596L75.749 31.3628Z" fill="black" stroke="white" stroke-width="0.25" />
-    <path d="M75.875 22.7754V31.1465L38.625 9.63965V1.26855L75.875 22.7754Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
-    <path d="M38.3751 9.63965L1.12506 31.1465V22.7754L38.3751 1.26855V9.63965Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
-    <path opacity="0.9" d="M1 22.7031L38.5 44.3538V53.014L1 31.3634V22.7031Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
-    <path opacity="0.9" d="M38.5 44.3538L76 22.7031V31.3634L38.5 53.014V44.3538Z" fill="black" stroke="white" stroke-width="0.25" stroke-linejoin="round" />
-    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 1.05273)" fill="black" fill-opacity="0.9" stroke="white" stroke-width="0.25" />
-    <rect x="0.194856" y="0.3375" width="4.09545" height="4.09545" transform="matrix(0.866025 0.5 0 1 32.8443 42.9934)" stroke="#FF6A13" stroke-width="0.45" />
-    <rect width="1.81818" height="1.81818" transform="matrix(-1.89276e-08 1 -0.866025 -0.5 35.5737 46.0454)" fill="#FF6A13" />
-  `;
+  if (currentCookbook === "ARWEAVE") {
+    bottomSvg.innerHTML = selectedBottomLayer;
+  } else {
+    bottomSvg.innerHTML = bottomLayer;
+  }
 
   // Create middle layer SVG
   const middleSvg = document.createElementNS(
@@ -200,35 +308,51 @@ window.addEventListener("DOMContentLoaded", () => {
   middleSvg.style.top = "9px";
   middleSvg.style.left = "0";
   middleSvg.style.transition = "all 0.3s ease";
-  middleSvg.innerHTML = `
-    <path d="M75.749 30.7031L38.5 52.21L1.25 30.7031L38.5 9.19629L75.749 30.7031Z" fill="#CACACA" stroke="black" stroke-width="0.25" />
-    <path d="M75.875 22.1152V30.4863L38.625 8.97949V0.608398L75.875 22.1152Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
-    <path d="M38.3751 8.97949L1.12506 30.4863V22.1152L38.3751 0.608398V8.97949Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
-    <path opacity="0.9" d="M1 22.0435L38.5 43.6941V52.3543L1 30.7037V22.0435Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
-    <path opacity="0.9" d="M38.5 43.6941L76 22.0435V30.7037L38.5 52.3543V43.6941Z" fill="#CACACA" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
-    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 0.392578)" fill="#CACACA" fill-opacity="0.9" stroke="black" stroke-width="0.25" />
-  `;
+  if (currentCookbook === "HYPERBEAM") {
+    middleSvg.innerHTML = selectedMiddleLayer;
+  } else {
+    middleSvg.innerHTML = middleLayer;
+  }
 
   // Create top layer SVG
   const topSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   topSvg.setAttribute("width", "77");
+  topSvg.setAttribute("fill", "none");
   topSvg.setAttribute("height", "70");
   topSvg.setAttribute("viewBox", "0 0 77 70");
   topSvg.style.position = "absolute";
   topSvg.style.top = "0px";
   topSvg.style.left = "0";
   topSvg.style.transition = "all 0.3s ease";
-  topSvg.innerHTML = `
-    <path d="M75.749 31.311L38.5 52.8179L1.25 31.311L38.5 9.8042L75.749 31.311Z" fill="white" stroke="black" stroke-width="0.25" />
-    <path d="M75.875 22.7227V31.0938L38.625 9.58691V1.21582L75.875 22.7227Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
-    <path d="M38.3751 9.58691L1.12506 31.0938V22.7227L38.3751 1.21582V9.58691Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
-    <path opacity="0.9" d="M1 22.6504L38.5 44.301V52.9613L1 31.3106V22.6504Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
-    <path opacity="0.9" d="M38.5 44.301L76 22.6504V31.3106L38.5 52.9613V44.301Z" fill="white" stroke="black" stroke-width="0.25" stroke-linejoin="round" />
-    <rect width="43.3013" height="43.3013" transform="matrix(0.866025 0.5 -0.866025 0.5 38.5 1)" fill="white" fill-opacity="0.9" stroke="black" stroke-width="0.25" />
-  `;
+  if (currentCookbook === "AO") {
+    topSvg.innerHTML = selectedTopLayer;
+  } else {
+    topSvg.innerHTML = topLayer;
+  }
 
-  // Add hover effects to the container
-  svgContainer.addEventListener("mouseenter", () => {
+  // Add the documentation text and layer wrapper to the main container
+  layerWrapper.appendChild(docText);
+  svgContainer.appendChild(layerWrapper);
+
+  // Create an invisible hover detection area that's larger and stable
+  const hoverZone = document.createElement("div");
+  hoverZone.style.position = "fixed";
+  hoverZone.style.width = "150px"; // Larger stable area
+  hoverZone.style.height = "160px"; // Larger stable area
+  hoverZone.style.bottom = "0px";
+  hoverZone.style.right = "0px";
+  hoverZone.style.background = "transparent";
+  hoverZone.style.pointerEvents = "none"; // Allow events to pass through by default
+  hoverZone.style.zIndex = "1000";
+  svgContainer.appendChild(hoverZone);
+
+  // Add hover effects to the layer wrapper directly
+  layerWrapper.addEventListener("mouseenter", () => {
+    hoverZone.style.width = "300px"; // Expand to cover the moved container
+    hoverZone.style.height = "200px"; // Increase height to cover labels above
+    hoverZone.style.right = "-40px"; // Extend further left to cover labels
+    hoverZone.style.bottom = "-20px"; // Extend lower to cover expanded bottom
+    hoverZone.style.pointerEvents = "auto"; // Enable blocking during hover
     svgContainer.style.right = "70px";
 
     // Hide the documentation text when hovering over layers
@@ -264,7 +388,13 @@ window.addEventListener("DOMContentLoaded", () => {
     bottomLabel.container.style.right = "0px";
   });
 
-  svgContainer.addEventListener("mouseleave", () => {
+  // Function to reset hover state
+  function resetHoverState() {
+    hoverZone.style.width = "150px";
+    hoverZone.style.height = "160px"; // Reset height
+    hoverZone.style.right = "0px"; // Reset position
+    hoverZone.style.bottom = "0px"; // Reset bottom position
+    hoverZone.style.pointerEvents = "none"; // Allow passthrough when not hovering
     svgContainer.style.right = "30px";
 
     // Show the documentation text when not hovering
@@ -298,7 +428,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     bottomLabel.container.style.bottom = "-15px";
     bottomLabel.container.style.right = "-140px";
-  });
+  }
+
+  // Only use hoverZone for mouseleave to prevent jitter
+  hoverZone.addEventListener("mouseleave", resetHoverState);
 
   // Function to handle layer opacity based on mouse position
   function handleLayerOpacity(event) {
@@ -348,10 +481,9 @@ window.addEventListener("DOMContentLoaded", () => {
   layerWrapper.appendChild(middleLabel.container);
   layerWrapper.appendChild(bottomLabel.container);
 
-  // Add the documentation text and layer wrapper to the main container
-  layerWrapper.appendChild(docText);
-  svgContainer.appendChild(layerWrapper);
-
   // Append container to body
   document.body.appendChild(svgContainer);
+
+  // Set up theme change handler after all elements are created
+  onThemeChange(updateThemeColors);
 });
