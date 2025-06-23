@@ -125,7 +125,7 @@ window.addEventListener("DOMContentLoaded", () => {
   svgContainer.style.bottom = "15px";
   svgContainer.style.right = "30px";
   svgContainer.style.zIndex = "1000";
-  // svgContainer.style.transition = "transform 0.3s ease";
+  // svgContainer.style.transition = "transform 0.15s ease";
 
   // Select your documentation text with chevron
   docText = document.createElement("div");
@@ -141,7 +141,7 @@ window.addEventListener("DOMContentLoaded", () => {
   docText.style.top = "-70px";
   docText.style.left = "50%";
   docText.style.transform = "translateX(-50%)";
-  docText.style.transition = "opacity 0.3s ease";
+  docText.style.transition = "opacity 0.15s ease";
   docText.style.opacity = "1";
 
   // Create a wrapper for the layered SVGs
@@ -181,7 +181,7 @@ window.addEventListener("DOMContentLoaded", () => {
     labelContainer.style.position = "absolute";
     labelContainer.style.display = "flex";
     labelContainer.style.alignItems = "center";
-    labelContainer.style.transition = "all 0.3s ease";
+    labelContainer.style.transition = "all 0.15s ease";
     labelContainer.style.opacity = "0"; // Initially hidden
     labelContainer.style.pointerEvents = "none";
 
@@ -331,7 +331,7 @@ window.addEventListener("DOMContentLoaded", () => {
   bottomSvg.style.position = "absolute";
   bottomSvg.style.top = "17px";
   bottomSvg.style.left = "0";
-  bottomSvg.style.transition = "all 0.3s ease";
+  bottomSvg.style.transition = "all 0.15s ease";
   if (currentCookbook === "ARWEAVE") {
     bottomSvg.innerHTML = selectedBottomLayer;
   } else {
@@ -349,7 +349,7 @@ window.addEventListener("DOMContentLoaded", () => {
   middleSvg.style.position = "absolute";
   middleSvg.style.top = "9px";
   middleSvg.style.left = "0";
-  middleSvg.style.transition = "all 0.3s ease";
+  middleSvg.style.transition = "all 0.15s ease";
   if (currentCookbook === "HYPERBEAM") {
     middleSvg.innerHTML = selectedMiddleLayer;
   } else {
@@ -365,7 +365,7 @@ window.addEventListener("DOMContentLoaded", () => {
   topSvg.style.position = "absolute";
   topSvg.style.top = "0px";
   topSvg.style.left = "0";
-  topSvg.style.transition = "all 0.3s ease";
+  topSvg.style.transition = "all 0.15s ease";
   if (currentCookbook === "AO") {
     topSvg.innerHTML = selectedTopLayer;
   } else {
@@ -378,7 +378,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Create an invisible hover detection area that's larger and stable
   const hoverZone = document.createElement("div");
-  hoverZone.style.position = "fixed";
+  hoverZone.style.position = "absolute";
   hoverZone.style.width = "150px"; // Larger stable area
   hoverZone.style.height = "160px"; // Larger stable area
   hoverZone.style.bottom = "0px";
@@ -512,6 +512,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Function to handle layer opacity based on mouse position
   function handleLayerOpacity(event) {
+    // If the mouse is over a label, let the label's handler take precedence
+    if (
+      topLabel.container.matches(":hover") ||
+      middleLabel.container.matches(":hover") ||
+      bottomLabel.container.matches(":hover")
+    ) {
+      return;
+    }
+
     const rect = layerWrapper.getBoundingClientRect();
     const mouseY = event.clientY - rect.top;
     const containerHeight = rect.height;
@@ -521,24 +530,31 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Determine which section the mouse is in and highlight that layer
     if (mouseY <= sectionHeight) {
-      // Top third - highlight top layer
+      setHighlight("AO");
+    } else if (mouseY <= sectionHeight * 2) {
+      setHighlight("HYPERBEAM");
+    } else {
+      setHighlight("ARWEAVE");
+    }
+  }
+
+  // Function to set the highlight state of the layers
+  function setHighlight(layerName) {
+    if (layerName === "AO") {
       topSvg.style.opacity = "1";
       middleSvg.style.opacity = "0.15";
       bottomSvg.style.opacity = "0.05";
       activeLayer = "AO";
-      // Set cursor based on clickability
       layerWrapper.style.cursor =
         currentCookbook !== "AO" ? "pointer" : "default";
-    } else if (mouseY <= sectionHeight * 2) {
-      // Middle third - highlight middle layer
+    } else if (layerName === "HYPERBEAM") {
       topSvg.style.opacity = "0.15";
       middleSvg.style.opacity = "1";
       bottomSvg.style.opacity = "0.05";
       activeLayer = "HYPERBEAM";
       layerWrapper.style.cursor =
         currentCookbook !== "HYPERBEAM" ? "pointer" : "default";
-    } else {
-      // Bottom third - highlight bottom layer
+    } else if (layerName === "ARWEAVE") {
       topSvg.style.opacity = "0.15";
       middleSvg.style.opacity = "0.15";
       bottomSvg.style.opacity = "1";
@@ -547,6 +563,33 @@ window.addEventListener("DOMContentLoaded", () => {
         currentCookbook !== "ARWEAVE" ? "pointer" : "default";
     }
   }
+
+  // Add mouseenter events to labels to set the highlight
+  topLabel.container.addEventListener("mouseenter", () => setHighlight("AO"));
+  middleLabel.container.addEventListener("mouseenter", () =>
+    setHighlight("HYPERBEAM"),
+  );
+  bottomLabel.container.addEventListener("mouseenter", () =>
+    setHighlight("ARWEAVE"),
+  );
+
+  // When leaving a label, re-evaluate position-based highlighting
+  const handleLabelMouseLeave = (event) => {
+    // We need to manually trigger a mousemove to re-evaluate the position
+    // as the mousemove event on layerWrapper won't fire if the mouse
+    // was over the label element.
+    const moveEvent = new MouseEvent("mousemove", {
+      bubbles: true,
+      cancelable: true,
+      clientX: event.clientX,
+      clientY: event.clientY,
+    });
+    layerWrapper.dispatchEvent(moveEvent);
+  };
+
+  topLabel.container.addEventListener("mouseleave", handleLabelMouseLeave);
+  middleLabel.container.addEventListener("mouseleave", handleLabelMouseLeave);
+  bottomLabel.container.addEventListener("mouseleave", handleLabelMouseLeave);
 
   // Function to reset all layers to full opacity when mouse leaves
   function resetLayerOpacity() {
