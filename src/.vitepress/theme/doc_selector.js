@@ -158,12 +158,12 @@ window.addEventListener("DOMContentLoaded", () => {
     label.textContent = text;
     label.style.position = "absolute";
     label.style.fontSize = "12px";
-    label.style.fontFamily = "Arial, sans-serif";
+    label.style.fontFamily = "Roboto Mono, monospace";
     label.style.color = "#333";
     label.style.fontWeight = "400";
     label.style.whiteSpace = "nowrap";
     label.style.padding = "2px 0";
-    label.style.letterSpacing = "0.5px";
+    label.style.letterSpacing = "-1%";
     label.style.display = "flex"; // for the orange square
     label.style.alignItems = "center";
 
