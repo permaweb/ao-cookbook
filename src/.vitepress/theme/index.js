@@ -3,7 +3,7 @@
 import { h } from "vue";
 import DefaultTheme from "vitepress/theme-without-fonts";
 import "./style.css";
-import "./doc_selector.js";
+import "./docSelector.js";
 
 /** @type {import('vitepress').Theme} */
 export default {
