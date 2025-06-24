@@ -7,19 +7,10 @@
 // Only run in browser environment
 if (typeof window !== "undefined") {
   // State management
-  let debounceTimer = null;
-  let observer = null;
   let isDocSelectorVisible = false;
   let currentPath = "";
   let componentReady = false;
   let componentElements = [];
-
-  // VitePress theme detection
-  function detectTheme() {
-    return document.documentElement.classList.contains("dark")
-      ? "dark"
-      : "light";
-  }
 
   // Check if current page should show DocSelector
   function shouldShowDocSelector(pathname = window.location.pathname) {
@@ -35,7 +26,7 @@ if (typeof window !== "undefined") {
         "https://hyperbeam.arweave.net/build/introduction/what-is-hyperbeam.html",
       ARWEAVE: "https://cookbook.arweave.net/getting-started/index.html",
     },
-    theme: detectTheme(),
+    theme: "auto",
   };
 
   // Find all DocSelector elements
@@ -207,71 +198,6 @@ if (typeof window !== "undefined") {
     }
   }
 
-  // Update theme for preloaded component
-  function updateTheme() {
-    const newTheme = detectTheme();
-
-    if (newTheme !== window.DocSelectorConfig.theme) {
-      console.log(
-        `Theme change: ${window.DocSelectorConfig.theme} → ${newTheme}`,
-      );
-      window.DocSelectorConfig.theme = newTheme;
-
-      if (debounceTimer) {
-        clearTimeout(debounceTimer);
-      }
-
-      debounceTimer = setTimeout(() => {
-        // Try to update via API first
-        if (
-          window.DocSelectorComponent &&
-          typeof window.DocSelectorComponent.updateTheme === "function"
-        ) {
-          try {
-            window.DocSelectorComponent.updateTheme(newTheme);
-            console.log(`Updated theme to ${newTheme} via API`);
-            return;
-          } catch (error) {
-            console.log("API update failed, will reload");
-          }
-        }
-
-        // Fallback: reload component (it will maintain visibility state)
-        const wasVisible = isDocSelectorVisible;
-
-        // Clean up previous instance
-        const existingScripts = document.querySelectorAll(
-          'script[src*="WrQd8ePNa8lzjN4DEiOuOL635km5qCcB3P-rcnnzm9U"]',
-        );
-        existingScripts.forEach((script) => script.remove());
-
-        // Clear component elements
-        if (componentElements.length > 0) {
-          componentElements.forEach((el) => el.remove());
-          componentElements = [];
-        }
-
-        // Reset state
-        componentReady = false;
-        isDocSelectorVisible = false;
-
-        // Reload in background
-        setTimeout(() => {
-          loadDocSelectorInBackground();
-
-          // Restore visibility state after reload
-          if (wasVisible) {
-            setTimeout(() => {
-              if (shouldShowDocSelector()) {
-                showDocSelector();
-              }
-            }, 300);
-          }
-        }, 50);
-      }, 150);
-    }
-  }
-
   // Initialize with background preloading
   function initialize() {
     currentPath = window.location.pathname;
@@ -279,27 +205,11 @@ if (typeof window !== "undefined") {
     // ALWAYS load DocSelector in background (even on index page)
     loadDocSelectorInBackground();
 
-    // Set up theme change detection
-    if (observer) {
-      observer.disconnect();
-    }
-
-    observer = new MutationObserver(() => updateTheme());
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
     // Navigation detection
     window.addEventListener("popstate", handleNavigation);
 
     // SPA navigation polling (lightweight since we're just comparing strings)
     setInterval(handleNavigation, 300);
-
-    // Cleanup
-    window.addEventListener("beforeunload", () => {
-      if (observer) observer.disconnect();
-    });
 
     console.log("DocSelector background preloading initialized");
   }
