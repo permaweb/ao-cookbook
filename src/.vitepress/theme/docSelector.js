@@ -98,6 +98,24 @@ if (typeof window !== "undefined") {
   function loadDocSelectorInBackground() {
     console.log("Loading DocSelector in background...");
 
+    // Pre-emptively add CSS to hide DocSelector on index page
+    if (!shouldShowDocSelector()) {
+      const style = document.createElement("style");
+      style.id = "doc-selector-hide";
+      style.textContent = `
+        [data-doc-selector="true"],
+        [data-doc-selector],
+        .doc-selector,
+        #doc-selector,
+        [class*="doc-selector"],
+        [id*="doc-selector"] {
+          display: none !important;
+        }
+      `;
+      document.head.appendChild(style);
+      console.log("Added CSS to pre-hide DocSelector on index page");
+    }
+
     const script = document.createElement("script");
     script.src =
       "https://arweave.net/uUdfnAHLxvRswVdGTiLg4_RXYUIb_4BvyTxVQ8m1X28";
@@ -106,16 +124,30 @@ if (typeof window !== "undefined") {
     script.onload = () => {
       console.log("DocSelector loaded in background");
 
-      // Give component time to initialize
+      // IMMEDIATELY hide on index page to prevent flash
+      if (!shouldShowDocSelector()) {
+        // Use a small delay to ensure component has rendered
+        setTimeout(() => {
+          hideDocSelector();
+          console.log("DocSelector immediately hidden on index page");
+        }, 50);
+      }
+
+      // Give component time to initialize before setting ready state
       setTimeout(() => {
         componentReady = true;
 
-        // Apply initial visibility based on current page
+        // Apply final visibility state based on current page
         if (shouldShowDocSelector()) {
+          // Remove hide CSS if moving to non-index page
+          const hideStyle = document.getElementById("doc-selector-hide");
+          if (hideStyle) {
+            hideStyle.remove();
+          }
           showDocSelector();
         } else {
+          // Ensure it stays hidden (redundant but safe)
           hideDocSelector();
-          console.log("DocSelector preloaded and hidden on index page");
         }
       }, 200);
     };
@@ -144,11 +176,32 @@ if (typeof window !== "undefined") {
 
       if (shouldShowDocSelector(newPath)) {
         if (!isDocSelectorVisible) {
+          // Remove hide CSS when showing DocSelector
+          const hideStyle = document.getElementById("doc-selector-hide");
+          if (hideStyle) {
+            hideStyle.remove();
+          }
           showDocSelector();
         }
       } else {
         if (isDocSelectorVisible) {
           hideDocSelector();
+        }
+        // Add hide CSS when on index page
+        if (!document.getElementById("doc-selector-hide")) {
+          const style = document.createElement("style");
+          style.id = "doc-selector-hide";
+          style.textContent = `
+            [data-doc-selector="true"],
+            [data-doc-selector],
+            .doc-selector,
+            #doc-selector,
+            [class*="doc-selector"],
+            [id*="doc-selector"] {
+              display: none !important;
+            }
+          `;
+          document.head.appendChild(style);
         }
       }
     }
