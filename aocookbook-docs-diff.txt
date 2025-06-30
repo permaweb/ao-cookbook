@@ -224,7 +224,7 @@ index 0000000..ff41f68
 +To start `aos` and connect to a public HyperBEAM node, simply run the command in your terminal:
 +
 +```bash
-+aos --mainnet "https://router-1.forward.computer" myMainnetProcess
++aos --mainnet "https://forward.computer" myMainnetProcess
 +```
 +
 +This connects you to an interactive Lua environment running within a **process** on the AO network. This process acts as your command-line interface (CLI) to the AO network. When you specify `--mainnet <URL>`, it connects to the `genesis_wasm` device running on the HyperBEAM node at the supplied URL, allowing you to interact with other processes, manage your wallet, and develop new AO processes.
@@ -475,7 +475,7 @@ index 0000000..468e2c3
 +// Fetch circulating supply with JSON serialization
 +const processId = "FkJPkIHp_Gc_7KOLbtyzowPcJUc3SG_G25SJp0fbTmE"; // An example process
 +const moduleId = "QSBQZsowVRdvsEbdTv-KEF4_Z5bYf11M3X5-8LN0NM4"; // The example sum.lua script
-+const hyperbeam = "router-1.forward.computer";
++const hyperbeam = "forward.computer";
 +
 +async function getDynamicState() {
 +  const url = `https://${hyperbeam}/${processId}~process@1.0/now/~lua@5.3a&module=${moduleId}/sum/serialize~json@1.0`;
