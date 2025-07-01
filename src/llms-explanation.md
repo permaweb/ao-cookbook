@@ -22,7 +22,7 @@ description: Explanation of the LLMs.txt files available for the ao Cookbook
 The `llms-full.txt` file only contains content from references and release notes, as testing showed this focused approach performs better with current AI models.
 :::
 
-## **[Permaweb LLMs Builder](https://permaweb-llms-builder.vercel.app)**:
+## **[Permaweb LLMs.txt](https://permaweb-llms-builder.vercel.app)**:
 
 The following is a tool that allows you to build your own LLMs.txt files based on docs from the permaweb ecosystem.
 
