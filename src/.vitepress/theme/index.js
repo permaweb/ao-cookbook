@@ -3,6 +3,7 @@
 import { h } from "vue";
 import DefaultTheme from "vitepress/theme-without-fonts";
 import "./style.css";
+import "./docSelector.js";
 
 /** @type {import('vitepress').Theme} */
 export default {
@@ -12,6 +13,7 @@ export default {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
     });
   },
+
   enhanceApp({ app, router, siteData }) {
     /**
      * Original issue: https://github.com/permaweb/ao-cookbook/issues/17
