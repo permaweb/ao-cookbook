@@ -22,7 +22,7 @@ description: Explanation of the LLMs.txt files available for the ao Cookbook
 The `llms-full.txt` file only contains content from references and release notes, as testing showed this focused approach performs better with current AI models.
 :::
 
-## **[Permaweb LLMs.txt](https://permaweb-llms-builder.vercel.app)**:
+## **[Permaweb LLMs.txt](https://fuel_permawebllms.arweave.net)**:
 
 The following is a tool that allows you to build your own LLMs.txt files based on docs from the permaweb ecosystem.
 
@@ -44,7 +44,7 @@ The following is a tool that allows you to build your own LLMs.txt files based o
 <iframe
   class="llms-iframe light-mode-iframe"
   src="https://fuel_permawebllms.arweave.net/?minimal=true&iframe=true&text-color=%23222222&accent=%23e77b40"
-  title="Permaweb LLMs Builder (Light Mode)"
+  title="Permaweb LLM Fuel (Light Mode)"
   height="250"
   allowfullscreen
   loading="lazy"
@@ -52,7 +52,7 @@ The following is a tool that allows you to build your own LLMs.txt files based o
 <iframe
   class="llms-iframe dark-mode-iframe"
   src="https://fuel_permawebllms.arweave.net/?minimal=true&iframe=true&bg-color=%231b1b1f&text-color=%23e0e0e0&accent=%23e77b40"
-  title="Permaweb LLMs Builder (Dark Mode)"
+  title="Permaweb LLM Fuel (Dark Mode)"
   height="250"
   allowfullscreen
   loading="lazy"
