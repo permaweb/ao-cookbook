@@ -66,7 +66,7 @@ Handlers.add(
 
 ### Using the Default Provider Pool
 
-The simplest way to request a random number is using the default provider pool:
+The simplest way to request a random number is using the default cycling pool:
 
 ```lua
 -- Generate a unique callback ID
@@ -107,10 +107,10 @@ randomModule.prepayForRandom(units)
 Sends a token transfer to the configured `RandomProcess` to pre-pay for a specified number of future random requests.
 
 - **Arguments**:
-  - `units` (number): Number of randomness units to purchase.  
+  - `units` (number): Number of randomness units to purchase.
 - **Behavior**:
-  - Computes `quantity = units * RandomCost` (on-chain value).  
-  - Sends a `"Transfer"` action to `RandomProcess` with header `X-Prepayment = "true"`.  
+  - Computes `quantity = units * RandomCost` (on-chain value).
+  - Sends a `"Transfer"` action to `RandomProcess` with header `X-Prepayment = "true"`.
 
 ---
 
@@ -125,13 +125,14 @@ randomModule.redeemRandomCredit(callbackId, providerList)
 Uses prepaid randomness credits to make a randomness request.
 
 - **Arguments**:
-  - `callbackId` (string): Unique identifier to correlate the response.  
-  - `providerList` (optional, table of strings): If provided, limits entropy generation to this subset of providers.  
+  - `callbackId` (string): Unique identifier to correlate the response.
+  - `providerList` (optional, table of strings): If provided, limits entropy generation to this subset of providers.
 - **Behavior**:
-  - If `providerList` is **nil**, sends `Redeem-Random-Credit` with only `CallbackId`.  
-  - If provided, includes header `X-Providers = providerList`.  
+  - If `providerList` is **nil**, sends `Redeem-Random-Credit` with only `CallbackId`.
+  - If provided, includes header `X-Providers = providerList`.
 
 **Examples**:
+
 ```lua
 -- Redeem credit without specifying providers:
 local tx1 = randomModule.redeemRandomCredit("cb-1234")

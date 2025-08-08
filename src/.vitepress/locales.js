@@ -424,10 +424,13 @@ export const localeConfig = (langCode) => ({
                 collapsed: true,
                 items: [
                   {
-                    text: get_i18n_str(langCode, "guides-randao-get-request"),
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-randao-requesting-random",
+                    ),
                     link: get_i18n_link(
                       langCode,
-                      "/guides/snacks/RandAO/get-request",
+                      "/guides/snacks/RandAO/requesting-random",
                     ),
                   },
                 ],

@@ -33,6 +33,6 @@ Check out our [example projects](https://github.com/RandAOLabs/Random-Module/tre
 
 ## Next Steps
 
-- [Random Number Requests](./get-request.md): Learn how to request and receive random numbers
+- [Random Number Requests](./requesting-random.md): Learn how to request and receive random numbers
 
 > Learn more about interacting with the RandAO protocol through the [developer docs](https://github.com/RandAOLabs/Random-Module) or our [provider docs](https://providers_randao.arweave.net/)
