@@ -7,56 +7,42 @@ next:
   link: "/tutorials/begin/index"
 ---
 
-# Get involved with the ao legacynet
+# Legacynet → HyperBEAM
 
-On February 27, 2024, `ao` legacynet was launched, for developers and early adopters to explore the hyper parallel computer.
+As the AO ecosystem evolves, we are transitioning from Legacynet to HyperBEAM Mainnet, marking a significant upgrade in the implementation of the AO-Core protocol.
 
-## What is the ao legacynet?
+## Legacynet: The Initial Implementation
 
-The `ao` legacynet is setup to allow users to interact with the `ao` computer without fees, to test and build towards mainnet.
+Legacynet was the first implementation of the AO-Core protocol, written in JavaScript. Launched on February 27, 2024, it provided a fee-free environment for early adopters to experiment with AO's hyper-parallel architecture. However, being a JavaScript implementation, Legacynet had inherent limitations in terms of scalability and native support for the actor-oriented model that AO is based on.
 
-The best way to get involved is to build and use the `ao` computer with the `aos` console.
-In the `Things to do` section below you will find many activities to try.
+## HyperBEAM: The Future of AO-Core
 
-## Installing the aos client
+HyperBEAM is the new, advanced implementation of the AO-Core protocol, written in Erlang—the language that inspired AO's actor-oriented design. This implementation innately benefits from Erlang's strengths in:
 
-Once you have [NodeJS](https://nodejs.org) on your machine, all you need to do is install `aos` and run it:
+- **Actor-Oriented Design**: Erlang's native support for the actor model aligns perfectly with AO's architecture, where processes (actors) operate independently and communicate via message passing.
+- **Scalability**: Erlang is renowned for its ability to handle massive concurrency, allowing HyperBEAM to scale efficiently with the growing demands of the AO computer.
+- **Reliability**: Erlang's design for fault tolerance ensures that HyperBEAM can maintain system stability even under high load or during failures of individual components.
 
-```sh
-$ npm i -g https://get_ao.arweave.net
-```
+## The Transition to HyperBEAM
 
-Running this command at a later date will upgrade `aos` to the latest version.
-After installation, we can simply run the command itself to start a new `aos` process:
+While HyperBEAM represents the future of AO, the transition from Legacynet is being handled carefully to ensure a smooth experience for developers. Currently, most development activity remains on Legacynet, which provides a stable environment for building and testing.
 
-```sh
-$ aos
-```
+The goal is to provide a seamless future upgrade path to HyperBEAM Mainnet. While Legacynet will eventually be deprecated, for now, it is the primary environment for new developers to begin building on AO.
 
-This will start a process named `default`. See [the aos guide](/guides/aos/index) for more details.
+## HyperBEAM Documentation
 
-## First steps in the ao legacynet
+For detailed documentation on the HyperBEAM protocol itself, including running infrastructure and leveraging its powerful URL pathing, visit [HyperBEAM.arweave.net](https://hyperbeam.arweave.net).
 
-Follow the tutorials and learn to build on `ao`. [Begin](/tutorials/begin/index)
+::: info Building on HyperBEAM
+To learn how to build applications on HyperBEAM using `ao` and `aos`, and to migrate existing processes, see the [Migrating to HyperBEAM Guide](../../guides/migrating-to-hyperbeam/why-migrate.md).
+:::
 
-## Joining ao's native community chat
+## Preparing for the Future
 
-The ao network hosts a number of chat servers that allow you to converse with other devs,
-right from your `aos` console. To load the chat client run the following:
+While you build on Legacynet, you can prepare for the future of AO by:
 
-```lua
-aos> .load-blueprint chat
-```
+- Reviewing the [HyperBEAM documentation](https://hyperbeam.arweave.net) to understand the new environment and its architecture.
+- Exploring the enhanced capabilities that HyperBEAM offers due to its Erlang foundation.
+- Building with the knowledge that a seamless migration path to HyperBEAM Mainnet is a core priority.
 
-To show the available rooms you can run:
-
-```lua
-aos> List()
-```
-
-You can join a room and start chatting with other devs as follows:
-
-```lua
-aos> Join("Getting-Started", "yourName")
-aos> Say("Hi")
-```
+This transition is a significant step forward for the AO ecosystem, ensuring that we can deliver on the promise of decentralized, hyper-parallel computation at any scale.

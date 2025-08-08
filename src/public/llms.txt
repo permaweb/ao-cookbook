@@ -72,6 +72,14 @@ This file contains structured reference documentation, release notes, and a comp
 
 - [AO Dev-Cli 0.1](https://cookbook_ao.arweave.net/guides/dev-cli/index.html)
 
+### Migrating to hyperbeam
+
+- [Connecting to HyperBEAM with `aos`](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/aos-with-hyperbeam.html)
+- [Exposing Process State to HyperBEAM](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/exposing-process-state.html)
+- [HyperBEAM from AO Connect](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/ao-connect.html)
+- [Reading Dynamic State](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/reading-dynamic-state.html)
+- [Why Migrate to HyperBEAM?](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/why-migrate.html)
+
 ### Snacks
 
 #### 0rbit
@@ -153,10 +161,12 @@ This file contains structured reference documentation, release notes, and a comp
 
 ### Legacynet info
 
-- [Get involved with the ao legacynet](https://cookbook_ao.arweave.net/welcome/legacynet-info/index.html)
+- [Legacynet → HyperBEAM](https://cookbook_ao.arweave.net/welcome/legacynet-info/index.html)
 - [Quests FAQ](https://cookbook_ao.arweave.net/welcome/legacynet-info/quests.html)
 
+- [AO Processes](https://cookbook_ao.arweave.net/welcome/ao-processes.html)
 - [Get started in 5 minutes](https://cookbook_ao.arweave.net/welcome/getting-started.html)
+- [Introduction to AO-Core](https://cookbook_ao.arweave.net/welcome/ao-core-introduction.html)
 - [Welcome to ao](https://cookbook_ao.arweave.net/welcome/index.html)
 
 - [https://vitepress.dev/reference/default-theme-home-page](https://cookbook_ao.arweave.net/index.html)
@@ -648,5 +658,9 @@ Changes:
 # Summary
 
 Total files processed: 18
+<<<<<<< HEAD
 Total documentation pages: 98
+=======
+Total documentation pages: 103
+>>>>>>> upstream/main
 This documentation is focused on technical references and release notes, prioritizing accuracy and relevance for LLM processing.

@@ -1,6 +1,8 @@
 # Get started in 5 minutes
 
-In less than 5 mins, we'll walk you through the process of taking your first peek into the rabbit hole. 🕳️🐇
+In less than 5 mins, we'll walk you through the process of taking your first peek into the rabbit hole of AO Processes. 🕳️🐇
+
+Now that you understand the [AO-Core protocol](./ao-core-introduction) and how [AO Processes](./ao-processes) work, let's get hands-on with creating your first AO Process.
 
 ## System requirements
 

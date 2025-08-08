@@ -52,7 +52,7 @@ const processId = await spawn({
 ## Spawning a Process in a browser
 
 ```js
-import { createDataItemSigner, spawn } from "@permaweb/ao-sdk";
+import { createDataItemSigner, spawn } from "@permaweb/aoconnect";
 
 const processId = await spawn({
   // The Arweave TxID of the ao Module
