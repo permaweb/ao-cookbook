@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-08-07T15:04:11.508Z
+Generated: 2025-08-10T17:21:06.525Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -658,9 +658,5 @@ Changes:
 # Summary
 
 Total files processed: 18
-<<<<<<< HEAD
-Total documentation pages: 98
-=======
-Total documentation pages: 103
->>>>>>> upstream/main
+Total documentation pages: 105
 This documentation is focused on technical references and release notes, prioritizing accuracy and relevance for LLM processing.
