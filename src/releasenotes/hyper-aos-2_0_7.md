@@ -1,0 +1,93 @@
+# Hyper AOS 2.0.7
+
+## Installation and Setup
+
+This release of Hyper AOS adds support for the latest HyperBEAM changes (edge) while providing full backwards compatibility with aos legacynet. The latest version can be installed globally using npm:
+
+```bash
+npm i -g https://get_ao.arweave.net
+```
+
+## Connecting to Hyper AOS
+
+To connect to a local Hyper AOS instance:
+
+```bash
+aos --url http://localhost:8734
+```
+
+Select `hyper-aos`:
+
+```
+Welcome to AOS: Your operating system for AO, the decentralized open access supercomputer.
+Type ".load-blueprint chat" to join the community chat and ask questions!
+? Please select › - Use arrow-keys. Return to submit.
+    aos
+❯   hyper-aos (experimental - DO NOT USE FOR PRODUCTION)
+```
+
+Once connected, you can load blueprints:
+
+```
+> .load-blueprint htoken
+```
+
+## API Differences from Standard AOS
+
+Hyper AOS has several syntax differences compared to the standard AOS:
+
+- Use `id` instead of `ao.id`
+- Use `owner` instead of `Owner`
+- For sending messages, use `send({target = id, data = "Hello"})` instead of `ao.send` or `Send`
+- Coroutines and `os.receive()` / `Receive()` are not implemented
+
+## State Synchronization
+
+One of the most powerful features of Hyper AOS is the synchronization between Hyperbeam process state and Lua state:
+
+```lua
+-- In Lua:
+Foo = "BAR"
+
+-- In Hyperbeam:
+-- http://localhost:8734/{process}/now/foo
+-- Returns 'BAR'
+```
+
+## Best Practices
+
+### Variable Scoping
+
+When requiring modules, it's recommended to use local variables to prevent memory leaks and improve garbage collection:
+
+```lua
+-- Good practice
+local JSON = require('json')
+-- Use JSON...
+
+-- Better practice for memory management
+do
+  local JSON = require('json')
+  -- Use JSON...
+end
+```
+
+### Known Issues
+
+There are some serialization bugs to be aware of:
+
+- If you set a global variable to a required module, you may lose methods during serialization:
+
+```lua
+-- Problematic approach
+JSON = require('json')
+-- You might lose access to encode/decode methods
+
+-- Recommended approach
+local JSON = require('json')
+-- Methods remain accessible
+```
+
+## Performance
+
+The system is optimized for speed, making it suitable for applications requiring quick response times.
