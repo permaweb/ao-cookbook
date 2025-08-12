@@ -436,6 +436,23 @@ export const localeConfig = (langCode) => ({
                 text: get_i18n_str(langCode, "guides-weavedrive"),
                 link: get_i18n_link(langCode, "/guides/snacks/weavedrive"),
               },
+              {
+                text: get_i18n_str(langCode, "guides-randao"),
+                link: get_i18n_link(langCode, "/guides/snacks/RandAO/index"),
+                collapsed: true,
+                items: [
+                  {
+                    text: get_i18n_str(
+                      langCode,
+                      "guides-randao-requesting-random",
+                    ),
+                    link: get_i18n_link(
+                      langCode,
+                      "/guides/snacks/RandAO/requesting-random",
+                    ),
+                  },
+                ],
+              },
             ],
           },
         ],

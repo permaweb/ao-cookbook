@@ -67,6 +67,8 @@
   "guides-0rbit": "0rbit (HTTP)",
   "guides-0rbit-get-request": "GET Requests",
   "guides-0rbit-post-request": "POST Requests",
+  "guides-randao": "RandAO (RNG)",
+  "guides-randao-requesting-random": "Random Number Requests",
   "guides-betteridea": "BetterIdea",
   "guides-dev-cli": "Developer CLI",
   "mainnet": "Mainnet",

@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-07-02T19:02:15.864Z
+Generated: 2025-08-10T17:21:06.525Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -87,6 +87,11 @@ This file contains structured reference documentation, release notes, and a comp
 - [0rbit 💫](https://cookbook_ao.arweave.net/guides/snacks/0rbit/index.html)
 - [First GET Request](https://cookbook_ao.arweave.net/guides/snacks/0rbit/get-request.html)
 - [First POST Request](https://cookbook_ao.arweave.net/guides/snacks/0rbit/post-request.html)
+
+#### RandAO
+
+- [RandAO 🎲](https://cookbook_ao.arweave.net/guides/snacks/RandAO/index.html)
+- [Random Number Requests](https://cookbook_ao.arweave.net/guides/snacks/RandAO/requesting-random.html)
 
 - [Getting started with SQLite](https://cookbook_ao.arweave.net/guides/snacks/sqlite.html)
 - [Using WeaveDrive](https://cookbook_ao.arweave.net/guides/snacks/weavedrive.html)
@@ -648,5 +653,5 @@ Changes:
 # Summary
 
 Total files processed: 18
-Total documentation pages: 103
+Total documentation pages: 105
 This documentation is focused on technical references and release notes, prioritizing accuracy and relevance for LLM processing.
