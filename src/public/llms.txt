@@ -93,11 +93,6 @@ This file contains structured reference documentation, release notes, and a comp
 
 - [Guides](https://cookbook_ao.arweave.net/guides/index.html)
 
-## Mainnet
-
-- [AO Core Payment Relays](https://cookbook_ao.arweave.net/mainnet/ao-core-relay.html)
-- [AO Mainnet](https://cookbook_ao.arweave.net/mainnet/index.html)
-
 ## References
 
 ### Betteridea
