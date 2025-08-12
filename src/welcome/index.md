@@ -18,15 +18,9 @@ AOS is an abstraction layer that runs in your processes, making it easy to use t
 
 ## Mainnet and Legacynet
 
-- **AO Mainnet** launched on **February 8, 2025**, introducing AO Core and enabling onchain computation with payments and relays.
+- **AO Mainnet** launched on **February 8, 2025**, paving the way for a decentralized, open-access supercomputer directly connected to the internet with [HyperBEAM](../guides/migrating-to-hyperbeam/why-migrate.md).
 
 - **AO Legacynet** launched on **February 27, 2024**, providing a fee-free environment for early adopters to experiment with AO’s hyper-parallel architecture.
-
-## Mainnet Documentation
-
-Phase 1 of Mainnet AO Core is now live in relay mode through HyperBEAM nodes, which serve as payment gateways to AO. See the guide below to get started.
-
-- [AO Core Relay](/mainnet/ao-core-relay)
 
 ## Legacynet Documentation
 
