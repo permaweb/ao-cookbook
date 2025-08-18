@@ -1,14 +1,14 @@
-# Exposing Process State to HyperBEAM
+# State Exposure
 
-HyperBEAM introduces a powerful feature for exposing parts of a process's state for immediate reading over HTTP. This improves performance for web frontends and data services by replacing the need for `dryrun` calls, which were a known bottleneck on `legacynet`.
+HyperBEAM enables direct HTTP access to process state, eliminating the need for costly `dryrun` calls. This feature dramatically improves performance for web frontends and data services that need to read process data.
 
 ## The Patch Device
 
 The [`~patch@1.0`](https://hyperbeam.arweave.net/build/devices/source-code/dev_patch.md) device is the mechanism that allows AO processes to make parts of their internal state readable via direct HTTP GET requests.
 
-### How it Works
+### How State Exposure Works
 
-Exposing state is a four-step process involving your process and HyperBEAM:
+State exposure follows a simple four-step pattern:
 
 1.  **Process Logic:** From your process (e.g., in Lua or WASM), send an outbound message to the `~patch@1.0` device.
 2.  **Patch Message Format:** The message must include `device` and `cache` tags.
@@ -111,4 +111,4 @@ Using the `patch` device enables efficient, standard HTTP access to your process
 
 ## Next Steps
 
-Now that you know how to expose static state, learn how to perform on-the-fly computations on that state by [reading dynamic state](./reading-dynamic-state.md).
+With state exposure configured, you can now add [dynamic reads](./dynamic-reads.md) to compute values on-the-fly without modifying your process state.

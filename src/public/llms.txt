@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-07-02T19:02:15.864Z
+Generated: 2025-08-18T20:05:41.807Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -74,9 +74,11 @@ This file contains structured reference documentation, release notes, and a comp
 
 ### Migrating to hyperbeam
 
+- [Building Dynamic Websites with HyperBeam Processes](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/dynamic-websites.html)
 - [Connecting to HyperBEAM with `aos`](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/aos-with-hyperbeam.html)
 - [Exposing Process State to HyperBEAM](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/exposing-process-state.html)
 - [HyperBEAM from AO Connect](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/ao-connect.html)
+- [HyperBEAM Oracle with Resolve & AOS](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/resolve-relay.html)
 - [Reading Dynamic State](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/reading-dynamic-state.html)
 - [Why Migrate to HyperBEAM?](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/why-migrate.html)
 
@@ -118,6 +120,7 @@ This file contains structured reference documentation, release notes, and a comp
 - [AOS Release Notes v2.0.0](https://cookbook_ao.arweave.net/releasenotes/aos-2_0_0.html)
 - [AOS Release Notes v2.0.1](https://cookbook_ao.arweave.net/releasenotes/aos-2_0_1.html)
 - [AOS Release Notes v2.0.2](https://cookbook_ao.arweave.net/releasenotes/aos-2_0_2.html)
+- [Hyper AOS 2.0.7](https://cookbook_ao.arweave.net/releasenotes/hyper-aos-2_0_7.html)
 - [Release Notes](https://cookbook_ao.arweave.net/releasenotes/index.html)
 
 ## Tutorials
@@ -187,6 +190,7 @@ This file contains structured reference documentation, release notes, and a comp
   - AOS Release Notes v2.0.0
   - AOS Release Notes v2.0.1
   - AOS Release Notes v2.0.2
+  - Hyper AOS 2.0.7
   - Release Notes
 
 
@@ -632,6 +636,19 @@ Changes:
 - Issue [#337](https://github.com/permaweb/aos/issues/337): matchesspec does not work with from-process
 
 
+### Hyper AOS 2.0.7
+Source: https://cookbook_ao.arweave.net/releasenotes/hyper-aos-2_0_7.html
+
+Version: 2.0.7
+
+Changes:
+- Use `id` instead of `ao.id`
+- Use `owner` instead of `Owner`
+- For sending messages, use `send({target = id, data = "Hello"})` instead of `ao.send` or `Send`
+- Coroutines and `os.receive()` / `Receive()` are not implemented
+- If you set a global variable to a required module, you may lose methods during serialization:
+
+
 ### Release Notes
 Source: https://cookbook_ao.arweave.net/releasenotes/index.html
 
@@ -647,6 +664,6 @@ Changes:
 
 # Summary
 
-Total files processed: 18
-Total documentation pages: 103
+Total files processed: 19
+Total documentation pages: 104
 This documentation is focused on technical references and release notes, prioritizing accuracy and relevance for LLM processing.

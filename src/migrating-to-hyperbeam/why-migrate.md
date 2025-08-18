@@ -10,4 +10,4 @@ HyperBEAM is a new, more robust foundation for decentralized applications on AO,
 
 The most impactful change when migrating is the ability to expose parts of your process state for immediate reading. This dramatically improves the performance of web frontends and data-driven services.
 
-To learn how to implement this, see [Exposing Process State](./exposing-process-state.md).
+To learn how to implement this, see [State Exposure](./state-exposure.md).

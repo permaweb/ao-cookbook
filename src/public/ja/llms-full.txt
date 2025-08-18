@@ -1,6 +1,6 @@
 # JA Technical Documentation
 
-Generated: 2025-07-02T19:02:15.882Z
+Generated: 2025-08-18T20:05:41.840Z
 
 This file contains technical reference documentation and release notes.
 

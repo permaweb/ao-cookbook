@@ -50,7 +50,7 @@ One of the most powerful features of Hyper AOS is the synchronization between Hy
 Foo = "BAR"
 
 -- In Hyperbeam:
--- http://localhost:8734/{process}/now/foo
+-- http://localhost:8734/{process}/now/Foo
 -- Returns 'BAR'
 ```
 
