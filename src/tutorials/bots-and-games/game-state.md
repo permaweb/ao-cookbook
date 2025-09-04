@@ -54,7 +54,7 @@ Then implement another handler as follows:
 -- Handler to update the game state upon receiving game state information.
 Handlers.add(
   "UpdateGameState",
-  { Action = "Announcement" },
+  { Action = "GameState" },
   function (msg)
     local json = require("json")
     LatestGameState = json.decode(msg.Data)
@@ -107,7 +107,7 @@ As usual, to test this new feature, load the file in your aos player terminal as
 .load bot.lua
 ```
 
-Then check the `LatestStateVariable` to see if it has updated correctly by simply passing its name as follows:
+Then check the `LatestGameState` variable to see if it has updated correctly by simply passing its name as follows:
 
 ```lua
 LatestGameState
