@@ -30,10 +30,10 @@ While you don't need to run a HyperBEAM node yourself, you do need to connect to
 To start `aos` and connect to a public HyperBEAM node, simply run the command in your terminal:
 
 ```bash
-aos --mainnet "https://forward.computer" myMainnetProcess
+aos --url "https://forward.computer" myMainnetProcess
 ```
 
-This connects you to an interactive Lua environment running within a **process** on the AO network. This process acts as your command-line interface (CLI) to the AO network. When you specify `--mainnet <URL>`, it connects to the `genesis_wasm` device running on the HyperBEAM node at the supplied URL, allowing you to interact with other processes, manage your wallet, and develop new AO processes.
+This connects you to an interactive Lua environment running within a **process** on the AO network. This process acts as your command-line interface (CLI) to the AO network. When you specify `--url <URL>`, it connects to the `genesis_wasm` device running on the HyperBEAM node at the supplied URL, allowing you to interact with other processes, manage your wallet, and develop new AO processes.
 
 :::info Running a Local HyperBEAM Node
 If you are running HyperBEAM locally and want to use that node when booting up `aos`, you must first start your local node with the genesis_wasm profile:
@@ -45,10 +45,16 @@ rebar3 as genesis_wasm shell
 Then, you can connect `aos` to it:
 
 ```bash
-aos --mainnet "http://localhost:8734" myLocalProcess
+aos --url "http://localhost:8734" myLocalProcess
 ```
 
 Until `aos` is fully HyperBEAM native, the genesis_wasm profile is required to run a local Compute Unit (CU) for executing `aos`.
+
+**Process Types**
+
+Use `--url` when connecting to hyper-aos processes on HyperBEAM. For
+standard genesis_wasm processes, the flag is not needed.
+
 :::
 
 ## Interacting with Mainnet Processes
