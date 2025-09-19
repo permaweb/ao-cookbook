@@ -33,7 +33,7 @@ export const localeConfig = (langCode) => ({
     sidebar: [
       {
         text: get_i18n_str(langCode, "welcome"),
-        // link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
+        link: get_i18n_link(langCode, "/welcome/index"),
         items: [
           {
             text: "Intro to AO-Core",
