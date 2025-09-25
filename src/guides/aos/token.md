@@ -218,13 +218,13 @@ The line `if not msg.Tags.Cast then` Means were not producing any messages to pu
 Finally, we will add a Handler to allow the minting of new tokens.
 
 ```lua
-Handlers.add('Mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), function(msg, env)
+Handlers.add('Mint', Handlers.utils.hasMatchingTag('Action', 'Mint'), function(msg)
   assert(type(msg.Tags.Quantity) == 'string', 'Quantity is required!')
 
-  if msg.From == env.Process.Id then
+  if msg.From == ao.id then
     -- Add tokens to the token pool, according to Quantity
     local qty = tonumber(msg.Tags.Quantity)
-    Balances[env.Process.Id] = Balances[env.Process.Id] + qty
+    Balances[ao.id] = Balances[ao.id] + qty
   else
     ao.send({
       Target = msg.Tags.From,
