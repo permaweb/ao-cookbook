@@ -79,7 +79,7 @@ export const localeConfig = (langCode) => ({
           },
           {
             text: "Reading State",
-            collapsed: true,
+            collapsed: false,
             items: [
               {
                 text: "State Exposure",
@@ -93,6 +93,13 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(
                   langCode,
                   "/migrating-to-hyperbeam/dynamic-reads",
+                ),
+              },
+              {
+                text: "User-Owned Processes",
+                link: get_i18n_link(
+                  langCode,
+                  "/migrating-to-hyperbeam/user-owned-processes",
                 ),
               },
             ],
@@ -593,6 +600,20 @@ export const localeConfig = (langCode) => ({
               {
                 text: get_i18n_str(langCode, "guides-betteridea"),
                 link: get_i18n_link(langCode, "/references/betteridea/index"),
+              },
+            ],
+          },
+          {
+            text: "Deprecated Features",
+            collapsed: true,
+            items: [
+              {
+                text: "Overview",
+                link: get_i18n_link(langCode, "/references/deprecated/index"),
+              },
+              {
+                text: "Dry Run",
+                link: get_i18n_link(langCode, "/references/deprecated/dry-run"),
               },
             ],
           },

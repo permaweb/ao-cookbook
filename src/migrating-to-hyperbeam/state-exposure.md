@@ -1,5 +1,9 @@
 # State Exposure
 
+::: danger ACTION REQUIRED
+**Legacynet is deprecating dry runs on October 10, 2025.** Migrating to state exposure is now urgent for all processes running on Legacynet. This guide shows you how to expose your process state for direct HTTP access, providing dramatically better performance than dry runs.
+:::
+
 HyperBEAM enables direct HTTP access to process state, eliminating the need for costly `dryrun` calls. This feature dramatically improves performance for web frontends and data services that need to read process data.
 
 ## The Patch Device
@@ -108,6 +112,61 @@ GET /<process-id>~process@1.0/cache/mykey
 - **Read-Only Exposure:** Patching is for efficient reads and does not replace your process's core state management logic.
 
 Using the `patch` device enables efficient, standard HTTP access to your process state, seamlessly connecting decentralized logic with web applications.
+
+## Patching User-Owned Processes
+
+If your application spawns processes that are owned by users (not your application), you'll need to provide a way for users to patch their own processes. A common example is marketplace applications where each user has their own process instance.
+
+### Implementation Strategy
+
+You can create UI components that allow users to update their processes. Here's an example approach:
+
+```javascript
+import { message, createDataItemSigner } from "@permaweb/aoconnect";
+
+async function patchUserProcess(processId) {
+  // User must sign this message themselves
+  const signer = createDataItemSigner(window.arweaveWallet);
+
+  const messageId = await message({
+    process: processId,
+    signer,
+    tags: [{ name: "Action", value: "UpdateToPatch" }],
+  });
+
+  return messageId;
+}
+```
+
+In your process code, add a handler that users can trigger:
+
+```lua
+Handlers.add(
+  "UpdateToPatch",
+  Handlers.utils.hasMatchingTag("Action", "UpdateToPatch"),
+  function(msg)
+    -- Only allow the process owner to update
+    if msg.From ~= ao.id then
+      print("Only the process owner can update to use patch")
+      return
+    end
+
+    -- Add your patch logic here
+    Send({
+      device = 'patch@1.0',
+      cache = {
+        -- Add the state you want to expose
+      }
+    })
+
+    print("Process updated to use state patching")
+  end
+)
+```
+
+This allows users to maintain ownership of their processes while still benefiting from HyperBEAM's performance improvements.
+
+For a complete guide on implementing this pattern, see [User-Owned Processes](./user-owned-processes.md).
 
 ## Next Steps
 
