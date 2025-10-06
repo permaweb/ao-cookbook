@@ -8,7 +8,7 @@ HyperBEAM enables direct HTTP access to process state, eliminating the need for 
 
 ## The Patch Device
 
-The [`~patch@1.0`](https://hyperbeam.arweave.net/build/devices/source-code/dev_patch.md) device is the mechanism that allows AO processes to make parts of their internal state readable via direct HTTP GET requests.
+The [`~patch@1.0`](https://hyperbeam.arweave.net/build/devices/hyperbeam-devices.html) device is the mechanism that allows AO processes to make parts of their internal state readable via direct HTTP GET requests.
 
 ### How State Exposure Works
 

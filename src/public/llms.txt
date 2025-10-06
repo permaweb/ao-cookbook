@@ -1,6 +1,6 @@
 # EN Documentation for LLMs
 
-Generated: 2025-08-18T20:05:41.807Z
+Generated: 2025-10-06T14:53:02.198Z
 
 This file contains structured reference documentation, release notes, and a comprehensive directory of all documentation pages.
 
@@ -72,16 +72,6 @@ This file contains structured reference documentation, release notes, and a comp
 
 - [AO Dev-Cli 0.1](https://cookbook_ao.arweave.net/guides/dev-cli/index.html)
 
-### Migrating to hyperbeam
-
-- [Building Dynamic Websites with HyperBeam Processes](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/dynamic-websites.html)
-- [Connecting to HyperBEAM with `aos`](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/aos-with-hyperbeam.html)
-- [Exposing Process State to HyperBEAM](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/exposing-process-state.html)
-- [HyperBEAM from AO Connect](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/ao-connect.html)
-- [HyperBEAM Oracle with Resolve & AOS](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/resolve-relay.html)
-- [Reading Dynamic State](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/reading-dynamic-state.html)
-- [Why Migrate to HyperBEAM?](https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/why-migrate.html)
-
 ### Snacks
 
 #### 0rbit
@@ -95,11 +85,27 @@ This file contains structured reference documentation, release notes, and a comp
 
 - [Guides](https://cookbook_ao.arweave.net/guides/index.html)
 
+## Migrating to hyperbeam
+
+- [AOS CLI](https://cookbook_ao.arweave.net/migrating-to-hyperbeam/aos-cli.html)
+- [Dynamic Reads](https://cookbook_ao.arweave.net/migrating-to-hyperbeam/dynamic-reads.html)
+- [External Data](https://cookbook_ao.arweave.net/migrating-to-hyperbeam/external-data.html)
+- [JavaScript SDK](https://cookbook_ao.arweave.net/migrating-to-hyperbeam/javascript-sdk.html)
+- [State Exposure](https://cookbook_ao.arweave.net/migrating-to-hyperbeam/state-exposure.html)
+- [User-Owned Processes](https://cookbook_ao.arweave.net/migrating-to-hyperbeam/user-owned-processes.html)
+- [Web Serving](https://cookbook_ao.arweave.net/migrating-to-hyperbeam/web-serving.html)
+- [Why Migrate to HyperBEAM?](https://cookbook_ao.arweave.net/migrating-to-hyperbeam/why-migrate.html)
+
 ## References
 
 ### Betteridea
 
 - [BetterIDEa](https://cookbook_ao.arweave.net/references/betteridea/index.html)
+
+### Deprecated
+
+- [Deprecated Features](https://cookbook_ao.arweave.net/references/deprecated/index.html)
+- [Dry Run Deprecation](https://cookbook_ao.arweave.net/references/deprecated/dry-run.html)
 
 - [Accessing Data from Arweave with ao](https://cookbook_ao.arweave.net/references/data.html)
 - [ao Module](https://cookbook_ao.arweave.net/references/ao.html)
@@ -177,6 +183,8 @@ This file contains structured reference documentation, release notes, and a comp
   - Community Resources
   - Cron Messages
   - Accessing Data from Arweave with ao
+  - Dry Run Deprecation
+  - Deprecated Features
   - Editor setup
   - glossary
   - Handlers (Version 0.0.5)
@@ -341,6 +349,63 @@ Source: https://cookbook_ao.arweave.net/references/data.html
 For persistent processing, set up a handler:
 ```
 
+
+
+### Dry Run Deprecation
+Source: https://cookbook_ao.arweave.net/references/deprecated/dry-run.html
+
+### API Definitions
+- Overview
+- Why
+- Migration
+- Migration
+- Option
+- Option
+- Special
+- Token
+- User
+- Code
+- Before
+- After
+- Performance
+- Getting
+- Related
+
+### Code Examples
+```
+// OLD: Using dryrun (deprecated)
+import { dryrun } from "@permaweb/aoconnect";
+
+const result = await dryrun({
+  process: "PROCESS_ID",
+  tags: [{ name: "Action", value: "Balance" }],
+});
+
+const balance = result.Messages[0].Data;
+```
+
+```
+// NEW: Using state patching
+const processId = "YOUR_PROCESS_ID";
+const hyperbeam = "forward.computer";
+
+const response = await fetch(
+  `https://${hyperbeam}/${processId}~process@1.0/compute/cache/balances`,
+);
+const balances = await response.json();
+```
+
+
+
+### Deprecated Features
+Source: https://cookbook_ao.arweave.net/references/deprecated/index.html
+
+### API Definitions
+- Overview
+- Currently
+- Dry
+- Migration
+- Deprecation
 
 
 ### Editor setup
@@ -664,6 +729,6 @@ Changes:
 
 # Summary
 
-Total files processed: 19
-Total documentation pages: 104
+Total files processed: 21
+Total documentation pages: 107
 This documentation is focused on technical references and release notes, prioritizing accuracy and relevance for LLM processing.
