@@ -12,13 +12,13 @@ hero:
       link: /welcome/index
 
 features:
-  - title: AO-Core
+  - title: AO Core
     details: Learn about the protocol and standard that powers the AO computer.
     link: /welcome/ao-core-introduction
 
-  - title: AO Processes
+  - title: AO on HyperBEAM
     details: Build smart contracts and autonomous agents using AO Processes.
-    link: /welcome/ao-processes
+    link: /migrating-to-hyperbeam/why-migrate
 
   - title: HyperBEAM
     details: The future of AO, written in Erlang.

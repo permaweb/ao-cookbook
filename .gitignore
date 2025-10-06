@@ -31,6 +31,14 @@ src/.vitepress/cache
 src/.vitepress/cache/deps
 src/.vitepress/dist
 
+# Auto-generated LLM documentation files (generated during build)
+src/public/llms.txt
+src/public/llms-full.txt
+src/public/ja/llms.txt
+src/public/ja/llms-full.txt
+src/public/zh/llms.txt
+src/public/zh/llms-full.txt
+
 wallet.json
 
 # Trunk

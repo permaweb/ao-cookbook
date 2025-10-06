@@ -55,6 +55,91 @@ export const localeConfig = (langCode) => ({
         ],
       },
       {
+        text: "Migrating to HyperBEAM",
+        items: [
+          {
+            text: "Getting Started",
+            collapsed: false,
+            items: [
+              {
+                text: "Why Migrate",
+                link: get_i18n_link(
+                  langCode,
+                  "/migrating-to-hyperbeam/why-migrate",
+                ),
+              },
+              {
+                text: "AOS CLI",
+                link: get_i18n_link(
+                  langCode,
+                  "/migrating-to-hyperbeam/aos-cli",
+                ),
+              },
+            ],
+          },
+          {
+            text: "Reading State",
+            collapsed: false,
+            items: [
+              {
+                text: "State Exposure",
+                link: get_i18n_link(
+                  langCode,
+                  "/migrating-to-hyperbeam/state-exposure",
+                ),
+              },
+              {
+                text: "Dynamic Reads",
+                link: get_i18n_link(
+                  langCode,
+                  "/migrating-to-hyperbeam/dynamic-reads",
+                ),
+              },
+              {
+                text: "User-Owned Processes",
+                link: get_i18n_link(
+                  langCode,
+                  "/migrating-to-hyperbeam/user-owned-processes",
+                ),
+              },
+            ],
+          },
+          {
+            text: "Building Applications",
+            collapsed: true,
+            items: [
+              {
+                text: "Web Serving",
+                link: get_i18n_link(
+                  langCode,
+                  "/migrating-to-hyperbeam/web-serving",
+                ),
+              },
+              {
+                text: "External Data",
+                link: get_i18n_link(
+                  langCode,
+                  "/migrating-to-hyperbeam/external-data",
+                ),
+              },
+            ],
+          },
+          {
+            text: "Developer Tools",
+            collapsed: true,
+            items: [
+              {
+                text: "JavaScript SDK",
+                link: get_i18n_link(
+                  langCode,
+                  "/migrating-to-hyperbeam/javascript-sdk",
+                ),
+              },
+            ],
+          },
+        ],
+      },
+      {
         text: get_i18n_str(langCode, "tutorials"),
         link: get_i18n_link(langCode, "/tutorials/index"),
         items: [
@@ -383,44 +468,6 @@ export const localeConfig = (langCode) => ({
             ],
           },
           {
-            text: "Migrating to HyperBEAM",
-            link: get_i18n_link(
-              langCode,
-              "/guides/migrating-to-hyperbeam/why-migrate",
-            ),
-            collapsed: true,
-            items: [
-              {
-                text: "Exposing State",
-                link: get_i18n_link(
-                  langCode,
-                  "/guides/migrating-to-hyperbeam/exposing-process-state",
-                ),
-              },
-              {
-                text: "Reading Dynamic State",
-                link: get_i18n_link(
-                  langCode,
-                  "/guides/migrating-to-hyperbeam/reading-dynamic-state",
-                ),
-              },
-              {
-                text: "Connecting with aos",
-                link: get_i18n_link(
-                  langCode,
-                  "/guides/migrating-to-hyperbeam/aos-with-hyperbeam",
-                ),
-              },
-              {
-                text: "ao-connect & HyperBEAM",
-                link: get_i18n_link(
-                  langCode,
-                  "/guides/migrating-to-hyperbeam/ao-connect",
-                ),
-              },
-            ],
-          },
-          {
             text: "Additional Technologies",
             collapsed: true,
             items: [
@@ -553,6 +600,20 @@ export const localeConfig = (langCode) => ({
               {
                 text: get_i18n_str(langCode, "guides-betteridea"),
                 link: get_i18n_link(langCode, "/references/betteridea/index"),
+              },
+            ],
+          },
+          {
+            text: "Deprecated Features",
+            collapsed: true,
+            items: [
+              {
+                text: "Overview",
+                link: get_i18n_link(langCode, "/references/deprecated/index"),
+              },
+              {
+                text: "Dry Run",
+                link: get_i18n_link(langCode, "/references/deprecated/dry-run"),
               },
             ],
           },

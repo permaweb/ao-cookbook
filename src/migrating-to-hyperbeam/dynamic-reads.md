@@ -1,14 +1,14 @@
-# Reading Dynamic State
+# Dynamic Reads
 
-Beyond reading static, cached state from your process, HyperBEAM allows you to perform on-the-fly computations on that state using Lua. This guide explains how to create and use "transformation functions" to return dynamic, computed data without altering the underlying state of your process.
+Dynamic reads enable on-the-fly computations on your process state using Lua transformation functions. These functions process cached state and return computed results without modifying the underlying data.
 
-This is a powerful pattern for creating efficient data APIs for your applications, reducing client-side logic, and minimizing data transfer.
+This pattern creates efficient data APIs by moving computation from clients to HyperBEAM nodes, reducing both network traffic and client-side complexity.
 
-This guide assumes you are already familiar with [exposing static process state](./exposing-process-state.md).
+This guide assumes you are already familiar with [state exposure](./state-exposure.md).
 
-## How it Works: The Lua Device
+## How Dynamic Reads Work
 
-The magic behind this is the `lua@5.3a` device, which can execute a Lua script against a message. In this pattern, we use a HyperBEAM URL (hashpath) to construct a pipeline:
+Dynamic reads leverage the `lua@5.3a` device to execute Lua scripts against cached state. The HyperBEAM URL constructs a processing pipeline:
 
 1.  First, we grab the latest state of an AO process.
 2.  Then, we pipe that state as the `base` message into the `lua@5.3a` device.

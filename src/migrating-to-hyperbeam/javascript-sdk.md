@@ -1,6 +1,6 @@
-# HyperBEAM from AO Connect
+# JavaScript SDK
 
-This guide explains how to interact with a process using HyperBEAM and `aoconnect`.
+Connect to HyperBEAM processes using the `@permaweb/aoconnect` JavaScript library for web and Node.js applications.
 
 ## Prerequisites
 
