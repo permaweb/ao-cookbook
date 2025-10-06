@@ -18,7 +18,7 @@ AOS is an abstraction layer that runs in your processes, making it easy to use t
 
 ## Mainnet and Legacynet
 
-- **AO Mainnet** launched on **February 8, 2025**, paving the way for a decentralized, open-access supercomputer directly connected to the internet with [HyperBEAM](../guides/migrating-to-hyperbeam/why-migrate.md).
+- **AO Mainnet** launched on **February 8, 2025**, paving the way for a decentralized, open-access supercomputer directly connected to the internet with [HyperBEAM](../migrating-to-hyperbeam/why-migrate.md).
 
 - **AO Legacynet** launched on **February 27, 2024**, providing a fee-free environment for early adopters to experiment with AO’s hyper-parallel architecture.
 

@@ -34,7 +34,7 @@ The goal is to provide a seamless future upgrade path to HyperBEAM Mainnet. Whil
 For detailed documentation on the HyperBEAM protocol itself, including running infrastructure and leveraging its powerful URL pathing, visit [HyperBEAM.arweave.net](https://hyperbeam.arweave.net).
 
 ::: info Building on HyperBEAM
-To learn how to build applications on HyperBEAM using `ao` and `aos`, and to migrate existing processes, see the [Migrating to HyperBEAM Guide](../../guides/migrating-to-hyperbeam/why-migrate.md).
+To learn how to build applications on HyperBEAM using `ao` and `aos`, and to migrate existing processes, see the [Migrating to HyperBEAM Guide](../../migrating-to-hyperbeam/why-migrate.md).
 :::
 
 ## Preparing for the Future
