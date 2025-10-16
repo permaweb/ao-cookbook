@@ -12,6 +12,21 @@ AO is a decentralized compute system where countless parallel processes interact
 
 **HyperBEAM** is the current production network that provides high-performance message processing and instant HTTP access to your process state.
 
+<div class="feature-callouts">
+  <div class="callout">
+    <h3>AO-Core</h3>
+    <p>The protocol powering decentralized computation</p>
+  </div>
+  <div class="callout">
+    <h3>HyperBEAM</h3>
+    <p>Build with instant HTTP state access</p>
+  </div>
+  <div class="callout">
+    <h3>Arweave Storage</h3>
+    <p>Permanent computation with mathematical guarantees</p>
+  </div>
+</div>
+
 ## Start Building in Minutes
 
 Get hands-on immediately with AO development using modern HyperBEAM patterns.
