@@ -33,28 +33,18 @@ export const localeConfig = (langCode) => ({
     sidebar: [
       {
         text: get_i18n_str(langCode, "welcome"),
-        // link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
         items: [
           {
-            text: "HyperBEAM Quick Start",
-            link: get_i18n_link(langCode, "/welcome/hyperbeam-quickstart"),
+            text: "Welcome & Quick Start",
+            link: get_i18n_link(langCode, "/welcome/"),
           },
           {
-            text: "Intro to AO-Core",
-            link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
+            text: "Building with HyperBEAM",
+            link: get_i18n_link(langCode, "/welcome/building"),
           },
           {
-            text: "Intro to AO Processes",
-            link: get_i18n_link(langCode, "/welcome/ao-processes"),
-          },
-          {
-            text: "HyperBEAM Mainnet",
-            link: get_i18n_link(langCode, "/welcome/legacynet-info/index"),
-            items: [],
-          },
-          {
-            text: get_i18n_str(langCode, "welcome-getting-started"),
-            link: get_i18n_link(langCode, "/welcome/getting-started"),
+            text: "Concepts & Migration",
+            link: get_i18n_link(langCode, "/welcome/concepts"),
           },
         ],
       },
@@ -69,34 +59,31 @@ export const localeConfig = (langCode) => ({
                 text: "State Exposure",
                 link: get_i18n_link(
                   langCode,
-                  "/migrating-to-hyperbeam/state-exposure",
+                  "/guides/hyperbeam/state-exposure",
                 ),
               },
               {
                 text: "AOS CLI",
-                link: get_i18n_link(
-                  langCode,
-                  "/migrating-to-hyperbeam/aos-cli",
-                ),
+                link: get_i18n_link(langCode, "/guides/hyperbeam/aos-cli"),
               },
             ],
           },
           {
             text: "Reading State",
-            collapsed: false,
+            collapsed: true,
             items: [
               {
                 text: "Dynamic Reads",
                 link: get_i18n_link(
                   langCode,
-                  "/migrating-to-hyperbeam/dynamic-reads",
+                  "/guides/hyperbeam/dynamic-reads",
                 ),
               },
               {
                 text: "User-Owned Processes",
                 link: get_i18n_link(
                   langCode,
-                  "/migrating-to-hyperbeam/user-owned-processes",
+                  "/guides/hyperbeam/user-owned-processes",
                 ),
               },
             ],
@@ -107,16 +94,13 @@ export const localeConfig = (langCode) => ({
             items: [
               {
                 text: "Web Serving",
-                link: get_i18n_link(
-                  langCode,
-                  "/migrating-to-hyperbeam/web-serving",
-                ),
+                link: get_i18n_link(langCode, "/guides/hyperbeam/web-serving"),
               },
               {
                 text: "External Data",
                 link: get_i18n_link(
                   langCode,
-                  "/migrating-to-hyperbeam/external-data",
+                  "/guides/hyperbeam/external-data",
                 ),
               },
             ],
@@ -129,7 +113,7 @@ export const localeConfig = (langCode) => ({
                 text: "JavaScript SDK",
                 link: get_i18n_link(
                   langCode,
-                  "/migrating-to-hyperbeam/javascript-sdk",
+                  "/guides/hyperbeam/javascript-sdk",
                 ),
               },
             ],
@@ -140,10 +124,7 @@ export const localeConfig = (langCode) => ({
             items: [
               {
                 text: "Migration Guide",
-                link: get_i18n_link(
-                  langCode,
-                  "/migrating-to-hyperbeam/why-migrate",
-                ),
+                link: get_i18n_link(langCode, "/guides/hyperbeam/migration"),
               },
             ],
           },
@@ -557,15 +538,18 @@ export const localeConfig = (langCode) => ({
             items: [
               {
                 text: get_i18n_str(langCode, "references-lua"),
-                link: get_i18n_link(langCode, "/references/lua"),
+                link: get_i18n_link(langCode, "/references/languages/lua"),
               },
               {
                 text: get_i18n_str(langCode, "references-wasm"),
-                link: get_i18n_link(langCode, "/references/wasm"),
+                link: get_i18n_link(langCode, "/references/languages/wasm"),
               },
               {
                 text: get_i18n_str(langCode, "references-lua-optimization"),
-                link: get_i18n_link(langCode, "/references/lua-optimization"),
+                link: get_i18n_link(
+                  langCode,
+                  "/references/languages/lua-optimization",
+                ),
               },
             ],
           },
@@ -575,27 +559,27 @@ export const localeConfig = (langCode) => ({
             items: [
               {
                 text: get_i18n_str(langCode, "references-ao"),
-                link: get_i18n_link(langCode, "/references/ao"),
+                link: get_i18n_link(langCode, "/references/api/ao"),
               },
               {
                 text: get_i18n_str(langCode, "references-messaging"),
-                link: get_i18n_link(langCode, "/references/messaging"),
+                link: get_i18n_link(langCode, "/references/api/messaging"),
               },
               {
                 text: get_i18n_str(langCode, "references-handlers"),
-                link: get_i18n_link(langCode, "/references/handlers"),
+                link: get_i18n_link(langCode, "/references/api/handlers"),
               },
               {
                 text: get_i18n_str(langCode, "references-token"),
-                link: get_i18n_link(langCode, "/references/token"),
+                link: get_i18n_link(langCode, "/references/api/token"),
               },
               {
                 text: get_i18n_str(langCode, "references-data"),
-                link: get_i18n_link(langCode, "/references/data"),
+                link: get_i18n_link(langCode, "/references/api/data"),
               },
               {
                 text: get_i18n_str(langCode, "references-cron"),
-                link: get_i18n_link(langCode, "/references/cron"),
+                link: get_i18n_link(langCode, "/references/api/cron"),
               },
             ],
           },

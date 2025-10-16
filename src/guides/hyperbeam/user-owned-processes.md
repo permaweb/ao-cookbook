@@ -102,4 +102,4 @@ How you present this to users is up to you - it could be a button in your UI, a 
 
 - [State Exposure](./state-exposure.md)
 - [Dynamic Reads](./dynamic-reads.md)
-- [Why Migrate to HyperBEAM](./why-migrate.md)
+- [Migration Guide](./migration.md)

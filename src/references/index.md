@@ -4,7 +4,7 @@ prev:
   link: "/concepts/tour"
 next:
   text: "Lua"
-  link: "./lua"
+  link: "./languages/lua"
 ---
 
 # References
@@ -15,20 +15,20 @@ This section provides detailed technical references for AO components, languages
 
 Resources for the programming languages used in AO:
 
-- [Lua](./lua) - Reference for the Lua programming language, the primary language used in AO
-- [WebAssembly (WASM)](./wasm) - Information about using WebAssembly modules in AO
-- [Lua Optimization](./lua-optimization) - Techniques and best practices for optimizing Lua code in AO
+- [Lua](./languages/lua) - Reference for the Lua programming language, the primary language used in AO
+- [WebAssembly (WASM)](./languages/wasm) - Information about using WebAssembly modules in AO
+- [Lua Optimization](./languages/lua-optimization) - Techniques and best practices for optimizing Lua code in AO
 
 ## AO API Reference
 
 Documentation for AO's core APIs and functionality:
 
-- [AO Core](./ao) - Core `ao` module and API reference
-- [Messaging](./messaging) - Comprehensive guide to the AO messaging system patterns
-- [Handlers](./handlers) - Reference for event handlers and message processing
-- [Token](./token) - Information about token creation and management
-- [Arweave Data](./data) - Guide to data handling and storage in AO
-- [Cron](./cron) - Documentation for scheduling and managing timed events
+- [AO Core](./api/ao) - Core `ao` module and API reference
+- [Messaging](./api/messaging) - Comprehensive guide to the AO messaging system patterns
+- [Handlers](./api/handlers) - Reference for event handlers and message processing
+- [Token](./api/token) - Information about token creation and management
+- [Arweave Data](./api/data) - Guide to data handling and storage in AO
+- [Cron](./api/cron) - Documentation for scheduling and managing timed events
 
 ## Development Environment
 

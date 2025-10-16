@@ -71,7 +71,7 @@ access supercomputer.
 
 Type ".load-blueprint chat" to join the community chat and ask questions!
 
-AOS Client Version: 1.12.1. 2024
+AOS Client Version: 2.0.9
 Type "Ctrl-C" twice to exit
 
 Your AOS process:  QFt5SR6UwJSCnmgnROq62-W8KGY9z96k1oExgn4uAzk

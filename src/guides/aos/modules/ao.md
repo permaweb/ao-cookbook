@@ -6,7 +6,7 @@ Built-in global library for process communication and management. The `ao` objec
 
 ### `ao.send(msg)`
 
-Sends a message to another process. See the [ao.send](/references/ao.md#ao-send-msg-message) reference for more information.
+Sends a message to another process. See the [ao.send](/references/api/ao.md#ao-send-msg-message) reference for more information.
 
 ```lua
 -- Send a simple message
@@ -29,7 +29,7 @@ ao.send({
 
 ### `ao.spawn(module: string, spawn: table)`
 
-Creates a new process from a module. See the [ao.spawn](/references/ao.md#ao-spawn-module-string-spawn-spawn) reference for more information.
+Creates a new process from a module. See the [ao.spawn](/references/api/ao.md#ao-spawn-module-string-spawn-spawn) reference for more information.
 
 ```lua
 -- Spawn a calculator process
@@ -67,4 +67,4 @@ local processId = ao.env.Process.Id
 local owner = ao.env.Process.Owner
 ```
 
-For the complete API reference including all properties and functions, see the [ao reference documentation](/references/ao.md).
+For the complete API reference including all properties and functions, see the [ao reference documentation](/references/api/ao.md).

@@ -180,7 +180,7 @@ local is_assigned_elsewhere = ao.isAssignment({
 
 Adds a named condition function to the process's list of assignables. Messages matching any condition will be accepted when assigned.
 
-> **Note:** The `condition` parameter uses a similar pattern matching approach as the `pattern` parameter in `Handlers.add()`. For more advanced pattern matching techniques, see the [Handlers Pattern Matching documentation](../references/handlers.md#pattern-matching-tables).
+> **Note:** The `condition` parameter uses a similar pattern matching approach as the `pattern` parameter in `Handlers.add()`. For more advanced pattern matching techniques, see the [Handlers Pattern Matching documentation](./handlers.md#pattern-matching-tables).
 
 #### Example
 

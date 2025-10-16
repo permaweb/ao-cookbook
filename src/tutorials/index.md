@@ -1,7 +1,7 @@
 ---
 prev:
-  text: "legacynet Info"
-  link: "/welcome/legacynet-info"
+  text: "Concepts & Migration"
+  link: "/welcome/concepts"
 next:
   text: "Begin"
   link: "./begin/index"

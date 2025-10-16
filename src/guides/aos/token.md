@@ -1,6 +1,6 @@
 # Building a Token in `ao`
 
-When creating tokens, we'll continue to use the [Lua Language](../../references/lua.md) within `ao` to mint a token, guided by the principles outlined in the [Token Specification](../../references/token.md).
+When creating tokens, we'll continue to use the [Lua Language](../../references/languages/lua.md) within `ao` to mint a token, guided by the principles outlined in the [Token Specification](../../references/api/token.md).
 
 ### Two Ways to Create Tokens:
 

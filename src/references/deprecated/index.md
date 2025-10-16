@@ -12,6 +12,6 @@ This section contains documentation for deprecated features and APIs in the AO e
 
 If you need help migrating away from deprecated features:
 
-- Review the [Migration Guide](../../migrating-to-hyperbeam/why-migrate.md)
-- Learn about [State Exposure](../../migrating-to-hyperbeam/state-exposure.md) as the recommended alternative
+- Review the [Migration Guide](../../guides/hyperbeam/migration.md)
+- Learn about [State Exposure](../../guides/hyperbeam/state-exposure.md) as the recommended alternative
 - Join the [Discord community](https://discord.gg/qWgGxJKwNJ) for support

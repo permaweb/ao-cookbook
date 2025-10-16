@@ -4,7 +4,7 @@ prev:
   link: "../getting-started"
 next:
   text: "CRED 和任务 FAQ"
-  link: "/zh/welcome/legacynet-info/cred-and-quests"
+  link: "./cred-and-quests"
 ---
 
 # 参与 ao 测试网

@@ -6,7 +6,7 @@ During the game, you've likely noticed announcements appearing in your terminal.
 
 Wouldn't it be convenient to access this information directly from your terminal? Well, there's a way to do that!
 
-By using [handlers](/references/handlers.md), you can create an autonomous agent to retrieve this information for you, marking the progression from simple bots to entities capable of interpreting and acting on game events directly.
+By using [handlers](/references/api/handlers.md), you can create an autonomous agent to retrieve this information for you, marking the progression from simple bots to entities capable of interpreting and acting on game events directly.
 
 ## Setting up the Development Environment
 
