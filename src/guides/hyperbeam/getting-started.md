@@ -50,7 +50,7 @@ Handlers.add(
     -- Expose updated counter via HTTP
     Send({
       device = 'patch@1.0',
-      cache = { counter = Counter }
+      counter = Counter
     })
   end
 )
@@ -69,7 +69,7 @@ InitialSync = InitialSync or 'INCOMPLETE'
 if InitialSync == 'INCOMPLETE' then
   Send({
     device = 'patch@1.0',
-    cache = { counter = Counter }
+    counter = Counter
   })
   InitialSync = 'COMPLETE'
 end
@@ -84,11 +84,9 @@ Handlers.add(
     -- Expose new value with metadata
     Send({
       device = 'patch@1.0',
-      cache = {
-        counter = Counter,
-        lastUpdate = os.time(),
-        updatedBy = msg.From
-      }
+      counter = Counter,
+      lastUpdate = os.time(),
+      updatedBy = msg.From
     })
 
     print("Counter incremented to:", Counter)
@@ -118,14 +116,12 @@ You can expose multiple values at once:
 -- Expose multiple related values
 Send({
   device = 'patch@1.0',
-  cache = {
-    counter = Counter,
-    status = "active",
-    metadata = {
-      version = "1.0.0",
-      owner = ao.id,
-      created = os.time()
-    }
+  counter = Counter,
+  status = "active",
+  metadata = {
+    version = "1.0.0",
+    owner = ao.id,
+    created = os.time()
   }
 })
 ```
@@ -156,11 +152,9 @@ Handlers.add(
     -- Expose updated status
     Send({
       device = 'patch@1.0',
-      cache = {
-        status = Status,
-        statusUpdated = os.time(),
-        updatedBy = msg.From
-      }
+      status = Status,
+      statusUpdated = os.time(),
+      updatedBy = msg.From
     })
 
     return msg.reply({ Status = "Updated" })

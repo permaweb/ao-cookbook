@@ -23,11 +23,9 @@ The `~patch@1.0` device makes process state readable via HTTP GET requests:
 -- Expose data via HTTP
 Send({
   device = 'patch@1.0',
-  cache = {
-    counter = 42,
-    status = "active",
-    users = { alice = 100, bob = 200 }
-  }
+  counter = 42,
+  status = "active",
+  users = { alice = 100, bob = 200 }
 })
 ```
 
@@ -53,7 +51,8 @@ InitialSync = InitialSync or 'INCOMPLETE'
 if InitialSync == 'INCOMPLETE' then
   Send({
     device = 'patch@1.0',
-    cache = { balances = Balances, totalsupply = TotalSupply }
+    balances = Balances,
+    totalsupply = TotalSupply
   })
   InitialSync = 'COMPLETE'
 end
@@ -170,10 +169,8 @@ Handlers.add(
     -- Expose updated state
     Send({
       device = 'patch@1.0',
-      cache = {
-        balances = Balances,
-        totalsupply = tostring(TotalSupply)
-      }
+      balances = Balances,
+      totalsupply = tostring(TotalSupply)
     })
 
     return msg.reply({
@@ -220,12 +217,10 @@ Handlers.add(
     -- Expose updated state
     Send({
       device = 'patch@1.0',
-      cache = {
-        messages = Messages,
-        users = Users,
-        messageCount = tostring(#Messages),
-        userCount = tostring(table.getn(Users))
-      }
+      messages = Messages,
+      users = Users,
+      messageCount = tostring(#Messages),
+      userCount = tostring(table.getn(Users))
     })
 
     return msg.reply({

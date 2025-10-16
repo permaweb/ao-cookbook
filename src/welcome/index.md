@@ -75,7 +75,7 @@ Handlers.add(
     -- Expose the counter value via HTTP
     Send({
       device = 'patch@1.0',
-      cache = { counter = Counter }
+      counter = Counter
     })
   end
 )

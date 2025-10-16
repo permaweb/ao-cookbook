@@ -43,7 +43,7 @@ Handlers.add(
     -- NEW: Expose updated balances via HTTP
     Send({
       device = 'patch@1.0',
-      cache = { balances = Balances }
+      balances = Balances
     })
   end
 )
@@ -83,10 +83,8 @@ InitialSync = InitialSync or 'INCOMPLETE'
 if InitialSync == 'INCOMPLETE' then
   Send({
     device = 'patch@1.0',
-    cache = {
-      balances = Balances,
-      totalsupply = tostring(TotalSupply)
-    }
+    balances = Balances,
+    totalsupply = tostring(TotalSupply)
   })
   InitialSync = 'COMPLETE'
 end
@@ -118,10 +116,8 @@ Handlers.add(
     -- NEW: Expose updated state via HTTP
     Send({
       device = 'patch@1.0',
-      cache = {
-        balances = Balances,
-        totalsupply = tostring(TotalSupply)
-      }
+      balances = Balances,
+      totalsupply = tostring(TotalSupply)
     })
 
     return msg.reply({ Status = "Success" })
@@ -173,10 +169,8 @@ Handlers.add(
     -- Expose updated state
     Send({
       device = 'patch@1.0',
-      cache = {
-        balances = Balances,
-        totalsupply = tostring(TotalSupply)
-      }
+      messages = Messages,
+      messageCount = tostring(#Messages)
     })
   end
 )
@@ -223,10 +217,8 @@ Handlers.add(
     -- Expose updated counter
     Send({
       device = 'patch@1.0',
-      cache = {
-        counter = Counter,
-        lastUpdate = os.time()
-      }
+      counter = Counter,
+      lastUpdate = os.time()
     })
   end
 )
