@@ -4,7 +4,7 @@ There may be times in your ao development workflow that you want to access data 
 
 ## Defining Acceptable Transactions (Required First Step)
 
-Before you can assign any Arweave transaction to your process, you must first define which transactions your process will accept using [`ao.addAssignable`](../references/ao.md#ao-addassignable-name-string-condition-function). This function creates conditions that determine which Arweave transactions your process will accept.
+Before you can assign any Arweave transaction to your process, you must first define which transactions your process will accept using [`ao.addAssignable`](./ao.md#ao-addassignable-name-string-condition-function). This function creates conditions that determine which Arweave transactions your process will accept.
 
 ```lua
 -- Allow transactions from ArDrive
@@ -22,7 +22,7 @@ end)
 
 You can remove assignables with `ao.removeAssignable("<name>")`.
 
-The condition functions use similar pattern matching techniques as found in the [Handlers documentation](../references/handlers.md#pattern-matching-tables). For complete details on the `ao.addAssignable` function, including parameter descriptions and additional examples, see the [ao Module Reference](../references/ao.md#ao-addassignable-name-string-condition-function).
+The condition functions use similar pattern matching techniques as found in the [Handlers documentation](./handlers.md#pattern-matching-tables). For complete details on the `ao.addAssignable` function, including parameter descriptions and additional examples, see the [ao Module Reference](./ao.md#ao-addassignable-name-string-condition-function).
 
 ## Assignment Methods
 
@@ -83,7 +83,7 @@ ArweaveData = Receive(function(msg)
 end)
 ```
 
-> **Note:** When using [`.load`](../guides/aos/load.md#load-lua-files-with-load-filename), the script pauses at `Receive` until data arrives. When running commands separately in the shell, each command executes independently.
+> **Note:** When using [`.load`](../../guides/aos/load.md#load-lua-files-with-load-filename), the script pauses at `Receive` until data arrives. When running commands separately in the shell, each command executes independently.
 
 ### Using Handlers
 
@@ -105,7 +105,7 @@ Handlers are ideal for:
 - Automated processing without manual intervention
 - Building services that other processes can interact with
 
-For more details, see the [Messaging Patterns](../references/messaging.md#receive-capital-r-blocking-pattern-matcher) and [Handlers](../references/handlers.md#pattern-matching-tables) documentation.
+For more details, see the [Messaging Patterns](./messaging.md#receive-capital-r-blocking-pattern-matcher) and [Handlers](./handlers.md#pattern-matching-tables) documentation.
 
 ## Complete Example Workflow
 

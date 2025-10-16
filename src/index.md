@@ -8,24 +8,26 @@ hero:
   tagline: "Decentralized compute at any scale. Only possible on Arweave."
   actions:
     - theme: brand
-      text: Let's Go!
-      link: /welcome/index
+      text: Get Started
+      link: /welcome/
 
 features:
-  - title: AO Core
-    details: Learn about the protocol and standard that powers the AO computer.
-    link: /welcome/ao-core-introduction
-
-  - title: AO on HyperBEAM
-    details: Build smart contracts and autonomous agents using AO Processes.
-    link: /migrating-to-hyperbeam/why-migrate
+  - title: AO-Core
+    details: The protocol powering decentralized computation
+    link: /welcome/concepts
 
   - title: HyperBEAM
-    details: The future of AO, written in Erlang.
-    link: https://hyperbeam.arweave.net
+    details: Build with instant HTTP state access
+    link: /welcome/
+
+  - title: Arweave Storage
+    details: Permanent computation with mathematical guarantees
+    link: /welcome/concepts
 ---
 
-## More Information
+## Explore
 
-- [Community Resources](/references/community)
-- [Release Notes](/releasenotes/index)
+- [Tutorials](/tutorials/) - Hands-on projects from chatrooms to bots
+- [Guides](/guides/) - Step-by-step patterns and techniques
+- [References](/references/) - API documentation and specifications
+- [Community](/references/community) - Connect with AO developers

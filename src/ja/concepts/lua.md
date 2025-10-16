@@ -8,7 +8,7 @@ In this section we will cover the basics of Lua in just a few minutes. If you al
 
 ## Jumping back into your aos process.
 
-For the purpose of this tutorial, we will be assuming that you have already completed the [getting started](/welcome/getting-started) guide. If not, complete that first.
+For the purpose of this tutorial, we will be assuming that you have already completed the [Welcome & Quick Start](/welcome/) guide. If not, complete that first.
 
 If you logged out of your process, you can always re-open it by running `aos` on your commandline, optionally specifying your key file with `--wallet [location]`.
 
@@ -36,7 +36,7 @@ Luaはシンプルな言語で、驚くことは少ないです。もしJavascri
 
 ## aosプロセスに戻る
 
-このチュートリアルでは、すでに[はじめに](/welcome/getting-started)ガイドを完了していることを前提とします。まだ完了していない場合は、最初にそれを完了してください。
+このチュートリアルでは、すでに[ようこそとクイックスタート](/welcome/)ガイドを完了していることを前提とします。まだ完了していない場合は、最初にそれを完了してください。
 
 プロセスからログアウトしている場合は、コマンドラインで`aos`を実行することで再度開くことができます。必要に応じて、`--wallet [location]`を指定してキー ファイルを指定できます。
 

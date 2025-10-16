@@ -8,7 +8,7 @@ In this section we will cover the basics of Lua in just a few minutes. If you al
 
 ## Jumping back into your aos process.
 
-For the purpose of this tutorial, we will be assuming that you have already completed the [getting started](/welcome/getting-started) guide. If not, complete that first.
+For the purpose of this tutorial, we will be assuming that you have already completed the [Welcome & Quick Start](/welcome/) guide. If not, complete that first.
 
 If you logged out of your process, you can always re-open it by running `aos` on your command line, optionally specifying your key file with `--wallet [location]`.
 

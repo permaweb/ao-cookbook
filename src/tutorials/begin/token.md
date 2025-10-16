@@ -4,7 +4,7 @@
 Diving deeper into the `ao`, you're now ready to create your own token, a symbol of value and exchange within this decentralized medium. If you've found yourself wanting to learn how to create a token, but haven't visited the [Messaging](messaging) and [Build a Chatroom](chatroom) lessons, be sure to do so as this page is part of a multi-part interactive tutorial.
 :::
 
-When creating tokens, we'll continue to use the [Lua Language](../../references/lua.md) within `ao` to mint a token, guided by the principles outlined in the [Token Specification](../../references/token.md).
+When creating tokens, we'll continue to use the [Lua Language](../../references/languages/lua.md) within `ao` to mint a token, guided by the principles outlined in the [Token Specification](../../references/api/token.md).
 
 ## Video Tutorial
 

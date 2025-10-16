@@ -1,7 +1,7 @@
 ---
 prev:
-  text: "测试网信息"
-  link: "/welcome/legacynet-info"
+  text: "Concepts & Migration"
+  link: "/welcome/concepts"
 next:
   text: "开始"
   link: "./begin/index"

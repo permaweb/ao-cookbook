@@ -102,7 +102,7 @@ You received 10000000 from a1b2C3d4e5F6g7h8IjkLm0nOpqR8s7t6U5v4w3X2y1z
 ```
 
 > [!NOTE]
-> The `.receive().Data` will wait for a response by adding a temporary [Handler](../../references/handlers.md#handlers-once-name-pattern-handler) that only runs once and will print the response Data. If you would like to instead just wait for the response to hit your Inbox you can call `Send()` without `.receive()` and run `Inbox[#Inbox].Data` to see the response `Data`.
+> The `.receive().Data` will wait for a response by adding a temporary [Handler](../../references/api/handlers.md#handlers-once-name-pattern-handler) that only runs once and will print the response Data. If you would like to instead just wait for the response to hit your Inbox you can call `Send()` without `.receive()` and run `Inbox[#Inbox].Data` to see the response `Data`.
 >
 > Handler added by `.receive()`:
 >

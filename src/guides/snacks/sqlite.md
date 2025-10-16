@@ -12,7 +12,7 @@ SQLite is a relational database engine. In this guide, we will show how you can 
 
 ## Setup
 
-> NOTE: make sure you have aos installed, if not checkout [Getting Started](/welcome/getting-started)
+> NOTE: make sure you have aos installed, if not checkout [Welcome & Quick Start](/welcome/)
 
 spawn a new process `mydb` with a `--sqlite` flag, this instructs ao to use the latest sqlite module.
 
