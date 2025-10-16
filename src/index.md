@@ -12,16 +12,16 @@ hero:
       link: /welcome/
 
 features:
-  - title: HyperBEAM First
-    details: Build with modern state exposure and HTTP access patterns.
-    link: /welcome/
-
-  - title: Actor Model
-    details: Create resilient, autonomous processes that communicate via messages.
+  - title: AO-Core
+    details: The protocol powering decentralized computation
     link: /welcome/concepts
 
-  - title: Permanent Compute
-    details: Processes that live forever on Arweave with mathematical guarantees.
+  - title: HyperBEAM
+    details: Build with instant HTTP state access
+    link: /welcome/
+
+  - title: Arweave Storage
+    details: Permanent computation with mathematical guarantees
     link: /welcome/concepts
 ---
 
