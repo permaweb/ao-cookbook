@@ -1,10 +1,6 @@
 # State Exposure
 
-::: danger ACTION REQUIRED
-**Legacynet is deprecating dry runs on October 10, 2025.** Migrating to state exposure is now urgent for all processes running on Legacynet. This guide shows you how to expose your process state for direct HTTP access, providing dramatically better performance than dry runs.
-:::
-
-HyperBEAM enables direct HTTP access to process state, eliminating the need for costly `dryrun` calls. This feature dramatically improves performance for web frontends and data services that need to read process data.
+HyperBEAM enables direct HTTP access to process state, providing efficient data reads for web frontends and data services that need to access process data. This is the standard approach for reading process state in HyperBEAM.
 
 ## The Patch Device
 

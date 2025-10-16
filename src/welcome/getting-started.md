@@ -19,7 +19,13 @@ Once you have NodeJS on your machine, all you need to do is install aos and run 
 npm i -g https://get_ao.arweave.net
 ```
 
-After installation, we can simply run the command itself to start a new aos process!
+After installation, you can start aos with HyperBEAM for the best performance:
+
+```sh
+aos --node https://forward.computer
+```
+
+For development, you can also use the default:
 
 ```sh
 aos

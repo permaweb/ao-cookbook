@@ -55,17 +55,17 @@ export const localeConfig = (langCode) => ({
         ],
       },
       {
-        text: "Migrating to HyperBEAM",
+        text: "Working with HyperBEAM",
         items: [
           {
             text: "Getting Started",
             collapsed: false,
             items: [
               {
-                text: "Why Migrate",
+                text: "State Exposure",
                 link: get_i18n_link(
                   langCode,
-                  "/migrating-to-hyperbeam/why-migrate",
+                  "/migrating-to-hyperbeam/state-exposure",
                 ),
               },
               {
@@ -81,13 +81,6 @@ export const localeConfig = (langCode) => ({
             text: "Reading State",
             collapsed: false,
             items: [
-              {
-                text: "State Exposure",
-                link: get_i18n_link(
-                  langCode,
-                  "/migrating-to-hyperbeam/state-exposure",
-                ),
-              },
               {
                 text: "Dynamic Reads",
                 link: get_i18n_link(
@@ -133,6 +126,19 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(
                   langCode,
                   "/migrating-to-hyperbeam/javascript-sdk",
+                ),
+              },
+            ],
+          },
+          {
+            text: "Migrating from Legacynet",
+            collapsed: true,
+            items: [
+              {
+                text: "Migration Guide",
+                link: get_i18n_link(
+                  langCode,
+                  "/migrating-to-hyperbeam/why-migrate",
                 ),
               },
             ],
