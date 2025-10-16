@@ -36,6 +36,10 @@ export const localeConfig = (langCode) => ({
         // link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
         items: [
           {
+            text: "HyperBEAM Quick Start",
+            link: get_i18n_link(langCode, "/welcome/hyperbeam-quickstart"),
+          },
+          {
             text: "Intro to AO-Core",
             link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
           },
