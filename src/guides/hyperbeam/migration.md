@@ -1,10 +1,10 @@
 # Migration Guide: From Legacynet to HyperBEAM
 
-Migrating your process to HyperBEAM is primarily about adopting **state exposure** - the practice of making your process state readable via HTTP. This single change provides the biggest performance improvement and is the core of the HyperBEAM experience.
+Migrating your process to HyperBEAM is primarily about exposing your process state via HTTP. This single change provides the biggest performance improvement and is the core of the HyperBEAM experience.
 
-## The Migration is Simple: Add State Exposure
+## The Migration is Simple: Expose Process State via HTTP
 
-**The only real step to migrate your process to HyperBEAM is adding state exposure.**
+**The only real step to migrate your process to HyperBEAM is exposing your process state via HTTP.**
 
 Your existing process logic, handlers, and message handling work exactly the same. The difference is that instead of forcing clients to use slow dry-run messages to read your state, you expose it via HTTP for instant access.
 

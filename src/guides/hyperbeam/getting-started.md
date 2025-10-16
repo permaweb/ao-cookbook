@@ -20,9 +20,9 @@ aos --node https://forward.computer
 
 If you're already running `aos`, you can verify your connection by checking your process ID and ensuring it's working with HyperBEAM patterns.
 
-## Step 2: Understand State Exposure
+## Step 2: Understand Exposing Process State via HTTP
 
-The key difference with HyperBEAM is **state exposure** - making your process state readable via HTTP instead of requiring slow dry-run messages.
+The key difference with HyperBEAM is exposing your process state via HTTP instead of requiring slow dry-run messages.
 
 ### Old Way (Legacynet)
 
@@ -259,7 +259,7 @@ Handlers.add(
 
 ## Next Steps
 
-Now that you understand the basics of HyperBEAM state exposure, explore:
+Now that you understand the basics of exposing process state via HTTP, explore:
 
 - **[Core Concepts](./core/state-exposure.md)** - Deep dive into state exposure, dynamic reads, and advanced patterns
 - **[Building Applications](./building/javascript-sdk.md)** - Learn to integrate with web frontends, external data, and JavaScript SDKs

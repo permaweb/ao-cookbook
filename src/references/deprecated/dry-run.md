@@ -1,7 +1,7 @@
 # Dry Run (Deprecated)
 
 ::: danger DEPRECATED
-**Dry runs were deprecated on Legacynet on October 10, 2025.** This feature is no longer supported. Use [state exposure](../../guides/hyperbeam/core/state-exposure.md) instead for better performance.
+**Dry runs were deprecated on Legacynet on October 10, 2025.** This feature is no longer supported. Use [exposing process state via HTTP](../../guides/hyperbeam/core/state-exposure.md) instead for better performance.
 :::
 
 DryRun was the process of sending a message object to a specific process and getting the Result object back, but the memory was not saved. It was commonly used to create read messages to return the current value of memory, such as a token balance or transfer result.
@@ -15,9 +15,9 @@ Dry runs caused several issues:
 - **Poor user experience** due to slow response times
 - **Scalability limitations** for applications with frequent state reads
 
-## Recommended Alternative: State Exposure
+## Recommended Alternative: Exposing Process State via HTTP
 
-Use the [state exposure mechanism](../../guides/hyperbeam/core/state-exposure.md) to expose process state via HTTP for immediate reading. This provides:
+Use the [mechanism for exposing process state via HTTP](../../guides/hyperbeam/core/state-exposure.md) to provide immediate reading. This provides:
 
 - **Dramatically better performance** than dry runs
 - **Direct HTTP access** to process data

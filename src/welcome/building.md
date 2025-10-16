@@ -9,9 +9,9 @@ next:
 
 # Building with HyperBEAM
 
-Master modern AO development patterns with HyperBEAM's high-performance features. This guide covers state exposure, dynamic reads, and practical patterns for building decentralized applications.
+Master modern AO development patterns with HyperBEAM's high-performance features. This guide covers exposing process state via HTTP, dynamic reads, and practical patterns for building decentralized applications.
 
-## State Exposure: The Foundation
+## Exposing Process State via HTTP: The Foundation
 
 State exposure enables direct HTTP access to your process state, replacing the old dry-run pattern with instant data access.
 
@@ -415,7 +415,7 @@ class AOGateway {
 - **Validate inputs** in all handlers
 - **Check permissions** before state modifications
 - **Use rate limiting** for expensive operations
-- **Never expose sensitive data** via state exposure
+- **Never expose sensitive data** via HTTP state access
 
 ## Next Steps
 

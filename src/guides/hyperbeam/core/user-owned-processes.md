@@ -100,6 +100,6 @@ How you present this to users is up to you - it could be a button in your UI, a 
 
 ## Related Documentation
 
-- [State Exposure](./state-exposure.md)
+- [Exposing Process State via HTTP](./state-exposure.md)
 - [Dynamic Reads](./dynamic-reads.md)
 - [Migration Guide](../migration.md)

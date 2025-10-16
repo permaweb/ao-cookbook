@@ -59,9 +59,9 @@ default@aos-2.0.10[Inbox:1]>
 
 You just sent a message that was **permanently stored on Arweave** and **processed by a distributed compute network**. Your process is a decentralized server that's resilient, permanent, permissionless, and trustless.
 
-### Step 4: Try Modern State Exposure
+### Step 4: Try Exposing State via HTTP
 
-Unlike older systems, modern AO development uses cached **state exposure** with HyperBEAM. Try this example:
+Unlike older systems, modern AO development uses HyperBEAM to expose process state via HTTP. Try this example:
 
 ```lua
 -- Create a simple counter

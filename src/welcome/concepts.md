@@ -134,7 +134,7 @@ HyperBEAM provides:
 
 ### Key Changes
 
-The most impactful change is **state exposure** - the ability to expose parts of your process state for immediate reading. This dramatically improves web frontend and data service performance.
+The most impactful change is exposing your process state via HTTP for immediate reading. This dramatically improves web frontend and data service performance.
 
 ### Migration Steps
 
@@ -167,7 +167,7 @@ Handlers.add(
 )
 ```
 
-**New Pattern (State Exposure):**
+**New Pattern (Exposing Process State via HTTP):**
 
 ```lua
 -- Fast and efficient
@@ -340,7 +340,7 @@ Handlers.add(
 
 ### Migration Resources
 
-- [State Exposure Guide](../guides/hyperbeam/core/state-exposure.md) - Learn modern patterns
+- [Exposing Process State via HTTP](../guides/hyperbeam/core/state-exposure.md) - Learn modern patterns
 - [Dynamic Reads](../guides/hyperbeam/core/dynamic-reads.md) - Advanced state computation
 - [Deprecated Features](../references/deprecated/) - Understanding legacy functionality
 - [HyperBEAM Documentation](https://hyperbeam.arweave.net) - Technical specifications
@@ -351,7 +351,7 @@ Handlers.add(
 
 HyperBEAM's modular device system allows extending core functionality:
 
-- **~patch@1.0**: State exposure device
+- **~patch@1.0**: HTTP state exposure device
 - **~lua@5.3a**: Lua execution device for dynamic reads
 - **Custom devices**: Build your own extensions
 
@@ -367,7 +367,7 @@ This enables powerful data transformation pipelines.
 
 ### Performance Considerations
 
-- **State exposure** is faster than dry-run by orders of magnitude
+- **Exposing process state via HTTP** is faster than dry-run by orders of magnitude
 - **Dynamic reads** move computation to the network edge
 - **Batch operations** when possible for efficiency
 - **Cache expensive computations** in transformation functions

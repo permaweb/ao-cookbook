@@ -1,4 +1,4 @@
-# State Exposure
+# Exposing Process State via HTTP
 
 HyperBEAM enables direct HTTP access to process state, providing efficient data reads for web frontends and data services that need to access process data. This is the standard approach for reading process state in HyperBEAM.
 
@@ -6,7 +6,7 @@ HyperBEAM enables direct HTTP access to process state, providing efficient data 
 
 The [`~patch@1.0`](https://hyperbeam.arweave.net/build/devices/hyperbeam-devices.html) device is the mechanism that allows AO processes to make parts of their internal state readable via direct HTTP GET requests.
 
-### How State Exposure Works
+### How Exposing Process State via HTTP Works
 
 State exposure follows a simple four-step pattern:
 
