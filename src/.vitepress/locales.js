@@ -53,37 +53,31 @@ export const localeConfig = (langCode) => ({
         items: [
           {
             text: "Getting Started",
-            collapsed: false,
+            link: get_i18n_link(langCode, "/guides/hyperbeam/getting-started"),
+          },
+          {
+            text: "Core Concepts",
+            collapsed: true,
             items: [
               {
                 text: "State Exposure",
                 link: get_i18n_link(
                   langCode,
-                  "/guides/hyperbeam/state-exposure",
+                  "/guides/hyperbeam/core/state-exposure",
                 ),
               },
-              {
-                text: "AOS CLI",
-                link: get_i18n_link(langCode, "/guides/hyperbeam/aos-cli"),
-              },
-            ],
-          },
-          {
-            text: "Reading State",
-            collapsed: true,
-            items: [
               {
                 text: "Dynamic Reads",
                 link: get_i18n_link(
                   langCode,
-                  "/guides/hyperbeam/dynamic-reads",
+                  "/guides/hyperbeam/core/dynamic-reads",
                 ),
               },
               {
                 text: "User-Owned Processes",
                 link: get_i18n_link(
                   langCode,
-                  "/guides/hyperbeam/user-owned-processes",
+                  "/guides/hyperbeam/core/user-owned-processes",
                 ),
               },
             ],
@@ -93,38 +87,39 @@ export const localeConfig = (langCode) => ({
             collapsed: true,
             items: [
               {
+                text: "JavaScript SDK",
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/hyperbeam/building/javascript-sdk",
+                ),
+              },
+              {
                 text: "Web Serving",
-                link: get_i18n_link(langCode, "/guides/hyperbeam/web-serving"),
+                link: get_i18n_link(
+                  langCode,
+                  "/guides/hyperbeam/building/web-serving",
+                ),
               },
               {
                 text: "External Data",
                 link: get_i18n_link(
                   langCode,
-                  "/guides/hyperbeam/external-data",
+                  "/guides/hyperbeam/building/external-data",
                 ),
               },
             ],
           },
           {
-            text: "Developer Tools",
-            collapsed: true,
-            items: [
-              {
-                text: "JavaScript SDK",
-                link: get_i18n_link(
-                  langCode,
-                  "/guides/hyperbeam/javascript-sdk",
-                ),
-              },
-            ],
-          },
-          {
-            text: "Migrating from Legacynet",
+            text: "Migration",
             collapsed: true,
             items: [
               {
                 text: "Migration Guide",
                 link: get_i18n_link(langCode, "/guides/hyperbeam/migration"),
+              },
+              {
+                text: "AOS CLI",
+                link: get_i18n_link(langCode, "/guides/hyperbeam/aos-cli"),
               },
             ],
           },

@@ -247,8 +247,8 @@ The key benefits you now have:
 
 Once you're comfortable with basic state exposure, you can explore:
 
-- [Dynamic Reads](./dynamic-reads.md) - Compute values on-the-fly
-- [User-Owned Processes](./user-owned-processes.md) - Patterns for marketplace applications
+- [Dynamic Reads](./core/dynamic-reads.md) - Compute values on-the-fly
+- [User-Owned Processes](./core/user-owned-processes.md) - Patterns for marketplace applications
 - [HyperBEAM Devices](https://hyperbeam.arweave.net/build/devices/hyperbeam-devices.md) - Advanced extensibility
 
 But the core migration is complete - you've successfully moved your process to HyperBEAM by adding state exposure!

@@ -340,8 +340,8 @@ Handlers.add(
 
 ### Migration Resources
 
-- [State Exposure Guide](../guides/hyperbeam/state-exposure.md) - Learn modern patterns
-- [Dynamic Reads](../guides/hyperbeam/dynamic-reads.md) - Advanced state computation
+- [State Exposure Guide](../guides/hyperbeam/core/state-exposure.md) - Learn modern patterns
+- [Dynamic Reads](../guides/hyperbeam/core/dynamic-reads.md) - Advanced state computation
 - [Deprecated Features](../references/deprecated/) - Understanding legacy functionality
 - [HyperBEAM Documentation](https://hyperbeam.arweave.net) - Technical specifications
 
