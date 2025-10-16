@@ -49,7 +49,7 @@ Handlers.add(
 )
 
 -- Client side (instant and free)
-const response = await fetch(`https://forward.computer/${processId}~process@1.0/cache/balances`);
+  const response = await fetch(`https://forward.computer/${processId}~process@1.0/compute/balances`);
 const balances = await response.json();
 ```
 
@@ -145,7 +145,7 @@ async function getBalance(address) {
 // New way (instant and free)
 async function getBalance(address) {
   const response = await fetch(
-    `https://forward.computer/${processId}~process@1.0/cache/balances`,
+    `https://forward.computer/${processId}~process@1.0/compute/balances`,
   );
   const balances = await response.json();
   return balances[address] || "0";
@@ -240,7 +240,7 @@ The key benefits you now have:
 Once you're comfortable with basic state exposure, you can explore:
 
 - [Dynamic Reads](./core/dynamic-reads.md) - Compute values on-the-fly
-- [User-Owned Processes](./core/user-owned-processes.md) - Patterns for marketplace applications
+- [State Exposure](./core/state-exposure.md#patching-user-owned-processes) - Patterns for marketplace applications
 - [HyperBEAM Devices](https://hyperbeam.arweave.net/build/devices/hyperbeam-devices.md) - Advanced extensibility
 
 But the core migration is complete - you've successfully moved your process to HyperBEAM by adding state exposure!

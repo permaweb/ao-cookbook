@@ -49,7 +49,7 @@ export const localeConfig = (langCode) => ({
         ],
       },
       {
-        text: "Working with HyperBEAM",
+        text: "AO with HyperBEAM",
         items: [
           {
             text: "Getting Started",
@@ -71,13 +71,6 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(
                   langCode,
                   "/guides/hyperbeam/core/dynamic-reads",
-                ),
-              },
-              {
-                text: "User-Owned Processes",
-                link: get_i18n_link(
-                  langCode,
-                  "/guides/hyperbeam/core/user-owned-processes",
                 ),
               },
             ],
@@ -587,6 +580,10 @@ export const localeConfig = (langCode) => ({
             ],
           },
           {
+            text: get_i18n_str(langCode, "references-community"),
+            link: get_i18n_link(langCode, "/references/community"),
+          },
+          {
             text: "Deprecated Features",
             collapsed: true,
             items: [
@@ -599,10 +596,6 @@ export const localeConfig = (langCode) => ({
                 link: get_i18n_link(langCode, "/references/deprecated/dry-run"),
               },
             ],
-          },
-          {
-            text: get_i18n_str(langCode, "references-community"),
-            link: get_i18n_link(langCode, "/references/community"),
           },
         ],
       },

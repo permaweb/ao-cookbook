@@ -9,6 +9,10 @@ next:
 
 # Building with HyperBEAM
 
+<div style="width: 100%; max-width: 100vw; margin-bottom: 2em;">
+  <video class="theme-invert-video" src="https://arweave.net/pc73dj9tZtj7AOeIKBGiiOm5ta13FYXzgsqWSePAxiM" style="width: 100%; height: auto; display: block;" autoplay="" muted="" playsinline="" loop="" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture="" preload="auto"></video>
+</div>
+
 Master modern AO development patterns with HyperBEAM's high-performance features. This guide covers exposing process state via HTTP, dynamic reads, and practical patterns for building decentralized applications.
 
 ## Exposing Process State via HTTP: The Foundation
@@ -32,9 +36,9 @@ Send({
 Access immediately at:
 
 ```
-https://forward.computer/<process-id>~process@1.0/cache/counter
-https://forward.computer/<process-id>~process@1.0/cache/status
-https://forward.computer/<process-id>~process@1.0/cache/users
+  https://forward.computer/<process-id>~process@1.0/compute/counter
+  https://forward.computer/<process-id>~process@1.0/compute/status
+  https://forward.computer/<process-id>~process@1.0/compute/users
 ```
 
 ### Initial State Sync Pattern
@@ -267,7 +271,7 @@ class AOProcessClient {
 
   // Read state via HTTP
   async getState(key) {
-    const url = `${this.hyperbeamUrl}/${this.processId}~process@1.0/cache/${key}`;
+    const url = `${this.hyperbeamUrl}/${this.processId}~process@1.0/compute/${key}`;
     const response = await fetch(url);
     return await response.text();
   }
@@ -334,7 +338,7 @@ class AOGateway {
     for (const [name, processId] of this.processes) {
       try {
         const response = await fetch(
-          `https://forward.computer/${processId}~process@1.0/cache/status`,
+          `https://forward.computer/${processId}~process@1.0/compute/status`,
         );
         results[name] = await response.text();
       } catch (error) {

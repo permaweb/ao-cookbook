@@ -94,7 +94,7 @@ Send({ Target = ao.id, Tags = { Action = "Increment" } })
 Your counter value is now instantly available at:
 
 ```
-https://forward.computer/<process-id>~process@1.0/cache/counter
+  https://forward.computer/<process-id>~process@1.0/compute/counter
 ```
 
 This is the power of HyperBEAM - **instant HTTP access to your process state!**

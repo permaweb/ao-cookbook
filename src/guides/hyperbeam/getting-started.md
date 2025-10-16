@@ -103,7 +103,7 @@ Handlers.add(
    ```
 3. **Read via HTTP:**
    ```bash
-   curl https://forward.computer/YOUR_PROCESS_ID~process@1.0/cache/counter
+    curl https://forward.computer/YOUR_PROCESS_ID~process@1.0/compute/counter
    ```
 
 You should see the counter value returned instantly via HTTP!
@@ -128,9 +128,9 @@ Send({
 
 Access them via:
 
-- `/cache/counter` - Returns the counter value
-- `/cache/status` - Returns the status
-- `/cache/metadata` - Returns the metadata object
+- `/compute/counter` - Returns the counter value
+- `/compute/status` - Returns the status
+- `/compute/metadata` - Returns the metadata object
 
 ## Step 6: Update State on Changes
 

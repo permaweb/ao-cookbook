@@ -18,60 +18,48 @@ State exposure follows a simple four-step pattern:
 3.  **HyperBEAM Execution:** HyperBEAM's `dev_patch` module processes this message, mapping the key-value pairs from the `cache` table to a URL path.
 4.  **HTTP Access:** The exposed data is then immediately available via a standard HTTP GET request to the process's endpoint.
     ```HyperBEAM
-    GET /<process-id>~process@1.0/compute/cache/<mydatakey>
+    GET /<process-id>~process@1.0/compute/<mydatakey>
     ```
 
-### Initial State Sync (Optional)
+### Initial State Sync
 
-To make data available immediately on process creation, you can patch its initial state. A common pattern is to use a flag to ensure this sync only runs once, as shown in this example for a token's `Balances` and `TotalSupply`.
+Make data available immediately on process creation by patching initial state:
 
 ```lua
--- Place this logic at the top level of your process script,
--- outside of specific handlers, so it runs on load.
+Balances = { token1 = 100, token2 = 200 }
+TotalSupply = 1984
 
-Balances = { token1 = 100, token2 = 200 } -- A table of balances
-TotalSupply = 1984 -- A single total supply value
-
--- 1. Initialize Flag:
--- Initializes a flag if it doesn't exist.
 InitialSync = InitialSync or 'INCOMPLETE'
-
--- 2. Check Flag:
--- Checks if the sync has already run.
 if InitialSync == 'INCOMPLETE' then
-  -- 3. Patch State:
-  -- The `Send` call patches the state, making it available at endpoints like:
-  -- /cache/balances
-  -- /cache/totalsupply
-  Send({ device = 'patch@1.0', balances = Balances, totalsupply = TotalSupply })
-  -- 4. Update Flag:
-  -- Updates the flag to prevent the sync from running again.
+  Send({
+    device = 'patch@1.0',
+    balances = Balances,
+    totalsupply = TotalSupply
+  })
   InitialSync = 'COMPLETE'
-  print("Initial state sync complete. Balances and TotalSupply patched.")
+  print("Initial state sync complete")
 end
 ```
 
-This pattern makes essential data queryable upon process creation, boosting application responsiveness.
+This makes essential data queryable upon process creation, boosting responsiveness.
 
 ### Basic Handler Example
 
-This handler exposes a `currentstatus` key that can be read via HTTP after the `PublishData` action is called.
+Expose state when actions occur:
 
 ```lua
--- In your process code (e.g., loaded via .load)
 Handlers.add(
   "PublishData",
   Handlers.utils.hasMatchingTag("Action", "PublishData"),
-  function (msg)
-    local dataToPublish = "Some important state: " .. math.random()
-    -- Expose 'currentstatus' key under the 'cache' path
-    Send({ device = 'patch@1.0', currentstatus = dataToPublish })
-    print("Published data to /cache/currentstatus")
+  function(msg)
+    local data = "Important state: " .. math.random()
+    Send({ device = 'patch@1.0', currentstatus = data })
+    print("Published data to /compute/currentstatus")
   end
 )
 ```
 
-For comprehensive application patterns and examples, see **[Building with HyperBEAM](../../../welcome/building.md)** which covers real-world use cases like tokens, chat systems, and web integration.
+For comprehensive patterns, see **[Building with HyperBEAM](../../../welcome/building.md)**.
 
 ### Avoiding Key Conflicts
 
@@ -89,7 +77,7 @@ HTTP paths are case-insensitive. While the `patch` device stores keys with case 
 To prevent conflicts, **always use lowercase keys** in your patch messages (e.g., `mykey`, `usercount`).
 
 ```HyperBEAM
-GET /<process-id>~process@1.0/cache/mykey
+  GET /<process-id>~process@1.0/compute/mykey
 ```
 
 :::
@@ -98,13 +86,13 @@ GET /<process-id>~process@1.0/cache/mykey
 
 - **Path Structure:** Data is exposed at a path structured like this, where `<key>` is a key from your patch message:
   ```HyperBEAM
-  /<process-id>~process@1.0/cache/<key>
+  /<process-id>~process@1.0/compute/<key>
   ```
 - **Data Types:** Basic data types like strings and numbers work best. Complex objects may require serialization.
 - **`compute` vs `now`:** Accessing exposed data can be done via two main paths:
   ```HyperBEAM
-  GET /<process-id>~process@1.0/compute/cache/...
-  GET /<process-id>~process@1.0/now/cache/...
+  GET /<process-id>~process@1.0/compute/<key>
+  GET /<process-id>~process@1.0/now/<key>
   ```
   The `compute` endpoint serves the last known value quickly, while `now` may perform additional computation to get the most recent state.
 - **Read-Only Exposure:** State exposure is for efficient reads and does not replace your process's core state management logic.
@@ -113,57 +101,101 @@ Using the `patch` device enables efficient, standard HTTP access to your process
 
 ## Patching User-Owned Processes
 
-If your application spawns processes that are owned by users (not your application), you'll need to provide a way for users to patch their own processes. A common example is marketplace applications where each user has their own process instance.
+If your application spawns processes owned by users, you need to provide ways for them to enable state patching since only process owners can update their processes.
 
-### Implementation Strategy
+### Common Scenarios
 
-You can create UI components that allow users to update their processes. Here's an example approach:
+- **Marketplace Applications**: Each vendor manages their own inventory process
+- **User Vaults**: Personal processes for storing data or assets
+- **Decentralized Applications**: Users spawn game characters, agents, or bots
+- **Token Pairs**: DEX applications with user-created trading pair processes
 
-```javascript
-import { message, createDataItemSigner } from "@permaweb/aoconnect";
+### Implementation
 
-async function patchUserProcess(processId) {
-  // User must sign this message themselves
-  const signer = createDataItemSigner(window.arweaveWallet);
+#### 1. Enable State Patching
 
-  const messageId = await message({
-    process: processId,
-    signer,
-    tags: [{ name: "Action", value: "UpdateToPatch" }],
-  });
-
-  return messageId;
-}
-```
-
-In your process code, add a handler that users can trigger:
+Add a handler to enable patching and sync current state:
 
 ```lua
 Handlers.add(
-  "UpdateToPatch",
-  Handlers.utils.hasMatchingTag("Action", "UpdateToPatch"),
+  "EnableStatePatch",
+  Handlers.utils.hasMatchingTag("Action", "EnableStatePatch"),
   function(msg)
-    -- Only allow the process owner to update
-    if msg.From ~= ao.id then
-      print("Only the process owner can update to use patch")
-      return
-    end
+    if msg.From ~= ao.id then return end
 
-    -- Add your patch logic here
+    -- Sync current state
     Send({
       device = 'patch@1.0',
-      -- Add the state you want to expose directly
-      -- example: balances = Balances
+      balances = Balances,
+      -- ... other state
     })
 
-    print("Process updated to expose state via HTTP")
+    -- Set flag to enable auto-patching in other handlers
+    StatePatchEnabled = true
   end
 )
 ```
 
-This allows users to maintain ownership of their processes while still benefiting from HyperBEAM's performance improvements.
+#### 2. Update Existing Handlers
 
-For a complete guide on implementing this pattern, see [User-Owned Processes](./user-owned-processes.md).
+Modify existing handlers to automatically expose state when it changes:
+
+```lua
+-- Before: Simple transfer handler
+Handlers.add(
+  "Transfer",
+  Handlers.utils.hasMatchingTag("Action", "Transfer"),
+  function(msg)
+    -- Transfer logic
+    Balances[msg.From] = (Balances[msg.From] or 0) - msg.Quantity
+    Balances[msg.Target] = (Balances[msg.Target] or 0) + msg.Quantity
+  end
+)
+
+-- After: Transfer handler with state exposure
+Handlers.add(
+  "Transfer",
+  Handlers.utils.hasMatchingTag("Action", "Transfer"),
+  function(msg)
+    -- Transfer logic
+    Balances[msg.From] = (Balances[msg.From] or 0) - msg.Quantity
+    Balances[msg.Target] = (Balances[msg.Target] or 0) + msg.Quantity
+
+    -- Auto-expose state if patching is enabled
+    if StatePatchEnabled then
+      Send({ device = 'patch@1.0', balances = Balances })
+    end
+  end
+)
+```
+
+#### 3. Detection & Triggering
+
+```javascript
+// Check if patching is enabled
+async function isPatchEnabled(processId) {
+  try {
+    const response = await fetch(
+      `https://forward.computer/${processId}~process@1.0/compute/balances`,
+      { method: "HEAD" },
+    );
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+
+// User enables patching
+import { message, createDataItemSigner } from "@permaweb/aoconnect";
+
+await message({
+  process: userProcessId,
+  signer: createDataItemSigner(window.arweaveWallet),
+  tags: [{ name: "Action", value: "EnableStatePatch" }],
+});
+```
+
+This approach maintains user ownership while ensuring state stays synchronized automatically.
 
 ## Next Steps
 

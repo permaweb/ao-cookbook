@@ -47,7 +47,7 @@ console.log(result.Messages[0]);
 To migrate from dry runs to state exposure:
 
 1. **For token processes**: Use the [state patching mechanism](../../guides/hyperbeam/core/state-exposure.md) to expose balance data
-2. **For user-owned processes**: Provide update handlers that users can trigger (see [User-Owned Processes](../../guides/hyperbeam/core/user-owned-processes.md))
+2. **For user-owned processes**: Provide update handlers that users can trigger (see [State Exposure](../../guides/hyperbeam/core/state-exposure.md#patching-user-owned-processes))
 3. **For complex applications**: Use [dynamic reads](../../guides/hyperbeam/core/dynamic-reads.md) for on-the-fly computations
 
 ## Alternative: Run Your Own HyperBEAM Node
