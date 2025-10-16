@@ -58,7 +58,7 @@ Handlers.add(
 
 ## Step 3: Your First HyperBEAM Process
 
-Let's create a simple counter process that demonstrates state exposure:
+Let's create a counter process that builds on the basics from the welcome guide:
 
 ```lua
 -- Initialize state
@@ -74,14 +74,14 @@ if InitialSync == 'INCOMPLETE' then
   InitialSync = 'COMPLETE'
 end
 
--- Increment handler
+-- Increment handler with enhanced state exposure
 Handlers.add(
   "Increment",
   Handlers.utils.hasMatchingTag("Action", "Increment"),
   function(msg)
     Counter = Counter + 1
 
-    -- Expose new value via HTTP
+    -- Expose new value with metadata
     Send({
       device = 'patch@1.0',
       cache = {
@@ -92,18 +92,6 @@ Handlers.add(
     })
 
     print("Counter incremented to:", Counter)
-  end
-)
-
--- Get current value (for completeness)
-Handlers.add(
-  "GetCounter",
-  Handlers.utils.hasMatchingTag("Action", "GetCounter"),
-  function(msg)
-    return msg.reply({
-      Data = tostring(Counter),
-      Counter = Counter
-    })
   end
 )
 ```
@@ -180,75 +168,6 @@ Handlers.add(
 )
 ```
 
-## Common Patterns
-
-### Token Balances
-
-```lua
-Balances = Balances or {}
-
--- Initial sync
-InitialSync = InitialSync or 'INCOMPLETE'
-if InitialSync == 'INCOMPLETE' then
-  Send({
-    device = 'patch@1.0',
-    cache = { balances = Balances }
-  })
-  InitialSync = 'COMPLETE'
-end
-
--- Transfer with state exposure
-Handlers.add(
-  "Transfer",
-  Handlers.utils.hasMatchingTag("Action", "Transfer"),
-  function(msg)
-    local amount = tonumber(msg.Tags.Amount)
-    local target = msg.Tags.Target
-
-    -- Transfer logic here...
-    Balances[msg.From] = tostring(tonumber(Balances[msg.From]) - amount)
-    Balances[target] = tostring(tonumber(Balances[target]) + amount)
-
-    -- Expose updated balances
-    Send({
-      device = 'patch@1.0',
-      cache = { balances = Balances }
-    })
-  end
-)
-```
-
-### Chat Messages
-
-```lua
-Messages = Messages or {}
-
--- Add message with state exposure
-Handlers.add(
-  "AddMessage",
-  Handlers.utils.hasMatchingTag("Action", "AddMessage"),
-  function(msg)
-    local message = {
-      id = tostring(#Messages + 1),
-      user = msg.From,
-      content = msg.Data,
-      timestamp = os.time()
-    }
-
-    table.insert(Messages, message)
-
-    -- Expose updated messages
-    Send({
-      device = 'patch@1.0',
-      cache = {
-        messages = Messages,
-        messageCount = tostring(#Messages)
-      }
-    })
-  end
-)
-```
-
 ## Best Practices
 
 1. **Always use lowercase keys** in cache tables (HTTP paths are case-insensitive)
@@ -257,12 +176,16 @@ Handlers.add(
 4. **Initialize state sync** for critical data that should be available immediately
 5. **Expose derived values** (like counts, totals) for easier frontend access
 
+## Common Application Patterns
+
+For real-world application patterns like token transfers, chat systems, and data structures, see **[Building with HyperBEAM](../../welcome/building.md)** which covers comprehensive examples for production use cases.
+
 ## Next Steps
 
 Now that you understand the basics of exposing process state via HTTP, explore:
 
-- **[Core Concepts](./core/state-exposure.md)** - Deep dive into state exposure, dynamic reads, and advanced patterns
-- **[Building Applications](./building/javascript-sdk.md)** - Learn to integrate with web frontends, external data, and JavaScript SDKs
+- **[Core Concepts](./core/state-exposure.md)** - Deep dive into technical details, edge cases, and advanced patterns
+- **[Building Applications](../../welcome/building.md)** - Real-world patterns for tokens, chat, and web integration
 - **[Migration Guide](./migration.md)** - If you have existing Legacynet processes to migrate
 
 ## Need Help?

@@ -13,7 +13,7 @@ Master modern AO development patterns with HyperBEAM's high-performance features
 
 ## Exposing Process State via HTTP: The Foundation
 
-State exposure enables direct HTTP access to your process state, replacing the old dry-run pattern with instant data access.
+HyperBEAM enables direct HTTP access to your process state, replacing the old dry-run pattern with instant data access. For the basics, see the [Welcome Guide](./index) - this section covers comprehensive patterns for real applications.
 
 ### The Patch Device
 
@@ -39,9 +39,9 @@ https://forward.computer/<process-id>~process@1.0/cache/status
 https://forward.computer/<process-id>~process@1.0/cache/users
 ```
 
-### Initial State Sync
+### Initial State Sync Pattern
 
-Make data available immediately on process creation:
+Make critical data available immediately on process creation:
 
 ```lua
 -- Initialize state
@@ -57,48 +57,6 @@ if InitialSync == 'INCOMPLETE' then
   })
   InitialSync = 'COMPLETE'
 end
-```
-
-### Real-Time Counter Example
-
-A complete example of a counter that updates its HTTP-readable state:
-
-```lua
--- Initialize counter
-Counter = Counter or 0
-
--- Handler to increment and expose state
-Handlers.add(
-  "Increment",
-  Handlers.utils.hasMatchingTag("Action", "Increment"),
-  function(msg)
-    Counter = Counter + 1
-
-    -- Expose new value via HTTP
-    Send({
-      device = 'patch@1.0',
-      cache = {
-        counter = Counter,
-        lastUpdate = os.time(),
-        updatedBy = msg.From
-      }
-    })
-
-    print("Counter incremented to:", Counter)
-  end
-)
-
--- Handler to get current value
-Handlers.add(
-  "GetCounter",
-  Handlers.utils.hasMatchingTag("Action", "GetCounter"),
-  function(msg)
-    return msg.reply({
-      Data = tostring(Counter),
-      Counter = Counter
-    })
-  end
-)
 ```
 
 ## Dynamic Reads: Compute on Demand

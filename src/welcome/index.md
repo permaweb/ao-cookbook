@@ -61,7 +61,7 @@ You just sent a message that was **permanently stored on Arweave** and **process
 
 ### Step 4: Try Exposing State via HTTP
 
-Unlike older systems, modern AO development uses HyperBEAM to expose process state via HTTP. Try this example:
+Unlike older systems, modern AO development uses HyperBEAM to expose process state via HTTP. Try this simple example:
 
 ```lua
 -- Create a simple counter
@@ -77,14 +77,6 @@ Handlers.add(
       device = 'patch@1.0',
       cache = { counter = Counter }
     })
-  end
-)
-
-Handlers.add(
-  "GetCounter",
-  Handlers.utils.hasMatchingTag("Action", "GetCounter"),
-  function(msg)
-    return msg.reply({ Data = tostring(Counter) })
   end
 )
 ```

@@ -53,7 +53,7 @@ end
 
 This pattern makes essential data queryable upon process creation, boosting application responsiveness.
 
-### Example (Lua in `aos`)
+### Basic Handler Example
 
 This handler exposes a `currentstatus` key that can be read via HTTP after the `PublishData` action is called.
 
@@ -70,6 +70,8 @@ Handlers.add(
   end
 )
 ```
+
+For comprehensive application patterns and examples, see **[Building with HyperBEAM](../../../welcome/building.md)** which covers real-world use cases like tokens, chat systems, and web integration.
 
 ### Avoiding Key Conflicts
 
