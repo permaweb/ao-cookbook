@@ -13,15 +13,15 @@ hero:
 
 features:
   - title: AO-Core
-    details: The protocol powering decentralized computation
-    link: /welcome/concepts
+    details: Learn the fundamentals of AO's decentralized compute protocol
+    link: /welcome/index.html
 
-  - title: HyperBEAM
-    details: Build with instant HTTP state access
-    link: /welcome/
+  - title: AO on HyperBEAM
+    details: Build scalable applications with instant HTTP state access
+    link: /welcome/building.html
 
-  - title: Arweave Storage
-    details: Permanent computation with mathematical guarantees
+  - title: HyperBEAM Docs
+    details: Explore advanced patterns and reference documentation
     link: /welcome/concepts
 ---
 
