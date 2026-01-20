@@ -64,7 +64,7 @@ const balances = await response.json();
 aos
 
 # To HyperBEAM
-aos --node https://forward.computer
+aos --url https://push.forward.computer
 ```
 
 That's it for the connection - your process works the same way.

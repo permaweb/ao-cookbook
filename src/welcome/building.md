@@ -36,9 +36,9 @@ Send({
 Access immediately at:
 
 ```
-  https://forward.computer/<process-id>~process@1.0/compute/counter
-  https://forward.computer/<process-id>~process@1.0/compute/status
-  https://forward.computer/<process-id>~process@1.0/compute/users
+  https://push.forward.computer/<process-id>~process@1.0/compute/counter
+  https://push.forward.computer/<process-id>~process@1.0/compute/status
+  https://push.forward.computer/<process-id>~process@1.0/compute/users
 ```
 
 ### Initial State Sync Pattern
@@ -111,7 +111,7 @@ GET /<process-id>~process@1.0/now/~lua@5.3a&module={SCRIPT_TX_ID}/calculate/seri
 
 ```javascript
 async function getCirculatingSupply(processId, scriptTxId) {
-  const url = `https://forward.computer/${processId}~process@1.0/now/~lua@5.3a&module=${scriptTxId}/calculate/serialize~json@1.0`;
+  const url = `https://push.forward.computer/${processId}~process@1.0/now/~lua@5.3a&module=${scriptTxId}/calculate/serialize~json@1.0`;
 
   const response = await fetch(url);
   const data = await response.json();
@@ -264,7 +264,7 @@ Handlers.add(
 
 ```javascript
 class AOProcessClient {
-  constructor(processId, hyperbeamUrl = "https://forward.computer") {
+  constructor(processId, hyperbeamUrl = "https://push.forward.computer") {
     this.processId = processId;
     this.hyperbeamUrl = hyperbeamUrl;
   }
@@ -338,7 +338,7 @@ class AOGateway {
     for (const [name, processId] of this.processes) {
       try {
         const response = await fetch(
-          `https://forward.computer/${processId}~process@1.0/compute/status`,
+          `https://push.forward.computer/${processId}~process@1.0/compute/status`,
         );
         results[name] = await response.text();
       } catch (error) {

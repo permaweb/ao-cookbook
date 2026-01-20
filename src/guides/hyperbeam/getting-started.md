@@ -15,7 +15,7 @@ You should have completed the [Welcome & Quick Start](../../welcome/) guide and 
 Make sure you're connected to the HyperBEAM network:
 
 ```bash
-aos --node https://forward.computer
+aos --url https://push.forward.computer
 ```
 
 If you're already running `aos`, you can verify your connection by checking your process ID and ensuring it's working with HyperBEAM patterns.
@@ -103,7 +103,7 @@ Handlers.add(
    ```
 3. **Read via HTTP:**
    ```bash
-    curl https://forward.computer/YOUR_PROCESS_ID~process@1.0/compute/counter
+    curl https://push.forward.computer/YOUR_PROCESS_ID~process@1.0/compute/counter
    ```
 
 You should see the counter value returned instantly via HTTP!

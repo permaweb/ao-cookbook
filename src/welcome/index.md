@@ -32,7 +32,7 @@ npm i -g https://get_ao.arweave.net
 Connect directly to a HyperBEAM node for the best experience:
 
 ```sh
-aos --node https://forward.computer
+aos --node https://push.forward.computer
 ```
 
 For development, you can also use the default:
@@ -94,7 +94,7 @@ Send({ Target = ao.id, Tags = { Action = "Increment" } })
 Your counter value is now instantly available at:
 
 ```
-  https://forward.computer/<process-id>~process@1.0/compute/counter
+  https://push.forward.computer/<process-id>~process@1.0/compute/counter
 ```
 
 This is the power of HyperBEAM - **instant HTTP access to your process state!**

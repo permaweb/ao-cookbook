@@ -32,40 +32,21 @@ pnpm add -g https://get_ao.arweave.net
 
 :::
 
-## Choosing Your Network
 
-After installing `aos`, when you spawn a new process you'll be presented with a selection menu:
+### HyperBEAM Process (aos)
 
-```bash
-aos myProcess
+Enter `aos` into the cli to spawn a process on the HyperBEAM network (default). Create a Legacynet processes with the `--legacy` flag during creation.
+```
+aos --legacy
 ```
 
-You'll see:
-
-```
-? Please select › - Use arrow-keys. Return to submit.
-❯   aos
-    hyper-aos (experimental - DO NOT USE FOR PRODUCTION)
-```
-
-### Legacy Network Process (aos)
-
-Select `aos` to spawn a process on the legacy network (default). This creates a standard AO process on the existing stable network, compatible with all current tooling and processes.
-
-### HyperBEAM Process (hyper-aos)
-
-Select `hyper-aos` to spawn a process directly on HyperBEAM. This is marked as **experimental** and should not be used for production workloads while HyperBEAM mainnet is being built out.
-
-:::warning Important
-The `hyper-aos` option is experimental and actively under development. Use `aos` (legacy network) for production processes.
-:::
 
 ### Connecting to a Specific HyperBEAM Node
 
 You can also connect directly to a specific HyperBEAM node:
 
 ```bash
-aos --url "https://forward.computer" myMainnetProcess
+aos --url "https://push.forward.computer" myMainnetProcess
 ```
 
 This connects you to an interactive Lua environment running within a **process** on the HyperBEAM network at the specified URL.

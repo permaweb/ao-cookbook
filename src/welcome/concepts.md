@@ -49,13 +49,13 @@ AO has evolved through distinct network phases, with HyperBEAM Mainnet represent
 - **AO Legacynet**: Original architecture, legacy support, educational use
 - **Recommendation**: Use HyperBEAM for all new development
 
-The default node `https://forward.computer` provides access to the production network with modern features and reliability.
+The default node `https://push.forward.computer` provides access to the production network with modern features and reliability.
 
 ## Migration Strategy
 
 Transitioning to HyperBEAM involves replacing expensive dry-run patterns with efficient HTTP state exposure. This fundamentally changes how frontends interact with process data by enabling instant HTTP access that's orders of magnitude faster than traditional queries.
 
-- **Update connection** to use `--node https://forward.computer`
+- **Update connection** to use `--url https://push.forward.computer`
 - **Replace dry-run handlers** with HTTP state exposure patterns
 - **Add initial state sync** for immediate data availability
 - **Update frontend calls** from dry-run to direct HTTP requests

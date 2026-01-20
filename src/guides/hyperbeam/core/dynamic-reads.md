@@ -97,7 +97,7 @@ Here's how you could fetch this dynamic data in a JavaScript application:
 // Fetch circulating supply with JSON serialization
 const processId = "FkJPkIHp_Gc_7KOLbtyzowPcJUc3SG_G25SJp0fbTmE"; // An example process
 const moduleId = "QSBQZsowVRdvsEbdTv-KEF4_Z5bYf11M3X5-8LN0NM4"; // The example sum.lua script
-const hyperbeam = "forward.computer";
+const hyperbeam = "push.forward.computer";
 
 async function getDynamicState() {
   const url = `https://${hyperbeam}/${processId}~process@1.0/now/~lua@5.3a&module=${moduleId}/sum/serialize~json@1.0`;

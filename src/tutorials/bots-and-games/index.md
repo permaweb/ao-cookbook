@@ -8,6 +8,8 @@ next:
 ---
 
 # Bots and Games
+> [!NOTE]  
+> This Quest no longer pays CRED. It remains open to help users with understanding bots and games to assist with creating their own.
 
 > [!NOTE]  
 > Build your own unique bot to complete Quest 3 and earn 1000 CRED, then enter games like the [Grid](https://github.com/twilson63/grid) to earn legacynet CRED 24/7!
