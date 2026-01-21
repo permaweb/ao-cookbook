@@ -23,7 +23,7 @@ export const localeConfig = (langCode) => ({
     nav: [
       {
         text: get_i18n_str(langCode, "docs"),
-        link: get_i18n_link(langCode, "/welcome/ao-core-introduction"),
+        link: get_i18n_link(langCode, "/welcome/"),
       },
       {
         text: "LLMs.txt",
