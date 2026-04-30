@@ -14,7 +14,7 @@ aos 的本地客户端安装超级简单. 你需要有：
 完成 NodeJS 安装后，你只需安装 aos 并运行它:
 
 ```sh
-npm i -g https://get_ao.g8way.io
+npm i -g https://get_ao.arweave.net
 ```
 
 安装完成后，我们运行命令即可启动一个新的 aos 进程！

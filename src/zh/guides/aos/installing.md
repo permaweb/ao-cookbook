@@ -5,7 +5,7 @@
 > 注意: 如果你使用的是 Windows 系统，最后使用 WSL 命令行.
 
 ```sh
-npm i -g https://get_ao.g8way.io
+npm i -g https://get_ao.arweave.net
 ```
 
 安装完之后你可以输入 `aos` 来运行系统

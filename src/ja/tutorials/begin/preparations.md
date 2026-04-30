@@ -57,7 +57,7 @@ Though it's not required, we do recommend installing the [ao addon](../../refere
 Once you have NodeJS on your machine, all you need to do is install aos and run it: -->
 
 ```sh
-npm i -g https://get_ao.g8way.io
+npm i -g https://get_ao.arweave.net
 ```
 
 インストール後は、そのコマンドを実行するだけで新しい aos プロセスを開始できます！
@@ -130,7 +130,7 @@ default@aos-0.2.2[Inbox:1]>
 - あなたのプロセスID
 
 ::: info
-もしあなたのOSバージョンが最新バージョンと異なる場合、バージョンを更新するかどうかを尋ねるメッセージが表示されます。その場合は、"Ctrl+C" を2回押してプロセスを終了し、`npm i -g https://get_ao.g8way.io` を実行して更新し、再度 `aos` を実行してください。
+もしあなたのOSバージョンが最新バージョンと異なる場合、バージョンを更新するかどうかを尋ねるメッセージが表示されます。その場合は、"Ctrl+C" を2回押してプロセスを終了し、`npm i -g https://get_ao.arweave.net` を実行して更新し、再度 `aos` を実行してください。
 :::
 
 aoコンピュータの新しいホームへようこそ！今見ているプロンプトは、この分散型マシンのあなた自身の個人サーバーです。
@@ -151,7 +151,7 @@ After running `aos` in your terminal, you should see:
 - Your process ID.
 
 ::: info
-If your OS version is different than the latest version, a message asking if you'd like to update the version will appear. If so, simply exit the process by pressing "Ctrl+C" twice, run `npm i -g https://get_ao.g8way.io` to update, and then run `aos` again.
+If your OS version is different than the latest version, a message asking if you'd like to update the version will appear. If so, simply exit the process by pressing "Ctrl+C" twice, run `npm i -g https://get_ao.arweave.net` to update, and then run `aos` again.
 :::
 
 Welcome to your new home in the ao computer! The prompt you are now looking at is your own personal server in this decentralized machine.

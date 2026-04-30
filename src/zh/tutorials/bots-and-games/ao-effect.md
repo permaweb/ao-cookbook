@@ -28,7 +28,7 @@ prev:
 启动你的终端并运行：
 
 ```bash
-npm i -g https://get_ao.g8way.io
+npm i -g https://get_ao.arweave.net
 ```
 
 2.**启动 aos**

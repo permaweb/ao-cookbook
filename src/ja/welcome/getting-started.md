@@ -24,7 +24,7 @@ aosのローカルクライアントのインストールは非常にシンプ�
 NodeJSがマシンにインストールされていれば、あとはaosをインストールして実行するだけです。
 
 ```sh
-npm i -g https://get_ao.g8way.io
+npm i -g https://get_ao.arweave.net
 ```
 
 <!-- After installation, we can simply run the command itself to start a new aos process! -->

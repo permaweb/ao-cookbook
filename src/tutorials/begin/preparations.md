@@ -93,7 +93,7 @@ After running `aos` in your terminal, you should see:
 - Your process ID.
 
 ::: info
-If your OS version is different than the latest version, a message asking if you'd like to update the version will appear. If so, simply exit the process by pressing "Ctrl+C" twice, run `npm i -g https://get_ao.g8way.io` to update, and then run `aos` again.
+If your OS version is different than the latest version, a message asking if you'd like to update the version will appear. If so, simply exit the process by pressing "Ctrl+C" twice, run `npm i -g https://get_ao.arweave.net` to update, and then run `aos` again.
 :::
 
 Welcome to your new home in the ao computer! The prompt you are now looking at is your own personal server in this decentralized machine.

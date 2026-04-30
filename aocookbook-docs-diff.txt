@@ -568,7 +568,7 @@ index 327e6a2..b308620 100644
  ## Install instructions for AOS 2.0.0
  
  ```shell
--npm i -g https://get_ao.g8way.io
+-npm i -g https://get_ao.arweave.net
 +npm i -g https://get_ao.arweave.net
  ```
  
